@@ -1,0 +1,123 @@
+
+
+Application Name :
+
+                  E-KRUSHI SEVA
+     
+        This application is made for Farmers .  With the help of this application farmers find solution on the  Plant Diseases.
+
+  Also farmers purchase various pestisides,seeds,fertilizers  as per his requirements.
+        
+        Using this application farmers check availability of various products in the Krushi Seva Shop.The Farmers can make 
+
+  online payment anyhwhere anytime.This application save time of farmers. We help farmers to make more informed decisions
+
+  and focus on precision farming.We helps farmers to reduce their total production cost and increase their quality yield. 
+
+  All the problems of farmers related to the crop is taken care by a dedicated Call centre , which guides the farmers in
+
+ all the stages of the crop , right to the crop is taken care by a dedicated Call centre , which guides the farmers in all
+
+ the stages of the crop , right guidance from Agri-Experts not only boosts farmers knowledge , but also helps increasing his
+
+ income , intern increasing guidance the national productivity , making farmer happy and satisfied . For the eKrushiseva have 
+
+ implemented a Toll free number and also a farmer chat facility , wherein farmers can be in continuous touch with the agri-experts .
+ 
+  
+ 
+   various problems of farmers :
+   
+      The farmer loss his time due to offline purchasing products of farming because he went to krushi shop.
+   
+      when the farmer goes to shop that time there is not availability of product as per his requirements at 
+      
+      that time the farmer waste his time.
+   
+      The farmer can not spraying his crops at proper time.
+   
+      The farmer can not give fertilizers to his farm at proper time.
+   
+      The farmer not getting proper guidence for his farming.
+   
+      Due to all this reasons farmers cannot take proper care of his farming.
+
+     
+
+      For solving this problem we make krushi seva app.
+
+
+
+    Benefits :
+    
+    1.The farmers saves time because he is not going to the shop. 
+    
+    2.The farmers can order products at proper time.
+    
+    3.The Farmer can order product anytime anywhere.
+    
+    4.This application sends a copy of bill to the farmer mobile no. and whatsapp no.
+
+
+    contains :
+    
+    Farmer: 
+    id ,  name , contact no. , Email Id , credit 
+     
+    stock database:
+    
+   
+    Seeds:
+    id , seed name , company name,  available quantity , price per unit
+
+    Pesticide: 
+    id , pesticide name ,company name, available quantity  ,price per unit 
+
+    Fertilizer:
+    id, fertilizer name ,  company name, available quantity  ,price per unit
+   
+    order database:
+    
+    orderId , farmer name , product name , datetime
+
+    Home Page -
+    
+    Farmer registration:
+       
+      When farmer registration is done then farmers can order his products(seeds , fertilizer , pesticides)
+       
+       otherwise the farmer cannot order product.
+
+    In this page 3 options are available 1.Seeds
+                                         2.Pesticides
+                                         3.Fertilizers
+    
+    Working : 
+    when we open this application it shows seeds, pesticides , micronutrients , fertilizers , organic products ,
+    
+    agriculture equipment ,enquiry(guidence)
+
+    When the Farmers click on as per his requirement then the farmer can see about this product are available in our shop.
+
+    In this application online shopping of farming products is available.it gives  home delivary to farmers.
+    
+    when farmers done online payment that time farmer get discount.
+    
+    when farmer purchase product on credit that time it cannot get discount and home delivary.
+
+    when purchasing product(seed,fertilizer,pestisides)and payment process is done then text messege and whatsapp msg will sent
+   
+    on farmer mobile number.
+
+
+
+
+
+
+
+
+
+
+
+
+
