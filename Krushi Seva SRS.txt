@@ -1,0 +1,126 @@
+
+Document: System Requirement Specification Document 
+Title  : E-KRUSHI SEVA
+Team:  Customer, Business   Analyst, Quality Assurance Team, System Analyst.  
+
+ Objective: 
+            This application is made for farmers .  With the help of this application farmers find solution on the  plant diseases.Also farmers purchase various products   as per his requirements.
+Scope:
+ The ordering process will be made simpler and more effective for  farmers . The farmers will be able to examine their order history and may cancel their order. This service will only be accessible in India.
+
+Functional Requirement:
+•	Using this application farmers check availability of various products in the Krushi Seva Shop Portal.
+•	The Farmers can make online payment anyhwhere anytime.This application save time of farmers. 
+•	We help farmers to make more informed decisions and focus on precision farming.We helps farmers to reduce their total production cost and increase their quality yield. 
+•	All the problems of farmers related to the crop is taken care by a dedicated Call centre , which guides the farmers in all the stages of the crop , right to the crop is taken care by a dedicated Call centre , which guides the farmers in all the stages of the crop , right guidance from Agri-Experts not only boosts farmers knowledge , but also helps increasing his Income , Intern increasing guidance the national productivity , making farmer happy and satisfied .
+•	For the E-Krushi Seva have implemented a Toll free number and also a farmer chat facility , wherein farmers can be in continuous touch with the agri-experts .
+
+ Various problems of farmers :
+1.	The farmer loss his time due to offline purchasing products of farming because he went to krushi shop.
+2.	when the farmer goes to shop that time there is not availability of product as per his requirements at that time the farmer waste his time. 
+3.	The farmer can not spraying his crops at proper time.
+4.	The farmer can not give fertilizers to his farm at proper time
+5.	The farmer not getting proper guidence for his farming.
+6.	Due to all this reasons farmers cannot take proper care of his farming.
+For solving this problem we make krushi seva app.
+
+Benefits:
+  1.The farmers saves time because he is not going to the shop. 
+  2.The farmers can order products at proper time.
+ 3.The Farmer can order product anytime anywhere.
+ 4.This application sends a copy of bill to the farmer mobile no. and whatsapp no.
+
+ Contains :
+   Farmer: 
+    id ,  name , contact no. , Email Id , credit 
+     
+    stock database:
+    
+   
+    Seeds:
+    id , seed name , company name,  available quantity , price per unit
+
+    Pesticide: 
+    id , pesticide name ,company name, available quantity  ,price per unit 
+
+    Fertilizer:
+    id, fertilizer name ,  company name, available quantity  ,price per unit
+   
+    order database:
+    
+    orderId , farmer name , product name , datetime
+
+    Home Page -
+    
+    Farmer registration:
+       
+      When farmer registration is done then farmers can order his products(seeds , fertilizer , pesticides)
+       
+       otherwise the farmer cannot order product.
+
+    In this page 3 options are available 1.Seeds
+                                         2.Pesticides
+                                         3.Fertilizers
+    
+    Working : 
+    when we open this application it shows seeds, pesticides , micronutrients , fertilizers , organic products,agriculture,equipment,
+enquiry(guidence). 
+When the Farmers click on as per his requirement then the farmer can see about this product are available in our shop.In this application online shopping of farming products is available.it gives  home delivary to farmers.
+    
+    when farmers done online payment that time farmer get discount.when farmer purchase product on credit that time it cannot get discount and home delivary. when purchasing product(seed,fertilizer,pestisides)and payment process is done then text messege and whatsapp msg will sent on farmer mobile number.
+
+Performance: 
+•	The server must be able to support an unlimited number of devices i.e., it must place no restrictions on the number of gadgets that can be used simultaneously. A limitless amount of active client payments must be supported by the server, and payments must never be lost.
+
+Security: 
+•	Registered Farmer will be allowed to place an order.
+•	Sensitive data will always be transmitted with encryption. The system will internally maintain a secure communication channel between servers (web servers, application servers, database servers). 
+Reliability:
+•	The system should be scalable, with the ability to accommodate a large number of users at once. 
+•	The site's response time should be as quick as feasible, and it should be able to load balance the server.
+
+Availability:
+•	Uptime:   24* 7  Available 99.999%
+
+Maintainability:
+•	A Commercial database software will be used to maintain System data Persistence.
+•	A readymade Web Server will be installed to host online shopping portal (Web Site) to management server capabilities.
+•	IT operations team will easily monitor and configure System using Administrative tools provided by Servers.
+•	Separate environment will be maintained for system for isolation in production, testing, and development.
+
+Portability:
+•	PDA: Portable Device Application
+•	System will provide portable User Interface (HTML, CSS, JS) through users will be able to access online E-Krushi portal.
+•	System can be deployed to single server, multi-server, to any OS, Cloud (Azure or AWS or GCP)
+
+Accessibility:
+•	After authentication, only logged-in users will be able to place an order.
+•	Through a personalized dashboard, the BOD team will be able to monitor daily, weekly, monthly, and annual business growth.
+
+Efficiency:
+System will be able to manage all transactions with isolation.
+
+Safety:
+•	The certified delivery partner should not damage the farm products or should not tamper the  package.
+
+Scalability:
+•	Online Krushi portal will be secure from malicious attack.
+•	Online Krushi portal functionalities are protected from outside with proper
+        configuration.
+•	Online Krushi portal will be always kept updated with latest antivirus software.
+•	Business data will be backed up periodically to ensure safety of data using incremental back up strategy.
+•	Role based security will be applied for Application data and operations accessibility.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
