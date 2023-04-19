@@ -13,6 +13,8 @@ CREATE TABLE orders(order_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,order_date 
 
 CREATE TABLE carts(cart_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cust_id INT NOT NULL,CONSTRAINT fk_1 FOREIGN KEY (cust_id) REFERENCES customers(cust_id) ON UPDATE CASCADE ON DELETE CASCADE, total DOUBLE ,status ENUM('approved','initiated','cancelled','delivered','inprogress') NOT NULL);
 
+CREATE TABLE cart_items(cart_items_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cart_id INT NOT NULL,CONSTRAINT fk_02 FOREIGN KEY (cart_id) REFERENCES carts(cart_id)ON UPDATE CASCADE ON DELETE CASCADE,product_id INT NOT NULL,CONSTRAINT fk_03 FOREIGN KEY (product_id) REFERENCES products(product_id) ,quantity INT NOT NULL); 
+
 INSERT INTO users(email,password,contact_number) VALUES('shrisha12@gmail.com','shrisha@123','9850540298');
 INSERT INTO users(email,password,contact_number) VALUES('shivam12@gmail.com','shivam@123','7450540298');
 INSERT INTO users(email,password,contact_number) VALUES('kranti12@gmail.com','kranti@123','8850540298');
@@ -82,6 +84,13 @@ INSERT INTO carts(cust_id) VALUES (3);
 INSERT INTO carts(cust_id) VALUES (3);
 INSERT INTO carts(cust_id) VALUES (4);
 
-
+INSERT INTO cart_items(cart_id,product_id ,quantity) VALUES(1,1,20);
+INSERT INTO cart_items(cart_id,product_id ,quantity) VALUES(2,2,40);
+INSERT INTO cart_items(cart_id,product_id ,quantity) VALUES(2,2,40);
+INSERT INTO cart_items(cart_id,product_id ,quantity) VALUES(3,4,10);
+INSERT INTO cart_items(cart_id,product_id ,quantity) VALUES(3,4,50);
+INSERT INTO cart_items(cart_id,product_id ,quantity) VALUES(3,2,260);
+INSERT INTO cart_items(cart_id,product_id ,quantity) VALUES(4,3,200);
+INSERT INTO cart_items(cart_id,product_id ,quantity) VALUES(4,3,201);
 
      
