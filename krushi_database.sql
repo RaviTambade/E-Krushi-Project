@@ -11,10 +11,13 @@ CREATE TABLE products(product_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,product
  
 CREATE TABLE orders(order_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,order_date DATETIME NOT NULL ,shipped_date DATETIME NOT NULL,cust_id INT NOT NULL,CONSTRAINT fk FOREIGN KEY (cust_id) REFERENCES customers(cust_id) ON UPDATE CASCADE ON DELETE CASCADE, total DOUBLE ,status ENUM('approved','initiated','cancelled','delivered','inprogress') NOT NULL);
 
+CREATE TABLE order_details(order_details_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,order_id INT NOT NULL,CONSTRAINT fk_04 FOREIGN KEY (order_id) REFERENCES orders(order_id) ON UPDATE CASCADE ON DELETE CASCADE ,product_id INT NOT NULL ,CONSTRAINT fk_05 FOREIGN KEY (product_id) REFERENCES products(product_id)ON UPDATE CASCADE ON DELETE CASCADE,discount DOUBLE DEFAULT 0);  
+
 CREATE TABLE carts(cart_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cust_id INT NOT NULL,CONSTRAINT fk_1 FOREIGN KEY (cust_id) REFERENCES customers(cust_id) ON UPDATE CASCADE ON DELETE CASCADE, total DOUBLE ,status ENUM('approved','initiated','cancelled','delivered','inprogress') NOT NULL);
 
 CREATE TABLE cart_items(cart_items_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cart_id INT NOT NULL,CONSTRAINT fk_02 FOREIGN KEY (cart_id) REFERENCES carts(cart_id)ON UPDATE CASCADE ON DELETE CASCADE,product_id INT NOT NULL,CONSTRAINT fk_03 FOREIGN KEY (product_id) REFERENCES products(product_id) ,quantity INT NOT NULL); 
 
+-- USER TABLE DATA
 INSERT INTO users(email,password,contact_number) VALUES('shrisha12@gmail.com','shrisha@123','9850540298');
 INSERT INTO users(email,password,contact_number) VALUES('shivam12@gmail.com','shivam@123','7450540298');
 INSERT INTO users(email,password,contact_number) VALUES('kranti12@gmail.com','kranti@123','8850540298');
@@ -71,6 +74,20 @@ INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2023-1
 INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-05-01 12:14:13','2020-05-02 10:12:12',3,5020,'initiated');
 INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2022-01-01 12:40:22','2022-01-02 10:02:12',3,8007,'delivered');
 INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2023-10-01 12:55:45','2023-10-02 10:22:12',4,7006,'cancelled');
+
+INSERT INTO order_details(order_id,product_id) VALUES (1,2);
+INSERT INTO order_details(order_id,product_id) VALUES (2,2);
+INSERT INTO order_details(order_id,product_id) VALUES (2,1);
+INSERT INTO order_details(order_id,product_id) VALUES (1,3);
+INSERT INTO order_details(order_id,product_id) VALUES (3,3);
+INSERT INTO order_details(order_id,product_id) VALUES (4,2);
+INSERT INTO order_details(order_id,product_id) VALUES (2,4);
+
+
+
+
+
+
 
 INSERT INTO carts(cust_id) VALUES (1);
 INSERT INTO carts(cust_id) VALUES (1);
