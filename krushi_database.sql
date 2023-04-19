@@ -15,11 +15,13 @@ CREATE TABLE order_details(order_details_id INT NOT NULL AUTO_INCREMENT PRIMARY 
 
 CREATE TABLE carts(cart_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cust_id INT NOT NULL,CONSTRAINT fk_1 FOREIGN KEY (cust_id) REFERENCES customers(cust_id) ON UPDATE CASCADE ON DELETE CASCADE, total DOUBLE ,status ENUM('approved','initiated','cancelled','delivered','inprogress') NOT NULL);
 
+CREATE TABLE addresses(address_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cust_id INT NOT NULL,CONSTRAINT fk_cust_id FOREIGN KEY (cust_id) REFERENCES customers(cust_id) ON UPDATE CASCADE ON DELETE CASCADE,address_mode ENUM('permanent','billing'),house_number varchar(255),landmark VARCHAR(255),city VARCHAR(255) NOT NULL,state VARCHAR(255) NOT NULL,country VARCHAR(255) NOT NULL,pincode VARCHAR(255) NOT NULL);
+
 CREATE TABLE cart_items(cart_items_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cart_id INT NOT NULL,CONSTRAINT fk_02 FOREIGN KEY (cart_id) REFERENCES carts(cart_id)ON UPDATE CASCADE ON DELETE CASCADE,product_id INT NOT NULL,CONSTRAINT fk_03 FOREIGN KEY (product_id) REFERENCES products(product_id) ,quantity INT NOT NULL); 
 
 CREATE TABLE accounts(account_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, account_number varchar(250) UNIQUE,ifsc_code varchar(250),register_date DATETIME, user_id INT NOT NULL, CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE);
 
- -- CREATE TABLE payments(payment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,Payment DATETIME , user_id INT NOT NULL,)
+CREATE TABLE payments(payment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,payment_date DATETIME NOT NULL , payment_mode ENUM('cash on delivery','online payment'),user_id INT NOT NULL,CONSTRAINT fk_user_id FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE,order_id INT NOT NULL,CONSTRAINT fk_order_id FOREIGN KEY (order_id) REFERENCES orders(order_id) ON UPDATE CASCADE ON DELETE CASCADE);
 
 -- USER TABLE DATA
 INSERT INTO users(email,password,contact_number) VALUES('shrisha12@gmail.com','shrisha@123','9850540298');
@@ -87,12 +89,6 @@ INSERT INTO order_details(order_id,product_id) VALUES (3,3);
 INSERT INTO order_details(order_id,product_id) VALUES (4,2);
 INSERT INTO order_details(order_id,product_id) VALUES (2,4);
 
-
-
-
-
-
-
 INSERT INTO carts(cust_id) VALUES (1);
 INSERT INTO carts(cust_id) VALUES (1);
 INSERT INTO carts(cust_id) VALUES (2);
@@ -122,10 +118,17 @@ INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('410
 INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031206','AXIS0000286','2022-11-03  07:02:03',4);
 INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031206','BARB0000286','2022-10-23  08:02:03',3);
 
+INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03-08 12:08:19','cash on delivery',1,1);
+INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03-08 12:08:19','online payment',2,1);
+INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03-08 12:08:19','cash on delivery',3,2);
+INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03-08 12:08:19','online payment',4,3);
+INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03-08 12:08:19','cash on delivery',2,4);
 
-
-
-
+INSERT INTO addresses(cust_id,address_mode,landmark,city,state,country,pincode) VALUES(1,'permanent','akshara garden','pune','maharashtra','india','410503');
+INSERT INTO addresses(cust_id,address_mode,landmark,city,state,country,pincode) VALUES(1,'billing','akshara dairy','pune','maharashtra','india','410502');
+INSERT INTO addresses(cust_id,address_mode,landmark,city,state,country,pincode) VALUES(2,'permanent','season mall','pune','maharashtra','india','410504');
+INSERT INTO addresses(cust_id,address_mode,landmark,city,state,country,pincode) VALUES(3,'billing','houseNo.32','Peth-Kurwandi Road','Manchar','Maharashtra','India','123321');
+INSERT INTO addresses(cust_id,address_mode,landmark,city,state,country,pincode) VALUES(4,'permanent','houseNo.234','Pune-Nashik Highway','Rajgurunagar','Maharashtra','India','121321');
 
 
 
