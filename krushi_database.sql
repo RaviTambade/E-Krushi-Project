@@ -38,6 +38,7 @@ CREATE TABLE suppliers(supplier_id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY, comp
 
 CREATE TABLE transactions(transaction_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, from_account_number VARCHAR(60)NOT NULL,CONSTRAINT fk_acc_no FOREIGN KEY(from_account_number) REFERENCES accounts(account_number)ON UPDATE CASCADE ON DELETE CASCADE, to_account_number VARCHAR(60) NOT NULL,CONSTRAINT fk_acc_no1 FOREIGN KEY(to_account_number) REFERENCES accounts(account_number)ON UPDATE CASCADE ON DELETE CASCADE,transaction_date DATETIME NOT NULL, amount DOUBLE);
 
+CREATE TABLE feedbacks(feedback_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255),user_id INT NOT NULL ,CONSTRAINT fk_022 FOREIGN KEY (user_id) REFERENCES users(user_id));
 -- USER TABLE DATA
 INSERT INTO users(email,password,contact_number) VALUES('shrisha12@gmail.com','shrisha@123','9850540298');
 INSERT INTO users(email,password,contact_number) VALUES('shivam12@gmail.com','shivam@123','7450540298');
@@ -182,5 +183,10 @@ INSERT INTO transactions(from_account_number,to_account_number,transaction_date,
 INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031204','4105031206','2022-08-09  10:30:20',25000);
 INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031207','4105031205','2022-10-09  06:35:23',30000);
 
+INSERT INTO feedbacks(description,user_id) VALUES ('very good facilitities',1);
+INSERT INTO feedbacks(description,user_id) VALUES ('good quality of products',2);
+INSERT INTO feedbacks(description,user_id) VALUES ('very good for farmers ',3);
+INSERT INTO feedbacks(description,user_id) VALUES ('farmers are protected from frauds',4);
 select * from DEPARTMENTS;
 SELECT * FROM EMPLOYEES;
+select * from feedbacks;
