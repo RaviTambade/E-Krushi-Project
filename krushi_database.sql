@@ -29,6 +29,9 @@ CREATE TABLE roles(role_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, role varchar
 CREATE TABLE user_roles(user_id INT NOT NULL,CONSTRAINT fk_user_id_2 FOREIGN KEY(user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE ,role_id INT NOT NULL,CONSTRAINT fk_role_id FOREIGN KEY(role_id) REFERENCES roles(role_id) ON UPDATE CASCADE ON DELETE CASCADE);
 
 CREATE TABLE employees(employee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,first_name VARCHAR(255),last_name VARCHAR(250),birth_date DATE ,hire_date DATE,contact_number VARCHAR(220),email VARCHAR(50),password VARCHAR(220),photo VARCHAR(250),reports_to INT NOT NULL );
+
+CREATE TABLE shipper(shipper_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,company_name VARCHAR(255),conatact_number VARCHAR(255),email VARCHAR(255),password VARCHAR(255));
+
 -- USER TABLE DATA
 INSERT INTO users(email,password,contact_number) VALUES('shrisha12@gmail.com','shrisha@123','9850540298');
 INSERT INTO users(email,password,contact_number) VALUES('shivam12@gmail.com','shivam@123','7450540298');
@@ -152,6 +155,8 @@ INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,e
 INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to) VALUES('sahil','hinge','2023-09-15','2022-06-14','9881571246','sahil1234@gamil.com','sahil@123','/image/sahil.jpg',2);
 INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to) VALUES('prakash','amate','2015-09-15','2022-07-13','9881571247','prakash1234@gamil.com','prakash@123','/image/prakash.jpg',4);
 INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to) VALUES('nilesh','lanke','1988-09-15','2022-08-11','9881571248','nilesh1234@gamil.com','nilesh@123','/image/nilesh.jpg',1);
+
+
 
 
 
