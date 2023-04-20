@@ -39,7 +39,8 @@ CREATE TABLE suppliers(supplier_id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY, comp
 CREATE TABLE transactions(transaction_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, from_account_number VARCHAR(60)NOT NULL,CONSTRAINT fk_acc_no FOREIGN KEY(from_account_number) REFERENCES accounts(account_number)ON UPDATE CASCADE ON DELETE CASCADE, to_account_number VARCHAR(60) NOT NULL,CONSTRAINT fk_acc_no1 FOREIGN KEY(to_account_number) REFERENCES accounts(account_number)ON UPDATE CASCADE ON DELETE CASCADE,transaction_date DATETIME NOT NULL, amount DOUBLE);
 
 CREATE TABLE feedbacks(feedback_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255),user_id INT NOT NULL ,CONSTRAINT fk_022 FOREIGN KEY (user_id) REFERENCES users(user_id));
--- USER TABLE DATA
+
+ -- USER TABLE DATA
 INSERT INTO users(email,password,contact_number) VALUES('shrisha12@gmail.com','shrisha@123','9850540298');
 INSERT INTO users(email,password,contact_number) VALUES('shivam12@gmail.com','shivam@123','7450540298');
 INSERT INTO users(email,password,contact_number) VALUES('kranti12@gmail.com','kranti@123','8850540298');
@@ -190,3 +191,18 @@ INSERT INTO feedbacks(description,user_id) VALUES ('farmers are protected from f
 select * from DEPARTMENTS;
 SELECT * FROM EMPLOYEES;
 select * from feedbacks;
+
+
+-- CRUD OPERATIONS CUSTOMERS TABLE
+-- GET ALL DETAILS OF CUSTOMERS
+SELECT * FROM customers;
+
+-- GET CUSTOMER BY ID
+SELECT * FROM customers WHERE cust_id=1;  
+
+-- UPDATE CUSTOMER BY ID;
+UPDATE customers SET contact_number='9881751213',password ='aj123' WHERE cust_id=1;
+
+-- DELETE CUSTOMER BY ID
+DELETE FROM customers WHERE cust_id=4;
+
