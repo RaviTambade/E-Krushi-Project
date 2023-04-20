@@ -1,5 +1,5 @@
+
 CREATE DATABASE E_Krushi;
--- DROP DATABASE E_Krushi; 
 USE E_Krushi;
 
 CREATE TABLE users(user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,email varchar(255) unique,password varchar(255),contact_number varchar(255));
@@ -28,18 +28,17 @@ CREATE TABLE roles(role_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, role varchar
 
 CREATE TABLE user_roles(user_id INT NOT NULL,CONSTRAINT fk_user_id_2 FOREIGN KEY(user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE ,role_id INT NOT NULL,CONSTRAINT fk_role_id FOREIGN KEY(role_id) REFERENCES roles(role_id) ON UPDATE CASCADE ON DELETE CASCADE);
 
-CREATE TABLE employees(employee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,first_name VARCHAR(255),last_name VARCHAR(250),birth_date DATE ,hire_date DATE,contact_number VARCHAR(220),email VARCHAR(50),password VARCHAR(220),photo VARCHAR(250),reports_to INT NOT NULL );
+CREATE TABLE departments(dept_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, dept_name VARCHAR(50),location VARCHAR(45));
+
+CREATE TABLE employees(employee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,first_name VARCHAR(255),last_name VARCHAR(250),birth_date DATE ,hire_date DATE,contact_number VARCHAR(220),email VARCHAR(50),password VARCHAR(220),photo VARCHAR(250),reports_to INT NOT NULL,dept_id INT NOT NULL,CONSTRAINT fk_001 FOREIGN KEY (dept_id) REFERENCES departments(dept_id) ON UPDATE CASCADE ON  DELETE CASCADE);
 
 CREATE TABLE shippers(shipper_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,company_name VARCHAR(255),contact_number VARCHAR(255),email VARCHAR(255),password VARCHAR(255));
 
 CREATE TABLE suppliers(supplier_id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY, company_name varchar(50),supplier_name varchar(50),address varchar(50),contact_number VARCHAR(50),email varchar(50),password VARCHAR(50),city VARCHAR(50),state VARCHAR(40));
 
+
 CREATE TABLE transactions(transaction_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, from_account_number VARCHAR(60)NOT NULL,CONSTRAINT fk_acc_no FOREIGN KEY(account_number) REFERENCES accounts(account_number)ON UPDATE CASCADE ON DELETE CASCADE, to_account_number VARCHAR(60) NOT NULL,CONSTRAINT fk_acc_no FOREIGN KEY(account_number) REFERENCES accounts(account_number)ON UPDATE CASCADE ON DELETE CASCADE,transaction_date DATETIME NOT NULL, amount DOUBLE);
 
--- department table - department_id,department_name,department_location
--- employees table -department_id foreign key
-
--- feedback-feedback_id,description,user_id
 
 
 
@@ -161,11 +160,17 @@ INSERT INTO user_roles(user_id,role_id) VALUES(2,1);
 INSERT INTO user_roles(user_id,role_id) VALUES(3,1);
 INSERT INTO user_roles(user_id,role_id) VALUES(4,1);
 
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to) VALUES('akash','ajab','1999-09-15','2022-05-12','9881571268','akashajab1234@gamil.com','akash@123','/image/akash.jpg',3);
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to) VALUES('vedant','Bangar','2005-09-15','2022-05-12','9881571245','vedantbangar1234@gamil.com','vedant@123','/image/vedant.jpg',2);
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to) VALUES('sahil','hinge','2023-09-15','2022-06-14','9881571246','sahil1234@gamil.com','sahil@123','/image/sahil.jpg',2);
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to) VALUES('prakash','amate','2015-09-15','2022-07-13','9881571247','prakash1234@gamil.com','prakash@123','/image/prakash.jpg',4);
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to) VALUES('nilesh','lanke','1988-09-15','2022-08-11','9881571248','nilesh1234@gamil.com','nilesh@123','/image/nilesh.jpg',1);
+INSERT INTO departments(dept_name,location) VALUES('account', 'pune');
+INSERT INTO departments(dept_name,location) VALUES('hr', 'manchar');
+INSERT INTO departments(dept_name,location) VALUES('sales', 'nashik');
+INSERT INTO departments(dept_name,location) VALUES('finance', 'nerul');
+
+
+INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to,dept_id) VALUES('akash','ajab','1999-09-15','2022-05-12','9881571268','akashajab1234@gamil.com','akash@123','/image/akash.jpg',3,1);
+INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to,dept_id) VALUES('vedant','Bangar','2005-09-15','2022-05-12','9881571245','vedantbangar1234@gamil.com','vedant@123','/image/vedant.jpg',2,1);
+INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to,dept_id) VALUES('sahil','hinge','2023-09-15','2022-06-14','9881571246','sahil1234@gamil.com','sahil@123','/image/sahil.jpg',2,2);
+INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to,dept_id) VALUES('prakash','amate','2015-09-15','2022-07-13','9881571247','prakash1234@gamil.com','prakash@123','/image/prakash.jpg',4,4);
+INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to,dept_id) VALUES('nilesh','lanke','1988-09-15','2022-08-11','9881571248','nilesh1234@gamil.com','nilesh@123','/image/nilesh.jpg',1,3);
 
 INSERT INTO shippers(company_name,contact_number,email,password) VALUES('agrotech pvt.ltd','9860366152','agrotech11@gmail.com','agrotech@123');
 INSERT INTO shippers(company_name,contact_number,email,password) VALUES('agrilens pvt.ltd','9860366152','agrotech11@gmail.com','agrotech@123');
@@ -182,3 +187,7 @@ INSERT INTO transactions(from_account_number,to_account_number,transaction_date,
 INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031203','4105031205','2022-12-09  01:40:10',12000);
 INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031204','4105031206','2022-08-09  10:30:20',25000);
 INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031207','4105031205','2022-10-09  06:35:23',30000);
+
+
+select * from DEPARTMENTS;
+SELECT * FROM EMPLOYEES;
