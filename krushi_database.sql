@@ -44,7 +44,8 @@ CREATE TABLE feedbacks(feedback_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,descr
 INSERT INTO users(email,password,contact_number) VALUES('shrisha12@gmail.com','shrisha@123','9850540298');
 INSERT INTO users(email,password,contact_number) VALUES('shivam12@gmail.com','shivam@123','7450540298');
 INSERT INTO users(email,password,contact_number) VALUES('kranti12@gmail.com','kranti@123','8850540298');
-INSERT INTO users(email,password,contact_number) VALUES('rutuja12@gmail.com','rutuja@123','9960540298');
+INSERT INTO users(email,password,contact_number) VALUES('rutujaaa12@gmail.com','pooja@123','9960540290');
+INSERT INTO users(email,password,contact_number) VALUES('pratikbhor12@gmail.com','pratik@123','9960540291');
 
 INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('pratiksha','bangar','7834256798','pratikshabangar11@gmail.com','pratiksha@123');                       
 INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('priyanka','jadhav','7834256783','priyankajadhav09@gmail.com','priyanka@123');
@@ -155,7 +156,10 @@ INSERT INTO roles(role) VALUES ('Shipper');
 INSERT INTO user_roles(user_id,role_id) VALUES (1,1);
 INSERT INTO user_roles(user_id,role_id) VALUES(2,1);
 INSERT INTO user_roles(user_id,role_id) VALUES(3,1);
-INSERT INTO user_roles(user_id,role_id) VALUES(4,1);
+INSERT INTO user_roles(user_id,role_id) VALUES(6,2);
+INSERT INTO user_roles(user_id,role_id) VALUES(8,2);
+INSERT INTO user_roles(user_id,role_id) VALUES(6,3);
+
 
 INSERT INTO departments(dept_name,location) VALUES('account', 'pune');
 INSERT INTO departments(dept_name,location) VALUES('hr', 'manchar');
@@ -206,3 +210,10 @@ UPDATE customers SET contact_number='9881751213',password ='aj123' WHERE cust_id
 -- DELETE CUSTOMER BY ID
 DELETE FROM customers WHERE cust_id=4;
 
+select * from user_roles;
+select * from users;
+
+-- when we give the name of customer then we give role of this customer
+select role from roles where role_id IN (select role_id from user_roles where user_id IN (select user_id from users where password IN (select password from customers where first_name='pooja' and last_name='divekar')));
+
+select * from customers where password IN (select password from users where user_id in (select user_id from user_roles where role_id In (select role_id from roles where role='customer')));
