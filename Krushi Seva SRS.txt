@@ -1,116 +1,130 @@
+                                                    E-Krushi Seva
 
-Document: System Requirement Specification Document 
+Document:  System Requirement Specification Document.
 
-Title  : E-KRUSHI SEVA
+Title: E-KRUSHI SEVA
 
 Team:  Customer, Business   Analyst, Quality Assurance Team, System Analyst.  
 
 Objective: 
-       This application is made for farmers .  With the help of this application farmers find solution on the  plant diseases.Also farmers purchase various products as per his requirements.
+	This application is made for farmers.  
+	With the help of this application farmers find solution on the plant diseases. Also farmers purchase various products as per his requirements.
 
 Scope:
-
-       The ordering process will be made simpler and more effective for  farmers . The farmers will be able to examine their order history and may cancel their order. This service will only be accessible in India.
+	The ordering process will be made simpler and more effective for farmers.
+	The farmers will be able to examine their order history and may cancel their order. This service will only be accessible in India.
 
 Overview:
-
-       This system provides an easy solution for customers to buy the product without going to the shop and also to shop owner to sale the product.
-       This proposed system can be used by any naïve users and it does not require any educational level,experience or technical expertise in computer field but it will be of good use if user has the good knowledge of how to operate a computer.
+	This system provides an easy solution for customers to buy the product without going to the shop and also to shop owner to sale the product.
+	This proposed system can be used by any naïve users and it does not require any educational level, experience or technical expertise in computer field but it will be of good use if user has the good knowledge of how to operate a computer.
 
 Functional Requirement:
 
 This section provides requirement overview of the system. 
 Various functional modules that can be implemented by the system will be – 
 Description:
-•	Registration : If customer wants to buy the product then he/she must be registered, unregistered user can’t go to the shopping cart. 
+	Registration: 
+•	If customer wants to buy the product then he/she must be registered, unregistered user can’t go to the shopping cart. 
 
-•	Login Customer:logins to the system by entering valid user id and password for the shopping. 
+	Login Customer:
+•	logins to the system by entering valid user id and password for the shopping. 
 
-•	Changes to Cart :Changes to cart means the customer after login or registration can make order or cancel order of the product from the shopping cart.
+	Changes to Cart:
+•	Changes to cart means the customer after login or registration can make order or cancel order of the product from the shopping cart.
 
-•	Payment :In this system we are dealing the mode of payment by Cash.We will extend this to credit card,debit card etc in the future.
+	Payment:
+           
+•	In this system we are dealing the mode of payment by Cash. We will extend this to                 credit card, debit card etc in the future.
 
-•	Logout: After ordering or surfing for the product customer has to logout. 
+	Logout:
+•	After ordering or surfing for the product customer has to logout. 
 
-•	Report Generation :After ordering for the product,the system will sent one copy of the bill to the customer’s Email-address and another one for the system data base.
+	Report Generation:
+•	After ordering for the product, the system will sent one copy of the bill to the customer’s Email-address and another one for the system data base.
 
-•	Using this application farmers check availability of various products in the Krushi Seva Shop                Portal.
+	Using this application farmers check availability of various products in the Krushi Seva Shop                Portal.
 
-•	The Farmers can make online payment anyhwhere anytime.This application save time of farmers. 
+	The Farmers can make online payment anywhere anytime. This application save time of farmers. 
 
-•	We help farmers to make more informed decisions and focus on precision farming.We helps farmers to reduce their total production cost and increase their quality yield. 
+	We help farmers to make more informed decisions and focus on precision farming.  We helps farmers to reduce their total production cost and increase their quality yield. 
 
-•	All the problems of farmers related to the crop is taken care by a dedicated Call centre , which guides the farmers in all the stages of the crop , right to the crop is taken care by a dedicated Call centre , which guides the farmers in all the stages of the crop , right guidance from Agri-Experts not only boosts farmers knowledge , but also helps increasing his Income , Intern increasing guidance the national productivity , making farmer happy and satisfied .
+	All the problems of farmers related to the crop is taken care by a dedicated Call centre, which guides the farmers in all the stages of the crop, right to the crop is taken care by a dedicated Call centre, which guides the farmers in all the stages of the crop, right guidance from Agri-Experts not only boosts farmers knowledge, but also helps increasing his Income, Intern increasing guidance the national productivity, making farmer happy and satisfied.
 
-•	For the E-Krushi Seva have implemented a Toll free number and also a farmer chat facility , wherein farmers can be in continuous touch with the agri-experts .
+	For the E-Krushi Seva have implemented a Toll free number and also a farmer chat facility, wherein farmers can be in continuous touch with the agri-experts.
 
- Various problems of farmers :
+	Various problems of farmers:
 
-1.	The farmer loss his time due to offline purchasing products of farming because he went to krushi shop.
+•	The farmer loss his time due to offline purchasing products of farming because he went to krushi shop.
 
-2.	when the farmer goes to shop that time there is not availability of product as per his requirements at that time the farmer waste his time. 
+•	when the farmer goes to shop that time there is not availability of product as per his requirements at that time the farmer waste his time. 
 
-3.	The farmer can not spraying his crops at proper time.
+•	The farmer cannot spraying his crops at proper time.
 
-4.	The farmer can not give fertilizers to his farm at proper time
+•	The farmer can  not give fertilizers to his farm at proper time
 
-5.	The farmer not getting proper guidence for his farming.
+•	The farmer not getting proper guidence for his farming.
 
-6.	Due to all this reasons farmers cannot take proper care of his farming.
-   
-        For solving this problem we make krushi seva app.
+•	Due to all this  reasons farmers cannot take proper care of his farming.
 
-Benefits:
-  1.The farmers saves time because he is not going to the shop. 
-  
-  2.The farmers can order products at proper time.
-  
-  3.The Farmer can order product anytime anywhere.
- 
+•	For solving this problem  we make krushi seva app.
+
 
 Non-functional Requirement:
 
-Performance: 
-	The server must be able to support an unlimited number of devices i.e., it must place no restrictions on the number of gadgets that can be used simultaneously. A limitless amount of active client payments must be supported by the server, and payments must never be lost.
+	Performance:
+ 
+•	The server must be able to support an unlimited number of devices i.e., it must place no restrictions on the number of gadgets that can be used simultaneously.
+•	A limitless amount of active client payments must be supported by the server, and payments must never be lost.
 
-Security: 
-        Registered Farmer will be allowed to place an order.
-        Sensitive data will always be transmitted with encryption. The system will internally maintain a secure communication channel between servers (web servers, application servers, database servers). 
-Reliability:
-        The system should be scalable, with the ability to accommodate a large number of users at once. 
-        The site's response time should be as quick as feasible, and it should be able to load balance the server.
+	Security: 
 
-Availability:
-	Uptime:   24* 7  Available 99.999%
+•	Registered Farmer will be allowed to place an order.
+•	Sensitive data will always be transmitted with encryption. The system will internally maintain a secure communication channel between servers (web servers, application servers, database servers). 
+•	Reliability:
+•	The system should be scalable, with the ability to accommodate a large number of users at once. 
+•	The site's response time should be as quick as feasible, and it should be able to load balance the server.
 
-Maintainability:
-	A Commercial database software will be used to maintain System data Persistence.
-	A readymade Web Server will be installed to host online shopping portal (Web Site) to management server capabilities.
-	IT operations team will easily monitor and configure System using Administrative tools provided by Servers.
-	Separate environment will be maintained for system for isolation in production, testing, and development.
+	Availability:
 
-Portability:
-	PDA: Portable Device Application
-	System will provide portable User Interface (HTML, CSS, JS) through users will be able to access online E-Krushi portal.
-	System can be deployed to single server, multi-server, to any OS, Cloud (Azure or AWS or GCP)
+•	This application is available for 24 hrs anywhere anytime.
 
-Accessibility:
-	After authentication, only logged-in users will be able to place an order.
-	Through a personalized dashboard, the BOD team will be able to monitor daily, weekly, monthly, and annual business growth.
+	Maintainability:
+•	A Commercial database software will be used to maintain System data Persistence.
+•	A readymade Web Server will be installed to host online shopping portal (Web Site) to management server capabilities.
+•	IT operations team will easily monitor and configure System using Administrative tools provided by Servers.
+•	Separate environment will be maintained for system for isolation in production, testing, and development.
 
-Efficiency:
-        System will be able to manage all transactions with isolation.
+	Portability:
+•	PDA: Portable Device Application
+•	System will provide portable User Interface (HTML, CSS, JS) through users will be able to access online E-Krushi portal.
+•	System can be deployed to single server, multi-server, to any OS, Cloud (Azure or AWS or GCP)
 
-Safety:
-	The certified delivery partner should not damage the farm products or should not tamper the  package.
+	Accessibility:
+•	After authentication, only logged-in users will be able to place an order.
+•	Through a personalized dashboard, the BOD team will be able to monitor daily, weekly, monthly, and annual business growth.
 
-Scalability:
-	Online Krushi portal will be secure from malicious attack.
-	Online Krushi portal functionalities are protected from outside with proper
-        configuration.
-	Online Krushi portal will be always kept updated with latest antivirus software.
-	Business data will be backed up periodically to ensure safety of data using incremental back up strategy.
-	Role based security will be applied for Application data and operations accessibility.
+	Efficiency:
+•	System will be able to manage all transactions with isolation.
+
+	Safety:
+•	The certified delivery partner should not damage the farm products or should not tamper the package.
+
+	Scalability:
+
+•	Online Krushi portal will be secure from malicious attack.
+•	Online Krushi portal functionalities are protected from outside with proper
+•	configuration.
+•	Online Krushi portal will be always kept updated with latest antivirus software.
+•	Business data will be backed up periodically to ensure safety of data using incremental back     up strategy.
+•	Role based security will be applied for Application data and operations accessibility.
+
+	Benefits:
+
+•	The farmers saves time because he is not going to the shop. 
+
+•	The farmers can order products at proper time.
+
+•	The Farmer can order product anytime anywhere.
 
 
 
