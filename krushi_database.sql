@@ -59,6 +59,7 @@ END //
 
 DELIMITER ;
 
+-- TRIGGER FOR EMPLOYEES
 DELIMITER //
 CREATE TRIGGER insert_employee AFTER INSERT ON employees
 FOR EACH ROW
@@ -67,6 +68,18 @@ DECLARE userId INT ;
 INSERT INTO users(email,password,contact_number) VALUES(NEW.email,NEW.password,NEW.contact_number);
 SELECT user_id INTO userId FROM users WHERE email = NEW.email;
 INSERT INTO user_roles(user_id,role_id) VALUES(userId,3);
+END //
+DELIMITER ;
+
+-- TRIGGER FOR SUPPLIER
+DELIMITER //
+CREATE TRIGGER insert_supplier AFTER INSERT ON suppliers
+FOR EACH ROW
+BEGIN
+DECLARE userId INT;
+INSERT INTO users(email,password,contact_number) VALUES (NEW.email,NEW.password,NEW.contact_number);
+SELECT user_id INTO userId FROM users WHERE email=NEW.email;
+INSERT INTO user_roles(user_id,role_id) VALUES (userId,4);
 END //
 DELIMITER ;
 
@@ -84,7 +97,7 @@ INSERT INTO roles(role) VALUES ('Employee');
 INSERT INTO roles(role) VALUES ('Supplier');
 INSERT INTO roles(role) VALUES ('Shipper');
 
-
+select * from roles;
 
 
 INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('pratiksha','bangar','7834256798','pratikshabangar11@gmail.com','pratiksha@123');                       
@@ -201,9 +214,9 @@ INSERT INTO shippers(company_name,contact_number,email,password) VALUES('croproo
 INSERT INTO shippers(company_name,contact_number,email,password) VALUES('greenery pvt.ltd','9860366152','agrotech11@gmail.com','agrotech@123');
 
 INSERT INTO suppliers(company_name,supplier_name,address,contact_number,email,password,city,state) VALUES('kaveri','abhishek bhor','pimpalgaon','8903456782','kaveri12@gmail.com','kaveri@123','pune','maharashtra');
-INSERT INTO suppliers(company_name,supplier_name,address,contact_number,email,password,city,state) VALUES('kalash seeds','pratik wagh','khadaki','8903456782','kaveri12@gmail.com','kaveri@123','pune','maharashtra');
-INSERT INTO suppliers(company_name,supplier_name,address,contact_number,email,password,city,state) VALUES('greenary','datta dhoble','manchar','8903456782','kaveri12@gmail.com','kaveri@123','pune','maharashtra');
-INSERT INTO suppliers(company_name,supplier_name,address,contact_number,email,password,city,state) VALUES('kavya','kavya bangar','chandoli','8903456782','kaveri12@gmail.com','kaveri@123','pune','maharashtra');
+INSERT INTO suppliers(company_name,supplier_name,address,contact_number,email,password,city,state) VALUES('kalash seeds','pratik wagh','khadaki','8940456782','kalashseeds12@gmail.com','kalash@123','pune','maharashtra');
+INSERT INTO suppliers(company_name,supplier_name,address,contact_number,email,password,city,state) VALUES('greenary','datta dhoble','manchar','8903456750','greenary12@gmail.com','greenary@123','pune','maharashtra');
+INSERT INTO suppliers(company_name,supplier_name,address,contact_number,email,password,city,state) VALUES('kavya','kavya bangar','chandoli','8903816782','kavya12@gmail.com','kavya@123','pune','maharashtra');
 
 
 INSERT INTO user_roles(user_id,role_id) VALUES (1,1);
@@ -258,3 +271,5 @@ desc user_roles;
 select role from roles where role_id IN (select role_id from user_roles where user_id IN (select user_id from users where password IN (select password from customers where first_name='pooja' and last_name='divekar')));
 
 select * from customers where password IN (select password from users where user_id in (select user_id from user_roles where role_id In (select role_id from roles where role='customer')));
+
+select * from users;
