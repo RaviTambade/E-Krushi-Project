@@ -1,5 +1,5 @@
 
-drop DATABASE E_Krushi;
+CREATE DATABASE E_Krushi;
 USE E_Krushi;
 
 CREATE TABLE users(user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,email varchar(255) unique,password varchar(255),contact_number varchar(255));
@@ -59,6 +59,16 @@ END //
 
 DELIMITER ;
 
+DELIMITER //
+CREATE TRIGGER insert_employee AFTER INSERT ON employees
+FOR EACH ROW
+BEGIN
+DECLARE userId INT ;
+INSERT INTO users(email,password,contact_number) VALUES(NEW.email,NEW.password,NEW.contact_number);
+SELECT user_id INTO userId FROM users WHERE email = NEW.email;
+INSERT INTO user_roles(user_id,role_id) VALUES(userId,3);
+END //
+DELIMITER ;
 
  -- USER TABLE DATA
 INSERT INTO users(email,password,contact_number) VALUES('shrisha12@gmail.com','shrisha@123','9850540298');
