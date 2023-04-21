@@ -83,6 +83,19 @@ INSERT INTO user_roles(user_id,role_id) VALUES (userId,4);
 END //
 DELIMITER ;
 
+
+//TRIGGER FOR SHIPPERS
+DELIMITER //
+CREATE TRIGGER insert_shipper AFTER INSERT ON shippers
+FOR EACH ROW
+BEGIN
+DECLARE userId INT;
+  INSERT INTO users(email,password,contact_number) VALUES (NEW.email,NEW.password,NEW.contact_number);
+  SELECT user_id INTO userId FROM users WHERE email=NEW.email;
+  INSERT INTO user_roles(user_id,role_id) VALUES (userId,5);  
+END//
+DELIMITER ;
+
  -- USER TABLE DATA
 INSERT INTO users(email,password,contact_number) VALUES('shrisha12@gmail.com','shrisha@123','9850540298');
 INSERT INTO users(email,password,contact_number) VALUES('shivam12@gmail.com','shivam@123','7450540298');
@@ -209,9 +222,9 @@ INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,e
 INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to,dept_id) VALUES('nilesh','lanke','1988-09-15','2022-08-11','9881571248','nilesh1234@gamil.com','nilesh@123','/image/nilesh.jpg',1,3);
 
 INSERT INTO shippers(company_name,contact_number,email,password) VALUES('agrotech pvt.ltd','9860366152','agrotech11@gmail.com','agrotech@123');
-INSERT INTO shippers(company_name,contact_number,email,password) VALUES('agrilens pvt.ltd','9860366152','agrotech11@gmail.com','agrotech@123');
-INSERT INTO shippers(company_name,contact_number,email,password) VALUES('croproot pvt.ltd','9860366152','agrotech11@gmail.com','agrotech@123');
-INSERT INTO shippers(company_name,contact_number,email,password) VALUES('greenery pvt.ltd','9860366152','agrotech11@gmail.com','agrotech@123');
+INSERT INTO shippers(company_name,contact_number,email,password) VALUES('agrilens pvt.ltd','9860366155','agrilens13@gmail.com','agrilens@123');
+INSERT INTO shippers(company_name,contact_number,email,password) VALUES('croproot pvt.ltd','9860366145','croproot14@gmail.com','croproot@123');
+INSERT INTO shippers(company_name,contact_number,email,password) VALUES('greenery pvt.ltd','9860366147','greenery15@gmail.com','greenery@123');
 
 INSERT INTO suppliers(company_name,supplier_name,address,contact_number,email,password,city,state) VALUES('kaveri','abhishek bhor','pimpalgaon','8903456782','kaveri12@gmail.com','kaveri@123','pune','maharashtra');
 INSERT INTO suppliers(company_name,supplier_name,address,contact_number,email,password,city,state) VALUES('kalash seeds','pratik wagh','khadaki','8940456782','kalashseeds12@gmail.com','kalash@123','pune','maharashtra');
