@@ -213,7 +213,7 @@ INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03
 INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03-08 12:08:19','online payment',2,1);
 INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03-08 12:08:19','cash on delivery',3,2);
 INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03-08 12:08:19','online payment',4,3);
-INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03-08 12:08:19','cash on delivery',2,4);
+INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03-08 12:08:19','cash on delivery',9,4);
 
 
 -- ADDRESS DATA
@@ -313,6 +313,15 @@ desc user_roles;
 -- when we give the name of customer then we give role of this customer
 select role from roles where role_id IN (select role_id from user_roles where user_id IN (select user_id from users where password IN (select password from customers where first_name='pooja' and last_name='divekar')));
 
+
+
+-- PRINT THE ALL CUSTOMERS
 select * from customers where password IN (select password from users where user_id in (select user_id from user_roles where role_id In (select role_id from roles where role='customer')));
+
+select * from payments where payment_id=1; 
+
+select * from payments where user_id in (select user_id from users where email in (select email from customers where first_name='pratik' and last_name='bhor'));
+
+select customers.first_name,customers.last_name ,customers.email,payments.payment_id,users.user_id ,users.email,payments.user_id from customers,payments,users where customers.email=users.email and payments.user_id=users.user_id ;
 
 select * from users;
