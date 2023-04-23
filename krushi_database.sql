@@ -333,13 +333,53 @@ SELECT customers.cust_id,customers.first_name,customers.last_name ,orders.order_
 INNER JOIN orders ON customers.cust_id=orders.cust_id WHERE order_date>'2021-10-02';
 
 -- view sells by category 
+
+CREATE VIEW order_history AS 
 SELECT categories.category_title,SUM(order_details.quantity) FROM categories,products,order_details 
 WHERE categories.category_id=products.category_id AND order_details.product_id =products.product_id 
 GROUP BY categories.category_title;
 
+-- Creating  View products price above than average price*/
+create or replace view vw_products_above_avgprice
+as select product_title , unit_price from products
+where  unit_price  > (select avg(unit_price) from products)
+order by unit_price; 
+
+select * from vw_products_above_avgprice;
+
+-- order by cust_id
+select * from orders where cust_id=1;
+
+
 select * from products;
+select * from payments;
 
 select * from order_details;
 select * from orders;
 select * from carts;
+
+SELECT * FROM order_history;
+select * from categories;
+
+-- //this query shows tables and its type in database.
+show  full tables;
+
+-- this query gives sum of unit price from products table.
+select sum(unit_price) from products;
+
+-- this query gives avg of unit price from products table.
+select avg(unit_price) from products;
+
+-- this query gives count  of products table.
+select count(*) from products;
+select * from products;
+
+
+-- this query gives category_id , category_title ,product_title
+select categories.category_id,categories.category_title,products.product_title from products 
+inner join categories on products.category_id = categories.category_id;
+
+/*this query gives list of  products which are available in provideded category */
+select product_title from products where category_id in (select category_id from categories where category_title="organic fertilizer");
+
 select * from categories;
