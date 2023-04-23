@@ -389,8 +389,13 @@ SELECT products.product_title FROM products INNER JOIN categories ON products.ca
 select * from categories;
 
 
-SELECT users.user_id, customers.first_name,customers.first_name, accounts.account_number
-FROM ((users
-INNER JOIN customers ON users.password= customers.password)
-INNER JOIN accounts ON users.user_id = accounts.user_id);
+-- SELECT customers.first_name,customers.last_name, accounts.account_number
+-- FROM ((users
+-- INNER JOIN customers ON customers.email = users.email)
+-- INNER JOIN accounts ON users.user_id = accounts.user_id);
 
+
+
+select * from users;
+
+select * from customers;
