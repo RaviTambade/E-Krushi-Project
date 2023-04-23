@@ -1,4 +1,4 @@
-
+-- drop database E_Krushi;
 CREATE DATABASE E_Krushi;
 USE E_Krushi;
 
@@ -379,7 +379,11 @@ select * from products;
 select categories.category_id,categories.category_title,products.product_title from products 
 inner join categories on products.category_id = categories.category_id;
 
-/*this query gives list of  products which are available in provideded category */
+/*this query gives list of  products which are available in provideded category with the help of nested query*/
 select product_title from products where category_id in (select category_id from categories where category_title="organic fertilizer");
+
+/*this query gives list of  products which are available in provideded category with the help of inner join*/
+SELECT products.product_title FROM products INNER JOIN categories ON products.category_id = categories.category_id WHERE category_title="organic fertilizer";
+
 
 select * from categories;
