@@ -1,6 +1,6 @@
 --  drop database E_Krushi;
 CREATE DATABASE E_Krushi;
-USE E_Krushi;
+ USE E_Krushi;
 
 CREATE TABLE users(user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,email varchar(255) unique,password varchar(255),contact_number varchar(255));
 
@@ -96,12 +96,6 @@ DECLARE userId INT;
   INSERT INTO user_roles(user_id,role_id) VALUES (userId,5);  
 END//
 DELIMITER ;
-
- -- USER TABLE DATA
-INSERT INTO users(email,password,contact_number) VALUES('shrisha12@gmail.com','shrisha@123','9850540298');
-INSERT INTO users(email,password,contact_number) VALUES('shivam12@gmail.com','shivam@123','7450540298');
-INSERT INTO users(email,password,contact_number) VALUES('kranti12@gmail.com','kranti@123','8850540298');
-INSERT INTO users(email,password,contact_number) VALUES('rutujaaa12@gmail.com','rutu@123','9960540290');
 
 
 -- ROLE TABLE DATA
@@ -273,7 +267,8 @@ INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('410
 INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031204','PDCC0000286','2022-05-10  12:02:03',2);
 INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031205','SBIB0000286','2022-09-07  06:02:03',2);
 INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031206','AXIS0000286','2022-11-03  07:02:03',4);
-INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031207','BARB0000286','2022-10-23  08:02:03',3);
+INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031207','BARB0000286','2022-10-20  08:02:03',7);
+INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031208','BARB0000286','2022-10-10  08:02:03',7);
 
 
 -- TRANSACTIONS DATA
@@ -281,6 +276,7 @@ INSERT INTO transactions(from_account_number,to_account_number,transaction_date,
 INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031203','4105031205','2022-12-09  01:40:10',12000);
 INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031204','4105031206','2022-08-09  10:30:20',25000);
 INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031207','4105031205','2022-10-09  06:35:23',30000);
+INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031208','4105031205','2022-11-09  06:35:23',120000);
 
 
 
@@ -398,7 +394,8 @@ select * from customers;
 SELECT * FROM order_details;
 select * from categories;
 select * from feedbacks;
-select * from orders;
+select * from transactions;
+select * from accounts;
 
 
 -- this query gives orderhistory
@@ -412,6 +409,34 @@ INNER JOIN  customers ON customers.cust_id = orders.cust_id) order by cust_id;
 SELECT order_details.order_id,products.product_title, order_details.quantity ,(products.unit_price*order_details.quantity) AS total_amount 
 FROM order_details, products 
 WHERE  products.product_id =order_details.product_id 
-AND order_id= 4;
+AND order_id= 1;
+
+
+-- SELECT
+--   users.user_id, 
+--   customers.first_name, 
+--   customers.last_name, 
+--   transactions.amount,
+--   transactions.transaction_date,
+--   CASE 
+--     WHEN transactions.from_account_number=accounts.account_number then 'debit'
+--     WHEN transactions.to_account_number=accounts.account_number then 'credit'
+--   END AS MODETYPE 
+-- FROM 
+--   transactions,customers,accounts,users
+-- WHERE 
+--   (transactions.from_account_number= (select account_number from accounts where user_id=2 LIMIT 1)
+--   or 
+--   (transactions.to_account_number=(select account_number from accounts where user_id=2 LIMIT 1)));
+
+
+-- this query gives user_id,customers first_name,customers last_name 
+select users.user_id ,
+       customers.first_name,
+       customers.last_name
+from customers 
+INNER JOIN users ON users.email=customers.email;
+
+
 
  
