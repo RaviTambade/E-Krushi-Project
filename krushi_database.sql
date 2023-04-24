@@ -1,4 +1,4 @@
--- drop database E_Krushi;
+--  drop database E_Krushi;
 CREATE DATABASE E_Krushi;
 USE E_Krushi;
 
@@ -101,9 +101,7 @@ DELIMITER ;
 INSERT INTO users(email,password,contact_number) VALUES('shrisha12@gmail.com','shrisha@123','9850540298');
 INSERT INTO users(email,password,contact_number) VALUES('shivam12@gmail.com','shivam@123','7450540298');
 INSERT INTO users(email,password,contact_number) VALUES('kranti12@gmail.com','kranti@123','8850540298');
-INSERT INTO users(email,password,contact_number) VALUES('rutujaaa12@gmail.com','pooja@123','9960540290');
-INSERT INTO users(email,password,contact_number) VALUES('pratikbhor12@gmail.com','pratik@123','9960540291');
-
+INSERT INTO users(email,password,contact_number) VALUES('rutujaaa12@gmail.com','rutu@123','9960540290');
 
 
 -- ROLE TABLE DATA
@@ -214,6 +212,7 @@ INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03
 INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03-08 12:08:19','cash on delivery',3,2);
 INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03-08 12:08:19','online payment',4,3);
 INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03-08 12:08:19','cash on delivery',9,4);
+INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-06-10 12:45:30','cash on delivery',7,2);
 
 
 -- ADDRESS DATA
@@ -318,15 +317,16 @@ select role from roles where role_id IN (select role_id from user_roles where us
 -- PRINT THE ALL CUSTOMERS
 select * from customers where password IN (select password from users where user_id in (select user_id from user_roles where role_id In (select role_id from roles where role='customer')));
 
+-- This query gives payment details where payment_id=1;
 select * from payments where payment_id=1; 
 
-select * from payments where user_id in (select user_id from users where email in (select email from customers where first_name='pratik' and last_name='bhor'));
+select * from payments;
+select * from customers;
 
-select customers.first_name,customers.last_name ,customers.email,payments.payment_id,users.user_id ,users.email,payments.user_id from customers,payments,users where customers.email=users.email and payments.user_id=users.user_id ;
+-- This query gives payment details of provided customer first_name, last_name
+SELECT * FROM payments WHERE user_id IN (SELECT user_id FROM users WHERE email IN (SELECT email FROM customers WHERE first_name='pooja' AND  last_name='divekar'));
 
-select * from users;
-select * from orders;
-
+select customers.first_name,customers.last_name ,customers.email,payments.payment_id from customers,payments,users where customers.email=users.email and payments.user_id=users.user_id ;
 
 /*1)Retrive List of Customers that made purcheses after the date 2021-10-02 */
 SELECT customers.cust_id,customers.first_name,customers.last_name ,orders.order_date from customers 
@@ -349,17 +349,6 @@ select * from vw_products_above_avgprice;
 
 -- order by cust_id
 select * from orders where cust_id=1;
-
-
-select * from products;
-select * from payments;
-
-select * from order_details;
-select * from orders;
-select * from carts;
-
-SELECT * FROM order_history;
-select * from categories;
 
 -- //this query shows tables and its type in database.
 show  full tables;
@@ -385,17 +374,27 @@ select product_title from products where category_id in (select category_id from
 /*this query gives list of  products which are available in provideded category with the help of inner join*/
 SELECT products.product_title FROM products INNER JOIN categories ON products.category_id = categories.category_id WHERE category_title="organic fertilizer";
 
+-- This query gives customer first_name, last_name whose cust_id= 4 AND status= cancelled
+SELECT customers.cust_id,customers.first_name,customers.last_name,orders.status from customers INNER JOIN orders ON customers.cust_id = orders.cust_id WHERE orders.status= "cancelled" AND customers.cust_id=4 ;
 
-select * from categories;
+-- This query gives orderdetails where cust_id =1 AND status=delivered
+SELECT * FROM orders WHERE cust_id=1 AND status="delivered"; 
 
+--  shows all list of orders on the basis of status =cancelled 
+SELECT * FROM orders WHERE status = "cancelled";
 
--- SELECT customers.first_name,customers.last_name, accounts.account_number
--- FROM ((users
--- INNER JOIN customers ON customers.email = users.email)
--- INNER JOIN accounts ON users.user_id = accounts.user_id);
+select * from products;
+select * from payments;
 
-
-
-select * from users;
-
+select * from order_details;
+select * from orders;
 select * from customers;
+
+SELECT * FROM order_history;
+select * from categories;
+select * from feedbacks;
+
+SELECT products.product_id, products.product_title,products.unit_price,orderdetails.quantity,orders.
+order_id,orders.order_date,customers.cust_id FROM orders, products, customers INNER JOIN orderdetails ON
+ orderdetails.order_id = orders.order_id WHERE customers.cust_id = orders.cust_id AND products.product_id
+ = orderdetails.product_id AND customers.cust_id=1 ORDER BY orders.order_id;
