@@ -119,6 +119,11 @@ INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES
 INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('pooja','divekar','9098556745','poojadivekar05@gmail.com','pooja@123');             
 INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('pratik','bhor','9804256744','pratikbhor06@gmail.com','pratik@123');     
 INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('pratik','VAVHAL','9804256796','pratik12@gmail.com','prati@123');     
+INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('pratiksha','chinchkar','7834256715','pratiksha11@gmail.com','chinchkar@123');                       
+INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('priyanka','bhatore','7834256714','priyanka09@gmail.com','bhatorte@123');
+INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('pooja','chikne','9098556713','pooja@gmail.com','chikne@123');             
+INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('pratik','vayal','9804256712','pratik@gmail.com','vayal@123');     
+INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('pratik','yewale','9804256711','yewale@gmail.com','yewale@123');     
 
 
 -- CATEGORIES DATA
@@ -162,22 +167,22 @@ INSERT INTO products(product_title,unit_price,stock_available,image,category_id)
 INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',1,500,'initiated');
 INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-11-01 12:12:12','2020-11-02 10:02:12',1,800,'delivered');
 INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-10-01 12:12:12','2020-10-02 10:22:12',1,700,'cancelled');
-INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2021-12-01 12:10:12','2021-12-02 10:12:12',1,500,'initiated');
-INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2022-11-01 12:11:00','2022-11-02 10:02:12',2,1800,'delivered');
-INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2023-10-01 12:13:11','2023-10-02 10:22:12',2,7100,'cancelled');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2021-12-01 12:10:12','2021-12-02 10:12:12',2,500,'initiated');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2022-11-01 12:11:00','2022-11-02 10:02:12',8,1800,'delivered');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2023-10-01 12:13:11','2023-10-02 10:22:12',7,7100,'cancelled');
 INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-05-01 12:14:13','2020-05-02 10:12:12',3,5020,'initiated');
-INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2022-01-01 12:40:22','2022-01-02 10:02:12',3,8007,'delivered');
-INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2023-10-01 12:55:45','2023-10-02 10:22:12',4,7006,'cancelled');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2022-01-01 12:40:22','2022-01-02 10:02:12',6,8007,'delivered');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2023-10-01 12:55:45','2023-10-02 10:22:12',5,7006,'cancelled');
 
 
 -- ORDER_DETAILS DATA
 INSERT INTO order_details(order_id,product_id,quantity) VALUES (1,2,20);
 INSERT INTO order_details(order_id,product_id,quantity) VALUES (2,2,25);
 INSERT INTO order_details(order_id,product_id,quantity) VALUES (2,1,40);
-INSERT INTO order_details(order_id,product_id,quantity) VALUES (1,3,15);
-INSERT INTO order_details(order_id,product_id,quantity) VALUES (3,3,48);
-INSERT INTO order_details(order_id,product_id,quantity) VALUES (4,2,41);
-INSERT INTO order_details(order_id,product_id,quantity) VALUES (2,4,63);
+INSERT INTO order_details(order_id,product_id,quantity) VALUES (9,3,15);
+INSERT INTO order_details(order_id,product_id,quantity) VALUES (8,3,48);
+INSERT INTO order_details(order_id,product_id,quantity) VALUES (5,2,41);
+INSERT INTO order_details(order_id,product_id,quantity) VALUES (4,4,63);
 
 
 
@@ -387,14 +392,26 @@ select * from products;
 select * from payments;
 
 select * from order_details;
-select * from orders;
+select * from carts;
 select * from customers;
 
-SELECT * FROM order_history;
+SELECT * FROM order_details;
 select * from categories;
 select * from feedbacks;
+select * from orders;
 
-SELECT products.product_id, products.product_title,products.unit_price,orderdetails.quantity,orders.
-order_id,orders.order_date,customers.cust_id FROM orders, products, customers INNER JOIN orderdetails ON
- orderdetails.order_id = orders.order_id WHERE customers.cust_id = orders.cust_id AND products.product_id
- = orderdetails.product_id AND customers.cust_id=1 ORDER BY orders.order_id;
+
+-- this query gives orderhistory
+SELECT products.product_id, products.product_title,products.unit_price,order_details.quantity,
+orders.order_id,orders.order_date,customers.cust_id FROM (((orders
+INNER JOIN   order_details ON order_details.order_id=orders.order_id)
+INNER JOIN products ON products.product_id = order_details.product_id) 
+INNER JOIN  customers ON customers.cust_id = orders.cust_id) order by cust_id;
+
+-- this query for oder_id, product_title,quantity,total_amount as(products.unit_price*order_details.quantity) 
+SELECT order_details.order_id,products.product_title, order_details.quantity ,(products.unit_price*order_details.quantity) AS total_amount 
+FROM order_details, products 
+WHERE  products.product_id =order_details.product_id 
+AND order_id= 4;
+
+ 
