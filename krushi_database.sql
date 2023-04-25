@@ -263,8 +263,8 @@ INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('410
 INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031206','AXIS0000286','2022-11-03  07:02:03',4);
 INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031207','BARB0000286','2022-10-20  08:02:03',7);
 INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031208','BARB0000286','2022-10-10  08:02:03',7);
-INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031208','BARB0000286','2022-10-10  08:02:03',7);
-INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031209','AXIS0000286','2022-09-08  08:50:03',5);
+INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031209','BARB0000286','2022-10-10  08:02:03',7);
+INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031210','AXIS0000286','2022-09-08  08:50:03',5);
 
 
 
@@ -450,11 +450,18 @@ SELECT user_id,
 FROM accounts WHERE user_id=1;
 
 -- This query gives first_name,last_name where user_id =5;
-select first_name,last_name from customers where email in (select email from users where user_id= 5)
+select first_name,last_name from customers where email in (select email from users where user_id= 5);
 
+-- this procedure is used for updation of stock available when the order is aaded in orderdetails
 
+DELIMETER $$
+CREATE PROCEDURE stock_available_update_inventory (IN order_id INT,IN product_id INT ,IN quantity INT )
+BEGIN
+START TRANSACTION;
+INSERT INTO order_details(order_id,product_id,quantity) VALUES (order_id,product_id,quantity);
+UPDATE products SET stock_available=stock_available-quantity WHERE products.product_id=product_id;
+COMMIT;
+END $$
+DELIMITER ;
 
-
-
-
-
+CALL stock_available_update_inventory(1,2,2);
