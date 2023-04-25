@@ -269,6 +269,9 @@ INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('410
 INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031206','AXIS0000286','2022-11-03  07:02:03',4);
 INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031207','BARB0000286','2022-10-20  08:02:03',7);
 INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031208','BARB0000286','2022-10-10  08:02:03',7);
+INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031208','BARB0000286','2022-10-10  08:02:03',7);
+INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031209','AXIS0000286','2022-09-08  08:50:03',5);
+
 
 
 -- TRANSACTIONS DATA
@@ -277,6 +280,7 @@ INSERT INTO transactions(from_account_number,to_account_number,transaction_date,
 INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031204','4105031206','2022-08-09  10:30:20',25000);
 INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031207','4105031205','2022-10-09  06:35:23',30000);
 INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031208','4105031205','2022-11-09  06:35:23',120000);
+INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031209','4105031205','2022-11-09  06:35:40',6000);
 
 
 
@@ -411,23 +415,26 @@ FROM order_details, products
 WHERE  products.product_id =order_details.product_id 
 AND order_id= 1;
 
+select * from transactions;
 
--- SELECT
---   users.user_id, 
---   customers.first_name, 
---   customers.last_name, 
---   transactions.amount,
---   transactions.transaction_date,
---   CASE 
---     WHEN transactions.from_account_number=accounts.account_number then 'debit'
---     WHEN transactions.to_account_number=accounts.account_number then 'credit'
---   END AS MODETYPE 
--- FROM 
---   transactions,customers,accounts,users
--- WHERE 
---   (transactions.from_account_number= (select account_number from accounts where user_id=2 LIMIT 1)
---   or 
---   (transactions.to_account_number=(select account_number from accounts where user_id=2 LIMIT 1)));
+
+SELECT
+  accounts.account_number,
+  transactions.transaction_id,
+  customers.first_name, 
+  customers.last_name, 
+  transactions.amount,
+  transactions.transaction_date,
+  CASE 
+    WHEN transactions.from_account_number=accounts.account_number then 'debit'
+    WHEN transactions.to_account_number=accounts.account_number then 'credit'
+  END AS MODETYPE 
+FROM 
+  transactions,customers,accounts,users
+WHERE 
+  (transactions.from_account_number= (select account_number from accounts where user_id=5)
+  or 
+  (transactions.to_account_number=(select account_number from accounts where user_id=5)));
 
 
 -- this query gives user_id,customers first_name,customers last_name 
@@ -437,6 +444,23 @@ select users.user_id ,
 from customers 
 INNER JOIN users ON users.email=customers.email;
 
+-- This query gives multiple account number of users by left join where user_id=1;
+SELECT accounts.user_id,
+	   accounts.account_number
+FROM accounts 
+LEFT JOIN users ON accounts.account_id = users.user_id  WHERE accounts.user_id =1;
+
+-- This query gives multiple account number of users where user_id=1;
+SELECT user_id,
+	   account_number
+FROM accounts WHERE user_id=1;
+
+-- This query gives first_name,last_name where user_id =5;
+select first_name,last_name from customers where email in (select email from users where user_id= 5)
 
 
- 
+
+
+
+
+
