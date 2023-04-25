@@ -454,7 +454,7 @@ select first_name,last_name from customers where email in (select email from use
 
 -- this procedure is used for updation of stock available when the order is aaded in orderdetails
 
-DELIMETER $$
+DELIMITER $$
 CREATE PROCEDURE stock_available_update_inventory (IN order_id INT,IN product_id INT ,IN quantity INT )
 BEGIN
 START TRANSACTION;
@@ -464,4 +464,4 @@ COMMIT;
 END $$
 DELIMITER ;
 
-CALL stock_available_update_inventory(1,2,2);
+CALL stock_available_update_inventory(1,2,500);
