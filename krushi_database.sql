@@ -1,4 +1,4 @@
---  drop database E_Krushi;
+  -- drop database E_Krushi;
 CREATE DATABASE E_Krushi;
  USE E_Krushi;
 
@@ -6,8 +6,7 @@ CREATE TABLE users(user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,email varchar
 
 CREATE TABLE roles(role_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, role varchar(250));
               
-CREATE TABLE customers(cust_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,first_name VARCHAR(255),last_name VARCHAR(25));
-                      
+CREATE TABLE customers(cust_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,first_name VARCHAR(255),last_name VARCHAR(25),user_id INT NOT NULL,CONSTRAINT fk_user_id_11 FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE);
 CREATE TABLE categories(category_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,category_title varchar(255),description varchar(255),image varchar(255));
                         
 CREATE TABLE products(product_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,product_title varchar(255),unit_price double,stock_available INT,image varchar(255),category_id INT NOT NULL, CONSTRAINT fk_category_id FOREIGN KEY (category_id) REFERENCES categories(category_id) ON UPDATE CASCADE ON DELETE CASCADE);
@@ -26,11 +25,11 @@ CREATE TABLE payments(payment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,payment
 
 CREATE TABLE departments(dept_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, dept_name VARCHAR(50),location VARCHAR(45));
 
-CREATE TABLE employees(employee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,first_name VARCHAR(255),last_name VARCHAR(250),birth_date DATE ,hire_date DATE,photo VARCHAR(250),reports_to INT NOT NULL,dept_id INT NOT NULL,CONSTRAINT fk_001 FOREIGN KEY (dept_id) REFERENCES departments(dept_id) ON UPDATE CASCADE ON  DELETE CASCADE);
+CREATE TABLE employees(employee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,first_name VARCHAR(255),last_name VARCHAR(250),birth_date DATE ,hire_date DATE,photo VARCHAR(250),reports_to INT NOT NULL,dept_id INT NOT NULL,CONSTRAINT fk_001 FOREIGN KEY (dept_id) REFERENCES departments(dept_id) ON UPDATE CASCADE ON  DELETE CASCADE,user_id INT NOT NULL,CONSTRAINT fk_user_id_12 FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE);
 
-CREATE TABLE shippers(shipper_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,company_name VARCHAR(255));
+CREATE TABLE shippers(shipper_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,company_name VARCHAR(255),user_id INT NOT NULL,CONSTRAINT fk_user_id_13 FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE);
 
-CREATE TABLE suppliers(supplier_id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY, company_name varchar(50),supplier_name varchar(50),address varchar(50),city VARCHAR(50),state VARCHAR(40));
+CREATE TABLE suppliers(supplier_id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY, company_name varchar(50),supplier_name varchar(50),address varchar(50),city VARCHAR(50),state VARCHAR(40),user_id INT NOT NULL,CONSTRAINT fk_user_id_14 FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE);
 
 CREATE TABLE accounts(account_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, account_number varchar(250) UNIQUE,ifsc_code varchar(250),register_date DATETIME, user_id INT NOT NULL, CONSTRAINT fk_user_id_1 FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE);
 
@@ -53,6 +52,14 @@ INSERT INTO users(email,password,contact_number) VALUES ('anil@gmail.com','anil@
 INSERT INTO users(email,password,contact_number) VALUES ('rohan@gmail.com','rohan@12',9381571275);
 INSERT INTO users(email,password,contact_number) VALUES ('ajay@gmail.com','ajay@12',9481571275);
 INSERT INTO users(email,password,contact_number) VALUES ('vijay@gmail.com','vijay@12',9581571275);
+INSERT INTO users(email,password,contact_number) VALUES ('tara@gmail.com','tara@12',9181578790);
+INSERT INTO users(email,password,contact_number) VALUES ('anaya@gmail.com','anaya@12',9281404760);
+INSERT INTO users(email,password,contact_number) VALUES ('riddhi@gmail.com','riddhi@12',7498571275);
+INSERT INTO users(email,password,contact_number) VALUES ('soumya@gmail.com','soumya@12',7356771275);
+INSERT INTO users(email,password,contact_number) VALUES ('ruhi@gmail.com','ruhi@12',9581573465);
+INSERT INTO users(email,password,contact_number) VALUES ('akshita@gmail.com','akshita@12',7498012275);
+INSERT INTO users(email,password,contact_number) VALUES ('aarohi@gmail.com','aarohi@12',7356771350);
+INSERT INTO users(email,password,contact_number) VALUES ('aaradhya@gmail.com','aaradhya@12',9581573054);
 
 
 
@@ -66,13 +73,13 @@ INSERT INTO roles(role) VALUES ('Shipper');
 select * from roles;
 
 -- CUSTOMERS DATA
-INSERT INTO customers(first_name,last_name,user_id) VALUES(akash,ajab,1);                       
-INSERT INTO customers(first_name,last_name,user_id) VALUES(pragati,bangar,2);
-INSERT INTO customers(first_name,last_name,user_id) VALUES(akshay,tanpure,3);             
-INSERT INTO customers(first_name,last_name,user_id) VALUES(abhay,navale,4);     
-INSERT INTO customers(first_name,last_name,user_id) VALUES(rohit,gore,5);     
-INSERT INTO customers(first_name,last_name,user_id) VALUES(rushikesh,chikne,6);                       
-INSERT INTO customers(first_name,last_name,user_id) VALUES(shubham,teli,7);
+INSERT INTO customers(first_name,last_name,user_id) VALUES('akash','ajab',1);                       
+INSERT INTO customers(first_name,last_name,user_id) VALUES('pragati','bangar',2);
+INSERT INTO customers(first_name,last_name,user_id) VALUES('akshay','tanpure',3);             
+INSERT INTO customers(first_name,last_name,user_id) VALUES('abhay','navale',4);     
+INSERT INTO customers(first_name,last_name,user_id) VALUES('rohit','gore',5);     
+INSERT INTO customers(first_name,last_name,user_id) VALUES('rushikesh','chikne',6);                       
+INSERT INTO customers(first_name,last_name,user_id) VALUES('shubham','teli',7);
 
 
 -- CATEGORIES DATA
@@ -114,25 +121,26 @@ INSERT INTO products(product_title,unit_price,stock_available,image,category_id)
 
 -- ORDERS DATA
 INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',1,500,'initiated');
-INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-11-01 12:12:12','2020-11-02 10:02:12',1,800,'delivered');
-INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-10-01 12:12:12','2020-10-02 10:22:12',1,700,'cancelled');
-INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2021-12-01 12:10:12','2021-12-02 10:12:12',2,500,'initiated');
-INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2022-11-01 12:11:00','2022-11-02 10:02:12',8,1800,'delivered');
-INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2023-10-01 12:13:11','2023-10-02 10:22:12',7,7100,'cancelled');
-INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-05-01 12:14:13','2020-05-02 10:12:12',3,5020,'initiated');
-INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2022-01-01 12:40:22','2022-01-02 10:02:12',6,8007,'delivered');
-INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2023-10-01 12:55:45','2023-10-02 10:22:12',5,7006,'cancelled');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-11-01 12:12:12','2020-11-02 10:02:12',2,800,'delivered');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-10-01 12:12:12','2020-10-02 10:22:12',3,700,'cancelled');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2021-12-01 12:10:12','2021-12-02 10:12:12',4,500,'initiated');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2022-11-01 12:11:00','2022-11-02 10:02:12',5,1800,'delivered');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2023-10-01 12:13:11','2023-10-02 10:22:12',6,7100,'cancelled');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-05-01 12:14:13','2020-05-02 10:12:12',7,5020,'initiated');
 
+
+
+SELECT * FROM customers;
 
 -- ORDER_DETAILS DATA
 INSERT INTO order_details(order_id,product_id,quantity) VALUES (1,2,20);
 INSERT INTO order_details(order_id,product_id,quantity) VALUES (2,2,25);
-INSERT INTO order_details(order_id,product_id,quantity) VALUES (2,1,40);
-INSERT INTO order_details(order_id,product_id,quantity) VALUES (9,3,15);
-INSERT INTO order_details(order_id,product_id,quantity) VALUES (8,3,48);
-INSERT INTO order_details(order_id,product_id,quantity) VALUES (5,2,41);
-INSERT INTO order_details(order_id,product_id,quantity) VALUES (4,4,63);
-
+INSERT INTO order_details(order_id,product_id,quantity) VALUES (3,1,40);
+INSERT INTO order_details(order_id,product_id,quantity) VALUES (4,3,15);
+INSERT INTO order_details(order_id,product_id,quantity) VALUES (4,3,48);
+INSERT INTO order_details(order_id,product_id,quantity) VALUES (5,5,41);
+INSERT INTO order_details(order_id,product_id,quantity) VALUES (7,6,63);
+INSERT INTO order_details(order_id,product_id,quantity) VALUES (6,7,63);
 
 
 -- CARTS DATA
@@ -187,24 +195,26 @@ INSERT INTO departments(dept_name,location) VALUES('finance', 'nerul');
 
 -- EMPLOYESS DATA
 INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,dept_id,user_id) VALUES('chetan','ajab','1999-09-15','2022-05-12','/image/akash.jpg',3,1,8);
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,dept_id,user_id) VALUES('abhishek','Bangar','2005-09-15','2022-05-12','/image/vedant.jpg',2,1,8,9);
+INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,dept_id,user_id) VALUES('abhishek','Bangar','2005-09-15','2022-05-12','/image/vedant.jpg',2,1,9);
 INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,dept_id,user_id) VALUES('anil','hinge','2023-09-15','2022-06-14','/image/sahil.jpg',2,2,10);
 INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,dept_id,user_id) VALUES('rohan','amate','2015-09-15','2022-07-13','/image/prakash.jpg',4,4,11);
 INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,dept_id,user_id) VALUES('ajay','lanke','1988-09-15','2022-08-11','/image/nilesh.jpg',1,3,12);
+INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,dept_id,user_id) VALUES('ajay','lanke','1988-09-15','2022-08-11','/image/nilesh.jpg',1,3,12);
 
+select * from users;
 
 -- SHIPPERS DATA
-INSERT INTO shippers(company_name) VALUES('agrotech pvt.ltd');
-INSERT INTO shippers(company_name) VALUES('agrilens pvt.ltd');
-INSERT INTO shippers(company_name) VALUES('croproot pvt.ltd');
-INSERT INTO shippers(company_name) VALUES('greenery pvt.ltd');
+INSERT INTO shippers(company_name,user_id) VALUES('agrotech pvt.ltd',13);
+INSERT INTO shippers(company_name,user_id) VALUES('agrilens pvt.ltd',14);
+INSERT INTO shippers(company_name,user_id) VALUES('croproot pvt.ltd',15);
+INSERT INTO shippers(company_name,user_id) VALUES('greenery pvt.ltd',16);
 
 
 -- SUPPLIERS DATA
-INSERT INTO suppliers(company_name,supplier_name,address,city,state) VALUES('kaveri','abhishek bhor','pimpalgaon','pune','maharashtra');
-INSERT INTO suppliers(company_name,supplier_name,address,city,state) VALUES('kalash seeds','pratik wagh','khadaki','pune','maharashtra');
-INSERT INTO suppliers(company_name,supplier_name,address,city,state) VALUES('greenary','datta dhoble','manchar','pune','maharashtra');
-INSERT INTO suppliers(company_name,supplier_name,address,city,state) VALUES('kavya','kavya bangar','chandoli','8903816782','pune','maharashtra');
+INSERT INTO suppliers(company_name,supplier_name,address,city,state,user_id) VALUES('kaveri','abhishek bhor','pimpalgaon','pune','maharashtra',17);
+INSERT INTO suppliers(company_name,supplier_name,address,city,state,user_id) VALUES('kalash seeds','pratik wagh','khadaki','pune','maharashtra',18);
+INSERT INTO suppliers(company_name,supplier_name,address,city,state,user_id) VALUES('greenary','datta dhoble','manchar','pune','maharashtra',19);
+INSERT INTO suppliers(company_name,supplier_name,address,city,state,user_id) VALUES('kavya','kavya bangar','chandoli','pune','maharashtra',20);
 
 -- USER ROLES DATA
 INSERT INTO user_roles(user_id,role_id) VALUES (1,1);
@@ -236,8 +246,6 @@ INSERT INTO transactions(from_account_number,to_account_number,transaction_date,
 INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031207','4105031205','2022-10-09  06:35:23',30000);
 INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031208','4105031205','2022-11-09  06:35:23',120000);
 INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031209','4105031205','2022-11-09  06:35:40',6000);
-
-
 
 -- FEEDBACKS DATA
 INSERT INTO feedbacks(description,user_id) VALUES ('very good facilitities',1);
@@ -275,7 +283,7 @@ select role from roles where role_id IN (select role_id from user_roles where us
 
 
 -- PRINT THE ALL CUSTOMERS
-select * from customers where password IN (select password from users where user_id in (select user_id from user_roles where role_id In (select role_id from roles where role='customer')));
+-- select * from customers where password IN (select password from users where user_id in (select user_id from user_roles where role_id In (select role_id from roles where role='customer')));
 
 -- This query gives payment details where payment_id=1;
 select * from payments where payment_id=1; 
@@ -286,7 +294,7 @@ select * from customers;
 -- This query gives payment details of provided customer first_name, last_name
 SELECT * FROM payments WHERE user_id IN (SELECT user_id FROM users WHERE email IN (SELECT email FROM customers WHERE first_name='pooja' AND  last_name='divekar'));
 
-select customers.first_name,customers.last_name ,customers.email,payments.payment_id from customers,payments,users where customers.email=users.email and payments.user_id=users.user_id ;
+-- select customers.first_name,customers.last_name ,customers.email,payments.payment_id from customers,payments,users where customers.email=users.email and payments.user_id=users.user_id ;
 
 /*1)Retrive List of Customers that made purcheses after the date 2021-10-02 */
 SELECT customers.cust_id,customers.first_name,customers.last_name ,orders.order_date from customers 
@@ -321,7 +329,7 @@ select avg(unit_price) from products;
 
 -- this query gives count  of products table.
 select count(*) from products;
-select * from products;
+select * from orders;
 
 
 -- this query gives category_id , category_title ,product_title
@@ -393,11 +401,11 @@ WHERE
 
 
 -- this query gives user_id,customers first_name,customers last_name 
-select users.user_id ,
-       customers.first_name,
-       customers.last_name
-from customers 
-INNER JOIN users ON users.email=customers.email;
+-- select users.user_id ,
+--        customers.first_name,
+--        customers.last_name
+-- from customers 
+-- INNER JOIN users ON users.email=customers.email;
 
 -- This query gives multiple account number of users by left join where user_id=1;
 SELECT accounts.user_id,
@@ -411,7 +419,7 @@ SELECT user_id,
 FROM accounts WHERE user_id=1;
 
 -- This query gives first_name,last_name where user_id =5;
-select first_name,last_name from customers where email in (select email from users where user_id= 5);
+-- select first_name,last_name from customers where email in (select email from users where user_id= 5);
 
 -- this procedure is used for updation of stock available when the order is aaded in orderdetails
 
