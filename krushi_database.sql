@@ -6,7 +6,7 @@ CREATE TABLE users(user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,email varchar
 
 CREATE TABLE roles(role_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, role varchar(250));
               
-CREATE TABLE customers(cust_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,first_name VARCHAR(255),last_name VARCHAR(25),contact_number VARCHAR(255),email VARCHAR(50),password varchar(250));
+CREATE TABLE customers(cust_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,first_name VARCHAR(255),last_name VARCHAR(25));
                       
 CREATE TABLE categories(category_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,category_title varchar(255),description varchar(255),image varchar(255));
                         
@@ -26,11 +26,11 @@ CREATE TABLE payments(payment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,payment
 
 CREATE TABLE departments(dept_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, dept_name VARCHAR(50),location VARCHAR(45));
 
-CREATE TABLE employees(employee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,first_name VARCHAR(255),last_name VARCHAR(250),birth_date DATE ,hire_date DATE,contact_number VARCHAR(220),email VARCHAR(50),password VARCHAR(220),photo VARCHAR(250),reports_to INT NOT NULL,dept_id INT NOT NULL,CONSTRAINT fk_001 FOREIGN KEY (dept_id) REFERENCES departments(dept_id) ON UPDATE CASCADE ON  DELETE CASCADE);
+CREATE TABLE employees(employee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,first_name VARCHAR(255),last_name VARCHAR(250),birth_date DATE ,hire_date DATE,photo VARCHAR(250),reports_to INT NOT NULL,dept_id INT NOT NULL,CONSTRAINT fk_001 FOREIGN KEY (dept_id) REFERENCES departments(dept_id) ON UPDATE CASCADE ON  DELETE CASCADE);
 
-CREATE TABLE shippers(shipper_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,company_name VARCHAR(255),contact_number VARCHAR(255),email VARCHAR(255),password VARCHAR(255));
+CREATE TABLE shippers(shipper_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,company_name VARCHAR(255));
 
-CREATE TABLE suppliers(supplier_id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY, company_name varchar(50),supplier_name varchar(50),address varchar(50),contact_number VARCHAR(50),email varchar(50),password VARCHAR(50),city VARCHAR(50),state VARCHAR(40));
+CREATE TABLE suppliers(supplier_id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY, company_name varchar(50),supplier_name varchar(50),address varchar(50),city VARCHAR(50),state VARCHAR(40));
 
 CREATE TABLE accounts(account_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, account_number varchar(250) UNIQUE,ifsc_code varchar(250),register_date DATETIME, user_id INT NOT NULL, CONSTRAINT fk_user_id_1 FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE);
 
@@ -40,56 +40,20 @@ CREATE TABLE user_roles(user_id INT NOT NULL,CONSTRAINT fk_user_id_2 FOREIGN KEY
   
 CREATE TABLE feedbacks(feedback_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255),user_id INT NOT NULL ,CONSTRAINT fk_022 FOREIGN KEY (user_id) REFERENCES users(user_id));
 
+INSERT INTO users(email,password,contact_number) VALUES ('akashajab12@gmail.com','akash@12',9881571268);
+INSERT INTO users(email,password,contact_number) VALUES ('pragatibangar@gmail.com','pragati@12',7498035692);
+INSERT INTO users(email,password,contact_number) VALUES ('akshaytanpure@gmail.com','akshay@12',9881571271);
+INSERT INTO users(email,password,contact_number) VALUES ('abhaynavale@gmail.com','abhay@12',9881571272);
+INSERT INTO users(email,password,contact_number) VALUES ('rohitgore@gmail.com','rohit@12',9881571273);
+INSERT INTO users(email,password,contact_number) VALUES ('rushikeshchikne@gmail.com','rushikesh12',9881571274);
+INSERT INTO users(email,password,contact_number) VALUES ('shubham@gmail.com','shubham@12',9881571275);
+INSERT INTO users(email,password,contact_number) VALUES ('chetan@gmail.com','chetan@12',9081571275);
+INSERT INTO users(email,password,contact_number) VALUES ('abhishek@gmail.com','abhishek@12',9181571275);
+INSERT INTO users(email,password,contact_number) VALUES ('anil@gmail.com','anil@12',9281571275);
+INSERT INTO users(email,password,contact_number) VALUES ('rohan@gmail.com','rohan@12',9381571275);
+INSERT INTO users(email,password,contact_number) VALUES ('ajay@gmail.com','ajay@12',9481571275);
+INSERT INTO users(email,password,contact_number) VALUES ('vijay@gmail.com','vijay@12',9581571275);
 
--- TRIGGER FOR CUSTOMERS     WHEN WE INSERT CUSTOMERS THEN THIS CUSTOMER AUTOMATICALLY INSERT IN USERS TABLE
-DELIMITER //
-CREATE TRIGGER insert_customer AFTER INSERT ON customers
-FOR EACH ROW
-BEGIN
-    DECLARE userId INT;
-    INSERT INTO users(email,password,contact_number) VALUES (NEW.email,NEW.password,NEW.contact_number);
-    SELECT user_id INTO userId FROM users WHERE email=NEW.email;
-    INSERT INTO user_roles(user_id,role_id) VALUES (userId,2); 
-END //
-DELIMITER ;
-
--- TRIGGER FOR EMPLOYEES    WHEN WE INSERT EMPLOLYEES THEN THIS EMPLOYEES AUTOMATICALLY INSERT IN USERS TABLE
-DELIMITER //
-CREATE TRIGGER insert_employee AFTER INSERT ON employees
-FOR EACH ROW
-BEGIN
-DECLARE userId INT ;
-INSERT INTO users(email,password,contact_number) VALUES(NEW.email,NEW.password,NEW.contact_number);
-SELECT user_id INTO userId FROM users WHERE email = NEW.email;
-INSERT INTO user_roles(user_id,role_id) VALUES(userId,3);
-END //
-DELIMITER ;
-
--- TRIGGER FOR SUPPLIER  WHEN WE INSERT SUPPLIER THEN THIS SUPPLIER AUTOMATICALLY INSERT IN USERS TABLE
-DELIMITER //
-CREATE TRIGGER insert_supplier AFTER INSERT ON suppliers
-FOR EACH ROW
-BEGIN
-DECLARE userId INT;
-INSERT INTO users(email,password,contact_number) VALUES (NEW.email,NEW.password,NEW.contact_number);
-SELECT user_id INTO userId FROM users WHERE email=NEW.email;
-INSERT INTO user_roles(user_id,role_id) VALUES (userId,4);
-END //
-DELIMITER ;
-
-
--- //TRIGGER FOR SHIPPERS     WHEN WE INSERT SHIPPER THEN THIS SHIPPERS AUTOMATICALLY INSERT IN USERS TABLE
-
-DELIMITER //
-CREATE TRIGGER insert_shipper AFTER INSERT ON shippers
-FOR EACH ROW
-BEGIN
-DECLARE userId INT;
-  INSERT INTO users(email,password,contact_number) VALUES (NEW.email,NEW.password,NEW.contact_number);
-  SELECT user_id INTO userId FROM users WHERE email=NEW.email;
-  INSERT INTO user_roles(user_id,role_id) VALUES (userId,5);  
-END//
-DELIMITER ;
 
 
 -- ROLE TABLE DATA
@@ -102,16 +66,13 @@ INSERT INTO roles(role) VALUES ('Shipper');
 select * from roles;
 
 -- CUSTOMERS DATA
-INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('pratiksha','bangar','7834256798','pratikshabangar11@gmail.com','pratiksha@123');                       
-INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('priyanka','jadhav','7834256783','priyankajadhav09@gmail.com','priyanka@123');
-INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('pooja','divekar','9098556745','poojadivekar05@gmail.com','pooja@123');             
-INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('pratik','bhor','9804256744','pratikbhor06@gmail.com','pratik@123');     
-INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('pratik','VAVHAL','9804256796','pratik12@gmail.com','prati@123');     
-INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('pratiksha','chinchkar','7834256715','pratiksha11@gmail.com','chinchkar@123');                       
-INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('priyanka','bhatore','7834256714','priyanka09@gmail.com','bhatorte@123');
-INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('pooja','chikne','9098556713','pooja@gmail.com','chikne@123');             
-INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('pratik','vayal','9804256712','pratik@gmail.com','vayal@123');     
-INSERT INTO customers(first_name,last_name,contact_number,email,password) VALUES('pratik','yewale','9804256711','yewale@gmail.com','yewale@123');     
+INSERT INTO customers(first_name,last_name,user_id) VALUES(akash,ajab,1);                       
+INSERT INTO customers(first_name,last_name,user_id) VALUES(pragati,bangar,2);
+INSERT INTO customers(first_name,last_name,user_id) VALUES(akshay,tanpure,3);             
+INSERT INTO customers(first_name,last_name,user_id) VALUES(abhay,navale,4);     
+INSERT INTO customers(first_name,last_name,user_id) VALUES(rohit,gore,5);     
+INSERT INTO customers(first_name,last_name,user_id) VALUES(rushikesh,chikne,6);                       
+INSERT INTO customers(first_name,last_name,user_id) VALUES(shubham,teli,7);
 
 
 -- CATEGORIES DATA
@@ -225,25 +186,25 @@ INSERT INTO departments(dept_name,location) VALUES('finance', 'nerul');
 
 
 -- EMPLOYESS DATA
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to,dept_id) VALUES('akash','ajab','1999-09-15','2022-05-12','9881571268','akashajab1234@gamil.com','akash@123','/image/akash.jpg',3,1);
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to,dept_id) VALUES('vedant','Bangar','2005-09-15','2022-05-12','9881571245','vedantbangar1234@gamil.com','vedant@123','/image/vedant.jpg',2,1);
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to,dept_id) VALUES('sahil','hinge','2023-09-15','2022-06-14','9881571246','sahil1234@gamil.com','sahil@123','/image/sahil.jpg',2,2);
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to,dept_id) VALUES('prakash','amate','2015-09-15','2022-07-13','9881571247','prakash1234@gamil.com','prakash@123','/image/prakash.jpg',4,4);
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,contact_number,email,password,photo,reports_to,dept_id) VALUES('nilesh','lanke','1988-09-15','2022-08-11','9881571248','nilesh1234@gamil.com','nilesh@123','/image/nilesh.jpg',1,3);
+INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,dept_id,user_id) VALUES('chetan','ajab','1999-09-15','2022-05-12','/image/akash.jpg',3,1,8);
+INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,dept_id,user_id) VALUES('abhishek','Bangar','2005-09-15','2022-05-12','/image/vedant.jpg',2,1,8,9);
+INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,dept_id,user_id) VALUES('anil','hinge','2023-09-15','2022-06-14','/image/sahil.jpg',2,2,10);
+INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,dept_id,user_id) VALUES('rohan','amate','2015-09-15','2022-07-13','/image/prakash.jpg',4,4,11);
+INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,dept_id,user_id) VALUES('ajay','lanke','1988-09-15','2022-08-11','/image/nilesh.jpg',1,3,12);
 
 
 -- SHIPPERS DATA
-INSERT INTO shippers(company_name,contact_number,email,password) VALUES('agrotech pvt.ltd','9860366152','agrotech11@gmail.com','agrotech@123');
-INSERT INTO shippers(company_name,contact_number,email,password) VALUES('agrilens pvt.ltd','9860366155','agrilens13@gmail.com','agrilens@123');
-INSERT INTO shippers(company_name,contact_number,email,password) VALUES('croproot pvt.ltd','9860366145','croproot14@gmail.com','croproot@123');
-INSERT INTO shippers(company_name,contact_number,email,password) VALUES('greenery pvt.ltd','9860366147','greenery15@gmail.com','greenery@123');
+INSERT INTO shippers(company_name) VALUES('agrotech pvt.ltd');
+INSERT INTO shippers(company_name) VALUES('agrilens pvt.ltd');
+INSERT INTO shippers(company_name) VALUES('croproot pvt.ltd');
+INSERT INTO shippers(company_name) VALUES('greenery pvt.ltd');
 
 
 -- SUPPLIERS DATA
-INSERT INTO suppliers(company_name,supplier_name,address,contact_number,email,password,city,state) VALUES('kaveri','abhishek bhor','pimpalgaon','8903456782','kaveri12@gmail.com','kaveri@123','pune','maharashtra');
-INSERT INTO suppliers(company_name,supplier_name,address,contact_number,email,password,city,state) VALUES('kalash seeds','pratik wagh','khadaki','8940456782','kalashseeds12@gmail.com','kalash@123','pune','maharashtra');
-INSERT INTO suppliers(company_name,supplier_name,address,contact_number,email,password,city,state) VALUES('greenary','datta dhoble','manchar','8903456750','greenary12@gmail.com','greenary@123','pune','maharashtra');
-INSERT INTO suppliers(company_name,supplier_name,address,contact_number,email,password,city,state) VALUES('kavya','kavya bangar','chandoli','8903816782','kavya12@gmail.com','kavya@123','pune','maharashtra');
+INSERT INTO suppliers(company_name,supplier_name,address,city,state) VALUES('kaveri','abhishek bhor','pimpalgaon','pune','maharashtra');
+INSERT INTO suppliers(company_name,supplier_name,address,city,state) VALUES('kalash seeds','pratik wagh','khadaki','pune','maharashtra');
+INSERT INTO suppliers(company_name,supplier_name,address,city,state) VALUES('greenary','datta dhoble','manchar','pune','maharashtra');
+INSERT INTO suppliers(company_name,supplier_name,address,city,state) VALUES('kavya','kavya bangar','chandoli','8903816782','pune','maharashtra');
 
 -- USER ROLES DATA
 INSERT INTO user_roles(user_id,role_id) VALUES (1,1);
