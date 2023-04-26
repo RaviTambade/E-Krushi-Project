@@ -1,6 +1,6 @@
   -- drop database E_Krushi;
 CREATE DATABASE E_Krushi;
- USE E_Krushi;
+USE E_Krushi;
 
 CREATE TABLE users(user_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,email varchar(255) unique,password varchar(255),contact_number varchar(255));
 
@@ -253,9 +253,7 @@ INSERT INTO feedbacks(description,user_id) VALUES ('good quality of products',2)
 INSERT INTO feedbacks(description,user_id) VALUES ('very good for farmers ',3);
 INSERT INTO feedbacks(description,user_id) VALUES ('farmers are protected from frauds',4);
 
-select * from DEPARTMENTS;
-SELECT * FROM EMPLOYEES;
-select * from feedbacks;
+
 
 
 -- CRUD OPERATIONS CUSTOMERS TABLE
@@ -276,12 +274,10 @@ select * from users;
 select * from customers;
 desc user_roles;
 
+-- when we give the email of user then we give role of this user
+select role from roles where role_id in (select role_id from user_roles where user_id in (select user_id from users where email = 'akashajab12@gmail.com'));
 
--- when we give the name of customer then we give role of this customer
-select role from roles where role_id IN (select role_id from user_roles where user_id IN (select user_id from users where password IN (select password from customers where first_name='pooja' and last_name='divekar')));
-
-
-
+select * from suppliers;
 -- PRINT THE ALL CUSTOMERS
 -- select * from customers where password IN (select password from users where user_id in (select user_id from user_roles where role_id In (select role_id from roles where role='customer')));
 
@@ -289,8 +285,8 @@ select role from roles where role_id IN (select role_id from user_roles where us
 select * from payments where payment_id=1; 
 
 select * from payments;
-select * from customers;
-
+select * from users;
+select * from user_roles;
 -- This query gives payment details of provided customer first_name, last_name
 SELECT * FROM payments WHERE user_id IN (SELECT user_id FROM users WHERE email IN (SELECT email FROM customers WHERE first_name='pooja' AND  last_name='divekar'));
 
@@ -313,6 +309,7 @@ as select product_title , unit_price from products
 where  unit_price  > (select avg(unit_price) from products)
 order by unit_price; 
 
+SELECT * FROM products;
 select * from vw_products_above_avgprice;
 
 -- order by cust_id
