@@ -465,3 +465,16 @@ END $$
 DELIMITER ;
 
 CALL stock_available_update_inventory(1,2,500);
+
+select * from roles;
+select * from user_roles;
+
+--  how to find employees from users table 
+select * from employees where email in (select email from users where user_id in (select user_id from user_roles where role_id in (SELECT role_id from roles where role="Employee"))) ;
+  
+--   this query return user_id of all employees;
+select user_id from user_roles where role_id in (SELECT role_id from roles where role="Employee");
+
+
+select employees.first_name ,employees.last_name ,users.user_id from employees
+inner join  users on employees.email=users.email;
