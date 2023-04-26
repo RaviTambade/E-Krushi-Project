@@ -253,9 +253,9 @@ INSERT INTO feedbacks(description,user_id) VALUES ('good quality of products',2)
 INSERT INTO feedbacks(description,user_id) VALUES ('very good for farmers ',3);
 INSERT INTO feedbacks(description,user_id) VALUES ('farmers are protected from frauds',4);
 
-select * from DEPARTMENTS;
-SELECT * FROM EMPLOYEES;
-select * from feedbacks;
+SELECT * FROM departments;
+SELECT * FROM employees;
+SELECT * FROM feedbacks;
 
 
 -- CRUD OPERATIONS CUSTOMERS TABLE
@@ -278,7 +278,6 @@ desc user_roles;
 
 
 -- when we give the name of customer then we give role of this customer
-select role from roles where role_id IN (select role_id from user_roles where user_id IN (select user_id from users where password IN (select password from customers where first_name='pooja' and last_name='divekar')));
 
 
 
@@ -292,7 +291,6 @@ select * from payments;
 select * from customers;
 
 -- This query gives payment details of provided customer first_name, last_name
-SELECT * FROM payments WHERE user_id IN (SELECT user_id FROM users WHERE email IN (SELECT email FROM customers WHERE first_name='pooja' AND  last_name='divekar'));
 
 -- select customers.first_name,customers.last_name ,customers.email,payments.payment_id from customers,payments,users where customers.email=users.email and payments.user_id=users.user_id ;
 
@@ -401,11 +399,6 @@ WHERE
 
 
 -- this query gives user_id,customers first_name,customers last_name 
--- select users.user_id ,
---        customers.first_name,
---        customers.last_name
--- from customers 
--- INNER JOIN users ON users.email=customers.email;
 
 -- This query gives multiple account number of users by left join where user_id=1;
 SELECT accounts.user_id,
@@ -433,17 +426,14 @@ COMMIT;
 END $$
 DELIMITER ;
 
-CALL stock_available_update_inventory(1,2,500);
+CALL stock_available_update_inventory(1,3,500);
 
 select * from roles;
 select * from user_roles;
 
 --  how to find employees from users table 
-select * from employees where email in (select email from users where user_id in (select user_id from user_roles where role_id in (SELECT role_id from roles where role="Employee"))) ;
   
---   this query return user_id of all employees;
+--   this query return user_id of employees;
 select user_id from user_roles where role_id in (SELECT role_id from roles where role="Employee");
 
 
-select employees.first_name ,employees.last_name ,users.user_id from employees
-inner join  users on employees.email=users.email;
