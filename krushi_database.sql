@@ -39,6 +39,31 @@ CREATE TABLE user_roles(user_id INT NOT NULL,CONSTRAINT fk_user_id_2 FOREIGN KEY
   
 CREATE TABLE feedbacks(feedback_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255),user_id INT NOT NULL ,CONSTRAINT fk_022 FOREIGN KEY (user_id) REFERENCES users(user_id));
 
+CREATE TABLE solutions(solution_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255));
+
+CREATE TABLE complaints(complaint_id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY,complaint_date datetime, description VARCHAR(255));
+
+CREATE TABLE complaints_solutions(complaint_id INT NOT NULL ,CONSTRAINT fk_complaint2_id FOREIGN KEY(complaint_id) REFERENCES complaints(complaint_id) ON UPDATE CASCADE ON DELETE CASCADE,solution_id INT NOT NULL ,CONSTRAINT fk_solution1_id FOREIGN KEY(solution_id) REFERENCES solutions(solution_id) ON UPDATE CASCADE ON DELETE CASCADE,cust_id INT NOT NULL,CONSTRAINT fk_complaint1 FOREIGN KEY (cust_id) REFERENCES customers(cust_id));
+
+
+INSERT INTO solutions(description) VALUES('Solutions may include using fungicides, crop rotation, and planting disease-resistant crops');
+INSERT INTO solutions(description) VALUES(' Solutions may include using copper-based fungicides, sanitation, and pruning infected plant parts.');
+INSERT INTO solutions(description) VALUES('Solutions may include using insecticides to control the vectors that spread the virus and removing infected plants to prevent further spread.');
+INSERT INTO solutions(description) VALUES('Solutions may include using insecticides, introducing natural predators, and planting crops that repel or deter pests');
+INSERT INTO solutions(description) VALUES('Solutions may include using nematicides, crop rotation, and planting nematode-resistant varieties.');
+
+INSERT INTO complaints(complaint_date,description) VALUES('2022-02-12 08:02:11','Fungal diseases: Fungal diseases can affect a wide range of crops, including fruits, vegetables, and grains. Examples of fungal diseases include powdery mildew, blight, and rust');
+INSERT INTO complaints(complaint_date,description) VALUES('2021-01-13 04:02:11','Bacterial diseases: Bacterial diseases can affect crops such as tomatoes, potatoes, and grapes. Examples include bacterial canker, bacterial spot, and fire blight');
+INSERT INTO complaints(complaint_date,description) VALUES('2023-03-11 06:02:11','Viral diseases: Viral diseases can affect crops such as tomatoes, cucumbers, and squash. Examples include mosaic virus and yellowing virus');
+INSERT INTO complaints(complaint_date,description) VALUES('2020-04-01 04:02:11','Insect pests: Insect pests such as aphids, mites, and caterpillars can cause significant damage to crops.');
+INSERT INTO complaints(complaint_date,description) VALUES('2021-08-12 05:02:11','Nematodes: Nematodes are small, soil-dwelling worms that can cause damage to crops such as tomatoes, peppers, and potatoes');
+
+INSERT INTO complaint_solutions(complaint_id,solution_id,cust_id) VALUES (1,1,2);
+INSERT INTO complaint_solutions(complaint_id,solution_id,cust_id) VALUES (2,2,2);
+INSERT INTO complaint_solutions(complaint_id,solution_id,cust_id) VALUES (2,2,3);
+INSERT INTO complaint_solutions(complaint_id,solution_id,cust_id) VALUES (3,3,1);
+INSERT INTO complaint_solutions(complaint_id,solution_id,cust_id) VALUES (3,3,2);
+
 INSERT INTO users(email,password,contact_number) VALUES ('akashajab12@gmail.com','akash@12',9881571268);
 INSERT INTO users(email,password,contact_number) VALUES ('pragatibangar@gmail.com','pragati@12',7498035692);
 INSERT INTO users(email,password,contact_number) VALUES ('akshaytanpure@gmail.com','akshay@12',9881571271);
