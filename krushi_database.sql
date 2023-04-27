@@ -37,9 +37,9 @@ CREATE TABLE user_roles(user_id INT NOT NULL,CONSTRAINT fk_user_id_2 FOREIGN KEY
   
 CREATE TABLE feedbacks(feedback_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255),cust_id INT NOT NULL ,CONSTRAINT fk_022 FOREIGN KEY (cust_id) REFERENCES customers(cust_id) ON UPDATE CASCADE ON DELETE CASCADE);
 
-CREATE TABLE question_categories(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,title varchar(20));
+CREATE TABLE question_categories(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,category varchar(255));
 
-CREATE TABLE questions(question_id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY, question_date DATETIME NOT NULL, description VARCHAR(255),cust_id INT NOT NULL ,CONSTRAINT fk_023 FOREIGN KEY (cust_id) REFERENCES customers(cust_id) ON UPDATE CASCADE ON DELETE CASCADE);
+CREATE TABLE questions(question_id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY, question_date DATETIME NOT NULL, description VARCHAR(255),cust_id INT NOT NULL ,CONSTRAINT fk_023 FOREIGN KEY (cust_id) REFERENCES customers(cust_id) ON UPDATE CASCADE ON DELETE CASCADE,category_id INT NOT NULL,CONSTRAINT fk_category1 FOREIGN KEY (category_id) REFERENCES question_categories(id) ON DELETE CASCADE ON UPDATE CASCADE);
 
 CREATE TABLE solutions(solution_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255));
 
@@ -257,23 +257,36 @@ INSERT INTO feedbacks(description,cust_id) VALUES ('good quality of products',2)
 INSERT INTO feedbacks(description,cust_id) VALUES ('very good for farmers ',3);
 INSERT INTO feedbacks(description,cust_id) VALUES ('farmers are protected from frauds',4);
 
-INSERT INTO question_categories(title) VALUES('Fungal diseases');
-INSERT INTO question_categories(title) VALUES('Bacterial diseases');
-INSERT INTO question_categories(title) VALUES('Viral diseases');
-INSERT INTO question_categories(title) VALUES('Insect diseases');
-INSERT INTO question_categories(title) VALUES('Nematodes');
+INSERT INTO question_categories(category) VALUES('crop related questions');
+INSERT INTO question_categories(category) VALUES('soil related questions');
+INSERT INTO question_categories(category) VALUES('weather releted questions');
 
-INSERT INTO questions(question_date,description,cust_id) VALUES('2022-02-12 08:02:11',' Fungal diseases can affect a wide range of crops, including fruits, vegetables, and grains. Examples of fungal diseases include powdery mildew, blight, and rust',5);
-INSERT INTO questions(question_date,description,cust_id) VALUES('2021-01-13 04:02:11',' Bacterial diseases can affect crops such as tomatoes, potatoes, and grapes. Examples include bacterial canker, bacterial spot, and fire blight',4);
-INSERT INTO questions(question_date,description,cust_id) VALUES('2023-03-11 06:02:11',' Viral diseases can affect crops such as tomatoes, cucumbers, and squash. Examples include mosaic virus and yellowing virus',3);
-INSERT INTO questions(question_date,description,cust_id) VALUES('2020-04-01 04:02:11',' Insect pests such as aphids, mites, and caterpillars can cause significant damage to crops.',3);
-INSERT INTO questions(question_date,description,cust_id) VALUES('2021-08-12 05:02:11',' Nematodes are small, soil-dwelling worms that can cause damage to crops such as tomatoes, peppers, and potatoes',2);
 
-INSERT INTO solutions(description) VALUES('Solutions may include using fungicides, crop rotation, and planting disease-resistant crops');
-INSERT INTO solutions(description) VALUES('Solutions may include using copper-based fungicides, sanitation, and pruning infected plant parts.');
-INSERT INTO solutions(description) VALUES('Solutions may include using insecticides to control the vectors that spread the virus and removing infected plants to prevent further spread.');
-INSERT INTO solutions(description) VALUES('Solutions may include using insecticides, introducing natural predators, and planting crops that repel or deter pests');
-INSERT INTO solutions(description) VALUES('Solutions may include using nematicides, crop rotation, and planting nematode-resistant varieties.');
+INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('2022-02-12 08:02:11','How can I increase crop yield?',5,1);
+INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('2021-01-13 04:02:11','How can I prevent crop damage from pests and diseases?',4,1);
+INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('2023-03-11 06:02:11','How can I optimize the timing of planting and harvesting?',3,1);
+INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('2020-04-01 04:02:11','How can I improve soil fertility? ',3,2);
+INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('2020-04-01 04:02:11','How can I improve soil structure? ',5,2);
+INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('2020-04-01 04:02:11','How can I prevent soil erosion? ',2,2);
+INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('2020-04-01 04:02:11','What should I do if there is a drought?',2,3);
+INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('2020-04-01 04:02:11','What should I do if there is heavy rainfall? ',5,3);
+INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('2020-04-01 04:02:11','What should I do if there is extreme heat?',3,3);
+
+
+INSERT INTO solutions(description) VALUES('Soil health: Ensure the soil is healthy by adding organic matter and nutrients, improving drainage and water retention, and avoiding soil erosion.');
+INSERT INTO solutions(description) VALUES('Monitor crops regularly for signs of pests and diseases and take appropriate measures to prevent and control them.
+Use resistant crop varieties.');
+INSERT INTO solutions(description) VALUES('Consider local weather patterns and the plants growth requirements.');
+INSERT INTO solutions(description) VALUES('Soil testing: Perform soil tests to determine nutrient deficiencies and pH levels.
+Fertilizer: Apply appropriate amounts of fertilizers to address nutrient deficiencies.');
+INSERT INTO solutions(description) VALUES('Reduce soil compaction: Avoid excessive tillage, limit heavy machinery use, and avoid working on wet soil.');
+INSERT INTO solutions(description) VALUES('Cover crops: Plant cover crops to help prevent soil erosion by reducing runoff and increasing soil structure.');
+INSERT INTO solutions(description) VALUES('Irrigation: Use irrigation techniques to provide plants with the necessary water.
+Crop selection: Choose crops that are drought-tolerant.');
+INSERT INTO solutions(description) VALUES('Soil erosion prevention: Implement soil erosion prevention practices, such as planting cover crops, to help protect soil from being washed away.
+Crop selection: Choose crops that are better suited to wet conditions.');
+INSERT INTO solutions(description) VALUES('Irrigation: Use appropriate irrigation techniques to help cool plants.
+Shade: Provide shade for crops to help protect them from extreme heat.');
 
 INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (1,1,'2023-04-05 12:08:06');
 INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (2,2,'2023-06-05 12:20:19');
@@ -287,7 +300,7 @@ INSERT INTO agri_doctors(name,specialist_for) VALUES('mayur gorade','Weather rel
 
 SELECT * FROM employees;
 SELECT * FROM feedbacks;
-
+select * from agri_doctors;
 
 -- CRUD OPERATIONS CUSTOMERS TABLE
 -- GET ALL DETAILS OF CUSTOMERS
