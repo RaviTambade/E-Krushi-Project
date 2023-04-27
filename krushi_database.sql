@@ -128,6 +128,18 @@ INSERT INTO products(product_title,unit_price,stock_available,image,category_id)
 INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('portable power sprayer',100,500,'/image/manure.jpg',5);
 INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('mist dust sprayer',100,500,'/image/woodash.jpg',5);
 
+-- CROP MICRONUTRIENTS
+
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES ('Iron (Fe)',120,150,'/image/iron.jpg',6);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES ('Manganese (Mn)',100,450,'/image/Manganese.jpg',6);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES ('Zinc (Zn)',200,654,'/image/Zinc.jpg',6);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES ('Copper (Cu)',420,750,'/image/Copper.jpg',6);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES ('Boron (B)',470,550,'/image/Boron.jpg',6);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES ('Molybdenum (Mo)',220,5150,'/image/Molybdenum.jpg',6);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES ('Chlorine (Cl)',121,4150,'/image/Chlorine.jpg',6);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES ('Nickel (Ni)',122,1150,'/image/Nickel.jpg',6);
+
+
 -- ORDERS DATA
 INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',1,500,'initiated');
 INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-11-01 12:12:12','2020-11-02 10:02:12',2,800,'delivered');
