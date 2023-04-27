@@ -1,4 +1,4 @@
---  drop database E_Krushi;
+-- drop database E_Krushi;
 CREATE DATABASE E_Krushi;
 USE E_Krushi;
 
@@ -43,7 +43,7 @@ CREATE TABLE questions(question_id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY, que
 
 CREATE TABLE solutions(solution_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255));
 
-CREATE TABLE question_solutions(question_id INT NOT NULL ,CONSTRAINT fk_question2_id FOREIGN KEY(question_id) REFERENCES questions(question_id) ON UPDATE CASCADE ON DELETE CASCADE,solution_id INT NOT NULL ,CONSTRAINT fk_solution1_id FOREIGN KEY(solution_id) REFERENCES solutions(solution_id) ON UPDATE CASCADE ON DELETE CASCADE, solution_date DATETIME NOT NULL, cust_id INT NOT NULL,CONSTRAINT fk_cust_id_1 FOREIGN KEY (cust_id) REFERENCES customers(cust_id) ON UPDATE CASCADE ON DELETE CASCADE);
+CREATE TABLE question_solutions(question_id INT NOT NULL ,CONSTRAINT fk_question2_id FOREIGN KEY(question_id) REFERENCES questions(question_id) ON UPDATE CASCADE ON DELETE CASCADE,solution_id INT NOT NULL ,CONSTRAINT fk_solution1_id FOREIGN KEY(solution_id) REFERENCES solutions(solution_id) ON UPDATE CASCADE ON DELETE CASCADE, solution_date DATETIME NOT NULL);
 
 -- CREATE TABLE agri_experties();
 
@@ -106,28 +106,27 @@ INSERT INTO products(product_title,unit_price,stock_available,image,category_id)
 INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('sorghum',100,50,'/image/sunflower.jpg',1);
 INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('sunflower',100,50,'/image/sunflower.jpg',1);
 
--- CHEMICAL FERTILIZERS
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('Urea (CO(NH2)2',350,1000,'/image/urea.jpg',2);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('Ammonium nitrate (NH4NO3)',600,2000,'/image/ammonium.jpg',2);
--- INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('Diammonium phosphate (NH4)2HPO4',100,50,'/image/diammoniumphosphate.jpg',2);
--- INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('Triple superphosphate (Ca(H2PO4)2',100,50,'/image/triplesuperphosphate.jpg',2);
--- INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('Potassium chloride (KCl)',100,50,'/image/potassiumchloride.jpg',2);
--- INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('Potassium sulfate (K2SO4)',100,50,'/image/potassiumsulfate.jpg',2);
--- INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('Calcium ammonium nitrate (Ca(NO3)2•NH4NO3•10H2O)',100,50,'/image/calciumnitrate.jpg',2);
--- INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('Monoammonium phosphate (NH4H2PO4)',100,50,'/image/monoammoniumphosphate.jpg',2);
 
--- ORGANIC FERTILIZERS
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('tractor',100,50,'/image/sunflower.jpg',2);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('harvesters',100,50,'/image/sunflower.jpg',2);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('balers',100,50,'/image/sunflower.jpg',2);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('fertilizer spreaders',100,50,'/image/sunflower.jpg',2);
+
+-- FERTILIZERS
 INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('wood ash',100,500,'/image/woodash.jpg',3);
 INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('bone meal',100,500,'/image/bonemeal.jpg',3);
--- INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('blood meal',100,500,'/image/bloodmeal.jpg',3);
--- INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('manure',100,500,'/image/manure.jpg',3);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('blood meal',100,500,'/image/bloodmeal.jpg',3);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('manure',100,500,'/image/manure.jpg',3);
 
 -- PESTISIDES
 INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('karate',100,500,'/image/woodash.jpg',4);
 INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('soloman',100,500,'/image/manure.jpg',4);
 INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('wood ash',100,500,'/image/woodash.jpg',4);
 
-
+-- Agricultural sprayers
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('Knapsack sprayer',100,500,'/image/woodash.jpg',5);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('portable power sprayer',100,500,'/image/manure.jpg',5);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('mist dust sprayer',100,500,'/image/woodash.jpg',5);
 
 -- ORDERS DATA
 INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',1,500,'initiated');
