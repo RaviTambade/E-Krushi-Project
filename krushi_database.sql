@@ -45,7 +45,10 @@ CREATE TABLE solutions(solution_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,descr
 
 CREATE TABLE question_solutions(question_id INT NOT NULL ,CONSTRAINT fk_question2_id FOREIGN KEY(question_id) REFERENCES questions(question_id) ON UPDATE CASCADE ON DELETE CASCADE,solution_id INT NOT NULL ,CONSTRAINT fk_solution1_id FOREIGN KEY(solution_id) REFERENCES solutions(solution_id) ON UPDATE CASCADE ON DELETE CASCADE, solution_date DATETIME NOT NULL);
 
--- CREATE TABLE agri_experties();
+CREATE TABLE agri_doctors(agri_doctor_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,name VARCHAR(40),category_id INT NOT NULL ,CONSTRAINT fk_category_id_2 FOREIGN KEY (category_id) REFERENCES question_categories(id) ON UPDATE CASCADE ON DELETE CASCADE);
+
+
+
 
 INSERT INTO users(email,password,contact_number) VALUES ('akashajab12@gmail.com','akash@12',9881571268);
 INSERT INTO users(email,password,contact_number) VALUES ('pragatibangar@gmail.com','pragati@12',7498035692);
@@ -277,6 +280,12 @@ INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (2,
 INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (2,2,'2023-07-10 12:23:08');
 INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (3,3,'2023-08-25 12:34:20');
 INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (3,3,'2023-09-15 12:40:30');
+
+INSERT INTO agri_doctors(name,category_id) VALUES('pratima patil',1);
+INSERT INTO agri_doctors(name,category_id) VALUES('kiran rakshe',2);
+INSERT INTO agri_doctors(name,category_id) VALUES('mayur gorade',3);
+INSERT INTO agri_doctors(name,category_id) VALUES('datta borade',4);
+INSERT INTO agri_doctors(name,category_id) VALUES('anuj borhade',5);
 
 SELECT * FROM employees;
 SELECT * FROM feedbacks;
