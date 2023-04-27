@@ -1,4 +1,4 @@
-  -- drop database E_Krushi;
+--  drop database E_Krushi;
 CREATE DATABASE E_Krushi;
 USE E_Krushi;
 
@@ -23,13 +23,11 @@ CREATE TABLE cart_items(cart_items_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,ca
 
 CREATE TABLE payments(payment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,payment_date DATETIME NOT NULL , payment_mode ENUM('cash on delivery','online payment'),user_id INT NOT NULL,CONSTRAINT fk_user_id_5 FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE,order_id INT NOT NULL,CONSTRAINT fk_order_id FOREIGN KEY (order_id) REFERENCES orders(order_id) ON UPDATE CASCADE ON DELETE CASCADE);
 
-CREATE TABLE departments(dept_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, dept_name VARCHAR(50),location VARCHAR(45));
-
-CREATE TABLE employees(employee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,first_name VARCHAR(255),last_name VARCHAR(250),birth_date DATE ,hire_date DATE,photo VARCHAR(250),reports_to INT NOT NULL,dept_id INT NOT NULL,CONSTRAINT fk_001 FOREIGN KEY (dept_id) REFERENCES departments(dept_id) ON UPDATE CASCADE ON  DELETE CASCADE,user_id INT NOT NULL,CONSTRAINT fk_user_id_12 FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE);
+CREATE TABLE employees(employee_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,first_name VARCHAR(255),last_name VARCHAR(250),birth_date DATE ,hire_date DATE,photo VARCHAR(250),reports_to INT NOT NULL,user_id INT NOT NULL,CONSTRAINT fk_user_id_14 FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE);
 
 CREATE TABLE shippers(shipper_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,company_name VARCHAR(255),user_id INT NOT NULL,CONSTRAINT fk_user_id_13 FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE);
 
-CREATE TABLE suppliers(supplier_id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY, company_name varchar(50),supplier_name varchar(50),address varchar(50),city VARCHAR(50),state VARCHAR(40),user_id INT NOT NULL,CONSTRAINT fk_user_id_14 FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE);
+CREATE TABLE suppliers(supplier_id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY, company_name varchar(50),supplier_name varchar(50),address varchar(50),city VARCHAR(50),state VARCHAR(40),user_id INT NOT NULL,CONSTRAINT fk_user_id_09 FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE);
 
 CREATE TABLE accounts(account_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, account_number varchar(250) UNIQUE,ifsc_code varchar(250),register_date DATETIME, user_id INT NOT NULL, CONSTRAINT fk_user_id_1 FOREIGN KEY (user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE);
 
@@ -37,32 +35,17 @@ CREATE TABLE transactions(transaction_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY
 
 CREATE TABLE user_roles(user_id INT NOT NULL,CONSTRAINT fk_user_id_2 FOREIGN KEY(user_id) REFERENCES users(user_id) ON UPDATE CASCADE ON DELETE CASCADE ,role_id INT NOT NULL,CONSTRAINT fk_role_id FOREIGN KEY(role_id) REFERENCES roles(role_id) ON UPDATE CASCADE ON DELETE CASCADE);
   
-CREATE TABLE feedbacks(feedback_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255),user_id INT NOT NULL ,CONSTRAINT fk_022 FOREIGN KEY (user_id) REFERENCES users(user_id));
+CREATE TABLE feedbacks(feedback_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255),cust_id INT NOT NULL ,CONSTRAINT fk_022 FOREIGN KEY (cust_id) REFERENCES customers(cust_id) ON UPDATE CASCADE ON DELETE CASCADE);
+
+CREATE TABLE question_categories(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,title varchar(20));
+
+CREATE TABLE questions(question_id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY, question_date DATETIME NOT NULL, description VARCHAR(255),cust_id INT NOT NULL ,CONSTRAINT fk_023 FOREIGN KEY (cust_id) REFERENCES customers(cust_id) ON UPDATE CASCADE ON DELETE CASCADE);
 
 CREATE TABLE solutions(solution_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255));
 
-CREATE TABLE complaints(complaint_id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY,complaint_date datetime, description VARCHAR(255));
+CREATE TABLE question_solutions(question_id INT NOT NULL ,CONSTRAINT fk_question2_id FOREIGN KEY(question_id) REFERENCES questions(question_id) ON UPDATE CASCADE ON DELETE CASCADE,solution_id INT NOT NULL ,CONSTRAINT fk_solution1_id FOREIGN KEY(solution_id) REFERENCES solutions(solution_id) ON UPDATE CASCADE ON DELETE CASCADE, solution_date DATETIME NOT NULL, cust_id INT NOT NULL,CONSTRAINT fk_cust_id_1 FOREIGN KEY (cust_id) REFERENCES customers(cust_id) ON UPDATE CASCADE ON DELETE CASCADE);
 
-CREATE TABLE complaints_solutions(complaint_id INT NOT NULL ,CONSTRAINT fk_complaint2_id FOREIGN KEY(complaint_id) REFERENCES complaints(complaint_id) ON UPDATE CASCADE ON DELETE CASCADE,solution_id INT NOT NULL ,CONSTRAINT fk_solution1_id FOREIGN KEY(solution_id) REFERENCES solutions(solution_id) ON UPDATE CASCADE ON DELETE CASCADE,cust_id INT NOT NULL,CONSTRAINT fk_complaint1 FOREIGN KEY (cust_id) REFERENCES customers(cust_id));
-
-
-INSERT INTO solutions(description) VALUES('Solutions may include using fungicides, crop rotation, and planting disease-resistant crops');
-INSERT INTO solutions(description) VALUES(' Solutions may include using copper-based fungicides, sanitation, and pruning infected plant parts.');
-INSERT INTO solutions(description) VALUES('Solutions may include using insecticides to control the vectors that spread the virus and removing infected plants to prevent further spread.');
-INSERT INTO solutions(description) VALUES('Solutions may include using insecticides, introducing natural predators, and planting crops that repel or deter pests');
-INSERT INTO solutions(description) VALUES('Solutions may include using nematicides, crop rotation, and planting nematode-resistant varieties.');
-
-INSERT INTO complaints(complaint_date,description) VALUES('2022-02-12 08:02:11','Fungal diseases: Fungal diseases can affect a wide range of crops, including fruits, vegetables, and grains. Examples of fungal diseases include powdery mildew, blight, and rust');
-INSERT INTO complaints(complaint_date,description) VALUES('2021-01-13 04:02:11','Bacterial diseases: Bacterial diseases can affect crops such as tomatoes, potatoes, and grapes. Examples include bacterial canker, bacterial spot, and fire blight');
-INSERT INTO complaints(complaint_date,description) VALUES('2023-03-11 06:02:11','Viral diseases: Viral diseases can affect crops such as tomatoes, cucumbers, and squash. Examples include mosaic virus and yellowing virus');
-INSERT INTO complaints(complaint_date,description) VALUES('2020-04-01 04:02:11','Insect pests: Insect pests such as aphids, mites, and caterpillars can cause significant damage to crops.');
-INSERT INTO complaints(complaint_date,description) VALUES('2021-08-12 05:02:11','Nematodes: Nematodes are small, soil-dwelling worms that can cause damage to crops such as tomatoes, peppers, and potatoes');
-
-INSERT INTO complaint_solutions(complaint_id,solution_id,cust_id) VALUES (1,1,2);
-INSERT INTO complaint_solutions(complaint_id,solution_id,cust_id) VALUES (2,2,2);
-INSERT INTO complaint_solutions(complaint_id,solution_id,cust_id) VALUES (2,2,3);
-INSERT INTO complaint_solutions(complaint_id,solution_id,cust_id) VALUES (3,3,1);
-INSERT INTO complaint_solutions(complaint_id,solution_id,cust_id) VALUES (3,3,2);
+-- CREATE TABLE agri_experties();
 
 INSERT INTO users(email,password,contact_number) VALUES ('akashajab12@gmail.com','akash@12',9881571268);
 INSERT INTO users(email,password,contact_number) VALUES ('pragatibangar@gmail.com','pragati@12',7498035692);
@@ -108,18 +91,20 @@ INSERT INTO customers(first_name,last_name,user_id) VALUES('shubham','teli',7);
 
 
 -- CATEGORIES DATA
-INSERT INTO categories(category_title,description,image) VALUES('seeds','crops growth fastly','/image/fertilizer.jpg');
-INSERT INTO categories(category_title,description,image) VALUES('chemical fertilizer','crops growth fastly','/image/fertilizer.jpg');
-INSERT INTO categories(category_title,description,image) VALUES('organic fertilizer','crops growth fastly','/image/fertilizer.jpg');
-INSERT INTO categories(category_title,description,image) VALUES('pesticide','for spraying','/image/pesticide.jpg');
+INSERT INTO categories(category_title,description,image) VALUES('seeds','crops growth fastly','/image/seeds.jpg');
+INSERT INTO categories(category_title,description,image) VALUES('Agriculture equipments','crops growth fastly','/image/equipments.jpg');
+INSERT INTO categories(category_title,description,image) VALUES('fertilizers','crops growth fastly','/image/fertilizers.jpg');
+INSERT INTO categories(category_title,description,image) VALUES('pesticides','for spraying','/image/pesticide.jpg');
+INSERT INTO categories(category_title,description,image) VALUES('Agricultural sprayers','for spraying','/image/sprayers.jpg');
+INSERT INTO categories(category_title,description,image) VALUES('plants micronutrients','for spraying','/image/micronutrient.jpg');
 
 -- PRODUCTS DATA
 INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('oats',100,500,'/image/oats.jpg',1);
--- INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('wheat',100,50,'/image/sunflower.jpg',1);
--- INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('corn',100,50,'/image/sunflower.jpg',1);
--- INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('barley',100,50,'/image/sunflower.jpg',1);
--- INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('sorghum',100,50,'/image/sunflower.jpg',1);
--- INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('sunflower',100,50,'/image/sunflower.jpg',1);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('wheat',100,50,'/image/sunflower.jpg',1);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('corn',100,50,'/image/sunflower.jpg',1);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('barley',100,50,'/image/sunflower.jpg',1);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('sorghum',100,50,'/image/sunflower.jpg',1);
+INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('sunflower',100,50,'/image/sunflower.jpg',1);
 
 -- CHEMICAL FERTILIZERS
 INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('Urea (CO(NH2)2',350,1000,'/image/urea.jpg',2);
@@ -209,23 +194,15 @@ INSERT INTO addresses(cust_id,address_mode,house_number,landmark,city,state,coun
 INSERT INTO addresses(cust_id,address_mode,house_number,landmark,city,state,country,pincode) VALUES(3,'billing','houseNo.32','Peth-Kurwandi Road','Manchar','Maharashtra','India','410506');
 INSERT INTO addresses(cust_id,address_mode,house_number,landmark,city,state,country,pincode) VALUES(4,'permanent','houseNo.234','Pune-Nashik Highway','Rajgurunagar','Maharashtra','India','1213');
 
-
--- DEPARTMENT DATA
-INSERT INTO departments(dept_name,location) VALUES('account', 'pune');
-INSERT INTO departments(dept_name,location) VALUES('hr', 'manchar');
-INSERT INTO departments(dept_name,location) VALUES('sales', 'nashik');
-INSERT INTO departments(dept_name,location) VALUES('finance', 'nerul');
-
-
-
 -- EMPLOYESS DATA
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,dept_id,user_id) VALUES('chetan','ajab','1999-09-15','2022-05-12','/image/akash.jpg',3,1,8);
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,dept_id,user_id) VALUES('abhishek','Bangar','2005-09-15','2022-05-12','/image/vedant.jpg',2,1,9);
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,dept_id,user_id) VALUES('anil','hinge','2023-09-15','2022-06-14','/image/sahil.jpg',2,2,10);
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,dept_id,user_id) VALUES('rohan','amate','2015-09-15','2022-07-13','/image/prakash.jpg',4,4,11);
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,dept_id,user_id) VALUES('ajay','lanke','1988-09-15','2022-08-11','/image/nilesh.jpg',1,3,12);
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,dept_id,user_id) VALUES('ajay','lanke','1988-09-15','2022-08-11','/image/nilesh.jpg',1,3,12);
+INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,user_id) VALUES('chetan','ajab','1999-09-15','2022-05-12','/image/akash.jpg',3,8);
+INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,user_id) VALUES('abhishek','Bangar','2005-09-15','2022-05-12','/image/vedant.jpg',2,9);
+INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,user_id) VALUES('anil','hinge','2023-09-15','2022-06-14','/image/sahil.jpg',2,10);
+INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,user_id) VALUES('rohan','amate','2015-09-15','2022-07-13','/image/prakash.jpg',4,11);
+INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,user_id) VALUES('ajay','lanke','1988-09-15','2022-08-11','/image/nilesh.jpg',1,12);
 
+
+select * from users;
 select * from users;
 
 -- SHIPPERS DATA
@@ -273,18 +250,37 @@ INSERT INTO transactions(from_account_number,to_account_number,transaction_date,
 INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031209','4105031205','2022-11-09  06:35:40',6000);
 
 -- FEEDBACKS DATA
-INSERT INTO feedbacks(description,user_id) VALUES ('very good facilitities',1);
-INSERT INTO feedbacks(description,user_id) VALUES ('good quality of products',2);
-INSERT INTO feedbacks(description,user_id) VALUES ('very good for farmers ',3);
-INSERT INTO feedbacks(description,user_id) VALUES ('farmers are protected from frauds',4);
+INSERT INTO feedbacks(description,cust_id) VALUES ('very good facilitities',1);
+INSERT INTO feedbacks(description,cust_id) VALUES ('good quality of products',2);
+INSERT INTO feedbacks(description,cust_id) VALUES ('very good for farmers ',3);
+INSERT INTO feedbacks(description,cust_id) VALUES ('farmers are protected from frauds',4);
 
-<<<<<<< HEAD
+INSERT INTO question_categories(title) VALUES('Fungal diseases');
+INSERT INTO question_categories(title) VALUES('Bacterial diseases');
+INSERT INTO question_categories(title) VALUES('Viral diseases');
+INSERT INTO question_categories(title) VALUES('Insect diseases');
+INSERT INTO question_categories(title) VALUES('Nematodes');
 
-=======
-SELECT * FROM departments;
+INSERT INTO questions(question_date,description,cust_id) VALUES('2022-02-12 08:02:11',' Fungal diseases can affect a wide range of crops, including fruits, vegetables, and grains. Examples of fungal diseases include powdery mildew, blight, and rust',5);
+INSERT INTO questions(question_date,description,cust_id) VALUES('2021-01-13 04:02:11',' Bacterial diseases can affect crops such as tomatoes, potatoes, and grapes. Examples include bacterial canker, bacterial spot, and fire blight',4);
+INSERT INTO questions(question_date,description,cust_id) VALUES('2023-03-11 06:02:11',' Viral diseases can affect crops such as tomatoes, cucumbers, and squash. Examples include mosaic virus and yellowing virus',3);
+INSERT INTO questions(question_date,description,cust_id) VALUES('2020-04-01 04:02:11',' Insect pests such as aphids, mites, and caterpillars can cause significant damage to crops.',3);
+INSERT INTO questions(question_date,description,cust_id) VALUES('2021-08-12 05:02:11',' Nematodes are small, soil-dwelling worms that can cause damage to crops such as tomatoes, peppers, and potatoes',2);
+
+INSERT INTO solutions(description) VALUES('Solutions may include using fungicides, crop rotation, and planting disease-resistant crops');
+INSERT INTO solutions(description) VALUES('Solutions may include using copper-based fungicides, sanitation, and pruning infected plant parts.');
+INSERT INTO solutions(description) VALUES('Solutions may include using insecticides to control the vectors that spread the virus and removing infected plants to prevent further spread.');
+INSERT INTO solutions(description) VALUES('Solutions may include using insecticides, introducing natural predators, and planting crops that repel or deter pests');
+INSERT INTO solutions(description) VALUES('Solutions may include using nematicides, crop rotation, and planting nematode-resistant varieties.');
+
+INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (1,1,'2023-04-05 12:08:06');
+INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (2,2,'2023-06-05 12:20:19');
+INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (2,2,'2023-07-10 12:23:08');
+INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (3,3,'2023-08-25 12:34:20');
+INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (3,3,'2023-09-15 12:40:30');
+
 SELECT * FROM employees;
 SELECT * FROM feedbacks;
->>>>>>> b443c106a41f84d5bb7965a148645885a5465aea
 
 
 -- CRUD OPERATIONS CUSTOMERS TABLE
@@ -308,14 +304,10 @@ desc user_roles;
 -- when we give the email of user then we give role of this user
 select role from roles where role_id in (select role_id from user_roles where user_id in (select user_id from users where email = 'akashajab12@gmail.com'));
 
-<<<<<<< HEAD
-select * from suppliers;
-=======
 -- when we give the name of customer then we give role of this customer
 
 
 
->>>>>>> b443c106a41f84d5bb7965a148645885a5465aea
 -- PRINT THE ALL CUSTOMERS
 -- select * from customers where password IN (select password from users where user_id in (select user_id from user_roles where role_id In (select role_id from roles where role='customer')));
 
