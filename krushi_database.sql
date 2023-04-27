@@ -45,7 +45,7 @@ CREATE TABLE solutions(solution_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,descr
 
 CREATE TABLE question_solutions(question_id INT NOT NULL ,CONSTRAINT fk_question2_id FOREIGN KEY(question_id) REFERENCES questions(question_id) ON UPDATE CASCADE ON DELETE CASCADE,solution_id INT NOT NULL ,CONSTRAINT fk_solution1_id FOREIGN KEY(solution_id) REFERENCES solutions(solution_id) ON UPDATE CASCADE ON DELETE CASCADE, solution_date DATETIME NOT NULL);
 
-CREATE TABLE agri_doctors(agri_doctor_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,name VARCHAR(40),category_id INT NOT NULL ,CONSTRAINT fk_category_id_2 FOREIGN KEY (category_id) REFERENCES question_categories(id) ON UPDATE CASCADE ON DELETE CASCADE);
+CREATE TABLE agri_doctors(agri_doctor_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,name VARCHAR(40),specialist_for VARCHAR(40));
 
 
 
@@ -130,18 +130,6 @@ INSERT INTO products(product_title,unit_price,stock_available,image,category_id)
 INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('Knapsack sprayer',100,500,'/image/woodash.jpg',5);
 INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('portable power sprayer',100,500,'/image/manure.jpg',5);
 INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('mist dust sprayer',100,500,'/image/woodash.jpg',5);
-
--- CROP MICRONUTRIENTS
-
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES ('Iron (Fe)',120,150,'/image/iron.jpg',6);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES ('Manganese (Mn)',100,450,'/image/Manganese.jpg',6);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES ('Zinc (Zn)',200,654,'/image/Zinc.jpg',6);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES ('Copper (Cu)',420,750,'/image/Copper.jpg',6);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES ('Boron (B)',470,550,'/image/Boron.jpg',6);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES ('Molybdenum (Mo)',220,5150,'/image/Molybdenum.jpg',6);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES ('Chlorine (Cl)',121,4150,'/image/Chlorine.jpg',6);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES ('Nickel (Ni)',122,1150,'/image/Nickel.jpg',6);
-
 
 -- ORDERS DATA
 INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',1,500,'initiated');
@@ -293,11 +281,9 @@ INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (2,
 INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (3,3,'2023-08-25 12:34:20');
 INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (3,3,'2023-09-15 12:40:30');
 
-INSERT INTO agri_doctors(name,category_id) VALUES('pratima patil',1);
-INSERT INTO agri_doctors(name,category_id) VALUES('kiran rakshe',2);
-INSERT INTO agri_doctors(name,category_id) VALUES('mayur gorade',3);
-INSERT INTO agri_doctors(name,category_id) VALUES('datta borade',4);
-INSERT INTO agri_doctors(name,category_id) VALUES('anuj borhade',5);
+INSERT INTO agri_doctors(name,specialist_for) VALUES('pratima patil','crop related information');
+INSERT INTO agri_doctors(name,specialist_for) VALUES('kiran rakshe','soil related information');
+INSERT INTO agri_doctors(name,specialist_for) VALUES('mayur gorade','Weather related information');
 
 SELECT * FROM employees;
 SELECT * FROM feedbacks;
