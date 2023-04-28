@@ -28,11 +28,25 @@ This system will be accessible for the owner, their employees, registered custom
  ➢ The users will be accessible for viewing their personal data.
 
 Owner:
+      ➢ The owner has all access to system. 
+      ➢ Only owner can register employee.
+      ➢ Only owner can register agri -doctors.
+      ➢ Only owner can register shippers.
+      ➢ Only owner can register suppliers.
 Employee:
+	Only registered employee can insert, update and delete products.
+	
+	The employee can manage the registrations of the customers.
 Customer:
+	Only registered customers can log into the system.
+	Registered customer will be able to get help of agri-doctor for crop, soil and weather related problems.
+	Customers can browse catalogues and choose products at the online store, which is a virtual store on the Internet.
+	The products have chosen can go in customer shopping cart.
+	The customer will be able to add or remove products from shopping cart.
+	customer shopping cart's contents will show up as an order when you go through the checkout procedure.
+	We still require more details in order to complete the transaction at this time. Typically, customers are prompted to enter or choose payment details including their credit card number, billing address, and shipping options
 Agri-doctors:
-
-
+     
 
 
 
