@@ -46,8 +46,10 @@ Customer:
 	customer shopping cart's contents will show up as an order when you go through the checkout procedure.
 	We still require more details in order to complete the transaction at this time. Typically, customers are prompted to enter or choose payment details including their credit card number, billing address, and shipping options
 Agri-doctors:
-     
-
+	Agri doctors can check the problems of the farmers.
+	Agri- doctors helps to the farmers for solving his questions related farming.
+	They also give proper advice for precision-farming to the farmers.
+	With the help of our software farmer can ask his queries to the agri doctors.
 
 
 Non-functional Requirement:
