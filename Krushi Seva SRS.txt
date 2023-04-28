@@ -15,7 +15,8 @@ Scope:
 	The farmers will be able to examine their order history and may cancel their order. This service will only be accessible in India.
 
 Overview:
-	This system provides an easy solution for customers to buy the product without going to the shop and also to shop owner to sale the product.
+
+	Anyone can use the portal and browse the available products, but in order to make a purchase or place an order, a user needs to log in using their unique email and password. By visiting the registration page, unregistered members can do so. Roles can only be switched by admin. The default role is "User" when a user registers with the website.
 	This proposed system can be used by any naïve users and it does not require any educational level, experience or technical expertise in computer field but it will be of good use if user has the good knowledge of how to operate a computer.
 
 Functional Requirement:
@@ -27,15 +28,15 @@ This system will be accessible for the owner, their employees, registered custom
  ➢ The owner and their employees having the all authority to use this applications functionality like registering customers, agri-doctors and suppliers.
  ➢ The users will be accessible for viewing their personal data.
 
-Owner:
-      ➢ The owner has all access to system. 
-      ➢ Only owner can register employee.
-      ➢ Only owner can register agri -doctors.
-      ➢ Only owner can register shippers.
-      ➢ Only owner can register suppliers.
+Admin:
+      ➢ The admin has all access to system. 
+      ➢ Only admin can register employee.
+       
 Employee:
 	Only registered employee can insert, update and delete products.
-	
+	Only employee can register agri -doctors.
+	 Only employee can register shippers.
+	 Only employee can register suppliers.
 	The employee can manage the registrations of the customers.
 Customer:
 	Only registered customers can log into the system.
@@ -50,6 +51,8 @@ Agri-doctors:
 	Agri- doctors helps to the farmers for solving his questions related farming.
 	They also give proper advice for precision-farming to the farmers.
 	With the help of our software farmer can ask his queries to the agri doctors.
+
+
 
 
 Non-functional Requirement:
