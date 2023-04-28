@@ -22,51 +22,18 @@ Functional Requirement:
 
 This section provides requirement overview of the system. 
 Various functional modules that can be implemented by the system will be – 
-Description:
-	Registration: 
-•	If customer wants to buy the product then he/she must be registered, unregistered user can’t go to the shopping cart. 
 
-	Login Customer:
-•	logins to the system by entering valid user id and password for the shopping. 
+This system will be accessible for the owner, their employees, registered customers, suppliers, agri – doctors.
+ ➢ The owner and their employees having the all authority to use this applications functionality like registering customers, agri-doctors and suppliers.
+ ➢ The users will be accessible for viewing their personal data.
 
-	Changes to Cart:
-•	Changes to cart means the customer after login or registration can make order or cancel order of the product from the shopping cart.
+Owner:
+Employee:
+Customer:
+Agri-doctors:
 
-	Payment:
-           
-•	In this system we are dealing the mode of payment by Cash. We will extend this to                 credit card, debit card etc in the future.
 
-	Logout:
-•	After ordering or surfing for the product customer has to logout. 
 
-	Report Generation:
-•	After ordering for the product, the system will sent one copy of the bill to the customer’s Email-address and another one for the system data base.
-
-	Using this application farmers check availability of various products in the Krushi Seva Shop                Portal.
-
-	The Farmers can make online payment anywhere anytime. This application save time of farmers. 
-
-	We help farmers to make more informed decisions and focus on precision farming.  We helps farmers to reduce their total production cost and increase their quality yield. 
-
-	All the problems of farmers related to the crop is taken care by a dedicated Call centre, which guides the farmers in all the stages of the crop, right to the crop is taken care by a dedicated Call centre, which guides the farmers in all the stages of the crop, right guidance from Agri-Experts not only boosts farmers knowledge, but also helps increasing his Income, Intern increasing guidance the national productivity, making farmer happy and satisfied.
-
-	For the E-Krushi Seva have implemented a Toll free number and also a farmer chat facility, wherein farmers can be in continuous touch with the agri-experts.
-
-	Various problems of farmers:
-
-•	The farmer loss his time due to offline purchasing products of farming because he went to krushi shop.
-
-•	when the farmer goes to shop that time there is not availability of product as per his requirements at that time the farmer waste his time. 
-
-•	The farmer cannot spraying his crops at proper time.
-
-•	The farmer can  not give fertilizers to his farm at proper time
-
-•	The farmer not getting proper guidence for his farming.
-
-•	Due to all this  reasons farmers cannot take proper care of his farming.
-
-•	For solving this problem  we make krushi seva app.
 
 
 Non-functional Requirement:
