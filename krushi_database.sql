@@ -43,11 +43,12 @@ CREATE TABLE questions(question_id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY, que
 
 CREATE TABLE solutions(solution_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255));
 
-CREATE TABLE question_solutions(question_id INT NOT NULL ,CONSTRAINT fk_question2_id FOREIGN KEY(question_id) REFERENCES questions(question_id) ON UPDATE CASCADE ON DELETE CASCADE,solution_id INT NOT NULL ,CONSTRAINT fk_solution1_id FOREIGN KEY(solution_id) REFERENCES solutions(solution_id) ON UPDATE CASCADE ON DELETE CASCADE, solution_date DATETIME NOT NULL);
+CREATE TABLE agri_doctors(agri_doctor_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,name VARCHAR(40),specialist_for VARCHAR(40),user_id INT NOT NULL,CONSTRAINT fk_user11 FOREIGN KEY (user_id) REFERENCES users(user_id));
 
-CREATE TABLE agri_doctors(agri_doctor_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,name VARCHAR(40),specialist_for VARCHAR(40));
+CREATE TABLE question_solutions(question_id INT NOT NULL ,CONSTRAINT fk_question2_id FOREIGN KEY(question_id) REFERENCES questions(question_id) ON UPDATE CASCADE ON DELETE CASCADE,solution_id INT NOT NULL ,CONSTRAINT fk_solution1_id FOREIGN KEY(solution_id) REFERENCES solutions(solution_id) ON UPDATE CASCADE ON DELETE CASCADE, solution_date DATETIME NOT NULL,agri_doctor_id INT NOT NULL,CONSTRAINT fk_agri FOREIGN KEY (agri_doctor_id) REFERENCES agri_doctors(agri_doctor_id));
 
 
+ show tables;
 
 
 INSERT INTO users(email,password,contact_number) VALUES ('akashajab12@gmail.com','akash@12',9881571268);
@@ -71,6 +72,9 @@ INSERT INTO users(email,password,contact_number) VALUES ('ruhi@gmail.com','ruhi@
 INSERT INTO users(email,password,contact_number) VALUES ('akshita@gmail.com','akshita@12',7498012275);
 INSERT INTO users(email,password,contact_number) VALUES ('aarohi@gmail.com','aarohi@12',7356771350);
 INSERT INTO users(email,password,contact_number) VALUES ('aaradhya@gmail.com','aaradhya@12',9581573054);
+INSERT INTO users(email,password,contact_number) VALUES ('pratimapatil@gmail.com','pratima@12',7709736561);
+INSERT INTO users(email,password,contact_number) VALUES ('kiranrakshe@gmail.com','kiran@12',7709736562);
+INSERT INTO users(email,password,contact_number) VALUES ('mayurgorade@gmail.com','mayur@12',7703726563);
 
 
 
@@ -80,6 +84,7 @@ INSERT INTO roles(role) VALUES ('Customer');
 INSERT INTO roles(role) VALUES ('Employee');
 INSERT INTO roles(role) VALUES ('Supplier');
 INSERT INTO roles(role) VALUES ('Shipper');
+INSERT INTO roles(role) VALUES ('agri_doctors');
 
 select * from roles;
 
@@ -275,32 +280,40 @@ INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('202
 
 INSERT INTO solutions(description) VALUES('Soil health: Ensure the soil is healthy by adding organic matter and nutrients, improving drainage and water retention, and avoiding soil erosion.');
 INSERT INTO solutions(description) VALUES('Monitor crops regularly for signs of pests and diseases and take appropriate measures to prevent and control them.
-Use resistant crop varieties.');
+                                          Use resistant crop varieties.');
 INSERT INTO solutions(description) VALUES('Consider local weather patterns and the plants growth requirements.');
 INSERT INTO solutions(description) VALUES('Soil testing: Perform soil tests to determine nutrient deficiencies and pH levels.
-Fertilizer: Apply appropriate amounts of fertilizers to address nutrient deficiencies.');
+                                           Fertilizer: Apply appropriate amounts of fertilizers to address nutrient deficiencies.');
 INSERT INTO solutions(description) VALUES('Reduce soil compaction: Avoid excessive tillage, limit heavy machinery use, and avoid working on wet soil.');
 INSERT INTO solutions(description) VALUES('Cover crops: Plant cover crops to help prevent soil erosion by reducing runoff and increasing soil structure.');
 INSERT INTO solutions(description) VALUES('Irrigation: Use irrigation techniques to provide plants with the necessary water.
-Crop selection: Choose crops that are drought-tolerant.');
+                                          Crop selection: Choose crops that are drought-tolerant.');
 INSERT INTO solutions(description) VALUES('Soil erosion prevention: Implement soil erosion prevention practices, such as planting cover crops, to help protect soil from being washed away.
-Crop selection: Choose crops that are better suited to wet conditions.');
+										  Crop selection: Choose crops that are better suited to wet conditions.');
 INSERT INTO solutions(description) VALUES('Irrigation: Use appropriate irrigation techniques to help cool plants.
-Shade: Provide shade for crops to help protect them from extreme heat.');
+                                          Shade: Provide shade for crops to help protect them from extreme heat.');
 
-INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (1,1,'2023-04-05 12:08:06');
-INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (2,2,'2023-06-05 12:20:19');
-INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (2,2,'2023-07-10 12:23:08');
-INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (3,3,'2023-08-25 12:34:20');
-INSERT INTO question_solutions(question_id,solution_id,solution_date) VALUES (3,3,'2023-09-15 12:40:30');
 
-INSERT INTO agri_doctors(name,specialist_for) VALUES('pratima patil','crop related information');
-INSERT INTO agri_doctors(name,specialist_for) VALUES('kiran rakshe','soil related information');
-INSERT INTO agri_doctors(name,specialist_for) VALUES('mayur gorade','Weather related information');
+INSERT INTO agri_doctors(name,specialist_for,user_id) VALUES('pratima patil','crop related information',22);
+INSERT INTO agri_doctors(name,specialist_for,user_id) VALUES('kiran rakshe','soil related information',23);
+INSERT INTO agri_doctors(name,specialist_for,user_id) VALUES('mayur gorade','Weather related information',24);
+
+
+
+INSERT INTO question_solutions(question_id,solution_id,solution_date,agri_doctor_id) VALUES (1,1,'2023-04-05 12:08:06',1);
+INSERT INTO question_solutions(question_id,solution_id,solution_date,agri_doctor_id) VALUES (2,2,'2023-06-05 12:20:19',1);
+INSERT INTO question_solutions(question_id,solution_id,solution_date,agri_doctor_id) VALUES (4,4,'2023-07-10 12:23:08',2);
+INSERT INTO question_solutions(question_id,solution_id,solution_date,agri_doctor_id) VALUES (5,5,'2023-08-25 12:34:20',2);
+INSERT INTO question_solutions(question_id,solution_id,solution_date,agri_doctor_id) VALUES (7,7,'2023-09-15 12:40:30',3);
+
 
 SELECT * FROM employees;
 SELECT * FROM feedbacks;
 select * from agri_doctors;
+SELECT * FROM questions;
+SELECT * FROM solutions;
+SELECT * FROM question_solutions;
+SELECT * FROM users;
 
 -- CRUD OPERATIONS CUSTOMERS TABLE
 -- GET ALL DETAILS OF CUSTOMERS
