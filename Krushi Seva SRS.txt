@@ -53,10 +53,15 @@ Visitors:
 	Visiting the Site: Can only visit the site without registration.
 	Register.
 
+
 Agri-doctors:
 Farmer problems and solution : Agri doctors can check the problems of the farmers.Agri- doctors helps to the farmers for solving his questions related farming.
 Advice: They also give proper advice for precision-farming to the farmers.
 	With the help of our software farmer can ask his queries to the agri doctors.
+
+Customer Care:  
+             Getting Feedback from the Customers: Responsible for receiving complaints, queries and feedback from the customers.  
+             Providing Solutions to Customers: Provide feasible solutions to the customers on their complaints and queries.
 
 
 
