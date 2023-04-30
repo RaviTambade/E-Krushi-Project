@@ -33,6 +33,7 @@ public class CustomerController : Controller
         return Json(customer);
     }
 
+    [HttpPost]
      public JsonResult Insert([FromBody] Customer customer)
    {    
         bool result =_srv.InsertCustomer(customer);
