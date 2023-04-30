@@ -5,5 +5,7 @@ namespace E_krushiApp.Repositories.Interface;
 
  public interface IUserRepository{
 
-    List<User> GetAllUsers();
+   public  List<User> GetAllUsers();
+
+    public User GetById(User id);
  }

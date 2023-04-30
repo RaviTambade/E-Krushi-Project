@@ -25,5 +25,13 @@ public class UsersController : ControllerBase
        
     }
 
+
+    public User GetById(User id)
+    {
+        var user = _service.GetById(id);
+
+
+        return user;
+    }
    
 }

@@ -50,5 +50,48 @@ public class UserRepository:IUserRepository{
     return users;
     }
 
+
+
+    public User GetById(User id){
+
+        User user= new User();
+        MySqlConnection connection =new MySqlConnection();
+        connection.ConnectionString=conString;
+        try{
+
+        string query= "select * from users where user_id ="+id;
+         MySqlCommand cmd = new MySqlCommand(query,connection);
+         connection.Open();
+         MySqlDataReader reader = cmd.ExecuteReader();
+         if(reader.Read()){
+
+
+             string email= reader["email"].ToString();
+            string password= reader["password"].ToString();
+            string contactNumber= reader["contact_number"].ToString();
+         
+             user = new User(){
+
+                Email= email,
+                Password=password,
+                ContactNumber=contactNumber
+
+             };
+           }
+            reader.Close();
+        }
+        catch(Exception ee){
+
+            throw ee;
+
+        }
+
+        finally{
+
+        }
+      connection.Close();
+
+    }
+
 }
     
