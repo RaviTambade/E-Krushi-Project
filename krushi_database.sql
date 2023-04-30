@@ -332,22 +332,10 @@ desc user_roles;
 -- when we give the email of user then we give role of this user
 select role from roles where role_id in (select role_id from user_roles where user_id in (select user_id from users where email = 'akashajab12@gmail.com'));
 
--- when we give the name of customer then we give role of this customer
-
-
-
--- PRINT THE ALL CUSTOMERS
--- select * from customers where password IN (select password from users where user_id in (select user_id from user_roles where role_id In (select role_id from roles where role='customer')));
 
 -- This query gives payment details where payment_id=1;
 select * from payments where payment_id=1; 
 
-select * from payments;
-select * from users;
-select * from user_roles;
--- This query gives payment details of provided customer first_name, last_name
-
--- select customers.first_name,customers.last_name ,customers.email,payments.payment_id from customers,payments,users where customers.email=users.email and payments.user_id=users.user_id ;
 
 /*1)Retrive List of Customers that made purcheses after the date 2021-10-02 */
 SELECT customers.cust_id,customers.first_name,customers.last_name ,orders.order_date from customers 
@@ -405,20 +393,6 @@ SELECT * FROM orders WHERE cust_id=1 AND status="delivered";
 --  shows all list of orders on the basis of status =cancelled 
 SELECT * FROM orders WHERE status = "cancelled";
 
-select * from products;
-select * from payments;
-
-select * from order_details;
-select * from carts;
-select * from customers;
-
-SELECT * FROM order_details;
-select * from categories;
-select * from feedbacks;
-select * from transactions;
-select * from accounts;
-
-
 -- this query gives orderhistory
 SELECT products.product_id, products.product_title,products.unit_price,order_details.quantity,
 orders.order_id,orders.order_date,customers.cust_id FROM (((orders
@@ -453,9 +427,6 @@ WHERE
   or 
   (transactions.to_account_number=(select account_number from accounts where user_id=5)));
 
-
--- this query gives user_id,customers first_name,customers last_name 
-
 -- This query gives multiple account number of users by left join where user_id=1;
 SELECT accounts.user_id,
 	   accounts.account_number
@@ -467,8 +438,6 @@ SELECT user_id,
 	   account_number
 FROM accounts WHERE user_id=1;
 
--- This query gives first_name,last_name where user_id =5;
--- select first_name,last_name from customers where email in (select email from users where user_id= 5);
 
 -- this procedure is used for updation of stock available when the order is aaded in orderdetails
 
@@ -484,12 +453,15 @@ DELIMITER ;
 
 CALL stock_available_update_inventory(1,3,500);
 
-select * from roles;
-select * from user_roles;
-
---  how to find employees from users table 
-  
 --   this query return user_id of employees;
 select user_id from user_roles where role_id in (SELECT role_id from roles where role="Employee");
+
+select * from payments;
+select * from users;
+select * from user_roles;
+select * from roles;
+select * from user_roles;
+SELECT * FROM feedbacks;
+select * from agri_doctors;
 
 
