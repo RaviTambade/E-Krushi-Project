@@ -13,5 +13,9 @@ public class UserService : IUserService
     public List<User> GetAllUsers()=>_repo.GetAllUsers();
 
     public User GetById(int id)=>_repo.GetById(id);
+
+    public bool InsertUser(User user)=>_repo.InsertUser(user);
+
     
-}
+    }
+

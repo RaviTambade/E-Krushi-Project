@@ -36,5 +36,16 @@ public class UsersController : ControllerBase
 
         return user;
     }
+
+    [HttpPost]
+    [Route("InsertUser")]
+       public bool InsertUser(User user)
+    {
+        bool status = _service.InsertUser(user);
+
+
+        return status;
+    }
+
    
 }

@@ -93,5 +93,39 @@ public class UserRepository:IUserRepository{
        return user;
     }
 
+
+      public bool InsertUser(User user){
+
+        bool status= false;
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString=conString;
+
+        try{
+            string query="Insert into users(email,password,contact_number) values (@email,@password,@contact_number)";
+            MySqlCommand cmd =new MySqlCommand(query,con);
+            cmd.Parameters.AddWithValue("@email",user.Email);
+            cmd.Parameters.AddWithValue("@password",user.Password);
+            cmd.Parameters.AddWithValue("@contact_number",user.ContactNumber);
+        con.Open();
+        int rowsaffected=cmd.ExecuteNonQuery();
+        if(rowsaffected>0){
+
+            status=true;
+        }
+        }
+
+        catch(Exception ee){
+
+            throw ee;
+        }
+
+        finally{
+
+            con.Close();
+          }
+
+          return status;
+
+      }
 }
     
