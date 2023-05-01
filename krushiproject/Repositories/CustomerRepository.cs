@@ -40,7 +40,7 @@ namespace KrushiProject.Repositories
             reader.Close();
         }
         catch(Exception e){
-             throw e;
+            throw e;
         }
         finally{
             con.Close();
