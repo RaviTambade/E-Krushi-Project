@@ -47,5 +47,12 @@ public class UsersController : ControllerBase
         return status;
     }
 
-   
+   [HttpPut]
+   [Route("updateUser")]
+
+   public bool UpdateUser(User user){
+    bool status = _service.UpdateUser(user);
+
+    return status;
+   }
 }

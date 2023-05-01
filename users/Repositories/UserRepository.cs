@@ -127,5 +127,38 @@ public class UserRepository:IUserRepository{
           return status;
 
       }
+
+      public bool UpdateUser(User user){
+
+        bool status= false;
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString=conString;
+        try{
+            string query= "update users set user_id=@userId,email=@email,password=@password,contact_number=@contact_number";
+            MySqlCommand command = new MySqlCommand(query,connection);
+            command.Parameters.AddWithValue("@userId",user.UserId);
+            command.Parameters.AddWithValue("@eamil",user.Email);
+            command.Parameters.AddWithValue("@password",user.Password);
+            command.Parameters.AddWithValue("@contact_number",user.ContactNumber);
+             connection.Open();
+            int rowsaffected = command.ExecuteNonQuery();
+            if(rowsaffected>0){
+                status=true;
+            }
+
+        }
+        
+        catch(Exception ee){
+
+            throw ee;
+
+        }
+
+        finally{
+
+            connection.Close();
+        }
+           return status;
+      }
 }
     
