@@ -55,4 +55,13 @@ public class UsersController : ControllerBase
 
     return status;
    }
+
+
+   [HttpDelete]
+   [Route("DeleteUser/{id}")]
+   public bool DeleteUser(int id){
+    bool status =_service.DeleteUser(id);
+
+    return status;
+   }
 }

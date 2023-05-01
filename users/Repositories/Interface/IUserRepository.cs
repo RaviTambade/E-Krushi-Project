@@ -13,5 +13,5 @@ namespace E_krushiApp.Repositories.Interface;
 
     public bool UpdateUser(User user);
 
-   // public bool DeleteUser(int id);
+    public bool DeleteUser(int id);
  }

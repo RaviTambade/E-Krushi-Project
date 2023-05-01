@@ -160,5 +160,32 @@ public class UserRepository:IUserRepository{
         }
            return status;
       }
+
+
+      public bool DeleteUser(int id){
+        bool status = false;
+        MySqlConnection connection =new MySqlConnection();
+        connection.ConnectionString=conString;
+        try{
+
+            string query= "delete from users where user_id=@userId";
+            MySqlCommand command= new MySqlCommand(query,connection);
+            command.Parameters.AddWithValue("@userId",id);
+            connection.Open();
+            int rowsaffected = command.ExecuteNonQuery();
+            if(rowsaffected>0){
+                status=true;
+            }
+        }
+        catch(Exception ee){
+
+            throw ee;
+        }
+
+        finally{
+            connection.Close();
+        }
+        return status;
+      }
 }
     

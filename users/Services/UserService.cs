@@ -17,5 +17,7 @@ public class UserService : IUserService
     public bool InsertUser(User user)=>_repo.InsertUser(user);
 
     public bool UpdateUser(User user)=>_repo.InsertUser(user);
+
+    public bool DeleteUser(int id)=>_repo.DeleteUser(id);
     }
 
