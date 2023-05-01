@@ -48,7 +48,7 @@ public class CategoryController : ControllerBase
         return result;
     }
     [HttpDelete]
-    [Route("Deletecategory")]
+    [Route("Deletecategory/{id}")]
     public bool DeleteCategory(int id)
     {
         bool result = _service.DeleteCategory(id);
