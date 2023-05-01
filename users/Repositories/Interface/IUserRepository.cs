@@ -7,5 +7,5 @@ namespace E_krushiApp.Repositories.Interface;
 
    public  List<User> GetAllUsers();
 
-    public User GetById(User id);
+    public User GetById(int id);
  }

@@ -12,6 +12,6 @@ public class UserService : IUserService
     }
     public List<User> GetAllUsers()=>_repo.GetAllUsers();
 
-    public User GetById(User id)=>_repo.GetById(id);
+    public User GetById(int id)=>_repo.GetById(id);
     
 }

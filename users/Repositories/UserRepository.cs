@@ -43,16 +43,16 @@ public class UserRepository:IUserRepository{
        }
         
         finally{
-
+       connection.Close();
         }
-        connection.Close();
+ 
     
     return users;
     }
 
 
 
-    public User GetById(User id){
+    public User GetById(int id){
 
         User user= new User();
         MySqlConnection connection =new MySqlConnection();
@@ -66,12 +66,12 @@ public class UserRepository:IUserRepository{
          if(reader.Read()){
 
 
-             string email= reader["email"].ToString();
+            string email= reader["email"].ToString();
             string password= reader["password"].ToString();
             string contactNumber= reader["contact_number"].ToString();
          
              user = new User(){
-
+                UserId=id,
                 Email= email,
                 Password=password,
                 ContactNumber=contactNumber
@@ -87,10 +87,10 @@ public class UserRepository:IUserRepository{
         }
 
         finally{
-
+           connection.Close();
         }
-      connection.Close();
-
+      
+       return user;
     }
 
 }

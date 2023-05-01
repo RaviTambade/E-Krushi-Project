@@ -17,18 +17,21 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet]
-    public List<User> GetAll()
+    [Route("getall")]
+    public IEnumerable<User> GetAll()
     {
-       var user = _service.GetAllUsers();
+        
+    List<User> users = _service.GetAllUsers();
 
-       return user;
+       return users;
        
     }
 
-
-    public User GetById(User id)
+ [HttpGet]
+ [Route("getbyid/{id}")]
+    public User GetById(int id)
     {
-        var user = _service.GetById(id);
+        User user = _service.GetById(id);
 
 
         return user;
