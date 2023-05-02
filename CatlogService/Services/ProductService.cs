@@ -15,5 +15,7 @@ public class ProductService : IProductService{
 
     public List<Product> GetAllProducts() => _repo.GetAllProducts();
 
+    public Product GetProduct(int id) => _repo.GetProduct(id);
+
 }
 

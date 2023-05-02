@@ -50,5 +50,47 @@ namespace CatlogService.Repositories
             }
             return products;
         }
+
+        public Product GetProduct(int productId)
+        {
+            Product product = new Product();
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = conString;
+            try{
+                string query = "select * from products where product_id = @productId";
+                MySqlCommand cmd = new MySqlCommand(query,con);
+                cmd.Parameters.AddWithValue("@productId",productId);
+                con.Open();
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while(reader.Read())
+                {
+                    string title = reader["product_title"].ToString();
+                    double unitPrice = double.Parse(reader["unit_price"].ToString());
+                    int stockAvailable = int.Parse(reader["stock_available"].ToString());
+                    string image = reader["image"].ToString();
+                    int categoryId = int.Parse(reader["category_id"].ToString());
+
+                    product = new Product()
+                    {
+                        ProductId = productId,
+                        Title = title,
+                        UnitPrice = unitPrice,
+                        StockAvailable = stockAvailable,
+                        Image = image,
+                        CategoryId = categoryId
+
+                    };
+
+                }
+                reader.Close();
+            }
+            catch(Exception e){
+                throw e;
+            }
+            finally{
+                con.Close();
+            }
+            return product;
+        }
     }
 }
