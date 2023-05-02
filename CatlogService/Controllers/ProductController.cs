@@ -42,11 +42,25 @@ public class ProductController : ControllerBase
     }
     
     [HttpPut]
-    [Route("UpdateProduct")]
+    [Route("UpdateProduct/{id}")]
 
-    public bool UpdateProduct([FromBody] Product product)
+    public bool UpdateProduct(int id, [FromBody] Product product)
     {
+        Product oldProduct = _service.GetProduct(id);
+        if(oldProduct.ProductId==0){
+            return false;
+        }
+        product.ProductId = id;
         bool result = _service.UpdateProduct(product);
+        return result;
+    }
+
+    [HttpDelete]
+    [Route("DeleteProduct/{id}")]
+
+    public bool DeleteProduct(int id)
+    {
+        bool result = _service.DeleteProduct(id);
         return result;
     }
 }
