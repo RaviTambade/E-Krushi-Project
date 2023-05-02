@@ -31,4 +31,22 @@ public class ProductController : ControllerBase
         Product product = _service.GetProduct(id);
         return product;
     }
+
+    [HttpPost]
+    [Route("InsertProduct")]
+
+    public bool InsertProduct([FromBody] Product product)
+    {
+        bool result = _service.InsertProduct(product);
+        return result;
+    }
+    
+    [HttpPut]
+    [Route("UpdateProduct")]
+
+    public bool UpdateProduct([FromBody] Product product)
+    {
+        bool result = _service.UpdateProduct(product);
+        return result;
+    }
 }

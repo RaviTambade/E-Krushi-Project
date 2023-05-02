@@ -92,5 +92,69 @@ namespace CatlogService.Repositories
             }
             return product;
         }
+        public bool InsertProduct(Product product)
+        {
+            bool status = false;
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = conString;
+            try
+            {
+                string query="Insert into products(product_title,unit_price,stock_available,image,category_id) VALUES(@productTitle,@unitPrice,@stockAvailable,@image,@categoryId)";
+                MySqlCommand cmd = new MySqlCommand(query,con);
+                cmd.Parameters.AddWithValue("@productTitle",product.Title);
+                cmd.Parameters.AddWithValue("@unitPrice",product.UnitPrice);
+                cmd.Parameters.AddWithValue("@stockAvailable",product.StockAvailable);
+                cmd.Parameters.AddWithValue("@image",product.Image);
+                cmd.Parameters.AddWithValue("@categoryId",product.CategoryId);
+                con.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if(rowsAffected > 0)
+                {
+                    status=true;
+                }
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return status;
+        }
+
+        public bool UpdateProduct(Product product)
+        {
+            bool status = false;
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = conString;
+            try
+            {
+                string query="Update products set product_title=@producttitle, unit_price = @unitPrice, stock_available = @stockAvailable, image = @image, category_id = @categoryId";
+                MySqlCommand cmd = new MySqlCommand(query,con);
+                cmd.Parameters.AddWithValue("@productId",product.ProductId);
+                cmd.Parameters.AddWithValue("@productTitle",product.Title);
+                cmd.Parameters.AddWithValue("@unitPrice",product.UnitPrice);
+                cmd.Parameters.AddWithValue("@stockAvailable",product.StockAvailable);
+                cmd.Parameters.AddWithValue("@image",product.Image);
+                cmd.Parameters.AddWithValue("@categoryId",product.CategoryId);
+                con.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if(rowsAffected > 0)
+                {
+                    status=true;
+                }
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                con.Close();
+            }
+            return status;
+        }
     }
 }
