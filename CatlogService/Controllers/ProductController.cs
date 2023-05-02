@@ -23,4 +23,12 @@ public class ProductController : ControllerBase
         List<Product> products = _service.GetAllProducts();
         return products;
     }
+
+    [HttpGet]
+    [Route("getproduct/{id}")]
+    public Product GetProduct(int id)
+    {
+        Product product = _service.GetProduct(id);
+        return product;
+    }
 }
