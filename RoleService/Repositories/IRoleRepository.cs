@@ -12,5 +12,5 @@ public interface IRoleRepository{
 
      public bool UpdateRole(Role role);
 
-     //public bool DeleteRole(int id);
+     public bool DeleteRole(int id);
 }

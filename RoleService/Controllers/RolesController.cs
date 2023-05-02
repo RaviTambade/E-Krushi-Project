@@ -57,4 +57,14 @@ public class RolesController : ControllerBase
 
         return status;
     }
+
+
+    [HttpDelete]
+    [Route("delete/{id}")]
+
+    public bool DeleteRole(int id){
+
+        bool status = _srv.DeleteRole(id);
+        return status;
+    }
 }

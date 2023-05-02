@@ -182,7 +182,39 @@ public class RoleRepository : IRoleRepository
 
         return status;
 
+    }
 
+
+
+    public bool DeleteRole(int id){
+
+        bool status = false;
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString=conString;
+        try{
+
+            string query= "delete from roles where role_id =@roleId";
+            MySqlCommand command = new MySqlCommand(query,connection);
+            command.Parameters.AddWithValue("@roleId",id);
+
+            connection.Open();
+            int rowsaffected = command.ExecuteNonQuery();
+            if(rowsaffected>0){
+                status =true;
+            }
+
+        }
+
+        catch(Exception ee){
+            throw ee;
+        }
+
+
+        finally{
+            connection.Close();
+        }
+
+        return status;
     }
 }
 
