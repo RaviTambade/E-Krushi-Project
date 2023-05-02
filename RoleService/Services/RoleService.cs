@@ -19,4 +19,8 @@ public class RoleService:IRoleService{
     public List<Role> GetAll() =>_repo.GetAll();
     public Role GetById(int id)=>_repo.GetById(id);
     
+    public bool InsertRole(Role role)=>_repo.InsertRole(role);
+
+    public bool UpdateRole(Role role)=>_repo.UpdateRole(role);
+    public bool DeleteRole(int id )=>_repo.DeleteRole(id);
 }

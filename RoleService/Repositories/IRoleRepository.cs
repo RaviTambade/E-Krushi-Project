@@ -8,9 +8,9 @@ public interface IRoleRepository{
 
     public Role GetById(int id);
 
-    // public bool InsertRole(Role role);
+     public bool InsertRole(Role role);
 
-    // public bool UpdateRole(Role role);
+     public bool UpdateRole(Role role);
 
-    // public bool DeleteRole(int id);
+     public bool DeleteRole(int id);
 }
