@@ -26,4 +26,14 @@ public class RolesController : ControllerBase
 
         return roles;
     }
+
+
+    [HttpGet]
+    [Route("getById/{id}")]
+
+    public Role GetById(int id){
+        Role role = _srv.GetById(id);
+
+        return role;
+    }
 }

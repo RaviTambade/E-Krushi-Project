@@ -6,7 +6,7 @@ public interface IRoleRepository{
 
     public List<Role> GetAll();
 
-    // public Role GetById(int id);
+    public Role GetById(int id);
 
     // public bool InsertRole(Role role);
 

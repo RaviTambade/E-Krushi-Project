@@ -17,6 +17,6 @@ public class RoleService:IRoleService{
    
 
     public List<Role> GetAll() =>_repo.GetAll();
-
+    public Role GetById(int id)=>_repo.GetById(id);
     
 }
