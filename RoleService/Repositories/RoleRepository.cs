@@ -47,8 +47,54 @@ namespace E_krushiApp.Repositories;
 
             return roles;
             }
-            
+
+
+            public Role GetById(int id){
+                Role role = new Role();
+                MySqlConnection connection = new MySqlConnection();
+                connection.ConnectionString=conString;
+                try{
+
+                    string query = "select * from roles where role_id=@roleId";
+                    MySqlCommand command = new MySqlCommand(query,connection);
+                    command.Parameters.AddWithValue("@roleId",id);
+                    connection.Open();
+                    MySqlDataReader reader = command.ExecuteReader();
+                    if(reader.Read()){
+
+                        int roleid= int.Parse(reader["role_id"].ToString());
+                        string RoleName = reader["role"].ToString();
+
+
+                      role = new Role(){
+
+                        RoleId=roleid,
+                        RoleName=RoleName
+
+                      };
+
+                      
+
+
+                    }
+
+
+                    }
+
+                    catch(Exception ee){
+                      throw ee;
+                    }
+
+                    finally{
+
+                        connection.Close();
+                    }
+
+                    return role;
+                }
     }
+            
+    
            
 
         
