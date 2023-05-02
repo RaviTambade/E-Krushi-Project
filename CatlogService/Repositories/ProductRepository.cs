@@ -131,15 +131,15 @@ namespace CatlogService.Repositories
             con.ConnectionString = conString;
             try
             {
-                string query="Update products set product_title=@producttitle, unit_price = @unitPrice, stock_available = @stockAvailable, image = @image Where category_id = @categoryId";
+                string query="Update products set product_title=@productTitle, unit_price = @unitPrice, stock_available = @stockAvailable, image = @image ,category_id = @categoryId Where product_id = @productId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
+                con.Open();
                 cmd.Parameters.AddWithValue("@productId",product.ProductId);
                 cmd.Parameters.AddWithValue("@productTitle",product.Title);
                 cmd.Parameters.AddWithValue("@unitPrice",product.UnitPrice);
                 cmd.Parameters.AddWithValue("@stockAvailable",product.StockAvailable);
                 cmd.Parameters.AddWithValue("@image",product.Image);
                 cmd.Parameters.AddWithValue("@categoryId",product.CategoryId);
-                con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if(rowsAffected > 0)
                 {
