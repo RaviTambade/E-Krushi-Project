@@ -17,5 +17,11 @@ public class ProductService : IProductService{
 
     public Product GetProduct(int id) => _repo.GetProduct(id);
 
+    public bool InsertProduct(Product product) => _repo.InsertProduct(product);
+
+    public bool UpdateProduct(Product product) => _repo.UpdateProduct(product);
+ 
+    public bool DeleteProduct(int id) => _repo.DeleteProduct(id);
+
 }
 
