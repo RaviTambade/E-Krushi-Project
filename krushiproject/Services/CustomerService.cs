@@ -1,22 +1,23 @@
 using KrushiProject.Service.Interfaces;
 using KrushiProject.Models;
+using KrushiProject.Repositories.Interfaces;
 
 namespace KrushiProject.Service
 {
     public class CustomerService : ICustomerService
     {
-        private readonly ICustomerService _srv;
-            public CustomerService(ICustomerService srv)
+        private readonly ICustomerRepository _repo;
+            public CustomerService(ICustomerRepository repo)
             {
-                _srv = srv;
+                _repo = repo;
             }
 
-            public List<Customer> GetAllCustomers() => _srv.GetAllCustomers();
-            public Customer GetCustomer(int id)=>_srv.GetCustomer(id);
-            public bool InsertCustomer(Customer customer)=>_srv.InsertCustomer(customer);
-            public bool UpdateCustomer(Customer customer)=>_srv.UpdateCustomer(customer);
-            public bool DeleteCustomer(int id)=>_srv.DeleteCustomer(id);
-            public Customer GetUser(int id) => _srv.GetUser(id);
+            public List<Customer> GetAllCustomers() => _repo.GetAllCustomers();
+            public Customer GetCustomer(int id)=>_repo.GetCustomer(id);
+            public bool InsertCustomer(Customer customer)=>_repo.InsertCustomer(customer);
+            public bool UpdateCustomer(Customer customer)=>_repo.UpdateCustomer(customer);
+            public bool DeleteCustomer(int id)=>_repo.DeleteCustomer(id);
+            public Customer GetUser(int id) => _repo.GetUser(id);
 
        
     }

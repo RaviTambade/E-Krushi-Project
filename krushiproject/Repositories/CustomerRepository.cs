@@ -2,12 +2,13 @@ using KrushiProject.Repositories.Interfaces;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using KrushiProject.Models;
+
 namespace KrushiProject.Repositories
 {
       
     public class CustomerRepository : ICustomerRepository
     {
-        public static string conString = "server=localhost; port=3306; user=root; password=password; database=E_Krushi";
+        public static string conString = "server=localhost; port=3306; user=root; password=Password; database=E_Krushi";
        
 
         public List<Customer> GetAllCustomers()
@@ -26,7 +27,7 @@ namespace KrushiProject.Repositories
                 string firstName = reader["first_name"].ToString();
                 string lastName = reader["last_name"].ToString();
                 int userId = int.Parse(reader["user_id"].ToString());
-            }
+            
             Customer customer = new Customer()
             {
                 CustomerId = customerId,
@@ -35,11 +36,11 @@ namespace KrushiProject.Repositories
                 UserId = userId
             };
             customers.Add(customer);
+            }
             reader.Close();
-
         }
         catch(Exception e){
-             throw e;
+            throw e;
         }
         finally{
             con.Close();
@@ -53,7 +54,7 @@ namespace KrushiProject.Repositories
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = conString;
             try{
-                string query = "select * from customers where custId = @customerId";
+                string query = "select * from customers where cust_id = @customerId";
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@customerId",id);
@@ -63,7 +64,7 @@ namespace KrushiProject.Repositories
                     string firstName = reader["first_name"].ToString();
                     string lastName = reader["last_name"].ToString();
                     int userId = int.Parse(reader["user_id"].ToString());  
-                }
+                
                 customer = new Customer()
                 {
                     CustomerId = id,
@@ -72,6 +73,8 @@ namespace KrushiProject.Repositories
                     UserId = userId
 
                 };
+                }
+                reader.Close();
             }
             catch(Exception e){
                 throw e;
@@ -139,7 +142,7 @@ namespace KrushiProject.Repositories
             return status;
         }
 
-        public bool deleteCustomer(int id)
+        public bool DeleteCustomer(int id)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
@@ -185,7 +188,7 @@ namespace KrushiProject.Repositories
                     string lastName = reader["last_name"].ToString();
                     //int userId = int.Parse(reader["user_id"].ToString());
 
-                }
+                
                 customer = new Customer()
                 {
                     CustomerId = customerId,
@@ -194,6 +197,8 @@ namespace KrushiProject.Repositories
                     UserId = userId
 
                 };
+                }
+                reader.Close();
             }
             catch(Exception e)
             {
@@ -205,11 +210,6 @@ namespace KrushiProject.Repositories
                 con.Close();
             }
             return customer;
-        }
-
-        public bool DeleteCustomer(int id)
-        {
-            throw new NotImplementedException();
         }
     }
 }
