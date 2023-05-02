@@ -36,4 +36,25 @@ public class RolesController : ControllerBase
 
         return role;
     }
+
+
+    [HttpPost]
+    [Route("Insert")]
+
+    public bool InsertRole(Role role){
+   
+        bool status = _srv.InsertRole(role);
+
+
+        return status;
+    }
+
+    [HttpPut]
+    [Route("Update")]
+
+    public bool UpdateRole(Role role){
+        bool status=_srv.UpdateRole(role);
+
+        return status;
+    }
 }
