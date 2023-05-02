@@ -1,0 +1,29 @@
+using E_krushiApp.Service.Interface;
+using Microsoft.AspNetCore.Mvc;
+using E_krushiApp.Models;
+using E_krushiApp.Service.Interface;
+namespace E_krushiApp.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class RolesController : ControllerBase
+{
+    
+
+    private readonly IRoleService  _srv; 
+
+    public RolesController(IRoleService srv)
+    {
+        _srv = srv;
+    }
+
+
+ [HttpGet]
+ [Route("getall")]
+    public List<Role> GetAll(){
+
+        List<Role> roles = _srv.GetAll();
+
+        return roles;
+    }
+}
