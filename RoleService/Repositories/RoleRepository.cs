@@ -150,7 +150,7 @@ public class RoleRepository : IRoleRepository
 
         try
         {
-            string query = "update roles set role_id =@roleId,role=@roleName";
+            string query = "update roles set role=@roleName where role_id=@roleId";
             MySqlCommand command = new MySqlCommand(query, connection);
             connection.Open();
             command.Parameters.AddWithValue("@roleId", role.RoleId);
