@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Data;
 using OrderProcessingService.Models;
 using OrderProcessingService.Repositories.Interfaces;
 using MySql.Data.MySqlClient;
@@ -23,8 +21,8 @@ public class OrderRepository : IOrderRepository
             while (reader.Read())
             {
                 int id = int.Parse(reader["order_id"].ToString());
-                DateTime orderDate = Convert.ToDateTime(reader["order_date"].ToString());
-                DateTime shippedDate = Convert.ToDateTime(reader["shipped_date"].ToString());
+                DateTime orderDate = DateTime.Parse(reader["order_date"].ToString());
+                DateTime shippedDate = DateTime.Parse(reader["shipped_date"].ToString());
                 int customerId = int.Parse(reader["cust_id"].ToString());
                 double total = double.Parse(reader["total"].ToString());
                 string? status = reader["status"].ToString();
@@ -69,8 +67,8 @@ public class OrderRepository : IOrderRepository
             if (reader.Read())
             {
                 //int orderId = int.Parse(reader["order_id"].ToString());
-                DateTime orderDate = Convert.ToDateTime(reader["order_date"].ToString());
-                DateTime shippedDate = Convert.ToDateTime(reader["shipped_date"].ToString());
+                DateTime orderDate = DateTime.Parse(reader["order_date"].ToString());
+                DateTime shippedDate = DateTime.Parse(reader["shipped_date"].ToString());
                 int customerId = int.Parse(reader["cust_Id"].ToString());
                 double total = double.Parse(reader["total"].ToString());
                 string? status = reader["status"].ToString();
@@ -115,8 +113,8 @@ public class OrderRepository : IOrderRepository
             if (reader.Read())
             {
                 int orderId = int.Parse(reader["order_id"].ToString());
-                DateTime orderDate = Convert.ToDateTime(reader["order_date"].ToString());
-                DateTime shippedDate = Convert.ToDateTime(reader["shipped_date"].ToString());
+                DateTime orderDate = DateTime.Parse(reader["order_date"].ToString());
+                DateTime shippedDate = DateTime.Parse(reader["shipped_date"].ToString());
                 double total = double.Parse(reader["total"].ToString());
                 string? status = reader["status"].ToString();
 
@@ -148,7 +146,7 @@ public class OrderRepository : IOrderRepository
         con.ConnectionString = conString;
         try
         {
-            string query = $"INSERT INTO orders(order_date,shipped_date,cust_id,total,status)VALUES(@orderDate,@shippedDate,@customerId,@total,@status)";
+            string query = "INSERT INTO orders(order_date,shipped_date,cust_id,total,status)VALUES(@orderDate,@shippedDate,@customerId,@total,@status)";
             con.Open();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@orderDate",order.OrderDate);
@@ -156,8 +154,10 @@ public class OrderRepository : IOrderRepository
             command.Parameters.AddWithValue("@customerId",order.CustomerId);
             command.Parameters.AddWithValue("@total",order.Total);
             command.Parameters.AddWithValue("@status",order.Status);
-            command.ExecuteNonQuery();
+            int rowsAffected =command.ExecuteNonQuery();
+            if(rowsAffected > 0){
             status = true;
+            }
         }
         catch (Exception e)
         {
@@ -186,8 +186,10 @@ public class OrderRepository : IOrderRepository
             command.Parameters.AddWithValue("@customerId",order.CustomerId);
             command.Parameters.AddWithValue("@total",order.Total);
             command.Parameters.AddWithValue("@status",order.Status);
-            command.ExecuteNonQuery();
-            status = true;
+            int rowsAffected =command.ExecuteNonQuery();
+            if(rowsAffected > 0){
+               status = true;
+            }
         }
         catch (Exception e)
         {
@@ -210,8 +212,10 @@ public class OrderRepository : IOrderRepository
             con.Open();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@orderId",id);
-            command.ExecuteNonQuery();
-            status = true;
+            int rowsAffected =command.ExecuteNonQuery();
+            if(rowsAffected > 0){
+                status = true;
+            }
         }
         catch (Exception e)
         {
@@ -239,8 +243,8 @@ public class OrderRepository : IOrderRepository
             while ( reader.Read())
             {
                 int id = int.Parse(reader["order_id"].ToString());
-                DateTime orderDate = Convert.ToDateTime(reader["order_date"].ToString());
-                DateTime shippedDate = Convert.ToDateTime(reader["shipped_date"].ToString());
+                DateTime orderDate = DateTime.Parse(reader["order_date"].ToString());
+                DateTime shippedDate = DateTime.Parse(reader["shipped_date"].ToString());
                 int customerId = int.Parse(reader["cust_id"].ToString());
                 double total = double.Parse(reader["total"].ToString());
                 string? status = reader["status"].ToString();
@@ -286,8 +290,8 @@ public class OrderRepository : IOrderRepository
             while (reader.Read())
             {
                 int id = int.Parse(reader["order_id"].ToString());
-                DateTime orderDate = Convert.ToDateTime(reader["order_date"].ToString());
-                DateTime shippedDate = Convert.ToDateTime(reader["shipped_date"].ToString());
+                DateTime orderDate = DateTime.Parse(reader["order_date"].ToString());
+                DateTime shippedDate = DateTime.Parse(reader["shipped_date"].ToString());
                 int customerId = int.Parse(reader["cust_id"].ToString());
                 double total = double.Parse(reader["total"].ToString());
                 string? status = reader["status"].ToString();
