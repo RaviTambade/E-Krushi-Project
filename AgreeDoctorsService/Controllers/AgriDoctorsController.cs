@@ -40,5 +40,38 @@ public class AgriDoctorsController : ControllerBase
     }
 
 
+      [HttpPost]
+    [Route("Insert")]
+    public bool InsertDoctor(AgriDoctor doctor)
+    {
+
+        bool status = _srv.InsertDoctor(doctor);
+
+        return status;
+    }
+
+
+     [HttpPut]
+    [Route("update")]
+    public bool UpdateDoctor(AgriDoctor doctor)
+    {
+
+    bool status = _srv.UpdateDoctor(doctor);
+
+        return status;
+    }
+
+
+
+      [HttpDelete]
+    [Route("Delete/{id}")]
+    public bool DeleteDoctor(int id)
+    {
+
+        bool status = _srv.DeleteDoctor(id);
+
+        return status;
+    }
+
 
 }
