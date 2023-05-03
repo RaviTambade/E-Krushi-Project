@@ -3,7 +3,7 @@ using E_krushiApp.Repository.Interface.IAgriDoctor;
 using MySql.Data.MySqlClient;
 namespace E_krushiApp.Repositories;
 
-public class Agri : IAgri
+public class AgriRepository : IAgriRepository
 {
 
     public static string conString = "server=localhost; user=root; password=PASSWORD; database=E_krushi";

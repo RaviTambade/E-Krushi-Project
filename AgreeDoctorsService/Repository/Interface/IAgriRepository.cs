@@ -2,7 +2,7 @@ using E_krushiApp.Models;
 
 namespace E_krushiApp.Repository.Interface.IAgriDoctor;
 
-public interface IAgri{
+public interface IAgriRepository{
 
     public List<AgriDoctor> GetAll();
 
