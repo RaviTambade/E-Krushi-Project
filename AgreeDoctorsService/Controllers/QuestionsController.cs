@@ -29,7 +29,49 @@ public class QuestionsController : ControllerBase
         return questions;
     }
 
+     [HttpGet]
+    [Route("getbyid/{id}")]
+    public Question GetById(int id)
+    {
 
+        Question question = _srv.GetById(id);
+
+        return question;
+    }
+
+
+      [HttpPost]
+    [Route("Insert")]
+    public bool InsertDoctor(Question question)
+    {
+
+        bool status = _srv.InsertDoctor(question);
+
+        return status;
+    }
+
+
+     [HttpPut]
+    [Route("update")]
+    public bool UpdateDoctor(Question question)
+    {
+
+    bool status = _srv.UpdateDoctor(question);
+
+        return status;
+    }
+
+
+
+      [HttpDelete]
+    [Route("Delete/{id}")]
+    public bool DeleteDoctor(int id)
+    {
+
+        bool status = _srv.DeleteDoctor(id);
+
+        return status;
+    }
    
 
 
