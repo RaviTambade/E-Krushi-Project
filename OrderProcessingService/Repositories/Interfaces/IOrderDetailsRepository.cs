@@ -8,9 +8,9 @@ public interface IOrderDetailsRepository{
 
     OrderDetails GetOrderDetail(int id);
     
-    bool InsertOrderDetail(OrderDetails order);
+    bool InsertOrderDetail(OrderDetails orderDetail);
 
-    bool UpdateOrderDetail(OrderDetails order);
+    bool UpdateOrderDetail(OrderDetails orderDetail);
 
     bool DeleteOrderDetail(int id);
 

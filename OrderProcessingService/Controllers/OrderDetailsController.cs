@@ -2,6 +2,7 @@ using OrderProcessingService.Models;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using OrderProcessingService.Services;
+using OrderProcessingService.Services.Interfaces;
 
 namespace OrderProcessingService.Controllers
 {
@@ -12,7 +13,7 @@ namespace OrderProcessingService.Controllers
         private readonly IOrderDetailsService _ordersvc;
         public OrderDetailsController(IOrderDetailsService ordersvc)
         {
-        _ordersvc = ordersvc;
+            _ordersvc = ordersvc;
         } 
 
         [HttpGet]

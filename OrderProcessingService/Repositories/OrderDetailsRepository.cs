@@ -20,10 +20,10 @@ public class OrderDetailsRepository : IOrderDetailsRepository{
             MySqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                int id = Int32.Parse(reader["orderdetails_id"].ToString());
-                int orderId = Int32.Parse(reader["order_id"].ToString());
-                int productId = Int32.Parse(reader["product_id"].ToString());
-                int quantity = Int32.Parse(reader["quantity"].ToString());
+                int id = int.Parse(reader["order_details_id"].ToString());
+                int orderId = int.Parse(reader["order_id"].ToString());
+                int productId = int.Parse(reader["product_id"].ToString());
+                int quantity = int.Parse(reader["quantity"].ToString());
                 double discount = double.Parse(reader["discount"].ToString());
 
                 OrderDetails orderDetail = new OrderDetails()
@@ -126,7 +126,7 @@ public class OrderDetailsRepository : IOrderDetailsRepository{
         con.ConnectionString = conString;
         try
         {
-            string query = "Update orders set order_id=@orderId, product_id=@productId,quantity=@quantity, discount=@discount Where order_Details_id =@orderDetailsId";
+            string query = "Update order_details set order_id=@orderId, product_id=@productId,quantity=@quantity, discount=@discount Where order_details_id =@orderDetailsId";
             con.Open();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@orderDetailsId",orderDetail.OrderDetailsId);
@@ -156,7 +156,7 @@ public class OrderDetailsRepository : IOrderDetailsRepository{
         con.ConnectionString = conString;
         try
         {
-            string query = "DELETE FROM order-Details where order_Details_id =@orderDetailsId";
+            string query = "DELETE FROM order_Details where order_Details_id =@orderDetailsId";
             con.Open();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@orderDetailsId",id);
