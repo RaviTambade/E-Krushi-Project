@@ -4,10 +4,10 @@ using E_krushiApp.Services.Interface.IAgriDoctorsService;
 namespace E_krushiApp.Services.AgriDoctors;
 public class AgriDoctorsService : IAgriDoctorsService
 {
-    private readonly IAgri _repo;
+    private readonly IAgriRepository _repo;
 
 
-   public AgriDoctorsService(IAgri repo){
+   public AgriDoctorsService(IAgriRepository repo){
 
         _repo=repo;
     }

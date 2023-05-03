@@ -2,6 +2,10 @@ using E_krushiApp.Repositories;
 using E_krushiApp.Services.Interface.IAgriDoctorsService;
 using E_krushiApp.Repository.Interface.IAgriDoctor;
 using E_krushiApp.Services.AgriDoctors;
+using E_krushiApp.Repository.Interface;
+using E_krushiApp.Repository;
+using E_krushiApp.Services.Interface;
+using E_krushiApp.Services;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,9 +14,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddTransient<IAgri,Agri>();
+builder.Services.AddTransient<IAgriRepository,AgriRepository>();
 builder.Services.AddTransient<IAgriDoctorsService,AgriDoctorsService>();
-
+builder.Services.AddTransient<IQuestionRepository,QuestionRepository>();
+builder.Services.AddTransient<IQuestionService,QuestionService>();
 
 var app = builder.Build();
 
