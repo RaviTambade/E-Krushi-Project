@@ -55,6 +55,55 @@ public class Agri : IAgri
         }
         return doctors;
     }
+     
 
+
+
+     public AgriDoctor GetById(int id){
+
+        AgriDoctor doctor = new AgriDoctor();
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString=conString;
+
+        try{
+
+            string query="select * from agri_doctors where agri_doctor_id = @id";
+            MySqlCommand command = new MySqlCommand(query,connection);
+            connection.Open();
+            command.Parameters.AddWithValue("@id",id);
+            MySqlDataReader reader = command.ExecuteReader();
+            if(reader.Read()){
+
+               int doctorsID = int.Parse(reader["agri_doctor_id"].ToString());
+                string name = reader["name"].ToString();
+                string specialFor = reader["specialist_for"].ToString();
+                int userId =int.Parse(reader["user_id"].ToString());
+
+                 doctor =new AgriDoctor()
+                {
+                    
+                    AgriDoctorId=doctorsID,
+                    Name=name,
+                    SpecialListFor=specialFor,
+                    UserId=userId
+                };
+
+
+
+            }
+        }
+
+        catch(Exception ee){
+
+            throw ee;
+        }
+
+
+        finally{
+            connection.Close();
+        }
+
+        return doctor;
+     }
    
 }

@@ -14,4 +14,6 @@ public class AgriDoctorsService : IAgriDoctorsService
 
     
     public List<AgriDoctor> GetAll()=> _repo.GetAll();
+
+    public AgriDoctor GetById(int id)=>_repo.GetById(id);
 }

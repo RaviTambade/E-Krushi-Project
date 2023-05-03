@@ -8,9 +8,9 @@ namespace E_krushiApp.Controllers;
 [Route("[controller]")]
 public class AgriDoctorsController : ControllerBase
 {
-    
 
-    private readonly IAgriDoctorsService   _srv; 
+
+    private readonly IAgriDoctorsService _srv;
 
     public AgriDoctorsController(IAgriDoctorsService srv)
     {
@@ -18,9 +18,10 @@ public class AgriDoctorsController : ControllerBase
     }
 
 
- [HttpGet]
- [Route("getall")]
-    public List<AgriDoctor> GetAll(){
+    [HttpGet]
+    [Route("getall")]
+    public List<AgriDoctor> GetAll()
+    {
 
         List<AgriDoctor> doctors = _srv.GetAll();
 
@@ -28,5 +29,16 @@ public class AgriDoctorsController : ControllerBase
     }
 
 
-   
+    [HttpGet]
+    [Route("getbyid/{id}")]
+    public AgriDoctor GetById(int id)
+    {
+
+        AgriDoctor doctor = _srv.GetById(id);
+
+        return doctor;
+    }
+
+
+
 }
