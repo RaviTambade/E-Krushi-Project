@@ -2,7 +2,7 @@ using OrderProcessingService.Models;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using Microsoft.Extensions.Caching.Memory;
-using OrderProcessingService.Services;
+using OrderProcessingService.Services.Interfaces;
 
 namespace OrderProcessingService.Controllers
 {

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Threading.Tasks;
 using OrderProcessingService.Models;
 using OrderProcessingService.Repositories.Interfaces;
+using OrderProcessingService.Services.Interfaces;
 
 namespace OrderProcessingService.Services;
 public class OrderService : IOrderService{
