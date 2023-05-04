@@ -1,98 +1,866 @@
 
 
-Users -
-
 Authentication Service:
 
-1.users/getallusers - Retrieve data of all users.
-  Authorization - admin and employee.
-  Description - The getall method gives the list of users.
+1)URL : http:localhost:portnumber/api/users/getallusers 
+  Method : GET
+  Return : Json object of all users
+  Body : Null 
+  Header : List of users
+  Authentication : Admin and Employee only
+   
+2)URL = http:localhost:portnumber/api/users/getuser/{id} 
+  id : User Id
+  Method : GET
+  Return : Json object of user
+  Body : Null 
+  Header : User Details
+  Authentication : Admin and Employee only
 
-2.users/getbyid/{id} - retrieve data of user by their id.
-  Authorization - admin and employee.
-  Description - The getbyid method give the user by their id.
+3)URL = http:localhost:portnumber/api/users/insertuser 
+  Method : POST
+  Return : True or False
+  Body : {
+           "email":"",
+           "contactNumber":"",
+           "password":""
+         }
+  Header : Add new user
+  Authentication : 
+ 
+4)URL : http:localhost:portnumber/api/users/updateuser/{id} 
+  id : User Id
+  Methode : PUT
+  Return : True or False
+  Body : {
+           "id":"",
+           "email":"",
+           "contactNumber":"",
+           "password":""
+         }
+  Header : Update user information
+  Authentication : 
 
-3.users/insertuser - insert data of user by their id
-  Authorization - admin and employees.
-  Body - from body user data pass.
-  description - one or more user add in list.
-
-4.users/updateuser/{id} - update data of user by their id.
-  Authorization - employee and admin.
-  Body - from body update data pass to that id.
-  description - one or more user update into the list.
-
-5.users/deleteuser/{id} - delete data of user by their id.
-  Authorization - admin and employee
-  description - when we pass this request to server then data will be delete.
-
+5)URL : http:localhost:portnumber/api/users/deleteuser/{id} 
+  id : User Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication :
+ 
 Catlog Service:
 
-1.products/getallproducts - Retrieve data of all products.
-  Authorization - admin and employees.
-  Description - The getall method gives the list of products.
+1)URL : http:localhost:portnumber/api/products/getallproducts 
+  Method : GET
+  Return : Json object of all products
+  Body : Null 
+  Header : List of products
+  Authentication : 
+   
+2)URL = http:localhost:portnumber/api/products/getproduct/{id} 
+  id : Product Id
+  Method : GET
+  Return : Json object of product
+  Body : Null 
+  Header : Product Details
+  Authentication : 
 
-2.products/getbyid/{id} - retrieve data of product by their id.
-  Authorization - admin and employees.
-  Description - The getbyid method give the user by their id.
+3)URL = http:localhost:portnumber/api/products/insertproduct 
+  Method : POST
+  Return : True or False
+  Body : {
+           "productTitle":"",
+           "stockAvailable":"",
+           "unitPrice":"",
+           "image":"",
+           "categoryId":""
+         }
+  Header : Add new product
+  Authentication : 
+ 
+4)URL : http:localhost:portnumber/api/products/updateproduct/{id} 
+  id : Product Id
+  Methode : PUT
+  Return : True or False
+  Body : {
+           "productTitle":"",
+           "stockAvailable":"",
+           "unitPrice":"",
+           "image":"",
+           "categoryId":""
+         }
+  Header : Update product information
+  Authentication : 
 
-3.products/insertproduct - insert data of product by their id.
-  Authorization - admin and employees.
-  Body - from body product data pass.
-  description - one or more product add in list.
-
-4.products/updateproduct/{id} - update data of products by their id.
-  Authorization -admin and employees.
-  Body - from body update data pass to that id.
-  description - one or more products update in the list.
-
-5.products/deleteproduct/{id} - delete data of product by their id.
-  Authorization -admin and employees.
-  description - when we pass this request to server then data will be delete.
-
-6.categories/getallcategories - Retrieve data of all categories.
-  Authorization - admin and employees.
-  Description - The getall method gives the list of categories.
-
-7.categories/getbyid/{id} - retrieve data of category by their id.
-  Authorization - admin and employees.
-  Description - The getbyid method give the category by their id.
-
-8.categories/insertcategory - insert data of product by their id.
-  Authorization - admin and employees.
-  Body - from body category data pass.
-  description - one or more category add in list.
-
-9.categories/updatecategory/{id} - update data of category by their id.
-  Authorization - admin and employees.
-  Body - from body update data pass to that id.
-  description - one or more category update in the list.
-
-10.categories/deletecategory/{id} - delete data of category by their id.
-  Authorization - admin and employees.
-  description - when we pass this request to server then data will be delete.
-
-11.suppliers/getallsuppliers - Retrieve data of all suppliers
-  Authorization - admin and employees.
-  Description - The getall method gives the list of suppliers
-
-12.suppliers/getbyid/{id} - retrieve data of suppliers by their id.
-  Authorization - admin and employees.
-  Description - The getbyid method give the suppliers by their id.
-
-13.suppliers/insertsupplier - insert data of suppliers by their id.
-  Authorization - admin and employees.
-  Body - from body supplier data pass.
-  description - one or more supplier add in list.
-
-14.suppliers/updatesupplier/{id} - update data of suppliers by their id.
-  Authorization - admin and employees.
-  Body - from body update data pass to that id.
-  description - one or more supplier update in the list.
-
-15.suppliers/deletesupplier/{id} - delete data of supplier by their id.
-  Authorization - admin and employees.
-  description - when we pass this request to server then data will be delete.
+5)URL : http:localhost:portnumber/api/products/deleteproduct/{id} 
+  id : Product Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication : 
 
 
+6)URL : http:localhost:portnumber/api/categories/getallcategories
+  Method : GET
+  Return : Json object of all categories
+  Body : Null 
+  Header : List of categories
+  Authentication : 
+   
+7)URL = http:localhost:portnumber/api/categories/getcategory/{id} 
+  id : Category Id
+  Method : GET
+  Return : Json object of category
+  Body : Null 
+  Header : Category Details
+  Authentication : 
+
+8)URL = http:localhost:portnumber/api/categories/insertcategory 
+  Method : POST
+  Return : True or False
+  Body : {
+           "categoryTitle":"",
+           "description":"",
+           "image":""   
+         }
+  Header : Add new category
+  Authentication : 
+ 
+9)URL : http:localhost:portnumber/api/categories/updatecategory/{id} 
+  id : Category Id
+  Methode : PUT
+  Return : True or False
+  Body : {
+           "categoryTitle":"",
+           "description":"",
+           "image":""   
+         }
+  Header : Update category information
+  Authentication : 
+
+10)URL : http:localhost:portnumber/api/categories/deletecategory/{id} 
+  id : Category Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication :
+
+
+11)URL : http:localhost:portnumber/api/suppliers/getallsuppliers
+  Method : GET
+  Return : Json object of all suppliers
+  Body : Null 
+  Header : List of suppliers
+  Authentication : 
+   
+12)URL = http:localhost:portnumber/api/suppliers/getsupplier/{id} 
+  id : Supplier Id
+  Method : GET
+  Return : Json object of supplier
+  Body : Null 
+  Header : supplier Details
+  Authentication : 
+
+13)URL = http:localhost:portnumber/api/suppliers/insertsupplier 
+  Method : POST
+  Return : True or False
+  Body : {
+           "companyName":"",
+           "supplierName":"",
+           "address":"",
+           "city":"",
+           "state":"",
+           "userId":""   
+         }
+  Header : Add new supplier
+  Authentication : 
+ 
+14)URL : http:localhost:portnumber/api/suppliers/updatesupplier/{id} 
+  id : Supplier Id
+  Methode : PUT
+  Return : True or False
+  Body : {
+           "companyName":"",
+           "supplierName":"",
+           "address":"",
+           "city":"",
+           "state":"",
+           "userId":""   
+         }
+  Header : Update supplier information
+  Authentication : 
+
+15)URL : http:localhost:portnumber/api/suppliers/deletesupplier/{id} 
+  id : Supplier Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication :
+
+AgreeDoctor Service:
+
+1)URL : http:localhost:portnumber/api/agridoctors/getallagridoctors
+  Method : GET
+  Return : Json object of all agridoctors
+  Body : Null 
+  Header : List of agridoctors
+  Authentication : 
+   
+2)URL = http:localhost:portnumber/api/agridoctors/getagridoctor/{id} 
+  id : AgriDoctor Id
+  Method : GET
+  Return : Json object of agridoctor
+  Body : Null 
+  Header : agridoctor Details
+  Authentication : 
+
+3)URL = http:localhost:portnumber/api/agridoctors/insertagridoctor 
+  Method : POST
+  Return : True or False
+  Body : {
+           "companyName":"",
+           "supplierName":"",
+           "address":"",
+           "city":"",
+           "state":"",
+           "userId":""   
+         }
+  Header : Add new AgriDoctor 
+  Authentication : 
+ 
+4)URL : http:localhost:portnumber/api/agridoctors/updateagridoctor/{id} 
+  id : AgriDoctor Id
+  Methode : PUT
+  Return : True or False
+  Body : {
+           "companyName":"",
+           "supplierName":"",
+           "address":"",
+           "city":"",
+           "state":"",
+           "userId":""   
+         }
+  Header : Update AgriDoctor information
+  Authentication : 
+
+5)URL : http:localhost:portnumber/api/agridoctors/deleteagridoctor/{id} 
+  id : AgriDoctor Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication :
+
+6)URL : http:localhost:portnumber/api/questioncategories/getallquestioncategories
+  Method : GET
+  Return : Json object of all questioncategories
+  Body : Null 
+  Header : List of questioncategories
+  Authentication : 
+   
+7)URL = http:localhost:portnumber/api/questioncategories/getquestioncategory/{id} 
+  id :  Id
+  Method : GET
+  Return : Json object of questioncategory
+  Body : Null 
+  Header : questioncategory Details
+  Authentication : 
+
+8)URL = http:localhost:portnumber/api/questioncategories/insertquestioncategory 
+  Method : POST
+  Return : True or False
+  Body : {
+           "category":""   
+         }
+  Header : Add new questioncategory 
+  Authentication : 
+ 
+9)URL : http:localhost:portnumber/api/questioncategories/updatequestioncategory/{id} 
+  id : Id
+  Methode : PUT
+  Return : True or False
+  Body : {
+           "category":""   
+         }
+  Header : Update questioncategory information
+  Authentication : 
+
+10)URL : http:localhost:portnumber/api/questioncategories/deletequestioncategory/{id} 
+  id : Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication :
+
+11)URL : http:localhost:portnumber/api/questions/getallquestions
+  Method : GET
+  Return : Json object of all questions
+  Body : Null 
+  Header : List of questions
+  Authentication : 
+   
+12)URL = http:localhost:portnumber/api/questions/getquestion/{id} 
+  id :  Question Id
+  Method : GET
+  Return : Json object of question
+  Body : Null 
+  Header : question Details
+  Authentication : 
+
+13)URL = http:localhost:portnumber/api/questions/insertquestion
+  Method : POST
+  Return : True or False
+  Body : {
+           "questionDate":"" ,
+           "description":"", 
+           "customerId":"",   
+           "categoryId":"",
+         }
+  Header : Add new question 
+  Authentication : 
+ 
+14)URL : http:localhost:portnumber/api/questions/updatequestion/{id} 
+  id : Question Id
+  Methode : PUT
+  Return : True or False
+  Body : {
+           "questionDate":"" ,
+           "description":"", 
+           "customerId":"",   
+           "categoryId":"",
+         }
+  Header : Update question information
+  Authentication : 
+
+15)URL : http:localhost:portnumber/api/questions/deletequestion/{id} 
+  id : Question Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication :
+
+16)URL : http:localhost:portnumber/api/solutions/getallsolutions
+  Method : GET
+  Return : Json object of all solutions
+  Body : Null 
+  Header : List of solutions
+  Authentication : 
+   
+17)URL = http:localhost:portnumber/api/solutions/getsolution/{id} 
+  id :  Solution Id
+  Method : GET
+  Return : Json object of solution
+  Body : Null 
+  Header : solution Details
+  Authentication : 
+
+18)URL = http:localhost:portnumber/api/solutions/insertsolution
+  Method : POST
+  Return : True or False
+  Body : {
+           "description":"" 
+         }
+  Header : Add new solution 
+  Authentication : 
+ 
+19)URL : http:localhost:portnumber/api/solutions/updatesolution/{id} 
+  id : Solution Id
+  Methode : PUT
+  Return : True or False
+  Body : {
+           "description":""
+         }
+  Header : Update solution information
+  Authentication : 
+
+20)URL : http:localhost:portnumber/api/solutions/deletesolution/{id} 
+  id : Solution Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication :
+
+
+21)URL : http:localhost:portnumber/api/questionsolutions/getallquestionsolutions
+  Method : GET
+  Return : Json object of all questionsolutions
+  Body : Null 
+  Header : List of questionsolutions
+  Authentication : 
+   
+22)URL = http:localhost:portnumber/api/questionsolutions/getquestionsolution/{id} 
+  id :  QuestionSolutions Id
+  Method : GET
+  Return : Json object of questionsolutions
+  Body : Null 
+  Header : questionsolution Details
+  Authentication : 
+
+23)URL = http:localhost:portnumber/api/questionsolutions/insertquestionsolution
+  Method : POST
+  Return : True or False
+  Body : {
+           "questionId":"", 
+           "solutionId":"",
+           "solutionDate":"",
+           "agriDoctorId":""
+         }
+  Header : Add new questionsolutions 
+  Authentication : 
+ 
+24)URL : http:localhost:portnumber/api/questionsolutions/updatequestionsolution/{id} 
+  id : QuestionSolutions Id
+  Method : PUT
+  Return : True or False
+  Body : {
+           "questionId":"", 
+           "solutionId":"",
+           "solutionDate":"",
+           "agriDoctorId":""
+         }
+  Header : Update questionsolutions information
+  Authentication : 
+
+25)URL : http:localhost:portnumber/api/questionsolutions/deletequestionsolution/{id} 
+  id : QuestionSolutions Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication :
+
+BankingService: 
+
+1)URL : http:localhost:portnumber/api/accounts/getallaccounts
+  Method : GET
+  Return : Json object of all accounts
+  Body : Null 
+  Header : List of accounts
+  Authentication : 
+   
+2)URL = http:localhost:portnumber/api/accounts/getaccount/{id} 
+  id :  Account Id
+  Method : GET
+  Return : Json object of accounts
+  Body : Null 
+  Header : account Details
+  Authentication : 
+
+3)URL = http:localhost:portnumber/api/accounts/insertaccount
+  Method : POST
+  Return : True or False
+  Body : {
+           "accountNumber":"", 
+           "ifscCode":"",
+           "registerDate":"",
+           "userId":""
+         }
+  Header : Add new account 
+  Authentication : 
+ 
+4)URL : http:localhost:portnumber/api/accounts/updateaccount/{id} 
+  id : Account Id
+  Method : PUT
+  Return : True or False
+  Body : {
+           "accountNumber":"", 
+           "ifscCode":"",
+           "registerDate":"",
+           "userId":""
+         }
+  Header : Update accounts information
+  Authentication : 
+
+5)URL : http:localhost:portnumber/api/accounts/deleteaccount/{id} 
+  id : Account Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication :
+
+
+6)URL : http:localhost:portnumber/api/transactions/getalltransactions
+  Method : GET
+  Return : Json object of all transactions
+  Body : Null 
+  Header : List of transactions
+  Authentication : 
+   
+7)URL = http:localhost:portnumber/api/transactions/gettransaction/{id} 
+  id :  Transaction Id
+  Method : GET
+  Return : Json object of transactions
+  Body : Null 
+  Header : transaction Details
+  Authentication : 
+
+8)URL = http:localhost:portnumber/api/transactions/inserttransaction
+  Method : POST
+  Return : True or False
+  Body : {
+           "fromAccountNumber":"", 
+           "toAccountNumber":"",
+           "transactionDate":"",
+           "amount":""
+         }
+  Header : Add new transaction 
+  Authentication : 
+ 
+9)URL : http:localhost:portnumber/api/transactions/updatetransaction/{id} 
+  id : Transaction Id
+  Method : PUT
+  Return : True or False
+  Body : {
+           "fromAccountNumber":"", 
+           "toAccountNumber":"",
+           "transactionDate":"",
+           "amount":""
+         }
+  Header : Update transactions information
+  Authentication : 
+
+10)URL : http:localhost:portnumber/api/transactions/deletetransaction/{id} 
+  id : Transaction Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication :
+
+OrderProcessing Service:
+
+1)URL : http:localhost:portnumber/api/orders/getallorders
+  Method : GET
+  Return : Json object of all orders
+  Body : Null 
+  Header : List of orders
+  Authentication : 
+   
+2)URL = http:localhost:portnumber/api/orders/getorder/{id} 
+  id :  Order Id
+  Method : GET
+  Return : Json object of orders
+  Body : Null 
+  Header : order Details
+  Authentication : 
+
+3)URL = http:localhost:portnumber/api/orders/insertorder
+  Method : POST
+  Return : True or False
+  Body : {
+           "orderDate":"", 
+           "shippedDate":"",
+           "customerId":"",
+           "total":"",
+           "status":""
+         }
+  Header : Add new order 
+  Authentication : 
+ 
+4)URL : http:localhost:portnumber/api/orders/updateorder/{id} 
+  id : Order Id
+  Method : PUT
+  Return : True or False
+  Body : {
+           "orderDate":"", 
+           "shippedDate":"",
+           "customerId":"",
+           "total":"",
+           "status":""
+         }
+  Header : Update orders information
+  Authentication : 
+
+5)URL : http:localhost:portnumber/api/orders/deleteorder/{id} 
+  id : Order Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication :
+
+6)URL : http:localhost:portnumber/api/orderdetails/getallorderdetails
+  Method : GET
+  Return : Json object of all orderdetails
+  Body : Null 
+  Header : List of orderdetails
+  Authentication : 
+   
+7)URL = http:localhost:portnumber/api/orderdetails/getorderdetail/{id} 
+  id :  OrderDetails Id
+  Method : GET
+  Return : Json object of orderdetails
+  Body : Null 
+  Header : orderdetail Details
+  Authentication : 
+
+8)URL = http:localhost:portnumber/api/orderdetails/insertorderdetail
+  Method : POST
+  Return : True or False
+  Body : {
+           "orderId":"", 
+           "productId":"",
+           "quantity":"",
+           "discount":""
+         }
+  Header : Add new orderdetails 
+  Authentication : 
+ 
+9)URL : http:localhost:portnumber/api/orderdetails/updateorderdetail/{id} 
+  id : OrderDetails Id
+  Method : PUT
+  Return : True or False
+  Body : {
+           "orderId":"", 
+           "productId":"",
+           "quantity":"",
+           "discount":""
+         }
+  Header : Update orderdetails information
+  Authentication : 
+
+10)URL : http:localhost:portnumber/api/orderdetails/deleteorderdetail/{id} 
+  id : OrderDetails Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication :
+
+PaymentProcessing Service :
+
+
+1)URL : http:localhost:portnumber/api/payments/getallpayments
+  Method : GET
+  Return : Json object of all payments
+  Body : Null 
+  Header : List of payments
+  Authentication : 
+   
+2)URL = http:localhost:portnumber/api/payments/getpayment/{id} 
+  id :  Payment Id
+  Method : GET
+  Return : Json object of payments
+  Body : Null 
+  Header : Payment Details
+  Authentication : 
+
+3)URL = http:localhost:portnumber/api/payments/insertpayment
+  Method : POST
+  Return : True or False
+  Body : {
+           "paymentDate":"", 
+           "paymentMode":"",
+           "userId":"",
+           "orderId":""
+         }
+  Header : Add new payments 
+  Authentication : 
+ 
+4)URL : http:localhost:portnumber/api/payments/updatepayment/{id} 
+  id : OrderDetails Id
+  Method : PUT
+  Return : True or False
+  Body : {
+           "paymentDate":"", 
+           "paymentMode":"",
+           "userId":"",
+           "orderId":""
+         }
+  Header : Update payments information
+  Authentication : 
+
+5)URL : http:localhost:portnumber/api/payments/deletepayment/{id} 
+  id : Payment Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication :
+
+CRM Service:
+
+1)URL : http:localhost:portnumber/api/customers/getallcustomers
+  Method : GET
+  Return : Json object of all customers
+  Body : Null 
+  Header : List of customers
+  Authentication : 
+   
+2)URL = http:localhost:portnumber/api/customers/getcustomer/{id} 
+  id : Customer Id
+  Method : GET
+  Return : Json object of customers
+  Body : Null 
+  Header : customer Details
+  Authentication : 
+
+3)URL = http:localhost:portnumber/api/customers/insertcustomer
+  Method : POST
+  Return : True or False
+  Body : {
+           "firstName":"", 
+           "lastName":"",
+           "userId":""
+         }
+  Header : Add new customers 
+  Authentication : 
+ 
+4)URL : http:localhost:portnumber/api/customers/updatecustomer/{id} 
+  id : Customer Id
+  Method : PUT
+  Return : True or False
+  Body : {
+           "firstName":"", 
+           "lastName":"",
+           "userId":""
+         }
+  Header : Update customer information
+  Authentication : 
+
+5)URL : http:localhost:portnumber/api/customers/deletecustomer/{id} 
+  id : Customer Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication :
+
+DeliveryService :
+
+1)URL : http:localhost:portnumber/api/shippers/getallshippers
+  Method : GET
+  Return : Json object of all shippers
+  Body : Null 
+  Header : List of shippers
+  Authentication : 
+   
+2)URL = http:localhost:portnumber/api/shippers/getshipper/{id} 
+  id : Shipper Id
+  Method : GET
+  Return : Json object of shippers
+  Body : Null 
+  Header : shipper Details
+  Authentication : 
+
+3)URL = http:localhost:portnumber/api/shippers/insertshipper
+  Method : POST
+  Return : True or False
+  Body : {
+           "companyName":"",
+           "userId":""
+         }
+  Header : Add new shipper 
+  Authentication : 
+ 
+4)URL : http:localhost:portnumber/api/shippers/updateshipper/{id} 
+  id : Shipper Id
+  Method : PUT
+  Return : True or False
+  Body : {
+           "companyName":"",
+           "userId":""
+         }
+  Header : Update shipper information
+  Authentication : 
+
+5)URL : http:localhost:portnumber/api/shippers/deleteshipper/{id} 
+  id : Shipper Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication :
+
+HR Service :
+
+1)URL : http:localhost:portnumber/api/employees/getallemployees
+  Method : GET
+  Return : Json object of all employees
+  Body : Null 
+  Header : List of employees
+  Authentication : 
+   
+2)URL = http:localhost:portnumber/api/employees/getemployee/{id} 
+  id : Employee Id
+  Method : GET
+  Return : Json object of employees
+  Body : Null 
+  Header : employee Details
+  Authentication : 
+
+3)URL = http:localhost:portnumber/api/employees/insertemployee
+  Method : POST
+  Return : True or False
+  Body : {
+           "firstName":"",
+           "lastName":"",
+           "birthDate":"",
+           "hireDate":"",
+           "photo":"",
+           "reportsTo:"",
+           "userId":""
+         }
+  Header : Add new employee 
+  Authentication : 
+ 
+4)URL : http:localhost:portnumber/api/employees/updateemployee/{id} 
+  id : Employee Id
+  Method : PUT
+  Return : True or False
+  Body : {
+           "firstName":"",
+           "lastName":"",
+           "birthDate":"",
+           "hireDate":"",
+           "photo":"",
+           "reportsTo:"",
+           "userId":""
+         }
+  Header : Update employee information
+  Authentication : 
+
+5)URL : http:localhost:portnumber/api/employees/deleteemployee/{id} 
+  id : Employee Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication :
+
+Shopping Cart Service :
+
+1)URL : http:localhost:portnumber/api/carts/getallcarts
+  Method : GET
+  Return : Json object of all carts
+  Body : Null 
+  Header : List of carts
+  Authentication : 
+   
+2)URL = http:localhost:portnumber/api/carts/getcart/{id} 
+  id : Cart Id
+  Method : GET
+  Return : Json object of carts
+  Body : Null 
+  Header : cart Details
+  Authentication : 
+
+3)URL = http:localhost:portnumber/api/carts/insertcart
+  Method : POST
+  Return : True or False
+  Body : {
+           "customerId":"",
+           "total":""
+         }
+  Header : Add new cart 
+  Authentication : 
+ 
+4)URL : http:localhost:portnumber/api/carts/updatecart/{id} 
+  id : Cart Id
+  Method : PUT
+  Return : True or False
+  Body : {
+           "customerId":"",
+           "total":""
+         }
+  Header : Update cart information
+  Authentication : 
+
+5)URL : http:localhost:portnumber/api/carts/deletecart/{id} 
+  id : Cart Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication :
 
