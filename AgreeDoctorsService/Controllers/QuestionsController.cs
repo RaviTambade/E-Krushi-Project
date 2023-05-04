@@ -42,10 +42,10 @@ public class QuestionsController : ControllerBase
 
       [HttpPost]
     [Route("Insert")]
-    public bool InsertDoctor(Question question)
+    public bool InsertQuestion(Question question)
     {
 
-        bool status = _srv.InsertDoctor(question);
+        bool status = _srv.InsertQuestion(question);
 
         return status;
     }
@@ -53,10 +53,10 @@ public class QuestionsController : ControllerBase
 
      [HttpPut]
     [Route("update")]
-    public bool UpdateDoctor(Question question)
+    public bool UpdateQuestion(Question question)
     {
 
-    bool status = _srv.UpdateDoctor(question);
+    bool status = _srv.UpdateQuestion(question);
 
         return status;
     }
@@ -65,10 +65,10 @@ public class QuestionsController : ControllerBase
 
       [HttpDelete]
     [Route("Delete/{id}")]
-    public bool DeleteDoctor(int id)
+    public bool DeleteQuestion(int id)
     {
 
-        bool status = _srv.DeleteDoctor(id);
+        bool status = _srv.DeleteQuestion(id);
 
         return status;
     }

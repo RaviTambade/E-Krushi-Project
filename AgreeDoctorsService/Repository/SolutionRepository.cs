@@ -4,20 +4,20 @@ using MySql.Data.MySqlClient;
 
 namespace E_krushiApp.Repository;
 
-public class QuestionRepository:IQuestionRepository{
+public class SolutionRepository:ISolutionRepository{
 
 
     public static string conString ="server=localhost;port=3306;user=root;Password=PASSWORD;Database=E_krushi";
 
-    public List<Question> GetAll(){
+    public List<Solution> GetAll(){
 
-        List<Question> questions = new List<Question>();
+        List<Solution> solutions = new List<Solution>();
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionString= conString;
 
         try{
 
-            string query = "select * from questions";
+            string query = "select * from solutionss";
             MySqlCommand command = new MySqlCommand(query,connection);
             connection.Open();
             MySqlDataReader reader = command.ExecuteReader();
@@ -25,22 +25,18 @@ public class QuestionRepository:IQuestionRepository{
             while(reader.Read()){
 
 
-                int questionId= int.Parse(reader["question_id"].ToString());
-                DateTime questionDate= DateTime.Parse(reader["question_date"].ToString());
+                int solutionId= int.Parse(reader["solution_id"].ToString());
                 string description = reader["description"].ToString();
-                int custId =int.Parse(reader["cust_id"].ToString());
-                int categoryId = int.Parse(reader["category_id"].ToString());
+               
 
-
-                Question question = new Question(){
-                    QuestionId=questionId,
-                    QuestionDate=questionDate,
+                Solution solution = new Solution(){
+                    SolutionId=solutionId,
+                    
                     Description=description,
-                    CustId=custId,
-                    CategoryId=categoryId
+                   
                 };
 
-                questions.Add(question);
+                solutions.Add(solution);
             }
 
         }
@@ -52,20 +48,20 @@ public class QuestionRepository:IQuestionRepository{
             connection.Close();
         }
 
-        return questions;
+        return solutions;
     }
 
-     public Question GetById(int id)
+     public Solution GetById(int id)
     {
 
-        Question question = new Question();
+        Solution solution = new Solution();
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionString = conString;
 
         try
         {
 
-            string query = "select * from questions where question_id = @id";
+            string query = "select * from solutions where solution_id = @id";
             MySqlCommand command = new MySqlCommand(query, connection);
             connection.Open();
             command.Parameters.AddWithValue("@id", id);
@@ -73,19 +69,15 @@ public class QuestionRepository:IQuestionRepository{
             if (reader.Read())
             {
 
-               int questionId= int.Parse(reader["question_id"].ToString());
-                DateTime questionDate= DateTime.Parse(reader["question_date"].ToString());
+              int solutionId= int.Parse(reader["solution_id"].ToString());
                 string description = reader["description"].ToString();
-                int custId =int.Parse(reader["cust_id"].ToString());
-                int categoryId = int.Parse(reader["category_id"].ToString());
+               
 
-
-                 question = new Question{
-                    QuestionId=questionId,
-                    QuestionDate=questionDate,
+                 solution = new Solution(){
+                    SolutionId=solutionId,
+                    
                     Description=description,
-                    CustId=custId,
-                    CategoryId=categoryId
+                   
                 };
 
 
@@ -105,13 +97,13 @@ public class QuestionRepository:IQuestionRepository{
             connection.Close();
         }
 
-        return question;
+        return solution;
     }
 
 
 
 
-    public bool InsertQuestion(Question question)
+    public bool InsertSolution(Solution solution)
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection();
@@ -120,14 +112,13 @@ public class QuestionRepository:IQuestionRepository{
         try
         {
 
-            string query = "Insert into questions(question_id,question_date,description,cust_id,category_id) values(@questionId,@questionDate,@description,@custId,@categoryId)";
+            string query = "Insert into solutions(solution_id,description) values(@solutionId,@description)";
             MySqlCommand command = new MySqlCommand(query, connection);
             connection.Open();
-            command.Parameters.AddWithValue("@questionId", question.QuestionId);
-            command.Parameters.AddWithValue("questionDate", question.QuestionDate);
-            command.Parameters.AddWithValue("@description", question.Description);
-            command.Parameters.AddWithValue("@custId",question.CustId);
-            command.Parameters.AddWithValue("@categoryId", question.CategoryId);
+            command.Parameters.AddWithValue("@solutionId", solution.SolutionId);
+            
+            command.Parameters.AddWithValue("@description", solution.Description);
+            
             int rowsaffected = command.ExecuteNonQuery();
             if (rowsaffected > 0)
             {
@@ -151,7 +142,7 @@ public class QuestionRepository:IQuestionRepository{
 
 
 
-    public bool UpdateQuestion(Question question)
+    public bool UpdateSolution(Solution solution)
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection();
@@ -160,14 +151,13 @@ public class QuestionRepository:IQuestionRepository{
         try
         {
 
-            string query = "update questions set question_date=@questionDate,description=@description,cust_id=@custId,category_id=@categoryId where question_id=@questionId";
+            string query = "update solutions set description=@description where solution_id=@solutionId";
             MySqlCommand command = new MySqlCommand(query, connection);
             connection.Open();
-            command.Parameters.AddWithValue("@questionId", question.QuestionId);
-            command.Parameters.AddWithValue("questionDate", question.QuestionDate);
-            command.Parameters.AddWithValue("@description", question.Description);
-            command.Parameters.AddWithValue("@custId",question.CustId);
-            command.Parameters.AddWithValue("@categoryId", question.CategoryId);
+            command.Parameters.AddWithValue("@solutionId", solution.SolutionId);
+            
+            command.Parameters.AddWithValue("@description", solution.Description);
+            
             int rowsaffected = command.ExecuteNonQuery();
             if (rowsaffected > 0)
             {
@@ -192,7 +182,7 @@ public class QuestionRepository:IQuestionRepository{
 
 
 
-    public bool DeleteQuestion(int id)
+    public bool DeleteSolution(int id)
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection();
@@ -201,10 +191,10 @@ public class QuestionRepository:IQuestionRepository{
         try
         {
 
-            string query = ("delete from questions where question_id=@questionId");
+            string query = ("delete from solutions where solution_id=@solutionId");
             MySqlCommand command = new MySqlCommand(query, connection);
             connection.Open();
-            command.Parameters.AddWithValue("@questionId", id);
+            command.Parameters.AddWithValue("@solutionId", id);
             int rowsaffected = command.ExecuteNonQuery();
             if (rowsaffected > 0)
             {
@@ -224,5 +214,10 @@ public class QuestionRepository:IQuestionRepository{
         }
 
         return status;
+    }
+
+    public bool UpdateDoctor(Solution solution)
+    {
+        throw new NotImplementedException();
     }
 }

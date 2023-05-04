@@ -13,9 +13,9 @@ public class QuestionService:IQuestionService{
 
     public List<Question> GetAll() => _repo.GetAll();
      public Question GetById(int id)=>_repo.GetById(id);
-    public bool InsertDoctor(Question question)=>_repo.InsertDoctor(question);
+    public bool InsertQuestion(Question question)=>_repo.InsertQuestion(question);
 
-    public bool UpdateDoctor(Question question)=>_repo.UpdateDoctor(question);
+    public bool UpdateQuestion(Question question)=>_repo.UpdateQuestion(question);
 
-    public bool DeleteDoctor(int id)=>_repo.DeleteDoctor(id);
+    public bool DeleteQuestion(int id)=>_repo.DeleteQuestion(id);
 }
