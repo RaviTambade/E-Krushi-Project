@@ -1,0 +1,98 @@
+
+
+Users -
+
+Authentication Service:
+
+1.users/getallusers - Retrieve data of all users.
+  Authorization - admin and employee.
+  Description - The getall method gives the list of users.
+
+2.users/getbyid/{id} - retrieve data of user by their id.
+  Authorization - admin and employee.
+  Description - The getbyid method give the user by their id.
+
+3.users/insertuser - insert data of user by their id
+  Authorization - admin and employees.
+  Body - from body user data pass.
+  description - one or more user add in list.
+
+4.users/updateuser/{id} - update data of user by their id.
+  Authorization - employee and admin.
+  Body - from body update data pass to that id.
+  description - one or more user update into the list.
+
+5.users/deleteuser/{id} - delete data of user by their id.
+  Authorization - admin and employee
+  description - when we pass this request to server then data will be delete.
+
+Catlog Service:
+
+1.products/getallproducts - Retrieve data of all products.
+  Authorization - admin and employees.
+  Description - The getall method gives the list of products.
+
+2.products/getbyid/{id} - retrieve data of product by their id.
+  Authorization - admin and employees.
+  Description - The getbyid method give the user by their id.
+
+3.products/insertproduct - insert data of product by their id.
+  Authorization - admin and employees.
+  Body - from body product data pass.
+  description - one or more product add in list.
+
+4.products/updateproduct/{id} - update data of products by their id.
+  Authorization -admin and employees.
+  Body - from body update data pass to that id.
+  description - one or more products update in the list.
+
+5.products/deleteproduct/{id} - delete data of product by their id.
+  Authorization -admin and employees.
+  description - when we pass this request to server then data will be delete.
+
+6.categories/getallcategories - Retrieve data of all categories.
+  Authorization - admin and employees.
+  Description - The getall method gives the list of categories.
+
+7.categories/getbyid/{id} - retrieve data of category by their id.
+  Authorization - admin and employees.
+  Description - The getbyid method give the category by their id.
+
+8.categories/insertcategory - insert data of product by their id.
+  Authorization - admin and employees.
+  Body - from body category data pass.
+  description - one or more category add in list.
+
+9.categories/updatecategory/{id} - update data of category by their id.
+  Authorization - admin and employees.
+  Body - from body update data pass to that id.
+  description - one or more category update in the list.
+
+10.categories/deletecategory/{id} - delete data of category by their id.
+  Authorization - admin and employees.
+  description - when we pass this request to server then data will be delete.
+
+11.suppliers/getallsuppliers - Retrieve data of all suppliers
+  Authorization - admin and employees.
+  Description - The getall method gives the list of suppliers
+
+12.suppliers/getbyid/{id} - retrieve data of suppliers by their id.
+  Authorization - admin and employees.
+  Description - The getbyid method give the suppliers by their id.
+
+13.suppliers/insertsupplier - insert data of suppliers by their id.
+  Authorization - admin and employees.
+  Body - from body supplier data pass.
+  description - one or more supplier add in list.
+
+14.suppliers/updatesupplier/{id} - update data of suppliers by their id.
+  Authorization - admin and employees.
+  Body - from body update data pass to that id.
+  description - one or more supplier update in the list.
+
+15.suppliers/deletesupplier/{id} - delete data of supplier by their id.
+  Authorization - admin and employees.
+  description - when we pass this request to server then data will be delete.
+
+
+
