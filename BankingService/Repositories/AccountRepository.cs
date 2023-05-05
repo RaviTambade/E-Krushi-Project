@@ -1,9 +1,9 @@
 
-using AccountService.Models;
-using AccountService.Repositories.Interfaces;
+using BankingService.Models;
+using BankingService.Repositories.Interfaces;
 using MySql.Data.MySqlClient;
 
-namespace AccountService.Repositories{
+namespace BankingService.Repositories{
 
 public class AccountRepository : IAccountRepository
     {

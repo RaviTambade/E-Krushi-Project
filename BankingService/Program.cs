@@ -1,6 +1,7 @@
-using AccountService.Repositories;
-using AccountService.Repositories.Interfaces;
-using AccountService.Service.Interfaces;
+using BankingService.Repositories;
+using BankingService.Repositories.Interfaces;
+using BankingService.Service.Interfaces;
+using BankingService.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,6 @@
-using AccountService.Models;
+using BankingService.Models;
 
-namespace AccountService.Repositories.Interfaces
+namespace BankingService.Repositories.Interfaces
 {
     public interface IAccountRepository{
 

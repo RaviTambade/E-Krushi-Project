@@ -1,6 +1,6 @@
-using AccountService.Repositories.Interfaces;
-using AccountService.Service.Interfaces;
-using AccountService.Models;
+using BankingService.Repositories.Interfaces;
+using BankingService.Service.Interfaces;
+using BankingService.Models;
 
 namespace BankingService.Repositories;
 

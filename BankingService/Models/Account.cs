@@ -1,4 +1,4 @@
-namespace AccountService.Models;
+namespace BankingService.Models;
 
 public class Account{
     public int AccountId{get; set;}
