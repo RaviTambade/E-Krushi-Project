@@ -12,5 +12,6 @@ public class QuestionSolutionService:IQuestionSolutionService{
     }
 
     public List<QuestionSolution> GetAll() => _repo.GetAll();
+    public QuestionSolution GetById(int id)=>_repo.GetById(id);
 
 }

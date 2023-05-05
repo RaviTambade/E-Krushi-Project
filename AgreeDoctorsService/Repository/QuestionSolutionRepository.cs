@@ -54,4 +54,59 @@ public class QuestionSolutionRepository:IQuestionSolutionRepository{
 
         return questionSolutions;
     }
+
+
+     public QuestionSolution GetById(int id)
+    {
+
+        QuestionSolution questionSolution = new QuestionSolution();
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = conString;
+
+        try
+        {
+
+            string query = "select * from question_solutions where question_id = @id";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            connection.Open();
+            command.Parameters.AddWithValue("@id", id);
+            MySqlDataReader reader = command.ExecuteReader();
+            if (reader.Read())
+            {
+
+               int questionId= int.Parse(reader["question_id"].ToString());
+                 int solutionId= int.Parse(reader["solution_id"].ToString());
+                DateTime solutionDate= DateTime.Parse(reader["solution_date"].ToString());
+                int agriDoctorId =int.Parse(reader["agri_doctor_id"].ToString());
+                
+
+                 questionSolution = new QuestionSolution{
+                    QuestionId=questionId,
+                    SolutionId=solutionId,
+                    SolutionDate=solutionDate,
+                    AgriDoctorId=agriDoctorId
+                
+                };
+
+
+
+            }
+        }
+
+        catch (Exception ee)
+        {
+
+            throw ee;
+        }
+
+
+        finally
+        {
+            connection.Close();
+        }
+
+        return questionSolution;
+    }
+
+
 }

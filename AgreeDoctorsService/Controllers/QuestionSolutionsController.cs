@@ -29,6 +29,16 @@ public class QuestionSolutionsController : ControllerBase
         return questionSolutions;
     }
 
+     [HttpGet]
+    [Route("getbyid/{id}")]
+    public QuestionSolution GetById(int id)
+    {
+
+        QuestionSolution questionSolution = _srv.GetById(id);
+
+        return questionSolution;
+    }
+
 
 
 

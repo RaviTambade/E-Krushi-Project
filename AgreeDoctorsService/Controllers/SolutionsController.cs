@@ -7,13 +7,13 @@ namespace E_krushiApp.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class SolutionController : ControllerBase
+public class SolutionsController : ControllerBase
 {
 
 
     private readonly ISolutionService _srv;
 
-    public SolutionController(ISolutionService srv)
+    public SolutionsController(ISolutionService srv)
     {
         _srv = srv;
     }
