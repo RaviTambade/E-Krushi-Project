@@ -10,6 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddTransient<IAccountRepository,AccountRepository>();
 builder.Services.AddTransient<IAccountService,AccountService>();
+builder.Services.AddTransient<ITransactionRepository,TransactionRepository>();
+builder.Services.AddTransient<ITransactionService,TransactionService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
