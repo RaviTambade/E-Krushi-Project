@@ -40,8 +40,37 @@ public class QuestionSolutionsController : ControllerBase
     }
 
 
+    [HttpPost]
+    [Route("Insert")]
+    public bool InsertQuestionSolution(QuestionSolution questionSolution)
+    {
+
+        bool status = _srv.InsertQuestionSolution(questionSolution);
+
+        return status;
+    }
 
 
-     
+     [HttpPut]
+    [Route("update")]
+    public bool UpdateQuestionSolution(QuestionSolution questionSolution)
+    {
 
+    bool status = _srv.UpdateQuestionSolution(questionSolution);
+
+        return status;
+    }
+
+
+
+      [HttpDelete]
+    [Route("Delete/{id}")]
+    public bool DeleteQuestionSolution(int id)
+    {
+
+        bool status = _srv.DeleteQuestionSolution(id);
+
+        return status;
+    }
+   
 }

@@ -12,6 +12,13 @@ public class QuestionSolutionService:IQuestionSolutionService{
     }
 
     public List<QuestionSolution> GetAll() => _repo.GetAll();
+
     public QuestionSolution GetById(int id)=>_repo.GetById(id);
+
+    public bool InsertQuestionSolution(QuestionSolution questionSolution)=>_repo.InsertQuestionSolution(questionSolution);
+
+    public bool UpdateQuestionSolution(QuestionSolution questionSolution)=>_repo.UpdateQuestionSolution(questionSolution);
+
+    public bool DeleteQuestionSolution(int id)=>_repo.DeleteQuestionSolution(id);
 
 }
