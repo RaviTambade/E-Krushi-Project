@@ -1,23 +1,23 @@
-using AccountService.Models;
-using AccountService.Service.Interfaces;
+using BankingService.Models;
+using BankingService.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AccountService.Controllers;
+namespace E_Krushi.Service.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class AccountController : ControllerBase
+public class AccountsController : ControllerBase
 {
     private readonly IAccountService _service;
 
-    public AccountController(IAccountService service)
+    public AccountsController(IAccountService service)
     {
         _service = service;
     }
 
 
     [HttpGet]
-    [Route("getallaccount")]
+    [Route("getallaccounts")]
     public IEnumerable<Account> GetAllAccounts()
     {
         List<Account> accounts = _service.GetAllAccounts();
