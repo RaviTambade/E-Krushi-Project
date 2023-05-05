@@ -4,7 +4,7 @@ public interface IQuestionSolutionRepository{
 
     public List<QuestionSolution> GetAll();
 
-   // public QuestionSolution GetById(int id);
+    public QuestionSolution GetById(int id);
 
     //public bool InsertQuestionSolution(QuestionSolution qs);
      
