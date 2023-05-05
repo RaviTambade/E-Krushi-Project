@@ -18,6 +18,8 @@ builder.Services.AddTransient<IAgriRepository,AgriRepository>();
 builder.Services.AddTransient<IAgriDoctorsService,AgriDoctorsService>();
 builder.Services.AddTransient<IQuestionRepository,QuestionRepository>();
 builder.Services.AddTransient<IQuestionService,QuestionService>();
+builder.Services.AddTransient<ISolutionRepository,SolutionRepository>();
+builder.Services.AddTransient<ISolutionService,SolutionService>();
 builder.Services.AddTransient<IQuestionSolutionRepository,QuestionSolutionRepository>();
 builder.Services.AddTransient<IQuestionSolutionService,QuestionSolutionService>();
 var app = builder.Build();

@@ -17,7 +17,7 @@ public class SolutionRepository:ISolutionRepository{
 
         try{
 
-            string query = "select * from solutionss";
+            string query = "select * from solutions";
             MySqlCommand command = new MySqlCommand(query,connection);
             connection.Open();
             MySqlDataReader reader = command.ExecuteReader();
