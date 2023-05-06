@@ -41,7 +41,7 @@ public class QuestionSolutionsController : ControllerBase
 
 
     [HttpPost]
-    [Route("Insert")]
+    [Route("InsertQuestionSolution")]
     public bool InsertQuestionSolution(QuestionSolution questionSolution)
     {
 
@@ -52,7 +52,7 @@ public class QuestionSolutionsController : ControllerBase
 
 
      [HttpPut]
-    [Route("update")]
+    [Route("UpdateQuestionSolution")]
     public bool UpdateQuestionSolution(QuestionSolution questionSolution)
     {
 
@@ -64,7 +64,7 @@ public class QuestionSolutionsController : ControllerBase
 
 
       [HttpDelete]
-    [Route("Delete/{id}")]
+    [Route("DeleteDeleteQuestionSolution/{id}")]
     public bool DeleteQuestionSolution(int id)
     {
 

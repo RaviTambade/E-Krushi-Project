@@ -19,7 +19,7 @@ public class AgriDoctorsController : ControllerBase
 
 
     [HttpGet]
-    [Route("getall")]
+    [Route("GetAllAgriDoctor")]
     public List<AgriDoctor> GetAll()
     {
 
@@ -41,7 +41,7 @@ public class AgriDoctorsController : ControllerBase
 
 
       [HttpPost]
-    [Route("Insert")]
+    [Route("InsertDoctor")]
     public bool InsertDoctor(AgriDoctor doctor)
     {
 
@@ -52,7 +52,7 @@ public class AgriDoctorsController : ControllerBase
 
 
      [HttpPut]
-    [Route("update")]
+    [Route("UpdateDoctor")]
     public bool UpdateDoctor(AgriDoctor doctor)
     {
 
@@ -64,7 +64,7 @@ public class AgriDoctorsController : ControllerBase
 
 
       [HttpDelete]
-    [Route("Delete/{id}")]
+    [Route("DeleteDoctor/{id}")]
     public bool DeleteDoctor(int id)
     {
 

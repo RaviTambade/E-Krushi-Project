@@ -20,7 +20,7 @@ public class QuestionsController : ControllerBase
 
 
     [HttpGet]
-    [Route("getall")]
+    [Route("GetAllQuestion")]
     public List<Question> GetAll()
     {
 
@@ -41,7 +41,7 @@ public class QuestionsController : ControllerBase
 
 
       [HttpPost]
-    [Route("Insert")]
+    [Route("InsertQuestion")]
     public bool InsertQuestion(Question question)
     {
 
@@ -52,7 +52,7 @@ public class QuestionsController : ControllerBase
 
 
      [HttpPut]
-    [Route("update")]
+    [Route("UpdateQuestion")]
     public bool UpdateQuestion(Question question)
     {
 
@@ -64,7 +64,7 @@ public class QuestionsController : ControllerBase
 
 
       [HttpDelete]
-    [Route("Delete/{id}")]
+    [Route("DeleteQuestion/{id}")]
     public bool DeleteQuestion(int id)
     {
 
