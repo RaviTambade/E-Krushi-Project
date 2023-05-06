@@ -20,7 +20,7 @@ public class SolutionsController : ControllerBase
 
 
     [HttpGet]
-    [Route("getall")]
+    [Route("getallSolution")]
     public List<Solution> GetAll()
     {
 
@@ -41,7 +41,7 @@ public class SolutionsController : ControllerBase
 
 
       [HttpPost]
-    [Route("Insert")]
+    [Route("InsertSolution")]
     public bool InsertSolution(Solution solution)
     {
 
@@ -52,7 +52,7 @@ public class SolutionsController : ControllerBase
 
 
      [HttpPut]
-    [Route("update")]
+    [Route("updateSolution")]
     public bool UpdateSolution(Solution solution)
     {
 
@@ -64,7 +64,7 @@ public class SolutionsController : ControllerBase
 
 
       [HttpDelete]
-    [Route("Delete/{id}")]
+    [Route("DeleteSolution/{id}")]
     public bool DeleteSolution(int id)
     {
 
