@@ -14,10 +14,12 @@ public class UserService : IUserService
 
     public User GetById(int id)=>_repo.GetById(id);
 
-    public bool InsertUser(User user)=>_repo.InsertUser(user);
+    public bool Register(User user)=>_repo.Register(user);
 
-    public bool UpdateUser(User user)=>_repo.InsertUser(user);
+    public bool UpdateUser(User user)=>_repo.UpdateUser(user);
 
     public bool DeleteUser(int id)=>_repo.DeleteUser(id);
+
+    public bool ValidateUser(Credential user)=>_repo.ValidateUser(user);
     }
 

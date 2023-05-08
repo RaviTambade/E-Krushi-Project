@@ -7,7 +7,7 @@ namespace E_krushiApp.Repositories;
 public class UserRepository:IUserRepository{
 
 
-    public string conString="server=localhost; user=root; port=3306; password=PASSWORD; database=E_krushi ";
+    public string conString="server=localhost; user=root; port=3306; password=Password; database=E_krushi ";
     public  List<User> GetAllUsers(){
         List<User> users = new List<User>();
         MySqlConnection connection = new MySqlConnection();
@@ -48,6 +48,38 @@ public class UserRepository:IUserRepository{
  
     
     return users;
+    }
+
+    public bool ValidateUser(Credential user)
+    {
+        bool status = false;
+        MySqlConnection connection = new MySqlConnection(conString);
+        try
+        {
+            MySqlCommand command = new MySqlCommand();
+            command.CommandText = "SELECT EXISTS(SELECT * FROM users where email=@email and password=@password)";
+            command.Connection = connection;
+            command.Parameters.AddWithValue("@email", user.Email);
+            command.Parameters.AddWithValue("@password", user.Password);
+            connection.Open();
+            MySqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+            if ((Int64)reader[0] == 1)
+            {
+                status = true;
+            }
+            reader.Close();
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return status;
+
     }
 
 
@@ -94,7 +126,7 @@ public class UserRepository:IUserRepository{
     }
 
 
-      public bool InsertUser(User user){
+      public bool Register(User user){
 
         bool status= false;
         MySqlConnection con = new MySqlConnection();

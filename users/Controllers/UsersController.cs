@@ -38,10 +38,10 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost]
-    [Route("InsertUser")]
-       public bool InsertUser(User user)
+    [Route("register")]
+       public bool Register(User user)
     {
-        bool status = _service.InsertUser(user);
+        bool status = _service.Register(user);
 
 
         return status;
@@ -62,6 +62,16 @@ public class UsersController : ControllerBase
    public bool DeleteUser(int id){
     bool status =_service.DeleteUser(id);
 
+    return status;
+   }
+
+   [HttpPost]
+   [Route("ValidateUser")]
+   public bool ValidateUser(Credential user){
+    bool status =_service.ValidateUser(user);
+    if(status==true){
+        Console.WriteLine("user is valid");
+    }
     return status;
    }
 }

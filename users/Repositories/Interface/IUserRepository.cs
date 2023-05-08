@@ -9,9 +9,11 @@ namespace E_krushiApp.Repositories.Interface;
 
     public User GetById(int id);
 
-    public bool InsertUser(User user);
+    public bool Register(User user);
 
     public bool UpdateUser(User user);
-
     public bool DeleteUser(int id);
+    
+    public bool ValidateUser(Credential user);
+
  }
