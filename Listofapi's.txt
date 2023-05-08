@@ -864,3 +864,50 @@ Shopping Cart Service :
   Body : Null
   Authentication :
 
+6)URL : http:localhost:portnumber/api/cartitems/getallcartitems
+  Method : GET
+  Return : Json object of all cartitems
+  Body : Null 
+  Header : List of cartitems
+  Authentication : 
+   
+7)URL = http:localhost:portnumber/api/cartitems/getcartitem/{id} 
+  id : CartItems Id
+  Method : GET
+  Return : Json object of cartitems
+  Body : Null 
+  Header : cartitem Details
+  Authentication : 
+
+8)URL = http:localhost:portnumber/api/cartitems/insertcartitem
+  Method : POST
+  Return : True or False
+  Body : {
+           "cartId":"",
+           "productId":"",
+           "quantity":""
+         }
+  Header : Add new cartitem 
+  Authentication : 
+ 
+9)URL : http:localhost:portnumber/api/cartitems/updatecartitem/{id} 
+  id : CartItem Id
+  Method : PUT
+  Return : True or False
+  Body : {
+           "cartId":"",
+           "productId":"",
+           "quantity":""
+         }
+  Header : Update cartitem information
+  Authentication : 
+
+10)URL : http:localhost:portnumber/api/cartitems/deletecartitem/{id} 
+  id : CartItem Id
+  Method : DELETE
+  Return : True or False
+  Body : Null
+  Authentication :
+
+
+
