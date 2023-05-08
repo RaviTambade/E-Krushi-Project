@@ -19,8 +19,8 @@ public class AgriDoctorsController : ControllerBase
 
 
     [HttpGet]
-    [Route("GetAllAgriDoctor")]
-    public List<AgriDoctor> GetAll()
+    [Route("GetAllAgriDoctor")]                            
+    public List<AgriDoctor> GetAll()                 //This method gives Agri doctor List.
     {
 
         List<AgriDoctor> doctors = _srv.GetAll();
@@ -30,7 +30,7 @@ public class AgriDoctorsController : ControllerBase
 
 
     [HttpGet]
-    [Route("getbyid/{id}")]
+    [Route("getbyid/{id}")]                          //This method gives agri doctor details by id.
     public AgriDoctor GetById(int id)
     {
 
@@ -41,7 +41,7 @@ public class AgriDoctorsController : ControllerBase
 
 
       [HttpPost]
-    [Route("InsertDoctor")]
+    [Route("InsertDoctor")]                           //this method is used for insert new agri doctor.
     public bool InsertDoctor(AgriDoctor doctor)
     {
 
@@ -52,7 +52,7 @@ public class AgriDoctorsController : ControllerBase
 
 
      [HttpPut]
-    [Route("UpdateDoctor")]
+    [Route("UpdateDoctor")]                                 //this method is used for update agri doctor.
     public bool UpdateDoctor(AgriDoctor doctor)
     {
 
@@ -65,7 +65,7 @@ public class AgriDoctorsController : ControllerBase
 
       [HttpDelete]
     [Route("DeleteDoctor/{id}")]
-    public bool DeleteDoctor(int id)
+    public bool DeleteDoctor(int id)                      //this method is used for remove agri doctor .
     {
 
         bool status = _srv.DeleteDoctor(id);
