@@ -27,4 +27,8 @@ public class OrderService : IOrderService{
     public List<Order> GetAllCancelled() => _repo.GetAllCancelled();
 
     public List<Order> GetAllDelivered() => _repo.GetAllDelivered();
+
+    public int GetCountByDate(DateTime date) => _repo.GetCountByDate(date);
+
+
 }

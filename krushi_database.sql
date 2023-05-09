@@ -495,7 +495,8 @@ select * from orders;
 
 SELECT count(*) from orders ;
 
-SELECT count(*) from orders where order_date >'2020-04-31 12:00:00';
+SELECT count(*) from orders where order_date <'2020-02-07T12:14:13';
+
 
 -- this query return count of orders of 1st month of 2020; 
 SELECT count(*) FROM orders WHERE  order_date BETWEEN '2020-01-01 12:12:12' AND '2020-01-31 12:12:12';
@@ -510,3 +511,6 @@ SELECT count(*) FROM orders WHERE  order_date BETWEEN '2020-05-01' AND '2020-05-
 
 SELECT count(*) FROM orders WHERE  order_date BETWEEN '2020-06-01' AND '2020-06-31';
 
+
+
+SELECT COUNT(*) from orders where order_date< '2020-04-30' ;

@@ -61,5 +61,18 @@ namespace OrderProcessingService.Controllers
             bool status = _ordersvc.DeleteOrder(id);
             return status;
         }
+
+
+
+        [HttpGet]
+        [Route("Count/{date}")]
+        public int GetCountByDate(DateTime date)
+        {
+            
+            Console.WriteLine(date);
+            int counts = _ordersvc.GetCountByDate(date);
+            return counts;
+        }
+
     }
 }
