@@ -50,9 +50,15 @@ public class RolesController : ControllerBase
     }
 
     [HttpPut]
-    [Route("Update")]
+    [Route("Update/{id}")]
 
-    public bool UpdateRole(Role role){
+    public bool UpdateRole(int id,[FromBody]Role role){
+        Role oldRole = _srv.GetById(id);
+        if(oldRole.RoleId==0){
+
+            return false;
+        }
+        role.RoleId=id;
         bool status=_srv.UpdateRole(role);
 
         return status;

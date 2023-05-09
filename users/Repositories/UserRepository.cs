@@ -7,7 +7,7 @@ namespace E_krushiApp.Repositories;
 public class UserRepository:IUserRepository{
 
 
-    public string conString="server=localhost; user=root; port=3306; password=Password; database=E_krushi ";
+    public string conString="server=localhost; user=root; port=3306; password=PASSWORD; database=E_krushi ";
     public  List<User> GetAllUsers(){
         List<User> users = new List<User>();
         MySqlConnection connection = new MySqlConnection();

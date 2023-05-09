@@ -141,7 +141,35 @@ INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2022-1
 INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2023-10-01 12:13:11','2023-10-02 10:22:12',6,7100,'cancelled');
 INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-05-01 12:14:13','2020-05-02 10:12:12',7,5020,'initiated');
 
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-12-05 12:12:12','2020-12-02 10:12:12',1,500,'initiated');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-11-05 12:12:12','2020-11-02 10:02:12',2,800,'delivered');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-10-10 12:12:12','2020-10-02 10:22:12',3,700,'cancelled');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-09-01 12:10:12','2021-12-02 10:12:12',4,500,'initiated');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-08-01 12:11:00','2022-11-02 10:02:12',5,1800,'delivered');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-07-01 12:13:11','2023-10-02 10:22:12',6,7100,'cancelled');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-06-01 12:14:13','2020-05-02 10:12:12',7,5020,'initiated');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-05-01 12:12:12','2020-12-02 10:12:12',1,500,'initiated');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-04-01 12:12:12','2020-11-02 10:02:12',2,800,'delivered');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-03-01 12:12:12','2020-10-02 10:22:12',3,700,'cancelled');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-02-01 12:10:12','2020-02-02 10:12:12',4,500,'initiated');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-01-01 12:11:00','2020-11-02 10:02:12',5,1800,'delivered');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-01-01 12:13:11','2023-01-02 10:22:12',6,7100,'cancelled');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-05-02 12:14:13','2020-05-02 10:12:12',7,5020,'initiated');
 
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-02-05 12:12:12','2020-12-02 10:12:12',1,500,'initiated');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-02-05 12:12:12','2020-11-02 10:02:12',2,800,'delivered');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-02-10 12:12:12','2020-10-02 10:22:12',3,700,'cancelled');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-01-01 12:10:12','2021-12-02 10:12:12',4,500,'initiated');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-01-01 12:11:00','2022-11-02 10:02:12',5,1800,'delivered');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-01-01 12:13:11','2023-10-02 10:22:12',6,7100,'cancelled');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-01-01 12:14:13','2020-05-02 10:12:12',7,5020,'initiated');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-03-01 12:12:12','2020-12-02 10:12:12',1,500,'initiated');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-03-01 12:12:12','2020-11-02 10:02:12',2,800,'delivered');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-03-01 12:12:12','2020-10-02 10:22:12',3,700,'cancelled');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-04-01 12:10:12','2020-12-02 10:12:12',4,500,'initiated');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-04-01 12:11:00','2020-11-02 10:02:12',5,1800,'delivered');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-04-01 12:13:11','2023-10-02 10:22:12',6,7100,'cancelled');
+INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-06-02 12:14:13','2020-06-02 10:12:12',7,5020,'initiated');
 
 SELECT * FROM customers;
 
@@ -463,5 +491,22 @@ select * from roles;
 select * from user_roles;
 SELECT * FROM feedbacks;
 select * from agri_doctors;
+select * from orders;
 
+SELECT count(*) from orders ;
+
+SELECT count(*) from orders where order_date >'2020-04-31 12:00:00';
+
+-- this query return count of orders of 1st month of 2020; 
+SELECT count(*) FROM orders WHERE  order_date BETWEEN '2020-01-01 12:12:12' AND '2020-01-31 12:12:12';
+
+SELECT count(*) FROM orders WHERE  order_date BETWEEN '2020-02-01' AND '2020-02-31';
+
+SELECT count(*) FROM orders WHERE  order_date BETWEEN '2020-03-01' AND '2020-03-31';
+
+SELECT count(*) FROM orders WHERE  order_date BETWEEN '2020-04-01' AND '2020-04-31';
+
+SELECT count(*) FROM orders WHERE  order_date BETWEEN '2020-05-01' AND '2020-05-31';
+
+SELECT count(*) FROM orders WHERE  order_date BETWEEN '2020-06-01' AND '2020-06-31';
 
