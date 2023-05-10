@@ -22,7 +22,7 @@ export class PagesserviceService {
   }
 
   public TotalCount():Observable<any>{
-    let url = "http://localhost:5150/orders/totalcount";
+    let url = "http://localhost:5057/orders/totalcount";
     return this.http.get<any>(url);
   }
 }

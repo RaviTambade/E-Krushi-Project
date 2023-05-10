@@ -6,7 +6,7 @@ using OrderProcessingService.Services.Interfaces;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddCors();
 builder.Services.AddControllers();
 builder.Services.AddTransient<IOrderRepository,OrderRepository>();
 builder.Services.AddTransient<IOrderService,OrderService>();
@@ -26,6 +26,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors(x => x.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
 
 app.UseAuthorization();
 
