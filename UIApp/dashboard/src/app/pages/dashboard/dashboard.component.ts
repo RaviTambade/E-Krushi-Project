@@ -8,6 +8,8 @@ import {
   chartExample1,
   chartExample2
 } from "../../variables/charts";
+import { PagesserviceService } from '../pagesservice.service';
+import { Order } from '../order';
 
 @Component({
   selector: 'app-dashboard',
@@ -21,8 +23,16 @@ export class DashboardComponent implements OnInit {
   public salesChart;
   public clicked: boolean = true;
   public clicked1: boolean = false;
+  public orders : Order ;
 
-  ngOnInit() {
+ constructor(private svc : PagesserviceService){
+
+ }
+  ngOnInit():void {
+    this.svc.TotalCount().subscribe((response)=>{
+      this.orders = response;
+      console.log(response);
+    })
 
     this.datasets = [
       [0, 20, 10, 30, 15, 40, 20, 60, 60],
@@ -56,5 +66,7 @@ export class DashboardComponent implements OnInit {
     this.salesChart.data.datasets[0].data = this.data;
     this.salesChart.update();
   }
+
+  
 
 }
