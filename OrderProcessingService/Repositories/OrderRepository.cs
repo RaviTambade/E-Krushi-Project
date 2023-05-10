@@ -6,7 +6,7 @@ using System.Globalization;
 namespace OrderProcessingService.Repositories;
 public class OrderRepository : IOrderRepository
 {
-    public static string conString = "server=localhost; user=root; port=3306; password=PASSWORD; database=E_Krushi";
+    public static string conString = "server=localhost; user=root; port=3306; password=Password; database=E_Krushi";
     public List<Order> GetAllOrders()
     {
         List<Order> orders = new List<Order>();
@@ -333,6 +333,31 @@ public class OrderRepository : IOrderRepository
             con.Open();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@date",date);
+             count = (Int64)command.ExecuteScalar();
+            
+           
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            con.Close();
+        }
+        return (int)count;
+    }
+    public  int TotalCount()
+    {
+
+        Int64 count=0;
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = conString;
+        try
+        {
+            string query = "SELECT count(*) FROM orders";
+            con.Open();
+            MySqlCommand command = new MySqlCommand(query, con);
              count = (Int64)command.ExecuteScalar();
             
            

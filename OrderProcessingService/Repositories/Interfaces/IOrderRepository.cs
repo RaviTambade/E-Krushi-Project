@@ -20,5 +20,7 @@ public interface IOrderRepository{
     List<Order> GetAllCancelled();
 
     int  GetCountByDate(DateTime date);
+
+    int  TotalCount();
     
 }

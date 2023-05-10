@@ -30,5 +30,5 @@ public class OrderService : IOrderService{
 
     public int GetCountByDate(DateTime date) => _repo.GetCountByDate(date);
 
-
+    public int TotalCount() => _repo.TotalCount();
 }

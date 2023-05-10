@@ -6,7 +6,7 @@ namespace OrderProcessingService.Repositories;
 
 public class OrderDetailsRepository : IOrderDetailsRepository{
 
-    public static string conString = "server=localhost; user=root; port=3306; password=PASSWORD; database=E_Krushi";
+    public static string conString = "server=localhost; user=root; port=3306; password=Password; database=E_Krushi";
     public List<OrderDetails> GetAllOrderDetails()
     {
         List<OrderDetails> orderDetails = new List<OrderDetails>();

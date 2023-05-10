@@ -74,5 +74,13 @@ namespace OrderProcessingService.Controllers
             return counts;
         }
 
+        [HttpGet]
+        [Route("totalcount")]
+        public int TotalCount()
+        {
+            int totalCounts = _ordersvc.TotalCount();
+            return totalCounts;
+        }
+
     }
 }
