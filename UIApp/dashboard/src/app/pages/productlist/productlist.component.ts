@@ -12,6 +12,7 @@ import { Product } from '../product';
 })
 export class ProductlistComponent implements OnInit {
   products : Product[] | undefined;
+  path :"/assets";
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

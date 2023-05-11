@@ -6,7 +6,7 @@ namespace CatlogService.Repositories
 
     public class ProductRepository:IProductRepository{
 
-    public static string conString = "server=localhost; port=3306; user=root; password=PASSWORD; database=E_Krushi";
+    public static string conString = "server=localhost; port=3306; user=root; password=Password; database=E_Krushi";
 
         public List<Product> GetAllProducts()
         {
@@ -64,7 +64,7 @@ namespace CatlogService.Repositories
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while(reader.Read())
                 {
-                    string title = reader["product_title"].ToString();
+                    string productTitle = reader["product_title"].ToString();
                     double unitPrice = double.Parse(reader["unit_price"].ToString());
                     int stockAvailable = int.Parse(reader["stock_available"].ToString());
                     string image = reader["image"].ToString();
@@ -73,7 +73,7 @@ namespace CatlogService.Repositories
                     product = new Product()
                     {
                         ProductId = productId,
-                        ProductTitle = title,
+                        ProductTitle = productTitle,
                         UnitPrice = unitPrice,
                         StockAvailable = stockAvailable,
                         Image = image,

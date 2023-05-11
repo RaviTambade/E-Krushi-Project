@@ -1,11 +1,11 @@
 <br>
 <br>
-<input type="number" [(ngModel)]="productId"/>
+<input type="number" [(ngModel)]="productId" />
 <button (click)="getProduct(productId)">Search</button>
 
 <div *ngIf="product && product.productId !=0">
   <p><label>ProductId:</label>{{product.productId}}</p>
-  <p><label>Title:</label>{{product.title}}</p>
+  <p><label>Product Title:</label>{{product.productTitle}}</p>
   <p><label>unitPrice:</label>{{product.unitPrice}}</p>
   <p><label>stockavailable:</label>{{product.stockAvailable}}</p>
   <p><label>image:</label>{{product.image}}</p>
@@ -13,10 +13,10 @@
   <hr>
   <div *ngIf=" product && product.productId==0 ">
     <p>product not Found</p>
-</div>
   </div>
+</div>
 
- <!-- <input type="text" [(ngModel)]="orderId"/>
+<!-- <input type="text" [(ngModel)]="orderId"/>
 <button (click) ="getById(orderId)">Details</button>  
 <app-getorder [orderId] = "orderId" (sendOrder)="receiveOrder($event)" hidden></app-getorder>
 
