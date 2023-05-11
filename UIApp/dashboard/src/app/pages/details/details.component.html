@@ -1,0 +1,14 @@
+<br>
+<br>
+<input type="number" [(ngModel)]="productId">
+<button (click)="getProduct(productId)">Search</button>
+
+<div *ngIf="let product of products">
+  <p><label>ProductId:</label>{{product.productId}}</p>
+  <p><label>Title:</label>{{product.title}}</p>
+  <p><label>unitPrice:</label>{{product.unitPrice}}</p>
+  <p><label>stockavailable:</label>{{product.stockAvailable}}</p>
+  <p><label>image:</label>{{product.image}}</p>
+  <p><label>categoryId:</label>{{product.categoryId}}</p>
+  <hr>
+  </div>

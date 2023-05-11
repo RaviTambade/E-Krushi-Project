@@ -23,17 +23,20 @@ export class DashboardComponent implements OnInit {
   public salesChart;
   public clicked: boolean = true;
   public clicked1: boolean = false;
-  orders:Order  |undefined ;
+  // orders:Order  |undefined ;
 
- constructor(private svc : PagesserviceService){
+//  constructor(private svc : PagesserviceService){
 
- }
-  ngOnInit():void {
-    console.log("ngOnInit");
-    this.svc.TotalCount().subscribe((response)=>{
-      this.orders = response;
-      console.log(response);
-    })
+//  }
+//   ngOnInit():void {
+//     console.log("ngOnInit");
+//     this.svc.TotalCount().subscribe((response)=>{
+//       this.orders = response;
+//       console.log(response);
+//     })
+
+ngOnInit():void{
+    
 
     this.datasets = [
       [0, 20, 10, 30, 15, 40, 20, 60, 60],
@@ -67,7 +70,7 @@ export class DashboardComponent implements OnInit {
     this.salesChart.data.datasets[0].data = this.data;
     this.salesChart.update();
   }
-
+}
   
 
-}
+

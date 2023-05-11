@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './user';
 import { Order } from './order';
+import { Product } from './product';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,18 @@ export class PagesserviceService {
     return this.http.post<User>(url,user);
   }
 
-  public TotalCount():Observable<any>{
-    let url = "http://localhost:5057/orders/totalcount";
+  // public TotalCount():Observable<any>{
+  //   let url = "http://localhost:5057/orders/totalcount";
+  //   return this.http.get<any>(url);
+  // }
+  
+  public getAllProducts():Observable<any>{
+    let url = "http://localhost:5214/product/getallproducts";
     return this.http.get<any>(url);
+  }
+
+  public getProduct(productId:number):Observable<any>{
+    let url = "http://localhost:5214/product/getproduct/" +productId;
+    return this.http.get<Product>(url);
   }
 }

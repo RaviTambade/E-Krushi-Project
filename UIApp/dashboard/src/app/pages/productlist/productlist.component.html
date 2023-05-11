@@ -1,0 +1,22 @@
+
+<!-- <div *ngFor = "let product of products">
+  <p (click) = onClick(product.productId)><b>product:</b>{{product.title}}</p>
+</div> -->
+
+<h1> Product List</h1>
+
+<div *ngFor="let product of products">
+<p><label>ProductId:</label>{{product.productId}}</p>
+<p><label>Title:</label>{{product.title}}</p>
+<p><label>unitPrice:</label>{{product.unitPrice}}</p>
+<p><label>stockavailable:</label>{{product.stockAvailable}}</p>
+<p><label>image:</label>{{product.image}}</p>
+<p><label>categoryId:</label>{{product.categoryId}}</p>
+<hr>
+</div>
+
+<!-- <div *ngFor="let product of products">
+   
+    <label> <b>Product Title:</b>{{product.title}}</label>
+    <hr>
+ </div>   -->
