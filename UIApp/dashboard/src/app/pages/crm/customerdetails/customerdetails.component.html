@@ -1,0 +1,15 @@
+<br>
+<br>
+<input type="number" [(ngModel)]="custId" />
+<button (click)="getCustomer(custId)">Search</button>
+
+<div *ngIf="customer && customer.custId !=0">
+  <p><label>customerId:</label>{{customer.custId}}</p>
+  <p><label>firstName:</label>{{customer.firstName}}</p>
+  <p><label>lastName:</label>{{customer.lastName}}</p>
+  <p><label>userId:</label>{{customer.userId}}</p>
+  <hr>
+  <div *ngIf=" customer &&  customer.custId==0 ">
+    <p>product not Found</p>
+  </div>
+</div>

@@ -31,11 +31,14 @@ public class CustomerController : ControllerBase
         return customers;
     }
 
-//     public JsonResult GetCustomer(int id)
-//     {
-//         var customer = _srv.GetCustomer(id);
-//         return Json(customer);
-//     }
+
+   [HttpGet]
+   [Route ("getCustomer/{id}")]
+    public Customer GetCustomer(int id)
+    {
+        var customer = _srv.GetCustomer(id);
+        return customer;
+    }
 
 //     [HttpPost]
 //      public JsonResult Insert([FromBody] Customer customer)
