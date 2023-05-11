@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { PagesserviceService } from '../pagesservice.service';
+import { Product } from '../product';
 
 @Component({
   selector: 'app-details',
@@ -18,14 +19,16 @@ export class DetailsComponent {
     );
 
     constructor(private breakpointObserver: BreakpointObserver,private svc : PagesserviceService) {}
-    productId : any
+    productId : number    | undefined;
+    product : Product  | undefined;
+    
     ngOnInit(): void {
       }
 
     getProduct(productId:number){
     this.svc.getProduct(productId).subscribe((response)=>{
-      this.productId=response;
-      console.log(response);
+      this.product=response;
+      console.log(this.product);
     
   }
    );

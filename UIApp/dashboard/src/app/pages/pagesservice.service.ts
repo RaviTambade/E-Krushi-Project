@@ -32,8 +32,8 @@ export class PagesserviceService {
     return this.http.get<any>(url);
   }
 
-  public getProduct(productId:number):Observable<any>{
-    let url = "http://localhost:5214/product/getproduct/" +productId;
+  public getProduct(productId:number):Observable<Product>{
+    let url = "http://localhost:5214/product/getproduct/"+ productId;
     return this.http.get<Product>(url);
   }
-}
+ }
