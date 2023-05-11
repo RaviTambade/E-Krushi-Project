@@ -6,7 +6,7 @@ namespace CatlogService.Repositories
 
     public class ProductRepository:IProductRepository{
 
-    public static string conString = "server=localhost; port=3306; user=root; password=Password; database=E_Krushi";
+    public static string conString = "server=localhost; port=3306; user=root; password=PASSWORD; database=E_Krushi";
 
         public List<Product> GetAllProducts()
         {
@@ -22,7 +22,7 @@ namespace CatlogService.Repositories
                 while(reader.Read())
                 {
                     int productId = int.Parse(reader["product_id"].ToString());
-                    string title = reader["product_title"].ToString();
+                    string productTitle = reader["product_title"].ToString();
                     double unitPrice = double.Parse(reader["unit_price"].ToString());
                     int stockAvailable = int.Parse(reader["stock_available"].ToString());
                     string image = reader["image"].ToString();
@@ -31,7 +31,7 @@ namespace CatlogService.Repositories
                     Product product = new Product()
                     {
                         ProductId = productId,
-                        Title = title,
+                        ProductTitle = productTitle,
                         UnitPrice = unitPrice,
                         StockAvailable = stockAvailable,
                         Image = image,
@@ -73,7 +73,7 @@ namespace CatlogService.Repositories
                     product = new Product()
                     {
                         ProductId = productId,
-                        Title = title,
+                        ProductTitle = title,
                         UnitPrice = unitPrice,
                         StockAvailable = stockAvailable,
                         Image = image,
@@ -101,7 +101,7 @@ namespace CatlogService.Repositories
             {
                 string query="Insert into products(product_title,unit_price,stock_available,image,category_id) VALUES(@productTitle,@unitPrice,@stockAvailable,@image,@categoryId)";
                 MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@productTitle",product.Title);
+                cmd.Parameters.AddWithValue("@productTitle",product.ProductTitle);
                 cmd.Parameters.AddWithValue("@unitPrice",product.UnitPrice);
                 cmd.Parameters.AddWithValue("@stockAvailable",product.StockAvailable);
                 cmd.Parameters.AddWithValue("@image",product.Image);
@@ -135,7 +135,7 @@ namespace CatlogService.Repositories
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 con.Open();
                 cmd.Parameters.AddWithValue("@productId",product.ProductId);
-                cmd.Parameters.AddWithValue("@productTitle",product.Title);
+                cmd.Parameters.AddWithValue("@productTitle",product.ProductTitle);
                 cmd.Parameters.AddWithValue("@unitPrice",product.UnitPrice);
                 cmd.Parameters.AddWithValue("@stockAvailable",product.StockAvailable);
                 cmd.Parameters.AddWithValue("@image",product.Image);

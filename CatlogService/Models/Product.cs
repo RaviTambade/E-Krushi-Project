@@ -4,7 +4,7 @@ public class Product{
 
     public int ProductId{get; set;}
 
-    public string Title{get; set;}
+    public string ProductTitle{get; set;}
 
     public double UnitPrice{get; set;}
 

@@ -5,6 +5,7 @@ using KrushiProject.Service.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<ICustomerRepository,CustomerRepository>();
@@ -26,6 +27,10 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+app.UseCors(x => x.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+
 
 app.MapControllerRoute(
     name: "default",

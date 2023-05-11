@@ -8,7 +8,7 @@ namespace KrushiProject.Repositories
       
     public class CustomerRepository : ICustomerRepository
     {
-        public static string conString = "server=localhost; port=3306; user=root; password=Password; database=E_Krushi";
+        public static string conString = "server=localhost; port=3306; user=root; password=PASSWORD; database=E_Krushi";
        
 
         public List<Customer> GetAllCustomers()
@@ -23,14 +23,14 @@ namespace KrushiProject.Repositories
             MySqlDataReader reader = cmd.ExecuteReader();
             while(reader.Read())
             {
-                int customerId = int.Parse(reader["cust_id"].ToString());
+                int custId = int.Parse(reader["cust_id"].ToString());
                 string firstName = reader["first_name"].ToString();
                 string lastName = reader["last_name"].ToString();
                 int userId = int.Parse(reader["user_id"].ToString());
             
             Customer customer = new Customer()
             {
-                CustomerId = customerId,
+                CustId = custId,
                 FirstName = firstName,
                 LastName = lastName,
                 UserId = userId
@@ -67,7 +67,7 @@ namespace KrushiProject.Repositories
                 
                 customer = new Customer()
                 {
-                    CustomerId = id,
+                    CustId = id,
                     FirstName = firstName,
                     LastName = lastName,
                     UserId = userId
@@ -120,7 +120,7 @@ namespace KrushiProject.Repositories
             {
                 string query = "update customers set first_name=@firstName, last_name=@lastName,user_id = @userId  Where cust_id= @customerId" ;
                 MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@customerId",customer.CustomerId);
+                cmd.Parameters.AddWithValue("@customerId",customer.CustId);
                 cmd.Parameters.AddWithValue("@firstName",customer.FirstName);
                 cmd.Parameters.AddWithValue("@lastName",customer.LastName);
                 cmd.Parameters.AddWithValue("@userId",customer.UserId);
@@ -191,7 +191,7 @@ namespace KrushiProject.Repositories
                 
                 customer = new Customer()
                 {
-                    CustomerId = customerId,
+                    CustId = customerId,
                     FirstName = firstName,
                     LastName = lastName,
                     UserId = userId
