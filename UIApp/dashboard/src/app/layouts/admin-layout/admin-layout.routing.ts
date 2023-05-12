@@ -11,6 +11,7 @@ import { CustomerListComponent } from 'src/app/pages/crm/customer-list/customer-
 import { CustomerdetailsComponent } from 'src/app/pages/crm/customerdetails/customerdetails.component';
 import { InsertcustomerComponent } from 'src/app/pages/crm/insertcustomer/insertcustomer.component';
 import { UpdatecustomerComponent } from 'src/app/pages/crm/updatecustomer/updatecustomer.component';
+import { CategorylistComponent } from 'src/app/pages/category/categorylist/categorylist.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -23,5 +24,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'customerlist',   component: CustomerListComponent },
     { path: 'customerdetails',component: CustomerdetailsComponent },
     { path: 'insertcustomer', component: InsertcustomerComponent },
-    { path: 'updatecustomer', component: UpdatecustomerComponent }
+    { path: 'updatecustomer', component: UpdatecustomerComponent },
+    { path: 'categorylist',   component: CategorylistComponent }
 ];

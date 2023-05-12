@@ -21,7 +21,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { DetailsComponent } from './pages/details/details.component';
 
-
 @NgModule({
   imports: [
     BrowserAnimationsModule,
@@ -43,7 +42,7 @@ import { DetailsComponent } from './pages/details/details.component';
     AdminLayoutComponent,
     AuthLayoutComponent,
     ProductlistComponent,
-    DetailsComponent
+    DetailsComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
