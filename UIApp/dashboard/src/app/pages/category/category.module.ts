@@ -8,12 +8,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
+import { CategorydetailsComponent } from './categorydetails/categorydetails.component';
 
 
 
 @NgModule({
   declarations: [
-    CategorylistComponent
+    CategorylistComponent,
+    CategorydetailsComponent
   ],
   imports: [
     CommonModule,
