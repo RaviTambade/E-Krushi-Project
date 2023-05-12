@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -6,11 +6,11 @@ import { CrmService } from '../crm.service';
 import { Customer } from '../customer';
 
 @Component({
-  selector: 'app-customerdetails',
-  templateUrl: './customerdetails.component.html',
-  styleUrls: ['./customerdetails.component.scss']
+  selector: 'app-getcustomer',
+  templateUrl: './getcustomer.component.html',
+  styleUrls: ['./getcustomer.component.scss']
 })
-export class CustomerdetailsComponent implements OnInit {
+export class GetcustomerComponent implements OnInit {
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -19,23 +19,22 @@ export class CustomerdetailsComponent implements OnInit {
     );
 
   constructor(private breakpointObserver: BreakpointObserver,private svc :CrmService) {}
-  custId : number |undefined;
+  @Input() custId:number |undefined;
   customer:Customer |undefined;
-
+  @Output() sendCustomer = new EventEmitter();
+  
   ngOnInit(): void {
     }
-
-  getCustomer(custId:number){
-    this.svc.getCustomer(custId).subscribe((Response)=>{
-      this.customer=Response;
-      console.log(Response);
-    });
-  }
-
-  deleteCustomer(custId:any){
-    this.svc.deleteCustomer(custId).subscribe((res)=>{
-      this.customer=res;
+    
+  getCustomer(custId:any){
+    this.svc.getCustomer(custId).subscribe((response)=>{
+      this.customer=response;
+      this.sendCustomer.emit({customer:this.customer});
+      console.log(this.customer);
     })
   }
 
+
 }
+
+

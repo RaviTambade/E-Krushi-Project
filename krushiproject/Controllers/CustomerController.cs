@@ -33,33 +33,41 @@ public class CustomerController : ControllerBase
 
 
    [HttpGet]
-   [Route ("getCustomer/{id}")]
+   [Route ("getcustomer/{id}")]
     public Customer GetCustomer(int id)
     {
         var customer = _srv.GetCustomer(id);
         return customer;
     }
 
-//     [HttpPost]
-//      public JsonResult Insert([FromBody] Customer customer)
-//    {    
-//         bool result =_srv.InsertCustomer(customer);
-//         return Json(result);
-//    }
+    [HttpPost]
+    [Route ("insertcustomer")]
+     public bool Insert([FromBody] Customer customer)
+   {    
+        bool result =_srv.InsertCustomer(customer);
+        return result;
+   }
   
-//    [HttpPut]
-//    public JsonResult Update([FromBody] Customer customer)
-//    {
-//         bool result =_srv.UpdateCustomer(customer);
-//         return Json(result);
-//    }
+   [HttpPut]
+   [Route ("updatecustomer/{id}")]
+   public bool Update(int id,[FromBody] Customer customer)
+   {
+        Customer oldcustomer = _srv.GetCustomer(id);
+        if(oldcustomer.CustId==0){
+            return false;
+        }
+        customer.CustId= id;
+        bool result =_srv.UpdateCustomer(customer);
+        return result;
+   }
    
-//    [HttpDelete]
-//    public JsonResult Delete(int id)
-//    {
-//     bool result = _srv.DeleteCustomer(id);
-//     return Json(result);
-//    }
+   [HttpDelete]
+   [Route ("delete/{id}")]
+   public bool Delete(int id)
+   {
+    bool result = _srv.DeleteCustomer(id);
+    return result;
+   }
 
 
     

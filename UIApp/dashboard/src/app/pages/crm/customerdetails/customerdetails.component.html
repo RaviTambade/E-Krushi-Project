@@ -8,8 +8,6 @@
   <p><label>firstName:</label>{{customer.firstName}}</p>
   <p><label>lastName:</label>{{customer.lastName}}</p>
   <p><label>userId:</label>{{customer.userId}}</p>
+  <button type="submit" (click)="deleteCustomer(customer.custId)">Delete</button>
   <hr>
-  <div *ngIf=" customer &&  customer.custId==0 ">
-    <p>product not Found</p>
-  </div>
 </div>

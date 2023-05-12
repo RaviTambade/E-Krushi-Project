@@ -8,13 +8,20 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { CustomerdetailsComponent } from './customerdetails/customerdetails.component';
+import { FormsModule } from '@angular/forms';
+import { InsertcustomerComponent } from './insertcustomer/insertcustomer.component';
+import { UpdatecustomerComponent } from './updatecustomer/updatecustomer.component';
+import { GetcustomerComponent } from './getcustomer/getcustomer.component';
 
 
 
 @NgModule({
   declarations: [
     CustomerListComponent,
-    CustomerdetailsComponent
+    CustomerdetailsComponent,
+    InsertcustomerComponent,
+    UpdatecustomerComponent,
+    GetcustomerComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +30,8 @@ import { CustomerdetailsComponent } from './customerdetails/customerdetails.comp
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    FormsModule
   ]
 })
 export class CRMModule { }
