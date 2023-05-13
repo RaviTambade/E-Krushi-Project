@@ -15,4 +15,9 @@ export class CategoryService implements OnInit{
     let url = "http://localhost:5214/category/getall";
     return this.http.get<any>(url);
   }
+
+  public getCategoryDetails(categoryId:number):Observable<any>{
+    let url = "http://localhost:5214/category/getcategory/"+categoryId;
+    return this.http.get<any>(url);
+  }
 }

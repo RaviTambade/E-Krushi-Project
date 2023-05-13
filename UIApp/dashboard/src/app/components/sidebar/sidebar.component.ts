@@ -21,7 +21,8 @@ export const ROUTES: RouteInfo[] = [
     { path: '/customerdetails', title: 'Customer details',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/insertcustomer', title: 'Insert Customer',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/updatecustomer', title: 'Update Customer',  icon:'ni-circle-08 text-pink', class: '' },
-    { path: '/categorylist', title: 'Category list',  icon:'ni-circle-08 text-pink', class: '' }
+    { path: '/categorylist', title: 'Category list',  icon:'ni-circle-08 text-pink', class: '' },
+    { path: '/categoryDetails', title: 'Category details',  icon:'ni-circle-08 text-pink', class: '' }
   ];
 
 

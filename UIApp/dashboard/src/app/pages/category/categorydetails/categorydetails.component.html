@@ -1,27 +1,13 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>argon-dashboard-angular</span>
-    </mat-toolbar>
-    <!-- Add Content Here -->
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<br>
+<h1>category Details</h1>
+<br>
+<input type="number" [(ngModel)]="categoryId" />
+<button (click)="getCategory(categoryId)">Search</button>
+
+<div *ngIf="category && category.categoryId !=0">
+  <p><label>categoryId:</label>{{category.categoryId}}</p>
+  <p><label>categoryTitle:</label>{{category.categoryTitle}}</p>
+  <p><label>categoryDescription:</label>{{category.description}}</p>
+  <p><label>categoryImage:</label>{{category.image}}</p>
+  <hr>
+</div>
