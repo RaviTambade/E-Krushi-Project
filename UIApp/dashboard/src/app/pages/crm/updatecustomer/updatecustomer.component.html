@@ -1,3 +1,8 @@
+
+<h1>update customer</h1>
+<br>
+<br>
+
 <app-getcustomer [custId]="custId" (sendCustomer)="receiveCustomer($event)"></app-getcustomer>
 <div  *ngIf="customer && customer.customerId!=0">
   <!-- <div *ngIf="order"> -->
@@ -15,7 +20,7 @@
       <td><input type="number" name="userid" #userId="ngModel" [(ngModel)]="customer.userId"></td>
   </tr> 
       <tr>
-          <button (click)="updatecustomer()" (click)="status=false">Update</button>
+          <button (click)="updateCustomer()">Update</button>
       </tr>
   </table>   
   </div>

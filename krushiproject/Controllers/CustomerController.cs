@@ -48,17 +48,26 @@ public class CustomerController : ControllerBase
         return result;
    }
   
+//    [HttpPut]
+//    [Route ("updatecustomer/{id}")]
+//    public bool Update(int id,[FromBody] Customer customer)
+//    {
+//         Customer oldcustomer = _srv.GetCustomer(id);
+//         if(oldcustomer.CustId==0){
+//             return false;
+//         }
+//         customer.CustId= id;
+//         bool result =_srv.UpdateCustomer(customer);
+//         return result;
+//    }
+   
    [HttpPut]
-   [Route ("updatecustomer/{id}")]
-   public bool Update(int id,[FromBody] Customer customer)
+   [Route ("updatecustomer")]
+   public bool Update(Customer customer)
    {
-        Customer oldcustomer = _srv.GetCustomer(id);
-        if(oldcustomer.CustId==0){
-            return false;
-        }
-        customer.CustId= id;
-        bool result =_srv.UpdateCustomer(customer);
-        return result;
+    bool result = _srv.UpdateCustomer(customer);
+    return result;
+
    }
    
    [HttpDelete]

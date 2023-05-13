@@ -18,10 +18,11 @@ export class GetcustomerComponent implements OnInit {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver,private svc :CrmService) {}
   @Input() custId:number |undefined;
   customer:Customer |undefined;
   @Output() sendCustomer = new EventEmitter();
+  constructor(private breakpointObserver: BreakpointObserver,private svc :CrmService) {}
+  
   
   ngOnInit(): void {
     }

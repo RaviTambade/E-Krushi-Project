@@ -18,7 +18,7 @@ export class UpdatecustomerComponent implements OnInit{
       shareReplay()
     );
 
-  customer:Customer |any;
+  customer:Customer | any;
   custId: any;
   status:boolean |undefined;
 
@@ -29,11 +29,18 @@ export class UpdatecustomerComponent implements OnInit{
   
   updateCustomer(){
     this.svc.updateCustomer(this.customer).subscribe((response)=>{
-      this.status = response;
-      console.log(response);
-    })
+      this.customer = response;
+      console.log(this.customer);
+      if(response){
+        alert("customer updated successfully");
+        window.location.reload();
+      }
+      else{
+        alert("error")
+      }
+    });
   }
-  
+
   receiveCustomer($event:any){
     this.customer=$event.customer;
   }
