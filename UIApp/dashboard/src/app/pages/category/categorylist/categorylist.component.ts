@@ -18,15 +18,10 @@ export class CategorylistComponent implements OnInit{
       shareReplay()
     );
 
-    ngOnInit(): void {
-    }
   constructor(private breakpointObserver: BreakpointObserver,private svc: CategoryService) {}
   categories : Category[]  |undefined;
 
-  
-
-  getAllCategories(){
-    console.log("category");
+  ngOnInit(): void {
     this.svc.getAllCategories().subscribe((res)=>{
       this.categories=res;
       console.log(res);

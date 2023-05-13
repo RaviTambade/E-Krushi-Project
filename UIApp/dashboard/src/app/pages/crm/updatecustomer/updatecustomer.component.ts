@@ -18,21 +18,23 @@ export class UpdatecustomerComponent implements OnInit{
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver,private svc:CrmService) {}
   customer:Customer |any;
   custId: any;
   status:boolean |undefined;
+
+  constructor(private breakpointObserver: BreakpointObserver,private svc:CrmService) {}
   ngOnInit(): void {
     
   }
+  
   updateCustomer(){
     this.svc.updateCustomer(this.customer).subscribe((response)=>{
       this.status = response;
-      console.log(this.customer);
-    });
+      console.log(response);
+    })
   }
+  
   receiveCustomer($event:any){
     this.customer=$event.customer;
   }
-
 }
