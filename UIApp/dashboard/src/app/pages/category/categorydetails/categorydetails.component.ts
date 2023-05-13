@@ -25,16 +25,16 @@ export class CategorydetailsComponent implements OnInit{
   ngOnInit(): void {
     
   }
-
-
-
   getCategory(categoryId:number){
-
     this.svc.getCategoryDetails(categoryId).subscribe((Response=>{
-
       this.category= Response;
       console.log(this.category);
     }))
+ }
 
-  }
+ deleteCategory(categoryId:any){
+  this.svc.deleteCategory(categoryId).subscribe((res)=>{
+    this.category = res;
+  })
+ }
 }

@@ -21,6 +21,7 @@ export class GetcustomerComponent implements OnInit {
   @Input() custId:number |undefined;
   customer:Customer |undefined;
   @Output() sendCustomer = new EventEmitter();
+  
   constructor(private breakpointObserver: BreakpointObserver,private svc :CrmService) {}
   
   
