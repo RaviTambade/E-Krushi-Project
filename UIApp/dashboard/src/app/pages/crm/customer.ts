@@ -1,7 +1,7 @@
 export class Customer{
     constructor(
                
-                 public custId : number,
+                 public custcd Id : number,
                  public firstName : string,
                  public lastName : string,
                  public userId : number,
