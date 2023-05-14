@@ -14,6 +14,7 @@ import { UpdatecustomerComponent } from 'src/app/pages/crm/updatecustomer/update
 import { CategorylistComponent } from 'src/app/pages/category/categorylist/categorylist.component';
 import { CategorydetailsComponent } from 'src/app/pages/category/categorydetails/categorydetails.component';
 import { AddcategoryComponent } from 'src/app/pages/category/addcategory/addcategory.component';
+import { UpdatecategoryComponent } from 'src/app/pages/category/updatecategory/updatecategory.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -21,13 +22,14 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
-    { path: 'productlist',    component: ProductlistComponent },
-    { path: 'details',        component: DetailsComponent },
-    { path: 'customerlist',   component: CustomerListComponent },
-    { path: 'customerdetails',component: CustomerdetailsComponent },
-    { path: 'insertcustomer', component: InsertcustomerComponent },
-    { path: 'updatecustomer', component: UpdatecustomerComponent },
+    // { path: 'productlist',    component: ProductlistComponent },
+    // { path: 'details',        component: DetailsComponent },
+    // { path: 'customerlist',   component: CustomerListComponent },
+    // { path: 'customerdetails',component: CustomerdetailsComponent },
+    // { path: 'insertcustomer', component: InsertcustomerComponent },
+    // { path: 'updatecustomer', component: UpdatecustomerComponent },
     { path: 'categorylist',   component: CategorylistComponent },
     { path: 'categoryDetails',component: CategorydetailsComponent },
-    { path: 'addcategory',    component: AddcategoryComponent }
+    { path: 'addcategory',    component: AddcategoryComponent },
+    { path: 'updatecategory', component: UpdatecategoryComponent }
 ];

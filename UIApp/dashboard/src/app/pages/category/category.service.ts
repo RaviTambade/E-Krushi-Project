@@ -27,6 +27,11 @@ export class CategoryService implements OnInit{
     return this.http.post<Category>(url,category);
   }
 
+  public updateCategory(category:Category):Observable<Category>{
+    let url = "http://localhost:5214/category/updatecategory";
+    return this.http.put<Category>(url,category);
+  }
+
   public deleteCategory(categoryId:number):Observable<Category>{
     let url = "http://localhost:5214/category/deletecategory/"+ categoryId;
     return this.http.delete<Category>(url);

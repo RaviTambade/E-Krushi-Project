@@ -1,0 +1,25 @@
+<h1>Update category</h1>
+<br>
+<br>
+
+<getcategory [categoryId]="categoryId" (sendCategory)="receiveCategory($event)"></getcategory>
+<div  *ngIf="category && category.categoryId!=0">
+  <!-- <div *ngIf="order"> -->
+  <table>
+      <tr>
+          <td><label>Category Title</label></td>
+          <td><input type="text" name="categoryTitle" #categoryTitle="ngModel" [(ngModel)]="category.categoryTitle"></td>
+      </tr>
+      <tr>
+        <td><label>Description</label></td>
+        <td><input type="text" name="description" #description="ngModel" [(ngModel)]="category.description"></td>
+    </tr>  
+    <tr>
+      <td><label>Image</label></td>
+      <td><input type="text" name="image" #image="ngModel" [(ngModel)]="category.image"></td>
+  </tr> 
+      <tr>
+          <button (click)="updateCategory()">Update</button>
+      </tr>
+  </table>   
+  </div>

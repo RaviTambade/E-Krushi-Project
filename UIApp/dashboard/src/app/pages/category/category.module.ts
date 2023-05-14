@@ -10,6 +10,8 @@ import { MatListModule } from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
 import { CategorydetailsComponent } from './categorydetails/categorydetails.component';
 import { AddcategoryComponent } from './addcategory/addcategory.component';
+import { GetcategoryComponent } from './getcategory/getcategory.component';
+import { UpdatecategoryComponent } from './updatecategory/updatecategory.component';
 
 
 
@@ -17,7 +19,9 @@ import { AddcategoryComponent } from './addcategory/addcategory.component';
   declarations: [
     CategorylistComponent,
     CategorydetailsComponent,
-    AddcategoryComponent
+    AddcategoryComponent,
+    GetcategoryComponent,
+    UpdatecategoryComponent
   ],
   imports: [
     CommonModule,
