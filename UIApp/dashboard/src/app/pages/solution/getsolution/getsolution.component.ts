@@ -6,7 +6,7 @@ import { SolutionService } from '../solution.service';
 import { Solution } from '../solution';
 
 @Component({
-  selector: 'app-getsolution',
+  selector: 'app-solution',
   templateUrl: './getsolution.component.html',
   styleUrls: ['./getsolution.component.scss']
 })

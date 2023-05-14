@@ -30,8 +30,8 @@ export class SolutionService {
     return this.http.post<any>(url,solution);
   }
 
-  // public updateSolution(solution:Solution):Observable<any>{
-  //   let url= "http://localhost:5241/solutions/insertsolution";
-  //   return this.http.post<any>(url,solution);
-  // }
+  public updateSolution(solution:Solution):Observable<any>{
+    let url= "http://localhost:5241/solutions/updatesolution";
+    return this.http.put<any>(url,solution);
+  }
 }
