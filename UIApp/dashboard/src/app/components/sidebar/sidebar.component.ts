@@ -24,7 +24,8 @@ export const ROUTES: RouteInfo[] = [
     { path: '/categorylist', title: 'Category list',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/categoryDetails', title: 'Category details',  icon:'ni-circle-08 text-pink', class: '' },
     { path: '/addcategory', title: 'Add Category',  icon:'ni-circle-08 text-pink', class: '' },
-    { path: '/updatecategory', title: 'Update Category',  icon:'ni-circle-08 text-pink', class: '' }
+    { path: '/updatecategory', title: 'Update Category',  icon:'ni-circle-08 text-pink', class: '' },
+    { path: '/agridoctorslist', title: 'Agri Doctors',  icon:'ni-circle-08 text-pink', class: '' }
   ];
 
 
