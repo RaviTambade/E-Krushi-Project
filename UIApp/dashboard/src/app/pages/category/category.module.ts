@@ -9,13 +9,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { FormsModule } from '@angular/forms';
 import { CategorydetailsComponent } from './categorydetails/categorydetails.component';
+import { AddcategoryComponent } from './addcategory/addcategory.component';
 
 
 
 @NgModule({
   declarations: [
     CategorylistComponent,
-    CategorydetailsComponent
+    CategorydetailsComponent,
+    AddcategoryComponent
   ],
   imports: [
     CommonModule,

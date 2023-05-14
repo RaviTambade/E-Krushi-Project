@@ -1,0 +1,18 @@
+<h1>Insert Customer</h1>
+
+<form #categoryForm="ngForm" (ngSubmit)="addCategory(categoryForm.value)">
+
+  <div class="mb-3">
+    <label><b>Category Title:</b></label>
+    <input type="text" name="categoryTitle" [(ngModel)]="category.categoryTitle"/>
+    <br>
+    <label><b>description:</b></label>
+    <input type="text" name="description" [(ngModel)]="category.description"/>
+    <br>
+    <label><b>image:</b></label>
+    <input type="text" name="image" [(ngModel)]="category.image"/>
+    <br>
+    <button class="btn btn-success " type="submit">Add</button>
+  </div>
+</form>
+

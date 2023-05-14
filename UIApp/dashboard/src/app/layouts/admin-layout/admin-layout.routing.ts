@@ -13,6 +13,7 @@ import { InsertcustomerComponent } from 'src/app/pages/crm/insertcustomer/insert
 import { UpdatecustomerComponent } from 'src/app/pages/crm/updatecustomer/updatecustomer.component';
 import { CategorylistComponent } from 'src/app/pages/category/categorylist/categorylist.component';
 import { CategorydetailsComponent } from 'src/app/pages/category/categorydetails/categorydetails.component';
+import { AddcategoryComponent } from 'src/app/pages/category/addcategory/addcategory.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -27,5 +28,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'insertcustomer', component: InsertcustomerComponent },
     { path: 'updatecustomer', component: UpdatecustomerComponent },
     { path: 'categorylist',   component: CategorylistComponent },
-    { path: 'categoryDetails',   component: CategorydetailsComponent }
+    { path: 'categoryDetails',component: CategorydetailsComponent },
+    { path: 'addcategory',    component: AddcategoryComponent }
 ];
