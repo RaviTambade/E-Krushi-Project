@@ -15,12 +15,7 @@ import { CategorylistComponent } from 'src/app/pages/category/categorylist/categ
 import { CategorydetailsComponent } from 'src/app/pages/category/categorydetails/categorydetails.component';
 import { AddcategoryComponent } from 'src/app/pages/category/addcategory/addcategory.component';
 import { UpdatecategoryComponent } from 'src/app/pages/category/updatecategory/updatecategory.component';
-import { SolutionlistComponent } from 'src/app/pages/solution/solutionlist/solutionlist.component';
-import { SolutiondetailsComponent } from 'src/app/pages/solution/solutiondetails/solutiondetails.component';
-import { AddsolutionComponent } from 'src/app/pages/solution/addsolution/addsolution.component';
-import { UpdatesolutionComponent } from 'src/app/pages/solution/updatesolution/updatesolution.component';
-import { QuestionlistComponent } from 'src/app/pages/question/questionlist/questionlist.component';
-import { QuestiondetailsComponent } from 'src/app/pages/question/questiondetails/questiondetails.component';
+import {AgridoctorslistComponent} from 'src/app/pages/agridoctor/agridoctorslist/agridoctorslist.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -34,14 +29,9 @@ export const AdminLayoutRoutes: Routes = [
     // { path: 'customerdetails',component: CustomerdetailsComponent },
     // { path: 'insertcustomer', component: InsertcustomerComponent },
     // { path: 'updatecustomer', component: UpdatecustomerComponent },
-    // { path: 'categorylist',   component: CategorylistComponent },
-    // { path: 'categoryDetails',component: CategorydetailsComponent },
-    // { path: 'addcategory',    component: AddcategoryComponent },
-    // { path: 'updatecategory', component: UpdatecategoryComponent }
-    { path: 'solutionlist',   component: SolutionlistComponent },
-    { path: 'solutiondetails',component: SolutiondetailsComponent },
-    { path: 'addsolution',    component: AddsolutionComponent },
-    { path: 'updatesolution', component: UpdatesolutionComponent },
-    { path: 'questionlist',   component: QuestionlistComponent },
-    { path: 'questiondetails',component: QuestiondetailsComponent }
+    { path: 'categorylist',   component: CategorylistComponent },
+    { path: 'categoryDetails',component: CategorydetailsComponent },
+    { path: 'addcategory',    component: AddcategoryComponent },
+    { path: 'updatecategory', component: UpdatecategoryComponent },
+    { path: 'agridoctorslist', component: AgridoctorslistComponent  }
 ];
