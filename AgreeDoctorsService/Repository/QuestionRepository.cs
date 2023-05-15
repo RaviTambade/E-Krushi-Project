@@ -7,7 +7,7 @@ namespace E_krushiApp.Repository;
 public class QuestionRepository:IQuestionRepository{
 
 
-    public static string conString ="server=localhost;port=3306;user=root;Password=PASSWORD;Database=E_krushi";
+    public static string conString ="server=localhost;port=3306;user=root;Password=Password;Database=E_krushi";
 
     public List<Question> GetAll(){
 

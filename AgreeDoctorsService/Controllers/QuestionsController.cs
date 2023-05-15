@@ -20,7 +20,7 @@ public class QuestionsController : ControllerBase
 
 
     [HttpGet]
-    [Route("GetAllQuestion")]
+    [Route("GetAllQuestions")]
     public List<Question> GetAll()
     {
 

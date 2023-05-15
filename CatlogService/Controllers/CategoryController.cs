@@ -41,17 +41,13 @@ public class CategoryController : ControllerBase
     }
 
     [HttpPut]
-    [Route("Updatecategory/{id}")]
-    public bool UpdateCategory(int id,[FromBody] Category category)
+    [Route("Updatecategory")]
+    public bool UpdateCategory([FromBody] Category category)
     {
-        Category oldcategory = _service.GetCategory(id);
-        if(oldcategory.CategoryId==0){
-            return false;
-        }
-        category.CategoryId = id;
         bool result = _service.UpdateCategory(category);
         return result;
     }
+    
     [HttpDelete]
     [Route("Deletecategory/{id}")]
     public bool DeleteCategory(int id)

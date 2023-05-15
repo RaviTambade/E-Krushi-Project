@@ -20,7 +20,7 @@ public class SolutionsController : ControllerBase
 
 
     [HttpGet]
-    [Route("getallSolution")]
+    [Route("getallSolutions")]
     public List<Solution> GetAll()
     {
 
@@ -29,7 +29,7 @@ public class SolutionsController : ControllerBase
         return solutions;
     }
 
-     [HttpGet]
+    [HttpGet]
     [Route("getbyid/{id}")]
     public Solution GetById(int id)
     {
