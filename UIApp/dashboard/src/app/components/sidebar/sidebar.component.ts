@@ -21,10 +21,17 @@ export const ROUTES: RouteInfo[] = [
     // { path: '/customerdetails', title: 'Customer details',  icon:'ni-circle-08 text-pink', class: '' },
     // { path: '/insertcustomer', title: 'Insert Customer',  icon:'ni-circle-08 text-pink', class: '' },
     // { path: '/updatecustomer', title: 'Update Customer',  icon:'ni-circle-08 text-pink', class: '' },
-    { path: '/categorylist', title: 'Category list',  icon:'ni-circle-08 text-pink', class: '' },
-    { path: '/categoryDetails', title: 'Category details',  icon:'ni-circle-08 text-pink', class: '' },
-    { path: '/addcategory', title: 'Add Category',  icon:'ni-circle-08 text-pink', class: '' },
-    { path: '/updatecategory', title: 'Update Category',  icon:'ni-circle-08 text-pink', class: '' }
+    // { path: '/categorylist', title: 'Category list',  icon:'ni-circle-08 text-pink', class: '' },
+    // { path: '/categoryDetails', title: 'Category details',  icon:'ni-circle-08 text-pink', class: '' },
+    // { path: '/addcategory', title: 'Add Category',  icon:'ni-circle-08 text-pink', class: '' },
+    // { path: '/updatecategory', title: 'Update Category',  icon:'ni-circle-08 text-pink', class: '' }
+    { path: '/solutionlist', title: 'solution list',  icon:'ni-circle-08 text-pink', class: '' },
+    { path: '/solutiondetails', title: 'solution details',  icon:'ni-circle-08 text-pink', class: '' },
+    { path: '/addsolution', title: 'Add solution',  icon:'ni-circle-08 text-pink', class: '' },
+    { path: '/updatesolution', title: 'Update solution',  icon:'ni-circle-08 text-pink', class: '' },
+    { path: '/questionlist', title: 'question list',  icon:'ni-circle-08 text-pink', class: '' },
+    { path: '/questiondetails', title: 'question details',  icon:'ni-circle-08 text-pink', class: '' }
+  
   ];
 
 
