@@ -1,0 +1,14 @@
+<h1>Question details</h1>
+<br>
+<br>
+<input type="number" [(ngModel)]="questionId" />
+<button (click)="getQuestion(questionId)">Search</button>
+
+<div *ngIf="question && question.questionId !=0">
+  <p><label>Question Id</label>{{question.questionId}}</p>
+  <p><label>Question Date</label>{{question.questionDate}}</p>
+  <p><label>Description</label>{{question.description}}</p>
+  <p><label>Cust Id</label>{{question.custId}}</p>
+  <p><label>Category Id</label>{{question.categoryId}}</p>
+  <button type="submit" (click)="deleteQuestion(question.questionId)">Delete</button>
+</div>
