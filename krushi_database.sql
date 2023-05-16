@@ -514,3 +514,8 @@ SELECT count(*) FROM orders WHERE  order_date BETWEEN '2020-06-01' AND '2020-06-
 
 
 SELECT COUNT(*) from orders where order_date< '2020-04-30' ;
+
+
+-- //this query returns the list of products given category;
+
+SELECT products.product_title from categories inner join products where categories.category_id=products.category_id and categories.category_title='seeds';
