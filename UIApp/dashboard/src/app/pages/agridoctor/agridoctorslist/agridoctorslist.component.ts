@@ -20,7 +20,7 @@ export class AgridoctorslistComponent implements OnInit{
 
   constructor(private breakpointObserver: BreakpointObserver,private svc :AgridoctorService) {}
 
-  agriDoctors:AgriDoctor|undefined;
+  agriDoctors:AgriDoctor |undefined;
 
   ngOnInit(): void {
     this.svc.getAllAgriDoctors().subscribe((res)=>{

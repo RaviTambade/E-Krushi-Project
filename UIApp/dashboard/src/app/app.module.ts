@@ -12,7 +12,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
-import { ProductlistComponent } from './pages/productlist/productlist.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,6 +19,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { DetailsComponent } from './pages/details/details.component';
+import { GetproductlistbycategoryComponent } from './pages/product/getproductlistbycategory/getproductlistbycategory.component';
+import { ProductModule } from './pages/product/product.module';
 
 @NgModule({
   imports: [
@@ -35,14 +36,14 @@ import { DetailsComponent } from './pages/details/details.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    ProductModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     AuthLayoutComponent,
-    ProductlistComponent,
-    DetailsComponent,
+    DetailsComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

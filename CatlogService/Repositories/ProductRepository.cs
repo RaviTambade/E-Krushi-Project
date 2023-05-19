@@ -183,5 +183,54 @@ namespace CatlogService.Repositories
             }
             return status;
         }
+    
+    
+    public List<ProductList> GetByCategoryName(string categoryName)
+    {
+        
+           List<ProductList> productList = new List<ProductList>();
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = conString;
+            try{
+                string query = "SELECT products.product_id, products.product_title,products.unit_price,products.stock_available,products.image,categories.category_title from categories inner join products where categories.category_id=products.category_id and categories.category_title=@seeds";
+                MySqlCommand cmd = new MySqlCommand(query,con);
+                cmd.Parameters.AddWithValue("@seeds",categoryName);
+                con.Open();
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while(reader.Read())
+                {
+                    int productId = int.Parse(reader["product_id"].ToString());
+                    string productTitle = reader["product_title"].ToString();
+                    double unitPrice = double.Parse(reader["unit_price"].ToString());
+                    int stockAvailable = int.Parse(reader["stock_available"].ToString());
+                    string image = reader["image"].ToString();
+                    string categoryTitle = reader["category_title"].ToString();
+
+                    ProductList products = new ProductList()
+                    {
+                        ProductId = productId,
+                        ProductTitle = productTitle,
+                        UnitPrice = unitPrice,
+                        StockAvailable = stockAvailable,
+                        Image = image,
+                        CategoryTitle = categoryTitle
+
+                    };
+                    productList.Add(products);
+                   
+                }
+                 reader.Close();
+                
+            }
+            catch(Exception e){
+                throw e;
+            }
+            finally{
+                con.Close();
+            }
+            return productList;
+        }
+
     }
 }
+

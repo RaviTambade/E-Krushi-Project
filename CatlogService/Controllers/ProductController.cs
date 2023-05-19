@@ -63,4 +63,13 @@ public class ProductController : ControllerBase
         bool result = _service.DeleteProduct(id);
         return result;
     }
+
+    [HttpGet]
+    [Route("getbycategory/{categoryName}")]
+    public List<ProductList> GetByCategoryName(string categoryName)
+    {
+        List<ProductList> productList = _service.GetByCategoryName(categoryName);
+        return productList;
+    }
+
 }

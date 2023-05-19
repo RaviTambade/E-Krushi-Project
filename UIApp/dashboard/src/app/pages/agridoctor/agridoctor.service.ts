@@ -13,4 +13,9 @@ export class AgridoctorService {
     return this.http.get<any>(url);
   }
 
+  // public getAgriDoctorDetails(agridoctorId:number):Observable<any>{
+  //   let url = "http://localhost:5241/AgriDoctors/GetAgriDoctor"+ agridoctorId;
+  //   return this.http.get<any>(url);
+  // }
+
 }

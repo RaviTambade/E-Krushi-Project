@@ -10,5 +10,5 @@ public interface IProductRepository{
     bool InsertProduct(Product product);
     bool UpdateProduct(Product product);
     bool DeleteProduct(int id);
-
+    List<ProductList> GetByCategoryName(string categoryName);
 }

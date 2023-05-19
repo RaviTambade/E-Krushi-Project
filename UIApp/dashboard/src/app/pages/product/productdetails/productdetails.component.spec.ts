@@ -7,15 +7,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { GetAgriDoctorDetailsComponent } from './get-agri-doctor-details.component';
+import { ProductdetailsComponent } from './productdetails.component';
 
-describe('GetAgriDoctorDetailsComponent', () => {
-  let component: GetAgriDoctorDetailsComponent;
-  let fixture: ComponentFixture<GetAgriDoctorDetailsComponent>;
+describe('ProductdetailsComponent', () => {
+  let component: ProductdetailsComponent;
+  let fixture: ComponentFixture<ProductdetailsComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [GetAgriDoctorDetailsComponent],
+      declarations: [ProductdetailsComponent],
       imports: [
         NoopAnimationsModule,
         LayoutModule,
@@ -29,7 +29,7 @@ describe('GetAgriDoctorDetailsComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GetAgriDoctorDetailsComponent);
+    fixture = TestBed.createComponent(ProductdetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

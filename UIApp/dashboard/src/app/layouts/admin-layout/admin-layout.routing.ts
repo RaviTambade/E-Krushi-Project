@@ -5,7 +5,6 @@ import { IconsComponent } from '../../pages/icons/icons.component';
 import { MapsComponent } from '../../pages/maps/maps.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
-import { ProductlistComponent } from 'src/app/pages/productlist/productlist.component';
 import { DetailsComponent } from 'src/app/pages/details/details.component';
 import { CustomerListComponent } from 'src/app/pages/crm/customer-list/customer-list.component';
 import { CustomerdetailsComponent } from 'src/app/pages/crm/customerdetails/customerdetails.component';
@@ -16,6 +15,8 @@ import { CategorydetailsComponent } from 'src/app/pages/category/categorydetails
 import { AddcategoryComponent } from 'src/app/pages/category/addcategory/addcategory.component';
 import { UpdatecategoryComponent } from 'src/app/pages/category/updatecategory/updatecategory.component';
 import {AgridoctorslistComponent} from 'src/app/pages/agridoctor/agridoctorslist/agridoctorslist.component';
+import { GetproductlistbycategoryComponent } from 'src/app/pages/product/getproductlistbycategory/getproductlistbycategory.component';
+import { ProductdetailsComponent } from 'src/app/pages/product/productdetails/productdetails.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -23,15 +24,16 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'tables',         component: TablesComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'maps',           component: MapsComponent },
-    // { path: 'productlist',    component: ProductlistComponent },
     // { path: 'details',        component: DetailsComponent },
     // { path: 'customerlist',   component: CustomerListComponent },
     // { path: 'customerdetails',component: CustomerdetailsComponent },
     // { path: 'insertcustomer', component: InsertcustomerComponent },
     // { path: 'updatecustomer', component: UpdatecustomerComponent },
-    { path: 'categorylist',   component: CategorylistComponent },
-    { path: 'categoryDetails',component: CategorydetailsComponent },
-    { path: 'addcategory',    component: AddcategoryComponent },
-    { path: 'updatecategory', component: UpdatecategoryComponent },
-    { path: 'agridoctorslist', component: AgridoctorslistComponent  }
+    // { path: 'categorylist',   component: CategorylistComponent },
+    // { path: 'categoryDetails',component: CategorydetailsComponent },
+    // { path: 'addcategory',    component: AddcategoryComponent },
+    // { path: 'updatecategory', component: UpdatecategoryComponent },
+    // { path: 'agridoctorslist', component: AgridoctorslistComponent  },
+    { path: 'getproductlistbycategory', component: GetproductlistbycategoryComponent  },
+    { path: 'productdetails', component: ProductdetailsComponent  }
 ];

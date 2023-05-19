@@ -15,17 +15,18 @@ export const ROUTES: RouteInfo[] = [
     { path: '/tables', title: 'Tables',  icon:'ni-bullet-list-67 text-red', class: '' },
     { path: '/login', title: 'Login',  icon:'ni-key-25 text-info', class: '' },
     { path: '/register', title: 'Register',  icon:'ni-circle-08 text-pink', class: '' },
-    // { path: '/productlist', title: 'Product list',  icon:'ni-circle-08 text-pink', class: '' },
     // { path: '/details', title: 'Details',  icon:'ni-circle-08 text-pink', class: '' },
     // { path: '/customerlist', title: 'Customer',  icon:'ni-circle-08 text-pink', class: '' },
     // { path: '/customerdetails', title: 'Customer details',  icon:'ni-circle-08 text-pink', class: '' },
     // { path: '/insertcustomer', title: 'Insert Customer',  icon:'ni-circle-08 text-pink', class: '' },
     // { path: '/updatecustomer', title: 'Update Customer',  icon:'ni-circle-08 text-pink', class: '' },
-    { path: '/categorylist', title: 'Category list',  icon:'ni-circle-08 text-pink', class: '' },
-    { path: '/categoryDetails', title: 'Category details',  icon:'ni-circle-08 text-pink', class: '' },
-    { path: '/addcategory', title: 'Add Category',  icon:'ni-circle-08 text-pink', class: '' },
-    { path: '/updatecategory', title: 'Update Category',  icon:'ni-circle-08 text-pink', class: '' },
-    { path: '/agridoctorslist', title: 'Agri Doctors',  icon:'ni-circle-08 text-pink', class: '' }
+    // { path: '/categorylist', title: 'Category list',  icon:'ni-circle-08 text-pink', class: '' },
+    // { path: '/categoryDetails', title: 'Category details',  icon:'ni-circle-08 text-pink', class: '' },
+    // { path: '/addcategory', title: 'Add Category',  icon:'ni-circle-08 text-pink', class: '' },
+    // { path: '/updatecategory', title: 'Update Category',  icon:'ni-circle-08 text-pink', class: '' },
+    // { path: '/agridoctorslist', title: 'Agri Doctors',  icon:'ni-circle-08 text-pink', class: '' },
+    { path: '/getproductlistbycategory', title: 'Product list by category',  icon:'ni-circle-08 text-pink', class: '' },
+    { path: '/product details', title: 'Product details',  icon:'ni-circle-08 text-pink', class: '' }
   ];
 
 

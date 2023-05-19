@@ -1,8 +1,8 @@
 <br>
 <br>
 <input type="number" [(ngModel)]="productId" />
-<button (click)="getProduct(productId)">Search</button>
-
+<button (click)="getProduct(productId)">Search</button> 
+ 
 <div *ngIf="product && product.productId !=0">
   <p><label>ProductId:</label>{{product.productId}}</p>
   <p><label>Product Title:</label>{{product.productTitle}}</p>
@@ -14,7 +14,40 @@
   <div *ngIf=" product && product.productId==0 ">
     <p>product not Found</p>
   </div>
-</div>
+</div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- <input type="text" [(ngModel)]="orderId"/>
 <button (click) ="getById(orderId)">Details</button>  

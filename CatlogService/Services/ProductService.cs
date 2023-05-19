@@ -23,5 +23,6 @@ public class ProductService : IProductService{
  
     public bool DeleteProduct(int id) => _repo.DeleteProduct(id);
 
+    public List<ProductList> GetByCategoryName(string categoryName) => _repo.GetByCategoryName(categoryName);
 }
 

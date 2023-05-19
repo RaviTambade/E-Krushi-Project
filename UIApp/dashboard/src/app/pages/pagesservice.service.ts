@@ -36,4 +36,8 @@ export class PagesserviceService {
     let url = "http://localhost:5214/product/getproduct/"+ productId;
     return this.http.get<Product>(url);
   }
+  
+  
+
+
  }

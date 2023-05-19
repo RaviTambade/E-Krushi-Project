@@ -1,0 +1,25 @@
+<p>category works!</p>
+<div>
+    <div>
+      <h2 >Categories</h2>
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="d-grid">
+          <select
+            (change)="changeCategory($event)"
+            formControlName="selectedCategory">
+            <option value="">Choose Category</option>
+            <option *ngFor="let category of categories" [ngValue]="category">
+              {{ category }}
+            </option>
+          </select>
+          <!-- error block -->
+          <div  *ngIf="isSubmitted && selectedCategory?.invalid">
+            <sup>*</sup>Please provide category name
+          </div>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <app-productdetails></app-productdetails>
