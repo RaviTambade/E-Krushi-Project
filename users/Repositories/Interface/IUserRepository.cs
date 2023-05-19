@@ -7,6 +7,7 @@ namespace E_krushiApp.Repositories.Interface;
 
    public  List<User> GetAllUsers();
 
+   AuthenticateResponse Authenticate(AuthenticateRequest request);
     public User GetById(int id);
 
     public bool Register(User user);
@@ -15,5 +16,6 @@ namespace E_krushiApp.Repositories.Interface;
     public bool DeleteUser(int id);
     
     public bool ValidateUser(Credential user);
+
 
  }

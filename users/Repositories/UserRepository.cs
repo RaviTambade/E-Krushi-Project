@@ -2,12 +2,100 @@ using E_krushiApp.Models;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using E_krushiApp.Repositories.Interface;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
+
 namespace E_krushiApp.Repositories;
 
 public class UserRepository:IUserRepository{
 
 
     public string conString="server=localhost; user=root; port=3306; password=PASSWORD; database=E_krushi ";
+
+     public  AuthenticateResponse Authenticate(AuthenticateRequest request)
+    {
+        User user = GetUser(request);
+
+        // return null if user not found
+        if (user == null) { return null; }
+        // authentication successful so generate jwt token
+        var token =  generateJwtToken(user);
+        return new AuthenticateResponse(user, token);
+    }
+
+    private string generateJwtToken(User user)
+
+    {
+        // generate token that is valid for 7 days
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var key = System.Text.Encoding.ASCII.GetBytes(_appsettings.Secret);
+        var tokenDescriptor = new SecurityTokenDescriptor
+        {
+            Subject = new ClaimsIdentity( AllClaims(user)),
+            Expires = DateTime.UtcNow.AddDays(7),
+            SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
+       SecurityAlgorithms.HmacSha256Signature)
+        };
+        var token = tokenHandler.CreateToken(tokenDescriptor);
+        return tokenHandler.WriteToken(token);
+    }
+
+    private List<Claim> AllClaims(User user)
+    {
+        List<Claim> claims = new List<Claim>();
+        //you can add custom Claims here
+        claims.Add(new Claim("id", user.UserId.ToString()));
+        List<string> roles = GetRolesOfUser(user.UserId);
+        foreach (string role in roles)
+        {
+            claims.Add(new Claim("Roles", role));
+        }
+        return claims;
+    }
+
+    private User GetUser(AuthenticateRequest request)
+    {
+        User user = null;
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = conString;
+        try
+        {
+            string query = "SELECT * FROM users where email=@email AND password =@password";
+            con.Open();
+            MySqlCommand command = new MySqlCommand(query, con);
+            command.Parameters.AddWithValue("@email", request.Email);
+            command.Parameters.AddWithValue("@password", request.Password);
+            MySqlDataReader reader = command.ExecuteReader();
+
+            if ( reader.Read())
+            {
+                int userId = int.Parse(reader["user_id"].ToString());
+                string userEmail = reader["email"].ToString();
+                string userPassword = reader["password"].ToString();
+                string contactNumber=reader["contact_number"].ToString();
+                user = new User
+                {
+                    UserId = userId,
+                    Email = userEmail,
+                    Password = userPassword,
+                    ContactNumber=contactNumber
+                };
+            }
+            reader.Close();
+        }
+        catch (Exception ee)
+        {
+
+            throw ee;
+        }
+        finally
+        {
+             con.Close();
+        }
+        return user;
+
+    }
     public  List<User> GetAllUsers(){
         List<User> users = new List<User>();
         MySqlConnection connection = new MySqlConnection();
