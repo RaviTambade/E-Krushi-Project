@@ -1,5 +1,6 @@
 import { Component ,OnInit} from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +14,7 @@ export class LoginComponent implements OnInit{
   role : string | any
   loggedIn :any;
   
-  constructor(private svc :AuthService){}
+  constructor(private svc :AuthService,private router:Router){}
 
   ngOnInit():void{
   }
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit{
     if(this.svc.logIn(this.email,this.password,this.role)){
       alert("login successfull");
       this.loggedIn = true; 
+      this.router.navigateByUrl('src\app\product');
     }
     else{
       alert("login failed");

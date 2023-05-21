@@ -6,6 +6,17 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RoutingComponent } from './routing/routing.component';
 import { ProductComponent } from './product/product.component';
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
+const routes : Routes=[
+  {path:'' ,redirectTo:'/login' ,pathMatch:'full'},
+  {path:'home',component:HomeComponent},
+  {path:'product' ,component:RoutingComponent}
+]
+
+
+ 
 
 @NgModule({
   declarations: [
@@ -16,7 +27,9 @@ import { ProductComponent } from './product/product.component';
     ProductComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

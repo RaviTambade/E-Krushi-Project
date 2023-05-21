@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
 
+
+
+
+  name:string='akash';
+  //console.log(name);
+
+onclick(){
+console.log(this.name)
+}
 }
