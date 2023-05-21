@@ -8,11 +8,12 @@ import { RoutingComponent } from './routing/routing.component';
 import { ProductComponent } from './product/product.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes : Routes=[
   {path:'' ,redirectTo:'/login' ,pathMatch:'full'},
   {path:'home',component:HomeComponent},
-  {path:'product' ,component:RoutingComponent}
+  {path:'product' ,component:ProductComponent}
 ]
 
 
@@ -24,7 +25,8 @@ const routes : Routes=[
     LoginComponent,
     HomeComponent,
     RoutingComponent,
-    ProductComponent
+    ProductComponent,
+    AboutUsComponent
   ],
   imports: [
     BrowserModule,

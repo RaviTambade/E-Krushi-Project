@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit{
     if(this.svc.logIn(this.email,this.password,this.role)){
       alert("login successfull");
       this.loggedIn = true; 
-      this.router.navigateByUrl('src\app\product');
+      this.router.navigateByUrl('src\app\aboutUs');
     }
     else{
       alert("login failed");
