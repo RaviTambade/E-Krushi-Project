@@ -12,12 +12,12 @@ export class AuthService {
       'role':'Admin'
     },
     {
-      'email':'Rushikesh.C@gmail.com',
+      'email':'Rushikesh',
       'password':'password',
       'role':'Customer'
     },
     {
-      'email':'Akash.A@gmail.com',
+      'email':'Akash',
       'password':'password',
       'role':'Employee'
     },

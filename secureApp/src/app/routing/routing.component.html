@@ -1,8 +1,8 @@
 
 
 <div>
-<a ngIf="status" [routerLink]="['home']">Home</a>
+<a *ngIf="statusAkash" [routerLink]="['home']">Home</a>
 <br>
-<a ngIf="status"  [routerLink]="['product']">product</a>
+<a *ngIf="statusRushikesh" [routerLink]="['product']">product</a>
 <router-outlet></router-outlet>
 </div>

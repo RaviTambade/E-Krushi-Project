@@ -6,13 +6,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./routing.component.css']
 })
 export class RoutingComponent implements OnInit {
-  
-  
-  
+ 
+  role=localStorage.getItem("role");
+  statusAkash=false;
+  statusRushikesh=false;
+ 
+ 
+ 
   ngOnInit(): void {
-   this.status=true;
+    
+
+    if (this.role=="employee"){
+      this.statusAkash=true;
+      this.statusAkash=true;
+    }
+    else{
+      this.statusRushikesh=false;
+      this.statusRushikesh=false;
+    }
   }
-
-  status:boolean=false;
-
+  
+  
+ 
 }
