@@ -1,3 +1,4 @@
+using E_krushiApp.Helpers;
 using E_krushiApp.Repositories;
 using E_krushiApp.Repositories.Interface;
 using E_krushiApp.Services;
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddCors();
+builder.Services.Configure<AppSettings>(builder.Configuration.GetSection("AppSettings"));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

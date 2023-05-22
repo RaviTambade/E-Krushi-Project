@@ -47,7 +47,19 @@ public class UsersController : ControllerBase
         return status;
     }
 
-   [HttpPut]
+    [HttpPost]
+    [Route("authenticate")]
+    public IActionResult Authenticate([FromBody] AuthenticateRequest request)
+    {
+        var user = _service.Authenticate(request);
+
+        if (user == null)
+            return BadRequest(new { message = "Username or password is incorrect" });
+
+        return Ok(user);
+    }
+
+    [HttpPut]
    [Route("updateUser")]
 
    public bool UpdateUser(User user){

@@ -20,6 +20,8 @@ public class UserService : IUserService
 
     public bool DeleteUser(int id)=>_repo.DeleteUser(id);
 
+    public AuthenticateResponse Authenticate(AuthenticateRequest request)=>_repo.Authenticate(request);
+        
     public bool ValidateUser(Credential user)=>_repo.ValidateUser(user);
     }
 
