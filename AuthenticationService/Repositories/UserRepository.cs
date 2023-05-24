@@ -111,7 +111,7 @@ public class UserRepository : IUserRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "SELECT role from roles where role_id in  (select role_id from user_roles where user_id=@userId)";
+            string query = "select roles.role from user_roles inner join roles on user_roles.role_id =roles.role_id where user_roles.user_id=@userId";
             Console.WriteLine(query);
             await con.OpenAsync();
             MySqlCommand cmd = new MySqlCommand(query, con);

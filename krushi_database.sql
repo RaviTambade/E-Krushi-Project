@@ -82,7 +82,7 @@ INSERT INTO roles(role) VALUES ('Supplier');
 INSERT INTO roles(role) VALUES ('Shipper');
 INSERT INTO roles(role) VALUES ('agri_doctors');
 
-select * from roles;
+select * from products;
 
 -- CUSTOMERS DATA
 INSERT INTO customers(first_name,last_name,user_id) VALUES('akash','ajab',1);                       
@@ -256,7 +256,7 @@ INSERT INTO user_roles(user_id,role_id) VALUES(3,1);
 INSERT INTO user_roles(user_id,role_id) VALUES(6,2);
 INSERT INTO user_roles(user_id,role_id) VALUES(8,2);
 INSERT INTO user_roles(user_id,role_id) VALUES(6,3);
-
+INSERT INTO user_roles(user_id,role_id) VALUES(9,3);
 
 -- ACCOUNTS DATA
 INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031201','KOTAK000286','2022-04-05  01:02:03',1);
@@ -518,4 +518,12 @@ SELECT COUNT(*) from orders where order_date< '2020-04-30' ;
 
 -- //this query returns the list of products given category;
 
-SELECT products.product_title from categories inner join products where categories.category_id=products.category_id and categories.category_title='seeds';
+SELECT products.product_id, products.product_title,products.unit_price,products.stock_available,products.image,categories.category_title from categories inner join products where categories.category_id=products.category_id and categories.category_title='seeds';
+
+
+-- get roles of user using inner join
+select roles.role from user_roles inner join roles on user_roles.role_id =roles.role_id where user_roles.user_id=6;
+
+-- get roles of user using nested query
+SELECT role from roles where role_id in  (select role_id from user_roles where user_id=1);
+
