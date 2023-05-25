@@ -22,7 +22,5 @@ namespace AuthenticationService.Models
       Password=user.Password;
       Token=token;
     }
-
-    }
-    
+  }
 }

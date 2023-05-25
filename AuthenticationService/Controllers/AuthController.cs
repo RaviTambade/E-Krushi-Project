@@ -35,5 +35,48 @@ namespace AuthenticationService.Controllers
             var users = _svc.GetAll();
             return await users;
         }
+    
+
+        [HttpGet]
+        [Route("getbyid/{id}")]
+        public async Task<User> GetById(int id)
+        {
+        User user = await _svc.GetById(id);
+        return user;
+        }
+
+        [HttpPost]
+        [Route("register")]
+        public async Task<bool> Register(User user)
+        {
+            bool status = await _svc.Register(user);
+            return status;
+        }
+
+        [HttpPut]
+        [Route("updateUser")]
+
+        public async Task<bool> UpdateUser(User user){
+        bool status = await _svc.UpdateUser(user);
+        return status;
+        }
+
+
+        [HttpDelete]
+        [Route("DeleteUser/{id}")]
+        public async Task<bool> DeleteUser(int id){
+            bool status =await _svc.DeleteUser(id);
+            return status;
+        }
+
+        [HttpPost]
+        [Route("ValidateUser")]
+        public async Task<bool> ValidateUser(AuthenticateRequest user){
+            bool status =await _svc.ValidateUser(user);
+            if(status==true){
+                Console.WriteLine("user is valid");
+            }
+            return status;
+        }
     }
 }
