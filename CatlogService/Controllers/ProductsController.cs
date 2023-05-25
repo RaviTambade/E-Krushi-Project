@@ -6,11 +6,11 @@ namespace CatlogService.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class ProductController : ControllerBase
+public class ProductsController : ControllerBase
 {
     private readonly IProductService _service;
 
-    public ProductController(IProductService service)
+    public ProductsController(IProductService service)
     {
         _service = service;
     }
