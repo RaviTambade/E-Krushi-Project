@@ -17,10 +17,10 @@ public class TransactionsController : ControllerBase
 
 
     [HttpGet]
-    [Route("getalltransactions")]
-    public IEnumerable<Transaction> GetAllTransactions()
+    [Route("transactions")]
+    public IEnumerable<Transaction> Transactions()
     {
-        List<Transaction> transactions = _service.GetAllTransactions();
+        List<Transaction> transactions = _service.Transactions();
         return transactions;
     }
 
@@ -33,30 +33,30 @@ public class TransactionsController : ControllerBase
     }
 
     [HttpPost]
-    [Route("Inserttransaction")]
-    public bool InsertTransaction([FromBody] Transaction transaction)
+    [Route("Insert")]
+    public bool Insert([FromBody] Transaction transaction)
     {
-        bool result = _service.InsertTransaction(transaction);
+        bool result = _service.Insert(transaction);
         return result;
     }
 
     [HttpPut]
-    [Route("UpdateTransaction/{id}")]
-    public bool UpdateTransaction(int id,[FromBody] Transaction transaction)
+    [Route("Update/{id}")]
+    public bool Update(int id,[FromBody] Transaction transaction)
     {
         Transaction oldTransaction = _service.GetTransaction(id);
-        if(oldTransaction.TransactionId==0){
+        if(oldTransaction.Id==0){
             return false;
         }
-        transaction.TransactionId = id;
-        bool result = _service.UpdateTransaction(transaction);
+        transaction.Id = id;
+        bool result = _service.Update(transaction);
         return result;
     }
     [HttpDelete]
-    [Route("DeleteTransaction/{id}")]
-    public bool DeleteTransaction(int id)
+    [Route("Delete/{id}")]
+    public bool Delete(int id)
     {
-        bool result = _service.DeleteTransaction(id);
+        bool result = _service.Delete(id);
         return result;
     }
 

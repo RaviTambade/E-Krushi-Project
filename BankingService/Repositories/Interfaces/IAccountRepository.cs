@@ -4,10 +4,10 @@ namespace BankingService.Repositories.Interfaces
 {
     public interface IAccountRepository{
 
-        List<Account> GetAllAccounts();
+        List<Account> Accounts();
         Account GetAccount(int id);
-        bool InsertAccount(Account account);
-        bool UpdateAccount(Account account);
-        bool DeleteAccount(int id);
+        bool Insert(Account account);
+        bool Update(Account account);
+        bool Delete(int id);
     }
 }

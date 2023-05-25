@@ -4,10 +4,10 @@ namespace BankingService.Repositories.Interfaces
 {
     public interface ITransactionRepository{
 
-        List<Transaction> GetAllTransactions();
+        List<Transaction> Transactions();
         Transaction GetTransaction(int id);
-        bool InsertTransaction(Transaction transaction);
-        bool UpdateTransaction(Transaction transaction);
-        bool DeleteTransaction(int id);
+        bool Insert(Transaction transaction);
+        bool Update(Transaction transaction);
+        bool Delete(int id);
     }
 }

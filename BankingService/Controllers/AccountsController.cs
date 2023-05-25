@@ -17,10 +17,10 @@ public class AccountsController : ControllerBase
 
 
     [HttpGet]
-    [Route("getallaccounts")]
-    public IEnumerable<Account> GetAllAccounts()
+    [Route("accounts")]
+    public IEnumerable<Account> Accounts()
     {
-        List<Account> accounts = _service.GetAllAccounts();
+        List<Account> accounts = _service.Accounts();
         return accounts;
     }
 
@@ -33,30 +33,30 @@ public class AccountsController : ControllerBase
     }
 
     [HttpPost]
-    [Route("Insertaccount")]
-    public bool InsertAccount([FromBody] Account account)
+    [Route("Insert")]
+    public bool Insert([FromBody] Account account)
     {
-        bool result = _service.InsertAccount(account);
+        bool result = _service.Insert(account);
         return result;
     }
 
     [HttpPut]
-    [Route("UpdateAccount/{id}")]
-    public bool UpdateAccount(int id,[FromBody] Account account)
+    [Route("Update/{id}")]
+    public bool Update(int id,[FromBody] Account account)
     {
         Account oldAccount = _service.GetAccount(id);
-        if(oldAccount.AccountId==0){
+        if(oldAccount.Id==0){
             return false;
         }
-        account.AccountId = id;
-        bool result = _service.UpdateAccount(account);
+        account.Id = id;
+        bool result = _service.Update(account);
         return result;
     }
     [HttpDelete]
-    [Route("DeleteAccount/{id}")]
-    public bool DeleteAccount(int id)
+    [Route("Delete/{id}")]
+    public bool Delete(int id)
     {
-        bool result = _service.DeleteAccount(id);
+        bool result = _service.Delete(id);
         return result;
     }
 

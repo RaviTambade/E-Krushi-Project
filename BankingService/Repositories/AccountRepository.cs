@@ -16,7 +16,7 @@ public class AccountRepository : IAccountRepository
         _conString = this._configuration.GetConnectionString("DefaultConnection");
     }
 
-        public List<Account> GetAllAccounts()
+        public List<Account> Accounts()
         {
             List<Account> accounts = new List<Account>();
             MySqlConnection con = new MySqlConnection();
@@ -35,8 +35,8 @@ public class AccountRepository : IAccountRepository
                 int userId = int.Parse(reader["user_id"].ToString());
                 Account account = new Account
                 {
-                    AccountId = accountId,
-                    AccountNumber = accountNumber,
+                    Id = accountId,
+                    Number = accountNumber,
                     IFSCCode = ifscCode,
                     RegisterDate = registerDate,
                     UserId = userId
@@ -76,8 +76,8 @@ public class AccountRepository : IAccountRepository
                 int userId = int.Parse(reader["user_id"].ToString());
                 account = new Account
                 {
-                    AccountId = id,
-                    AccountNumber = accountNumber,
+                    Id = id,
+                    Number = accountNumber,
                     IFSCCode = ifscCode,
                     RegisterDate = registerDate,
                     UserId = userId
@@ -94,7 +94,7 @@ public class AccountRepository : IAccountRepository
             return account;
         }
 
-        public bool InsertAccount(Account account)
+        public bool Insert(Account account)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
@@ -103,7 +103,7 @@ public class AccountRepository : IAccountRepository
                 string query = "Insert into accounts(account_number,ifsc_code,register_date,user_id) VALUES(@accountNumber,@ifscCode,@registerDate,@userId)";
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@accountNumber",account.AccountNumber);
+                cmd.Parameters.AddWithValue("@accountNumber",account.Number);
                 cmd.Parameters.AddWithValue("@ifscCode",account.IFSCCode);
                 cmd.Parameters.AddWithValue("@registerDate",account.RegisterDate);
                 cmd.Parameters.AddWithValue("@userId",account.UserId);
@@ -121,7 +121,7 @@ public class AccountRepository : IAccountRepository
             }
             return status;
         }
-        public bool UpdateAccount(Account account)
+        public bool Update(Account account)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
@@ -129,7 +129,7 @@ public class AccountRepository : IAccountRepository
             try{
                 string query = "Update accounts set  account_number= @accountNumber, ifsc_code= @ifscCode, register_date = @registerDate, user_id=@userId where account_id = @accountId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@accountNumber",account.AccountNumber);
+                cmd.Parameters.AddWithValue("@accountNumber",account.Number);
                 cmd.Parameters.AddWithValue("@ifscCode",account.IFSCCode);
                 cmd.Parameters.AddWithValue("@registerDate",account.RegisterDate);
                 cmd.Parameters.AddWithValue("@userId",account.UserId);
@@ -148,7 +148,7 @@ public class AccountRepository : IAccountRepository
             }
             return status;
         }
-        public bool DeleteAccount(int id)
+        public bool Delete(int id)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();

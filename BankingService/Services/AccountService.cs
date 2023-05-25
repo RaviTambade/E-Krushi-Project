@@ -13,10 +13,10 @@ public class AccountService : IAccountService{
         _repo = repo;
     }
 
-    public List<Account> GetAllAccounts() => _repo.GetAllAccounts();
+    public List<Account> Accounts() => _repo.Accounts();
     public Account GetAccount(int id) => _repo.GetAccount(id);
-    public bool InsertAccount(Account account) => _repo.InsertAccount(account);
-    public bool UpdateAccount(Account account) => _repo.UpdateAccount(account);
-    public bool DeleteAccount(int id) => _repo.DeleteAccount(id);
+    public bool Insert(Account account) => _repo.Insert(account);
+    public bool Update(Account account) => _repo.Update(account);
+    public bool Delete(int id) => _repo.Delete(id);
 
 }

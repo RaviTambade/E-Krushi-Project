@@ -16,7 +16,7 @@ public class TransactionRepository : ITransactionRepository
         _conString = this._configuration.GetConnectionString("DefaultConnection");
     }
 
-        public List<Transaction> GetAllTransactions()
+        public List<Transaction> Transactions()
         {
             List<Transaction> transactions = new List<Transaction>();
             MySqlConnection con = new MySqlConnection();
@@ -35,10 +35,10 @@ public class TransactionRepository : ITransactionRepository
                 double amount= double.Parse(reader["amount"].ToString());
                 Transaction transaction = new Transaction
                 {
-                    TransactionId = transactionId,
+                    Id = transactionId,
                     FromAccountNumber = fromAccountNumber,
                     ToAccountNumber = toAccountNumber,
-                    TransactionDate = transactionDate,
+                    Date = transactionDate,
                     Amount = amount
                 };
                 transactions.Add(transaction);
@@ -76,10 +76,10 @@ public class TransactionRepository : ITransactionRepository
                 double amount= double.Parse(reader["amount"].ToString());
                 transaction = new Transaction
                 {
-                    TransactionId = transactionId,
+                    Id = transactionId,
                     FromAccountNumber = fromAccountNumber,
                     ToAccountNumber = toAccountNumber,
-                    TransactionDate = transactionDate,
+                    Date = transactionDate,
                     Amount = amount
                 };
                 reader.Close();
@@ -94,7 +94,7 @@ public class TransactionRepository : ITransactionRepository
             return transaction;
         }
 
-        public bool InsertTransaction(Transaction transaction)
+        public bool Insert(Transaction transaction)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
@@ -105,7 +105,7 @@ public class TransactionRepository : ITransactionRepository
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@fromAccountNumber",transaction.FromAccountNumber);
                 cmd.Parameters.AddWithValue("@toAccountNumber",transaction.ToAccountNumber);
-                cmd.Parameters.AddWithValue("@transactionDate",transaction.TransactionDate);
+                cmd.Parameters.AddWithValue("@transactionDate",transaction.Date);
                 cmd.Parameters.AddWithValue("@amount",transaction.Amount);
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if(rowsAffected > 0)
@@ -121,7 +121,7 @@ public class TransactionRepository : ITransactionRepository
             }
             return status;
         }
-        public bool UpdateTransaction(Transaction transaction)
+        public bool Update(Transaction transaction)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
@@ -129,10 +129,10 @@ public class TransactionRepository : ITransactionRepository
             try{
                 string query = "Update transactions set  from_account_number= @fromAccountNumber, to_account_number= @toAccountNumber, transaction_date = @transactionDate, amount=@amount where transaction_id = @transactionId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@transactionId",transaction.TransactionId);
+                cmd.Parameters.AddWithValue("@transactionId",transaction.Id);
                 cmd.Parameters.AddWithValue("@fromAccountNumrber",transaction.FromAccountNumber);
                 cmd.Parameters.AddWithValue("@toAccountNumber",transaction.ToAccountNumber);
-                cmd.Parameters.AddWithValue("@transactionDate",transaction.TransactionDate);
+                cmd.Parameters.AddWithValue("@transactionDate",transaction.Date);
                 cmd.Parameters.AddWithValue("@amount",transaction.Amount);
                 con.Open();
                 int rowsAffected = cmd.ExecuteNonQuery();
@@ -149,7 +149,7 @@ public class TransactionRepository : ITransactionRepository
             }
             return status;
         }
-        public bool DeleteTransaction(int id)
+        public bool Delete(int id)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
