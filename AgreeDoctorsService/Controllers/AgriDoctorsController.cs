@@ -19,7 +19,7 @@ public class AgriDoctorsController : ControllerBase
 
 
     [HttpGet]
-    [Route("GetAllAgriDoctor")]                            
+    [Route("AgriDoctors")]                            
     public List<AgriDoctor> GetAll()                 //This method gives Agri doctor List.
     {
 
@@ -30,7 +30,7 @@ public class AgriDoctorsController : ControllerBase
 
 
     [HttpGet]
-    [Route("getbyid/{id}")]                          //This method gives agri doctor details by id.
+    [Route("AgriDoctor/{id}")]                          //This method gives agri doctor details by id.
     public AgriDoctor GetById(int id)
     {
 
@@ -41,7 +41,7 @@ public class AgriDoctorsController : ControllerBase
 
 
       [HttpPost]
-    [Route("InsertDoctor")]                           //this method is used for insert new agri doctor.
+    [Route("AgriDoctor")]                           //this method is used for insert new agri doctor.
     public bool InsertDoctor(AgriDoctor doctor)
     {
 
@@ -52,7 +52,7 @@ public class AgriDoctorsController : ControllerBase
 
 
      [HttpPut]
-    [Route("UpdateDoctor")]                                 //this method is used for update agri doctor.
+    [Route("AgriDoctor")]                                 //this method is used for update agri doctor.
     public bool UpdateDoctor(AgriDoctor doctor)
     {
 
