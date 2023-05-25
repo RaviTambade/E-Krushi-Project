@@ -8,10 +8,10 @@ public interface IAgriRepository{
 
     public AgriDoctor GetById(int id);
 
-    public bool InsertDoctor(AgriDoctor doctor);
+    public bool Insert(AgriDoctor doctor);
 
 
-    public bool UpdateDoctor(AgriDoctor doctor);
-    public bool DeleteDoctor(int id);
+    public bool Update(AgriDoctor doctor);
+    public bool Delete(int id);
 
 }

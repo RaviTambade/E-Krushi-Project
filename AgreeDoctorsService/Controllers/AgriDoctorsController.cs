@@ -19,7 +19,7 @@ public class AgriDoctorsController : ControllerBase
 
 
     [HttpGet]
-    [Route("GetAllAgriDoctor")]                            
+    [Route("AgriDoctors")]                            
     public List<AgriDoctor> GetAll()                 //This method gives Agri doctor List.
     {
 
@@ -30,7 +30,7 @@ public class AgriDoctorsController : ControllerBase
 
 
     [HttpGet]
-    [Route("getbyid/{id}")]                          //This method gives agri doctor details by id.
+    [Route("AgriDoctors/{id}")]                          //This method gives agri doctor details by id.
     public AgriDoctor GetById(int id)
     {
 
@@ -41,22 +41,22 @@ public class AgriDoctorsController : ControllerBase
 
 
       [HttpPost]
-    [Route("InsertDoctor")]                           //this method is used for insert new agri doctor.
-    public bool InsertDoctor(AgriDoctor doctor)
+    [Route("AgriDoctors")]                           //this method is used for insert new agri doctor.
+    public bool Insert(AgriDoctor doctor)
     {
 
-        bool status = _srv.InsertDoctor(doctor);
+        bool status = _srv.Insert(doctor);
 
         return status;
     }
 
 
      [HttpPut]
-    [Route("UpdateDoctor")]                                 //this method is used for update agri doctor.
-    public bool UpdateDoctor(AgriDoctor doctor)
+    [Route("Update")]                                 //this method is used for update agri doctor.
+    public bool Update(AgriDoctor doctor)
     {
 
-    bool status = _srv.UpdateDoctor(doctor);
+    bool status = _srv.Update(doctor);
 
         return status;
     }
@@ -64,11 +64,11 @@ public class AgriDoctorsController : ControllerBase
 
 
       [HttpDelete]
-    [Route("DeleteDoctor/{id}")]
-    public bool DeleteDoctor(int id)                      //this method is used for remove agri doctor .
+    [Route("Delete/{id}")]
+    public bool Delete(int id)                      //this method is used for remove agri doctor .
     {
 
-        bool status = _srv.DeleteDoctor(id);
+        bool status = _srv.Delete(id);
 
         return status;
     }

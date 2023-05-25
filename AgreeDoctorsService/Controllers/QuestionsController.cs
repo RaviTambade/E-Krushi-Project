@@ -41,22 +41,22 @@ public class QuestionsController : ControllerBase
 
 
       [HttpPost]
-    [Route("InsertQuestion")]
+    [Route("Insert")]
     public bool InsertQuestion(Question question)
     {
 
-        bool status = _srv.InsertQuestion(question);
+        bool status = _srv.Insert(question);
 
         return status;
     }
 
 
      [HttpPut]
-    [Route("UpdateQuestion")]
-    public bool UpdateQuestion(Question question)
+    [Route("Update")]
+    public bool Update(Question question)
     {
 
-    bool status = _srv.UpdateQuestion(question);
+    bool status = _srv.Update(question);
 
         return status;
     }
@@ -64,11 +64,11 @@ public class QuestionsController : ControllerBase
 
 
       [HttpDelete]
-    [Route("DeleteQuestion/{id}")]
-    public bool DeleteQuestion(int id)
+    [Route("Delete/{id}")]
+    public bool Delete(int id)
     {
 
-        bool status = _srv.DeleteQuestion(id);
+        bool status = _srv.Delete(id);
 
         return status;
     }
