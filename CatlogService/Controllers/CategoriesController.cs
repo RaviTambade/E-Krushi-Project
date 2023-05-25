@@ -6,11 +6,11 @@ namespace CatlogService.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class CategoryController : ControllerBase
+public class CategoriesController : ControllerBase
 {
     private readonly ICategoryService _service;
 
-    public CategoryController(ICategoryService service)
+    public CategoriesController(ICategoryService service)
     {
         _service = service;
     }
