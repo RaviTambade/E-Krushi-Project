@@ -6,10 +6,10 @@ public interface IQuestionSolutionRepository{
 
     public QuestionSolution GetById(int id);
 
-    public bool InsertQuestionSolution(QuestionSolution questionSolution);
+    public bool Insert(QuestionSolution solution);
      
-    public bool UpdateQuestionSolution(QuestionSolution questionSolution);
+    public bool Update(QuestionSolution solution);
     
-    public bool DeleteQuestionSolution(int id);
+    public bool Delete(int id);
 
 }

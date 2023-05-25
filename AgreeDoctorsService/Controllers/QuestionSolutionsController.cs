@@ -20,43 +20,43 @@ public class QuestionSolutionsController : ControllerBase
 
 
     [HttpGet]
-    [Route("getall")]
+    [Route("Solutions")]
     public List<QuestionSolution> GetAll()
     {
 
-        List<QuestionSolution> questionSolutions = _srv.GetAll();
+        List<QuestionSolution> solutions = _srv.GetAll();
 
-        return questionSolutions;
+        return solutions;
     }
 
      [HttpGet]
-    [Route("getbyid/{id}")]
+    [Route("Solutions/{id}")]
     public QuestionSolution GetById(int id)
     {
 
-        QuestionSolution questionSolution = _srv.GetById(id);
+        QuestionSolution solutions = _srv.GetById(id);
 
-        return questionSolution;
+        return solutions;
     }
 
 
     [HttpPost]
-    [Route("InsertQuestionSolution")]
-    public bool InsertQuestionSolution(QuestionSolution questionSolution)
+    [Route("Insert")]
+    public bool Insert(QuestionSolution solution)
     {
 
-        bool status = _srv.InsertQuestionSolution(questionSolution);
+        bool status = _srv.Insert(solution);
 
         return status;
     }
 
 
      [HttpPut]
-    [Route("UpdateQuestionSolution")]
-    public bool UpdateQuestionSolution(QuestionSolution questionSolution)
+    [Route("Update")]
+    public bool Update(QuestionSolution solution)
     {
 
-    bool status = _srv.UpdateQuestionSolution(questionSolution);
+    bool status = _srv.Update(solution);
 
         return status;
     }
@@ -64,11 +64,11 @@ public class QuestionSolutionsController : ControllerBase
 
 
       [HttpDelete]
-    [Route("DeleteDeleteQuestionSolution/{id}")]
-    public bool DeleteQuestionSolution(int id)
+    [Route("Delete/{id}")]
+    public bool Delete(int id)
     {
 
-        bool status = _srv.DeleteQuestionSolution(id);
+        bool status = _srv.Delete(id);
 
         return status;
     }

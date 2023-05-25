@@ -4,51 +4,67 @@ using MySql.Data.MySqlClient;
 
 namespace E_krushiApp.Repository;
 
-public class QuestionSolutionRepository:IQuestionSolutionRepository{
+public class QuestionSolutionRepository : IQuestionSolutionRepository
+{
+
+    private readonly IConfiguration _configuration;
+    private readonly string _conString;
+
+    public QuestionSolutionRepository(IConfiguration configuration)
+    {
+
+        _configuration = configuration;
+        _conString = this._configuration.GetConnectionString("DefaultConnection");
+    }
 
 
-    public static string conString ="server=localhost;port=3306;user=root;Password=PASSWORD;Database=E_krushi";
 
-    public List<QuestionSolution> GetAll(){
+    public List<QuestionSolution> GetAll()
+    {
 
         List<QuestionSolution> questionSolutions = new List<QuestionSolution>();
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString= conString;
+        connection.ConnectionString = _conString;
 
-        try{
+        try
+        {
 
             string query = "select * from question_solutions";
-            MySqlCommand command = new MySqlCommand(query,connection);
+            MySqlCommand command = new MySqlCommand(query, connection);
             connection.Open();
             MySqlDataReader reader = command.ExecuteReader();
-           
-            while(reader.Read()){
+
+            while (reader.Read())
+            {
 
 
-                int questionId= int.Parse(reader["question_id"].ToString());
-                 int solutionId= int.Parse(reader["solution_id"].ToString());
-                DateTime solutionDate= DateTime.Parse(reader["solution_date"].ToString());
-                int agriDoctorId =int.Parse(reader["agri_doctor_id"].ToString());
-                
+                int questionId = int.Parse(reader["question_id"].ToString());
+                int solutionId = int.Parse(reader["solution_id"].ToString());
+                DateTime solutionDate = DateTime.Parse(reader["solution_date"].ToString());
+                int agriDoctorId = int.Parse(reader["agri_doctor_id"].ToString());
 
 
-                QuestionSolution questionSolution = new QuestionSolution(){
-                    QuestionId=questionId,
-                    SolutionId=solutionId,
-                    SolutionDate=solutionDate,
-                    AgriDoctorId=agriDoctorId
-                
+
+                QuestionSolution questionSolution = new QuestionSolution()
+                {
+                    QuestionId = questionId,
+                    SolutionId = solutionId,
+                    SolutionDate = solutionDate,
+                    AgriDoctorId = agriDoctorId
+
                 };
 
                 questionSolutions.Add(questionSolution);
             }
 
         }
-        catch(Exception ee){
+        catch (Exception ee)
+        {
             throw ee;
         }
 
-        finally{
+        finally
+        {
             connection.Close();
         }
 
@@ -56,12 +72,12 @@ public class QuestionSolutionRepository:IQuestionSolutionRepository{
     }
 
 
-     public QuestionSolution GetById(int id)
+    public QuestionSolution GetById(int id)
     {
 
         QuestionSolution questionSolution = new QuestionSolution();
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = conString;
+        connection.ConnectionString = _conString;
 
         try
         {
@@ -74,18 +90,19 @@ public class QuestionSolutionRepository:IQuestionSolutionRepository{
             if (reader.Read())
             {
 
-               int questionId= int.Parse(reader["question_id"].ToString());
-                 int solutionId= int.Parse(reader["solution_id"].ToString());
-                DateTime solutionDate= DateTime.Parse(reader["solution_date"].ToString());
-                int agriDoctorId =int.Parse(reader["agri_doctor_id"].ToString());
-                
+                int questionId = int.Parse(reader["question_id"].ToString());
+                int solutionId = int.Parse(reader["solution_id"].ToString());
+                DateTime solutionDate = DateTime.Parse(reader["solution_date"].ToString());
+                int agriDoctorId = int.Parse(reader["agri_doctor_id"].ToString());
 
-                 questionSolution = new QuestionSolution{
-                    QuestionId=questionId,
-                    SolutionId=solutionId,
-                    SolutionDate=solutionDate,
-                    AgriDoctorId=agriDoctorId
-                
+
+                questionSolution = new QuestionSolution
+                {
+                    QuestionId = questionId,
+                    SolutionId = solutionId,
+                    SolutionDate = solutionDate,
+                    AgriDoctorId = agriDoctorId
+
                 };
 
 
@@ -109,11 +126,11 @@ public class QuestionSolutionRepository:IQuestionSolutionRepository{
     }
 
 
-     public bool InsertQuestionSolution(QuestionSolution questionSolution)
+    public bool Insert(QuestionSolution solution)
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = conString;
+        connection.ConnectionString = _conString;
 
         try
         {
@@ -121,11 +138,11 @@ public class QuestionSolutionRepository:IQuestionSolutionRepository{
             string query = "Insert into question_solutions(question_id,solution_id,solution_date,agri_doctor_id) values(@questionId,@solutionId,@solutionDate,@doctorId)";
             MySqlCommand command = new MySqlCommand(query, connection);
             connection.Open();
-            command.Parameters.AddWithValue("@questionId", questionSolution.QuestionId);
-            command.Parameters.AddWithValue("@solutionId",questionSolution.SolutionId);
-            command.Parameters.AddWithValue("@solutionDate", questionSolution.SolutionDate);
-            command.Parameters.AddWithValue("@doctorId", questionSolution.AgriDoctorId);
-           
+            command.Parameters.AddWithValue("@questionId", solution.QuestionId);
+            command.Parameters.AddWithValue("@solutionId", solution.SolutionId);
+            command.Parameters.AddWithValue("@solutionDate", solution.SolutionDate);
+            command.Parameters.AddWithValue("@doctorId", solution.AgriDoctorId);
+
             int rowsaffected = command.ExecuteNonQuery();
             if (rowsaffected > 0)
             {
@@ -149,11 +166,11 @@ public class QuestionSolutionRepository:IQuestionSolutionRepository{
 
 
 
-    public bool UpdateQuestionSolution(QuestionSolution questionSolution)
+    public bool Update(QuestionSolution solution)
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = conString;
+        connection.ConnectionString = _conString;
 
         try
         {
@@ -161,11 +178,11 @@ public class QuestionSolutionRepository:IQuestionSolutionRepository{
             string query = "update question_solutions set solution_id=@solutionId,solution_date=@solutiondate,agri_doctors_id=@doctorId where question_id=@questionId";
             MySqlCommand command = new MySqlCommand(query, connection);
             connection.Open();
-             command.Parameters.AddWithValue("@questionId", questionSolution.QuestionId);
-            command.Parameters.AddWithValue("@solutionId",questionSolution.SolutionId);
-            command.Parameters.AddWithValue("@solutionDate", questionSolution.SolutionDate);
-            command.Parameters.AddWithValue("@doctorId", questionSolution.AgriDoctorId);
-           
+            command.Parameters.AddWithValue("@questionId", solution.QuestionId);
+            command.Parameters.AddWithValue("@solutionId",solution.SolutionId);
+            command.Parameters.AddWithValue("@solutionDate", solution.SolutionDate);
+            command.Parameters.AddWithValue("@doctorId", solution.AgriDoctorId);
+
             int rowsaffected = command.ExecuteNonQuery();
             if (rowsaffected > 0)
             {
@@ -190,11 +207,11 @@ public class QuestionSolutionRepository:IQuestionSolutionRepository{
 
 
 
-    public bool DeleteQuestionSolution(int id)
+    public bool Delete(int id)
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = conString;
+        connection.ConnectionString = _conString;
 
         try
         {

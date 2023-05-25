@@ -15,10 +15,10 @@ public class QuestionSolutionService:IQuestionSolutionService{
 
     public QuestionSolution GetById(int id)=>_repo.GetById(id);
 
-    public bool InsertQuestionSolution(QuestionSolution questionSolution)=>_repo.InsertQuestionSolution(questionSolution);
+    public bool Insert(QuestionSolution solution)=>_repo.Insert(solution);
 
-    public bool UpdateQuestionSolution(QuestionSolution questionSolution)=>_repo.UpdateQuestionSolution(questionSolution);
+    public bool Update(QuestionSolution solution)=>_repo.Update(solution);
 
-    public bool DeleteQuestionSolution(int id)=>_repo.DeleteQuestionSolution(id);
+    public bool Delete(int id)=>_repo.Delete(id);
 
 }
