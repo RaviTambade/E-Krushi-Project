@@ -6,14 +6,22 @@ namespace E_krushiApp.Repository;
 
 public class QuestionRepository:IQuestionRepository{
 
+ private readonly IConfiguration _configuration;
+    private readonly string _conString;
+   
+    public QuestionRepository(IConfiguration configuration )
+    {
 
-    public static string conString ="server=localhost;port=3306;user=root;Password=Password;Database=E_krushi";
+        _configuration = configuration;
+        _conString = this._configuration.GetConnectionString("DefaultConnection");
+    }
+   
 
     public List<Question> GetAll(){
 
         List<Question> questions = new List<Question>();
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString= conString;
+        connection.ConnectionString= _conString;
 
         try{
 
@@ -25,16 +33,16 @@ public class QuestionRepository:IQuestionRepository{
             while(reader.Read()){
 
 
-                int questionId= int.Parse(reader["question_id"].ToString());
-                DateTime questionDate= DateTime.Parse(reader["question_date"].ToString());
+                int Id= int.Parse(reader["question_id"].ToString());
+                DateTime Date= DateTime.Parse(reader["question_date"].ToString());
                 string description = reader["description"].ToString();
                 int custId =int.Parse(reader["cust_id"].ToString());
                 int categoryId = int.Parse(reader["category_id"].ToString());
 
 
                 Question question = new Question(){
-                    QuestionId=questionId,
-                    QuestionDate=questionDate,
+                    Id=Id,
+                    Date=Date,
                     Description=description,
                     CustId=custId,
                     CategoryId=categoryId
@@ -60,7 +68,7 @@ public class QuestionRepository:IQuestionRepository{
 
         Question question = new Question();
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = conString;
+        connection.ConnectionString = _conString;
 
         try
         {
@@ -73,16 +81,16 @@ public class QuestionRepository:IQuestionRepository{
             if (reader.Read())
             {
 
-               int questionId= int.Parse(reader["question_id"].ToString());
-                DateTime questionDate= DateTime.Parse(reader["question_date"].ToString());
+               int Id= int.Parse(reader["question_id"].ToString());
+                DateTime Date= DateTime.Parse(reader["question_date"].ToString());
                 string description = reader["description"].ToString();
                 int custId =int.Parse(reader["cust_id"].ToString());
                 int categoryId = int.Parse(reader["category_id"].ToString());
 
 
                  question = new Question{
-                    QuestionId=questionId,
-                    QuestionDate=questionDate,
+                    Id=Id,
+                    Date=Date,
                     Description=description,
                     CustId=custId,
                     CategoryId=categoryId
@@ -111,11 +119,11 @@ public class QuestionRepository:IQuestionRepository{
 
 
 
-    public bool InsertQuestion(Question question)
+    public bool Insert(Question question)
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = conString;
+        connection.ConnectionString = _conString;
 
         try
         {
@@ -123,8 +131,8 @@ public class QuestionRepository:IQuestionRepository{
             string query = "Insert into questions(question_id,question_date,description,cust_id,category_id) values(@questionId,@questionDate,@description,@custId,@categoryId)";
             MySqlCommand command = new MySqlCommand(query, connection);
             connection.Open();
-            command.Parameters.AddWithValue("@questionId", question.QuestionId);
-            command.Parameters.AddWithValue("questionDate", question.QuestionDate);
+            command.Parameters.AddWithValue("@questionId", question.Id);
+            command.Parameters.AddWithValue("questionDate", question.Date);
             command.Parameters.AddWithValue("@description", question.Description);
             command.Parameters.AddWithValue("@custId",question.CustId);
             command.Parameters.AddWithValue("@categoryId", question.CategoryId);
@@ -151,11 +159,11 @@ public class QuestionRepository:IQuestionRepository{
 
 
 
-    public bool UpdateQuestion(Question question)
+    public bool Update(Question question)
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = conString;
+        connection.ConnectionString = _conString;
 
         try
         {
@@ -163,8 +171,8 @@ public class QuestionRepository:IQuestionRepository{
             string query = "update questions set question_date=@questionDate,description=@description,cust_id=@custId,category_id=@categoryId where question_id=@questionId";
             MySqlCommand command = new MySqlCommand(query, connection);
             connection.Open();
-            command.Parameters.AddWithValue("@questionId", question.QuestionId);
-            command.Parameters.AddWithValue("questionDate", question.QuestionDate);
+            command.Parameters.AddWithValue("@questionId", question.Id);
+            command.Parameters.AddWithValue("questionDate", question.Date);
             command.Parameters.AddWithValue("@description", question.Description);
             command.Parameters.AddWithValue("@custId",question.CustId);
             command.Parameters.AddWithValue("@categoryId", question.CategoryId);
@@ -192,11 +200,11 @@ public class QuestionRepository:IQuestionRepository{
 
 
 
-    public bool DeleteQuestion(int id)
+    public bool Delete(int id)
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = conString;
+        connection.ConnectionString = _conString;
 
         try
         {

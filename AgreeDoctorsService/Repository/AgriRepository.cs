@@ -15,7 +15,7 @@ public class AgriRepository : IAgriRepository
         _conString = this._configuration.GetConnectionString("DefaultConnection");
     }
        
-   // public static string conString = "server=localhost; user=root; password=PASSWORD; database=E_krushi";
+  
     public List<AgriDoctor> GetAll()
     {
 

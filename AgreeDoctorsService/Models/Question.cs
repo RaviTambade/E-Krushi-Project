@@ -1,8 +1,8 @@
 namespace E_krushiApp.Models;
 public class Question{
 
-    public int QuestionId{get;set;}
-    public DateTime QuestionDate{get;set;}
+    public int Id{get;set;}
+    public DateTime Date{get;set;}
 
     public string Description{get;set;}
 
