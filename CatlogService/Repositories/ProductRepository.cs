@@ -191,10 +191,10 @@ namespace CatlogService.Repositories
         }
     
     
-    public List<ProductList> CategoryName(string categoryName)
+    public List<Products> CategoryName(string categoryName)
     {
         
-           List<ProductList> productList = new List<ProductList>();
+           List<Products> products = new List<Products>();
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = _conString;
             try{
@@ -212,7 +212,7 @@ namespace CatlogService.Repositories
                     string image = reader["image"].ToString();
                     string categoryTitle = reader["category_title"].ToString();
 
-                    ProductList products = new ProductList()
+                    Products product = new Products()
                     {
                         Id = productId,
                         Title = productTitle,
@@ -222,7 +222,7 @@ namespace CatlogService.Repositories
                         CategoryTitle = categoryTitle
 
                     };
-                    productList.Add(products);
+                    products.Add(product);
                    
                 }
                  reader.Close();
@@ -234,7 +234,7 @@ namespace CatlogService.Repositories
             finally{
                 con.Close();
             }
-            return productList;
+            return products;
         }
 
     }

@@ -66,10 +66,11 @@ public class ProductsController : ControllerBase
 
     [HttpGet]
     [Route("category/{categoryName}")]
-    public List<ProductList> CategoryName(string categoryName)
+    public List<Products> CategoryName(string categoryName)
     {
-        List<ProductList> productList = _service.CategoryName(categoryName);
-        return productList;
+        List<Products> products = _service.CategoryName(categoryName);
+        
+        return products;
     }
 
 }

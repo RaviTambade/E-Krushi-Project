@@ -1,6 +1,6 @@
 namespace CatlogService.Models;
 
-public class ProductList{
+public class Products{
 
     public int Id{get; set;}
 
