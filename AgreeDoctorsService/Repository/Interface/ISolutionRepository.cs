@@ -8,9 +8,9 @@ public interface ISolutionRepository{
 
     public Solution GetById(int id);
 
-    public bool InsertSolution(Solution solution);
+    public bool Insert(Solution solution);
      
-    public bool UpdateSolution(Solution solution);
+    public bool Update(Solution solution);
     
-    public bool DeleteSolution(int id);
+    public bool Delete(int id);
 }

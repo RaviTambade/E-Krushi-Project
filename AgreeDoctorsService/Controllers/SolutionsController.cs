@@ -20,7 +20,7 @@ public class SolutionsController : ControllerBase
 
 
     [HttpGet]
-    [Route("getallSolutions")]
+    [Route("Solutions")]
     public List<Solution> GetAll()
     {
 
@@ -30,7 +30,7 @@ public class SolutionsController : ControllerBase
     }
 
     [HttpGet]
-    [Route("getbyid/{id}")]
+    [Route("Solutions/{id}")]
     public Solution GetById(int id)
     {
 
@@ -41,22 +41,22 @@ public class SolutionsController : ControllerBase
 
 
       [HttpPost]
-    [Route("InsertSolution")]
-    public bool InsertSolution(Solution solution)
+    [Route("Insert")]
+    public bool Insert(Solution solution)
     {
 
-        bool status = _srv.InsertSolution(solution);
+        bool status = _srv.Insert(solution);
 
         return status;
     }
 
 
      [HttpPut]
-    [Route("updateSolution")]
-    public bool UpdateSolution(Solution solution)
+    [Route("update")]
+    public bool Update(Solution solution)
     {
 
-    bool status = _srv.UpdateSolution(solution);
+    bool status = _srv.Update(solution);
 
         return status;
     }
@@ -64,11 +64,11 @@ public class SolutionsController : ControllerBase
 
 
       [HttpDelete]
-    [Route("DeleteSolution/{id}")]
-    public bool DeleteSolution(int id)
+    [Route("Delete/{id}")]
+    public bool Delete(int id)
     {
 
-        bool status = _srv.DeleteSolution(id);
+        bool status = _srv.Delete(id);
 
         return status;
     }

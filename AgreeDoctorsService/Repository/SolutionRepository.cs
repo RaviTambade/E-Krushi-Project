@@ -4,59 +4,74 @@ using MySql.Data.MySqlClient;
 
 namespace E_krushiApp.Repository;
 
-public class SolutionRepository:ISolutionRepository{
+public class SolutionRepository : ISolutionRepository
+{
 
 
-    public static string conString ="server=localhost;port=3306;user=root;Password=Password;Database=E_krushi";
+    private readonly IConfiguration _configuration;
+    private readonly string _conString;
 
-    public List<Solution> GetAll(){
+    public SolutionRepository(IConfiguration configuration)
+    {
+
+        _configuration = configuration;
+        _conString = this._configuration.GetConnectionString("DefaultConnection");
+    }
+
+    public List<Solution> GetAll()
+    {
 
         List<Solution> solutions = new List<Solution>();
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString= conString;
+        connection.ConnectionString = _conString;
 
-        try{
+        try
+        {
 
             string query = "select * from solutions";
-            MySqlCommand command = new MySqlCommand(query,connection);
+            MySqlCommand command = new MySqlCommand(query, connection);
             connection.Open();
             MySqlDataReader reader = command.ExecuteReader();
-           
-            while(reader.Read()){
+
+            while (reader.Read())
+            {
 
 
-                int solutionId= int.Parse(reader["solution_id"].ToString());
+                int solutionId = int.Parse(reader["solution_id"].ToString());
                 string description = reader["description"].ToString();
-               
 
-                Solution solution = new Solution(){
-                    SolutionId=solutionId,
-                    
-                    Description=description,
-                   
+
+                Solution solution = new Solution()
+                {
+                    Id = solutionId,
+
+                    Description = description,
+
                 };
 
                 solutions.Add(solution);
             }
 
         }
-        catch(Exception ee){
+        catch (Exception ee)
+        {
             throw ee;
         }
 
-        finally{
+        finally
+        {
             connection.Close();
         }
 
         return solutions;
     }
 
-     public Solution GetById(int id)
+    public Solution GetById(int id)
     {
 
         Solution solution = new Solution();
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = conString;
+        connection.ConnectionString = _conString;
 
         try
         {
@@ -69,15 +84,16 @@ public class SolutionRepository:ISolutionRepository{
             if (reader.Read())
             {
 
-              int solutionId= int.Parse(reader["solution_id"].ToString());
+                int solutionId = int.Parse(reader["solution_id"].ToString());
                 string description = reader["description"].ToString();
-               
 
-                 solution = new Solution(){
-                    SolutionId=solutionId,
-                    
-                    Description=description,
-                   
+
+                solution = new Solution()
+                {
+                    Id = solutionId,
+
+                    Description = description,
+
                 };
 
 
@@ -103,11 +119,11 @@ public class SolutionRepository:ISolutionRepository{
 
 
 
-    public bool InsertSolution(Solution solution)
+    public bool Insert(Solution solution)
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = conString;
+        connection.ConnectionString = _conString;
 
         try
         {
@@ -115,10 +131,10 @@ public class SolutionRepository:ISolutionRepository{
             string query = "Insert into solutions(solution_id,description) values(@solutionId,@description)";
             MySqlCommand command = new MySqlCommand(query, connection);
             connection.Open();
-            command.Parameters.AddWithValue("@solutionId", solution.SolutionId);
-            
+            command.Parameters.AddWithValue("@solutionId", solution.Id);
+
             command.Parameters.AddWithValue("@description", solution.Description);
-            
+
             int rowsaffected = command.ExecuteNonQuery();
             if (rowsaffected > 0)
             {
@@ -142,11 +158,11 @@ public class SolutionRepository:ISolutionRepository{
 
 
 
-    public bool UpdateSolution(Solution solution)
+    public bool Update(Solution solution)
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = conString;
+        connection.ConnectionString = _conString;
 
         try
         {
@@ -154,10 +170,10 @@ public class SolutionRepository:ISolutionRepository{
             string query = "update solutions set description=@description where solution_id=@solutionId";
             MySqlCommand command = new MySqlCommand(query, connection);
             connection.Open();
-            command.Parameters.AddWithValue("@solutionId", solution.SolutionId);
-            
+            command.Parameters.AddWithValue("@solutionId", solution.Id);
+
             command.Parameters.AddWithValue("@description", solution.Description);
-            
+
             int rowsaffected = command.ExecuteNonQuery();
             if (rowsaffected > 0)
             {
@@ -182,11 +198,11 @@ public class SolutionRepository:ISolutionRepository{
 
 
 
-    public bool DeleteSolution(int id)
+    public bool Delete(int id)
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = conString;
+        connection.ConnectionString = _conString;
 
         try
         {
@@ -216,8 +232,5 @@ public class SolutionRepository:ISolutionRepository{
         return status;
     }
 
-    public bool UpdateDoctor(Solution solution)
-    {
-        throw new NotImplementedException();
-    }
+
 }

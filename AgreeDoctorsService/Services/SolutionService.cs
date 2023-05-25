@@ -13,11 +13,11 @@ public class SolutionService:ISolutionService{
 
     public List<Solution> GetAll() => _repo.GetAll();
      public Solution GetById(int id)=>_repo.GetById(id);
-    public bool InsertSolution(Solution solution)=>_repo.InsertSolution(solution);
+    public bool Insert(Solution solution)=>_repo.Insert(solution);
 
-    public bool UpdateSolution(Solution solution)=>_repo.UpdateSolution(solution);
+    public bool Update(Solution solution)=>_repo.Update(solution);
 
-    public bool DeleteSolution(int id)=>_repo.DeleteSolution(id);
+    public bool Delete(int id)=>_repo.Delete(id);
 
    
 }
