@@ -5,15 +5,24 @@ namespace E_krushiApp.Repositories;
 
 public class AgriRepository : IAgriRepository
 {
+    private readonly IConfiguration _configuration;
+    private readonly string _conString;
+   
+    public AgriRepository(IConfiguration configuration )
+    {
 
-    public static string conString = "server=localhost; user=root; password=PASSWORD; database=E_krushi";
+        _configuration = configuration;
+        _conString = this._configuration.GetConnectionString("DefaultConnection");
+    }
+       
+   // public static string conString = "server=localhost; user=root; password=PASSWORD; database=E_krushi";
     public List<AgriDoctor> GetAll()
     {
 
 
         List<AgriDoctor> doctors = new List<AgriDoctor>();
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = conString;
+        connection.ConnectionString = _conString;
 
         try
         {
@@ -69,7 +78,7 @@ public class AgriRepository : IAgriRepository
 
         AgriDoctor doctor = new AgriDoctor();
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = conString;
+        connection.ConnectionString = _conString;
 
         try
         {
@@ -123,7 +132,7 @@ public class AgriRepository : IAgriRepository
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = conString;
+        connection.ConnectionString = _conString;
 
         try
         {
@@ -162,7 +171,7 @@ public class AgriRepository : IAgriRepository
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = conString;
+        connection.ConnectionString = _conString;
 
         try
         {
@@ -202,7 +211,7 @@ public class AgriRepository : IAgriRepository
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = conString;
+        connection.ConnectionString = _conString;
 
         try
         {
