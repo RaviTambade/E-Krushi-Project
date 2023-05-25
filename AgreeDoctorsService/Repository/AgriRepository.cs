@@ -128,7 +128,7 @@ public class AgriRepository : IAgriRepository
 
 
 
-    public bool InsertDoctor(AgriDoctor doctor)
+    public bool Insert(AgriDoctor doctor)
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection();
@@ -167,7 +167,7 @@ public class AgriRepository : IAgriRepository
 
 
 
-    public bool UpdateDoctor(AgriDoctor doctor)
+    public bool Update(AgriDoctor doctor)
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection();
@@ -207,7 +207,7 @@ public class AgriRepository : IAgriRepository
 
 
 
-    public bool DeleteDoctor(int id)
+    public bool Delete(int id)
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection();

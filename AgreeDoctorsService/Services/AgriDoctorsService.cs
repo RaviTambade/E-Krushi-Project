@@ -16,9 +16,9 @@ public class AgriDoctorsService : IAgriDoctorsService
     public List<AgriDoctor> GetAll()=> _repo.GetAll();
 
     public AgriDoctor GetById(int id)=>_repo.GetById(id);
-    public bool InsertDoctor(AgriDoctor doctor)=>_repo.InsertDoctor(doctor);
+    public bool Insert(AgriDoctor doctor)=>_repo.Insert(doctor);
 
-    public bool UpdateDoctor(AgriDoctor doctor)=>_repo.UpdateDoctor(doctor);
+    public bool Update(AgriDoctor doctor)=>_repo.Update(doctor);
 
-    public bool DeleteDoctor(int id)=>_repo.DeleteDoctor(id);
+    public bool Delete(int id)=>_repo.Delete(id);
 }
