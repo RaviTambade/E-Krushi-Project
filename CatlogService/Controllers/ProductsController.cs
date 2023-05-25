@@ -17,15 +17,15 @@ public class ProductsController : ControllerBase
 
 
     [HttpGet]
-    [Route("getallproducts")]
-    public IEnumerable<Product> GetAllProducts()
+    [Route("products")]
+    public IEnumerable<Product> Products()
     {
-        List<Product> products = _service.GetAllProducts();
+        List<Product> products = _service.Products();
         return products;
     }
 
     [HttpGet]
-    [Route("getproduct/{id}")]
+    [Route("products/{id}")]
     public Product GetProduct(int id)
     {
         Product product = _service.GetProduct(id);
@@ -33,42 +33,42 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPost]
-    [Route("InsertProduct")]
+    [Route("Insert")]
 
-    public bool InsertProduct([FromBody] Product product)
+    public bool Insert([FromBody] Product product)
     {
-        bool result = _service.InsertProduct(product);
+        bool result = _service.Insert(product);
         return result;
     }
     
     [HttpPut]
-    [Route("UpdateProduct/{id}")]
+    [Route("Update/{id}")]
 
-    public bool UpdateProduct(int id, [FromBody] Product product)
+    public bool Update(int id, [FromBody] Product product)
     {
         Product oldProduct = _service.GetProduct(id);
-        if(oldProduct.ProductId==0){
+        if(oldProduct.Id==0){
             return false;
         }
-        product.ProductId = id;
-        bool result = _service.UpdateProduct(product);
+        product.Id = id;
+        bool result = _service.Update(product);
         return result;
     }
 
     [HttpDelete]
-    [Route("DeleteProduct/{id}")]
+    [Route("Delete/{id}")]
 
-    public bool DeleteProduct(int id)
+    public bool Delete(int id)
     {
-        bool result = _service.DeleteProduct(id);
+        bool result = _service.Delete(id);
         return result;
     }
 
     [HttpGet]
-    [Route("getbycategory/{categoryName}")]
-    public List<ProductList> GetByCategoryName(string categoryName)
+    [Route("category/{categoryName}")]
+    public List<ProductList> CategoryName(string categoryName)
     {
-        List<ProductList> productList = _service.GetByCategoryName(categoryName);
+        List<ProductList> productList = _service.CategoryName(categoryName);
         return productList;
     }
 

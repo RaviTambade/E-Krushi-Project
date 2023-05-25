@@ -7,14 +7,20 @@ namespace CatlogService.Repositories{
 
 public class CategoryRepository : ICategoryRepository
     {
-        public static string conString = "server=localhost; port=3306; user=root; password=Password; database=E_Krushi";
+        private IConfiguration _configuration;
+    private string _conString;
+    public CategoryRepository(IConfiguration configuration)
+    {
+        _configuration = configuration;
+        _conString = this._configuration.GetConnectionString("DefaultConnection");
+    }
        
 
-        public List<Category> GetAllCategories()
+        public List<Category> Categories()
         {
             List<Category> categories = new List<Category>();
             MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = conString;
+            con.ConnectionString = _conString;
         try{
             string query = "select * from categories";
             MySqlCommand cmd = new MySqlCommand(query,con);
@@ -29,8 +35,8 @@ public class CategoryRepository : ICategoryRepository
             
             Category category = new Category()
             {
-                CategoryId = categoryId,
-                CategoryTitle= categoryTitle,
+                Id = categoryId,
+                Title= categoryTitle,
                 Description = description,
                 Image = image
             };
@@ -50,7 +56,7 @@ public class CategoryRepository : ICategoryRepository
         {
             Category category = new Category();
             MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = conString;
+            con.ConnectionString = _conString;
             try{
                 string query = "select * from categories where category_id = @categoryId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
@@ -66,8 +72,8 @@ public class CategoryRepository : ICategoryRepository
                     
                 category = new Category()
                 {
-                    CategoryId = categoryId,
-                    CategoryTitle= categoryTitle,
+                    Id = categoryId,
+                    Title= categoryTitle,
                     Description = description,
                     Image = image
 
@@ -84,16 +90,16 @@ public class CategoryRepository : ICategoryRepository
             return category;
         }
 
-        public bool InsertCategory(Category category)
+        public bool Insert(Category category)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = conString;
+            con.ConnectionString = _conString;
             try{
                 string query = "Insert into categories(category_title,description,image) VALUES(@categoryTitle,@description,@image)";
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@categoryTitle",category.CategoryTitle);
+                cmd.Parameters.AddWithValue("@categoryTitle",category.Title);
                 cmd.Parameters.AddWithValue("@description",category.Description);
                 cmd.Parameters.AddWithValue("@image",category.Image);
                 int rowsAffected = cmd.ExecuteNonQuery();
@@ -110,16 +116,16 @@ public class CategoryRepository : ICategoryRepository
             }
             return status;
         }
-        public bool UpdateCategory(Category category)
+        public bool Update(Category category)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = conString;
+            con.ConnectionString = _conString;
             try{
                 string query = "Update categories set category_title = @categoryTitle, description= @description, image = @image where category_id = @categoryId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@categoryId",category.CategoryId);
-                cmd.Parameters.AddWithValue("@categoryTitle",category.CategoryTitle);
+                cmd.Parameters.AddWithValue("@categoryId",category.Id);
+                cmd.Parameters.AddWithValue("@categoryTitle",category.Title);
                 cmd.Parameters.AddWithValue("@description",category.Description);
                 cmd.Parameters.AddWithValue("@image",category.Image);
                 con.Open();
@@ -137,11 +143,11 @@ public class CategoryRepository : ICategoryRepository
             }
             return status;
         }
-        public bool DeleteCategory(int id)
+        public bool Delete(int id)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = conString;
+            con.ConnectionString = _conString;
             try{
                 string query = "Delete from categories Where category_id = @categoryId";
                 con.Open();

@@ -13,10 +13,10 @@ public class CategoryService : ICategoryService{
         _repo = repo;
     }
 
-    public List<Category> GetAllCategories() => _repo.GetAllCategories();
+    public List<Category> Categories() => _repo.Categories();
     public Category GetCategory(int id) => _repo.GetCategory(id);
-    public bool InsertCategory(Category category) => _repo.InsertCategory(category);
-    public bool UpdateCategory(Category category) => _repo.UpdateCategory(category);
-    public bool DeleteCategory(int id) => _repo.DeleteCategory(id);
+    public bool Insert(Category category) => _repo.Insert(category);
+    public bool Update(Category category) => _repo.Update(category);
+    public bool Delete(int id) => _repo.Delete(id);
 
 }

@@ -13,16 +13,16 @@ public class ProductService : IProductService{
         _repo = repo;
     }
 
-    public List<Product> GetAllProducts() => _repo.GetAllProducts();
+    public List<Product> Products() => _repo.Products();
 
     public Product GetProduct(int id) => _repo.GetProduct(id);
 
-    public bool InsertProduct(Product product) => _repo.InsertProduct(product);
+    public bool Insert(Product product) => _repo.Insert(product);
 
-    public bool UpdateProduct(Product product) => _repo.UpdateProduct(product);
+    public bool Update(Product product) => _repo.Update(product);
  
-    public bool DeleteProduct(int id) => _repo.DeleteProduct(id);
+    public bool Delete(int id) => _repo.Delete(id);
 
-    public List<ProductList> GetByCategoryName(string categoryName) => _repo.GetByCategoryName(categoryName);
+    public List<ProductList> CategoryName(string categoryName) => _repo.CategoryName(categoryName);
 }
 

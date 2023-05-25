@@ -2,9 +2,9 @@ namespace CatlogService.Models;
 
 public class ProductList{
 
-    public int ProductId{get; set;}
+    public int Id{get; set;}
 
-    public string ProductTitle{get; set;}
+    public string Title{get; set;}
 
     public double UnitPrice{get; set;}
 

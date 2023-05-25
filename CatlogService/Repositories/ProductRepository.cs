@@ -6,13 +6,19 @@ namespace CatlogService.Repositories
 
     public class ProductRepository:IProductRepository{
 
-    public static string conString = "server=localhost; port=3306; user=root; password=Password; database=E_Krushi";
+     private IConfiguration _configuration;
+    private string _conString;
+    public ProductRepository(IConfiguration configuration)
+    {
+        _configuration = configuration;
+        _conString = this._configuration.GetConnectionString("DefaultConnection");
+    }
 
-        public List<Product> GetAllProducts()
+        public List<Product> Products()
         {
             List<Product> products = new List<Product>();
             MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = conString;
+            con.ConnectionString = _conString;
             try
             {
                 string query = "select * from products";
@@ -30,8 +36,8 @@ namespace CatlogService.Repositories
 
                     Product product = new Product()
                     {
-                        ProductId = productId,
-                        ProductTitle = productTitle,
+                        Id = productId,
+                        Title = productTitle,
                         UnitPrice = unitPrice,
                         StockAvailable = stockAvailable,
                         Image = image,
@@ -55,7 +61,7 @@ namespace CatlogService.Repositories
         {
             Product product = new Product();
             MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = conString;
+            con.ConnectionString = _conString;
             try{
                 string query = "select * from products where product_id = @productId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
@@ -72,8 +78,8 @@ namespace CatlogService.Repositories
 
                     product = new Product()
                     {
-                        ProductId = productId,
-                        ProductTitle = productTitle,
+                        Id = productId,
+                        Title = productTitle,
                         UnitPrice = unitPrice,
                         StockAvailable = stockAvailable,
                         Image = image,
@@ -92,16 +98,16 @@ namespace CatlogService.Repositories
             }
             return product;
         }
-        public bool InsertProduct(Product product)
+        public bool Insert(Product product)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = conString;
+            con.ConnectionString = _conString;
             try
             {
                 string query="Insert into products(product_title,unit_price,stock_available,image,category_id) VALUES(@productTitle,@unitPrice,@stockAvailable,@image,@categoryId)";
                 MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@productTitle",product.ProductTitle);
+                cmd.Parameters.AddWithValue("@productTitle",product.Title);
                 cmd.Parameters.AddWithValue("@unitPrice",product.UnitPrice);
                 cmd.Parameters.AddWithValue("@stockAvailable",product.StockAvailable);
                 cmd.Parameters.AddWithValue("@image",product.Image);
@@ -124,18 +130,18 @@ namespace CatlogService.Repositories
             return status;
         }
 
-        public bool UpdateProduct(Product product)
+        public bool Update(Product product)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = conString;
+            con.ConnectionString = _conString;
             try
             {
                 string query="Update products set product_title=@productTitle, unit_price = @unitPrice, stock_available = @stockAvailable, image = @image ,category_id = @categoryId Where product_id = @productId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 con.Open();
-                cmd.Parameters.AddWithValue("@productId",product.ProductId);
-                cmd.Parameters.AddWithValue("@productTitle",product.ProductTitle);
+                cmd.Parameters.AddWithValue("@productId",product.Id);
+                cmd.Parameters.AddWithValue("@productTitle",product.Title);
                 cmd.Parameters.AddWithValue("@unitPrice",product.UnitPrice);
                 cmd.Parameters.AddWithValue("@stockAvailable",product.StockAvailable);
                 cmd.Parameters.AddWithValue("@image",product.Image);
@@ -156,11 +162,11 @@ namespace CatlogService.Repositories
             }
             return status;
         }
-        public bool DeleteProduct(int id)
+        public bool Delete(int id)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = conString;
+            con.ConnectionString = _conString;
             try
             {
                 string query="Delete from products where product_id = @productId";
@@ -185,12 +191,12 @@ namespace CatlogService.Repositories
         }
     
     
-    public List<ProductList> GetByCategoryName(string categoryName)
+    public List<ProductList> CategoryName(string categoryName)
     {
         
            List<ProductList> productList = new List<ProductList>();
             MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = conString;
+            con.ConnectionString = _conString;
             try{
                 string query = "SELECT products.product_id, products.product_title,products.unit_price,products.stock_available,products.image,categories.category_title from categories inner join products where categories.category_id=products.category_id and categories.category_title=@seeds";
                 MySqlCommand cmd = new MySqlCommand(query,con);
@@ -208,8 +214,8 @@ namespace CatlogService.Repositories
 
                     ProductList products = new ProductList()
                     {
-                        ProductId = productId,
-                        ProductTitle = productTitle,
+                        Id = productId,
+                        Title = productTitle,
                         UnitPrice = unitPrice,
                         StockAvailable = stockAvailable,
                         Image = image,

@@ -17,15 +17,15 @@ public class CategoriesController : ControllerBase
 
 
     [HttpGet]
-    [Route("getall")]
-    public IEnumerable<Category> GetAllCategories()
+    [Route("Categories")]
+    public IEnumerable<Category> Categories()
     {
-        List<Category> categories = _service.GetAllCategories();
+        List<Category> categories = _service.Categories();
         return categories;
     }
 
     [HttpGet]
-    [Route("getcategory/{id}")]
+    [Route("Categories/{id}")]
     public Category GetCategory(int id)
     {
         Category category = _service.GetCategory(id);
@@ -33,26 +33,26 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpPost]
-    [Route("Insertcategory")]
-    public bool InsertCategory([FromBody] Category category)
+    [Route("Insert")]
+    public bool Insert([FromBody] Category category)
     {
-        bool result = _service.InsertCategory(category);
+        bool result = _service.Insert(category);
         return result;
     }
 
     [HttpPut]
     [Route("Updatecategory")]
-    public bool UpdateCategory([FromBody] Category category)
+    public bool Update([FromBody] Category category)
     {
-        bool result = _service.UpdateCategory(category);
+        bool result = _service.Update(category);
         return result;
     }
     
     [HttpDelete]
-    [Route("Deletecategory/{id}")]
-    public bool DeleteCategory(int id)
+    [Route("Delete/{id}")]
+    public bool Delete(int id)
     {
-        bool result = _service.DeleteCategory(id);
+        bool result = _service.Delete(id);
         return result;
     }
 

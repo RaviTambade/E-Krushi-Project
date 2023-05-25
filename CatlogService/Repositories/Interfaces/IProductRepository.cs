@@ -4,11 +4,11 @@ namespace CatlogService.Repositories.Interfaces;
 
 public interface IProductRepository{
 
-    List<Product> GetAllProducts();
+    List<Product> Products();
     Product GetProduct(int id);
 
-    bool InsertProduct(Product product);
-    bool UpdateProduct(Product product);
-    bool DeleteProduct(int id);
-    List<ProductList> GetByCategoryName(string categoryName);
+    bool Insert(Product product);
+    bool Update(Product product);
+    bool Delete(int id);
+    List<ProductList> CategoryName(string categoryName);
 }
