@@ -42,12 +42,23 @@ public class ConsultingController : ControllerBase
 
 
     [HttpGet]
-    [Route("experts")]                          
+    [Route("experts")]                                   //This method gives all subject matter experts available in Krishi Seva
     public async Task<List<SubjectMatterExpert>> Experts()
     {
 
       List<SubjectMatterExpert> experts  = await _srv.Experts();
 
         return experts;
+    }
+
+
+    [HttpGet]
+    [Route("Expert/{id}")]                          //This method gives agri doctor details by id.
+    public async Task<SubjectMatterExpert> Expert(int id)
+    {
+
+      SubjectMatterExpert expert = await  _srv.Expert(id);
+
+        return expert;
     }
 }

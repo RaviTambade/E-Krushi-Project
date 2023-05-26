@@ -151,4 +151,61 @@ public class ConsultingRepository:IConsultingRepository{
         }
         return experts;
     }
+
+
+
+     public async Task<SubjectMatterExpert> Expert(int id)
+    {
+
+        SubjectMatterExpert doctor = new SubjectMatterExpert();
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _conString;
+
+        try
+        {
+
+            string query = "select * from agri_doctors where agri_doctor_id = @id";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            await connection.OpenAsync();
+            command.Parameters.AddWithValue("@id", id);
+            MySqlDataReader reader = command.ExecuteReader();
+            if (await reader.ReadAsync())
+            {
+
+                int Id = int.Parse(reader["agri_doctor_id"].ToString());
+                string name = reader["name"].ToString();
+                string specialFor = reader["specialist_for"].ToString();
+                int userId = int.Parse(reader["user_id"].ToString());
+
+                doctor = new SubjectMatterExpert()
+                {
+
+                    Id = Id,
+                    Name = name,
+                    Expertise = specialFor,
+                    UserId = userId
+                };
+
+
+
+            }
+        }
+
+        catch (Exception ee)
+        {
+
+            throw ee;
+        }
+
+
+        finally
+        {
+            await connection.CloseAsync();
+        }
+
+        return doctor;
+    }
+
+    
+    
 }
