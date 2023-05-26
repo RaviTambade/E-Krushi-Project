@@ -60,7 +60,7 @@ public class ConsultingController : ControllerBase
     }
 
     [HttpGet]
-    [Route("questions/category/{id}")]                          //This method gives agri doctor details by id.
+    [Route("category/{id}")]                          //This method gives agri doctor details by id.
     public async Task<List<Question>> Category(int id)
     {
 
@@ -68,6 +68,7 @@ public class ConsultingController : ControllerBase
         return category;
 
     }
+
     [HttpGet]
     [Route("Expert/{id}")]                          //This method gives agri doctor details by id.
     
@@ -77,5 +78,15 @@ public class ConsultingController : ControllerBase
       SubjectMatterExpert expert = await  _srv.Expert(id);
 
         return expert;
+    }
+
+    [HttpGet]
+    [Route("questionanswers/{id}")]                          //This method gives agri doctor details by id.
+    public async Task<List<QuestionAnswer>> GetQuestionAnswers(int id)
+    {
+
+        List<QuestionAnswer> questionAnswers = await _srv.GetQuestionAnswers(id);
+        return questionAnswers;
+
     }
 }

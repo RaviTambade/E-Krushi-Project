@@ -9,5 +9,7 @@ public interface IConsultingRepository{
     public Task<SubjectMatterExpert> Expert(int id);
     
     Task<List<Question>> Category(int id);
+
+    Task<List<QuestionAnswer>> GetQuestionAnswers(int id);
     
 }

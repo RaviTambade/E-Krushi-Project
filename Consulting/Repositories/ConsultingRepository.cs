@@ -270,6 +270,50 @@ public class ConsultingRepository:IConsultingRepository{
         return questions;
     }
 
+
+
+
+    public async Task<List<QuestionAnswer>> GetQuestionAnswers(int id)
+    {
+        List<QuestionAnswer> questionAnswers = new List<QuestionAnswer>();
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = _conString;
+    try
+    {
+        string query = "select agri_doctors.agri_doctor_id,(questions.description) As question,(solutions.description) As answer "+
+                        "from agri_doctors ,solutions,question_solutions Inner join questions on questions.question_id = " +
+                        "question_solutions.question_id where agri_doctors.agri_doctor_id=question_solutions.agri_doctor_id AND " +
+                        "solutions.solution_id= question_solutions.solution_id AND agri_doctors.agri_doctor_id= @agriDoctorId";
+        await con.OpenAsync();
+        MySqlCommand command = new MySqlCommand(query, con);
+        command.Parameters.AddWithValue("@agriDoctorId", id);
+        MySqlDataReader reader = command.ExecuteReader();
+        while (await reader.ReadAsync())
+        {
+            //int Id= int.Parse(reader["question_id"].ToString());
+            string? question = reader["question"].ToString();
+            string? answer = reader["answer"].ToString();
+
+                QuestionAnswer questionAnswer = new QuestionAnswer{
+                Id=id,
+                Question=question,
+                Answer=answer
+                
+            };
+            questionAnswers.Add(questionAnswer);
+        }
+            await reader.CloseAsync();
+    }
+    catch (Exception ee)
+    {
+        throw ee;
+    }
+    finally
+    {
+        await con.CloseAsync();
+    }
+        return questionAnswers;
+    }
     
 }
 

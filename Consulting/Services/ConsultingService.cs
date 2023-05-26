@@ -17,5 +17,6 @@ public class ConsultingService:IConsultingService{
     public async Task<List<SubjectMatterExpert>> Experts()=> await _repo.Experts();
     public async Task<List<Question>> Category(int id) => await _repo.Category(id);
     public async Task<SubjectMatterExpert> Expert(int id) => await _repo.Expert(id);
+    public async Task<List<QuestionAnswer>> GetQuestionAnswers(int id) => await _repo.GetQuestionAnswers(id);
 
 }
