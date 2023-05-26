@@ -1,5 +1,5 @@
 namespace E_krushiApp.Models;
-public class SubjectMatterExpert{
+public class AgriDoctor{
 
    public  int Id {get;set;}
    public string Name {get;set;}

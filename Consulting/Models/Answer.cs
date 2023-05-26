@@ -1,6 +1,6 @@
 namespace E_krushiApp.Models;
 
-public class Solution{
+public class Answer{
     public int Id{get;set;}
     public string Description{get;set;}
 }

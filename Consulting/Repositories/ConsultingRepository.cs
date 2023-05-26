@@ -152,6 +152,7 @@ public class ConsultingRepository:IConsultingRepository{
         return experts;
     }
 
+<<<<<<< HEAD
 
 
      public async Task<SubjectMatterExpert> Expert(int id)
@@ -208,4 +209,10 @@ public class ConsultingRepository:IConsultingRepository{
 
     
     
+=======
+    public Task<List<Answer>> Answers()
+    {
+        throw new NotImplementedException();
+    }
+>>>>>>> c05f23335f6048f4d5ab8fc584106e04aa896340
 }
