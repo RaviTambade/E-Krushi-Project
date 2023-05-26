@@ -538,3 +538,7 @@ select agri_doctors.agri_doctor_id,(questions.description) As question,(solution
 from agri_doctors ,solutions,question_solutions Inner join questions on questions.question_id = 
 question_solutions.question_id where agri_doctors.agri_doctor_id=question_solutions.agri_doctor_id AND 
 solutions.solution_id= question_solutions.solution_id AND agri_doctors.agri_doctor_id=1;
+
+-- This query gives the solution where question_id=1
+select (solutions.description) As Answer from solutions,question_solutions Inner join questions on questions.question_id = 
+question_solutions.question_id where solutions.solution_id= question_solutions.solution_id AND questions.question_id=1;
