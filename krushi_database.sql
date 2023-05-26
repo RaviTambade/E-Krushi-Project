@@ -527,3 +527,8 @@ select roles.role from user_roles inner join roles on user_roles.role_id =roles.
 -- get roles of user using nested query
 SELECT role from roles where role_id in  (select role_id from user_roles where user_id=1);
 
+select * from question_categories;
+select * from questions;
+
+-- This query gives all questions where category_id =1
+select * from questions where category_id=1;
