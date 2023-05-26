@@ -532,3 +532,9 @@ select * from questions;
 
 -- This query gives all questions where category_id =1
 select * from questions where category_id=1;
+
+-- This query gives paricular agridoctor questions, answers 
+select agri_doctors.agri_doctor_id,(questions.description) As question,(solutions.description) As Answer
+from agri_doctors ,solutions,question_solutions Inner join questions on questions.question_id = 
+question_solutions.question_id where agri_doctors.agri_doctor_id=question_solutions.agri_doctor_id AND 
+solutions.solution_id= question_solutions.solution_id AND agri_doctors.agri_doctor_id=1;
