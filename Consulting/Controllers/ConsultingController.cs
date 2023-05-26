@@ -37,4 +37,14 @@ public class ConsultingController : ControllerBase
 
         return question;
     }
+
+    [HttpGet]
+    [Route("answers")]                            
+    public async Task<List<Answer>> Answers()                 //This method gives Agri doctor List.
+    {
+
+        List<Answer> answers = await _srv.Answers();
+
+        return answers;
+    }
 }

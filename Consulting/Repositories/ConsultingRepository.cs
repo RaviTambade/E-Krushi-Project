@@ -96,4 +96,50 @@ public class ConsultingRepository:IConsultingRepository{
         }
         return question;
     }
+    public async Task<List<Answer>> Answers()
+    {
+        List<Answer> answers = new List<Answer>();
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _conString;
+
+        try
+        {
+
+            string query = "select * from solutions";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            await connection.OpenAsync();
+            MySqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+
+
+                int solutionId = int.Parse(reader["solution_id"].ToString());
+                string description = reader["description"].ToString();
+
+
+                Answer answer = new Answer()
+                {
+                    Id = solutionId,
+
+                    Description = description,
+
+                };
+
+                answers.Add(answer);
+            }
+
+        }
+        catch (Exception ee)
+        {
+            throw ee;
+        }
+
+        finally
+        {
+            connection.Close();
+        }
+
+        return answers;
+    }
 }
