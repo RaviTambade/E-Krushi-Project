@@ -50,4 +50,24 @@ public class ConsultingController : ControllerBase
 
         return experts;
     }
+
+    [HttpGet]
+    [Route("answers")]                            
+    public async Task<List<Answer>> Answers()                 //This method gives Agri doctor List.
+    {
+
+        List<Answer> answers = await _srv.Answers();
+
+        return answers;
+    }
+
+    [HttpGet]
+    [Route("questions/category/{id}")]                          //This method gives agri doctor details by id.
+    public async Task<List<Question>> Category(int id)
+    {
+
+        List<Question> category = await _srv.Category(id);
+
+        return category;
+    }
 }

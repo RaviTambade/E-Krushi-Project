@@ -5,7 +5,6 @@ public interface IConsultingRepository{
     Task<List<Question>> Questions();
     Task<Question> Question(int id);
     Task<List<Answer>> Answers(); 
-
-
-    public Task<List<SubjectMatterExpert>> Experts();
+    Task<List<SubjectMatterExpert>> Experts();
+    Task<List<Question>> Category(int id);
 }

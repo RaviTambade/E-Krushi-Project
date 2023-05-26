@@ -98,17 +98,13 @@ public class ConsultingRepository:IConsultingRepository{
     }
 
 
-     public  async Task<List<SubjectMatterExpert>> Experts()
+     public async Task<List<SubjectMatterExpert>> Experts()
     {
-
-
         List<SubjectMatterExpert> experts = new List<SubjectMatterExpert>();
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionString = _conString;
-
         try
         {
-
             string query = "select * from agri_doctors";
             MySqlCommand command = new MySqlCommand(query, connection);
             await connection.OpenAsync();
@@ -116,8 +112,6 @@ public class ConsultingRepository:IConsultingRepository{
 
             while (await reader.ReadAsync())
             {
-
-
                 int id = int.Parse(reader["agri_doctor_id"].ToString());
                 string name = reader["name"].ToString();
                 string specialFor = reader["specialist_for"].ToString();
@@ -125,17 +119,12 @@ public class ConsultingRepository:IConsultingRepository{
 
                 SubjectMatterExpert expert = new SubjectMatterExpert()
                 {
-
                     Id = id,
                     Name = name,
                     Expertise = specialFor,
                     UserId = userId
                 };
-
-
                 experts.Add(expert);
-
-
             }
 
         }
@@ -146,14 +135,89 @@ public class ConsultingRepository:IConsultingRepository{
 
         finally
         {
-
              await connection.CloseAsync();
         }
         return experts;
     }
 
-    public Task<List<Answer>> Answers()
+    public async Task<List<Answer>> Answers()
     {
-        throw new NotImplementedException();
+
+        List<Answer> answers = new List<Answer>();
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _conString;
+        try
+        {
+            string query = "select * from solutions";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            await connection.OpenAsync();
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+                int solutionId = int.Parse(reader["solution_id"].ToString());
+                string description = reader["description"].ToString();
+
+
+                Answer answer = new Answer()
+                {
+                    Id = solutionId,
+                    Description = description,
+                };
+                answers.Add(answer);
+            }
+
+        }
+        catch (Exception ee)
+        {
+            throw ee;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+
+        return answers;
+    }
+
+    public async Task<List<Question>> Category(int id)
+    {
+        List<Question> questions = new List<Question>();
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = _conString;
+    try
+    {
+        string query = "select * from questions where category_id = @id";
+        await con.OpenAsync();
+        MySqlCommand command = new MySqlCommand(query, con);
+        command.Parameters.AddWithValue("@id", id);
+        MySqlDataReader reader = command.ExecuteReader();
+        while (await reader.ReadAsync())
+        {
+            int Id= int.Parse(reader["question_id"].ToString());
+            DateTime Date= DateTime.Parse(reader["question_date"].ToString());
+            string description = reader["description"].ToString();
+            int custId =int.Parse(reader["cust_id"].ToString());
+            //int categoryId = int.Parse(reader["category_id"].ToString());
+                Question question = new Question{
+                Id=Id,
+                Date=Date,
+                Description=description,
+                CustId=custId,
+                CategoryId= id
+            };
+            questions.Add(question);
+        }
+            await reader.CloseAsync();
+    }
+    catch (Exception ee)
+    {
+        throw ee;
+    }
+    finally
+    {
+        await con.CloseAsync();
+    }
+        return questions;
     }
 }
+    

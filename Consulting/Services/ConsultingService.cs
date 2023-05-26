@@ -12,11 +12,9 @@ public class ConsultingService:IConsultingService{
     }
 
     public async Task<List<Question>> Questions() => await _repo.Questions();
-
-
     public async Task<Question> Question(int id) => await _repo.Question(id);
+    public async Task<List<Answer>> Answers() => await _repo.Answers(); 
+    public async Task<List<SubjectMatterExpert>> Experts()=> await _repo.Experts();
+    public async Task<List<Question>> Category(int id) => await _repo.Category(id);
 
-    public async Task<List<Answer>> Answers() => await _repo.Answers();
-    
-     public async Task<List<SubjectMatterExpert>> Experts()=> await _repo.Experts();
 }
