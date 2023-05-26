@@ -1,6 +1,7 @@
 using E_krushiApp.Models;
 using E_krushiApp.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 namespace E_krushiApp.Controllers;
 
 [ApiController]
@@ -36,5 +37,17 @@ public class ConsultingController : ControllerBase
         Question question = await _srv.Question(id);
 
         return question;
+    }
+
+
+
+    [HttpGet]
+    [Route("experts")]                          
+    public async Task<List<SubjectMatterExpert>> Experts()
+    {
+
+      List<SubjectMatterExpert> experts  = await _srv.Experts();
+
+        return experts;
     }
 }
