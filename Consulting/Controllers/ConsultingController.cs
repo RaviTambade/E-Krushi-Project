@@ -8,8 +8,6 @@ namespace E_krushiApp.Controllers;
 [Route("[controller]")]
 public class ConsultingController : ControllerBase
 {
-
-
     private readonly IConsultingService _srv;
 
     public ConsultingController(IConsultingService srv)
@@ -67,10 +65,9 @@ public class ConsultingController : ControllerBase
     {
 
         List<Question> category = await _srv.Category(id);
-
         return category;
 
-
+    }
     [HttpGet]
     [Route("Expert/{id}")]                          //This method gives agri doctor details by id.
     
@@ -81,5 +78,4 @@ public class ConsultingController : ControllerBase
 
         return expert;
     }
-  }
 }

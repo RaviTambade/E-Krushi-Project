@@ -8,6 +8,6 @@ public interface IConsultingRepository{
     public Task<List<SubjectMatterExpert>> Experts();
     public Task<SubjectMatterExpert> Expert(int id);
     
-    Task<List<Question>> Category();
+    Task<List<Question>> Category(int id);
     
 }
