@@ -96,37 +96,46 @@ public class ConsultingRepository:IConsultingRepository{
         }
         return question;
     }
-    public async Task<List<Answer>> Answers()
+
+
+     public  async Task<List<SubjectMatterExpert>> Experts()
     {
-        List<Answer> answers = new List<Answer>();
+
+
+        List<SubjectMatterExpert> experts = new List<SubjectMatterExpert>();
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionString = _conString;
 
         try
         {
 
-            string query = "select * from solutions";
+            string query = "select * from agri_doctors";
             MySqlCommand command = new MySqlCommand(query, connection);
             await connection.OpenAsync();
             MySqlDataReader reader = command.ExecuteReader();
 
-            while (reader.Read())
+            while (await reader.ReadAsync())
             {
 
 
-                int solutionId = int.Parse(reader["solution_id"].ToString());
-                string description = reader["description"].ToString();
+                int id = int.Parse(reader["agri_doctor_id"].ToString());
+                string name = reader["name"].ToString();
+                string specialFor = reader["specialist_for"].ToString();
+                int userId = int.Parse(reader["user_id"].ToString());
 
-
-                Answer answer = new Answer()
+                SubjectMatterExpert expert = new SubjectMatterExpert()
                 {
-                    Id = solutionId,
 
-                    Description = description,
-
+                    Id = id,
+                    Name = name,
+                    Expertise = specialFor,
+                    UserId = userId
                 };
 
-                answers.Add(answer);
+
+                experts.Add(expert);
+
+
             }
 
         }
@@ -137,9 +146,14 @@ public class ConsultingRepository:IConsultingRepository{
 
         finally
         {
-            connection.Close();
-        }
 
-        return answers;
+             await connection.CloseAsync();
+        }
+        return experts;
+    }
+
+    public Task<List<Answer>> Answers()
+    {
+        throw new NotImplementedException();
     }
 }

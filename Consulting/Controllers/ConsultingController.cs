@@ -1,6 +1,7 @@
 using E_krushiApp.Models;
 using E_krushiApp.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 namespace E_krushiApp.Controllers;
 
 [ApiController]
@@ -38,13 +39,15 @@ public class ConsultingController : ControllerBase
         return question;
     }
 
+
+
     [HttpGet]
-    [Route("answers")]                            
-    public async Task<List<Answer>> Answers()                 //This method gives Agri doctor List.
+    [Route("experts")]                          
+    public async Task<List<SubjectMatterExpert>> Experts()
     {
 
-        List<Answer> answers = await _srv.Answers();
+      List<SubjectMatterExpert> experts  = await _srv.Experts();
 
-        return answers;
+        return experts;
     }
 }
