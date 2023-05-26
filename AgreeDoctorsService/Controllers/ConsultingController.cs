@@ -8,11 +8,9 @@ namespace E_krushiApp.Controllers;
 [Route("[controller]")]
 public class ConsultingController : ControllerBase
 {
+    private readonly IConsultingService _srv;
 
-
-    private readonly IAgriDoctorsService _srv;
-
-    public ConsultingController(IAgriDoctorsService srv)
+    public ConsultingController(IConsultingService srv)
     {
         _srv = srv;
     }
@@ -39,10 +37,25 @@ public class ConsultingController : ControllerBase
     //http://localhost:5645/api/Consulting/answers
     //http://localhost:5645/api/Consulting/questionanswer/{questionid}
     //http://localhost:5645/api/Consulting/sme/questions/{smd}
+    
+    [HttpGet]
+    [Route("questions")]
+    public List<Question> GetAll()
+    {
+
+        List<Question> questions = _srv.GetAll();
+
+        return questions;
+    }
 
 
+    [HttpGet]
+    [Route("questions/{id}")]
+    public Question GetById(int id)
+    {
 
+        Question question = _srv.GetById(id);
 
-
-
+        return question;
+    }
 }

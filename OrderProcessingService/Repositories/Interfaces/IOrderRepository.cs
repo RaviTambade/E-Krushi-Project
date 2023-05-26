@@ -4,20 +4,20 @@ namespace OrderProcessingService.Repositories.Interfaces;
 
 public interface IOrderRepository{
 
-    List<Order> GetAllOrders();
+    List<Order> Orders();
 
     Order GetOrder(int id);
 
-    Order GetOrderByCustId(int id);
-    bool InsertOrder(Order order);
+    Order OrderByCustId(int id);
+    bool Insert(Order order);
 
-    bool UpdateOrder(Order order);
+    bool Update(Order order);
 
-    bool DeleteOrder(int id);
+    bool Delete(int id);
 
-    List<Order> GetAllDelivered();
+    List<Order> Delivered();
 
-    List<Order> GetAllCancelled();
+    List<Order> Cancelled();
 
     int  GetCountByDate(DateTime date);
 

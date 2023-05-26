@@ -23,6 +23,8 @@ builder.Services.AddTransient<ISolutionRepository,SolutionRepository>();
 builder.Services.AddTransient<ISolutionService,SolutionService>();
 builder.Services.AddTransient<IQuestionSolutionRepository,QuestionSolutionRepository>();
 builder.Services.AddTransient<IQuestionSolutionService,QuestionSolutionService>();
+builder.Services.AddTransient<IConsultingRepository,ConsultingRepository>();
+builder.Services.AddTransient<IConsultingService,ConsultingService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
