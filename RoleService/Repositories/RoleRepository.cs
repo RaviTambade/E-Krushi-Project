@@ -34,7 +34,7 @@ public class RoleRepository : IRoleRepository
             {
 
 
-                int roleid = int.Parse(reader["role_id"].ToString());
+                int roleid = int.Parse(reader["id"].ToString());
                 string role = reader["role"].ToString();
 
 
@@ -72,7 +72,7 @@ public class RoleRepository : IRoleRepository
         try
         {
 
-            string query = "select * from roles where role_id=@roleId";
+            string query = "select * from roles where id=@roleId";
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@roleId", id);
              await connection.OpenAsync();
@@ -80,7 +80,7 @@ public class RoleRepository : IRoleRepository
             if (await reader.ReadAsync())
             {
 
-                int roleid = int.Parse(reader["role_id"].ToString());
+                int roleid = int.Parse(reader["id"].ToString());
                 string RoleName = reader["role"].ToString();
 
 
@@ -160,7 +160,7 @@ public class RoleRepository : IRoleRepository
 
         try
         {
-            string query = "update roles set role=@roleName where role_id=@roleId";
+            string query = "update roles set role=@roleName where id=@roleId";
             MySqlCommand command = new MySqlCommand(query, connection);
             await connection.OpenAsync();
             command.Parameters.AddWithValue("@roleId", role.Id);
@@ -203,7 +203,7 @@ public class RoleRepository : IRoleRepository
         connection.ConnectionString=_conString;
         try{
 
-            string query= "delete from roles where role_id =@roleId";
+            string query= "delete from roles where id =@roleId";
             MySqlCommand command = new MySqlCommand(query,connection);
             command.Parameters.AddWithValue("@roleId",id);
 
