@@ -18,7 +18,7 @@ public class RoleRepository : IRoleRepository
     }
 
     
-    public List<Role> Roles()
+    public async Task<List<Role>> Roles()
     {
         List<Role> roles = new List<Role>();
         MySqlConnection connection = new MySqlConnection();
@@ -27,10 +27,10 @@ public class RoleRepository : IRoleRepository
         {
             string query = "select * from roles";
             MySqlCommand command = new MySqlCommand(query, connection);
-            connection.Open();
+             await connection.OpenAsync();
             MySqlDataReader reader = command.ExecuteReader();
 
-            while (reader.Read())
+            while (await reader.ReadAsync())
             {
 
 
@@ -57,14 +57,14 @@ public class RoleRepository : IRoleRepository
 
         finally
         {
-            connection.Close();
+           await connection.CloseAsync();
         }
 
         return roles;
     }
 
 
-    public Role Role(int id)
+    public async Task<Role> Role(int id)
     {
         Role role = new Role();
         MySqlConnection connection = new MySqlConnection();
@@ -75,9 +75,9 @@ public class RoleRepository : IRoleRepository
             string query = "select * from roles where role_id=@roleId";
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@roleId", id);
-            connection.Open();
+             await connection.OpenAsync();
             MySqlDataReader reader = command.ExecuteReader();
-            if (reader.Read())
+            if (await reader.ReadAsync())
             {
 
                 int roleid = int.Parse(reader["role_id"].ToString());
@@ -108,14 +108,14 @@ public class RoleRepository : IRoleRepository
         finally
         {
 
-            connection.Close();
+           await connection.CloseAsync();
         }
 
         return role;
     }
 
 
-    public bool Insert(Role role)
+    public async Task<bool> Insert(Role role)
     {
 
         bool status = false;
@@ -127,7 +127,7 @@ public class RoleRepository : IRoleRepository
             string query = "Insert into roles(role) values (@roleName)";
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@roleName", role.Name);
-            connection.Open();
+             await connection.OpenAsync();
             int rowsaffected = command.ExecuteNonQuery();
 
             if (rowsaffected > 0)
@@ -143,7 +143,7 @@ public class RoleRepository : IRoleRepository
         finally
         {
 
-            connection.Close();
+           await connection.CloseAsync();
         }
 
         return status;
@@ -151,7 +151,7 @@ public class RoleRepository : IRoleRepository
     }
 
 
-    public bool Update(Role role)
+    public async Task<bool> Update(Role role)
     {
         bool status = false;
 
@@ -162,7 +162,7 @@ public class RoleRepository : IRoleRepository
         {
             string query = "update roles set role=@roleName where role_id=@roleId";
             MySqlCommand command = new MySqlCommand(query, connection);
-            connection.Open();
+            await connection.OpenAsync();
             command.Parameters.AddWithValue("@roleId", role.Id);
             command.Parameters.AddWithValue("@roleName", role.Name);
             int rowsaffected = command.ExecuteNonQuery();
@@ -187,7 +187,7 @@ public class RoleRepository : IRoleRepository
 
         finally
         {
-            connection.Close();
+           await connection.CloseAsync();
         }
 
         return status;
@@ -196,7 +196,7 @@ public class RoleRepository : IRoleRepository
 
 
 
-    public bool Delete(int id){
+    public async Task<bool> Delete(int id){
 
         bool status = false;
         MySqlConnection connection = new MySqlConnection();
@@ -207,7 +207,7 @@ public class RoleRepository : IRoleRepository
             MySqlCommand command = new MySqlCommand(query,connection);
             command.Parameters.AddWithValue("@roleId",id);
 
-            connection.Open();
+           await connection.OpenAsync();
             int rowsaffected = command.ExecuteNonQuery();
             if(rowsaffected>0){
                 status =true;
@@ -221,7 +221,7 @@ public class RoleRepository : IRoleRepository
 
 
         finally{
-            connection.Close();
+           await connection.CloseAsync();
         }
 
         return status;

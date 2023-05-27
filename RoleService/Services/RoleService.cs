@@ -16,11 +16,11 @@ public class RoleService:IRoleService{
 
    
 
-    public List<Role> Roles() =>_repo.Roles();
-    public Role Role(int id)=>_repo.Role(id);
+    public async Task<List<Role>> Roles() => await _repo.Roles();
+    public async Task<Role> Role(int id)=>await _repo.Role(id);
     
-    public bool Insert(Role role)=>_repo.Insert(role);
+    public  Task<bool> Insert(Role role)=> _repo.Insert(role);
 
-    public bool Update(Role role)=>_repo.Update(role);
-    public bool Delete(int id )=>_repo.Delete(id);
+    public Task<bool> Update(Role role)=>_repo.Update(role);
+    public Task<bool> Delete(int id )=>_repo.Delete(id);
 }

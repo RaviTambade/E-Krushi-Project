@@ -72,8 +72,8 @@ public class ConsultingController : ControllerBase
     }
 
 
-    //This method gives all Question list of particular catagory.
-    [HttpGet("Questions/{id}")]
+    //This method gives all Question list of particular catagoryid.
+    [HttpGet("Questions/Catagory/{id}")]
     public async Task<List<Question>> Category(int id)
     {
 
@@ -98,12 +98,12 @@ public class ConsultingController : ControllerBase
 
 
     //this method gives question answers particular agri doctor  id. 
-    [HttpGet("questionanswers/{id}")]
-    public async Task<List<QuestionAnswer>> QuestionAnswers(int id)
+    [HttpGet("questions/sme/{id}")]
+    public async Task<List<Question>> GetQuestionsRespondedBySME(int id)
     {
 
-        List<QuestionAnswer> questionAnswers = await _srv.QuestionAnswers(id);
-        return questionAnswers;
+        List<Question> questions = await _srv.GetQuestionsRespondedBySME(id);
+        return questions;
 
     }
 
