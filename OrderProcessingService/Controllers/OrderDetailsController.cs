@@ -41,11 +41,11 @@ namespace OrderProcessingService.Controllers
         public bool Update(int id,[FromBody] OrderDetails orderDetail)
         {
             OrderDetails oldOrderDetail = _ordersvc.OrderDetail(id);
-            if(oldOrderDetail.OrderDetailsId==0)
+            if(oldOrderDetail.Id==0)
             {
                 return false;
             }
-            orderDetail.OrderDetailsId =id;
+            orderDetail.Id =id;
             bool status = _ordersvc.Update(orderDetail);
             return status;
         }

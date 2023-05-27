@@ -37,7 +37,7 @@ public class OrderRepository : IOrderRepository
 
                 Order order = new Order()
                 {
-                    OrderId = id,
+                    Id = id,
                     OrderDate = orderDate,
                     ShippedDate = shippedDate,
                     CustomerId = customerId,
@@ -83,7 +83,7 @@ public class OrderRepository : IOrderRepository
 
                 order = new Order()
                 {
-                    OrderId = id,
+                    Id = id,
                     OrderDate = orderDate,
                     ShippedDate = shippedDate,
                     CustomerId = customerId,
@@ -128,7 +128,7 @@ public class OrderRepository : IOrderRepository
 
                 order = new Order()
                 {
-                    OrderId = orderId,
+                    Id = orderId,
                     CustomerId = id,
                     OrderDate = orderDate,
                     ShippedDate = shippedDate,
@@ -188,7 +188,7 @@ public class OrderRepository : IOrderRepository
             string query = "Update orders set order_date=@orderDate, shipped_date=@shippedDate,cust_id=@customerId, total =@total, status =@status Where order_id =@orderId";
             con.Open();
             MySqlCommand command = new MySqlCommand(query, con);
-            command.Parameters.AddWithValue("@orderId",order.OrderId);
+            command.Parameters.AddWithValue("@orderId",order.Id);
             command.Parameters.AddWithValue("@orderDate",order.OrderDate);
             command.Parameters.AddWithValue("@shippedDate",order.ShippedDate);
             command.Parameters.AddWithValue("@customerId",order.CustomerId);
@@ -259,7 +259,7 @@ public class OrderRepository : IOrderRepository
 
                 Order order = new Order()
                 {
-                    OrderId = id,
+                    Id = id,
                     OrderDate = orderDate,
                     ShippedDate = shippedDate,
                     CustomerId = customerId,
@@ -306,7 +306,7 @@ public class OrderRepository : IOrderRepository
 
                 Order order = new Order()
                 {
-                    OrderId = id,
+                    Id = id,
                     OrderDate = orderDate,
                     ShippedDate = shippedDate,
                     CustomerId = customerId,

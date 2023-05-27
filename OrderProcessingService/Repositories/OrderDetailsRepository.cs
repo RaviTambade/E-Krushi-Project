@@ -37,7 +37,7 @@ public class OrderDetailsRepository : IOrderDetailsRepository
 
                 OrderDetails orderDetail = new OrderDetails()
                 {
-                    OrderDetailsId = id,
+                    Id = id,
                     OrderId = orderId,
                     ProductId = productId,
                     Quantity = quantity,
@@ -80,7 +80,7 @@ public class OrderDetailsRepository : IOrderDetailsRepository
 
                 orderDetail = new OrderDetails()
                 {
-                    OrderDetailsId = id,
+                    Id = id,
                     OrderId = orderId,
                     ProductId = productId,
                     Quantity = quantity,
@@ -138,7 +138,7 @@ public class OrderDetailsRepository : IOrderDetailsRepository
             string query = "Update order_details set order_id=@orderId, product_id=@productId,quantity=@quantity, discount=@discount Where order_details_id =@orderDetailsId";
             con.Open();
             MySqlCommand command = new MySqlCommand(query, con);
-            command.Parameters.AddWithValue("@orderDetailsId",orderDetail.OrderDetailsId);
+            command.Parameters.AddWithValue("@orderDetailsId",orderDetail.Id);
             command.Parameters.AddWithValue("@orderId",orderDetail.OrderId);
             command.Parameters.AddWithValue("@productId",orderDetail.ProductId);
             command.Parameters.AddWithValue("@quantity",orderDetail.Quantity);
