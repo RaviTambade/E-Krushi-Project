@@ -4,58 +4,65 @@ using MySql.Data.MySqlClient;
 
 namespace E_krushiApp.Repository;
 
-public class ConsultingRepository:IConsultingRepository{
+public class ConsultingRepository : IConsultingRepository
+{
 
- private readonly IConfiguration _configuration;
+    private readonly IConfiguration _configuration;
     private readonly string _conString;
-   
-    public ConsultingRepository(IConfiguration configuration )
+
+    public ConsultingRepository(IConfiguration configuration)
     {
 
         _configuration = configuration;
         _conString = this._configuration.GetConnectionString("DefaultConnection");
     }
-   
 
-    public async Task<List<Question>> Questions(){
+
+    public async Task<List<Question>> Questions()
+    {
 
         List<Question> questions = new List<Question>();
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString= _conString;
+        connection.ConnectionString = _conString;
 
-        try{
+        try
+        {
 
             string query = "select * from questions";
-            MySqlCommand command = new MySqlCommand(query,connection);
+            MySqlCommand command = new MySqlCommand(query, connection);
             await connection.OpenAsync();
             MySqlDataReader reader = command.ExecuteReader();
-            while(await reader.ReadAsync()){
-                int Id= int.Parse(reader["question_id"].ToString());
-                DateTime Date= DateTime.Parse(reader["question_date"].ToString());
+            while (await reader.ReadAsync())
+            {
+                int Id = int.Parse(reader["question_id"].ToString());
+                DateTime Date = DateTime.Parse(reader["question_date"].ToString());
                 string description = reader["description"].ToString();
-                int custId =int.Parse(reader["cust_id"].ToString());
+                int custId = int.Parse(reader["cust_id"].ToString());
                 int categoryId = int.Parse(reader["category_id"].ToString());
-                Question question = new Question(){
-                    Id=Id,
-                    Date=Date,
-                    Description=description,
-                    CustId=custId,
-                    CategoryId=categoryId
+                Question question = new Question()
+                {
+                    Id = Id,
+                    Date = Date,
+                    Description = description,
+                    CustId = custId,
+                    CategoryId = categoryId
                 };
                 questions.Add(question);
             }
             await reader.CloseAsync();
         }
-        catch(Exception ee){
+        catch (Exception ee)
+        {
             throw ee;
         }
-        finally{
+        finally
+        {
             await connection.CloseAsync();
         }
         return questions;
     }
 
-     public async Task<Question> Question(int id)
+    public async Task<Question> Question(int id)
     {
 
         Question question = new Question();
@@ -70,17 +77,18 @@ public class ConsultingRepository:IConsultingRepository{
             MySqlDataReader reader = command.ExecuteReader();
             if (await reader.ReadAsync())
             {
-               int Id= int.Parse(reader["question_id"].ToString());
-                DateTime Date= DateTime.Parse(reader["question_date"].ToString());
+                int Id = int.Parse(reader["question_id"].ToString());
+                DateTime Date = DateTime.Parse(reader["question_date"].ToString());
                 string description = reader["description"].ToString();
-                int custId =int.Parse(reader["cust_id"].ToString());
+                int custId = int.Parse(reader["cust_id"].ToString());
                 int categoryId = int.Parse(reader["category_id"].ToString());
-                question = new Question{
-                    Id=Id,
-                    Date=Date,
-                    Description=description,
-                    CustId=custId,
-                    CategoryId=categoryId
+                question = new Question
+                {
+                    Id = Id,
+                    Date = Date,
+                    Description = description,
+                    CustId = custId,
+                    CategoryId = categoryId
                 };
             }
             await reader.CloseAsync();
@@ -98,7 +106,7 @@ public class ConsultingRepository:IConsultingRepository{
     }
 
 
-     public async Task<List<SubjectMatterExpert>> Experts()
+    public async Task<List<SubjectMatterExpert>> Experts()
     {
         List<SubjectMatterExpert> experts = new List<SubjectMatterExpert>();
         MySqlConnection connection = new MySqlConnection();
@@ -135,12 +143,12 @@ public class ConsultingRepository:IConsultingRepository{
 
         finally
         {
-             await connection.CloseAsync();
+            await connection.CloseAsync();
         }
         return experts;
     }
-     public async Task<SubjectMatterExpert> Expert(int id)
-     {
+    public async Task<SubjectMatterExpert> Expert(int id)
+    {
         SubjectMatterExpert doctor = new SubjectMatterExpert();
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionString = _conString;
@@ -190,8 +198,8 @@ public class ConsultingRepository:IConsultingRepository{
         return doctor;
     }
 
-    
-    
+
+
 
     public async Task<List<Answer>> Answers()
     {
@@ -234,87 +242,132 @@ public class ConsultingRepository:IConsultingRepository{
         List<Question> questions = new List<Question>();
         MySqlConnection con = new MySqlConnection();
         con.ConnectionString = _conString;
-    try
-    {
-        string query = "select * from questions where category_id = @id";
-        await con.OpenAsync();
-        MySqlCommand command = new MySqlCommand(query, con);
-        command.Parameters.AddWithValue("@id", id);
-        MySqlDataReader reader = command.ExecuteReader();
-        while (await reader.ReadAsync())
+        try
         {
-            int Id= int.Parse(reader["question_id"].ToString());
-            DateTime Date= DateTime.Parse(reader["question_date"].ToString());
-            string description = reader["description"].ToString();
-            int custId =int.Parse(reader["cust_id"].ToString());
-            //int categoryId = int.Parse(reader["category_id"].ToString());
-                Question question = new Question{
-                Id=Id,
-                Date=Date,
-                Description=description,
-                CustId=custId,
-                CategoryId= id
-            };
-            questions.Add(question);
-        }
+            string query = "select * from questions where category_id = @id";
+            await con.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, con);
+            command.Parameters.AddWithValue("@id", id);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+                int Id = int.Parse(reader["question_id"].ToString());
+                DateTime Date = DateTime.Parse(reader["question_date"].ToString());
+                string description = reader["description"].ToString();
+                int custId = int.Parse(reader["cust_id"].ToString());
+                //int categoryId = int.Parse(reader["category_id"].ToString());
+                Question question = new Question
+                {
+                    Id = Id,
+                    Date = Date,
+                    Description = description,
+                    CustId = custId,
+                    CategoryId = id
+                };
+                questions.Add(question);
+            }
             await reader.CloseAsync();
-    }
-    catch (Exception ee)
-    {
-        throw ee;
-    }
-    finally
-    {
-        await con.CloseAsync();
-    }
+        }
+        catch (Exception ee)
+        {
+            throw ee;
+        }
+        finally
+        {
+            await con.CloseAsync();
+        }
         return questions;
     }
 
 
 
 
-    public async Task<List<QuestionAnswer>> GetQuestionAnswers(int id)
+    public async Task<List<QuestionAnswer>> QuestionAnswers(int id)
     {
         List<QuestionAnswer> questionAnswers = new List<QuestionAnswer>();
         MySqlConnection con = new MySqlConnection();
         con.ConnectionString = _conString;
-    try
-    {
-        string query = "select agri_doctors.agri_doctor_id,(questions.description) As question,(solutions.description) As answer "+
-                        "from agri_doctors ,solutions,question_solutions Inner join questions on questions.question_id = " +
-                        "question_solutions.question_id where agri_doctors.agri_doctor_id=question_solutions.agri_doctor_id AND " +
-                        "solutions.solution_id= question_solutions.solution_id AND agri_doctors.agri_doctor_id= @agriDoctorId";
-        await con.OpenAsync();
-        MySqlCommand command = new MySqlCommand(query, con);
-        command.Parameters.AddWithValue("@agriDoctorId", id);
-        MySqlDataReader reader = command.ExecuteReader();
-        while (await reader.ReadAsync())
+        try
         {
-            //int Id= int.Parse(reader["question_id"].ToString());
-            string? question = reader["question"].ToString();
-            string? answer = reader["answer"].ToString();
+            string query = "select agri_doctors.agri_doctor_id,(questions.description) As question,(solutions.description) As answer " +
+                            "from agri_doctors ,solutions,question_solutions Inner join questions on questions.question_id = " +
+                            "question_solutions.question_id where agri_doctors.agri_doctor_id=question_solutions.agri_doctor_id AND " +
+                            "solutions.solution_id= question_solutions.solution_id AND agri_doctors.agri_doctor_id= @agriDoctorId";
+            await con.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, con);
+            command.Parameters.AddWithValue("@agriDoctorId", id);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+                //int Id= int.Parse(reader["question_id"].ToString());
+                string? question = reader["question"].ToString();
+                string? answer = reader["answer"].ToString();
 
-                QuestionAnswer questionAnswer = new QuestionAnswer{
-                Id=id,
-                Question=question,
-                Answer=answer
-                
-            };
-            questionAnswers.Add(questionAnswer);
-        }
+                QuestionAnswer questionAnswer = new QuestionAnswer
+                {
+                    Id = id,
+                    Question = question,
+                    Answer = answer
+
+                };
+                questionAnswers.Add(questionAnswer);
+            }
             await reader.CloseAsync();
-    }
-    catch (Exception ee)
-    {
-        throw ee;
-    }
-    finally
-    {
-        await con.CloseAsync();
-    }
+        }
+        catch (Exception ee)
+        {
+            throw ee;
+        }
+        finally
+        {
+            await con.CloseAsync();
+        }
         return questionAnswers;
     }
-    
+
+
+    public async Task<List<Solution>> Answers(int id)
+    {
+        List<Solution> answers = new List<Solution>();
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = _conString;
+        try
+        {
+            string query = "select (solutions.description) As Answer from solutions,question_solutions Inner join questions on questions.question_id =" +
+                           " question_solutions.question_id where solutions.solution_id= question_solutions.solution_id AND questions.question_id=@questionId";
+
+            await con.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, con);
+            command.Parameters.AddWithValue("@questionId", id);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+
+                string? answer = reader["answer"].ToString();
+
+                Solution ans = new Solution
+                {
+                    Answer = answer
+
+                };
+                answers.Add(ans);
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception ee)
+        {
+            throw ee;
+        }
+        finally
+        {
+            await con.CloseAsync();
+        }
+        return answers;
+    }
+
+
+
+
 }
 
 

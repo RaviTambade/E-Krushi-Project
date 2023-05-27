@@ -81,12 +81,24 @@ public class ConsultingController : ControllerBase
     }
 
     [HttpGet]
-    [Route("questionanswers/{id}")]                          //This method gives agri doctor details by id.
-    public async Task<List<QuestionAnswer>> GetQuestionAnswers(int id)
+    [Route("questionanswers/{id}")]                          //this method gives question answers particular agri doctor  id.
+    public async Task<List<QuestionAnswer>> QuestionAnswers(int id)
     {
 
-        List<QuestionAnswer> questionAnswers = await _srv.GetQuestionAnswers(id);
+        List<QuestionAnswer> questionAnswers = await _srv.QuestionAnswers(id);
         return questionAnswers;
+
+    }
+
+
+
+    [HttpGet]
+    [Route("answers/{id}")]                          //this method gives  answers of particular question  id.
+    public async Task<List<Solution>> Answers(int id)
+    {
+
+        List<Solution> answers = await _srv.Answers(id);
+        return answers;
 
     }
 }

@@ -10,6 +10,8 @@ public interface IConsultingRepository{
     
     Task<List<Question>> Category(int id);
 
-    Task<List<QuestionAnswer>> GetQuestionAnswers(int id);
+    Task<List<QuestionAnswer>> QuestionAnswers(int id);
+
+     Task<List<Solution>> Answers(int id);
     
 }
