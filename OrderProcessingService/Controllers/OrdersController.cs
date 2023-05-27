@@ -15,7 +15,7 @@ namespace OrderProcessingService.Controllers
         _ordersvc = ordersvc;
         } 
 
-        [HttpGet("orders")]
+        [HttpGet("orders")]          
         public IEnumerable<Order> Orders()
         {
             List<Order> orders = _ordersvc.Orders();
@@ -58,7 +58,7 @@ namespace OrderProcessingService.Controllers
 
 
 
-        [HttpGet("Count/{date}")]
+        [HttpGet("Count/{date}")]                    //This query gives count of order by date
         public int GetCountByDate(DateTime date)
         {
             
@@ -66,8 +66,8 @@ namespace OrderProcessingService.Controllers
             int counts = _ordersvc.GetCountByDate(date);
             return counts;
         }
-
-        [HttpGet("totalcount")]
+                                                      
+        [HttpGet("totalcount")]                     //This query gives total count of orders
         public int TotalCount()
         {
             int totalCounts = _ordersvc.TotalCount();
