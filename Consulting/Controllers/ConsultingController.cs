@@ -16,9 +16,11 @@ public class ConsultingController : ControllerBase
     }
 
 
-    [HttpGet]
-    [Route("questions")]                            
-    public async Task<List<Question>> Questions()                       //This method gives question List.
+
+    //This method gives question List.
+    [HttpGet("questions")]
+
+    public async Task<List<Question>> Questions()
     {
 
         List<Question> questions = await _srv.Questions();
@@ -27,8 +29,9 @@ public class ConsultingController : ControllerBase
     }
 
 
-    [HttpGet]
-    [Route("questions/{id}")]                                           //This method gives question details by id.
+
+    //This method gives question details by id.
+    [HttpGet("questions/{id}")]
     public async Task<Question> Question(int id)
     {
 
@@ -39,19 +42,28 @@ public class ConsultingController : ControllerBase
 
 
 
-    [HttpGet]
-    [Route("experts")]                                                    //This method gives all subject matter experts available in Krishi Seva
+
+
+
+
+
+    //This method gives all subject matter experts available in Krishi Seva
+    [HttpGet("experts")]
     public async Task<List<SubjectMatterExpert>> Experts()
     {
 
-      List<SubjectMatterExpert> experts  = await _srv.Experts();
+        List<SubjectMatterExpert> experts = await _srv.Experts();
 
         return experts;
     }
 
-    [HttpGet]
-    [Route("answers")]                            
-    public async Task<List<Answer>> Answers()                                //This method gives list of answers.
+
+
+
+    //This method gives list of answers.
+
+    [HttpGet("answers")]
+    public async Task<List<Answer>> Answers()
     {
 
         List<Answer> answers = await _srv.Answers();
@@ -59,8 +71,9 @@ public class ConsultingController : ControllerBase
         return answers;
     }
 
-    [HttpGet]
-    [Route("Questions/{id}")]                                                 //This method gives all Question list of particular catagory.
+
+    //This method gives all Question list of particular catagory.
+    [HttpGet("Questions/{id}")]
     public async Task<List<Question>> Category(int id)
     {
 
@@ -69,19 +82,23 @@ public class ConsultingController : ControllerBase
 
     }
 
-    [HttpGet]
-    [Route("Expert/{id}")]                                                    //This method gives agri doctor details by id.
-    
+
+
+
+    //This method gives agri doctor details by id.
+    [HttpGet("Expert/{id}")]
     public async Task<SubjectMatterExpert> Expert(int id)
     {
 
-      SubjectMatterExpert expert = await  _srv.Expert(id);
+        SubjectMatterExpert expert = await _srv.Expert(id);
 
         return expert;
     }
 
-    [HttpGet]
-    [Route("questionanswers/{id}")]                                           //this method gives question answers particular agri doctor  id.
+
+
+    //this method gives question answers particular agri doctor  id. 
+    [HttpGet("questionanswers/{id}")]
     public async Task<List<QuestionAnswer>> QuestionAnswers(int id)
     {
 
@@ -91,11 +108,10 @@ public class ConsultingController : ControllerBase
     }
 
 
-
-    [HttpGet]
-    [Route("answers/{id}")]                          
+    //This method gives answers  of particular provided question id.
+    [HttpGet("answers/{id}")]
     public async Task<List<Solution>> Answers(int id)
-    {                                                                            //This method gives answers  of particular provided question id.
+    {
 
         List<Solution> answers = await _srv.Answers(id);
         return answers;
