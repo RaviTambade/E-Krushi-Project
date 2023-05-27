@@ -18,7 +18,7 @@ public class ConsultingController : ControllerBase
 
     [HttpGet]
     [Route("questions")]                            
-    public async Task<List<Question>> Questions()                 //This method gives Agri doctor List.
+    public async Task<List<Question>> Questions()                       //This method gives question List.
     {
 
         List<Question> questions = await _srv.Questions();
@@ -28,7 +28,7 @@ public class ConsultingController : ControllerBase
 
 
     [HttpGet]
-    [Route("questions/{id}")]                          //This method gives agri doctor details by id.
+    [Route("questions/{id}")]                                           //This method gives question details by id.
     public async Task<Question> Question(int id)
     {
 
@@ -40,7 +40,7 @@ public class ConsultingController : ControllerBase
 
 
     [HttpGet]
-    [Route("experts")]                                   //This method gives all subject matter experts available in Krishi Seva
+    [Route("experts")]                                                    //This method gives all subject matter experts available in Krishi Seva
     public async Task<List<SubjectMatterExpert>> Experts()
     {
 
@@ -51,7 +51,7 @@ public class ConsultingController : ControllerBase
 
     [HttpGet]
     [Route("answers")]                            
-    public async Task<List<Answer>> Answers()                 //This method gives Agri doctor List.
+    public async Task<List<Answer>> Answers()                                //This method gives list of answers.
     {
 
         List<Answer> answers = await _srv.Answers();
@@ -60,7 +60,7 @@ public class ConsultingController : ControllerBase
     }
 
     [HttpGet]
-    [Route("category/{id}")]                          //This method gives agri doctor details by id.
+    [Route("Questions/{id}")]                                                 //This method gives all Question list of particular catagory.
     public async Task<List<Question>> Category(int id)
     {
 
@@ -70,7 +70,7 @@ public class ConsultingController : ControllerBase
     }
 
     [HttpGet]
-    [Route("Expert/{id}")]                          //This method gives agri doctor details by id.
+    [Route("Expert/{id}")]                                                    //This method gives agri doctor details by id.
     
     public async Task<SubjectMatterExpert> Expert(int id)
     {
@@ -81,7 +81,7 @@ public class ConsultingController : ControllerBase
     }
 
     [HttpGet]
-    [Route("questionanswers/{id}")]                          //this method gives question answers particular agri doctor  id.
+    [Route("questionanswers/{id}")]                                           //this method gives question answers particular agri doctor  id.
     public async Task<List<QuestionAnswer>> QuestionAnswers(int id)
     {
 
@@ -93,9 +93,9 @@ public class ConsultingController : ControllerBase
 
 
     [HttpGet]
-    [Route("answers/{id}")]                          //this method gives  answers of particular question  id.
+    [Route("answers/{id}")]                          
     public async Task<List<Solution>> Answers(int id)
-    {
+    {                                                                            //This method gives answers  of particular provided question id.
 
         List<Solution> answers = await _srv.Answers(id);
         return answers;
