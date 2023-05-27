@@ -54,8 +54,8 @@ public class UserRepository : IUserRepository
     {
         List<Claim> claims = new List<Claim>();
         //you can add custom Claims here
-        claims.Add(new Claim("id", user.UserId.ToString()));
-        List<string> roles = await GetRolesOfUser(user.UserId);
+        claims.Add(new Claim("id", user.Id.ToString()));
+        List<string> roles = await GetRolesOfUser(user.Id);
         foreach (string role in roles)
         {
             claims.Add(new Claim("Roles", role));
@@ -79,12 +79,12 @@ public class UserRepository : IUserRepository
 
             if (await reader.ReadAsync())
             {
-                int userId = int.Parse(reader["user_id"].ToString());
+                int userId = int.Parse(reader["id"].ToString());
                 string userEmail = reader["email"].ToString();
                 string userPassword = reader["password"].ToString();
                 user = new User
                 {
-                    UserId = userId,
+                    Id = userId,
                     Email = userEmail,
                     Password = userPassword
                 };
@@ -104,7 +104,7 @@ public class UserRepository : IUserRepository
 
     }
 
-    private async Task<List<string>> GetRolesOfUser(int userId)
+    private async Task<List<string>> GetRolesOfUser(int id)
     {
         List<string> roles = new List<string>();
         MySqlConnection con = new MySqlConnection();
@@ -115,7 +115,7 @@ public class UserRepository : IUserRepository
             Console.WriteLine(query);
             await con.OpenAsync();
             MySqlCommand cmd = new MySqlCommand(query, con);
-            cmd.Parameters.AddWithValue("@userId", userId);
+            cmd.Parameters.AddWithValue("@userId", id);
             MySqlDataReader reader = cmd.ExecuteReader();
             while (await reader.ReadAsync())
             {
@@ -149,13 +149,13 @@ public class UserRepository : IUserRepository
             MySqlDataReader reader = cmd.ExecuteReader();
             while (await reader.ReadAsync())
             {
-                int userId = int.Parse(reader["user_id"].ToString());
+                int userId = int.Parse(reader["id"].ToString());
                 string email = reader["email"].ToString();
                 string password = reader["password"].ToString();
-                string contactNumber = reader["contact_number"].ToString();
+                string contactNumber = reader["contactnumber"].ToString();
                 User user = new User
                 {
-                    UserId = userId,
+                    Id = userId,
                     Email = email,
                     Password = password,
                     ContactNumber = contactNumber
@@ -216,7 +216,7 @@ public class UserRepository : IUserRepository
         connection.ConnectionString=_conString;
         try{
 
-        string query= "select * from users where user_id ="+id;
+        string query= "select * from users where id ="+id;
          MySqlCommand cmd = new MySqlCommand(query,connection);
          await connection.OpenAsync();
          MySqlDataReader reader = cmd.ExecuteReader();
@@ -225,10 +225,10 @@ public class UserRepository : IUserRepository
 
             string email= reader["email"].ToString();
             string password= reader["password"].ToString();
-            string contactNumber= reader["contact_number"].ToString();
+            string contactNumber= reader["contactnumber"].ToString();
          
              user = new User(){
-                UserId=id,
+                Id=id,
                 Email= email,
                 Password=password,
                 ContactNumber=contactNumber
@@ -255,11 +255,11 @@ public class UserRepository : IUserRepository
         con.ConnectionString=_conString;
 
         try{
-            string query="Insert into users(email,password,contact_number) values (@email,@password,@contact_number)";
+            string query="Insert into users(email,password,contactnumber) values (@email,@password,@contactNumber)";
             MySqlCommand cmd =new MySqlCommand(query,con);
             cmd.Parameters.AddWithValue("@email",user.Email);
             cmd.Parameters.AddWithValue("@password",user.Password);
-            cmd.Parameters.AddWithValue("@contact_number",user.ContactNumber);
+            cmd.Parameters.AddWithValue("@contactNumber",user.ContactNumber);
         await con.OpenAsync();
         int rowsaffected=cmd.ExecuteNonQuery();
         if(rowsaffected>0){
@@ -288,12 +288,12 @@ public class UserRepository : IUserRepository
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionString=_conString;
         try{
-            string query= "update users set email=@email,password=@password,contact_number=@contact_number where user_id=@userId" ;
+            string query= "update users set email=@email,password=@password,contactnumber=@contactNumber where id=@userId" ;
             MySqlCommand command = new MySqlCommand(query,connection);
-            command.Parameters.AddWithValue("@userId",user.UserId);
+            command.Parameters.AddWithValue("@userId",user.Id);
             command.Parameters.AddWithValue("@email",user.Email);
             command.Parameters.AddWithValue("@password",user.Password);
-            command.Parameters.AddWithValue("@contact_number",user.ContactNumber);
+            command.Parameters.AddWithValue("@contactNumber",user.ContactNumber);
             await connection.OpenAsync();
             int rowsaffected = command.ExecuteNonQuery();
             if(rowsaffected>0){
@@ -322,7 +322,7 @@ public class UserRepository : IUserRepository
         connection.ConnectionString=_conString;
         try{
 
-            string query= "delete from users where user_id=@userId";
+            string query= "delete from users where id=@userId";
             MySqlCommand command= new MySqlCommand(query,connection);
             command.Parameters.AddWithValue("@userId",id);
             await connection.OpenAsync();

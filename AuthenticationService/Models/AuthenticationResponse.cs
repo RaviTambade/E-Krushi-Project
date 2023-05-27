@@ -5,7 +5,7 @@ namespace AuthenticationService.Models
 
     public class AuthenticateResponse{
 
-     public int UserId {get;set;}
+     public int Id {get;set;}
 
      public string Email{get;set;}
 
@@ -17,7 +17,7 @@ namespace AuthenticationService.Models
 
 
     public AuthenticateResponse(User user, string token){
-      UserId =user.UserId;
+      Id =user.Id;
       Email= user.Email;
       Password=user.Password;
       Token=token;
