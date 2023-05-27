@@ -16,61 +16,61 @@ namespace OrderProcessingService.Controllers
         } 
 
         [HttpGet("orders")]          
-        public IEnumerable<Order> Orders()
+        public async Task<IEnumerable<Order>> Orders()
         {
-            List<Order> orders = _ordersvc.Orders();
+            List<Order> orders = await _ordersvc.Orders();
             return orders;
         }
 
         [HttpGet("getorder/{id}")]
-        public Order GetById(int id)
+        public async Task<Order> GetById(int id)
         {
-            Order order = _ordersvc.GetOrder(id);
+            Order order = await _ordersvc.GetOrder(id);
             return order;
         }
 
         [HttpPost("insert")]
-        public bool Insert([FromBody] Order order)
+        public async Task<bool> Insert([FromBody] Order order)
         {
-            bool status =_ordersvc.Insert(order);
+            bool status = await _ordersvc.Insert(order);
             return status;
         }
 
         [HttpPut("update/{id}")]
-        public bool Update(int id,[FromBody] Order order)
+        public async Task<bool> Update(int id,[FromBody] Order order)
         {
-            Order oldOrder = _ordersvc.GetOrder(id);
+            Order oldOrder = await _ordersvc.GetOrder(id);
             if(oldOrder.Id==0)
             {
                 return false;
             }
             order.Id =id;
-            bool status = _ordersvc.Update(order);
+            bool status = await _ordersvc.Update(order);
             return status;
         }
 
         [HttpDelete("delete/{id}")]
-        public bool Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            bool status = _ordersvc.Delete(id);
+            bool status = await _ordersvc.Delete(id);
             return status;
         }
 
 
 
         [HttpGet("Count/{date}")]                    //This query gives count of order by date
-        public int GetCountByDate(DateTime date)
+        public async Task<int> GetCountByDate(DateTime date)
         {
             
             Console.WriteLine(date);
-            int counts = _ordersvc.GetCountByDate(date);
+            int counts = await _ordersvc.GetCountByDate(date);
             return counts;
         }
                                                       
         [HttpGet("totalcount")]                     //This query gives total count of orders
-        public int TotalCount()
+        public async Task<int> TotalCount()
         {
-            int totalCounts = _ordersvc.TotalCount();
+            int totalCounts = await _ordersvc.TotalCount();
             return totalCounts;
         }
 

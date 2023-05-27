@@ -17,43 +17,43 @@ namespace OrderProcessingService.Controllers
         } 
 
         [HttpGet("orderdetails")]
-        public IEnumerable<OrderDetails> OrderDetails()
+        public async Task<IEnumerable<OrderDetails>> OrderDetails()
         {
-            List<OrderDetails> orderDetails = _ordersvc.OrderDetails();
+            List<OrderDetails> orderDetails = await _ordersvc.OrderDetails();
             return orderDetails;
         }
 
         [HttpGet("getorderDetails/{id}")]
-        public OrderDetails OrderDetail(int id)
+        public async Task<OrderDetails> OrderDetail(int id)
         {
-            OrderDetails orderDetail = _ordersvc.OrderDetail(id);
+            OrderDetails orderDetail = await _ordersvc.OrderDetail(id);
             return orderDetail;
         }
 
-        [HttpPost("insertorderdetail")]
-        public bool Insert([FromBody] OrderDetails orderDetail)
+        [HttpPost("insert")]
+        public async Task<bool> Insert([FromBody] OrderDetails orderDetail)
         {
-            bool status =_ordersvc.Insert(orderDetail);
+            bool status = await _ordersvc.Insert(orderDetail);
             return status;
         }
 
-        [HttpPut("updateorderdetail/{id}")]
-        public bool Update(int id,[FromBody] OrderDetails orderDetail)
+        [HttpPut("update/{id}")]
+        public async Task<bool> Update(int id,[FromBody] OrderDetails orderDetail)
         {
-            OrderDetails oldOrderDetail = _ordersvc.OrderDetail(id);
+            OrderDetails oldOrderDetail = await _ordersvc.OrderDetail(id);
             if(oldOrderDetail.Id==0)
             {
                 return false;
             }
             orderDetail.Id =id;
-            bool status = _ordersvc.Update(orderDetail);
+            bool status = await _ordersvc.Update(orderDetail);
             return status;
         }
 
-        [HttpDelete("deleteorderdetail/{id}")]
-        public bool DeleteOrderDetail(int id)
+        [HttpDelete("delete/{id}")]
+        public async Task<bool> DeleteOrderDetail(int id)
         {
-            bool status = _ordersvc.Delete(id);
+            bool status = await _ordersvc.Delete(id);
             return status;
         }
     }

@@ -13,15 +13,15 @@ public class OrderDetailsService : IOrderDetailsService{
     }
 
   
-    public List<OrderDetails> OrderDetails() => _repo.OrderDetails();
+    public async Task<List<OrderDetails>> OrderDetails() => await _repo.OrderDetails();
 
-    public OrderDetails OrderDetail(int id) => _repo.OrderDetail(id);
+    public async Task<OrderDetails> OrderDetail(int id) => await _repo.OrderDetail(id);
 
-    public bool Insert(OrderDetails orderDetail)=> _repo.Insert(orderDetail);
+    public async Task<bool> Insert(OrderDetails orderDetail)=> await _repo.Insert(orderDetail);
 
-    public bool Update(OrderDetails orderDetail)=> _repo.Update(orderDetail);
+    public async Task<bool> Update(OrderDetails orderDetail)=> await _repo.Update(orderDetail);
 
-    public bool Delete(int id)=>  _repo.Delete(id);
+    public async Task<bool> Delete(int id)=> await _repo.Delete(id);
 
 
 }
