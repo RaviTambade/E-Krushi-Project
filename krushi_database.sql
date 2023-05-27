@@ -1,4 +1,4 @@
--- drop database ekrushi;
+--  drop database ekrushi;
 CREATE DATABASE ekrushi;
 USE ekrushi;
 
@@ -9,17 +9,25 @@ CREATE TABLE roles(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, role varchar(250)
 CREATE TABLE customers(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,firstname VARCHAR(255),lastname VARCHAR(25),userid INT NOT NULL,CONSTRAINT fk FOREIGN KEY (userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE);
 CREATE TABLE categories(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,title varchar(255),description varchar(255),image varchar(255));
                         
+<<<<<<< HEAD
 CREATE TABLE products(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,title varchar(255),unitprice double,stockavailable INT,image varchar(255),
 categoryid INT NOT NULL, CONSTRAINT fkcategoryid FOREIGN KEY (categoryid) REFERENCES categories(id) ON UPDATE CASCADE ON DELETE CASCADE);
+=======
+CREATE TABLE products(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,title varchar(255),unitprice double,stockavailable INT,image varchar(255),categoryid INT NOT NULL, CONSTRAINT fk_category_id FOREIGN KEY (categoryid) REFERENCES categories(id) ON UPDATE CASCADE ON DELETE CASCADE);
+>>>>>>> 084833fe46a10158e27b5c79aea232cd3942f416
  
 CREATE TABLE orders(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,date DATETIME NOT NULL ,shippeddate DATETIME NOT NULL,custid INT NOT NULL,
 CONSTRAINT fk_cust_id_11 FOREIGN KEY (custid) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE CASCADE, 
 total DOUBLE ,status ENUM('approved','initiated','cancelled','delivered','inprogress') NOT NULL);
 
+<<<<<<< HEAD
 CREATE TABLE orderdetails(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,orderid INT NOT NULL,
 CONSTRAINT fk FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE ,
 productid INT NOT NULL ,CONSTRAINT fk FOREIGN KEY (productid) REFERENCES products(id)ON UPDATE CASCADE ON DELETE CASCADE,
 quantity INT NOT NULL,discount DOUBLE DEFAULT 0);  
+=======
+CREATE TABLE order_details(order_details_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,order_id INT NOT NULL,CONSTRAINT fk_04 FOREIGN KEY (order_id) REFERENCES orders(order_id) ON UPDATE CASCADE ON DELETE CASCADE ,product_id INT NOT NULL ,CONSTRAINT fk_05 FOREIGN KEY (product_id) REFERENCES products(id)ON UPDATE CASCADE ON DELETE CASCADE,quantity INT NOT NULL,discount DOUBLE DEFAULT 0);  
+>>>>>>> 084833fe46a10158e27b5c79aea232cd3942f416
 
 CREATE TABLE carts(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,custid INT NOT NULL,
 CONSTRAINT fk_1 FOREIGN KEY (custid) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -30,9 +38,13 @@ CONSTRAINT fkcustid FOREIGN KEY (custid) REFERENCES customers(id) ON UPDATE CASC
 addressmode ENUM('permanent','billing') NOT NULL,
 housenumber varchar(255),landmark VARCHAR(255),city VARCHAR(255) NOT NULL,state VARCHAR(255) NOT NULL,country VARCHAR(255) NOT NULL,pincode VARCHAR(255) NOT NULL);
 
+<<<<<<< HEAD
 CREATE TABLE cartitems(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cartid INT NOT NULL,
 CONSTRAINT fk02 FOREIGN KEY (cartid) REFERENCES carts(id)ON UPDATE CASCADE ON DELETE CASCADE,
 productid INT NOT NULL,CONSTRAINT fk03 FOREIGN KEY (productid) REFERENCES products(id) ,quantity INT NOT NULL); 
+=======
+CREATE TABLE cart_items(cart_items_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cart_id INT NOT NULL,CONSTRAINT fk_02 FOREIGN KEY (cart_id) REFERENCES carts(cart_id)ON UPDATE CASCADE ON DELETE CASCADE,product_id INT NOT NULL,CONSTRAINT fk_03 FOREIGN KEY (product_id) REFERENCES products(id) ,quantity INT NOT NULL); 
+>>>>>>> 084833fe46a10158e27b5c79aea232cd3942f416
 
 CREATE TABLE payments(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,date DATETIME NOT NULL , 
 mode ENUM('cash on delivery','online payment'),userid INT NOT NULL,CONSTRAINT fkuserid5 FOREIGN KEY (userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -137,7 +149,11 @@ INSERT INTO categories(title,description,image) VALUES('plants micronutrients','
 
 -- PRODUCTS DATA
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('oats',100,500,'/image/oats.jpg',1);
+<<<<<<< HEAD
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('wheat',100,50,'/image/sunflower.jpg',1);
+=======
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('wheat',100,50,'/image/sunflower.jpg',1);
+>>>>>>> 084833fe46a10158e27b5c79aea232cd3942f416
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('corn',100,50,'/image/sunflower.jpg',1);
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('barley',100,50,'/image/sunflower.jpg',1);
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('sorghum',100,50,'/image/sunflower.jpg',1);
@@ -146,7 +162,11 @@ INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('su
 
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('tractor',100,50,'/image/sunflower.jpg',2);
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('harvesters',100,50,'/image/sunflower.jpg',2);
+<<<<<<< HEAD
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid)values('balers',100,50,'/image/sunflower.jpg',2);
+=======
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('balers',100,50,'/image/sunflower.jpg',2);
+>>>>>>> 084833fe46a10158e27b5c79aea232cd3942f416
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('fertilizer spreaders',100,50,'/image/sunflower.jpg',2);
 
 -- FERTILIZERS
@@ -158,11 +178,19 @@ INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('ma
 -- PESTISIDES
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('karate',100,500,'/image/woodash.jpg',4);
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('soloman',100,500,'/image/manure.jpg',4);
+<<<<<<< HEAD
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('wood ash',100,500,'/image/woodash.jpg',4);
 
 -- Agricultural sprayers
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('Knapsack sprayer',100,500,'/image/woodash.jpg',5);
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('portable power sprayer',100,500,'/image/manure.jpg',5);
+=======
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('wood ash',100,500,'/image/woodash.jpg',4);
+
+-- Agricultural sprayers
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('Knapsack sprayer',100,500,'/image/woodash.jpg',5);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('portable power sprayer',100,500,'/image/manure.jpg',5);
+>>>>>>> 084833fe46a10158e27b5c79aea232cd3942f416
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('mist dust sprayer',100,500,'/image/woodash.jpg',5);
 
 -- ORDERS DATA
