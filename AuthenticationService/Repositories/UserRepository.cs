@@ -136,7 +136,7 @@ public class UserRepository : IUserRepository
         return roles;
     }
 
-    public async Task<List<User>> GetAll()
+    public async Task<List<User>> Users()
     {
         List<User> users = new List<User>();
         MySqlConnection con = new MySqlConnection();
@@ -152,11 +152,13 @@ public class UserRepository : IUserRepository
                 int userId = int.Parse(reader["user_id"].ToString());
                 string email = reader["email"].ToString();
                 string password = reader["password"].ToString();
+                string contactNumber = reader["contact_number"].ToString();
                 User user = new User
                 {
                     UserId = userId,
                     Email = email,
-                    Password = password
+                    Password = password,
+                    ContactNumber = contactNumber
                 };
                 users.Add(user);
             }
@@ -173,7 +175,7 @@ public class UserRepository : IUserRepository
         return users;
     }
 
-    public async Task<bool> ValidateUser(AuthenticateRequest user)
+    public async Task<bool> Validate(AuthenticateRequest user)
     {
         bool status = false;
         MySqlConnection connection = new MySqlConnection(_conString);
@@ -207,7 +209,7 @@ public class UserRepository : IUserRepository
 
 
 
-    public async Task<User> GetById(int id){
+    public async Task<User> User(int id){
 
         User user= new User();
         MySqlConnection connection =new MySqlConnection();
@@ -280,16 +282,16 @@ public class UserRepository : IUserRepository
 
       }
 
-      public async Task<bool> UpdateUser(User user){
+      public async Task<bool> Update(User user){
 
         bool status= false;
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionString=_conString;
         try{
-            string query= "update users set user_id=@userId,email=@email,password=@password,contact_number=@contact_number";
+            string query= "update users set email=@email,password=@password,contact_number=@contact_number where user_id=@userId" ;
             MySqlCommand command = new MySqlCommand(query,connection);
             command.Parameters.AddWithValue("@userId",user.UserId);
-            command.Parameters.AddWithValue("@eamil",user.Email);
+            command.Parameters.AddWithValue("@email",user.Email);
             command.Parameters.AddWithValue("@password",user.Password);
             command.Parameters.AddWithValue("@contact_number",user.ContactNumber);
             await connection.OpenAsync();
@@ -314,7 +316,7 @@ public class UserRepository : IUserRepository
       }
 
 
-      public async Task<bool> DeleteUser(int id){
+      public async Task<bool> Delete(int id){
         bool status = false;
         MySqlConnection connection =new MySqlConnection();
         connection.ConnectionString=_conString;

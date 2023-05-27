@@ -1,7 +1,6 @@
 using OrderProcessingService.Models;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
-using Microsoft.Extensions.Caching.Memory;
 using OrderProcessingService.Services.Interfaces;
 
 namespace OrderProcessingService.Controllers
@@ -16,33 +15,29 @@ namespace OrderProcessingService.Controllers
         _ordersvc = ordersvc;
         } 
 
-        [HttpGet]
-        [Route("getallorders")]
-        public IEnumerable<Order> GetAllOrders()
+        [HttpGet("orders")]
+        public IEnumerable<Order> Orders()
         {
-            List<Order> orders = _ordersvc.GetAllOrders();
+            List<Order> orders = _ordersvc.Orders();
             return orders;
         }
 
-        [HttpGet]
-        [Route("getorder/{id}")]
+        [HttpGet("getorder/{id}")]
         public Order GetById(int id)
         {
             Order order = _ordersvc.GetOrder(id);
             return order;
         }
 
-        [HttpPost]
-        [Route("insertorder")]
-        public bool InsertOrder([FromBody] Order order)
+        [HttpPost("insert")]
+        public bool Insert([FromBody] Order order)
         {
-            bool status =_ordersvc.InsertOrder(order);
+            bool status =_ordersvc.Insert(order);
             return status;
         }
 
-        [HttpPut]
-        [Route("updateorder/{id}")]
-        public bool UpdateOrder(int id,[FromBody] Order order)
+        [HttpPut("update/{id}")]
+        public bool Update(int id,[FromBody] Order order)
         {
             Order oldOrder = _ordersvc.GetOrder(id);
             if(oldOrder.OrderId==0)
@@ -50,22 +45,20 @@ namespace OrderProcessingService.Controllers
                 return false;
             }
             order.OrderId =id;
-            bool status = _ordersvc.UpdateOrder(order);
+            bool status = _ordersvc.Update(order);
             return status;
         }
 
-        [HttpDelete]
-        [Route("delete/{id}")]
-        public bool DeleteOrder(int id)
+        [HttpDelete("delete/{id}")]
+        public bool Delete(int id)
         {
-            bool status = _ordersvc.DeleteOrder(id);
+            bool status = _ordersvc.Delete(id);
             return status;
         }
 
 
 
-        [HttpGet]
-        [Route("Count/{date}")]
+        [HttpGet("Count/{date}")]
         public int GetCountByDate(DateTime date)
         {
             
@@ -74,8 +67,7 @@ namespace OrderProcessingService.Controllers
             return counts;
         }
 
-        [HttpGet]
-        [Route("totalcount")]
+        [HttpGet("totalcount")]
         public int TotalCount()
         {
             int totalCounts = _ordersvc.TotalCount();

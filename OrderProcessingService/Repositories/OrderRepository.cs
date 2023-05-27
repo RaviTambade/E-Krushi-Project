@@ -6,12 +6,20 @@ using System.Globalization;
 namespace OrderProcessingService.Repositories;
 public class OrderRepository : IOrderRepository
 {
-    public static string conString = "server=localhost; user=root; port=3306; password=Password; database=E_Krushi";
-    public List<Order> GetAllOrders()
+    private readonly IConfiguration _configuration;
+    private readonly string _conString;
+
+    public OrderRepository(IConfiguration configuration)
+    {
+
+        _configuration = configuration;
+        _conString = this._configuration.GetConnectionString("DefaultConnection");
+    }
+    public List<Order> Orders()
     {
         List<Order> orders = new List<Order>();
         MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = conString;
+        con.ConnectionString = _conString;
         try
         {
             string query = "SELECT * FROM orders";
@@ -56,7 +64,7 @@ public class OrderRepository : IOrderRepository
     {
         Order order = new Order();
         MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = conString;
+        con.ConnectionString = _conString;
         try
         {
             string query = "SELECT * FROM orders where order_id=@orderId";
@@ -98,11 +106,11 @@ public class OrderRepository : IOrderRepository
     
 
    
-    public Order GetOrderByCustId(int id)
+    public Order OrderByCustId(int id)
     {
         Order order = new Order();
         MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = conString;
+        con.ConnectionString = _conString;
         try
         {
             string query = "SELECT * FROM orders where cust_id=@customerId";
@@ -139,11 +147,11 @@ public class OrderRepository : IOrderRepository
         }
         return order;
     }
-    public bool InsertOrder(Order order)
+    public bool Insert(Order order)
     {
         bool status = false;
         MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = conString;
+        con.ConnectionString = _conString;
         try
         {
             string query = "INSERT INTO orders(order_date,shipped_date,cust_id,total,status)VALUES(@orderDate,@shippedDate,@customerId,@total,@status)";
@@ -170,11 +178,11 @@ public class OrderRepository : IOrderRepository
         return status;
     }
 
-    public bool UpdateOrder(Order order)
+    public bool Update(Order order)
     {
         bool status = false;
         MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = conString;
+        con.ConnectionString = _conString;
         try
         {
             string query = "Update orders set order_date=@orderDate, shipped_date=@shippedDate,cust_id=@customerId, total =@total, status =@status Where order_id =@orderId";
@@ -201,11 +209,11 @@ public class OrderRepository : IOrderRepository
         }
         return status;
     }
-    public bool DeleteOrder(int id)
+    public bool Delete(int id)
     {
         bool status = false;
         MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = conString;
+        con.ConnectionString = _conString;
         try
         {
             string query = "DELETE FROM orders where order_id =@orderId";
@@ -228,11 +236,11 @@ public class OrderRepository : IOrderRepository
         return status;
     }
 
-    public List<Order> GetAllCancelled()
+    public List<Order> Cancelled()
     {
         List<Order> orders = new List<Order>();
         MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = conString;
+        con.ConnectionString = _conString;
         try
         {
 
@@ -275,11 +283,11 @@ public class OrderRepository : IOrderRepository
     }
 
 
-    public List<Order> GetAllDelivered()
+    public List<Order> Delivered()
     {
         List<Order> orders = new List<Order>();
         MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = conString;
+        con.ConnectionString = _conString;
         try
         {
 
@@ -326,7 +334,7 @@ public class OrderRepository : IOrderRepository
 
         Int64 count=0;
         MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = conString;
+        con.ConnectionString = _conString;
         try
         {
             string query = "SELECT count(*) FROM orders where order_date < @date";
@@ -352,7 +360,7 @@ public class OrderRepository : IOrderRepository
 
         Int64 count=0;
         MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = conString;
+        con.ConnectionString = _conString;
         try
         {
             string query = "SELECT count(*) FROM orders";

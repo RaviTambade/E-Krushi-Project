@@ -12,21 +12,21 @@ public class OrderService : IOrderService{
     }
 
   
-    public List<Order> GetAllOrders() => _repo.GetAllOrders();
+    public List<Order> Orders() => _repo.Orders();
 
     public Order GetOrder(int id) => _repo.GetOrder(id);
 
-    public Order GetOrderByCustId(int id) => _repo.GetOrderByCustId(id);
+    public Order OrderByCustId(int id) => _repo.OrderByCustId(id);
 
-    public bool InsertOrder(Order order)=> _repo.InsertOrder(order);
+    public bool Insert(Order order)=> _repo.Insert(order);
 
-    public bool UpdateOrder(Order order)=> _repo.UpdateOrder(order);
+    public bool Update(Order order)=> _repo.Update(order);
 
-    public bool DeleteOrder(int id)=>  _repo.DeleteOrder(id);
+    public bool Delete(int id)=>  _repo.Delete(id);
 
-    public List<Order> GetAllCancelled() => _repo.GetAllCancelled();
+    public List<Order> Cancelled() => _repo.Cancelled();
 
-    public List<Order> GetAllDelivered() => _repo.GetAllDelivered();
+    public List<Order> Delivered() => _repo.Delivered();
 
     public int GetCountByDate(DateTime date) => _repo.GetCountByDate(date);
 

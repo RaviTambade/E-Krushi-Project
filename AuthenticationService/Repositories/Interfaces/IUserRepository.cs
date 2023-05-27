@@ -5,15 +5,15 @@ namespace AuthenticationService.Repositories.Interfaces
     public interface IUserRepository
     {
         Task<AuthenticateResponse> Authenticate(AuthenticateRequest request);
-        Task<List<User>> GetAll();
+        Task<List<User>> Users();
 
-        Task<User> GetById(int id);
+        Task<User> User(int id);
 
         Task<bool> Register(User user);
 
-        Task<bool> UpdateUser(User user);
-        Task<bool> DeleteUser(int id);
+        Task<bool> Update(User user);
+        Task<bool> Delete(int id);
     
-        Task<bool> ValidateUser(AuthenticateRequest user);
+        Task<bool> Validate(AuthenticateRequest user);
     }
 }

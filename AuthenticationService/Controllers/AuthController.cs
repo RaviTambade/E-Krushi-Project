@@ -29,19 +29,19 @@ namespace AuthenticationService.Controllers
 
         
 
-        [HttpGet("getall")]  
-        public async Task<IEnumerable<User>> GetAll()
+        [HttpGet("users")]  
+        public async Task<IEnumerable<User>> Users()
         {
-            var users = _svc.GetAll();
+            var users = _svc.Users();
             return await users;
         }
     
 
         [HttpGet]
-        [Route("getbyid/{id}")]
-        public async Task<User> GetById(int id)
+        [Route("user/{id}")]
+        public async Task<User> User(int id)
         {
-        User user = await _svc.GetById(id);
+        User user = await _svc.User(id);
         return user;
         }
 
@@ -54,25 +54,25 @@ namespace AuthenticationService.Controllers
         }
 
         [HttpPut]
-        [Route("updateUser")]
+        [Route("update")]
 
-        public async Task<bool> UpdateUser(User user){
-        bool status = await _svc.UpdateUser(user);
+        public async Task<bool> Update(User user){
+        bool status = await _svc.Update(user);
         return status;
         }
 
 
         [HttpDelete]
-        [Route("DeleteUser/{id}")]
-        public async Task<bool> DeleteUser(int id){
-            bool status =await _svc.DeleteUser(id);
+        [Route("Delete/{id}")]
+        public async Task<bool> Delete(int id){
+            bool status =await _svc.Delete(id);
             return status;
         }
 
         [HttpPost]
-        [Route("ValidateUser")]
-        public async Task<bool> ValidateUser(AuthenticateRequest user){
-            bool status =await _svc.ValidateUser(user);
+        [Route("Validate")]
+        public async Task<bool> Validate(AuthenticateRequest user){
+            bool status =await _svc.Validate(user);
             if(status==true){
                 Console.WriteLine("user is valid");
             }
