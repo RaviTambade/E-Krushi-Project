@@ -8,7 +8,7 @@ public class RoleRepository : IRoleRepository
 {
 
     public string conString = "server=localhost; port=3306; user=root; password=PASSWORD; database=E_krushi";
-    public List<Role> GetAll()
+    public List<Role> Roles()
     {
         List<Role> roles = new List<Role>();
         MySqlConnection connection = new MySqlConnection();
@@ -32,8 +32,8 @@ public class RoleRepository : IRoleRepository
                 Role r1 = new Role
                 {
 
-                    RoleId = roleid,
-                    RoleName = role
+                    Id = roleid,
+                    Name = role
                 };
 
                 roles.Add(r1);
@@ -54,7 +54,7 @@ public class RoleRepository : IRoleRepository
     }
 
 
-    public Role GetById(int id)
+    public Role Role(int id)
     {
         Role role = new Role();
         MySqlConnection connection = new MySqlConnection();
@@ -77,8 +77,8 @@ public class RoleRepository : IRoleRepository
                 role = new Role()
                 {
 
-                    RoleId = roleid,
-                    RoleName = RoleName
+                    Id = roleid,
+                    Name = RoleName
 
                 };
 
@@ -105,7 +105,7 @@ public class RoleRepository : IRoleRepository
     }
 
 
-    public bool InsertRole(Role role)
+    public bool Insert(Role role)
     {
 
         bool status = false;
@@ -116,7 +116,7 @@ public class RoleRepository : IRoleRepository
 
             string query = "Insert into roles(role) values (@roleName)";
             MySqlCommand command = new MySqlCommand(query, connection);
-            command.Parameters.AddWithValue("@roleName", role.RoleName);
+            command.Parameters.AddWithValue("@roleName", role.Name);
             connection.Open();
             int rowsaffected = command.ExecuteNonQuery();
 
@@ -141,7 +141,7 @@ public class RoleRepository : IRoleRepository
     }
 
 
-    public bool UpdateRole(Role role)
+    public bool Update(Role role)
     {
         bool status = false;
 
@@ -153,8 +153,8 @@ public class RoleRepository : IRoleRepository
             string query = "update roles set role=@roleName where role_id=@roleId";
             MySqlCommand command = new MySqlCommand(query, connection);
             connection.Open();
-            command.Parameters.AddWithValue("@roleId", role.RoleId);
-            command.Parameters.AddWithValue("@roleName", role.RoleName);
+            command.Parameters.AddWithValue("@roleId", role.Id);
+            command.Parameters.AddWithValue("@roleName", role.Name);
             int rowsaffected = command.ExecuteNonQuery();
 
             if (rowsaffected > 0)
@@ -186,7 +186,7 @@ public class RoleRepository : IRoleRepository
 
 
 
-    public bool DeleteRole(int id){
+    public bool Delete(int id){
 
         bool status = false;
         MySqlConnection connection = new MySqlConnection();

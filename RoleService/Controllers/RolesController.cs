@@ -8,9 +8,9 @@ namespace E_krushiApp.Controllers;
 [Route("[controller]")]
 public class RolesController : ControllerBase
 {
-    
 
-    private readonly IRoleService  _srv; 
+
+    private readonly IRoleService _srv;
 
     public RolesController(IRoleService srv)
     {
@@ -18,59 +18,57 @@ public class RolesController : ControllerBase
     }
 
 
- [HttpGet]
- [Route("getall")]
-    public List<Role> GetAll(){
+    [HttpGet("roles")]
+   
+    public List<Role> Roles()
+    {
 
-        List<Role> roles = _srv.GetAll();
+        List<Role> roles = _srv.Roles();
 
         return roles;
     }
 
 
-    [HttpGet]
-    [Route("getById/{id}")]
-
-    public Role GetById(int id){
-        Role role = _srv.GetById(id);
+    [HttpGet("role/{id}")]
+    public Role Role(int id)
+    {
+        Role role = _srv.Role(id);
 
         return role;
     }
 
 
-    [HttpPost]
-    [Route("Insert")]
+    [HttpPost("Insert")]
+    public bool Insert(Role role)
+    {
 
-    public bool InsertRole(Role role){
-   
-        bool status = _srv.InsertRole(role);
+        bool status = _srv.Insert(role);
 
 
         return status;
     }
 
-    [HttpPut]
-    [Route("Update/{id}")]
-
-    public bool UpdateRole(int id,[FromBody]Role role){
-        Role oldRole = _srv.GetById(id);
-        if(oldRole.RoleId==0){
+    [HttpPut("Update/{id}")]
+    public bool Update(int id, [FromBody] Role role)
+    {
+        Role oldRole = _srv.Role(id);
+        if (oldRole.Id == 0)
+        {
 
             return false;
         }
-        role.RoleId=id;
-        bool status=_srv.UpdateRole(role);
+        role.Id = id;
+        bool status = _srv.Update(role);
 
         return status;
     }
 
 
-    [HttpDelete]
-    [Route("delete/{id}")]
+    [HttpDelete("delete/{id}")]
+    public bool Delete(int id)
+    {
 
-    public bool DeleteRole(int id){
-
-        bool status = _srv.DeleteRole(id);
+        bool status = _srv.Delete(id);
         return status;
     }
 }

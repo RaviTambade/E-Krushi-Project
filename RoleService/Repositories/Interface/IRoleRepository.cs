@@ -4,13 +4,13 @@ namespace E_krushiApp.Repositories.Interface;
 public interface IRoleRepository{
 
 
-    public List<Role> GetAll();
+    public List<Role> Roles();
 
-    public Role GetById(int id);
+    public Role Role(int id);
 
-     public bool InsertRole(Role role);
+     public bool Insert(Role role);
 
-     public bool UpdateRole(Role role);
+     public bool Update(Role role);
 
-     public bool DeleteRole(int id);
+     public bool Delete(int id);
 }
