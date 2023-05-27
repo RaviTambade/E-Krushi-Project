@@ -20,55 +20,55 @@ public class RolesController : ControllerBase
 
     [HttpGet("roles")]
    
-    public List<Role> Roles()
+    public async Task<List<Role>> Roles()
     {
 
-        List<Role> roles = _srv.Roles();
+        List<Role> roles = await _srv.Roles();
 
         return roles;
     }
 
 
     [HttpGet("role/{id}")]
-    public Role Role(int id)
+    public  async Task<Role> Role(int id)
     {
-        Role role = _srv.Role(id);
+        Role role = await  _srv.Role(id);
 
         return role;
     }
 
 
     [HttpPost("Insert")]
-    public bool Insert(Role role)
+    public async  Task<bool> Insert(Role role)
     {
 
-        bool status = _srv.Insert(role);
+        bool status = await  _srv.Insert(role);
 
 
         return status;
     }
 
     [HttpPut("Update/{id}")]
-    public bool Update(int id, [FromBody] Role role)
+    public async  Task<bool> Update(int id, [FromBody] Role role)
     {
-        Role oldRole = _srv.Role(id);
+        Role oldRole = await _srv.Role(id);
         if (oldRole.Id == 0)
         {
 
             return false;
         }
         role.Id = id;
-        bool status = _srv.Update(role);
+        bool status = await _srv.Update(role);
 
         return status;
     }
 
 
     [HttpDelete("delete/{id}")]
-    public bool Delete(int id)
+    public async Task<bool> Delete(int id)
     {
 
-        bool status = _srv.Delete(id);
+        bool status =await _srv.Delete(id);
         return status;
     }
 }

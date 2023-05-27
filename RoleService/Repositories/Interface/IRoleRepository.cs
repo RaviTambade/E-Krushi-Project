@@ -1,16 +1,16 @@
 using E_krushiApp.Models;
 namespace E_krushiApp.Repositories.Interface;
 
-public interface IRoleRepository{
+public interface IRoleRepository
+{
 
 
-    public List<Role> Roles();
+    public Task<List<Role>> Roles();
 
-    public Role Role(int id);
+    public Task<Role> Role(int id);
+    public Task<bool> Insert(Role role);
 
-     public bool Insert(Role role);
+    public Task<bool> Update(Role role);
 
-     public bool Update(Role role);
-
-     public bool Delete(int id);
+    public Task<bool> Delete(int id);
 }

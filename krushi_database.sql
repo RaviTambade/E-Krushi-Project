@@ -1,23 +1,23 @@
--- drop database E_Krushi;
-CREATE DATABASE E_Krushi;
-USE E_Krushi;
+-- drop database ekrushi;
+CREATE DATABASE ekrushi;
+USE ekrushi;
 
 CREATE TABLE users(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,email varchar(255) unique,password varchar(255),contactnumber varchar(255));
 
 CREATE TABLE roles(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, role varchar(250));
               
-CREATE TABLE customers(cust_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,first_name VARCHAR(255),last_name VARCHAR(25),user_id INT NOT NULL,CONSTRAINT fk_user_id_11 FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE);
-CREATE TABLE categories(category_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,category_title varchar(255),description varchar(255),image varchar(255));
+CREATE TABLE customers(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,firstname VARCHAR(255),lastname VARCHAR(25),userid INT NOT NULL,CONSTRAINT fk FOREIGN KEY (userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE);
+CREATE TABLE categories(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,title varchar(255),description varchar(255),image varchar(255));
                         
-CREATE TABLE products(product_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,product_title varchar(255),unit_price double,stock_available INT,image varchar(255),category_id INT NOT NULL, CONSTRAINT fk_category_id FOREIGN KEY (category_id) REFERENCES categories(category_id) ON UPDATE CASCADE ON DELETE CASCADE);
+CREATE TABLE products(product_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,product_title varchar(255),unit_price double,stock_available INT,image varchar(255),category_id INT NOT NULL, CONSTRAINT fk_category_id FOREIGN KEY (category_id) REFERENCES categories(id) ON UPDATE CASCADE ON DELETE CASCADE);
  
-CREATE TABLE orders(order_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,order_date DATETIME NOT NULL ,shipped_date DATETIME NOT NULL,cust_id INT NOT NULL,CONSTRAINT fk FOREIGN KEY (cust_id) REFERENCES customers(cust_id) ON UPDATE CASCADE ON DELETE CASCADE, total DOUBLE ,status ENUM('approved','initiated','cancelled','delivered','inprogress') NOT NULL);
+CREATE TABLE orders(order_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,order_date DATETIME NOT NULL ,shipped_date DATETIME NOT NULL,cust_id INT NOT NULL,CONSTRAINT fk_cust_id_11 FOREIGN KEY (cust_id) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE CASCADE, total DOUBLE ,status ENUM('approved','initiated','cancelled','delivered','inprogress') NOT NULL);
 
 CREATE TABLE order_details(order_details_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,order_id INT NOT NULL,CONSTRAINT fk_04 FOREIGN KEY (order_id) REFERENCES orders(order_id) ON UPDATE CASCADE ON DELETE CASCADE ,product_id INT NOT NULL ,CONSTRAINT fk_05 FOREIGN KEY (product_id) REFERENCES products(product_id)ON UPDATE CASCADE ON DELETE CASCADE,quantity INT NOT NULL,discount DOUBLE DEFAULT 0);  
 
-CREATE TABLE carts(cart_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cust_id INT NOT NULL,CONSTRAINT fk_1 FOREIGN KEY (cust_id) REFERENCES customers(cust_id) ON UPDATE CASCADE ON DELETE CASCADE, total DOUBLE ,status ENUM('approved','initiated','cancelled','delivered','inprogress') NOT NULL);
+CREATE TABLE carts(cart_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cust_id INT NOT NULL,CONSTRAINT fk_1 FOREIGN KEY (cust_id) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE CASCADE, total DOUBLE ,status ENUM('approved','initiated','cancelled','delivered','inprogress') NOT NULL);
 
-CREATE TABLE addresses(address_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cust_id INT NOT NULL,CONSTRAINT fk_cust_id FOREIGN KEY (cust_id) REFERENCES customers(cust_id) ON UPDATE CASCADE ON DELETE CASCADE,address_mode ENUM('permanent','billing') NOT NULL,house_number varchar(255),landmark VARCHAR(255),city VARCHAR(255) NOT NULL,state VARCHAR(255) NOT NULL,country VARCHAR(255) NOT NULL,pincode VARCHAR(255) NOT NULL);
+CREATE TABLE addresses(address_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cust_id INT NOT NULL,CONSTRAINT fk_cust_id FOREIGN KEY (cust_id) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE CASCADE,address_mode ENUM('permanent','billing') NOT NULL,house_number varchar(255),landmark VARCHAR(255),city VARCHAR(255) NOT NULL,state VARCHAR(255) NOT NULL,country VARCHAR(255) NOT NULL,pincode VARCHAR(255) NOT NULL);
 
 CREATE TABLE cart_items(cart_items_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cart_id INT NOT NULL,CONSTRAINT fk_02 FOREIGN KEY (cart_id) REFERENCES carts(cart_id)ON UPDATE CASCADE ON DELETE CASCADE,product_id INT NOT NULL,CONSTRAINT fk_03 FOREIGN KEY (product_id) REFERENCES products(product_id) ,quantity INT NOT NULL); 
 
@@ -35,11 +35,13 @@ CREATE TABLE transactions(transaction_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY
 
 CREATE TABLE user_roles(user_id INT NOT NULL,CONSTRAINT fk_user_id_2 FOREIGN KEY(user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE ,role_id INT NOT NULL,CONSTRAINT fk_role_id FOREIGN KEY(role_id) REFERENCES roles(id) ON UPDATE CASCADE ON DELETE CASCADE);
   
-CREATE TABLE feedbacks(feedback_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255),cust_id INT NOT NULL ,CONSTRAINT fk_022 FOREIGN KEY (cust_id) REFERENCES customers(cust_id) ON UPDATE CASCADE ON DELETE CASCADE);
+CREATE TABLE feedbacks(feedback_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255),cust_id INT NOT NULL ,CONSTRAINT fk_022 FOREIGN KEY (cust_id) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE CASCADE);
 
 CREATE TABLE question_categories(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,category varchar(255));
 
-CREATE TABLE questions(question_id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY, question_date DATETIME NOT NULL, description VARCHAR(255),cust_id INT NOT NULL ,CONSTRAINT fk_023 FOREIGN KEY (cust_id) REFERENCES customers(cust_id) ON UPDATE CASCADE ON DELETE CASCADE,category_id INT NOT NULL,CONSTRAINT fk_category1 FOREIGN KEY (category_id) REFERENCES question_categories(id) ON DELETE CASCADE ON UPDATE CASCADE);
+CREATE TABLE questions(question_id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY, question_date DATETIME NOT NULL,description VARCHAR(255),cust_id INT NOT NULL ,CONSTRAINT fk_023 FOREIGN KEY (cust_id) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE CASCADE, category_id INT NOT NULL,CONSTRAINT fk_category1 FOREIGN KEY (category_id) REFERENCES question_categories(id) ON DELETE CASCADE ON UPDATE CASCADE);
+-- customer questions table required   auto  id pri , cust id fr key ,fr ques id ,date 
+
 
 CREATE TABLE solutions(solution_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255));
 
@@ -85,22 +87,22 @@ INSERT INTO roles(role) VALUES ('agri_doctors');
 select * from products;
 
 -- CUSTOMERS DATA
-INSERT INTO customers(first_name,last_name,user_id) VALUES('akash','ajab',1);                       
-INSERT INTO customers(first_name,last_name,user_id) VALUES('pragati','bangar',2);
-INSERT INTO customers(first_name,last_name,user_id) VALUES('akshay','tanpure',3);             
-INSERT INTO customers(first_name,last_name,user_id) VALUES('abhay','navale',4);     
-INSERT INTO customers(first_name,last_name,user_id) VALUES('rohit','gore',5);     
-INSERT INTO customers(first_name,last_name,user_id) VALUES('rushikesh','chikne',6);                       
-INSERT INTO customers(first_name,last_name,user_id) VALUES('shubham','teli',7);
+INSERT INTO customers(firstname,lastname,userid) VALUES('akash','ajab',1);                       
+INSERT INTO customers(firstname,lastname,userid) VALUES('pragati','bangar',2);
+INSERT INTO customers(firstname,lastname,userid) VALUES('akshay','tanpure',3);             
+INSERT INTO customers(firstname,lastname,userid) VALUES('abhay','navale',4);     
+INSERT INTO customers(firstname,lastname,userid) VALUES('rohit','gore',5);     
+INSERT INTO customers(firstname,lastname,userid) VALUES('rushikesh','chikne',6);                       
+INSERT INTO customers(firstname,lastname,userid) VALUES('shubham','teli',7);
 
 
 -- CATEGORIES DATA
-INSERT INTO categories(category_title,description,image) VALUES('seeds','crops growth fastly','/image/seeds.jpg');
-INSERT INTO categories(category_title,description,image) VALUES('Agriculture equipments','crops growth fastly','/image/equipments.jpg');
-INSERT INTO categories(category_title,description,image) VALUES('fertilizers','crops growth fastly','/image/fertilizers.jpg');
-INSERT INTO categories(category_title,description,image) VALUES('pesticides','for spraying','/image/pesticide.jpg');
-INSERT INTO categories(category_title,description,image) VALUES('Agricultural sprayers','for spraying','/image/sprayers.jpg');
-INSERT INTO categories(category_title,description,image) VALUES('plants micronutrients','for spraying','/image/micronutrient.jpg');
+INSERT INTO categories(title,description,image) VALUES('seeds','crops growth fastly','/image/seeds.jpg');
+INSERT INTO categories(title,description,image) VALUES('Agriculture equipments','crops growth fastly','/image/equipments.jpg');
+INSERT INTO categories(title,description,image) VALUES('fertilizers','crops growth fastly','/image/fertilizers.jpg');
+INSERT INTO categories(title,description,image) VALUES('pesticides','for spraying','/image/pesticide.jpg');
+INSERT INTO categories(title,description,image) VALUES('Agricultural sprayers','for spraying','/image/sprayers.jpg');
+INSERT INTO categories(title,description,image) VALUES('plants micronutrients','for spraying','/image/micronutrient.jpg');
 
 -- PRODUCTS DATA
 INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('oats',100,500,'/image/oats.jpg',1);
@@ -416,7 +418,7 @@ SELECT products.product_title FROM products INNER JOIN categories ON products.ca
 SELECT customers.cust_id,customers.first_name,customers.last_name,orders.status from customers INNER JOIN orders ON customers.cust_id = orders.cust_id WHERE orders.status= "cancelled" AND customers.cust_id=4 ;
 
 -- This query gives orderdetails where cust_id =1 AND status=delivered
-SELECT * FROM orders WHERE cust_id=1 AND status="delivered"; 
+SELECT * FROM orders WHERE id=1 AND status="delivered"; 
 
 --  shows all list of orders on the basis of status =cancelled 
 SELECT * FROM orders WHERE status = "cancelled";
@@ -534,7 +536,7 @@ select * from solutions;
 
 
 -- This query gives all questions where category_id =1
-select * from questions where category_id=1;
+select * from questions where id=1;
 
 -- This query gives paricular agridoctor questions, answers 
 select agri_doctors.agri_doctor_id,(questions.description) As question,(solutions.description) As answer
