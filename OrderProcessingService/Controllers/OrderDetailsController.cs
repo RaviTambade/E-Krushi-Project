@@ -16,49 +16,44 @@ namespace OrderProcessingService.Controllers
             _ordersvc = ordersvc;
         } 
 
-        [HttpGet]
-        [Route("getallorderdetails")]
-        public IEnumerable<OrderDetails> GetAllOrderDetails()
+        [HttpGet("orderdetails")]
+        public IEnumerable<OrderDetails> OrderDetails()
         {
-            List<OrderDetails> orderDetails = _ordersvc.GetAllOrderDetails();
+            List<OrderDetails> orderDetails = _ordersvc.OrderDetails();
             return orderDetails;
         }
 
-        [HttpGet]
-        [Route("getorderDetails/{id}")]
-        public OrderDetails GetOrderDetail(int id)
+        [HttpGet("getorderDetails/{id}")]
+        public OrderDetails OrderDetail(int id)
         {
-            OrderDetails orderDetail = _ordersvc.GetOrderDetail(id);
+            OrderDetails orderDetail = _ordersvc.OrderDetail(id);
             return orderDetail;
         }
 
-        [HttpPost]
-        [Route("insertorderdetail")]
-        public bool InsertOrderDetail([FromBody] OrderDetails orderDetail)
+        [HttpPost("insertorderdetail")]
+        public bool Insert([FromBody] OrderDetails orderDetail)
         {
-            bool status =_ordersvc.InsertOrderDetail(orderDetail);
+            bool status =_ordersvc.Insert(orderDetail);
             return status;
         }
 
-        [HttpPut]
-        [Route("updateorderdetail/{id}")]
-        public bool UpdateOrder(int id,[FromBody] OrderDetails orderDetail)
+        [HttpPut("updateorderdetail/{id}")]
+        public bool Update(int id,[FromBody] OrderDetails orderDetail)
         {
-            OrderDetails oldOrderDetail = _ordersvc.GetOrderDetail(id);
+            OrderDetails oldOrderDetail = _ordersvc.OrderDetail(id);
             if(oldOrderDetail.OrderDetailsId==0)
             {
                 return false;
             }
             orderDetail.OrderDetailsId =id;
-            bool status = _ordersvc.UpdateOrderDetail(orderDetail);
+            bool status = _ordersvc.Update(orderDetail);
             return status;
         }
 
-        [HttpDelete]
-        [Route("deleteorderdetail/{id}")]
+        [HttpDelete("deleteorderdetail/{id}")]
         public bool DeleteOrderDetail(int id)
         {
-            bool status = _ordersvc.DeleteOrderDetail(id);
+            bool status = _ordersvc.Delete(id);
             return status;
         }
     }

@@ -5,6 +5,7 @@ using OrderProcessingService.Repositories.Interfaces;
 using OrderProcessingService.Services.Interfaces;
 
 namespace OrderProcessingService.Services;
+
 public class OrderDetailsService : IOrderDetailsService{
     private readonly IOrderDetailsRepository _repo;
     public OrderDetailsService(IOrderDetailsRepository repo){
@@ -12,15 +13,15 @@ public class OrderDetailsService : IOrderDetailsService{
     }
 
   
-    public List<OrderDetails> GetAllOrderDetails() => _repo.GetAllOrderDetails();
+    public List<OrderDetails> OrderDetails() => _repo.OrderDetails();
 
-    public OrderDetails GetOrderDetail(int id) => _repo.GetOrderDetail(id);
+    public OrderDetails OrderDetail(int id) => _repo.OrderDetail(id);
 
-    public bool InsertOrderDetail(OrderDetails orderDetail)=> _repo.InsertOrderDetail(orderDetail);
+    public bool Insert(OrderDetails orderDetail)=> _repo.Insert(orderDetail);
 
-    public bool UpdateOrderDetail(OrderDetails orderDetail)=> _repo.UpdateOrderDetail(orderDetail);
+    public bool Update(OrderDetails orderDetail)=> _repo.Update(orderDetail);
 
-    public bool DeleteOrderDetail(int id)=>  _repo.DeleteOrderDetail(id);
+    public bool Delete(int id)=>  _repo.Delete(id);
 
 
 }

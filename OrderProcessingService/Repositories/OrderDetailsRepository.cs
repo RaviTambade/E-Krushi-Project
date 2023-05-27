@@ -4,14 +4,23 @@ using OrderProcessingService.Repositories.Interfaces;
 
 namespace OrderProcessingService.Repositories;
 
-public class OrderDetailsRepository : IOrderDetailsRepository{
+public class OrderDetailsRepository : IOrderDetailsRepository
+{
+    private readonly IConfiguration _configuration;
+    private readonly string _conString;
 
-    public static string conString = "server=localhost; user=root; port=3306; password=Password; database=E_Krushi";
-    public List<OrderDetails> GetAllOrderDetails()
+    public OrderDetailsRepository(IConfiguration configuration)
+    {
+
+        _configuration = configuration;
+        _conString = this._configuration.GetConnectionString("DefaultConnection");
+    }
+
+    public List<OrderDetails> OrderDetails()
     {
         List<OrderDetails> orderDetails = new List<OrderDetails>();
         MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = conString;
+        con.ConnectionString = _conString;
         try
         {
             string query = "SELECT * FROM order_details";
@@ -49,11 +58,11 @@ public class OrderDetailsRepository : IOrderDetailsRepository{
         return orderDetails;
     }
 
-    public OrderDetails GetOrderDetail(int id)
+    public OrderDetails OrderDetail(int id)
     {
         OrderDetails orderDetail = new OrderDetails();
         MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = conString;
+        con.ConnectionString = _conString;
         try
         {
             string query = "SELECT * FROM order_details where order_details_id=@orderDetailsId";
@@ -89,11 +98,11 @@ public class OrderDetailsRepository : IOrderDetailsRepository{
         }
         return orderDetail;
     }
-    public bool InsertOrderDetail(OrderDetails orderDetail)
+    public bool Insert(OrderDetails orderDetail)
     {
         bool status = false;
         MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = conString;
+        con.ConnectionString = _conString;
         try
         {
             string query = "INSERT INTO order_details(order_id,product_id,quantity,discount)VALUES(@orderId,@productId,@quantity,@discount)";
@@ -119,11 +128,11 @@ public class OrderDetailsRepository : IOrderDetailsRepository{
         return status;
     }
 
-    public bool UpdateOrderDetail(OrderDetails orderDetail)
+    public bool Update(OrderDetails orderDetail)
     {
         bool status = false;
         MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = conString;
+        con.ConnectionString = _conString;
         try
         {
             string query = "Update order_details set order_id=@orderId, product_id=@productId,quantity=@quantity, discount=@discount Where order_details_id =@orderDetailsId";
@@ -149,11 +158,11 @@ public class OrderDetailsRepository : IOrderDetailsRepository{
         }
         return status;
     }
-    public bool DeleteOrderDetail(int id)
+    public bool Delete(int id)
     {
         bool status = false;
         MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = conString;
+        con.ConnectionString = _conString;
         try
         {
             string query = "DELETE FROM order_Details where order_Details_id =@orderDetailsId";

@@ -4,15 +4,15 @@ namespace OrderProcessingService.Repositories.Interfaces;
 
 public interface IOrderDetailsRepository{
 
-    List<OrderDetails> GetAllOrderDetails();
+    List<OrderDetails> OrderDetails();
 
-    OrderDetails GetOrderDetail(int id);
+    OrderDetails OrderDetail(int id);
     
-    bool InsertOrderDetail(OrderDetails orderDetail);
+    bool Insert(OrderDetails orderDetail);
 
-    bool UpdateOrderDetail(OrderDetails orderDetail);
+    bool Update(OrderDetails orderDetail);
 
-    bool DeleteOrderDetail(int id);
+    bool Delete(int id);
 
     
     
