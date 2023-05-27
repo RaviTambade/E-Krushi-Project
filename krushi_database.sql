@@ -1,4 +1,4 @@
--- drop database ekrushi;
+--  drop database ekrushi;
 CREATE DATABASE ekrushi;
 USE ekrushi;
 
@@ -9,17 +9,17 @@ CREATE TABLE roles(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, role varchar(250)
 CREATE TABLE customers(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,firstname VARCHAR(255),lastname VARCHAR(25),userid INT NOT NULL,CONSTRAINT fk FOREIGN KEY (userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE);
 CREATE TABLE categories(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,title varchar(255),description varchar(255),image varchar(255));
                         
-CREATE TABLE products(product_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,product_title varchar(255),unit_price double,stock_available INT,image varchar(255),category_id INT NOT NULL, CONSTRAINT fk_category_id FOREIGN KEY (category_id) REFERENCES categories(id) ON UPDATE CASCADE ON DELETE CASCADE);
+CREATE TABLE products(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,title varchar(255),unitprice double,stockavailable INT,image varchar(255),categoryid INT NOT NULL, CONSTRAINT fk_category_id FOREIGN KEY (categoryid) REFERENCES categories(id) ON UPDATE CASCADE ON DELETE CASCADE);
  
 CREATE TABLE orders(order_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,order_date DATETIME NOT NULL ,shipped_date DATETIME NOT NULL,cust_id INT NOT NULL,CONSTRAINT fk_cust_id_11 FOREIGN KEY (cust_id) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE CASCADE, total DOUBLE ,status ENUM('approved','initiated','cancelled','delivered','inprogress') NOT NULL);
 
-CREATE TABLE order_details(order_details_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,order_id INT NOT NULL,CONSTRAINT fk_04 FOREIGN KEY (order_id) REFERENCES orders(order_id) ON UPDATE CASCADE ON DELETE CASCADE ,product_id INT NOT NULL ,CONSTRAINT fk_05 FOREIGN KEY (product_id) REFERENCES products(product_id)ON UPDATE CASCADE ON DELETE CASCADE,quantity INT NOT NULL,discount DOUBLE DEFAULT 0);  
+CREATE TABLE order_details(order_details_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,order_id INT NOT NULL,CONSTRAINT fk_04 FOREIGN KEY (order_id) REFERENCES orders(order_id) ON UPDATE CASCADE ON DELETE CASCADE ,product_id INT NOT NULL ,CONSTRAINT fk_05 FOREIGN KEY (product_id) REFERENCES products(id)ON UPDATE CASCADE ON DELETE CASCADE,quantity INT NOT NULL,discount DOUBLE DEFAULT 0);  
 
 CREATE TABLE carts(cart_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cust_id INT NOT NULL,CONSTRAINT fk_1 FOREIGN KEY (cust_id) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE CASCADE, total DOUBLE ,status ENUM('approved','initiated','cancelled','delivered','inprogress') NOT NULL);
 
 CREATE TABLE addresses(address_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cust_id INT NOT NULL,CONSTRAINT fk_cust_id FOREIGN KEY (cust_id) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE CASCADE,address_mode ENUM('permanent','billing') NOT NULL,house_number varchar(255),landmark VARCHAR(255),city VARCHAR(255) NOT NULL,state VARCHAR(255) NOT NULL,country VARCHAR(255) NOT NULL,pincode VARCHAR(255) NOT NULL);
 
-CREATE TABLE cart_items(cart_items_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cart_id INT NOT NULL,CONSTRAINT fk_02 FOREIGN KEY (cart_id) REFERENCES carts(cart_id)ON UPDATE CASCADE ON DELETE CASCADE,product_id INT NOT NULL,CONSTRAINT fk_03 FOREIGN KEY (product_id) REFERENCES products(product_id) ,quantity INT NOT NULL); 
+CREATE TABLE cart_items(cart_items_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cart_id INT NOT NULL,CONSTRAINT fk_02 FOREIGN KEY (cart_id) REFERENCES carts(cart_id)ON UPDATE CASCADE ON DELETE CASCADE,product_id INT NOT NULL,CONSTRAINT fk_03 FOREIGN KEY (product_id) REFERENCES products(id) ,quantity INT NOT NULL); 
 
 CREATE TABLE payments(payment_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,payment_date DATETIME NOT NULL , payment_mode ENUM('cash on delivery','online payment'),user_id INT NOT NULL,CONSTRAINT fk_user_id_5 FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,order_id INT NOT NULL,CONSTRAINT fk_order_id FOREIGN KEY (order_id) REFERENCES orders(order_id) ON UPDATE CASCADE ON DELETE CASCADE);
 
@@ -105,34 +105,34 @@ INSERT INTO categories(title,description,image) VALUES('Agricultural sprayers','
 INSERT INTO categories(title,description,image) VALUES('plants micronutrients','for spraying','/image/micronutrient.jpg');
 
 -- PRODUCTS DATA
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('oats',100,500,'/image/oats.jpg',1);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('wheat',100,50,'/image/sunflower.jpg',1);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('corn',100,50,'/image/sunflower.jpg',1);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('barley',100,50,'/image/sunflower.jpg',1);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('sorghum',100,50,'/image/sunflower.jpg',1);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('sunflower',100,50,'/image/sunflower.jpg',1);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('oats',100,500,'/image/oats.jpg',1);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('wheat',100,50,'/image/sunflower.jpg',1);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('corn',100,50,'/image/sunflower.jpg',1);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('barley',100,50,'/image/sunflower.jpg',1);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('sorghum',100,50,'/image/sunflower.jpg',1);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('sunflower',100,50,'/image/sunflower.jpg',1);
 
 
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('tractor',100,50,'/image/sunflower.jpg',2);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('harvesters',100,50,'/image/sunflower.jpg',2);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('balers',100,50,'/image/sunflower.jpg',2);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('fertilizer spreaders',100,50,'/image/sunflower.jpg',2);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('tractor',100,50,'/image/sunflower.jpg',2);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('harvesters',100,50,'/image/sunflower.jpg',2);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('balers',100,50,'/image/sunflower.jpg',2);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('fertilizer spreaders',100,50,'/image/sunflower.jpg',2);
 
 -- FERTILIZERS
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('wood ash',100,500,'/image/woodash.jpg',3);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('bone meal',100,500,'/image/bonemeal.jpg',3);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('blood meal',100,500,'/image/bloodmeal.jpg',3);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('manure',100,500,'/image/manure.jpg',3);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('wood ash',100,500,'/image/woodash.jpg',3);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('bone meal',100,500,'/image/bonemeal.jpg',3);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('blood meal',100,500,'/image/bloodmeal.jpg',3);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('manure',100,500,'/image/manure.jpg',3);
 
 -- PESTISIDES
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('karate',100,500,'/image/woodash.jpg',4);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('soloman',100,500,'/image/manure.jpg',4);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('wood ash',100,500,'/image/woodash.jpg',4);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('karate',100,500,'/image/woodash.jpg',4);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('soloman',100,500,'/image/manure.jpg',4);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('wood ash',100,500,'/image/woodash.jpg',4);
 
 -- Agricultural sprayers
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('Knapsack sprayer',100,500,'/image/woodash.jpg',5);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('portable power sprayer',100,500,'/image/manure.jpg',5);
-INSERT INTO products(product_title,unit_price,stock_available,image,category_id) VALUES('mist dust sprayer',100,500,'/image/woodash.jpg',5);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('Knapsack sprayer',100,500,'/image/woodash.jpg',5);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('portable power sprayer',100,500,'/image/manure.jpg',5);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('mist dust sprayer',100,500,'/image/woodash.jpg',5);
 
 -- ORDERS DATA
 INSERT INTO orders(order_date,shipped_date,cust_id,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',1,500,'initiated');
