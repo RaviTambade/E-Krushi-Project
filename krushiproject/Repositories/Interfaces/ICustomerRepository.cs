@@ -7,11 +7,11 @@ namespace KrushiProject.Repositories.Interfaces
 
         Customer GetCustomer(int id);
 
-        bool InsertCustomer(Customer customer);
+        bool Insert(Customer customer);
 
-        bool UpdateCustomer(Customer customer);
+        bool Update(Customer customer);
 
-        bool DeleteCustomer(int id);
+        bool Delete(int id);
 
         Customer GetUser(int userId);
     }

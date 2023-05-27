@@ -14,9 +14,9 @@ namespace KrushiProject.Service
 
             public List<Customer> GetAllCustomers() => _repo.GetAllCustomers();
             public Customer GetCustomer(int id)=>_repo.GetCustomer(id);
-            public bool InsertCustomer(Customer customer)=>_repo.InsertCustomer(customer);
-            public bool UpdateCustomer(Customer customer)=>_repo.UpdateCustomer(customer);
-            public bool DeleteCustomer(int id)=>_repo.DeleteCustomer(id);
+            public bool Insert(Customer customer)=>_repo.Insert(customer);
+            public bool Update(Customer customer)=>_repo.Update(customer);
+            public bool Delete(int id)=>_repo.Delete(id);
             public Customer GetUser(int id) => _repo.GetUser(id);
 
        

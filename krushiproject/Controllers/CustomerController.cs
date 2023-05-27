@@ -44,7 +44,7 @@ public class CustomerController : ControllerBase
     [Route ("insertcustomer")]
      public bool Insert([FromBody] Customer customer)
    {    
-        bool result =_srv.InsertCustomer(customer);
+        bool result =_srv.Insert(customer);
         return result;
    }
   
@@ -65,7 +65,7 @@ public class CustomerController : ControllerBase
    [Route ("updatecustomer")]
    public bool Update(Customer customer)
    {
-    bool result = _srv.UpdateCustomer(customer);
+    bool result = _srv.Update(customer);
     return result;
 
    }
@@ -74,7 +74,7 @@ public class CustomerController : ControllerBase
    [Route ("delete/{id}")]
    public bool Delete(int id)
    {
-    bool result = _srv.DeleteCustomer(id);
+    bool result = _srv.Delete(id);
     return result;
    }
 

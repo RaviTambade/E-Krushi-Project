@@ -8,7 +8,7 @@ namespace KrushiProject.Repositories
       
     public class CustomerRepository : ICustomerRepository
     {
-        public static string conString = "server=localhost; port=3306; user=root; password=Password; database=E_Krushi";
+        public static string conString = "server=localhost; port=3306; user=root; password=PASSWORD; database=ekrushi";
        
 
         public List<Customer> GetAllCustomers()
@@ -23,14 +23,14 @@ namespace KrushiProject.Repositories
             MySqlDataReader reader = cmd.ExecuteReader();
             while(reader.Read())
             {
-                int custId = int.Parse(reader["cust_id"].ToString());
-                string firstName = reader["first_name"].ToString();
-                string lastName = reader["last_name"].ToString();
-                int userId = int.Parse(reader["user_id"].ToString());
+                int Id = int.Parse(reader["id"].ToString());
+                string firstName = reader["firstname"].ToString();
+                string lastName = reader["lastname"].ToString();
+                int userId = int.Parse(reader["userid"].ToString());
             
             Customer customer = new Customer()
             {
-                CustId = custId,
+                Id = Id,
                 FirstName = firstName,
                 LastName = lastName,
                 UserId = userId
@@ -54,20 +54,20 @@ namespace KrushiProject.Repositories
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = conString;
             try{
-                string query = "select * from customers where cust_id = @customerId";
+                string query = "select * from customers where id = @customerId";
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@customerId",id);
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if(reader.Read())
                 {
-                    string firstName = reader["first_name"].ToString();
-                    string lastName = reader["last_name"].ToString();
-                    int userId = int.Parse(reader["user_id"].ToString());  
+                    string firstName = reader["firstname"].ToString();
+                    string lastName = reader["lastname"].ToString();
+                    int userId = int.Parse(reader["userid"].ToString());  
                 
                 customer = new Customer()
                 {
-                    CustId = id,
+                    Id = id,
                     FirstName = firstName,
                     LastName = lastName,
                     UserId = userId
@@ -84,13 +84,13 @@ namespace KrushiProject.Repositories
             }
             return customer;
         }
-        public bool InsertCustomer(Customer customer)
+        public bool Insert(Customer customer)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = conString;
             try{
-                string query = "Insert into customers(first_name,last_name,user_id) VALUES(@firstName,@lastName,@userId)";
+                string query = "Insert into customers(firstname,lastname,userid) VALUES(@firstName,@lastName,@userId)";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@firstName",customer.FirstName);
                 cmd.Parameters.AddWithValue("@lastName",customer.LastName);
@@ -111,16 +111,16 @@ namespace KrushiProject.Repositories
             return status;
         }
 
-        public bool UpdateCustomer(Customer customer)
+        public bool Update(Customer customer)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = conString;
             try
             {
-                string query = "update customers set first_name=@firstName, last_name=@lastName,user_id = @userId  Where cust_id= @customerId" ;
+                string query = "update customers set firstname=@firstName, lastname=@lastName,userid = @userId  Where cust_id= @customerId" ;
                 MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@customerId",customer.CustId);
+                cmd.Parameters.AddWithValue("@customerId",customer.Id);
                 cmd.Parameters.AddWithValue("@firstName",customer.FirstName);
                 cmd.Parameters.AddWithValue("@lastName",customer.LastName);
                 cmd.Parameters.AddWithValue("@userId",customer.UserId);
@@ -142,14 +142,14 @@ namespace KrushiProject.Repositories
             return status;
         }
 
-        public bool DeleteCustomer(int id)
+        public bool Delete(int id)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = conString;
             try
             {
-                string query = "delete from customers where cust_id = @customerId";
+                string query = "delete from customers where id = @customerId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("customerId",id);
                 con.Open();
@@ -176,22 +176,22 @@ namespace KrushiProject.Repositories
             con.ConnectionString = conString;
             try
             {
-                string query = "select * from customers where user_id = @userId";
+                string query = "select * from customers where id = @userId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@userId", userId);
                 con.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if(reader.Read())
                 {
-                    int customerId = int.Parse(reader["cust_id"].ToString());
-                    string firstName = reader["first_name"].ToString();
-                    string lastName = reader["last_name"].ToString();
+                    int customerId = int.Parse(reader["id"].ToString());
+                    string firstName = reader["firstname"].ToString();
+                    string lastName = reader["lastname"].ToString();
                     //int userId = int.Parse(reader["user_id"].ToString());
 
                 
                 customer = new Customer()
                 {
-                    CustId = customerId,
+                    Id = customerId,
                     FirstName = firstName,
                     LastName = lastName,
                     UserId = userId
