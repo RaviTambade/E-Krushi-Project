@@ -15,14 +15,14 @@ namespace AuthenticationService.Services
         {
             return await _userrepo.Authenticate(request);
         }
-        public async Task<List<User>> GetAll()
+        public async Task<List<User>> Users()
         {
-            return await _userrepo.GetAll();
+            return await _userrepo.Users();
         }
 
-        public async Task<User> GetById(int id)
+        public async Task<User> User(int id)
         {
-            return await _userrepo.GetById(id);
+            return await _userrepo.User(id);
         }
 
         public async Task<bool> Register(User user)
@@ -30,18 +30,18 @@ namespace AuthenticationService.Services
             return await _userrepo.Register(user);
         }
 
-        public async Task<bool> UpdateUser(User user)
+        public async Task<bool> Update(User user)
         {
-            return await _userrepo.UpdateUser(user);
+            return await _userrepo.Update(user);
         }
 
-        public async Task<bool> DeleteUser(int id)
+        public async Task<bool> Delete(int id)
         {
-            return await _userrepo.DeleteUser(id);  
+            return await _userrepo.Delete(id);  
         }
-        public async Task<bool> ValidateUser(AuthenticateRequest user)
+        public async Task<bool> Validate(AuthenticateRequest user)
         {
-            return await _userrepo.ValidateUser(user);
+            return await _userrepo.Validate(user);
         }
     }
 }
