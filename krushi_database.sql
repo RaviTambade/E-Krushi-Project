@@ -1,4 +1,4 @@
---  drop database ekrushi;
+-- drop database ekrushi;
 CREATE DATABASE ekrushi;
 USE ekrushi;
 
@@ -9,25 +9,17 @@ CREATE TABLE roles(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, role varchar(250)
 CREATE TABLE customers(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,firstname VARCHAR(255),lastname VARCHAR(25),userid INT NOT NULL,CONSTRAINT fk FOREIGN KEY (userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE);
 CREATE TABLE categories(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,title varchar(255),description varchar(255),image varchar(255));
                         
-<<<<<<< HEAD
 CREATE TABLE products(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,title varchar(255),unitprice double,stockavailable INT,image varchar(255),
 categoryid INT NOT NULL, CONSTRAINT fkcategoryid FOREIGN KEY (categoryid) REFERENCES categories(id) ON UPDATE CASCADE ON DELETE CASCADE);
-=======
-CREATE TABLE products(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,title varchar(255),unitprice double,stockavailable INT,image varchar(255),categoryid INT NOT NULL, CONSTRAINT fk_category_id FOREIGN KEY (categoryid) REFERENCES categories(id) ON UPDATE CASCADE ON DELETE CASCADE);
->>>>>>> 084833fe46a10158e27b5c79aea232cd3942f416
  
 CREATE TABLE orders(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,date DATETIME NOT NULL ,shippeddate DATETIME NOT NULL,custid INT NOT NULL,
 CONSTRAINT fk_cust_id_11 FOREIGN KEY (custid) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE CASCADE, 
 total DOUBLE ,status ENUM('approved','initiated','cancelled','delivered','inprogress') NOT NULL);
 
-<<<<<<< HEAD
 CREATE TABLE orderdetails(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,orderid INT NOT NULL,
 CONSTRAINT fk FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE ,
 productid INT NOT NULL ,CONSTRAINT fk FOREIGN KEY (productid) REFERENCES products(id)ON UPDATE CASCADE ON DELETE CASCADE,
 quantity INT NOT NULL,discount DOUBLE DEFAULT 0);  
-=======
-CREATE TABLE order_details(order_details_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,order_id INT NOT NULL,CONSTRAINT fk_04 FOREIGN KEY (order_id) REFERENCES orders(order_id) ON UPDATE CASCADE ON DELETE CASCADE ,product_id INT NOT NULL ,CONSTRAINT fk_05 FOREIGN KEY (product_id) REFERENCES products(id)ON UPDATE CASCADE ON DELETE CASCADE,quantity INT NOT NULL,discount DOUBLE DEFAULT 0);  
->>>>>>> 084833fe46a10158e27b5c79aea232cd3942f416
 
 CREATE TABLE carts(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,custid INT NOT NULL,
 CONSTRAINT fk_1 FOREIGN KEY (custid) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -38,13 +30,9 @@ CONSTRAINT fkcustid FOREIGN KEY (custid) REFERENCES customers(id) ON UPDATE CASC
 addressmode ENUM('permanent','billing') NOT NULL,
 housenumber varchar(255),landmark VARCHAR(255),city VARCHAR(255) NOT NULL,state VARCHAR(255) NOT NULL,country VARCHAR(255) NOT NULL,pincode VARCHAR(255) NOT NULL);
 
-<<<<<<< HEAD
 CREATE TABLE cartitems(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cartid INT NOT NULL,
 CONSTRAINT fk02 FOREIGN KEY (cartid) REFERENCES carts(id)ON UPDATE CASCADE ON DELETE CASCADE,
 productid INT NOT NULL,CONSTRAINT fk03 FOREIGN KEY (productid) REFERENCES products(id) ,quantity INT NOT NULL); 
-=======
-CREATE TABLE cart_items(cart_items_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,cart_id INT NOT NULL,CONSTRAINT fk_02 FOREIGN KEY (cart_id) REFERENCES carts(cart_id)ON UPDATE CASCADE ON DELETE CASCADE,product_id INT NOT NULL,CONSTRAINT fk_03 FOREIGN KEY (product_id) REFERENCES products(id) ,quantity INT NOT NULL); 
->>>>>>> 084833fe46a10158e27b5c79aea232cd3942f416
 
 CREATE TABLE payments(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,date DATETIME NOT NULL , 
 mode ENUM('cash on delivery','online payment'),userid INT NOT NULL,CONSTRAINT fkuserid5 FOREIGN KEY (userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -149,11 +137,7 @@ INSERT INTO categories(title,description,image) VALUES('plants micronutrients','
 
 -- PRODUCTS DATA
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('oats',100,500,'/image/oats.jpg',1);
-<<<<<<< HEAD
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('wheat',100,50,'/image/sunflower.jpg',1);
-=======
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('wheat',100,50,'/image/sunflower.jpg',1);
->>>>>>> 084833fe46a10158e27b5c79aea232cd3942f416
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('corn',100,50,'/image/sunflower.jpg',1);
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('barley',100,50,'/image/sunflower.jpg',1);
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('sorghum',100,50,'/image/sunflower.jpg',1);
@@ -162,11 +146,7 @@ INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('su
 
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('tractor',100,50,'/image/sunflower.jpg',2);
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('harvesters',100,50,'/image/sunflower.jpg',2);
-<<<<<<< HEAD
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid)values('balers',100,50,'/image/sunflower.jpg',2);
-=======
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('balers',100,50,'/image/sunflower.jpg',2);
->>>>>>> 084833fe46a10158e27b5c79aea232cd3942f416
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('fertilizer spreaders',100,50,'/image/sunflower.jpg',2);
 
 -- FERTILIZERS
@@ -178,19 +158,11 @@ INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('ma
 -- PESTISIDES
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('karate',100,500,'/image/woodash.jpg',4);
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('soloman',100,500,'/image/manure.jpg',4);
-<<<<<<< HEAD
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('wood ash',100,500,'/image/woodash.jpg',4);
 
 -- Agricultural sprayers
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('Knapsack sprayer',100,500,'/image/woodash.jpg',5);
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('portable power sprayer',100,500,'/image/manure.jpg',5);
-=======
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('wood ash',100,500,'/image/woodash.jpg',4);
-
--- Agricultural sprayers
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('Knapsack sprayer',100,500,'/image/woodash.jpg',5);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('portable power sprayer',100,500,'/image/manure.jpg',5);
->>>>>>> 084833fe46a10158e27b5c79aea232cd3942f416
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('mist dust sprayer',100,500,'/image/woodash.jpg',5);
 
 -- ORDERS DATA
@@ -246,121 +218,119 @@ INSERT INTO orderdetails(id,productid,quantity) VALUES (6,7,63);
 
 
 -- CARTS DATA
-INSERT INTO carts(cust_id) VALUES (1);
-INSERT INTO carts(cust_id) VALUES (1);
-INSERT INTO carts(cust_id) VALUES (2);
-INSERT INTO carts(cust_id) VALUES (2);
-INSERT INTO carts(cust_id) VALUES (2);
-INSERT INTO carts(cust_id) VALUES (3);
-INSERT INTO carts(cust_id) VALUES (3);
-INSERT INTO carts(cust_id) VALUES (4);
-INSERT INTO carts(cust_id) VALUES (3);
-INSERT INTO carts(cust_id) VALUES (3);
-INSERT INTO carts(cust_id) VALUES (4);
+INSERT INTO carts(custid) VALUES (1);
+INSERT INTO carts(custid) VALUES (1);
+INSERT INTO carts(custid) VALUES (2);
+INSERT INTO carts(custid) VALUES (2);
+INSERT INTO carts(custid) VALUES (3);
+INSERT INTO carts(custid) VALUES (3);
+INSERT INTO carts(custid) VALUES (4);
+INSERT INTO carts(custid) VALUES (3);
+INSERT INTO carts(custid) VALUES (3);
+INSERT INTO carts(custid) VALUES (4);
 
 
 -- CARTS ITEMS DATA
 INSERT INTO cart_items(cart_id,product_id ,quantity) VALUES(1,1,20);
-INSERT INTO cart_items(cart_id,product_id ,quantity) VALUES(2,2,40);
-INSERT INTO cart_items(cart_id,product_id ,quantity) VALUES(2,2,40);
-INSERT INTO cart_items(cart_id,product_id ,quantity) VALUES(3,4,10);
-INSERT INTO cart_items(cart_id,product_id ,quantity) VALUES(3,4,50);
-INSERT INTO cart_items(cart_id,product_id ,quantity) VALUES(3,2,260);
-INSERT INTO cart_items(cart_id,product_id ,quantity) VALUES(4,3,200);
-INSERT INTO cart_items(cart_id,product_id ,quantity) VALUES(4,3,201);
+INSERT INTO cartitems(cartid,productid ,quantity) VALUES(2,2,40);
+INSERT INTO cartitems(cartid,productid ,quantity) VALUES(2,2,40);
+INSERT INTO cartitems(cartid,productid ,quantity) VALUES(3,4,10);
+INSERT INTO cartitems(cartid,productid ,quantity) VALUES(3,4,50);
+INSERT INTO cartitems(cartid,productid ,quantity) VALUES(3,2,260);
+INSERT INTO cartitems(cartid,productid ,quantity) VALUES(4,3,200);
+INSERT INTO cartitems(cartid,productid ,quantity) VALUES(4,3,201);
 
 
 -- PAYMENTS DATA
-INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03-08 12:08:19','cash on delivery',1,1);
-INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03-08 12:08:19','online payment',2,1);
-INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03-08 12:08:19','cash on delivery',3,2);
-INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03-08 12:08:19','online payment',4,3);
-INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-03-08 12:08:19','cash on delivery',9,4);
-INSERT INTO payments(payment_date,payment_mode,user_id,order_id) VALUES('2022-06-10 12:45:30','cash on delivery',7,2);
+INSERT INTO payments(date,mode,userid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery',1,1);
+INSERT INTO payments(date,mode,userid,orderid)  VALUES('2022-03-08 12:08:19','online payment',2,1);
+INSERT INTO payments(date,mode,userid,orderid)  VALUES('2022-03-08 12:08:19','cash on delivery',3,2);
+INSERT INTO payments(date,mode,userid,orderid)  VALUES('2022-03-08 12:08:19','online payment',4,3);
+INSERT INTO payments(date,mode,userid,orderid)  VALUES('2022-03-08 12:08:19','cash on delivery',9,4);
+INSERT INTO payments(date,mode,userid,orderid)  VALUES('2022-06-10 12:45:30','cash on delivery',7,2);
 
 
 -- ADDRESS DATA
-INSERT INTO addresses(cust_id,address_mode,house_number,landmark,city,state,country,pincode) VALUES(1,'permanent','houseNo.32','akshara garden','pune','maharashtra','india','410503');
-INSERT INTO addresses(cust_id,address_mode,house_number,landmark,city,state,country,pincode) VALUES(1,'billing','houseNo.32','akshara dairy','pune','maharashtra','india','410502');
-INSERT INTO addresses(cust_id,address_mode,house_number,landmark,city,state,country,pincode) VALUES(2,'permanent','houseNo.32','season mall','pune','maharashtra','india','410504');
-INSERT INTO addresses(cust_id,address_mode,house_number,landmark,city,state,country,pincode) VALUES(3,'billing','houseNo.32','Peth-Kurwandi Road','Manchar','Maharashtra','India','410506');
-INSERT INTO addresses(cust_id,address_mode,house_number,landmark,city,state,country,pincode) VALUES(4,'permanent','houseNo.234','Pune-Nashik Highway','Rajgurunagar','Maharashtra','India','1213');
+INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(1,'permanent','houseNo.32','akshara garden','pune','maharashtra','india','410503');
+INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(1,'billing','houseNo.32','akshara dairy','pune','maharashtra','india','410502');
+INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(2,'permanent','houseNo.32','season mall','pune','maharashtra','india','410504');
+INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(3,'billing','houseNo.32','Peth-Kurwandi Road','Manchar','Maharashtra','India','410506');
+INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(4,'permanent','houseNo.234','Pune-Nashik Highway','Rajgurunagar','Maharashtra','India','1213');
 
 -- EMPLOYESS DATA
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,user_id) VALUES('chetan','ajab','1999-09-15','2022-05-12','/image/akash.jpg',3,8);
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,user_id) VALUES('abhishek','Bangar','2005-09-15','2022-05-12','/image/vedant.jpg',2,9);
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,user_id) VALUES('anil','hinge','2023-09-15','2022-06-14','/image/sahil.jpg',2,10);
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,user_id) VALUES('rohan','amate','2015-09-15','2022-07-13','/image/prakash.jpg',4,11);
-INSERT INTO employees(first_name,last_name,birth_date,hire_date,photo,reports_to,user_id) VALUES('ajay','lanke','1988-09-15','2022-08-11','/image/nilesh.jpg',1,12);
+INSERT INTO employees(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('chetan','ajab','1999-09-15','2022-05-12','/image/akash.jpg',3,8);
+INSERT INTO employees(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('abhishek','Bangar','2005-09-15','2022-05-12','/image/vedant.jpg',2,9);
+INSERT INTO employees(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('anil','hinge','2023-09-15','2022-06-14','/image/sahil.jpg',2,10);
+INSERT INTO employees(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('rohan','amate','2015-09-15','2022-07-13','/image/prakash.jpg',4,11);
+INSERT INTO employees(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('ajay','lanke','1988-09-15','2022-08-11','/image/nilesh.jpg',1,12);
 
 
 select * from users;
 select * from users;
 
 -- SHIPPERS DATA
-INSERT INTO shippers(company_name,user_id) VALUES('agrotech pvt.ltd',13);
-INSERT INTO shippers(company_name,user_id) VALUES('agrilens pvt.ltd',14);
-INSERT INTO shippers(company_name,user_id) VALUES('croproot pvt.ltd',15);
-INSERT INTO shippers(company_name,user_id) VALUES('greenery pvt.ltd',16);
+INSERT INTO shippers(companyname,userid) VALUES('agrotech pvt.ltd',13);
+INSERT INTO shippers(companyname,userid) VALUES('agrilens pvt.ltd',14);
+INSERT INTO shippers(companyname,userid) VALUES('croproot pvt.ltd',15);
+INSERT INTO shippers(companyname,userid) VALUES('greenery pvt.ltd',16);
 
 
 -- SUPPLIERS DATA
-INSERT INTO suppliers(company_name,supplier_name,address,city,state,user_id) VALUES('kaveri','abhishek bhor','pimpalgaon','pune','maharashtra',17);
-INSERT INTO suppliers(company_name,supplier_name,address,city,state,user_id) VALUES('kalash seeds','pratik wagh','khadaki','pune','maharashtra',18);
-INSERT INTO suppliers(company_name,supplier_name,address,city,state,user_id) VALUES('greenary','datta dhoble','manchar','pune','maharashtra',19);
-INSERT INTO suppliers(company_name,supplier_name,address,city,state,user_id) VALUES('kavya','kavya bangar','chandoli','pune','maharashtra',20);
+INSERT INTO suppliers(companyname,suppliername,address,city,state,userid) VALUES('kaveri','abhishek bhor','pimpalgaon','pune','maharashtra',17);
+INSERT INTO suppliers(companyname,suppliername,address,city,state,userid) VALUES('kalash seeds','pratik wagh','khadaki','pune','maharashtra',18);
+INSERT INTO suppliers(companyname,suppliername,address,city,state,userid) VALUES('greenary','datta dhoble','manchar','pune','maharashtra',19);
+INSERT INTO suppliers(companyname,suppliername,address,city,state,userid) VALUES('kavya','kavya bangar','chandoli','pune','maharashtra',20);
 
 -- USER ROLES DATA
-INSERT INTO user_roles(user_id,role_id) VALUES (1,1);
-INSERT INTO user_roles(user_id,role_id) VALUES(2,1);
-INSERT INTO user_roles(user_id,role_id) VALUES(3,1);
-INSERT INTO user_roles(user_id,role_id) VALUES(6,2);
-INSERT INTO user_roles(user_id,role_id) VALUES(8,2);
-INSERT INTO user_roles(user_id,role_id) VALUES(6,3);
-INSERT INTO user_roles(user_id,role_id) VALUES(9,3);
+INSERT INTO userroles(userid,roleid) VALUES (1,1);
+INSERT INTO userroles(userid,roleid) VALUES (1,1);
+INSERT INTO userroles(userid,roleid) VALUES (1,1);
+INSERT INTO userroles(userid,roleid) VALUES (1,1);
+INSERT INTO userroles(userid,roleid) VALUES (1,1);
+INSERT INTO userroles(userid,roleid) VALUES (1,1);
+INSERT INTO userroles(userid,roleid) VALUES (1,1);
 
 -- ACCOUNTS DATA
-INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031201','KOTAK000286','2022-04-05  01:02:03',1);
-INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031202','ICICI000286','2022-11-25  01:12:03',1);
-INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031203','MAHB0000286','2022-12-30  11:02:03',3);
-INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031204','PDCC0000286','2022-05-10  12:02:03',2);
-INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031205','SBIB0000286','2022-09-07  06:02:03',2);
-INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031206','AXIS0000286','2022-11-03  07:02:03',4);
-INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031207','BARB0000286','2022-10-20  08:02:03',7);
-INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031208','BARB0000286','2022-10-10  08:02:03',7);
-INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031209','BARB0000286','2022-10-10  08:02:03',7);
-INSERT INTO accounts(account_number,ifsc_code,register_date,user_id) VALUES('4105031210','AXIS0000286','2022-09-08  08:50:03',5);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031201','KOTAK000286','2022-04-05  01:02:03',1);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031202','ICICI000286','2022-11-25  01:12:03',1);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031203','MAHB0000286','2022-12-30  11:02:03',3);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031204','PDCC0000286','2022-05-10  12:02:03',2);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031205','SBIB0000286','2022-09-07  06:02:03',2);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031206','AXIS0000286','2022-11-03  07:02:03',4);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031207','BARB0000286','2022-10-20  08:02:03',7);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031208','BARB0000286','2022-10-10  08:02:03',7);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031209','BARB0000286','2022-10-10  08:02:03',7);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031210','AXIS0000286','2022-09-08  08:50:03',5);
 
 
 
 -- TRANSACTIONS DATA
-INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031201','4105031202','2022-03-09  08:45:23',45000);
-INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031203','4105031205','2022-12-09  01:40:10',12000);
-INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031204','4105031206','2022-08-09  10:30:20',25000);
-INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031207','4105031205','2022-10-09  06:35:23',30000);
-INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031208','4105031205','2022-11-09  06:35:23',120000);
-INSERT INTO transactions(from_account_number,to_account_number,transaction_date,amount) VALUES('4105031209','4105031205','2022-11-09  06:35:40',6000);
+INSERT INTO transactions(fromaccountnumber,toaccountnumber,date,amount) VALUES('4105031201','4105031202','2022-03-09  08:45:23',45000);
+INSERT INTO transactions(fromaccountnumber,toaccountnumber,date,amount) VALUES('4105031203','4105031205','2022-12-09  01:40:10',12000);
+INSERT INTO transactions(fromaccountnumber,toaccountnumber,date,amount) VALUES('4105031204','4105031206','2022-08-09  10:30:20',25000);
+INSERT INTO transactions(fromaccountnumber,toaccountnumber,date,amount) VALUES('4105031207','4105031205','2022-10-09  06:35:23',30000);
+INSERT INTO transactions(fromaccountnumber,toaccountnumber,date,amount) VALUES('4105031208','4105031205','2022-11-09  06:35:23',120000);
+INSERT INTO transactions(fromaccountnumber,toaccountnumber,date,amount) VALUES('4105031209','4105031205','2022-11-09  06:35:40',6000);
 
 -- FEEDBACKS DATA
-INSERT INTO feedbacks(description,cust_id) VALUES ('very good facilitities',1);
-INSERT INTO feedbacks(description,cust_id) VALUES ('good quality of products',2);
-INSERT INTO feedbacks(description,cust_id) VALUES ('very good for farmers ',3);
-INSERT INTO feedbacks(description,cust_id) VALUES ('farmers are protected from frauds',4);
+INSERT INTO feedbacks(description,custid) VALUES ('very good facilitities',1);
+INSERT INTO feedbacks(description,custid) VALUES ('good quality of products',2);
+INSERT INTO feedbacks(description,custid) VALUES ('very good for farmers ',3);
+INSERT INTO feedbacks(description,custid) VALUES ('farmers are protected from frauds',4);
 
-INSERT INTO question_categories(category) VALUES('crop related questions');
-INSERT INTO question_categories(category) VALUES('soil related questions');
-INSERT INTO question_categories(category) VALUES('weather releted questions');
+INSERT INTO questioncategories(category) VALUES('crop related questions');
+INSERT INTO questioncategories(category) VALUES('soil related questions');
+INSERT INTO questioncategories(category) VALUES('weather releted questions');
 
 
-INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('2022-02-12 08:02:11','How can I increase crop yield?',5,1);
-INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('2021-01-13 04:02:11','How can I prevent crop damage from pests and diseases?',4,1);
-INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('2023-03-11 06:02:11','How can I optimize the timing of planting and harvesting?',3,1);
-INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('2020-04-01 04:02:11','How can I improve soil fertility? ',3,2);
-INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('2020-04-01 04:02:11','How can I improve soil structure? ',5,2);
-INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('2020-04-01 04:02:11','How can I prevent soil erosion? ',2,2);
-INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('2020-04-01 04:02:11','What should I do if there is a drought?',2,3);
-INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('2020-04-01 04:02:11','What should I do if there is heavy rainfall? ',5,3);
-INSERT INTO questions(question_date,description,cust_id,category_id) VALUES('2020-04-01 04:02:11','What should I do if there is extreme heat?',3,3);
+INSERT INTO questions(date,description,custid,categoryid) VALUES('2022-02-12 08:02:11','How can I increase crop yield?',5,1);
+INSERT INTO questions(date,description,custid,categoryid) VALUES('2021-01-13 04:02:11','How can I prevent crop damage from pests and diseases?',4,1);
+INSERT INTO questions(date,description,custid,categoryid) VALUES('2020-04-01 04:02:11','How can I improve soil fertility? ',3,2);
+INSERT INTO questions(date,description,custid,categoryid) VALUES('2020-04-01 04:02:11','How can I improve soil structure? ',5,2);
+INSERT INTO questions(date,description,custid,categoryid)VALUES('2020-04-01 04:02:11','How can I prevent soil erosion? ',2,2);
+INSERT INTO questions(date,description,custid,categoryid) VALUES('2020-04-01 04:02:11','What should I do if there is a drought?',2,3);
+INSERT INTO questions(date,description,custid,categoryid) VALUES('2020-04-01 04:02:11','What should I do if there is heavy rainfall? ',5,3);
+INSERT INTO questions(date,description,custid,categoryid) VALUES('2020-04-01 04:02:11','What should I do if there is extreme heat?',3,3);
 
 
 INSERT INTO solutions(description) VALUES('Soil health: Ensure the soil is healthy by adding organic matter and nutrients, improving drainage and water retention, and avoiding soil erosion.');
@@ -379,17 +349,17 @@ INSERT INTO solutions(description) VALUES('Irrigation: Use appropriate irrigatio
                                           Shade: Provide shade for crops to help protect them from extreme heat.');
 
 
-INSERT INTO agri_doctors(name,specialist_for,user_id) VALUES('pratima patil','crop related information',22);
-INSERT INTO agri_doctors(name,specialist_for,user_id) VALUES('kiran rakshe','soil related information',23);
-INSERT INTO agri_doctors(name,specialist_for,user_id) VALUES('mayur gorade','Weather related information',24);
+INSERT INTO agridoctors(name,specialistfor,userid) VALUES('pratima patil','crop related information',22);
+INSERT INTO agridoctors(name,specialistfor,userid) VALUES('kiran rakshe','soil related information',23);
+INSERT INTO agridoctors(name,specialistfor,userid) VALUES('mayur gorade','Weather related information',24);
 
 
 
-INSERT INTO question_solutions(question_id,solution_id,solution_date,agri_doctor_id) VALUES (1,1,'2023-04-05 12:08:06',1);
-INSERT INTO question_solutions(question_id,solution_id,solution_date,agri_doctor_id) VALUES (2,2,'2023-06-05 12:20:19',1);
-INSERT INTO question_solutions(question_id,solution_id,solution_date,agri_doctor_id) VALUES (4,4,'2023-07-10 12:23:08',2);
-INSERT INTO question_solutions(question_id,solution_id,solution_date,agri_doctor_id) VALUES (5,5,'2023-08-25 12:34:20',2);
-INSERT INTO question_solutions(question_id,solution_id,solution_date,agri_doctor_id) VALUES (7,7,'2023-09-15 12:40:30',3);
+INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (1,1,'2023-04-05 12:08:06',1);
+INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (2,2,'2023-06-05 12:20:19',1);
+INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (4,4,'2023-07-10 12:23:08',2);
+INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (5,5,'2023-08-25 12:34:20',2);
+INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (7,7,'2023-09-15 12:40:30',3);
 
 
 SELECT * FROM employees;
