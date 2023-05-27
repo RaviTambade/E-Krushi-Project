@@ -2,7 +2,7 @@ namespace OrderProcessingService.Models;
 
 public class OrderDetails{
 
-    public int OrderDetailsId{get; set;}
+    public int Id{get; set;}
 
     public int OrderId{get; set;}
 
