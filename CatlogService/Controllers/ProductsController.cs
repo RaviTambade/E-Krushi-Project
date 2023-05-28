@@ -18,7 +18,7 @@ public class ProductsController : ControllerBase
 
     [HttpGet]
     [Route("products")]
-    public IEnumerable<Product> Products()
+    public List<Product> Products()
     {
         List<Product> products = _service.Products();
         return products;

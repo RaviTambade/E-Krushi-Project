@@ -6,7 +6,6 @@ public interface IProductRepository{
 
     List<Product> Products();
     Product GetProduct(int id);
-
     bool Insert(Product product);
     bool Update(Product product);
     bool Delete(int id);

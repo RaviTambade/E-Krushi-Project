@@ -27,7 +27,7 @@ namespace CatlogService.Repositories
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while(reader.Read())
                 {
-                    int productId = int.Parse(reader["id"].ToString());
+                    int id = int.Parse(reader["id"].ToString());
                     string productTitle = reader["title"].ToString();
                     double unitPrice = double.Parse(reader["unitprice"].ToString());
                     int stockAvailable = int.Parse(reader["stockavailable"].ToString());
@@ -36,7 +36,7 @@ namespace CatlogService.Repositories
 
                     Product product = new Product()
                     {
-                        Id = productId,
+                        Id = id,
                         Title = productTitle,
                         UnitPrice = unitPrice,
                         StockAvailable = stockAvailable,
@@ -57,7 +57,7 @@ namespace CatlogService.Repositories
             return products;
         }
 
-        public Product GetProduct(int productId)
+        public Product GetProduct(int id)
         {
             Product product = new Product();
             MySqlConnection con = new MySqlConnection();
@@ -65,7 +65,7 @@ namespace CatlogService.Repositories
             try{
                 string query = "select * from products where id = @productId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@productId",productId);
+                cmd.Parameters.AddWithValue("@productId",id);
                 con.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while(reader.Read())
@@ -78,7 +78,7 @@ namespace CatlogService.Repositories
 
                     product = new Product()
                     {
-                        Id = productId,
+                        Id = id,
                         Title = productTitle,
                         UnitPrice = unitPrice,
                         StockAvailable = stockAvailable,
@@ -105,7 +105,7 @@ namespace CatlogService.Repositories
             con.ConnectionString = _conString;
             try
             {
-                string query="Insert into products(product_title,unit_price,stock_available,image,category_id) VALUES(@productTitle,@unitPrice,@stockAvailable,@image,@categoryId)";
+                string query="Insert into products(producttitle,unitprice,stockavailable,image,categoryid) VALUES(@productTitle,@unitPrice,@stockAvailable,@image,@categoryId)";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@productTitle",product.Title);
                 cmd.Parameters.AddWithValue("@unitPrice",product.UnitPrice);
@@ -137,7 +137,7 @@ namespace CatlogService.Repositories
             con.ConnectionString = _conString;
             try
             {
-                string query="Update products set product_title=@productTitle, unit_price = @unitPrice, stock_available = @stockAvailable, image = @image ,category_id = @categoryId Where product_id = @productId";
+                string query="Update products set producttitle=@productTitle, unitprice = @unitPrice, stockavailable = @stockAvailable, image = @image ,categoryid = @categoryId Where id = @productId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 con.Open();
                 cmd.Parameters.AddWithValue("@productId",product.Id);
@@ -169,7 +169,7 @@ namespace CatlogService.Repositories
             con.ConnectionString = _conString;
             try
             {
-                string query="Delete from products where product_id = @productId";
+                string query="Delete from products where id = @productId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@productId",id);
                 con.Open();
