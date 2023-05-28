@@ -28,11 +28,11 @@ public class AccountRepository : IAccountRepository
             MySqlDataReader reader = cmd.ExecuteReader();
             while(reader.Read())
             {
-                int accountId = int.Parse(reader["account_id"].ToString());
-                string accountNumber = reader["account_number"].ToString();
-                string ifscCode = reader["ifsc_code"].ToString();
-                DateTime registerDate = DateTime.Parse(reader["register_date"].ToString());
-                int userId = int.Parse(reader["user_id"].ToString());
+                int accountId = int.Parse(reader["id"].ToString());
+                string accountNumber = reader["number"].ToString();
+                string ifscCode = reader["ifsccode"].ToString();
+                DateTime registerDate = DateTime.Parse(reader["registerdate"].ToString());
+                int userId = int.Parse(reader["userid"].ToString());
                 Account account = new Account
                 {
                     Id = accountId,
@@ -62,7 +62,7 @@ public class AccountRepository : IAccountRepository
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = _conString;
             try{
-                string query = "select * from accounts where account_id = @accountId";
+                string query = "select * from accounts where id = @accountId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@accountId",id);
                 con.Open();
@@ -70,10 +70,10 @@ public class AccountRepository : IAccountRepository
                 if(reader.Read())
                 {
                 //int accountId = int.Parse(reader["account_id"].ToString());
-                string accountNumber = reader["account_number"].ToString();
-                string ifscCode = reader["ifsc_code"].ToString();
-                DateTime registerDate = DateTime.Parse(reader["register_date"].ToString());
-                int userId = int.Parse(reader["user_id"].ToString());
+                string accountNumber = reader["number"].ToString();
+                string ifscCode = reader["ifsccode"].ToString();
+                DateTime registerDate = DateTime.Parse(reader["registerdate"].ToString());
+                int userId = int.Parse(reader["userid"].ToString());
                 account = new Account
                 {
                     Id = id,
@@ -100,7 +100,7 @@ public class AccountRepository : IAccountRepository
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = _conString;
             try{
-                string query = "Insert into accounts(account_number,ifsc_code,register_date,user_id) VALUES(@accountNumber,@ifscCode,@registerDate,@userId)";
+                string query = "Insert into accounts(number,ifsccode,registerdate,userid) VALUES(@accountNumber,@ifscCode,@registerDate,@userId)";
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@accountNumber",account.Number);
@@ -127,7 +127,7 @@ public class AccountRepository : IAccountRepository
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = _conString;
             try{
-                string query = "Update accounts set  account_number= @accountNumber, ifsc_code= @ifscCode, register_date = @registerDate, user_id=@userId where account_id = @accountId";
+                string query = "Update accounts set number= @accountNumber, ifsccode= @ifscCode, registerdate = @registerDate, userid=@userId where id = @accountId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@accountNumber",account.Number);
                 cmd.Parameters.AddWithValue("@ifscCode",account.IFSCCode);
@@ -154,7 +154,7 @@ public class AccountRepository : IAccountRepository
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = _conString;
             try{
-                string query = "Delete from accounts Where account_id = @accountId";
+                string query = "Delete from accounts Where id = @accountId";
                 con.Open();
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@accountId",id);

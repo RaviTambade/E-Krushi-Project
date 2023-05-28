@@ -52,6 +52,7 @@ public class AccountsController : ControllerBase
         bool result = _service.Update(account);
         return result;
     }
+    
     [HttpDelete]
     [Route("Delete/{id}")]
     public bool Delete(int id)
