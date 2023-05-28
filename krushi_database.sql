@@ -17,8 +17,8 @@ CONSTRAINT fk_cust_id_11 FOREIGN KEY (custid) REFERENCES customers(id) ON UPDATE
 total DOUBLE ,status ENUM('approved','initiated','cancelled','delivered','inprogress') NOT NULL);
 
 CREATE TABLE orderdetails(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,orderid INT NOT NULL,
-CONSTRAINT fk FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE ,
-productid INT NOT NULL ,CONSTRAINT fk FOREIGN KEY (productid) REFERENCES products(id)ON UPDATE CASCADE ON DELETE CASCADE,
+CONSTRAINT fkorder FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE ,
+productid INT NOT NULL ,CONSTRAINT fkproduct FOREIGN KEY (productid) REFERENCES products(id)ON UPDATE CASCADE ON DELETE CASCADE,
 quantity INT NOT NULL,discount DOUBLE DEFAULT 0);  
 
 CREATE TABLE carts(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,custid INT NOT NULL,
@@ -55,9 +55,9 @@ CREATE TABLE accounts(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, number varchar
 CREATE TABLE transactions(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
 fromaccountnumber VARCHAR(60)NOT NULL,CONSTRAINT fkaccno FOREIGN KEY(fromaccountnumber) REFERENCES accounts(number)ON UPDATE CASCADE ON DELETE CASCADE, 
 toaccountnumber VARCHAR(60) NOT NULL,CONSTRAINT fkaccno1 FOREIGN KEY(toaccountnumber) REFERENCES accounts(number)ON UPDATE CASCADE ON DELETE CASCADE,
-transactiondate DATETIME NOT NULL, amount DOUBLE);
+date DATETIME NOT NULL, amount DOUBLE);
 
-CREATE TABLE userroles(id INT NOT NULL,CONSTRAINT fkuserid2 FOREIGN KEY(userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE ,
+CREATE TABLE userroles(userid INT NOT NULL,CONSTRAINT fkuserid2 FOREIGN KEY(userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE ,
 roleid INT NOT NULL,CONSTRAINT fkroleid FOREIGN KEY(roleid) REFERENCES roles(id) ON UPDATE CASCADE ON DELETE CASCADE);
   
 CREATE TABLE feedbacks(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255),custid INT NOT NULL ,
@@ -65,7 +65,7 @@ CONSTRAINT fk_022 FOREIGN KEY (custid) REFERENCES customers(id) ON UPDATE CASCAD
 
 CREATE TABLE questioncategories(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,category varchar(255));
 
-CREATE TABLE questions(questionid  INT NOT NULL AUTO_INCREMENT PRIMARY KEY, questiondate DATETIME NOT NULL,description VARCHAR(255),custid INT NOT NULL ,
+CREATE TABLE questions(questionid  INT NOT NULL AUTO_INCREMENT PRIMARY KEY, date DATETIME NOT NULL,description VARCHAR(255),custid INT NOT NULL ,
 CONSTRAINT fk023 FOREIGN KEY (custid) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE CASCADE,
  categoryid INT NOT NULL,CONSTRAINT fkcategory1 FOREIGN KEY (categoryid) REFERENCES questioncategories(id) ON DELETE CASCADE ON UPDATE CASCADE);
 -- customer questions table required   auto  id pri , cust id fr key ,fr ques id ,date 
@@ -76,9 +76,9 @@ CREATE TABLE solutions(solutionid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,descri
 CREATE TABLE agridoctors(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,name VARCHAR(40),specialistfor VARCHAR(40),userid INT NOT NULL,
 CONSTRAINT fkuser11 FOREIGN KEY (userid) REFERENCES users(id));
 
-CREATE TABLE questionsolutions(id INT NOT NULL ,CONSTRAINT fkquestion2id FOREIGN KEY(questionid) REFERENCES questions(id) ON UPDATE CASCADE ON DELETE CASCADE,
-solutionid INT NOT NULL ,CONSTRAINT fksolution1id FOREIGN KEY(solutionid) REFERENCES solutions(id) ON UPDATE CASCADE ON DELETE CASCADE,
-solutiondate DATETIME NOT NULL,agridoctorid INT NOT NULL,CONSTRAINT fkagri FOREIGN KEY (agridoctorid) REFERENCES agridoctors(id));
+-- CREATE TABLE questionsolutions(questionid INT NOT NULL ,CONSTRAINT fkquestioid FOREIGN KEY(questionid) REFERENCES questions(id) ON UPDATE CASCADE ON DELETE CASCADE,
+-- solutionid INT NOT NULL ,CONSTRAINT fksolution1id FOREIGN KEY(solutionid) REFERENCES solutions(id) ON UPDATE CASCADE ON DELETE CASCADE,
+-- solutiondate DATETIME NOT NULL,agridoctorid INT NOT NULL,CONSTRAINT fkagri FOREIGN KEY (agridoctorid) REFERENCES agridoctors(id) ON UPDATE CASCADE ON DELETE CASCADE);
 
 INSERT INTO users(email,password,contactnumber) VALUES ('akashajab12@gmail.com','akash@12',9881571268);
 INSERT INTO users(email,password,contactnumber) VALUES ('pragatibangar@gmail.com','pragati@12',7498035692);
@@ -204,17 +204,15 @@ INSERT INTO orders(date,shippeddate,custid,total,status) VALUES ('2020-04-01 12:
 INSERT INTO orders(date,shippeddate,custid,total,status) VALUES ('2020-04-01 12:13:11','2023-10-02 10:22:12',6,7100,'cancelled');
 INSERT INTO orders(date,shippeddate,custid,total,status) VALUES ('2020-06-02 12:14:13','2020-06-02 10:12:12',7,5020,'initiated');
 
-SELECT * FROM customers;
-
 -- ORDER_DETAILS DATA
-INSERT INTO orderdetails(id,productid,quantity) VALUES (1,2,20);
-INSERT INTO orderdetails(id,productid,quantity) VALUES (2,2,25);
-INSERT INTO orderdetails(id,productid,quantity) VALUES (3,1,40);
-INSERT INTO orderdetails(id,productid,quantity) VALUES (4,3,15);
-INSERT INTO orderdetails(id,productid,quantity) VALUES (4,3,48);
-INSERT INTO orderdetails(id,productid,quantity) VALUES (5,5,41);
-INSERT INTO orderdetails(id,productid,quantity) VALUES (7,6,63);
-INSERT INTO orderdetails(id,productid,quantity) VALUES (6,7,63);
+INSERT INTO orderdetails(orderid,productid,quantity) VALUES (1,2,20);
+INSERT INTO orderdetails(orderid,productid,quantity) VALUES (2,2,25);
+INSERT INTO orderdetails(orderid,productid,quantity) VALUES (3,1,40);
+INSERT INTO orderdetails(orderid,productid,quantity) VALUES (4,3,15);
+INSERT INTO orderdetails(orderid,productid,quantity) VALUES (4,3,48);
+INSERT INTO orderdetails(orderid,productid,quantity) VALUES (5,5,41);
+INSERT INTO orderdetails(orderid,productid,quantity) VALUES (7,6,63);
+INSERT INTO orderdetails(orderid,productid,quantity) VALUES (6,7,63);
 
 
 -- CARTS DATA
@@ -231,7 +229,7 @@ INSERT INTO carts(custid) VALUES (4);
 
 
 -- CARTS ITEMS DATA
-INSERT INTO cart_items(cart_id,product_id ,quantity) VALUES(1,1,20);
+INSERT INTO cartitems(cartid,productid ,quantity) VALUES(1,1,20);
 INSERT INTO cartitems(cartid,productid ,quantity) VALUES(2,2,40);
 INSERT INTO cartitems(cartid,productid ,quantity) VALUES(2,2,40);
 INSERT INTO cartitems(cartid,productid ,quantity) VALUES(3,4,10);
@@ -355,19 +353,19 @@ INSERT INTO agridoctors(name,specialistfor,userid) VALUES('mayur gorade','Weathe
 
 
 
-INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (1,1,'2023-04-05 12:08:06',1);
-INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (2,2,'2023-06-05 12:20:19',1);
-INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (4,4,'2023-07-10 12:23:08',2);
-INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (5,5,'2023-08-25 12:34:20',2);
-INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (7,7,'2023-09-15 12:40:30',3);
+-- INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (1,1,'2023-04-05 12:08:06',1);
+-- INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (2,2,'2023-06-05 12:20:19',1);
+-- INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (4,4,'2023-07-10 12:23:08',2);
+-- INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (5,5,'2023-08-25 12:34:20',2);
+-- INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (7,7,'2023-09-15 12:40:30',3);
 
 
 SELECT * FROM employees;
 SELECT * FROM feedbacks;
-select * from agri_doctors;
+select * from agridoctors;
 SELECT * FROM questions;
 SELECT * FROM solutions;
-SELECT * FROM question_solutions;
+SELECT * FROM questionsolutions;
 SELECT * FROM users;
 
 -- CRUD OPERATIONS CUSTOMERS TABLE
@@ -375,7 +373,7 @@ SELECT * FROM users;
 SELECT * FROM customers;
 
 -- GET CUSTOMER BY ID
-SELECT * FROM customers WHERE cust_id=1;  
+SELECT * FROM customers WHERE id=1;  
 
 -- UPDATE CUSTOMER BY ID;
 -- UPDATE customers SET contact_number='9881751213',password ='aj123' WHERE cust_id=1;
@@ -386,47 +384,47 @@ SELECT * FROM customers WHERE cust_id=1;
 select * from roles;
 select * from users;
 select * from customers;
-desc user_roles;
+desc userroles;
 
 -- when we give the email of user then we give role of this user
-select role from roles where role_id in (select role_id from user_roles where user_id in (select user_id from users where email = 'akashajab12@gmail.com'));
+select role from roles where id in (select roleid from userroles where userid in (select id from users where email = 'akashajab12@gmail.com'));
 
 
 -- This query gives payment details where payment_id=1;
-select * from payments where payment_id=1; 
+select * from payments where id=1; 
 
 
 /*1)Retrive List of Customers that made purcheses after the date 2021-10-02 */
-SELECT customers.cust_id,customers.first_name,customers.last_name ,orders.order_date from customers 
-INNER JOIN orders ON customers.cust_id=orders.cust_id WHERE order_date>'2021-10-02';
+SELECT customers.id,customers.firstname,customers.lastname ,orders.date from customers 
+INNER JOIN orders ON customers.id=orders.custid WHERE date>'2021-10-02';
 
 -- view sells by category 
 
-CREATE VIEW order_history AS 
-SELECT categories.category_title,SUM(order_details.quantity) FROM categories,products,order_details 
-WHERE categories.category_id=products.category_id AND order_details.product_id =products.product_id 
-GROUP BY categories.category_title;
+CREATE VIEW orderhistory AS 
+SELECT categories.title,SUM(orderdetails.quantity) FROM categories,products,orderdetails 
+WHERE categories.id=products.categoryid AND orderdetails.productid =products.id 
+GROUP BY categories.title;
 
 -- Creating  View products price above than average price*/
-create or replace view vw_products_above_avgprice
-as select product_title , unit_price from products
-where  unit_price  > (select avg(unit_price) from products)
-order by unit_price; 
+create or replace view vwproductsaboveavgprice
+as select title , unitprice from products
+where  unitprice  > (select avg(unitprice) from products)
+order by unitprice; 
 
 SELECT * FROM products;
-select * from vw_products_above_avgprice;
+select * from vwproductsaboveavgprice;
 
 -- order by cust_id
-select * from orders where cust_id=1;
+select * from orders where custid=1;
 
 -- //this query shows tables and its type in database.
 show  full tables;
 
 -- this query gives sum of unit price from products table.
-select sum(unit_price) from products;
+select sum(unitprice) from products;
 
 -- this query gives avg of unit price from products table.
-select avg(unit_price) from products;
+select avg(unitprice) from products;
 
 -- this query gives count  of products table.
 select count(*) from products;
@@ -434,17 +432,17 @@ select * from orders;
 
 
 -- this query gives category_id , category_title ,product_title
-select categories.category_id,categories.category_title,products.product_title from products 
-inner join categories on products.category_id = categories.category_id;
+select categories.id,categories.title,products.title from products 
+inner join categories on products.categoryid = categories.id;
 
 /*this query gives list of  products which are available in provideded category with the help of nested query*/
-select product_title from products where category_id in (select category_id from categories where category_title="organic fertilizer");
+select title from products where categoryid in (select id from categories where title="fertilizers");
 
 /*this query gives list of  products which are available in provideded category with the help of inner join*/
-SELECT products.product_title FROM products INNER JOIN categories ON products.category_id = categories.category_id WHERE category_title="organic fertilizer";
+SELECT products.title FROM products INNER JOIN categories ON products.categoryid = categories.id WHERE categories.title="fertilizers";
 
 -- This query gives customer first_name, last_name whose cust_id= 4 AND status= cancelled
-SELECT customers.cust_id,customers.first_name,customers.last_name,orders.status from customers INNER JOIN orders ON customers.cust_id = orders.cust_id WHERE orders.status= "cancelled" AND customers.cust_id=4 ;
+SELECT customers.id,customers.firstname,customers.lastname,orders.status from customers INNER JOIN orders ON customers.id = orders.custid WHERE orders.status= "delivered" AND customers.id=1 ;
 
 -- This query gives orderdetails where cust_id =1 AND status=delivered
 SELECT * FROM orders WHERE id=1 AND status="delivered"; 
@@ -453,126 +451,123 @@ SELECT * FROM orders WHERE id=1 AND status="delivered";
 SELECT * FROM orders WHERE status = "cancelled";
 
 -- this query gives orderhistory
-SELECT products.product_id, products.product_title,products.unit_price,order_details.quantity,
-orders.order_id,orders.order_date,customers.cust_id FROM (((orders
-INNER JOIN   order_details ON order_details.order_id=orders.order_id)
-INNER JOIN products ON products.product_id = order_details.product_id) 
-INNER JOIN  customers ON customers.cust_id = orders.cust_id) order by cust_id;
+SELECT products.id, products.title,products.unitprice,orderdetails.quantity,
+orders.id,orders.date,customers.id FROM (((orders
+INNER JOIN   orderdetails ON orderdetails.orderid=orders.id)
+INNER JOIN products ON products.id = orderdetails.productid) 
+INNER JOIN  customers ON customers.id = orders.custid) order by custid;
 
 -- this query for oder_id, product_title,quantity,total_amount as(products.unit_price*order_details.quantity) 
-SELECT order_details.order_id,products.product_title, order_details.quantity ,(products.unit_price*order_details.quantity) AS total_amount 
-FROM order_details, products 
-WHERE  products.product_id =order_details.product_id 
-AND order_id= 1;
+SELECT orderdetails.orderid,products.title, orderdetails.quantity ,(products.unitprice*orderdetails.quantity) AS totalamount 
+FROM orderdetails, products 
+WHERE  products.id =orderdetails.productid 
+AND orderid= 1;
 
 select * from transactions;
 
 
 SELECT
-  accounts.account_number,
-  transactions.transaction_id,
-  customers.first_name, 
-  customers.last_name, 
+  accounts.number,
+  transactions.id,
+  customers.firstname, 
+  customers.lastname, 
   transactions.amount,
-  transactions.transaction_date,
+  transactions.date,
   CASE 
-    WHEN transactions.from_account_number=accounts.account_number then 'debit'
-    WHEN transactions.to_account_number=accounts.account_number then 'credit'
+    WHEN transactions.fromaccountnumber=accounts.number then 'debit'
+    WHEN transactions.toaccountnumber=accounts.number then 'credit'
   END AS MODETYPE 
 FROM 
   transactions,customers,accounts,users
 WHERE 
-  (transactions.from_account_number= (select account_number from accounts where user_id=5)
+  (transactions.fromaccountnumber= (select number from accounts where userid=5)
   or 
-  (transactions.to_account_number=(select account_number from accounts where user_id=5)));
+  (transactions.toaccountnumber=(select number from accounts where userid=5)));
 
 -- This query gives multiple account number of users by left join where user_id=1;
-SELECT accounts.user_id,
-	   accounts.account_number
+SELECT accounts.userid,
+	   accounts.number
 FROM accounts 
-LEFT JOIN users ON accounts.account_id = users.user_id  WHERE accounts.user_id =1;
+LEFT JOIN users ON accounts.id = users.id  WHERE accounts.userid =1;
 
 -- This query gives multiple account number of users where user_id=1;
-SELECT user_id,
-	   account_number
-FROM accounts WHERE user_id=1;
+SELECT userid,
+	   number
+FROM accounts WHERE userid=1;
 
 
 -- this procedure is used for updation of stock available when the order is aaded in orderdetails
 
 DELIMITER $$
-CREATE PROCEDURE stock_available_update_inventory (IN order_id INT,IN product_id INT ,IN quantity INT )
+CREATE PROCEDURE stockavailableupdateinventory (IN orderid INT,IN productid INT ,IN quantity INT )
 BEGIN
 START TRANSACTION;
-INSERT INTO order_details(order_id,product_id,quantity) VALUES (order_id,product_id,quantity);
-UPDATE products SET stock_available=stock_available-quantity WHERE products.product_id=product_id;
+INSERT INTO orderdetails(orderid,productid,quantity) VALUES (orderid,productid,quantity);
+UPDATE products SET stockavailable=stockavailable-quantity WHERE products.id=productid;
 COMMIT;
 END $$
 DELIMITER ;
 
-CALL stock_available_update_inventory(1,3,500);
+CALL stockavailableupdateinventory(1,2,500);
 
 --   this query return user_id of employees;
-select user_id from user_roles where role_id in (SELECT role_id from roles where role="Employee");
+select userid from userroles where roleid in (SELECT id from roles where role="Employee");
 
 select * from payments;
 select * from users;
-select * from user_roles;
+select * from userroles;
 select * from roles;
-select * from user_roles;
+select * from userroles;
 SELECT * FROM feedbacks;
-select * from agri_doctors;
+select * from agridoctors;
 select * from orders;
 
 SELECT count(*) from orders ;
 
-SELECT count(*) from orders where order_date <'2020-02-07T12:14:13';
+SELECT count(*) from orders where date <'2020-02-07T12:14:13';
 
 
 -- this query return count of orders of 1st month of 2020; 
-SELECT count(*) FROM orders WHERE  order_date BETWEEN '2020-01-01 12:12:12' AND '2020-01-31 12:12:12';
+SELECT count(*) FROM orders WHERE  date BETWEEN '2020-01-01 12:12:12' AND '2020-01-31 12:12:12';
 
-SELECT count(*) FROM orders WHERE  order_date BETWEEN '2020-02-01' AND '2020-02-31';
+SELECT count(*) FROM orders WHERE  date BETWEEN '2020-02-01' AND '2020-02-31';
 
-SELECT count(*) FROM orders WHERE  order_date BETWEEN '2020-03-01' AND '2020-03-31';
+SELECT count(*) FROM orders WHERE  date BETWEEN '2020-03-01' AND '2020-03-31';
 
-SELECT count(*) FROM orders WHERE  order_date BETWEEN '2020-04-01' AND '2020-04-31';
+SELECT count(*) FROM orders WHERE  date BETWEEN '2020-04-01' AND '2020-04-31';
 
-SELECT count(*) FROM orders WHERE  order_date BETWEEN '2020-05-01' AND '2020-05-31';
+SELECT count(*) FROM orders WHERE  date BETWEEN '2020-05-01' AND '2020-05-31';
 
-SELECT count(*) FROM orders WHERE  order_date BETWEEN '2020-06-01' AND '2020-06-31';
+SELECT count(*) FROM orders WHERE  date BETWEEN '2020-06-01' AND '2020-06-31';
 
-
-
-SELECT COUNT(*) from orders where order_date< '2020-04-30' ;
-
+SELECT COUNT(*) from orders where date < '2020-04-30' ;
 
 -- //this query returns the list of products given category;
 
-SELECT products.product_id, products.product_title,products.unit_price,products.stock_available,products.image,categories.category_title from categories inner join products where categories.category_id=products.category_id and categories.category_title='seeds';
+SELECT products.id, products.title,products.unitprice,products.stockavailable,products.image,categories.title from categories inner join products where categories.id=products.categoryid and categories.title='seeds';
 
 
 -- get roles of user using inner join
-select roles.role from user_roles inner join roles on user_roles.role_id =roles.role_id where user_roles.user_id=6;
+select roles.role from userroles inner join roles on userroles.roleid =roles.id where userroles.userid=6;
 
 -- get roles of user using nested query
-SELECT role from roles where id in  (select role_id from user_roles where user_id=1);
+SELECT role from roles where id in  (select roleid from userroles where userid=1);
 
-select * from question_categories;
-select * from question_solutions;
+select * from questioncategories;
+select * from questionsolutions;
 select * from solutions;
 
 
 
 -- This query gives all questions where category_id =1
-select * from questions where id=1;
+select * from questions where categoryid=1;
 
 -- This query gives paricular agridoctor questions, answers 
-select agri_doctors.agri_doctor_id,(questions.description) As question,(solutions.description) As answer
-from agri_doctors ,solutions,question_solutions Inner join questions on questions.question_id = 
-question_solutions.question_id where agri_doctors.agri_doctor_id=question_solutions.agri_doctor_id AND 
-solutions.solution_id= question_solutions.solution_id AND agri_doctors.agri_doctor_id=2;
+select agridoctors.id,(questions.description) As question,(solutions.description) As answer
+from agridoctors ,solutions,questionsolutions Inner join questions on questions.id = 
+questionsolutions.questionid where agridoctors.id=question_solutions.agridoctorid AND 
+solutions.id= questionsolutions.solutionid AND agridoctors.id=2;
 
 -- This query gives the solution where question_id=1
-select (solutions.description) As Answer from solutions,question_solutions Inner join questions on questions.question_id = 
-question_solutions.question_id where solutions.solution_id= question_solutions.solution_id AND questions.question_id=1;
+select (solutions.description) As Answer from solutions,questionsolutions Inner join questions on questions.id = 
+questionsolutions.questionid where solutions.id= questionsolutions.solutionid AND questions.id=1;

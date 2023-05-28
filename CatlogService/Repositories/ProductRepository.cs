@@ -27,12 +27,12 @@ namespace CatlogService.Repositories
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while(reader.Read())
                 {
-                    int productId = int.Parse(reader["product_id"].ToString());
-                    string productTitle = reader["product_title"].ToString();
-                    double unitPrice = double.Parse(reader["unit_price"].ToString());
-                    int stockAvailable = int.Parse(reader["stock_available"].ToString());
+                    int productId = int.Parse(reader["id"].ToString());
+                    string productTitle = reader["title"].ToString();
+                    double unitPrice = double.Parse(reader["unitprice"].ToString());
+                    int stockAvailable = int.Parse(reader["stockavailable"].ToString());
                     string image = reader["image"].ToString();
-                    int categoryId = int.Parse(reader["category_id"].ToString());
+                    int categoryId = int.Parse(reader["categoryid"].ToString());
 
                     Product product = new Product()
                     {
@@ -63,18 +63,18 @@ namespace CatlogService.Repositories
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = _conString;
             try{
-                string query = "select * from products where product_id = @productId";
+                string query = "select * from products where id = @productId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@productId",productId);
                 con.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while(reader.Read())
                 {
-                    string productTitle = reader["product_title"].ToString();
-                    double unitPrice = double.Parse(reader["unit_price"].ToString());
-                    int stockAvailable = int.Parse(reader["stock_available"].ToString());
+                    string productTitle = reader["title"].ToString();
+                    double unitPrice = double.Parse(reader["unitprice"].ToString());
+                    int stockAvailable = int.Parse(reader["stockavailable"].ToString());
                     string image = reader["image"].ToString();
-                    int categoryId = int.Parse(reader["category_id"].ToString());
+                    int categoryId = int.Parse(reader["categoryid"].ToString());
 
                     product = new Product()
                     {
