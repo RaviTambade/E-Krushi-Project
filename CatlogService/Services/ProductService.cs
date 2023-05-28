@@ -13,16 +13,16 @@ public class ProductService : IProductService{
         _repo = repo;
     }
 
-    public List<Product> Products() => _repo.Products();
+    public async Task<List<Product>> Products() => await _repo.Products();
 
-    public Product GetProduct(int id) => _repo.GetProduct(id);
+    public async Task<Product> GetProduct(int id) =>await _repo.GetProduct(id);
 
-    public bool Insert(Product product) => _repo.Insert(product);
+    public async Task<bool> Insert(Product product) =>await _repo.Insert(product);
 
-    public bool Update(Product product) => _repo.Update(product);
+    public async Task<bool> Update(Product product) =>await _repo.Update(product);
  
-    public bool Delete(int id) => _repo.Delete(id);
+    public async Task<bool> Delete(int id) => await _repo.Delete(id);
 
-    public List<Products> CategoryName(string categoryName) => _repo.CategoryName(categoryName);
+    public async Task<List<Products>> CategoryName(string categoryName) =>await _repo.CategoryName(categoryName);
 }
 

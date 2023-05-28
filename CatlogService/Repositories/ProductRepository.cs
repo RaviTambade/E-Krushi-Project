@@ -14,7 +14,7 @@ namespace CatlogService.Repositories
         _conString = this._configuration.GetConnectionString("DefaultConnection");
     }
 
-        public List<Product> Products()
+        public async Task<List<Product>> Products()
         {
             List<Product> products = new List<Product>();
             MySqlConnection con = new MySqlConnection();
@@ -23,9 +23,9 @@ namespace CatlogService.Repositories
             {
                 string query = "select * from products";
                 MySqlCommand cmd = new MySqlCommand(query,con);
-                con.Open();
+                await con.OpenAsync();
                 MySqlDataReader reader = cmd.ExecuteReader();
-                while(reader.Read())
+                while(await reader.ReadAsync())
                 {
                     int id = int.Parse(reader["id"].ToString());
                     string productTitle = reader["title"].ToString();
@@ -46,18 +46,18 @@ namespace CatlogService.Repositories
                     };
                     products.Add(product);
                 }
-                reader.Close();
+                await reader.CloseAsync();
             }
             catch(Exception e){
                 throw e;
             }
             finally{
-                con.Close();
+                await con.CloseAsync();
             }
             return products;
         }
 
-        public Product GetProduct(int id)
+        public async Task<Product> GetProduct(int id)
         {
             Product product = new Product();
             MySqlConnection con = new MySqlConnection();
@@ -66,9 +66,9 @@ namespace CatlogService.Repositories
                 string query = "select * from products where id = @productId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@productId",id);
-                con.Open();
+                await con.OpenAsync();
                 MySqlDataReader reader = cmd.ExecuteReader();
-                while(reader.Read())
+                while(await reader.ReadAsync())
                 {
                     string productTitle = reader["title"].ToString();
                     double unitPrice = double.Parse(reader["unitprice"].ToString());
@@ -88,17 +88,17 @@ namespace CatlogService.Repositories
                     };
 
                 }
-                reader.Close();
+                await reader.CloseAsync();
             }
             catch(Exception e){
                 throw e;
             }
             finally{
-                con.Close();
+                await con.CloseAsync();
             }
             return product;
         }
-        public bool Insert(Product product)
+        public async Task<bool> Insert(Product product)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
@@ -112,7 +112,7 @@ namespace CatlogService.Repositories
                 cmd.Parameters.AddWithValue("@stockAvailable",product.StockAvailable);
                 cmd.Parameters.AddWithValue("@image",product.Image);
                 cmd.Parameters.AddWithValue("@categoryId",product.CategoryId);
-                con.Open();
+                await con.OpenAsync();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if(rowsAffected > 0)
                 {
@@ -125,12 +125,12 @@ namespace CatlogService.Repositories
             }
             finally
             {
-                con.Close();
+                await con.CloseAsync();
             }
             return status;
         }
 
-        public bool Update(Product product)
+        public async Task<bool> Update(Product product)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
@@ -139,7 +139,7 @@ namespace CatlogService.Repositories
             {
                 string query="Update products set title=@productTitle, unitprice = @unitPrice, stockavailable = @stockAvailable, image = @image ,categoryid = @categoryId Where id = @productId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
-                con.Open();
+                await con.OpenAsync();
                 cmd.Parameters.AddWithValue("@productId",product.Id);
                 cmd.Parameters.AddWithValue("@productTitle",product.Title);
                 cmd.Parameters.AddWithValue("@unitPrice",product.UnitPrice);
@@ -158,11 +158,11 @@ namespace CatlogService.Repositories
             }
             finally
             {
-                con.Close();
+                await con.CloseAsync();
             }
             return status;
         }
-        public bool Delete(int id)
+        public async Task<bool>  Delete(int id)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
@@ -172,7 +172,7 @@ namespace CatlogService.Repositories
                 string query="Delete from products where id = @productId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@productId",id);
-                con.Open();
+                await con.OpenAsync();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if(rowsAffected > 0)
                 {
@@ -185,13 +185,13 @@ namespace CatlogService.Repositories
             }
             finally
             {
-                con.Close();
+                await con.CloseAsync();
             }
             return status;
         }
     
     
-    public List<Products> CategoryName(string categoryName)
+    public async Task<List<Products>> CategoryName(string categoryName)
     {
         
            List<Products> products = new List<Products>();
@@ -201,9 +201,9 @@ namespace CatlogService.Repositories
                 string query = "SELECT products.product_id, products.product_title,products.unit_price,products.stock_available,products.image,categories.category_title from categories inner join products where categories.category_id=products.category_id and categories.category_title=@seeds";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@seeds",categoryName);
-                con.Open();
+                await con.OpenAsync();
                 MySqlDataReader reader = cmd.ExecuteReader();
-                while(reader.Read())
+                while(await reader.ReadAsync())
                 {
                     int productId = int.Parse(reader["product_id"].ToString());
                     string productTitle = reader["product_title"].ToString();
@@ -225,14 +225,14 @@ namespace CatlogService.Repositories
                     products.Add(product);
                    
                 }
-                 reader.Close();
+                 await reader.CloseAsync();
                 
             }
             catch(Exception e){
                 throw e;
             }
             finally{
-                con.Close();
+                await con.CloseAsync();
             }
             return products;
         }
