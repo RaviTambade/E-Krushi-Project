@@ -1,7 +1,6 @@
 using OrderProcessingService.Models;
 using OrderProcessingService.Repositories.Interfaces;
 using MySql.Data.MySqlClient;
-using System.Globalization;
 
 namespace OrderProcessingService.Repositories;
 public class OrderRepository : IOrderRepository
@@ -28,10 +27,10 @@ public class OrderRepository : IOrderRepository
             MySqlDataReader reader = command.ExecuteReader();
             while (await reader.ReadAsync())
             {
-                int id = int.Parse(reader["order_id"].ToString());
-                DateTime orderDate = DateTime.Parse(reader["order_date"].ToString());
-                DateTime shippedDate = DateTime.Parse(reader["shipped_date"].ToString());
-                int customerId = int.Parse(reader["cust_id"].ToString());
+                int id = int.Parse(reader["id"].ToString());
+                DateTime orderDate = DateTime.Parse(reader["orderdate"].ToString());
+                DateTime shippedDate = DateTime.Parse(reader["shippeddate"].ToString());
+                int customerId = int.Parse(reader["custid"].ToString());
                 double total = double.Parse(reader["total"].ToString());
                 string? status = reader["status"].ToString();
 
@@ -67,7 +66,7 @@ public class OrderRepository : IOrderRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "SELECT * FROM orders where order_id=@orderId";
+            string query = "SELECT * FROM orders where id=@orderId";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@orderId",id);
@@ -75,9 +74,9 @@ public class OrderRepository : IOrderRepository
             if (await reader.ReadAsync())
             {
                 //int orderId = int.Parse(reader["order_id"].ToString());
-                DateTime orderDate = DateTime.Parse(reader["order_date"].ToString());
-                DateTime shippedDate = DateTime.Parse(reader["shipped_date"].ToString());
-                int customerId = int.Parse(reader["cust_Id"].ToString());
+                DateTime orderDate = DateTime.Parse(reader["orderdate"].ToString());
+                DateTime shippedDate = DateTime.Parse(reader["shippeddate"].ToString());
+                int customerId = int.Parse(reader["custid"].ToString());
                 double total = double.Parse(reader["total"].ToString());
                 string? status = reader["status"].ToString();
 
@@ -113,16 +112,16 @@ public class OrderRepository : IOrderRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "SELECT * FROM orders where cust_id=@customerId";
+            string query = "SELECT * FROM orders where custid=@customerId";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@customerId",id);
             MySqlDataReader reader = command.ExecuteReader();
             if (await reader.ReadAsync())
             {
-                int orderId = int.Parse(reader["order_id"].ToString());
-                DateTime orderDate = DateTime.Parse(reader["order_date"].ToString());
-                DateTime shippedDate = DateTime.Parse(reader["shipped_date"].ToString());
+                int orderId = int.Parse(reader["orderid"].ToString());
+                DateTime orderDate = DateTime.Parse(reader["orderdate"].ToString());
+                DateTime shippedDate = DateTime.Parse(reader["shippeddate"].ToString());
                 double total = double.Parse(reader["total"].ToString());
                 string? status = reader["status"].ToString();
 
@@ -154,7 +153,7 @@ public class OrderRepository : IOrderRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "INSERT INTO orders(order_date,shipped_date,cust_id,total,status)VALUES(@orderDate,@shippedDate,@customerId,@total,@status)";
+            string query = "INSERT INTO orders(orderdate,shippeddate,custid,total,status)VALUES(@orderDate,@shippedDate,@customerId,@total,@status)";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@orderDate",order.OrderDate);
@@ -185,7 +184,7 @@ public class OrderRepository : IOrderRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "Update orders set order_date=@orderDate, shipped_date=@shippedDate,cust_id=@customerId, total =@total, status =@status Where order_id =@orderId";
+            string query = "Update orders set orderdate=@orderDate, shippeddate=@shippedDate,custid=@customerId, total =@total, status =@status Where id =@orderId";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@orderId",order.Id);
@@ -216,7 +215,7 @@ public class OrderRepository : IOrderRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "DELETE FROM orders where order_id =@orderId";
+            string query = "DELETE FROM orders where id =@orderId";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@orderId",id);
@@ -243,16 +242,16 @@ public class OrderRepository : IOrderRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = " SELECT * FROM orders WHERE cust_id=1 and status='cancelled' ";
+            string query = "SELECT * FROM orders WHERE custid=1 and status='cancelled' ";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             MySqlDataReader reader = command.ExecuteReader();
             while ( await reader.ReadAsync())
             {
-                int id = int.Parse(reader["order_id"].ToString());
-                DateTime orderDate = DateTime.Parse(reader["order_date"].ToString());
-                DateTime shippedDate = DateTime.Parse(reader["shipped_date"].ToString());
-                int customerId = int.Parse(reader["cust_id"].ToString());
+                int id = int.Parse(reader["id"].ToString());
+                DateTime orderDate = DateTime.Parse(reader["orderdate"].ToString());
+                DateTime shippedDate = DateTime.Parse(reader["shippeddate"].ToString());
+                int customerId = int.Parse(reader["custid"].ToString());
                 double total = double.Parse(reader["total"].ToString());
                 string? status = reader["status"].ToString();
 
@@ -290,16 +289,16 @@ public class OrderRepository : IOrderRepository
         try
         {
 
-            string query = " SELECT * FROM orders WHERE cust_id=1 and status='delivered' ";
+            string query = " SELECT * FROM orders WHERE custid=1 and status='delivered' ";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             MySqlDataReader reader = command.ExecuteReader();
             while (await reader.ReadAsync())
             {
-                int id = int.Parse(reader["order_id"].ToString());
-                DateTime orderDate = DateTime.Parse(reader["order_date"].ToString());
-                DateTime shippedDate = DateTime.Parse(reader["shipped_date"].ToString());
-                int customerId = int.Parse(reader["cust_id"].ToString());
+                int id = int.Parse(reader["id"].ToString());
+                DateTime orderDate = DateTime.Parse(reader["orderdate"].ToString());
+                DateTime shippedDate = DateTime.Parse(reader["shippeddate"].ToString());
+                int customerId = int.Parse(reader["custid"].ToString());
                 double total = double.Parse(reader["total"].ToString());
                 string? status = reader["status"].ToString();
 
@@ -336,7 +335,7 @@ public class OrderRepository : IOrderRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "SELECT count(*) FROM orders where order_date < @date";
+            string query = "SELECT count(*) FROM orders where orderdate < @date";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@date",date);

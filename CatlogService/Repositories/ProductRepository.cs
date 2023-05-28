@@ -105,7 +105,7 @@ namespace CatlogService.Repositories
             con.ConnectionString = _conString;
             try
             {
-                string query="Insert into products(producttitle,unitprice,stockavailable,image,categoryid) VALUES(@productTitle,@unitPrice,@stockAvailable,@image,@categoryId)";
+                string query="Insert into products(title,unitprice,stockavailable,image,categoryid) VALUES(@productTitle,@unitPrice,@stockAvailable,@image,@categoryId)";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@productTitle",product.Title);
                 cmd.Parameters.AddWithValue("@unitPrice",product.UnitPrice);
@@ -137,7 +137,7 @@ namespace CatlogService.Repositories
             con.ConnectionString = _conString;
             try
             {
-                string query="Update products set producttitle=@productTitle, unitprice = @unitPrice, stockavailable = @stockAvailable, image = @image ,categoryid = @categoryId Where id = @productId";
+                string query="Update products set title=@productTitle, unitprice = @unitPrice, stockavailable = @stockAvailable, image = @image ,categoryid = @categoryId Where id = @productId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 con.Open();
                 cmd.Parameters.AddWithValue("@productId",product.Id);
