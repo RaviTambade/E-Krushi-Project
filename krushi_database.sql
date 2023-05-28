@@ -69,7 +69,8 @@ CREATE TABLE questions(id  INT NOT NULL AUTO_INCREMENT PRIMARY KEY, description 
 categoryid INT NOT NULL,CONSTRAINT fkcategory1 FOREIGN KEY (categoryid) REFERENCES questioncategories(id) ON DELETE CASCADE ON UPDATE CASCADE);
 -- customer questions table required   auto  id pri , cust id fr key ,fr ques id ,date 
 
-CREATE TABLE answers(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255), questionid INT NOT NULL,CONSTRAINT fkcategory12 FOREIGN KEY (questionid) REFERENCES questions(id) ON DELETE CASCADE ON UPDATE CASCADE,answerdate datetime not null);
+CREATE TABLE answers(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255), 
+questionid INT NOT NULL,CONSTRAINT fkcategory12 FOREIGN KEY (questionid) REFERENCES questions(id) ON DELETE CASCADE ON UPDATE CASCADE);
 
 CREATE TABLE subjectmatterexperts(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,name VARCHAR(40),expertise VARCHAR(40),userid INT NOT NULL,
 CONSTRAINT fkuser11 FOREIGN KEY (userid) REFERENCES users(id));
@@ -322,44 +323,48 @@ INSERT INTO questioncategories(category) VALUES('soil related questions');
 INSERT INTO questioncategories(category) VALUES('weather releted questions');
 
 
-INSERT INTO questions(date,description,custid,categoryid) VALUES('2022-02-12 08:02:11','How can I increase crop yield?',5,1);
-INSERT INTO questions(date,description,custid,categoryid) VALUES('2021-01-13 04:02:11','How can I prevent crop damage from pests and diseases?',4,1);
-INSERT INTO questions(date,description,custid,categoryid) VALUES('2020-04-01 04:02:11','How can I improve soil fertility? ',3,2);
-INSERT INTO questions(date,description,custid,categoryid) VALUES('2020-04-01 04:02:11','How can I improve soil structure? ',5,2);
-INSERT INTO questions(date,description,custid,categoryid)VALUES('2020-04-01 04:02:11','How can I prevent soil erosion? ',2,2);
-INSERT INTO questions(date,description,custid,categoryid) VALUES('2020-04-01 04:02:11','What should I do if there is a drought?',2,3);
-INSERT INTO questions(date,description,custid,categoryid) VALUES('2020-04-01 04:02:11','What should I do if there is heavy rainfall? ',5,3);
-INSERT INTO questions(date,description,custid,categoryid) VALUES('2020-04-01 04:02:11','What should I do if there is extreme heat?',3,3);
+INSERT INTO questions(description,categoryid) VALUES('How can I increase crop yield?',1);
+INSERT INTO questions(description,categoryid) VALUES('How can I prevent crop damage from pests and diseases?',1);
+INSERT INTO questions(description,categoryid) VALUES('How can I improve soil fertility? ',2);
+INSERT INTO questions(description,categoryid) VALUES('How can I improve soil structure? ',2);
+INSERT INTO questions(description,categoryid)VALUES('How can I prevent soil erosion? ',2);
+INSERT INTO questions(description,categoryid) VALUES('What should I do if there is a drought?',3);
+INSERT INTO questions(description,categoryid) VALUES('What should I do if there is heavy rainfall? ',3);
+INSERT INTO questions(description,categoryid) VALUES('What should I do if there is extreme heat?',3);
 
 
-INSERT INTO solutions(description) VALUES('Soil health: Ensure the soil is healthy by adding organic matter and nutrients, improving drainage and water retention, and avoiding soil erosion.');
-INSERT INTO solutions(description) VALUES('Monitor crops regularly for signs of pests and diseases and take appropriate measures to prevent and control them.
-                                          Use resistant crop varieties.');
-INSERT INTO solutions(description) VALUES('Consider local weather patterns and the plants growth requirements.');
-INSERT INTO solutions(description) VALUES('Soil testing: Perform soil tests to determine nutrient deficiencies and pH levels.
-                                           Fertilizer: Apply appropriate amounts of fertilizers to address nutrient deficiencies.');
-INSERT INTO solutions(description) VALUES('Reduce soil compaction: Avoid excessive tillage, limit heavy machinery use, and avoid working on wet soil.');
-INSERT INTO solutions(description) VALUES('Cover crops: Plant cover crops to help prevent soil erosion by reducing runoff and increasing soil structure.');
-INSERT INTO solutions(description) VALUES('Irrigation: Use irrigation techniques to provide plants with the necessary water.
-                                          Crop selection: Choose crops that are drought-tolerant.');
-INSERT INTO solutions(description) VALUES('Soil erosion prevention: Implement soil erosion prevention practices, such as planting cover crops, to help protect soil from being washed away.
-										  Crop selection: Choose crops that are better suited to wet conditions.');
-INSERT INTO solutions(description) VALUES('Irrigation: Use appropriate irrigation techniques to help cool plants.
-                                          Shade: Provide shade for crops to help protect them from extreme heat.');
+INSERT INTO answers(description,questionid) VALUES('Soil health: Ensure the soil is healthy by adding organic matter and nutrients, improving drainage and water retention, and avoiding soil erosion.',1);
+INSERT INTO answers(description,questionid) VALUES('Monitor crops regularly for signs of pests and diseases and take appropriate measures to prevent and control them.
+                                          Use resistant crop varieties.',1);
+INSERT INTO answers(description,questionid)VALUES('Consider local weather patterns and the plants growth requirements.',2);
+INSERT INTO answers(description,questionid) VALUES('Soil testing: Perform soil tests to determine nutrient deficiencies and pH levels.
+                                           Fertilizer: Apply appropriate amounts of fertilizers to address nutrient deficiencies.',2);
+INSERT INTO answers(description,questionid) VALUES('Reduce soil compaction: Avoid excessive tillage, limit heavy machinery use, and avoid working on wet soil.',2);
+INSERT INTO answers(description,questionid) VALUES('Cover crops: Plant cover crops to help prevent soil erosion by reducing runoff and increasing soil structure.',3);
+INSERT INTO answers(description,questionid) VALUES('Irrigation: Use irrigation techniques to provide plants with the necessary water.
+                                          Crop selection: Choose crops that are drought-tolerant.',3);
+INSERT INTO answers(description,questionid) VALUES('Soil erosion prevention: Implement soil erosion prevention practices, such as planting cover crops, to help protect soil from being washed away.
+										  Crop selection: Choose crops that are better suited to wet conditions.',3);
 
-
-INSERT INTO agridoctors(name,specialistfor,userid) VALUES('pratima patil','crop related information',22);
-INSERT INTO agridoctors(name,specialistfor,userid) VALUES('kiran rakshe','soil related information',23);
-INSERT INTO agridoctors(name,specialistfor,userid) VALUES('mayur gorade','Weather related information',24);
+INSERT INTO subjectmatterexperts(name,expertise,userid) VALUES('pratima patil','crop related information',22);
+INSERT INTO subjectmatterexperts(name,expertise,userid) VALUES('kiran rakshe','soil related information',23);
+INSERT INTO subjectmatterexperts(name,expertise,userid) VALUES('mayur gorade','Weather related information',24);
 
 
 
--- INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (1,1,'2023-04-05 12:08:06',1);
--- INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (2,2,'2023-06-05 12:20:19',1);
--- INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (4,4,'2023-07-10 12:23:08',2);
--- INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (5,5,'2023-08-25 12:34:20',2);
--- INSERT INTO questionsolutions(questionid,solutionid,solutiondate,agridoctorid) VALUES (7,7,'2023-09-15 12:40:30',3);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (1,'2023-04-05 12:08:06',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (1,'2023-06-05 12:20:19',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (2,'2023-07-10 12:23:08',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (2,'2023-08-25 12:34:20',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (3,'2023-09-15 12:40:30',3);
 
+
+
+INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (1,1,'2022-01-15');
+INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (2,2,'2023-02-15');
+INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (2,4,'2023-01-15');
+INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (3,3,'2022-05-15');
+INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (4,2,'2022-08-15');
 
 SELECT * FROM employees;
 SELECT * FROM feedbacks;
