@@ -13,10 +13,10 @@ public class CategoryService : ICategoryService{
         _repo = repo;
     }
 
-    public List<Category> Categories() => _repo.Categories();
-    public Category GetCategory(int id) => _repo.GetCategory(id);
-    public bool Insert(Category category) => _repo.Insert(category);
-    public bool Update(Category category) => _repo.Update(category);
-    public bool Delete(int id) => _repo.Delete(id);
+    public async  Task<List<Category>> Categories() =>await _repo.Categories();
+    public async Task<Category> GetCategory(int id) =>await _repo.GetCategory(id);
+    public async Task<bool> Insert(Category category) =>await _repo.Insert(category);
+    public async Task<bool> Update(Category category) =>await _repo.Update(category);
+    public async Task<bool> Delete(int id) => await _repo.Delete(id);
 
 }
