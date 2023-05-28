@@ -23,15 +23,15 @@ public class OrderDetailsRepository : IOrderDetailsRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "SELECT * FROM order_details";
+            string query = "SELECT * FROM orderdetails";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             MySqlDataReader reader = command.ExecuteReader();
             while (await reader.ReadAsync())
             {
-                int id = int.Parse(reader["order_details_id"].ToString());
-                int orderId = int.Parse(reader["order_id"].ToString());
-                int productId = int.Parse(reader["product_id"].ToString());
+                int id = int.Parse(reader["id"].ToString());
+                int orderId = int.Parse(reader["orderid"].ToString());
+                int productId = int.Parse(reader["productid"].ToString());
                 int quantity = int.Parse(reader["quantity"].ToString());
                 double discount = double.Parse(reader["discount"].ToString());
 
@@ -65,7 +65,7 @@ public class OrderDetailsRepository : IOrderDetailsRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "SELECT * FROM order_details where order_details_id=@orderDetailsId";
+            string query = "SELECT * FROM orderdetails where id=@orderDetailsId";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@orderDetailsId",id);
@@ -73,8 +73,8 @@ public class OrderDetailsRepository : IOrderDetailsRepository
             if (await reader.ReadAsync())
             {
                 //int id = Int32.Parse(reader["orderdetails_id"].ToString());
-                int orderId = Int32.Parse(reader["order_id"].ToString());
-                int productId = Int32.Parse(reader["product_id"].ToString());
+                int orderId = Int32.Parse(reader["orderid"].ToString());
+                int productId = Int32.Parse(reader["productid"].ToString());
                 int quantity = Int32.Parse(reader["quantity"].ToString());
                 double discount = double.Parse(reader["discount"].ToString());
 
@@ -105,7 +105,7 @@ public class OrderDetailsRepository : IOrderDetailsRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "INSERT INTO order_details(order_id,product_id,quantity,discount)VALUES(@orderId,@productId,@quantity,@discount)";
+            string query = "INSERT INTO orderdetails(orderid,productid,quantity,discount) VALUES(@orderId,@productId,@quantity,@discount)";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@orderId",orderDetail.OrderId);
@@ -135,7 +135,7 @@ public class OrderDetailsRepository : IOrderDetailsRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "Update order_details set order_id=@orderId, product_id=@productId,quantity=@quantity, discount=@discount Where order_details_id =@orderDetailsId";
+            string query = "Update orderdetails set orderid=@orderId, productid=@productId,quantity=@quantity, discount=@discount Where id =@orderDetailsId";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@orderDetailsId",orderDetail.Id);
@@ -165,7 +165,7 @@ public class OrderDetailsRepository : IOrderDetailsRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "DELETE FROM order_Details where order_Details_id =@orderDetailsId";
+            string query = "DELETE FROM orderDetails where id =@orderDetailsId";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@orderDetailsId",id);
