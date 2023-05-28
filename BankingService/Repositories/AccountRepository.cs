@@ -16,7 +16,7 @@ public class AccountRepository : IAccountRepository
         _conString = this._configuration.GetConnectionString("DefaultConnection");
     }
 
-        public List<Account> Accounts()
+        public async Task<List<Account>> Accounts()
         {
             List<Account> accounts = new List<Account>();
             MySqlConnection con = new MySqlConnection();
@@ -24,15 +24,15 @@ public class AccountRepository : IAccountRepository
         try{
             string query = "select * from accounts";
             MySqlCommand cmd = new MySqlCommand(query,con);
-            con.Open();
+            await con.OpenAsync();
             MySqlDataReader reader = cmd.ExecuteReader();
-            while(reader.Read())
+            while(await reader.ReadAsync())
             {
-                int accountId = int.Parse(reader["account_id"].ToString());
-                string accountNumber = reader["account_number"].ToString();
-                string ifscCode = reader["ifsc_code"].ToString();
-                DateTime registerDate = DateTime.Parse(reader["register_date"].ToString());
-                int userId = int.Parse(reader["user_id"].ToString());
+                int accountId = int.Parse(reader["id"].ToString());
+                string accountNumber = reader["number"].ToString();
+                string ifscCode = reader["ifsccode"].ToString();
+                DateTime registerDate = DateTime.Parse(reader["registerdate"].ToString());
+                int userId = int.Parse(reader["userid"].ToString());
                 Account account = new Account
                 {
                     Id = accountId,
@@ -43,7 +43,7 @@ public class AccountRepository : IAccountRepository
                 };
                 accounts.Add(account);
             }
-            reader.Close();
+            await reader.CloseAsync();
         }
         catch (Exception e)
         {
@@ -51,29 +51,29 @@ public class AccountRepository : IAccountRepository
         }
         finally
         {
-            con.Close();
+            await con.CloseAsync();
         }
         return accounts;
     }
 
-        public Account GetAccount(int id)
+        public async Task<Account> GetAccount(int id)
         {
             Account account = new Account();
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = _conString;
             try{
-                string query = "select * from accounts where account_id = @accountId";
+                string query = "select * from accounts where id = @accountId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@accountId",id);
-                con.Open();
+                await con.OpenAsync();
                 MySqlDataReader reader = cmd.ExecuteReader();
-                if(reader.Read())
+                if(await reader.ReadAsync())
                 {
                 //int accountId = int.Parse(reader["account_id"].ToString());
-                string accountNumber = reader["account_number"].ToString();
-                string ifscCode = reader["ifsc_code"].ToString();
-                DateTime registerDate = DateTime.Parse(reader["register_date"].ToString());
-                int userId = int.Parse(reader["user_id"].ToString());
+                string accountNumber = reader["number"].ToString();
+                string ifscCode = reader["ifsccode"].ToString();
+                DateTime registerDate = DateTime.Parse(reader["registerdate"].ToString());
+                int userId = int.Parse(reader["userid"].ToString());
                 account = new Account
                 {
                     Id = id,
@@ -82,26 +82,26 @@ public class AccountRepository : IAccountRepository
                     RegisterDate = registerDate,
                     UserId = userId
                 };
-                reader.Close();
+                await reader.CloseAsync();
             }
             }
             catch(Exception e){
                 throw e;
             }
             finally{
-                con.Close();
+                await con.CloseAsync();
             }
             return account;
         }
 
-        public bool Insert(Account account)
+        public async Task<bool> Insert(Account account)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = _conString;
             try{
-                string query = "Insert into accounts(account_number,ifsc_code,register_date,user_id) VALUES(@accountNumber,@ifscCode,@registerDate,@userId)";
-                con.Open();
+                string query = "Insert into accounts(number,ifsccode,registerdate,userid) VALUES(@accountNumber,@ifscCode,@registerDate,@userId)";
+                await con.OpenAsync();
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@accountNumber",account.Number);
                 cmd.Parameters.AddWithValue("@ifscCode",account.IFSCCode);
@@ -117,23 +117,23 @@ public class AccountRepository : IAccountRepository
                 throw e;
             }
             finally{
-                con.Close();
+                await con.CloseAsync();
             }
             return status;
         }
-        public bool Update(Account account)
+        public async Task<bool> Update(Account account)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = _conString;
             try{
-                string query = "Update accounts set  account_number= @accountNumber, ifsc_code= @ifscCode, register_date = @registerDate, user_id=@userId where account_id = @accountId";
+                string query = "Update accounts set number= @accountNumber, ifsccode= @ifscCode, registerdate = @registerDate, userid=@userId where id = @accountId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@accountNumber",account.Number);
                 cmd.Parameters.AddWithValue("@ifscCode",account.IFSCCode);
                 cmd.Parameters.AddWithValue("@registerDate",account.RegisterDate);
                 cmd.Parameters.AddWithValue("@userId",account.UserId);
-                con.Open();
+                await con.OpenAsync();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if(rowsAffected > 0)
                 {
@@ -144,18 +144,18 @@ public class AccountRepository : IAccountRepository
                 throw e;
             }
             finally{
-                con.Close();
+                await con.CloseAsync();
             }
             return status;
         }
-        public bool Delete(int id)
+        public async Task<bool> Delete(int id)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = _conString;
             try{
-                string query = "Delete from accounts Where account_id = @accountId";
-                con.Open();
+                string query = "Delete from accounts Where id = @accountId";
+                await con.OpenAsync();
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@accountId",id);
                 int rowsAffected = cmd.ExecuteNonQuery();
@@ -168,7 +168,7 @@ public class AccountRepository : IAccountRepository
                 throw e;
             }
             finally{
-                con.Close();
+                await con.CloseAsync();
             }
             return status;
         }

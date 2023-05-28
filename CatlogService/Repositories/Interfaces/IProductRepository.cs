@@ -4,10 +4,10 @@ namespace CatlogService.Repositories.Interfaces;
 
 public interface IProductRepository{
 
-    List<Product> Products();
-    Product GetProduct(int id);
-    bool Insert(Product product);
-    bool Update(Product product);
-    bool Delete(int id);
-    List<Products> CategoryName(string categoryName);
+    Task<List<Product>> Products();
+    Task<Product> GetProduct(int id);
+    Task<bool> Insert(Product product);
+    Task<bool> Update(Product product);
+    Task<bool> Delete(int id);
+    Task<List<Products>> CategoryName(string categoryName);
 }

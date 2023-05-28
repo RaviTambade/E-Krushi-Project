@@ -18,57 +18,57 @@ public class ProductsController : ControllerBase
 
     [HttpGet]
     [Route("products")]
-    public List<Product> Products()
+    public async Task<List<Product>> Products()
     {
-        List<Product> products = _service.Products();
+        List<Product> products = await _service.Products();
         return products;
     }
 
     [HttpGet]
     [Route("products/{id}")]
-    public Product GetProduct(int id)
+    public async Task<Product> GetProduct(int id)
     {
-        Product product = _service.GetProduct(id);
+        Product product = await _service.GetProduct(id);
         return product;
     }
 
     [HttpPost]
     [Route("Insert")]
 
-    public bool Insert([FromBody] Product product)
+    public async Task<bool> Insert([FromBody] Product product)
     {
-        bool result = _service.Insert(product);
+        bool result = await _service.Insert(product);
         return result;
     }
     
     [HttpPut]
     [Route("Update/{id}")]
 
-    public bool Update(int id, [FromBody] Product product)
+    public async Task<bool> Update(int id, [FromBody] Product product)
     {
-        Product oldProduct = _service.GetProduct(id);
+        Product oldProduct = await _service.GetProduct(id);
         if(oldProduct.Id==0){
             return false;
         }
         product.Id = id;
-        bool result = _service.Update(product);
+        bool result = await _service.Update(product);
         return result;
     }
 
     [HttpDelete]
     [Route("Delete/{id}")]
 
-    public bool Delete(int id)
+    public async Task<bool> Delete(int id)
     {
-        bool result = _service.Delete(id);
+        bool result = await _service.Delete(id);
         return result;
     }
 
     [HttpGet]
     [Route("category/{categoryName}")]
-    public List<Products> CategoryName(string categoryName)
+    public async Task<List<Products>> CategoryName(string categoryName)
     {
-        List<Products> products = _service.CategoryName(categoryName);
+        List<Products> products = await _service.CategoryName(categoryName);
         
         return products;
     }
