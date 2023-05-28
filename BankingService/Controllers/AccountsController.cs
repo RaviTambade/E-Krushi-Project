@@ -18,46 +18,46 @@ public class AccountsController : ControllerBase
 
     [HttpGet]
     [Route("accounts")]
-    public IEnumerable<Account> Accounts()
+    public async Task<IEnumerable<Account>> Accounts()
     {
-        List<Account> accounts = _service.Accounts();
+        List<Account> accounts = await _service.Accounts();
         return accounts;
     }
 
     [HttpGet]
     [Route("getaccount/{id}")]
-    public Account GetAccount(int id)
+    public async Task<Account> GetAccount(int id)
     {
-        Account account = _service.GetAccount(id);
+        Account account = await _service.GetAccount(id);
         return account;
     }
 
     [HttpPost]
     [Route("Insert")]
-    public bool Insert([FromBody] Account account)
+    public async Task<bool> Insert([FromBody] Account account)
     {
-        bool result = _service.Insert(account);
+        bool result = await _service.Insert(account);
         return result;
     }
 
     [HttpPut]
     [Route("Update/{id}")]
-    public bool Update(int id,[FromBody] Account account)
+    public async Task<bool> Update(int id,[FromBody] Account account)
     {
-        Account oldAccount = _service.GetAccount(id);
+        Account oldAccount = await _service.GetAccount(id);
         if(oldAccount.Id==0){
             return false;
         }
         account.Id = id;
-        bool result = _service.Update(account);
+        bool result = await _service.Update(account);
         return result;
     }
     
     [HttpDelete]
     [Route("Delete/{id}")]
-    public bool Delete(int id)
+    public async Task<bool> Delete(int id)
     {
-        bool result = _service.Delete(id);
+        bool result = await _service.Delete(id);
         return result;
     }
 

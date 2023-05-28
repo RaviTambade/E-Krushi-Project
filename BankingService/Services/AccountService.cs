@@ -13,10 +13,10 @@ public class AccountService : IAccountService{
         _repo = repo;
     }
 
-    public List<Account> Accounts() => _repo.Accounts();
-    public Account GetAccount(int id) => _repo.GetAccount(id);
-    public bool Insert(Account account) => _repo.Insert(account);
-    public bool Update(Account account) => _repo.Update(account);
-    public bool Delete(int id) => _repo.Delete(id);
+    public async Task<List<Account>> Accounts() => await _repo.Accounts();
+    public async Task<Account> GetAccount(int id) => await _repo.GetAccount(id);
+    public async Task<bool> Insert(Account account) => await _repo.Insert(account);
+    public async Task<bool> Update(Account account) => await _repo.Update(account);
+    public async Task<bool> Delete(int id) => await _repo.Delete(id);
 
 }
