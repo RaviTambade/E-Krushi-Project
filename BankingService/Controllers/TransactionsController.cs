@@ -18,45 +18,45 @@ public class TransactionsController : ControllerBase
 
     [HttpGet]
     [Route("transactions")]
-    public IEnumerable<Transaction> Transactions()
+    public async Task<IEnumerable<Transaction>> Transactions()
     {
-        List<Transaction> transactions = _service.Transactions();
+        List<Transaction> transactions =await  _service.Transactions();
         return transactions;
     }
 
     [HttpGet]
-    [Route("gettransaction/{id}")]
-    public Transaction GetTransaction(int id)
+    [Route("transaction/{id}")]
+    public async Task<Transaction> GetTransaction(int id)
     {
-        Transaction transaction = _service.GetTransaction(id);
+        Transaction transaction =await  _service.GetTransaction(id);
         return transaction;
     }
 
     [HttpPost]
     [Route("Insert")]
-    public bool Insert([FromBody] Transaction transaction)
+    public async Task<bool> Insert([FromBody] Transaction transaction)
     {
-        bool result = _service.Insert(transaction);
+        bool result =await  _service.Insert(transaction);
         return result;
     }
 
     [HttpPut]
     [Route("Update/{id}")]
-    public bool Update(int id,[FromBody] Transaction transaction)
+    public async Task<bool> Update(int id,[FromBody] Transaction transaction)
     {
-        Transaction oldTransaction = _service.GetTransaction(id);
+        Transaction oldTransaction =await _service.GetTransaction(id);
         if(oldTransaction.Id==0){
             return false;
         }
         transaction.Id = id;
-        bool result = _service.Update(transaction);
+        bool result =await _service.Update(transaction);
         return result;
     }
     [HttpDelete]
     [Route("Delete/{id}")]
-    public bool Delete(int id)
+    public async Task<bool> Delete(int id)
     {
-        bool result = _service.Delete(id);
+        bool result =await _service.Delete(id);
         return result;
     }
 

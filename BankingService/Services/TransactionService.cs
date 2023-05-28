@@ -13,10 +13,10 @@ public class TransactionService : ITransactionService{
         _repo = repo;
     }
 
-    public List<Transaction> Transactions() => _repo.Transactions();
-    public Transaction GetTransaction(int id) => _repo.GetTransaction(id);
-    public bool Insert(Transaction transaction) => _repo.Insert(transaction);
-    public bool Update(Transaction transaction) => _repo.Update(transaction);
-    public bool Delete(int id) => _repo.Delete(id);
+    public async Task<List<Transaction>> Transactions() =>await _repo.Transactions();
+    public async  Task<Transaction> GetTransaction(int id) =>await  _repo.GetTransaction(id);
+    public async Task<bool> Insert(Transaction transaction) =>await  _repo.Insert(transaction);
+    public async Task<bool> Update(Transaction transaction) =>await  _repo.Update(transaction);
+    public async Task<bool> Delete(int id) =>await  _repo.Delete(id);
 
 }
