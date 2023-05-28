@@ -4,10 +4,10 @@ namespace CatlogService.Repositories.Interfaces
 {
     public interface ICategoryRepository{
 
-        List<Category> Categories();
-        Category GetCategory(int id);
-        bool Insert(Category category);
-        bool Update(Category category);
-        bool Delete(int id);
+        Task<List<Category>> Categories();
+        Task<Category> GetCategory(int id);
+        Task<bool> Insert(Category category);
+        Task<bool> Update(Category category);
+        Task<bool> Delete(int id);
     }
 }
