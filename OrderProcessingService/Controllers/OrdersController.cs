@@ -73,6 +73,5 @@ namespace OrderProcessingService.Controllers
             int totalCounts = await _ordersvc.TotalCount();
             return totalCounts;
         }
-
     }
 }
