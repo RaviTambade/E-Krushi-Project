@@ -1,4 +1,15 @@
+using KrushiProject.Repositories;
+using KrushiProject.Repositories.Interfaces;
+using KrushiProject.Service;
+using KrushiProject.Service.Interfaces;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCors();
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+builder.Services.AddTransient<ICustomerRepository,CustomerRepository>();
+builder.Services.AddTransient<ICustomerService,CustomerService>();
+
 
 // Add services to the container.
 
@@ -19,6 +30,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseCors(x => x.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
 
 app.MapControllers();
 
