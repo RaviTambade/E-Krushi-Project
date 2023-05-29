@@ -15,4 +15,6 @@ public interface IConsultingRepository{
      Task<List<Solution>> getAnswers(int id);
     
     Task<List<SmeQuestion>> getQuestionsRespondedBySME(int id);
+
+    Task<List<QuestionCategory>> getAllCategories();
 }

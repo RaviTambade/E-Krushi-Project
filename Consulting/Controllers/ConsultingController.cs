@@ -130,4 +130,17 @@ public class ConsultingController : ControllerBase
         return questions;
 
     }
+
+    
+
+     [HttpGet("questioncatagories")]
+    public async Task<List<QuestionCategory>> getAllCategories()
+    {
+
+        List<QuestionCategory> categories = await _srv.getAllCategories();
+        return categories;
+
+    }
+
+
 }

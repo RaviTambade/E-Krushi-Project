@@ -21,4 +21,6 @@ public class ConsultingService:IConsultingService{
     public async Task<List<Solution>> getAnswers(int id) => await _repo.getAnswers(id);
 
    public async Task<List<SmeQuestion>> getQuestionsRespondedBySME(int id) => await _repo.getQuestionsRespondedBySME(id);
+
+    public async Task<List<QuestionCategory>> getAllCategories()=> await _repo.getAllCategories();
 }
