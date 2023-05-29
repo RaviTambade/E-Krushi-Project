@@ -57,7 +57,7 @@ fromaccountnumber VARCHAR(60)NOT NULL,CONSTRAINT fkaccno FOREIGN KEY(fromaccount
 toaccountnumber VARCHAR(60) NOT NULL,CONSTRAINT fkaccno1 FOREIGN KEY(toaccountnumber) REFERENCES accounts(number)ON UPDATE CASCADE ON DELETE CASCADE,
 date DATETIME NOT NULL, amount DOUBLE);
 
-CREATE TABLE userroles(userid INT NOT NULL,CONSTRAINT fkuserid2 FOREIGN KEY(userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE ,
+CREATE TABLE userroles(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,userid INT NOT NULL,CONSTRAINT fkuserid2 FOREIGN KEY(userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE ,
 roleid INT NOT NULL,CONSTRAINT fkroleid FOREIGN KEY(roleid) REFERENCES roles(id) ON UPDATE CASCADE ON DELETE CASCADE);
   
 CREATE TABLE feedbacks(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255),custid INT NOT NULL ,
@@ -75,10 +75,10 @@ questionid INT NOT NULL,CONSTRAINT fkcategory12 FOREIGN KEY (questionid) REFEREN
 CREATE TABLE subjectmatterexperts(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,name VARCHAR(40),expertise VARCHAR(40),userid INT NOT NULL,
 CONSTRAINT fkuser11 FOREIGN KEY (userid) REFERENCES users(id));
 
-CREATE TABLE smeanswers(answerid INT NOT NULL,CONSTRAINT fkuser21 FOREIGN KEY (answerid) REFERENCES answers(id),answerdate datetime not null,smeid INT NOT NULL,
+CREATE TABLE smeanswers(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,answerid INT NOT NULL,CONSTRAINT fkuser21 FOREIGN KEY (answerid) REFERENCES answers(id),answerdate datetime not null,smeid INT NOT NULL,
 CONSTRAINT fkuser22 FOREIGN KEY (smeid) REFERENCES subjectmatterexperts(id));
 
-CREATE TABLE customerquestions(questionid INT NOT NULL ,CONSTRAINT fkques FOREIGN KEY(questionid) REFERENCES questions(id) ON UPDATE CASCADE ON DELETE CASCADE,
+CREATE TABLE customerquestions(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,questionid INT NOT NULL ,CONSTRAINT fkques FOREIGN KEY(questionid) REFERENCES questions(id) ON UPDATE CASCADE ON DELETE CASCADE,
 custid INT NOT NULL,CONSTRAINT fk_cust_11 FOREIGN KEY (custid) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE CASCADE, questiondate datetime not null);
 
 INSERT INTO users(email,password,contactnumber) VALUES ('akashajab12@gmail.com','akash@12',9881571268);
