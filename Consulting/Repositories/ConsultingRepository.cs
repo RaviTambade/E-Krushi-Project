@@ -34,17 +34,14 @@ public class ConsultingRepository : IConsultingRepository
             MySqlDataReader reader = command.ExecuteReader();
             while (await reader.ReadAsync())
             {
-                int Id = int.Parse(reader["question_id"].ToString());
-                DateTime Date = DateTime.Parse(reader["question_date"].ToString());
+                int Id = int.Parse(reader["id"].ToString());
                 string description = reader["description"].ToString();
-                int custId = int.Parse(reader["cust_id"].ToString());
                 int categoryId = int.Parse(reader["category_id"].ToString());
+
                 Question question = new Question()
                 {
                     Id = Id,
-                    Date = Date,
                     Description = description,
-                    CustId = custId,
                     CategoryId = categoryId
                 };
                 questions.Add(question);
@@ -70,24 +67,20 @@ public class ConsultingRepository : IConsultingRepository
         connection.ConnectionString = _conString;
         try
         {
-            string query = "select * from questions where question_id = @id";
+            string query = "select * from questions where id = @id";
             MySqlCommand command = new MySqlCommand(query, connection);
             await connection.OpenAsync();
             command.Parameters.AddWithValue("@id", id);
             MySqlDataReader reader = command.ExecuteReader();
             if (await reader.ReadAsync())
             {
-                int Id = int.Parse(reader["question_id"].ToString());
-                DateTime Date = DateTime.Parse(reader["question_date"].ToString());
+                int Id = int.Parse(reader["id"].ToString());
                 string description = reader["description"].ToString();
-                int custId = int.Parse(reader["cust_id"].ToString());
                 int categoryId = int.Parse(reader["category_id"].ToString());
                 question = new Question
                 {
                     Id = Id,
-                    Date = Date,
                     Description = description,
-                    CustId = custId,
                     CategoryId = categoryId
                 };
             }
@@ -113,23 +106,23 @@ public class ConsultingRepository : IConsultingRepository
         connection.ConnectionString = _conString;
         try
         {
-            string query = "select * from agri_doctors";
+            string query = "select * from subjectmatterexperts";
             MySqlCommand command = new MySqlCommand(query, connection);
             await connection.OpenAsync();
             MySqlDataReader reader = command.ExecuteReader();
 
             while (await reader.ReadAsync())
             {
-                int id = int.Parse(reader["agri_doctor_id"].ToString());
+                int id = int.Parse(reader["id"].ToString());
                 string name = reader["name"].ToString();
-                string specialFor = reader["specialist_for"].ToString();
-                int userId = int.Parse(reader["user_id"].ToString());
+                string expertise = reader["expertise"].ToString();
+                int userId = int.Parse(reader["userid"].ToString());
 
                 SubjectMatterExpert expert = new SubjectMatterExpert()
                 {
                     Id = id,
                     Name = name,
-                    Expertise = specialFor,
+                    Expertise = expertise,
                     UserId = userId
                 };
                 experts.Add(expert);
@@ -156,7 +149,7 @@ public class ConsultingRepository : IConsultingRepository
         try
         {
 
-            string query = "select * from agri_doctors where agri_doctor_id = @id";
+            string query = "select * from subjectmatterexperts where id = @id";
             MySqlCommand command = new MySqlCommand(query, connection);
             await connection.OpenAsync();
             command.Parameters.AddWithValue("@id", id);
@@ -164,17 +157,17 @@ public class ConsultingRepository : IConsultingRepository
             if (await reader.ReadAsync())
             {
 
-                int Id = int.Parse(reader["agri_doctor_id"].ToString());
+                int Id = int.Parse(reader["id"].ToString());
                 string name = reader["name"].ToString();
-                string specialFor = reader["specialist_for"].ToString();
-                int userId = int.Parse(reader["user_id"].ToString());
+                string expertise = reader["expertise"].ToString();
+                int userId = int.Parse(reader["userid"].ToString());
 
                 doctor = new SubjectMatterExpert()
                 {
 
                     Id = Id,
                     Name = name,
-                    Expertise = specialFor,
+                    Expertise = expertise,
                     UserId = userId
                 };
 
@@ -208,18 +201,20 @@ public class ConsultingRepository : IConsultingRepository
         connection.ConnectionString = _conString;
         try
         {
-            string query = "select * from solutions";
+            string query = "select * from answers";
             MySqlCommand command = new MySqlCommand(query, connection);
             await connection.OpenAsync();
             MySqlDataReader reader = command.ExecuteReader();
             while (await reader.ReadAsync())
             {
-                int solutionId = int.Parse(reader["solution_id"].ToString());
+                int Id = int.Parse(reader["id"].ToString());
                 string description = reader["description"].ToString();
+                int questionId = int.Parse(reader["questionid"].ToString());
                 Answer answer = new Answer()
                 {
-                    Id = solutionId,
+                    Id = Id,
                     Description = description,
+                    QuestionId = questionId
                 };
                 answers.Add(answer);
             }
@@ -244,24 +239,20 @@ public class ConsultingRepository : IConsultingRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "select * from questions where category_id = @id";
+            string query = "select * from questions where categoryid = @id";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@id", id);
             MySqlDataReader reader = command.ExecuteReader();
             while (await reader.ReadAsync())
             {
-                int Id = int.Parse(reader["question_id"].ToString());
-                DateTime Date = DateTime.Parse(reader["question_date"].ToString());
+                int Id = int.Parse(reader["id"].ToString());
                 string description = reader["description"].ToString();
-                int custId = int.Parse(reader["cust_id"].ToString());
                 //int categoryId = int.Parse(reader["category_id"].ToString());
                 Question question = new Question
                 {
                     Id = Id,
-                    Date = Date,
                     Description = description,
-                    CustId = custId,
                     CategoryId = id
                 };
                 questions.Add(question);
@@ -282,30 +273,29 @@ public class ConsultingRepository : IConsultingRepository
 
 
 
-    public async Task<List<QuestionAnswer>> QuestionAnswers(int id)
+    public async Task<List<QuestionAnswer>> GetQuestionsRespondedBySME(int id)
     {
         List<QuestionAnswer> questionAnswers = new List<QuestionAnswer>();
         MySqlConnection con = new MySqlConnection();
         con.ConnectionString = _conString;
         try
         {
-            string query = "select agri_doctors.agri_doctor_id,(questions.description) As question,(solutions.description) As answer " +
-                            "from agri_doctors ,solutions,question_solutions Inner join questions on questions.question_id = " +
-                            "question_solutions.question_id where agri_doctors.agri_doctor_id=question_solutions.agri_doctor_id AND " +
-                            "solutions.solution_id= question_solutions.solution_id AND agri_doctors.agri_doctor_id= @agriDoctorId";
+            string query = "select (questions.description) as question,(answers.description) as answer from subjectmatterexperts,smeanswers ," +
+                           "questions inner join answers on questions.id = answers.questionid where answers.id =smeanswers.answerid and subjectmatterexperts.id=smeanswers.smeid and smeanswers.smeid=@smeId";
+
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
-            command.Parameters.AddWithValue("@agriDoctorId", id);
+            command.Parameters.AddWithValue("@smeId", id);
             MySqlDataReader reader = command.ExecuteReader();
             while (await reader.ReadAsync())
             {
                 //int Id= int.Parse(reader["question_id"].ToString());
-                string? question = reader["question"].ToString();
-                string? answer = reader["answer"].ToString();
+                string question = reader["question"].ToString();
+                string answer = reader["answer"].ToString();
 
                 QuestionAnswer questionAnswer = new QuestionAnswer
                 {
-                    Id = id,
+                    SMEId = id,
                     Question = question,
                     Answer = answer
 
@@ -333,9 +323,7 @@ public class ConsultingRepository : IConsultingRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "select (solutions.description) As Answer from solutions,question_solutions Inner join questions on questions.question_id =" +
-                           " question_solutions.question_id where solutions.solution_id= question_solutions.solution_id AND questions.question_id=@questionId";
-
+            string query = "select (description) as answerfrom answers where questionid =@questionId";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@questionId", id);
@@ -364,10 +352,6 @@ public class ConsultingRepository : IConsultingRepository
         }
         return answers;
     }
-
-
-
-
 }
 
 

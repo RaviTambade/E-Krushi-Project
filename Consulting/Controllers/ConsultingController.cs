@@ -99,11 +99,11 @@ public class ConsultingController : ControllerBase
 
     //this method gives question answers particular agri doctor  id. 
     [HttpGet("questions/sme/{id}")]
-    public async Task<List<Question>> GetQuestionsRespondedBySME(int id)
+    public async Task<List<QuestionAnswer>> GetQuestionsRespondedBySME(int id)
     {
 
-        List<Question> questions = await _srv.GetQuestionsRespondedBySME(id);
-        return questions;
+        List<Question> questionAnswers = await _srv.GetQuestionsRespondedBySME(id);
+        return questionAnswers;
 
     }
 
