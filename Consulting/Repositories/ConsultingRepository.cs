@@ -36,7 +36,7 @@ public class ConsultingRepository : IConsultingRepository
             {
                 int Id = int.Parse(reader["id"].ToString());
                 string description = reader["description"].ToString();
-                int categoryId = int.Parse(reader["category_id"].ToString());
+                int categoryId = int.Parse(reader["categoryid"].ToString());
 
                 Question question = new Question()
                 {
@@ -76,7 +76,7 @@ public class ConsultingRepository : IConsultingRepository
             {
                 int Id = int.Parse(reader["id"].ToString());
                 string description = reader["description"].ToString();
-                int categoryId = int.Parse(reader["category_id"].ToString());
+                int categoryId = int.Parse(reader["categoryid"].ToString());
                 question = new Question
                 {
                     Id = Id,
@@ -273,7 +273,7 @@ public class ConsultingRepository : IConsultingRepository
 
 
 
-    public async Task<List<QuestionAnswer>> GetQuestionsRespondedBySME(int id)
+    public async Task<List<QuestionAnswer>> GetQuestionAnswers(int id)
     {
         List<QuestionAnswer> questionAnswers = new List<QuestionAnswer>();
         MySqlConnection con = new MySqlConnection();
@@ -323,7 +323,7 @@ public class ConsultingRepository : IConsultingRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "select (description) as answerfrom answers where questionid =@questionId";
+            string query = "select (description) as answer from answers where questionid =@questionId";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@questionId", id);
@@ -352,6 +352,8 @@ public class ConsultingRepository : IConsultingRepository
         }
         return answers;
     }
+
+    
 }
 
 
