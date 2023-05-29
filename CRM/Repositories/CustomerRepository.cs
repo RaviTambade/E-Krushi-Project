@@ -8,7 +8,7 @@ namespace KrushiProject.Repositories
       
     public class CustomerRepository : ICustomerRepository
     {
-        public static string conString = "server=localhost; port=3306; user=root; password=PASSWORD; database=ekrushi";
+        public static string conString = "server=localhost; port=3306; user=root; password=Password; database=ekrushi";
        
 
         public List<Customer> GetAllCustomers()
@@ -118,7 +118,7 @@ namespace KrushiProject.Repositories
             con.ConnectionString = conString;
             try
             {
-                string query = "update customers set firstname=@firstName, lastname=@lastName,userid = @userId  Where cust_id= @customerId" ;
+                string query = "update customers set firstname=@firstName, lastname=@lastName,userid = @userId  Where id= @customerId" ;
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@customerId",customer.Id);
                 cmd.Parameters.AddWithValue("@firstName",customer.FirstName);
