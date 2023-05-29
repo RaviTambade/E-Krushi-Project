@@ -353,6 +353,48 @@ public class ConsultingRepository : IConsultingRepository
         return answers;
     }
 
+
+
+    public async Task<List<SmeQuestion>> getQuestionsRespondedBySME(int id)
+    {
+
+      List<SmeQuestion> questions = new  List<SmeQuestion>();
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _conString;
+        try
+        {
+            string query = "select questions.description from questions Inner join smeanswers on questions.id = smeanswers.questionid where smeanswers.smeid=@id;";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            await connection.OpenAsync();
+            command.Parameters.AddWithValue("@id", id);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+               
+                string description = reader["description"].ToString();
+               
+             SmeQuestion question = new SmeQuestion
+                {
+    
+                    Question = description
+                  
+                };
+                questions.Add(question);
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception ee)
+        {
+
+            throw ee;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+        return questions;
+    }
+
     
 }
 

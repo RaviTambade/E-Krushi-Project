@@ -117,4 +117,17 @@ public class ConsultingController : ControllerBase
         return answers;
 
     }
+
+
+    //questions solved by particular sme
+
+
+     [HttpGet("smequestions/{id}")]
+    public async Task<List<SmeQuestion>> getQuestionsRespondedBySME(int id)
+    {
+
+        List<SmeQuestion> questions = await _srv.getQuestionsRespondedBySME(id);
+        return questions;
+
+    }
 }

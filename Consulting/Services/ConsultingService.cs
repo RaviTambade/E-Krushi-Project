@@ -20,5 +20,5 @@ public class ConsultingService:IConsultingService{
     public async Task<List<QuestionAnswer>> GetQuestionAnswers(int id) => await _repo.GetQuestionAnswers(id);
     public async Task<List<Solution>> Answers(int id) => await _repo.Answers(id);
 
-   
+   public async Task<List<SmeQuestion>> getQuestionsRespondedBySME(int id) => await _repo.getQuestionsRespondedBySME(id);
 }
