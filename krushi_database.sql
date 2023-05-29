@@ -75,7 +75,8 @@ questionid INT NOT NULL,CONSTRAINT fkcategory12 FOREIGN KEY (questionid) REFEREN
 CREATE TABLE subjectmatterexperts(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,name VARCHAR(40),expertise VARCHAR(40),userid INT NOT NULL,
 CONSTRAINT fkuser11 FOREIGN KEY (userid) REFERENCES users(id));
 
-CREATE TABLE smeanswers(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,answerid INT NOT NULL,CONSTRAINT fkuser21 FOREIGN KEY (answerid) REFERENCES answers(id),answerdate datetime not null,smeid INT NOT NULL,
+CREATE TABLE smeanswers(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,answerid INT NOT NULL,CONSTRAINT fkuser21 FOREIGN KEY (answerid) REFERENCES answers(id)ON UPDATE CASCADE ON DELETE CASCADE,
+questionid INT NOT NULL,CONSTRAINT fkusen21 FOREIGN KEY (questionid) REFERENCES questions(id) ON UPDATE CASCADE ON DELETE CASCADE,answerdate datetime not null,smeid INT NOT NULL,
 CONSTRAINT fkuser22 FOREIGN KEY (smeid) REFERENCES subjectmatterexperts(id));
 
 CREATE TABLE customerquestions(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,questionid INT NOT NULL ,CONSTRAINT fkques FOREIGN KEY(questionid) REFERENCES questions(id) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -352,11 +353,11 @@ INSERT INTO subjectmatterexperts(name,expertise,userid) VALUES('mayur gorade','W
 
 
 
-INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (1,'2023-04-05 12:08:06',1);
-INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (1,'2023-06-05 12:20:19',1);
-INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (2,'2023-07-10 12:23:08',2);
-INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (2,'2023-08-25 12:34:20',2);
-INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (3,'2023-09-15 12:40:30',3);
+INSERT INTO smeanswers(answerid,questionid,answerdate,smeid) VALUES (1,1,'2023-04-05 12:08:06',1);
+INSERT INTO smeanswers(answerid,questionid,answerdate,smeid) VALUES (1,1,'2023-06-05 12:20:19',1);
+INSERT INTO smeanswers(answerid,questionid,answerdate,smeid) VALUES (2,1,'2023-07-10 12:23:08',2);
+INSERT INTO smeanswers(answerid,questionid,answerdate,smeid) VALUES (2,1,'2023-08-25 12:34:20',2);
+INSERT INTO smeanswers(answerid,questionid,answerdate,smeid) VALUES (3,1,'2023-09-15 12:40:30',3);
 
 
 
@@ -569,12 +570,19 @@ select * from solutions;
 -- This query gives all questions where category_id =1
 select * from questions where categoryid=1;
 
--- This query gives paricular agridoctor questions, answers 
-select agridoctors.id,(questions.description) As question,(solutions.description) As answer
-from agridoctors ,solutions,questionsolutions Inner join questions on questions.id = 
-questionsolutions.questionid where agridoctors.id=question_solutions.agridoctorid AND 
-solutions.id= questionsolutions.solutionid AND agridoctors.id=2;
+select * from subjectmatterexperts;
+select * from questions;
+select * from answers;
+select * from smeanswers;
+select * from customerquestions;
 
--- This query gives the solution where question_id=1
-select (solutions.description) As Answer from solutions,questionsolutions Inner join questions on questions.id = 
-questionsolutions.questionid where solutions.id= questionsolutions.solutionid AND questions.id=1;
+-- this query gives all questions of particular smeid
+select questions.description from questions Inner join smeanswers on questions.id = smeanswers.questionid where smeanswers.smeid=3;
+
+-- this query gives all questions ,answers of particular smeid
+select questions.description,answers.description from subjectmatterexperts,smeanswers ,questions inner join answers on questions.id = answers.questionid where
+answers.id =smeanswers.answerid and subjectmatterexperts.id=smeanswers.smeid and smeanswers.smeid=1;
+
+-- This method gives answers  of particular provided question id.
+select description from answers where questionid =1;
+
