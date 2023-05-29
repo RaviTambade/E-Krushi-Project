@@ -74,10 +74,10 @@ public class ConsultingController : ControllerBase
 
     //This method gives all Question list of particular catagoryid.
     [HttpGet("Questions/Catagory/{id}")]
-    public async Task<List<Question>> Category(int id)
+    public async Task<List<Question>> listOfCategoryQuestions(int id)
     {
 
-        List<Question> category = await _srv.getCategory(id);
+        List<Question> category = await _srv.listOfCategoryQuestions(id);
         return category;
 
     }
@@ -139,6 +139,15 @@ public class ConsultingController : ControllerBase
 
         List<QuestionCategory> categories = await _srv.getAllCategories();
         return categories;
+
+    }
+
+     [HttpGet("catagory/question/{id}")]
+    public async Task<QuestionCategory> getQuestionCategory(int id)
+    {
+
+        QuestionCategory category = await _srv.getQuestionCategory(id);
+        return category;
 
     }
 

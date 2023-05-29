@@ -232,7 +232,7 @@ public class ConsultingRepository : IConsultingRepository
         return answers;
     }
 
-    public async Task<List<Question>> getCategory(int id)
+    public async Task<List<Question>> listOfCategoryQuestions(int id)
     {
         List<Question> questions = new List<Question>();
         MySqlConnection con = new MySqlConnection();
@@ -444,6 +444,44 @@ public class ConsultingRepository : IConsultingRepository
 
      }   
    
+
+
+   public async Task<QuestionCategory> getQuestionCategory(int id){
+         QuestionCategory Category = new QuestionCategory();
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = _conString;
+        try
+        {
+            string query = "select id,category from questioncategories where id in(select id from questions where id=@id);";
+            await con.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, con);
+            command.Parameters.AddWithValue("@id", id);
+            MySqlDataReader reader = command.ExecuteReader();
+            if (await reader.ReadAsync())
+            {
+                int Id = int.Parse(reader["id"].ToString());
+                string category= reader["category"].ToString();
+                //int categoryId = int.Parse(reader["category_id"].ToString());
+             Category = new QuestionCategory
+                {
+                    Id = Id,
+                    Category = category
+                };
+                
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception ee)
+        {
+            throw ee;
+        }
+        finally
+        {
+            await con.CloseAsync();
+        }
+        return Category;
+    }
+
    
 }
 
