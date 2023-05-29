@@ -23,7 +23,7 @@ public class ConsultingController : ControllerBase
     public async Task<List<Question>> Questions()
     {
 
-        List<Question> questions = await _srv.Questions();
+        List<Question> questions = await _srv.getAllQuestions();
 
         return questions;
     }
@@ -35,7 +35,7 @@ public class ConsultingController : ControllerBase
     public async Task<Question> Question(int id)
     {
 
-        Question question = await _srv.Question(id);
+        Question question = await _srv.getQuestion(id);
 
         return question;
     }
@@ -52,7 +52,7 @@ public class ConsultingController : ControllerBase
     public async Task<List<SubjectMatterExpert>> Experts()
     {
 
-        List<SubjectMatterExpert> experts = await _srv.Experts();
+        List<SubjectMatterExpert> experts = await _srv.getAllExperts();
 
         return experts;
     }
@@ -66,7 +66,7 @@ public class ConsultingController : ControllerBase
     public async Task<List<Answer>> Answers()
     {
 
-        List<Answer> answers = await _srv.Answers();
+        List<Answer> answers = await _srv.getAllAnswers();
 
         return answers;
     }
@@ -77,7 +77,7 @@ public class ConsultingController : ControllerBase
     public async Task<List<Question>> Category(int id)
     {
 
-        List<Question> category = await _srv.Category(id);
+        List<Question> category = await _srv.getCategory(id);
         return category;
 
     }
@@ -90,7 +90,7 @@ public class ConsultingController : ControllerBase
     public async Task<SubjectMatterExpert> Expert(int id)
     {
 
-        SubjectMatterExpert expert = await _srv.Expert(id);
+        SubjectMatterExpert expert = await _srv.getExpert(id);
 
         return expert;
     }
@@ -98,11 +98,11 @@ public class ConsultingController : ControllerBase
 
 
     //this method gives question answers particular agri doctor  id. 
-    [HttpGet("questions/sme/{id}")]
-    public async Task<List<QuestionAnswer>> GetQuestionsRespondedBySME(int id)
+    [HttpGet("questionsanswers/sme/{id}")]
+    public async Task<List<QuestionAnswer>> GetQuestionAnswers(int id)
     {
 
-        List<Question> questionAnswers = await _srv.GetQuestionsRespondedBySME(id);
+        List<QuestionAnswer> questionAnswers = await _srv.getQuestionAnswers(id);
         return questionAnswers;
 
     }
@@ -113,8 +113,21 @@ public class ConsultingController : ControllerBase
     public async Task<List<Solution>> Answers(int id)
     {
 
-        List<Solution> answers = await _srv.Answers(id);
+        List<Solution> answers = await _srv.getAnswers(id);
         return answers;
+
+    }
+
+
+    //questions solved by particular sme
+
+
+     [HttpGet("smequestions/{id}")]
+    public async Task<List<SmeQuestion>> getQuestionsRespondedBySME(int id)
+    {
+
+        List<SmeQuestion> questions = await _srv.getQuestionsRespondedBySME(id);
+        return questions;
 
     }
 }

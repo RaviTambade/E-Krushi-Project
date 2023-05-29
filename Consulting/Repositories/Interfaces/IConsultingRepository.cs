@@ -2,16 +2,17 @@ using E_krushiApp.Models;
 namespace E_krushiApp.Repository.Interface;
 public interface IConsultingRepository{
 
-    Task<List<Question>> Questions();
-    Task<Question> Question(int id);
-    Task<List<Answer>> Answers(); 
-    public Task<List<SubjectMatterExpert>> Experts();
-    public Task<SubjectMatterExpert> Expert(int id);
+    Task<List<Question>> getAllQuestions();
+    Task<Question> getQuestion(int id);
+    Task<List<Answer>> getAllAnswers(); 
+    public Task<List<SubjectMatterExpert>> getAllExperts();
+    public Task<SubjectMatterExpert> getExpert(int id);
     
-    Task<List<Question>> Category(int id);
+    Task<List<Question>> getCategory(int id);
 
-    Task<List<QuestionAnswer>> QuestionAnswers(int id);
+    Task<List<QuestionAnswer>> getQuestionAnswers(int id);
 
-     Task<List<Solution>> Answers(int id);
+     Task<List<Solution>> getAnswers(int id);
     
+    Task<List<SmeQuestion>> getQuestionsRespondedBySME(int id);
 }

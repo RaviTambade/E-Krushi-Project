@@ -18,7 +18,7 @@ public class ConsultingRepository : IConsultingRepository
     }
 
 
-    public async Task<List<Question>> Questions()
+    public async Task<List<Question>> getAllQuestions()
     {
 
         List<Question> questions = new List<Question>();
@@ -36,7 +36,7 @@ public class ConsultingRepository : IConsultingRepository
             {
                 int Id = int.Parse(reader["id"].ToString());
                 string description = reader["description"].ToString();
-                int categoryId = int.Parse(reader["category_id"].ToString());
+                int categoryId = int.Parse(reader["categoryid"].ToString());
 
                 Question question = new Question()
                 {
@@ -59,7 +59,7 @@ public class ConsultingRepository : IConsultingRepository
         return questions;
     }
 
-    public async Task<Question> Question(int id)
+    public async Task<Question> getQuestion(int id)
     {
 
         Question question = new Question();
@@ -76,7 +76,7 @@ public class ConsultingRepository : IConsultingRepository
             {
                 int Id = int.Parse(reader["id"].ToString());
                 string description = reader["description"].ToString();
-                int categoryId = int.Parse(reader["category_id"].ToString());
+                int categoryId = int.Parse(reader["categoryid"].ToString());
                 question = new Question
                 {
                     Id = Id,
@@ -99,7 +99,7 @@ public class ConsultingRepository : IConsultingRepository
     }
 
 
-    public async Task<List<SubjectMatterExpert>> Experts()
+    public async Task<List<SubjectMatterExpert>> getAllExperts()
     {
         List<SubjectMatterExpert> experts = new List<SubjectMatterExpert>();
         MySqlConnection connection = new MySqlConnection();
@@ -140,7 +140,7 @@ public class ConsultingRepository : IConsultingRepository
         }
         return experts;
     }
-    public async Task<SubjectMatterExpert> Expert(int id)
+    public async Task<SubjectMatterExpert> getExpert(int id)
     {
         SubjectMatterExpert doctor = new SubjectMatterExpert();
         MySqlConnection connection = new MySqlConnection();
@@ -194,7 +194,7 @@ public class ConsultingRepository : IConsultingRepository
 
 
 
-    public async Task<List<Answer>> Answers()
+    public async Task<List<Answer>> getAllAnswers()
     {
         List<Answer> answers = new List<Answer>();
         MySqlConnection connection = new MySqlConnection();
@@ -232,7 +232,7 @@ public class ConsultingRepository : IConsultingRepository
         return answers;
     }
 
-    public async Task<List<Question>> Category(int id)
+    public async Task<List<Question>> getCategory(int id)
     {
         List<Question> questions = new List<Question>();
         MySqlConnection con = new MySqlConnection();
@@ -273,7 +273,7 @@ public class ConsultingRepository : IConsultingRepository
 
 
 
-    public async Task<List<QuestionAnswer>> GetQuestionsRespondedBySME(int id)
+    public async Task<List<QuestionAnswer>> getQuestionAnswers(int id)
     {
         List<QuestionAnswer> questionAnswers = new List<QuestionAnswer>();
         MySqlConnection con = new MySqlConnection();
@@ -316,14 +316,14 @@ public class ConsultingRepository : IConsultingRepository
     }
 
 
-    public async Task<List<Solution>> Answers(int id)
+    public async Task<List<Solution>> getAnswers(int id)
     {
         List<Solution> answers = new List<Solution>();
         MySqlConnection con = new MySqlConnection();
         con.ConnectionString = _conString;
         try
         {
-            string query = "select (description) as answerfrom answers where questionid =@questionId";
+            string query = "select (description) as answer from answers where questionid =@questionId";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@questionId", id);
@@ -352,6 +352,50 @@ public class ConsultingRepository : IConsultingRepository
         }
         return answers;
     }
+
+
+
+    public async Task<List<SmeQuestion>> getQuestionsRespondedBySME(int id)
+    {
+
+      List<SmeQuestion> questions = new  List<SmeQuestion>();
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _conString;
+        try
+        {
+            string query = "select questions.description from questions Inner join smeanswers on questions.id = smeanswers.questionid where smeanswers.smeid=@id;";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            await connection.OpenAsync();
+            command.Parameters.AddWithValue("@id", id);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+               
+                string description = reader["description"].ToString();
+               
+             SmeQuestion question = new SmeQuestion
+                {
+    
+                    Question = description
+                  
+                };
+                questions.Add(question);
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception ee)
+        {
+
+            throw ee;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+        return questions;
+    }
+
+   
 }
 
 
