@@ -11,14 +11,14 @@ public class ConsultingService:IConsultingService{
         _repo=repo;
     }
 
-    public async Task<List<Question>> Questions() => await _repo.Questions();
-    public async Task<Question> Question(int id) => await _repo.Question(id);
-    public async Task<List<Answer>> Answers() => await _repo.Answers(); 
-    public async Task<List<SubjectMatterExpert>> Experts()=> await _repo.Experts();
-    public async Task<List<Question>> Category(int id) => await _repo.Category(id);
-    public async Task<SubjectMatterExpert> Expert(int id) => await _repo.Expert(id);
-    public async Task<List<QuestionAnswer>> GetQuestionAnswers(int id) => await _repo.GetQuestionAnswers(id);
-    public async Task<List<Solution>> Answers(int id) => await _repo.Answers(id);
+    public async Task<List<Question>> getAllQuestions() => await _repo.getAllQuestions();
+    public async Task<Question> getQuestion(int id) => await _repo.getQuestion(id);
+    public async Task<List<Answer>> getAllAnswers() => await _repo.getAllAnswers(); 
+    public async Task<List<SubjectMatterExpert>> getAllExperts()=> await _repo.getAllExperts();
+    public async Task<List<Question>> getCategory(int id) => await _repo.getCategory(id);
+    public async Task<SubjectMatterExpert> getExpert(int id) => await _repo.getExpert(id);
+    public async Task<List<QuestionAnswer>> getQuestionAnswers(int id) => await _repo.getQuestionAnswers(id);
+    public async Task<List<Solution>> getAnswers(int id) => await _repo.getAnswers(id);
 
    public async Task<List<SmeQuestion>> getQuestionsRespondedBySME(int id) => await _repo.getQuestionsRespondedBySME(id);
 }
