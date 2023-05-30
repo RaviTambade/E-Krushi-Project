@@ -16,7 +16,7 @@ public class OrderDetailsRepository : IOrderDetailsRepository
         _conString = this._configuration.GetConnectionString("DefaultConnection");
     }
 
-    public async Task<List<OrderDetails>> OrderDetails()
+    public async Task<List<OrderDetails>> GetAllOrderDetails()
     {
         List<OrderDetails> orderDetails = new List<OrderDetails>();
         MySqlConnection con = new MySqlConnection();
@@ -58,7 +58,7 @@ public class OrderDetailsRepository : IOrderDetailsRepository
         return orderDetails;
     }
 
-    public async Task<OrderDetails> OrderDetail(int id)
+    public async Task<OrderDetails> GetOrderDetail(int id)
     {
         OrderDetails orderDetail = new OrderDetails();
         MySqlConnection con = new MySqlConnection();

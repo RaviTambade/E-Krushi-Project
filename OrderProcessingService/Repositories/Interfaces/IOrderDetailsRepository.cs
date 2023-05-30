@@ -4,9 +4,9 @@ namespace OrderProcessingService.Repositories.Interfaces;
 
 public interface IOrderDetailsRepository{
 
-    Task<List<OrderDetails>> OrderDetails();
+    Task<List<OrderDetails>> GetAllOrderDetails();
 
-    Task<OrderDetails> OrderDetail(int id);
+    Task<OrderDetails> GetOrderDetail(int id);
     
     Task<bool> Insert(OrderDetails orderDetail);
 

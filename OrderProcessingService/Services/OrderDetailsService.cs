@@ -13,9 +13,9 @@ public class OrderDetailsService : IOrderDetailsService{
     }
 
   
-    public async Task<List<OrderDetails>> OrderDetails() => await _repo.OrderDetails();
+    public async Task<List<OrderDetails>> GetAllOrderDetails() => await _repo.GetAllOrderDetails();
 
-    public async Task<OrderDetails> OrderDetail(int id) => await _repo.OrderDetail(id);
+    public async Task<OrderDetails> GetOrderDetail(int id) => await _repo.GetOrderDetail(id);
 
     public async Task<bool> Insert(OrderDetails orderDetail)=> await _repo.Insert(orderDetail);
 

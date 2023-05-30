@@ -17,16 +17,16 @@ namespace OrderProcessingService.Controllers
         } 
 
         [HttpGet("orderdetails")]
-        public async Task<IEnumerable<OrderDetails>> OrderDetails()
+        public async Task<IEnumerable<OrderDetails>> GetAllOrderDetails()
         {
-            List<OrderDetails> orderDetails = await _ordersvc.OrderDetails();
+            List<OrderDetails> orderDetails = await _ordersvc.GetAllOrderDetails();
             return orderDetails;
         }
 
         [HttpGet("getorderDetails/{id}")]
-        public async Task<OrderDetails> OrderDetail(int id)
+        public async Task<OrderDetails> GetOrderDetail(int id)
         {
-            OrderDetails orderDetail = await _ordersvc.OrderDetail(id);
+            OrderDetails orderDetail = await _ordersvc.GetOrderDetail(id);
             return orderDetail;
         }
 
@@ -40,7 +40,7 @@ namespace OrderProcessingService.Controllers
         [HttpPut("update/{id}")]
         public async Task<bool> Update(int id,[FromBody] OrderDetails orderDetail)
         {
-            OrderDetails oldOrderDetail = await _ordersvc.OrderDetail(id);
+            OrderDetails oldOrderDetail = await _ordersvc.GetOrderDetail(id);
             if(oldOrderDetail.Id==0)
             {
                 return false;
