@@ -13,7 +13,7 @@ public class CategoryService : ICategoryService{
         _repo = repo;
     }
 
-    public async  Task<List<Category>> Categories() =>await _repo.Categories();
+    public async  Task<List<Category>> GetAllCategories() =>await _repo.GetAllCategories();
     public async Task<Category> GetCategory(int id) =>await _repo.GetCategory(id);
     public async Task<bool> Insert(Category category) =>await _repo.Insert(category);
     public async Task<bool> Update(Category category) =>await _repo.Update(category);

@@ -13,7 +13,7 @@ public class ProductService : IProductService{
         _repo = repo;
     }
 
-    public async Task<List<Product>> Products() => await _repo.Products();
+    public async Task<List<Product>> GetAllProducts() => await _repo.GetAllProducts();
 
     public async Task<Product> GetProduct(int id) =>await _repo.GetProduct(id);
 

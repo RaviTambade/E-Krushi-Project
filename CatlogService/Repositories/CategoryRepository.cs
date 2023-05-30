@@ -16,7 +16,7 @@ public class CategoryRepository : ICategoryRepository
     }
        
 
-        public async Task<List<Category>> Categories()
+        public async Task<List<Category>> GetAllCategories()
         {
             List<Category> categories = new List<Category>();
             MySqlConnection con = new MySqlConnection();

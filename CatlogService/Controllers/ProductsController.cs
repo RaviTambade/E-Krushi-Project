@@ -18,9 +18,9 @@ public class ProductsController : ControllerBase
 
     [HttpGet]
     [Route("products")]
-    public async Task<List<Product>> Products()
+    public async Task<List<Product>> GetAllProducts()
     {
-        List<Product> products = await _service.Products();
+        List<Product> products = await _service.GetAllProducts();
         return products;
     }
 

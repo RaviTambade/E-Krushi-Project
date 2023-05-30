@@ -4,7 +4,7 @@ namespace CatlogService.Repositories.Interfaces;
 
 public interface IProductRepository{
 
-    Task<List<Product>> Products();
+    Task<List<Product>> GetAllProducts();
     Task<Product> GetProduct(int id);
     Task<bool> Insert(Product product);
     Task<bool> Update(Product product);

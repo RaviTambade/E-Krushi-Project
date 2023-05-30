@@ -14,7 +14,7 @@ namespace CatlogService.Repositories
         _conString = this._configuration.GetConnectionString("DefaultConnection");
     }
 
-        public async Task<List<Product>> Products()
+        public async Task<List<Product>> GetAllProducts()
         {
             List<Product> products = new List<Product>();
             MySqlConnection con = new MySqlConnection();

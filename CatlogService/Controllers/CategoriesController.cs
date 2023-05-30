@@ -18,9 +18,9 @@ public class CategoriesController : ControllerBase
 
     [HttpGet]
     [Route("Categories")]
-    public async Task<IEnumerable<Category>> Categories()
+    public async Task<IEnumerable<Category>> GetAllCategories()
     {
-        List<Category> categories = await _service.Categories();
+        List<Category> categories = await _service.GetAllCategories();
         return categories;
     }
 
