@@ -35,7 +35,7 @@ CONSTRAINT fk02 FOREIGN KEY (cartid) REFERENCES carts(id)ON UPDATE CASCADE ON DE
 productid INT NOT NULL,CONSTRAINT fk03 FOREIGN KEY (productid) REFERENCES products(id) ,quantity INT NOT NULL); 
 
 CREATE TABLE payments(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,date DATETIME NOT NULL , 
-mode ENUM('cash on delivery','online payment'),userid INT NOT NULL,CONSTRAINT fkuserid5 FOREIGN KEY (userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+mode ENUM('cash on delivery','online payment'),transactionid INT NOT NULL,userid INT NOT NULL,CONSTRAINT fkuserid5 FOREIGN KEY (userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
 orderid INT NOT NULL,CONSTRAINT fkorderid FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE);
 
 CREATE TABLE employees(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,firstname VARCHAR(255),lastname VARCHAR(250),birthdate DATE ,
@@ -76,10 +76,10 @@ CONSTRAINT fkuser22 FOREIGN KEY (smeid) REFERENCES subjectmatterexperts(id));
 CREATE TABLE customerquestions(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,questionid INT NOT NULL ,CONSTRAINT fkques FOREIGN KEY(questionid) REFERENCES questions(id) ON UPDATE CASCADE ON DELETE CASCADE,
 custid INT NOT NULL,CONSTRAINT fk_cust_11 FOREIGN KEY (custid) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE CASCADE, questiondate datetime not null);
 
-INSERT INTO users(email,password,contactnumber) VALUES ('akashajab12@gmail.com','akash@12',9881571268);
-INSERT INTO users(email,password,contactnumber) VALUES ('pragatibangar@gmail.com','pragati@12',7498035692);
+INSERT INTO users(email,password,contactnumber) VALUES ('akashajab@gmail.com','akash@12',9089777678);
+INSERT INTO users(email,password,contactnumber) VALUES ('sahil@gmail.com','sahil@12',9067894590);
 INSERT INTO users(email,password,contactnumber) VALUES ('akshaytanpure@gmail.com','akshay@12',9881571271);
-INSERT INTO users(email,password,contactnumber) VALUES ('abhaynavale@gmail.com','abhay@12',9881571272);
+INSERT INTO users(email,password,contactnumber) VALUES ('vedantyadav@gmail.com','vedant@12',9089898078);
 INSERT INTO users(email,password,contactnumber) VALUES ('rohitgore@gmail.com','rohit@12',9881571273);
 INSERT INTO users(email,password,contactnumber) VALUES ('rushikeshchikne@gmail.com','rushikesh12',9881571274);
 INSERT INTO users(email,password,contactnumber) VALUES ('shubham@gmail.com','shubham@12',9881571275);
@@ -115,9 +115,9 @@ select * from products;
 
 -- CUSTOMERS DATA
 INSERT INTO customers(firstname,lastname,userid) VALUES('akash','ajab',1);                       
-INSERT INTO customers(firstname,lastname,userid) VALUES('pragati','bangar',2);
+INSERT INTO customers(firstname,lastname,userid) VALUES('sahil','mankar',2);
 INSERT INTO customers(firstname,lastname,userid) VALUES('akshay','tanpure',3);             
-INSERT INTO customers(firstname,lastname,userid) VALUES('abhay','navale',4);     
+INSERT INTO customers(firstname,lastname,userid) VALUES('vedant','yadav',4);     
 INSERT INTO customers(firstname,lastname,userid) VALUES('rohit','gore',5);     
 INSERT INTO customers(firstname,lastname,userid) VALUES('rushikesh','chikne',6);                       
 INSERT INTO customers(firstname,lastname,userid) VALUES('shubham','teli',7);
@@ -236,12 +236,12 @@ INSERT INTO cartitems(cartid,productid ,quantity) VALUES(4,3,201);
 
 
 -- PAYMENTS DATA
-INSERT INTO payments(date,mode,userid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery',1,1);
-INSERT INTO payments(date,mode,userid,orderid)  VALUES('2022-03-08 12:08:19','online payment',2,1);
-INSERT INTO payments(date,mode,userid,orderid)  VALUES('2022-03-08 12:08:19','cash on delivery',3,2);
-INSERT INTO payments(date,mode,userid,orderid)  VALUES('2022-03-08 12:08:19','online payment',4,3);
-INSERT INTO payments(date,mode,userid,orderid)  VALUES('2022-03-08 12:08:19','cash on delivery',9,4);
-INSERT INTO payments(date,mode,userid,orderid)  VALUES('2022-06-10 12:45:30','cash on delivery',7,2);
+INSERT INTO payments(date,mode,transactionid,userid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery',1,1,1);
+INSERT INTO payments(date,mode,transactionid,userid,orderid)  VALUES('2022-03-08 12:08:19','online payment',2,4,1);
+INSERT INTO payments(date,mode,transactionid,userid,orderid)  VALUES('2022-03-08 12:08:19','cash on delivery',2,4,2);
+INSERT INTO payments(date,mode,transactionid,userid,orderid)  VALUES('2022-03-08 12:08:19','online payment',2,4,3);
+INSERT INTO payments(date,mode,transactionid,userid,orderid)  VALUES('2022-03-08 12:08:19','cash on delivery',3,2,4);
+INSERT INTO payments(date,mode,transactionid,userid,orderid)  VALUES('2022-06-10 12:45:30','cash on delivery',3,2,2);
 
 
 -- ADDRESS DATA
