@@ -115,7 +115,7 @@ INSERT INTO roles(role) VALUES ('Customer');
 INSERT INTO roles(role) VALUES ('Employee');
 INSERT INTO roles(role) VALUES ('Supplier');
 INSERT INTO roles(role) VALUES ('Shipper');
-INSERT INTO roles(role) VALUES ('agri_doctors');
+INSERT INTO roles(role) VALUES ('SubjectMatterExpert');
 
 select * from products;
 
