@@ -8,7 +8,7 @@ public interface IConsultingRepository{
     public Task<List<SubjectMatterExpert>> getAllExperts();
     public Task<SubjectMatterExpert> getExpert(int id);
     
-    Task<List<Question>> getCategory(int id);
+    Task<List<Question>> listOfCategoryQuestions(int id);
 
     Task<List<QuestionAnswer>> getQuestionAnswers(int id);
 
@@ -17,4 +17,5 @@ public interface IConsultingRepository{
     Task<List<SmeQuestion>> getQuestionsRespondedBySME(int id);
 
     Task<List<QuestionCategory>> getAllCategories();
+    Task<QuestionCategory> getQuestionCategory(int id);
 }

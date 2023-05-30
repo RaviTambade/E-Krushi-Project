@@ -1,4 +1,4 @@
--- drop database ekrushi;
+--  drop database ekrushi;
 CREATE DATABASE ekrushi;
 USE ekrushi;
 
@@ -49,7 +49,7 @@ CREATE TABLE suppliers(id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY, companyname v
 address varchar(50),city VARCHAR(50),state VARCHAR(40),
 userid INT NOT NULL,CONSTRAINT fkuserid09 FOREIGN KEY (userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE);
 
-CREATE TABLE accounts(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, acctnumber varchar(250) UNIQUE,ifsccode varchar(250),registerdate DATETIME, userid INT NOT NULL,
+CREATE TABLE accounts(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, number varchar(250) UNIQUE,ifsccode varchar(250),registerdate DATETIME, userid INT NOT NULL,
  CONSTRAINT fkuserid1 FOREIGN KEY (userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE);
 
 CREATE TABLE transactions(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
@@ -291,16 +291,16 @@ INSERT INTO userroles(userid,roleid) VALUES (1,1);
 INSERT INTO userroles(userid,roleid) VALUES (1,1);
 
 -- ACCOUNTS DATA
-INSERT INTO accounts(acctnumber,ifsccode,registerdate,userid) VALUES('4105031201','KOTAK000286','2022-04-05  01:02:03',1);
-INSERT INTO accounts(acctnumber,ifsccode,registerdate,userid) VALUES('4105031202','ICICI000286','2022-11-25  01:12:03',1);
-INSERT INTO accounts(acctnumber,ifsccode,registerdate,userid) VALUES('4105031203','MAHB0000286','2022-12-30  11:02:03',3);
-INSERT INTO accounts(acctnumber,ifsccode,registerdate,userid) VALUES('4105031204','PDCC0000286','2022-05-10  12:02:03',2);
-INSERT INTO accounts(acctnumber,ifsccode,registerdate,userid) VALUES('4105031205','SBIB0000286','2022-09-07  06:02:03',2);
-INSERT INTO accounts(acctnumber,ifsccode,registerdate,userid) VALUES('4105031206','AXIS0000286','2022-11-03  07:02:03',4);
-INSERT INTO accounts(acctnumber,ifsccode,registerdate,userid) VALUES('4105031207','BARB0000286','2022-10-20  08:02:03',7);
-INSERT INTO accounts(acctnumber,ifsccode,registerdate,userid) VALUES('4105031208','BARB0000286','2022-10-10  08:02:03',7);
-INSERT INTO accounts(acctnumber,ifsccode,registerdate,userid) VALUES('4105031209','BARB0000286','2022-10-10  08:02:03',7);
-INSERT INTO accounts(acctnumber,ifsccode,registerdate,userid) VALUES('4105031210','AXIS0000286','2022-09-08  08:50:03',5);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031201','KOTAK000286','2022-04-05  01:02:03',1);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031202','ICICI000286','2022-11-25  01:12:03',1);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031203','MAHB0000286','2022-12-30  11:02:03',3);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031204','PDCC0000286','2022-05-10  12:02:03',2);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031205','SBIB0000286','2022-09-07  06:02:03',2);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031206','AXIS0000286','2022-11-03  07:02:03',4);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031207','BARB0000286','2022-10-20  08:02:03',7);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031208','BARB0000286','2022-10-10  08:02:03',7);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031209','BARB0000286','2022-10-10  08:02:03',7);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031210','AXIS0000286','2022-09-08  08:50:03',5);
 
 select * from accounts;
 
@@ -577,12 +577,16 @@ select * from smeanswers;
 select * from customerquestions;
 
 -- this query gives all questions of particular smeid
-select questions.description from questions Inner join smeanswers on questions.id = smeanswers.questionid where smeanswers.smeid=3;
+select questions.description from questions Inner join smeanswers on questions.id = smeanswers.questionid where smeanswers.smeid=1;
 
 -- this query gives all questions ,answers of particular smeid
-select questions.description,answers.description from subjectmatterexperts,smeanswers ,questions inner join answers on questions.id = answers.questionid where
+select questions.description from subjectmatterexperts,smeanswers ,questions inner join answers on questions.id = answers.questionid where
 answers.id =smeanswers.answerid and subjectmatterexperts.id=smeanswers.smeid and smeanswers.smeid=1;
 
 -- This method gives answers  of particular provided question id.
 select description from answers where questionid =1;
 
+
+-- this query returns question catagory of provided questionid;
+
+select category from questioncategories where id in(select id from questions where id=1);

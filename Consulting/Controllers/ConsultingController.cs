@@ -20,7 +20,7 @@ public class ConsultingController : ControllerBase
     //This method gives question List.
     [HttpGet("questions")]
 
-    public async Task<List<Question>> Questions()
+    public async Task<List<Question>> getAllQuestions()
     {
 
         List<Question> questions = await _srv.getAllQuestions();
@@ -32,7 +32,7 @@ public class ConsultingController : ControllerBase
 
     //This method gives question details by id.
     [HttpGet("questions/{id}")]
-    public async Task<Question> Question(int id)
+    public async Task<Question> getQuestion(int id)
     {
 
         Question question = await _srv.getQuestion(id);
@@ -49,7 +49,7 @@ public class ConsultingController : ControllerBase
 
     //This method gives all subject matter experts available in Krishi Seva
     [HttpGet("experts")]
-    public async Task<List<SubjectMatterExpert>> Experts()
+    public async Task<List<SubjectMatterExpert>> getAllExperts()
     {
 
         List<SubjectMatterExpert> experts = await _srv.getAllExperts();
@@ -63,7 +63,7 @@ public class ConsultingController : ControllerBase
     //This method gives list of answers.
 
     [HttpGet("answers")]
-    public async Task<List<Answer>> Answers()
+    public async Task<List<Answer>> getAllAnswers()
     {
 
         List<Answer> answers = await _srv.getAllAnswers();
@@ -74,10 +74,10 @@ public class ConsultingController : ControllerBase
 
     //This method gives all Question list of particular catagoryid.
     [HttpGet("Questions/Catagory/{id}")]
-    public async Task<List<Question>> Category(int id)
+    public async Task<List<Question>> listOfCategoryQuestions(int id)
     {
 
-        List<Question> category = await _srv.getCategory(id);
+        List<Question> category = await _srv.listOfCategoryQuestions(id);
         return category;
 
     }
@@ -87,7 +87,7 @@ public class ConsultingController : ControllerBase
 
     //This method gives agri doctor details by id.
     [HttpGet("Expert/{id}")]
-    public async Task<SubjectMatterExpert> Expert(int id)
+    public async Task<SubjectMatterExpert> getExpert(int id)
     {
 
         SubjectMatterExpert expert = await _srv.getExpert(id);
@@ -99,7 +99,7 @@ public class ConsultingController : ControllerBase
 
     //this method gives question answers particular agri doctor  id. 
     [HttpGet("questionsanswers/sme/{id}")]
-    public async Task<List<QuestionAnswer>> GetQuestionAnswers(int id)
+    public async Task<List<QuestionAnswer>> getQuestionAnswers(int id)
     {
 
         List<QuestionAnswer> questionAnswers = await _srv.getQuestionAnswers(id);
@@ -110,7 +110,7 @@ public class ConsultingController : ControllerBase
 
     //This method gives answers  of particular provided question id.
     [HttpGet("answers/{id}")]
-    public async Task<List<Solution>> Answers(int id)
+    public async Task<List<Solution>> getAnswers(int id)
     {
 
         List<Solution> answers = await _srv.getAnswers(id);
@@ -122,7 +122,7 @@ public class ConsultingController : ControllerBase
     //questions solved by particular sme
 
 
-     [HttpGet("smequestions/{id}")]
+    [HttpGet("smequestions/{id}")]
     public async Task<List<SmeQuestion>> getQuestionsRespondedBySME(int id)
     {
 
@@ -131,14 +131,27 @@ public class ConsultingController : ControllerBase
 
     }
 
-    
 
-     [HttpGet("questioncatagories")]
+
+    // this method gives all questioncategories.
+
+    [HttpGet("questioncatagories")]
     public async Task<List<QuestionCategory>> getAllCategories()
     {
 
         List<QuestionCategory> categories = await _srv.getAllCategories();
         return categories;
+
+    }
+
+
+    //  this method gives catagory of question.
+    [HttpGet("catagory/question/{id}")]
+    public async Task<QuestionCategory> getQuestionCategory(int id)
+    {
+
+        QuestionCategory category = await _srv.getQuestionCategory(id);
+        return category;
 
     }
 
