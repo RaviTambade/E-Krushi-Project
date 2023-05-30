@@ -8,10 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddCors();
 builder.Services.AddControllers();
-builder.Services.AddTransient<ICategoryRepository,CategoryRepository>();
-builder.Services.AddTransient<ICategoryService,CategoryService>();
-builder.Services.AddTransient<IProductRepository,ProductRepository>();
-builder.Services.AddTransient<IProductService,ProductService>();
+builder.Services.AddTransient<ICatalogRepository,CatalogRepository>();
+builder.Services.AddTransient<ICatalogService,CatalogService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

@@ -3,7 +3,7 @@ using CatlogService.Models;
 
 namespace CatlogService.Service.Interfaces
 {
-    public interface IProductService : IProductRepository{
+    public interface ICatalogService : ICatalogRepository{
 
     }
 }
