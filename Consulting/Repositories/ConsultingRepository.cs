@@ -316,26 +316,28 @@ public class ConsultingRepository : IConsultingRepository
     }
 
 
-    public async Task<List<Solution>> getAnswers(int id)
+    public async Task<List<Answer>> getAnswers(int id)
     {
-        List<Solution> answers = new List<Solution>();
+        List<Answer> answers = new List<Answer>();
         MySqlConnection con = new MySqlConnection();
         con.ConnectionString = _conString;
         try
         {
-            string query = "select (description) as answer from answers where questionid =@questionId";
+            string query = "select * from answers where questionid =@questionId";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
-            command.Parameters.AddWithValue("@questionId", id);
+            command.Parameters.AddWithValue("@questionId",id);
             MySqlDataReader reader = command.ExecuteReader();
             while (await reader.ReadAsync())
             {
-
-                string? answer = reader["answer"].ToString();
-
-                Solution ans = new Solution
+                 int answerid = int.Parse(reader["id"].ToString());
+                string description = reader["description"].ToString();
+                int questionId = int.Parse(reader["questionid"].ToString());
+                Answer ans = new Answer
                 {
-                    Answer = answer
+                    Id=answerid,
+                    Description=description,
+                    QuestionId=questionId
 
                 };
                 answers.Add(ans);

@@ -12,7 +12,7 @@ public interface IConsultingRepository{
 
     Task<List<QuestionAnswer>> getQuestionAnswers(int id);
 
-     Task<List<Solution>> getAnswers(int id);
+     Task<List<Answer>> getAnswers(int id);
     
     Task<List<SmeQuestion>> getQuestionsRespondedBySME(int id);
 

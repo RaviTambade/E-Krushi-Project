@@ -110,10 +110,10 @@ public class ConsultingController : ControllerBase
 
     //This method gives answers  of particular provided question id.
     [HttpGet("answers/{id}")]
-    public async Task<List<Solution>> getAnswers(int id)
+    public async Task<List<Answer>> getAnswers(int id)
     {
 
-        List<Solution> answers = await _srv.getAnswers(id);
+        List<Answer> answers = await _srv.getAnswers(id);
         return answers;
 
     }
