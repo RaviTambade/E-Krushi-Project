@@ -348,7 +348,7 @@ public class CatalogRepository : ICatalogRepository
         }
     
     
-    public async Task<List<Products>> CategoryName(string categoryName)
+    public async Task<List<Products>> GetProductsDetails(string categoryName)
     {
         
            List<Products> products = new List<Products>();

@@ -107,10 +107,10 @@ public class CatalogsController : ControllerBase
     }
 
     [HttpGet]
-    [Route("category/{categoryName}")]
-    public async Task<List<Products>> CategoryName(string categoryName)
+    [Route("products/{categoryName}")]
+    public async Task<List<Products>> GetProductsDetails(string categoryName)
     {
-        List<Products> products = await _service.CategoryName(categoryName);
+        List<Products> products = await _service.GetProductsDetails(categoryName);
         
         return products;
     }

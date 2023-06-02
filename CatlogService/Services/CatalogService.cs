@@ -31,7 +31,7 @@ public class CatalogService : ICatalogService{
  
     public async Task<bool> DeleteProduct(int id) => await _repo.DeleteProduct(id);
 
-    public async Task<List<Products>> CategoryName(string categoryName) =>await _repo.CategoryName(categoryName);
+    public async Task<List<Products>> GetProductsDetails(string categoryName) =>await _repo.GetProductsDetails(categoryName);
 
 
 }

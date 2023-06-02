@@ -15,6 +15,6 @@ namespace CatlogService.Repositories.Interfaces
     Task<bool> Insert(Product product);
     Task<bool> Update(Product product);
      Task<bool> DeleteProduct(int id);
-    Task<List<Products>> CategoryName(string categoryName);
+    Task<List<Products>> GetProductsDetails(string categoryName);
     }
 }
