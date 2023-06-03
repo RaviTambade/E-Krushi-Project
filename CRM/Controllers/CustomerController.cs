@@ -16,12 +16,6 @@ public class CustomerController : ControllerBase
     {
         _srv = srv;
     }
-
-    // public IActionResult GetAllCustomers()
-    // {
-
-    //     return View();
-    // }
     
     [HttpGet]
     [Route ("getAll")]
@@ -47,19 +41,7 @@ public class CustomerController : ControllerBase
         bool result =_srv.Insert(customer);
         return result;
    }
-  
-//    [HttpPut]
-//    [Route ("updatecustomer/{id}")]
-//    public bool Update(int id,[FromBody] Customer customer)
-//    {
-//         Customer oldcustomer = _srv.GetCustomer(id);
-//         if(oldcustomer.CustId==0){
-//             return false;
-//         }
-//         customer.CustId= id;
-//         bool result =_srv.UpdateCustomer(customer);
-//         return result;
-//    }
+
    
    [HttpPut]
    [Route ("updatecustomer")]
