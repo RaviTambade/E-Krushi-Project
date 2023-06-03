@@ -18,6 +18,7 @@ public class ConsultingController : ControllerBase
 
 
     //This method gives question List.
+    //http://localhost:5279/consulting/questions
     [HttpGet("questions")]
 
     public async Task<List<Question>> getAllQuestions()
@@ -31,6 +32,7 @@ public class ConsultingController : ControllerBase
 
 
     //This method gives question details by id.
+    //http://localhost:5279/consulting/questions/{id}
     [HttpGet("questions/{id}")]
     public async Task<Question> getQuestion(int id)
     {
@@ -40,14 +42,8 @@ public class ConsultingController : ControllerBase
         return question;
     }
 
-
-
-
-
-
-
-
     //This method gives all subject matter experts available in Krishi Seva
+    //http://localhost:5279/consulting/experts
     [HttpGet("experts")]
     public async Task<List<SubjectMatterExpert>> getAllExperts()
     {
@@ -57,10 +53,8 @@ public class ConsultingController : ControllerBase
         return experts;
     }
 
-
-
-
     //This method gives list of answers.
+    //http://localhost:5279/consulting/answers
 
     [HttpGet("answers")]
     public async Task<List<Answer>> getAllAnswers()
@@ -73,6 +67,7 @@ public class ConsultingController : ControllerBase
 
 
     //This method gives all Question list of particular catagoryid.
+    //http://localhost:5279/consulting/Questions/Catagory/{id}
     [HttpGet("Questions/Catagory/{id}")]
     public async Task<List<Question>> listOfCategoryQuestions(int id)
     {
@@ -86,6 +81,7 @@ public class ConsultingController : ControllerBase
 
 
     //This method gives agri doctor details by id.
+    //http://localhost:5279/consulting/Expert/{id}
     [HttpGet("Expert/{id}")]
     public async Task<SubjectMatterExpert> getExpert(int id)
     {
@@ -98,6 +94,7 @@ public class ConsultingController : ControllerBase
 
 
     //this method gives question answers particular agri doctor  id. 
+    //http://localhost:5279/consulting/questionsanswers/sme/{id}
     [HttpGet("questionsanswers/sme/{id}")]
     public async Task<List<QuestionAnswer>> getQuestionAnswers(int id)
     {
@@ -109,6 +106,7 @@ public class ConsultingController : ControllerBase
 
 
     //This method gives answers  of particular provided question id.
+    //http://localhost:5279/consulting/answers/{id}
     [HttpGet("answers/{id}")]
     public async Task<List<Answer>> getAnswers(int id)
     {
@@ -121,7 +119,7 @@ public class ConsultingController : ControllerBase
 
     //questions solved by particular sme
 
-
+    //http://localhost:5279/consulting/smequestions/{id}
     [HttpGet("smequestions/{id}")]
     public async Task<List<SmeQuestion>> getQuestionsRespondedBySME(int id)
     {
@@ -134,7 +132,7 @@ public class ConsultingController : ControllerBase
 
 
     // this method gives all questioncategories.
-
+    //http://localhost:5279/consulting/questioncatagories
     [HttpGet("questioncatagories")]
     public async Task<List<QuestionCategory>> getAllCategories()
     {
@@ -146,6 +144,7 @@ public class ConsultingController : ControllerBase
 
 
     //  this method gives catagory of question.
+    //http://localhost:5279/consulting/catagory/question/{id}
     [HttpGet("catagory/question/{id}")]
     public async Task<QuestionCategory> getQuestionCategory(int id)
     {
