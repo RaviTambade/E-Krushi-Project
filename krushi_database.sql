@@ -393,13 +393,17 @@ select * from users;
 select * from customers;
 desc userroles;
 
+select * from orders where status = "inprogress";
 -- when we give the email of user then we give role of this user
 select role from roles where id in (select roleid from userroles where userid in (select id from users where email = 'akashajab12@gmail.com'));
 
 --  this query gives the role of user 
 select role from roles where id in (select roleid from userroles where userid = 2);
 
-select * from roles;
+-- this query gives the list of orders where status delivered
+select * from orders where status = "delivered";
+
+select * from orders;
 select * from userroles;
 -- This query gives payment details where payment_id=1;
 select * from payments where id=1; 
