@@ -1,4 +1,4 @@
---  drop database ekrushi;
+-- drop database ekrushi;
 CREATE DATABASE ekrushi;
 USE ekrushi;
 
@@ -35,7 +35,7 @@ CONSTRAINT fk02 FOREIGN KEY (cartid) REFERENCES carts(id)ON UPDATE CASCADE ON DE
 productid INT NOT NULL,CONSTRAINT fk03 FOREIGN KEY (productid) REFERENCES products(id) ,quantity INT NOT NULL); 
 
 CREATE TABLE payments(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,date DATETIME NOT NULL , 
-mode ENUM('cash on delivery','online payment'),transactionid INT NOT NULL,userid INT NOT NULL,CONSTRAINT fkuserid5 FOREIGN KEY (userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
+mode ENUM('cash on delivery','online payment'),userid INT NOT NULL,CONSTRAINT fkuserid5 FOREIGN KEY (userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE,
 orderid INT NOT NULL,CONSTRAINT fkorderid FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE);
 
 CREATE TABLE employees(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,firstname VARCHAR(255),lastname VARCHAR(250),birthdate DATE ,
@@ -49,7 +49,13 @@ CREATE TABLE suppliers(id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY, companyname v
 address varchar(50),city VARCHAR(50),state VARCHAR(40),
 userid INT NOT NULL,CONSTRAINT fkuserid09 FOREIGN KEY (userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE);
 
+CREATE TABLE accounts(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, number varchar(250) UNIQUE,ifsccode varchar(250),registerdate DATETIME, userid INT NOT NULL,
+ CONSTRAINT fkuserid1 FOREIGN KEY (userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE);
 
+CREATE TABLE transactions(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, 
+fromaccountnumber VARCHAR(60)NOT NULL,CONSTRAINT fkaccno FOREIGN KEY(fromaccountnumber) REFERENCES accounts(number)ON UPDATE CASCADE ON DELETE CASCADE, 
+toaccountnumber VARCHAR(60) NOT NULL,CONSTRAINT fkaccno1 FOREIGN KEY(toaccountnumber) REFERENCES accounts(number)ON UPDATE CASCADE ON DELETE CASCADE,
+date DATETIME NOT NULL, amount DOUBLE);
 
 CREATE TABLE userroles(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,userid INT NOT NULL,CONSTRAINT fkuserid2 FOREIGN KEY(userid) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE ,
 roleid INT NOT NULL,CONSTRAINT fkroleid FOREIGN KEY(roleid) REFERENCES roles(id) ON UPDATE CASCADE ON DELETE CASCADE);
@@ -76,10 +82,10 @@ CONSTRAINT fkuser22 FOREIGN KEY (smeid) REFERENCES subjectmatterexperts(id));
 CREATE TABLE customerquestions(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,questionid INT NOT NULL ,CONSTRAINT fkques FOREIGN KEY(questionid) REFERENCES questions(id) ON UPDATE CASCADE ON DELETE CASCADE,
 custid INT NOT NULL,CONSTRAINT fk_cust_11 FOREIGN KEY (custid) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE CASCADE, questiondate datetime not null);
 
-INSERT INTO users(email,password,contactnumber) VALUES ('akashajab@gmail.com','akash@12',9089777678);
-INSERT INTO users(email,password,contactnumber) VALUES ('sahil@gmail.com','sahil@12',9067894590);
+INSERT INTO users(email,password,contactnumber) VALUES ('akashajab12@gmail.com','akash@12',9881571268);
+INSERT INTO users(email,password,contactnumber) VALUES ('pragatibangar@gmail.com','pragati@12',7498035692);
 INSERT INTO users(email,password,contactnumber) VALUES ('akshaytanpure@gmail.com','akshay@12',9881571271);
-INSERT INTO users(email,password,contactnumber) VALUES ('vedantyadav@gmail.com','vedant@12',9089898078);
+INSERT INTO users(email,password,contactnumber) VALUES ('abhaynavale@gmail.com','abhay@12',9881571272);
 INSERT INTO users(email,password,contactnumber) VALUES ('rohitgore@gmail.com','rohit@12',9881571273);
 INSERT INTO users(email,password,contactnumber) VALUES ('rushikeshchikne@gmail.com','rushikesh12',9881571274);
 INSERT INTO users(email,password,contactnumber) VALUES ('shubham@gmail.com','shubham@12',9881571275);
@@ -109,15 +115,15 @@ INSERT INTO roles(role) VALUES ('Customer');
 INSERT INTO roles(role) VALUES ('Employee');
 INSERT INTO roles(role) VALUES ('Supplier');
 INSERT INTO roles(role) VALUES ('Shipper');
-INSERT INTO roles(role) VALUES ('SubjectMatterExpert');
+INSERT INTO roles(role) VALUES ('agri_doctors');
 
 select * from products;
 
 -- CUSTOMERS DATA
 INSERT INTO customers(firstname,lastname,userid) VALUES('akash','ajab',1);                       
-INSERT INTO customers(firstname,lastname,userid) VALUES('sahil','mankar',2);
+INSERT INTO customers(firstname,lastname,userid) VALUES('pragati','bangar',2);
 INSERT INTO customers(firstname,lastname,userid) VALUES('akshay','tanpure',3);             
-INSERT INTO customers(firstname,lastname,userid) VALUES('vedant','yadav',4);     
+INSERT INTO customers(firstname,lastname,userid) VALUES('abhay','navale',4);     
 INSERT INTO customers(firstname,lastname,userid) VALUES('rohit','gore',5);     
 INSERT INTO customers(firstname,lastname,userid) VALUES('rushikesh','chikne',6);                       
 INSERT INTO customers(firstname,lastname,userid) VALUES('shubham','teli',7);
@@ -236,12 +242,12 @@ INSERT INTO cartitems(cartid,productid ,quantity) VALUES(4,3,201);
 
 
 -- PAYMENTS DATA
-INSERT INTO payments(date,mode,transactionid,userid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery',1,1,1);
-INSERT INTO payments(date,mode,transactionid,userid,orderid)  VALUES('2022-03-08 12:08:19','online payment',2,4,1);
-INSERT INTO payments(date,mode,transactionid,userid,orderid)  VALUES('2022-03-08 12:08:19','cash on delivery',2,4,2);
-INSERT INTO payments(date,mode,transactionid,userid,orderid)  VALUES('2022-03-08 12:08:19','online payment',2,4,3);
-INSERT INTO payments(date,mode,transactionid,userid,orderid)  VALUES('2022-03-08 12:08:19','cash on delivery',3,2,4);
-INSERT INTO payments(date,mode,transactionid,userid,orderid)  VALUES('2022-06-10 12:45:30','cash on delivery',3,2,2);
+INSERT INTO payments(date,mode,userid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery',1,1);
+INSERT INTO payments(date,mode,userid,orderid)  VALUES('2022-03-08 12:08:19','online payment',2,1);
+INSERT INTO payments(date,mode,userid,orderid)  VALUES('2022-03-08 12:08:19','cash on delivery',3,2);
+INSERT INTO payments(date,mode,userid,orderid)  VALUES('2022-03-08 12:08:19','online payment',4,3);
+INSERT INTO payments(date,mode,userid,orderid)  VALUES('2022-03-08 12:08:19','cash on delivery',9,4);
+INSERT INTO payments(date,mode,userid,orderid)  VALUES('2022-06-10 12:45:30','cash on delivery',7,2);
 
 
 -- ADDRESS DATA
@@ -284,7 +290,28 @@ INSERT INTO userroles(userid,roleid) VALUES (1,1);
 INSERT INTO userroles(userid,roleid) VALUES (1,1);
 INSERT INTO userroles(userid,roleid) VALUES (1,1);
 
+-- ACCOUNTS DATA
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031201','KOTAK000286','2022-04-05  01:02:03',1);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031202','ICICI000286','2022-11-25  01:12:03',1);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031203','MAHB0000286','2022-12-30  11:02:03',3);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031204','PDCC0000286','2022-05-10  12:02:03',2);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031205','SBIB0000286','2022-09-07  06:02:03',2);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031206','AXIS0000286','2022-11-03  07:02:03',4);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031207','BARB0000286','2022-10-20  08:02:03',7);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031208','BARB0000286','2022-10-10  08:02:03',7);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031209','BARB0000286','2022-10-10  08:02:03',7);
+INSERT INTO accounts(number,ifsccode,registerdate,userid) VALUES('4105031210','AXIS0000286','2022-09-08  08:50:03',5);
 
+select * from accounts;
+
+
+-- TRANSACTIONS DATA
+INSERT INTO transactions(fromaccountnumber,toaccountnumber,date,amount) VALUES('4105031201','4105031202','2022-03-09  08:45:23',45000);
+INSERT INTO transactions(fromaccountnumber,toaccountnumber,date,amount) VALUES('4105031203','4105031205','2022-12-09  01:40:10',12000);
+INSERT INTO transactions(fromaccountnumber,toaccountnumber,date,amount) VALUES('4105031204','4105031206','2022-08-09  10:30:20',25000);
+INSERT INTO transactions(fromaccountnumber,toaccountnumber,date,amount) VALUES('4105031207','4105031205','2022-10-09  06:35:23',30000);
+INSERT INTO transactions(fromaccountnumber,toaccountnumber,date,amount) VALUES('4105031208','4105031205','2022-11-09  06:35:23',120000);
+INSERT INTO transactions(fromaccountnumber,toaccountnumber,date,amount) VALUES('4105031209','4105031205','2022-11-09  06:35:40',6000);
 
 -- FEEDBACKS DATA
 INSERT INTO feedbacks(description,custid) VALUES ('very good facilitities',1);
@@ -369,7 +396,11 @@ desc userroles;
 -- when we give the email of user then we give role of this user
 select role from roles where id in (select roleid from userroles where userid in (select id from users where email = 'akashajab12@gmail.com'));
 
+--  this query gives the role of user 
+select role from roles where id in (select roleid from userroles where userid = 2);
 
+select * from roles;
+select * from userroles;
 -- This query gives payment details where payment_id=1;
 select * from payments where id=1; 
 
@@ -549,17 +580,16 @@ select * from answers;
 select * from smeanswers;
 select * from customerquestions;
 
+select role from roles where id in (select roleid from userroles where userid = 1);
+
 -- this query gives all questions of particular smeid
-select questions.description from questions Inner join smeanswers on questions.id = smeanswers.questionid where smeanswers.smeid=1;
+select questions.description from questions Inner join smeanswers on questions.id = smeanswers.questionid where smeanswers.smeid=3;
 
 -- this query gives all questions ,answers of particular smeid
-select questions.description from subjectmatterexperts,smeanswers ,questions inner join answers on questions.id = answers.questionid where
+select (questions.description) as question,(answers.description) as answer from subjectmatterexperts,smeanswers ,questions inner join answers on questions.id = answers.questionid where
 answers.id =smeanswers.answerid and subjectmatterexperts.id=smeanswers.smeid and smeanswers.smeid=1;
 
 -- This method gives answers  of particular provided question id.
 select description from answers where questionid =1;
 
-
-
-
-select category from questioncategories where id in(select id from questions where id=1);
+select (description) as answer from answers where questionid =1;
