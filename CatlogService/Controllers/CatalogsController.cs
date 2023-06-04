@@ -15,7 +15,7 @@ public class CatalogsController : ControllerBase
         _service = service;
     }
 
-
+  //this  method is used for get all categories.
     [HttpGet]
     [Route("Categories")]
     public async Task<IEnumerable<Category>> GetAllCategories()
@@ -24,6 +24,11 @@ public class CatalogsController : ControllerBase
         return categories;
     }
 
+
+
+
+
+   //this method gives category by id.
     [HttpGet]
     [Route("Categories/{id}")]
     public async Task<Category> GetCategory(int id)
@@ -40,6 +45,10 @@ public class CatalogsController : ControllerBase
         return result;
     }
 
+
+
+
+   //this method is used for update category
     [HttpPut]
     [Route("Update")]
     public async Task<bool> Update([FromBody] Category category)
@@ -48,6 +57,9 @@ public class CatalogsController : ControllerBase
         return result;
     }
     
+
+
+    //this method is used for delete category
     [HttpDelete]
     [Route("Delete/{id}")]
     public async Task<bool> Delete(int id)
