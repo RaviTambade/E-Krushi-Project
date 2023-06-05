@@ -31,7 +31,8 @@ import { NewproductComponent } from './newproduct/newproduct.component';
     FormsModule
   ],
   exports: [
-    GetproductlistbycategoryComponent
+    GetproductlistbycategoryComponent,
+    NewproductComponent
   ]
 })
 export class ProductModule { }

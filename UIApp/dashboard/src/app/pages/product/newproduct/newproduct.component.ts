@@ -35,6 +35,7 @@ export class NewproductComponent {
     this.svc.insertProduct(form).subscribe(
       (res)=>{
         this.status = res;
+        console.log(this.product);
         console.log(res);
       if(res){
         window.location.reload();
