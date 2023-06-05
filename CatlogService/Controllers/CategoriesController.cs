@@ -42,9 +42,6 @@ public class CatalogsController : ControllerBase
         return result;
     }
 
-
-
-
    //this method is used for update category
     [HttpPut]
     [Route("Update")]
@@ -54,75 +51,12 @@ public class CatalogsController : ControllerBase
         return result;
     }
     
-
-
     //this method is used for delete category
     [HttpDelete]
-    [Route("Delete/{id}")]
     public async Task<bool> Delete(int id)
     {
         bool result =await  _service.Delete(id);
         return result;
     }
-
-
-
-    [HttpGet]
-    [Route("products")]
-    public async Task<List<Product>> GetAllProducts()
-    {
-        List<Product> products = await _service.GetAllProducts();
-        return products;
-    }
-
-    [HttpGet]
-    [Route("products/{id}")]
-    public async Task<Product> GetProduct(int id)
-    {
-        Product product = await _service.GetProduct(id);
-        return product;
-    }
-
-    [HttpPost]
-    [Route("Insert/product")]
-
-    public async Task<bool> Insert([FromBody] Product product)
-    {
-        bool result = await _service.Insert(product);
-        return result;
-    }
-    
-    [HttpPut]
-    [Route("Update/{id}")]
-
-    public async Task<bool> Update(int id, [FromBody] Product product)
-    {
-        Product oldProduct = await _service.GetProduct(id);
-        if(oldProduct.Id==0){
-            return false;
-        }
-        product.Id = id;
-        bool result = await _service.Update(product);
-        return result;
-    }
-
-    [HttpDelete]
-    [Route("Delete/{id}")]
-
-    public async Task<bool> DeleteProduct(int id)
-    {
-        bool result = await _service.DeleteProduct(id);
-        return result;
-    }
-
-    [HttpGet]
-    [Route("products/category/{categoryName}")]
-    public async Task<List<Products>> GetProductsDetails(string categoryName)
-    {
-        List<Products> products = await _service.GetProductsDetails(categoryName);
-        
-        return products;
-    }
-
-
 }    
+
