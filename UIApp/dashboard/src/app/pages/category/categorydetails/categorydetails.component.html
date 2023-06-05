@@ -4,11 +4,11 @@
 <input type="number" [(ngModel)]="categoryId" />
 <button (click)="getCategory(categoryId)">Search</button>
 
-<div *ngIf="category && category.categoryId !=0">
-  <p><label>categoryId:</label>{{category.categoryId}}</p>
-  <p><label>categoryTitle:</label>{{category.categoryTitle}}</p>
+<div *ngIf="category && category.Id !=0">
+  <p><label>categoryId:</label>{{category.Id}}</p>
+  <p><label>categoryTitle:</label>{{category.Title}}</p>
   <p><label>categoryDescription:</label>{{category.description}}</p>
   <p><label>categoryImage:</label>{{category.image}}</p>
-  <button type="submit" (click)="deleteCategory(category.categoryId)">Delete</button>
+  <button type="submit" (click)="deleteCategory(category.Id)">Delete</button>
   <hr>
 </div>

@@ -3,12 +3,12 @@
 <br>
 
 <getcategory [categoryId]="categoryId" (sendCategory)="receiveCategory($event)"></getcategory>
-<div  *ngIf="category && category.categoryId!=0">
+<div  *ngIf="category && category.Id!=0">
   <!-- <div *ngIf="order"> -->
   <table>
       <tr>
           <td><label>Category Title</label></td>
-          <td><input type="text" name="categoryTitle" #categoryTitle="ngModel" [(ngModel)]="category.categoryTitle"></td>
+          <td><input type="text" name="categoryTitle" #categoryTitle="ngModel" [(ngModel)]="category.Title"></td>
       </tr>
       <tr>
         <td><label>Description</label></td>

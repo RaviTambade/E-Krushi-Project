@@ -3,7 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { PagesserviceService } from '../pagesservice.service';
-import { Product } from '../product';
+import { Product } from '../product/product';
 
 @Component({
   selector: 'app-details',

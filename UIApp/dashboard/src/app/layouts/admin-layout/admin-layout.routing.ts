@@ -17,6 +17,7 @@ import { UpdatecategoryComponent } from 'src/app/pages/category/updatecategory/u
 import {AgridoctorslistComponent} from 'src/app/pages/agridoctor/agridoctorslist/agridoctorslist.component';
 import { GetproductlistbycategoryComponent } from 'src/app/pages/product/getproductlistbycategory/getproductlistbycategory.component';
 import { ProductdetailsComponent } from 'src/app/pages/product/productdetails/productdetails.component';
+import { NewproductComponent } from 'src/app/pages/product/newproduct/newproduct.component';
 
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
@@ -35,5 +36,6 @@ export const AdminLayoutRoutes: Routes = [
     // { path: 'updatecategory', component: UpdatecategoryComponent },
     // { path: 'agridoctorslist', component: AgridoctorslistComponent  },
     { path: 'getproductlistbycategory', component: GetproductlistbycategoryComponent  },
-    { path: 'productdetails', component: ProductdetailsComponent  }
+    { path: 'productdetails', component: ProductdetailsComponent  },
+    { path: 'newproduct', component: NewproductComponent  }
 ];

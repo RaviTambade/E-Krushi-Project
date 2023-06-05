@@ -21,8 +21,8 @@ export class AddcategoryComponent implements OnInit {
 
   constructor(private breakpointObserver: BreakpointObserver,private svc :CategoryService) {}
   category:Category={
-   categoryId:0,
-   categoryTitle:'',
+   Id:0,
+   Title:'',
    description:'',
    image:''
 }

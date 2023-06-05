@@ -355,19 +355,19 @@ public class CatalogRepository : ICatalogRepository
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = _conString;
             try{
-                string query = "SELECT products.product_id, products.product_title,products.unit_price,products.stock_available,products.image,categories.category_title from categories inner join products where categories.category_id=products.category_id and categories.category_title=@seeds";
+                string query = "SELECT products.id, products.title,products.unitprice,products.stockavailable,products.image,categories.title from categories inner join products where categories.id=products.categoryid and categories.title=@categoryName";
                 MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@seeds",categoryName);
+                cmd.Parameters.AddWithValue("@categoryName",categoryName);
                 await con.OpenAsync();
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while(await reader.ReadAsync())
                 {
-                    int productId = int.Parse(reader["product_id"].ToString());
-                    string productTitle = reader["product_title"].ToString();
-                    double unitPrice = double.Parse(reader["unit_price"].ToString());
-                    int stockAvailable = int.Parse(reader["stock_available"].ToString());
+                    int productId = int.Parse(reader["id"].ToString());
+                    string productTitle = reader["title"].ToString();
+                    double unitPrice = double.Parse(reader["unitprice"].ToString());
+                    int stockAvailable = int.Parse(reader["stockavailable"].ToString());
                     string image = reader["image"].ToString();
-                    string categoryTitle = reader["category_title"].ToString();
+                    string categoryTitle = reader["title"].ToString();
 
                     Products product = new Products()
                     {

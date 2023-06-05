@@ -1,8 +1,8 @@
 export class Category{
     constructor(
                
-                 public categoryId : number,
-                 public categoryTitle : string,
+                 public Id : number,
+                 public Title : string,
                  public description : string,
                  public image : string,
                

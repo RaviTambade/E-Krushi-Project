@@ -3,15 +3,15 @@
 <input type="number" [(ngModel)]="productId" />
 <button (click)="getProduct(productId)">Search</button> 
  
-<div *ngIf="product && product.productId !=0">
-  <p><label>ProductId:</label>{{product.productId}}</p>
-  <p><label>Product Title:</label>{{product.productTitle}}</p>
+<div *ngIf="product && product.id !=0">
+  <p><label>ProductId:</label>{{product.Id}}</p>
+  <p><label>Product Title:</label>{{product.Title}}</p>
   <p><label>unitPrice:</label>{{product.unitPrice}}</p>
   <p><label>stockavailable:</label>{{product.stockAvailable}}</p>
   <p><label>image:</label>{{product.image}}</p>
   <p><label>categoryId:</label>{{product.categoryId}}</p>
   <hr>
-  <div *ngIf=" product && product.productId==0 ">
+  <div *ngIf=" product && product.id==0 ">
     <p>product not Found</p>
   </div>
 </div> 

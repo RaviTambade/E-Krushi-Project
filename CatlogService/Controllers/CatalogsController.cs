@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CatlogService.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class CatalogsController : ControllerBase
 {
     private readonly ICatalogService _service;
@@ -23,9 +23,6 @@ public class CatalogsController : ControllerBase
         List<Category> categories = await _service.GetAllCategories();
         return categories;
     }
-
-
-
 
 
    //this method gives category by id.
@@ -87,7 +84,7 @@ public class CatalogsController : ControllerBase
     }
 
     [HttpPost]
-    [Route("Insert")]
+    [Route("Insert/product")]
 
     public async Task<bool> Insert([FromBody] Product product)
     {
@@ -119,7 +116,7 @@ public class CatalogsController : ControllerBase
     }
 
     [HttpGet]
-    [Route("products/{categoryName}")]
+    [Route("products/category/{categoryName}")]
     public async Task<List<Products>> GetProductsDetails(string categoryName)
     {
         List<Products> products = await _service.GetProductsDetails(categoryName);
