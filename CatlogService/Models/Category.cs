@@ -1,4 +1,4 @@
-namespace CatlogService.Models;
+namespace ProService.Models;
 
 public class Category{
 

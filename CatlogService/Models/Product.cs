@@ -1,4 +1,4 @@
-namespace CatlogService.Models;
+namespace ProService.Models;
 
 public class Product{
     public int Id{get; set;}
@@ -12,4 +12,6 @@ public class Product{
     public string Image{get; set;}
 
     public int CategoryId{get; set;}
+
+     public string CategoryTitle{get; set;}
 }

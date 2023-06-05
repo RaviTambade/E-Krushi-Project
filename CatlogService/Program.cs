@@ -1,15 +1,20 @@
-using CatlogService.Repositories;
-using CatlogService.Repositories.Interfaces;
-using CatlogService.Service;
-using CatlogService.Service.Interfaces;
+using ProService.Repositories;
+using ProService.Repositories.Interfaces;
+using ProService.Service.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddCors();
 builder.Services.AddControllers();
-builder.Services.AddTransient<ICatalogRepository,CatalogRepository>();
-builder.Services.AddTransient<ICatalogService,CatalogService>();
+
+
+builder.Services.AddTransient<ICategoryRepository,CategoryRepository>();
+builder.Services.AddTransient<ICategoryService,CategoryService>();
+
+
+builder.Services.AddTransient<IProductRepository,ProductRepository>();
+builder.Services.AddTransient<IProductService,ProductService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

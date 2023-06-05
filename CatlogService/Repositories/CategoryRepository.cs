@@ -1,8 +1,8 @@
-using CatlogService.Models;
-using CatlogService.Repositories.Interfaces;
+using ProService.Models;
+using ProService.Repositories.Interfaces;
 using MySql.Data.MySqlClient;
 
-namespace CatlogService.Repositories{
+namespace ProService.Repositories{
 
 public class CategoryRepository : ICategoryRepository
     {

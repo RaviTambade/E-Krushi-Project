@@ -1,6 +1,6 @@
-using CatlogService.Models;
+using ProService.Models;
 
-namespace CatlogService.Repositories.Interfaces
+namespace ProService.Repositories.Interfaces
 {
     public interface ICategoryRepository{
 

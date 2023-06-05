@@ -1,6 +1,7 @@
-using CatlogService.Models;
+using ProService.Models;
+using ProService.Models;
 
-namespace CatlogService.Repositories.Interfaces
+namespace ProService.Repositories.Interfaces
 {
     public interface IProductRepository{
 
@@ -10,5 +11,7 @@ namespace CatlogService.Repositories.Interfaces
     Task<bool> Insert(Product product);
     Task<bool> Update(Product product);
      Task<bool> DeleteProduct(int id);
+
+     //Task<List<Products>> GetProductsDetails(string categoryName);
     }
 }
