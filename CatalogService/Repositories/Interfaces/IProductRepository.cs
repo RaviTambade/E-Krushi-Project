@@ -10,6 +10,8 @@ namespace CatalogService.Repositories.Interfaces
     Task<bool> Insert(Product product);
     Task<bool> Update(Product product);
      Task<bool> DeleteProduct(int id);
+    Task<Product> GetProductDetails(string title);
+     
 
      //Task<List<Products>> GetProductsDetails(string categoryName);
     }

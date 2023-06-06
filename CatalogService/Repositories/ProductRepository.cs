@@ -238,6 +238,49 @@ namespace CatalogService.Repositories
     //         return products;
     //     }
 
+
+     public async Task<Product> GetProductDetails(string title)
+        {
+            Product product = new Product();
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = _conString;
+            try{
+                string query = "select * from products where title = @title";
+                MySqlCommand cmd = new MySqlCommand(query,con);
+                cmd.Parameters.AddWithValue("@title",title);
+                await con.OpenAsync();
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while(await reader.ReadAsync())
+                {   int id =int.Parse(reader["id"].ToString());
+                    string productTitle = reader["title"].ToString();
+                    double unitPrice = double.Parse(reader["unitprice"].ToString());
+                    int stockAvailable = int.Parse(reader["stockavailable"].ToString());
+                    string image = reader["image"].ToString();
+                    int categoryId = int.Parse(reader["categoryid"].ToString());
+
+                    product = new Product()
+                    {
+                        Id=id,
+                        Title = productTitle,
+                        UnitPrice = unitPrice,
+                        StockAvailable = stockAvailable,
+                        Image = image,
+                        CategoryId = categoryId
+
+                    };
+
+                }
+                await reader.CloseAsync();
+            }
+            catch(Exception e){
+                throw e;
+            }
+            finally{
+                await con.CloseAsync();
+            }
+            return product;
+        }
+
         
     }
 

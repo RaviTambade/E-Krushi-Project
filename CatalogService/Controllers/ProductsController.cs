@@ -23,7 +23,7 @@ public class ProductController : ControllerBase
         return products;
     }
 
-    [HttpGet]
+    [HttpGet("/{id}")]
     public async Task<Product> GetProduct(int id)
     {
         Product product = await _service.GetProduct(id);
@@ -64,4 +64,12 @@ public class ProductController : ControllerBase
     //     List<Products> products = await _service.GetProductsDetails(categoryName);
     //     return products;
     // }
+
+    [HttpGet("{title}")]
+    public async Task<Product> GetProductDetails(string title)
+    {
+        Product product = await _service.GetProductDetails(title);
+        return product;
+    }
+
 }    

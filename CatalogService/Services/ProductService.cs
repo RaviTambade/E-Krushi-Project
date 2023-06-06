@@ -30,5 +30,6 @@ public class ProductService : IProductService{
 
 //   public async Task<List<Products>> GetProductsDetails(string categoryName) =>await _repo.GetProductsDetails(categoryName);
 
+public async Task<Product> GetProductDetails(string title) =>await _repo.GetProductDetails(title);
     
 }
