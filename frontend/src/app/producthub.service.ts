@@ -13,4 +13,9 @@ export class ProducthubService {
     let url = "http://localhost:5214/product/getallproducts";
     return this.http.get<any>(url);
   }
+  sendProduct(data:any){
+    let product = data.selectedProduct;
+    console.log("Service is called");
+    console.log(product);
+  }
 }

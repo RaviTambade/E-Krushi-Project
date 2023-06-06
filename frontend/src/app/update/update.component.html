@@ -1,1 +1,25 @@
 <p>update works!</p>
+<p> ProductList</p>
+
+<div>
+    <div>
+      <h2 >Products</h2>
+      <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+        <div class="d-grid">
+          <select
+            (change)="changeProduct($event)"
+            formControlName="selectedProduct">
+            <option value="">Choose Product</option>
+            <option *ngFor="let product of products" [ngValue]="product">
+              {{ product }}
+            </option>
+          </select>
+          <!-- error block -->
+          <div  *ngIf="isSubmitted && selectedProduct?.invalid">
+            <sup>*</sup>Please provide product name
+          </div>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
