@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 import { InsertComponent } from './insert/insert.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { UpateComponent } from './upate/upate.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InsertComponent
+    InsertComponent,
+    UpateComponent
   ],
   imports: [
     BrowserModule,
