@@ -6,13 +6,15 @@ import { InsertComponent } from './insert/insert.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { UpdateComponent } from './update/update.component';
+import { ProductlistComponent } from './productlist/productlist.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     InsertComponent,
-    UpdateComponent
+    UpdateComponent,
+    ProductlistComponent
   
   ],
   imports: [

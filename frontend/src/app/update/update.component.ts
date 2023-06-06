@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { ProducthubService } from '../producthub.service';
-import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-update',
@@ -8,47 +8,19 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./update.component.css']
 })
 export class UpdateComponent {
-  constructor(private svc : ProducthubService, public fb : FormBuilder) {}
-  isSubmitted = false;
-  products= ['oats','wheat','manure','corn','barley','sorghum','karate','soloman'] ;
+  
+  constructor(private svc:ProducthubService) {}
 
-  ngOnInit(): void {}
-  registrationForm = this.fb.group({
-
-    selectedProduct : [ ' ', [Validators.required]],
-      
+  subscription:Subscription |undefined;
+  product : any | undefined;
+  
+  ngOnInit():void{
+    let theObservable:Observable<any> = this.svc.getData();
+    this.subscription =theObservable.subscribe((msg) =>{
+      this.product = msg.data;
+      console.log(msg.data);
+      console.log(msg);
+      console.log(" Detail Component :event handler is called")  
     });
-    changeProduct(e: any){
-      this.selectedProduct?.setValue(e.target.value,{
-       onlySelf : true,
-      });
 }
-
-      get selectedProduct(){
-
-       return this.registrationForm.get('selectedProduct');
-        
-      }
-
-      onSubmit ():void {
-
-        console.log(this.registrationForm);
-        
-        this.isSubmitted= true;
-        
-        if(!this.registrationForm.valid){
-        
-        false;
-        
-        }
-        
-        else{
-        
-        console.log(JSON.stringify(this.registrationForm.value));
-        
-        this.svc.sendProduct(this.registrationForm.value);
-        
-        }
-        
-    }
 }
