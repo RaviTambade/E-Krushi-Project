@@ -7,23 +7,23 @@ namespace CatalogService.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ProductController : ControllerBase
+public class ProductsController : ControllerBase
 {
     private readonly IProductService _service;
 
-    public ProductController(IProductService service)
+    public ProductsController(IProductService service)
     {
         _service = service;
     }
 
-     [HttpGet]
+    [HttpGet]
     public async Task<List<Product>> GetAllProducts()
     {
         List<Product> products = await _service.GetAllProducts();
         return products;
     }
 
-    [HttpGet("/{id}")]
+    [HttpGet("{id}")]
     public async Task<Product> GetProduct(int id)
     {
         Product product = await _service.GetProduct(id);
@@ -57,13 +57,13 @@ public class ProductController : ControllerBase
     }
 
 
-    // [HttpGet]
-    // [Route("/category/{categoryName}")]
-    // public async Task<List<Products>> GetProductsDetails(string categoryName)
-    // {
-    //     List<Products> products = await _service.GetProductsDetails(categoryName);
-    //     return products;
-    // }
+    [HttpGet]
+    [Route("category/{categoryName}")]
+    public async Task<List<Product>> GetProductsDetails(string categoryName)
+    {
+        List<Product> products = await _service.GetProductsDetails(categoryName);
+        return products;
+    }
 
     [HttpGet("{title}")]
     public async Task<Product> GetProductDetails(string title)

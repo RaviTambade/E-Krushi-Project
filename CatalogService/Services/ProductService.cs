@@ -28,8 +28,8 @@ public class ProductService : IProductService{
  
     public async Task<bool> DeleteProduct(int id) => await _repo.DeleteProduct(id);
 
-//   public async Task<List<Products>> GetProductsDetails(string categoryName) =>await _repo.GetProductsDetails(categoryName);
+    public async Task<List<Product>> GetProductsDetails(string categoryName) =>await _repo.GetProductsDetails(categoryName);
 
-public async Task<Product> GetProductDetails(string title) =>await _repo.GetProductDetails(title);
+    public async Task<Product> GetProductDetails(string title) =>await _repo.GetProductDetails(title);
     
 }
