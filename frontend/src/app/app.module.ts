@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UpdateComponent } from './update/update.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { AppService } from './aap.service';
+import { CategoryproductComponent } from './categoryproduct/categoryproduct.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { AppService } from './aap.service';
     AppComponent,
     InsertComponent,
     UpdateComponent,
-    ProductlistComponent
+    ProductlistComponent,
+    CategoryproductComponent
   
   ],
   imports: [
