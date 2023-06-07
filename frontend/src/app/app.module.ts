@@ -11,6 +11,7 @@ import { AppService } from './aap.service';
 import { RadioComponent } from './radio/radio.component';
 import { CheckBoxComponent } from './check-box/check-box.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { CategoryproductComponent } from './categoryproduct/categoryproduct.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
     ProductlistComponent,
     RadioComponent,
     CheckBoxComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    CategoryproductComponent
   
   ],
   imports: [
