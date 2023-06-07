@@ -8,7 +8,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { UpdateComponent } from './update/update.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { AppService } from './aap.service';
-import { CategoryproductComponent } from './categoryproduct/categoryproduct.component';
+import { RadioComponent } from './radio/radio.component';
+import { CheckBoxComponent } from './check-box/check-box.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { CategoryproductComponent } from './categoryproduct/categoryproduct.comp
     InsertComponent,
     UpdateComponent,
     ProductlistComponent,
-    CategoryproductComponent
+    RadioComponent,
+    CheckBoxComponent,
+    FileUploadComponent
   
   ],
   imports: [
