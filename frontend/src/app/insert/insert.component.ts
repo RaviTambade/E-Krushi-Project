@@ -11,13 +11,14 @@ export class InsertComponent {
   constructor(private http : HttpClient) { }
 
    product:Product={
-    id:0,
-    title:' ',
-    unitPrice:0,
-    stockAvailable:0,
-    image:' ',
-    categoryId:0
-  }
+     id: 0,
+     title: ' ',
+     unitPrice: 0,
+     stockAvailable: 0,
+     image: ' ',
+     categoryId: 0,
+     categoryTitle: ''
+   }
 
   status:boolean |undefined;
 
@@ -29,7 +30,7 @@ export class InsertComponent {
     let url ="http://localhost:5214/api/catalogs/";
     
 
-    let theProduct=new Product(34, form.title, form.unitPrice, form.stockAvailable,form.image,form.categoryId);
+    let theProduct=new Product(34, form.title, form.unitPrice, form.stockAvailable,form.image,form.categoryId,form.categoryTitle);
     
 
    
