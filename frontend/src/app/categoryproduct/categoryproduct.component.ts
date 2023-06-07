@@ -15,7 +15,7 @@ export class CategoryproductComponent implements OnInit{
   // matcher = new MyErrorStateMatcher();
 
   categories: Category[] | undefined;
-  products:Product[]|undefined;
+  products: Product[]| any;
   categoryName:string | any;
 
   category = new FormControl(null, [Validators.required]);
@@ -33,17 +33,16 @@ export class CategoryproductComponent implements OnInit{
     this.service.getCategories().subscribe((response)=>{
       this.categories = response;
       console.log(this.categories);
-    
-   this.service.getProducts(this.categoryName).subscribe((response)=>{
-          this.product=response;
-          console.log(this.product);
-        })
-      
     });
-  
-
-  
-}
+      this.category.valueChanges.subscribe((category) => {
+       this.product.reset();
+       this.product.disable();
+       if (category) {
+         this.products = this.service.getProducts(category);
+         this.product.enable();
+      }
+     });
+  }
 }
 
 

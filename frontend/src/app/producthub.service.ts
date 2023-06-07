@@ -57,7 +57,6 @@ public getCategories():Observable<any>{
 }
 
 public getProducts(category:string):Observable<any>{
-
   let url="http://localhost:5137/api/products/category/"+ category;
   return this.http.get<any>(url);
 }
