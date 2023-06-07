@@ -1,1 +1,27 @@
-<app-insert></app-insert>
+
+<form [formGroup]="form">
+    <h4>Nested Selects: Country-State-City</h4>
+    <table>
+        <tr>
+            <td>
+                <label>Country</label>
+            </td>
+            <td>
+                <select  [formControl]="country"  name="country">
+                <option *ngFor="let country of countries" [value]="country.name">
+                {{ country.name }}
+                </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <button (click)="city.reset()">Clear</button>
+            </td>
+        </tr>
+    </table>
+   
+    <p>Country: {{ country.value }}</p>
+  </form>
