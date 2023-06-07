@@ -1,16 +1,17 @@
-using CatlogService.Models;
-using CatlogService.Service.Interfaces;
+using CatalogService.Models;
 using Microsoft.AspNetCore.Mvc;
+using CatalogService.Service.Interfaces;
 
-namespace CatlogService.Controllers;
+
+namespace CatalogService.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CatalogsController : ControllerBase
+public class ProductController : ControllerBase
 {
-    private readonly ICatalogService _service;
+    private readonly IProductService _service;
 
-    public CatalogsController(ICatalogService service)
+    public ProductController(IProductService service)
     {
         _service = service;
     }
@@ -22,7 +23,7 @@ public class CatalogsController : ControllerBase
         return products;
     }
 
-    [HttpGet]
+    [HttpGet("/{id}")]
     public async Task<Product> GetProduct(int id)
     {
         Product product = await _service.GetProduct(id);
@@ -54,4 +55,21 @@ public class CatalogsController : ControllerBase
         bool result = await _service.DeleteProduct(id);
         return result;
     }
+
+
+    // [HttpGet]
+    // [Route("/category/{categoryName}")]
+    // public async Task<List<Products>> GetProductsDetails(string categoryName)
+    // {
+    //     List<Products> products = await _service.GetProductsDetails(categoryName);
+    //     return products;
+    // }
+
+    [HttpGet("{title}")]
+    public async Task<Product> GetProductDetails(string title)
+    {
+        Product product = await _service.GetProductDetails(title);
+        return product;
+    }
+
 }    

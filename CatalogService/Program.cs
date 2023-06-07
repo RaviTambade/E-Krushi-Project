@@ -1,16 +1,21 @@
-using E_krushiApp.Repository;
-using E_krushiApp.Repository.Interface;
-using E_krushiApp.Services;
-using E_krushiApp.Services.Interface;
+using CatalogService.Repositories;
+using CatalogService.Repositories.Interfaces;
+using CatalogService.Service.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddCors();
+
 builder.Services.AddControllers();
+builder.Services.AddCors();
+builder.Services.AddScoped<ICategoryRepository,CategoryRepository>();
+builder.Services.AddScoped<ICategoryService,CategoryService>();
+
+
+builder.Services.AddScoped<IProductRepository,ProductRepository>();
+builder.Services.AddScoped<IProductService,ProductService>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddTransient<IConsultingRepository,ConsultingRepository>();
-builder.Services.AddTransient<IConsultingService,ConsultingService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -26,9 +31,9 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors(x => x.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader());
-                    
+                   .AllowAnyMethod()
+                   .AllowAnyHeader());
+                   
 app.UseAuthorization();
 
 app.MapControllers();

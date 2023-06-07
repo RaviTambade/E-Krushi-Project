@@ -1,16 +1,16 @@
-using CatlogService.Models;
-using CatlogService.Service.Interfaces;
+using CatalogService.Models;
+using CatalogService.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CatlogService.Controllers;
+namespace CatalogService.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class CatalogsController : ControllerBase
+public class CategoriesController : ControllerBase
 {
-    private readonly ICatalogService _service;
+    private readonly ICategoryService _service;
 
-    public CatalogsController(ICatalogService service)
+    public CategoriesController(ICategoryService service)
     {
         _service = service;
     }

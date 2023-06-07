@@ -1,177 +1,21 @@
-
-using CatlogService.Models;
-using CatlogService.Repositories.Interfaces;
+using CatalogService.Models;
 using MySql.Data.MySqlClient;
+using CatalogService.Repositories.Interfaces;
 
-namespace CatlogService.Repositories{
+namespace CatalogService.Repositories
+{
 
-public class CatalogRepository : ICatalogRepository
+    public class ProductRepository : IProductRepository
     {
-        private IConfiguration _configuration;
-    private string _conString;
-    public CatalogRepository(IConfiguration configuration)
+    private IConfiguration _configuration;
+    private string? _conString;
+    public ProductRepository(IConfiguration configuration)
     {
         _configuration = configuration;
         _conString = this._configuration.GetConnectionString("DefaultConnection");
     }
-       
 
-        public async Task<List<Category>> GetAllCategories()
-        {
-            List<Category> categories = new List<Category>();
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
-        try{
-            string query = "select * from categories";
-            MySqlCommand cmd = new MySqlCommand(query,con);
-           await con.OpenAsync();
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while( await reader.ReadAsync())
-            {
-                int categoryId = int.Parse(reader["id"].ToString());
-                string categoryTitle = reader["title"].ToString();
-                string description = reader["description"].ToString();
-                string image = reader["image"].ToString();
-            
-            Category category = new Category()
-            {
-                Id = categoryId,
-                Title= categoryTitle,
-                Description = description,
-                Image = image
-            };
-            categories.Add(category);
-            }
-           await reader.CloseAsync();
-        }
-        catch(Exception e){
-            throw e;
-        }
-        finally{
-            con.Close();
-        }
-        return categories;
-        }
-        public async Task<Category> GetCategory(int id)
-        {
-            Category category = new Category();
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
-            try{
-                string query = "select * from categories where id = @categoryId";
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@categoryId",id);
-               await  con.OpenAsync();
-                MySqlDataReader reader = cmd.ExecuteReader();
-                if(await reader.ReadAsync())
-                {
-                    int categoryId = int.Parse(reader["id"].ToString());
-                    string categoryTitle = reader["title"].ToString();
-                    string description = reader["description"].ToString();
-                    string image = reader["image"].ToString();
-                    
-                category = new Category()
-                {
-                    Id = categoryId,
-                    Title= categoryTitle,
-                    Description = description,
-                    Image = image
-
-                };
-               await reader.CloseAsync();
-            }
-            }
-            catch(Exception e){
-                throw e;
-            }
-            finally{
-               await con.CloseAsync();
-            }
-            return category;
-        }
-
-        public async Task<bool> Insert(Category category)
-        {
-            bool status = false;
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
-            try{
-                string query = "Insert into categories(title,description,image) VALUES(@categoryTitle,@description,@image)";
-                 await con.OpenAsync();
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@categoryTitle",category.Title);
-                cmd.Parameters.AddWithValue("@description",category.Description);
-                cmd.Parameters.AddWithValue("@image",category.Image);
-                int rowsAffected = cmd.ExecuteNonQuery();
-                if(rowsAffected > 0)
-                {
-                    status = true;
-                }
-            }
-            catch(Exception e){
-                throw e;
-            }
-            finally{
-                 await con.CloseAsync();
-            }
-            return status;
-        }
-        public async Task<bool> Update(Category category)
-        {
-            bool status = false;
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
-            try{
-                string query = "Update categories set title = @categoryTitle, description= @description, image = @image where id = @categoryId";
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@categoryId",category.Id);
-                cmd.Parameters.AddWithValue("@categoryTitle",category.Title);
-                cmd.Parameters.AddWithValue("@description",category.Description);
-                cmd.Parameters.AddWithValue("@image",category.Image);
-                await con.OpenAsync();
-                int rowsAffected = cmd.ExecuteNonQuery();
-                if(rowsAffected > 0)
-                {
-                    status = true;
-                }
-            }
-            catch(Exception e){
-                throw e;
-            }
-            finally{
-               await con.CloseAsync();
-            }
-            return status;
-        }
-        public async Task<bool> Delete(int id)
-        {
-            bool status = false;
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
-            try{
-                string query = "Delete from categories Where id = @categoryId";
-                await con.OpenAsync();
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@categoryId",id);
-                int rowsAffected = cmd.ExecuteNonQuery();
-                if(rowsAffected > 0)
-                {
-                    status = true;
-                }
-            }
-            catch(Exception e){
-                throw e;
-            }
-            finally{
-                await con.CloseAsync();
-            }
-            return status;
-        }
-    
-
-
-
-     public async Task<List<Product>> GetAllProducts()
+    public async Task<List<Product>> GetAllProducts()
         {
             List<Product> products = new List<Product>();
             MySqlConnection con = new MySqlConnection();
@@ -185,10 +29,10 @@ public class CatalogRepository : ICatalogRepository
                 while(await reader.ReadAsync())
                 {
                     int id = int.Parse(reader["id"].ToString());
-                    string productTitle = reader["title"].ToString();
+                    string? productTitle = reader["title"].ToString();
                     double unitPrice = double.Parse(reader["unitprice"].ToString());
                     int stockAvailable = int.Parse(reader["stockavailable"].ToString());
-                    string image = reader["image"].ToString();
+                    string? image = reader["image"].ToString();
                     int categoryId = int.Parse(reader["categoryid"].ToString());
 
                     Product product = new Product()
@@ -347,43 +191,86 @@ public class CatalogRepository : ICatalogRepository
             return status;
         }
     
-    
-    public async Task<List<Products>> GetProductsDetails(string categoryName)
-    {
+
+    // public async Task<List<Products>> GetProductsDetails(string categoryName)
+    // {
         
-           List<Products> products = new List<Products>();
+    //        List<Products> products = new List<Products>();
+    //         MySqlConnection con = new MySqlConnection();
+    //         con.ConnectionString = _conString;
+    //         try{
+    //             string query = "SELECT products.id, products.title,products.unitprice,products.stockavailable,products.image,categories.title from categories inner join products where categories.id=products.categoryid and categories.title=@categoryName";
+    //             MySqlCommand cmd = new MySqlCommand(query,con);
+    //             cmd.Parameters.AddWithValue("@categoryName",categoryName);
+    //             await con.OpenAsync();
+    //             MySqlDataReader reader = cmd.ExecuteReader();
+    //             while(await reader.ReadAsync())
+    //             {
+    //                 int productId = int.Parse(reader["id"].ToString());
+    //                 string productTitle = reader["title"].ToString();
+    //                 double unitPrice = double.Parse(reader["unitprice"].ToString());
+    //                 int stockAvailable = int.Parse(reader["stockavailable"].ToString());
+    //                 string image = reader["image"].ToString();
+    //                 string categoryTitle = reader["title"].ToString();
+
+    //                 Products product = new Products()
+    //                 {
+    //                     Id = productId,
+    //                     Title = productTitle,
+    //                     UnitPrice = unitPrice,
+    //                     StockAvailable = stockAvailable,
+    //                     Image = image,
+    //                     CategoryTitle = categoryTitle
+
+    //                 };
+    //                 products.Add(product);
+                   
+    //             }
+    //              await reader.CloseAsync();
+                
+    //         }
+    //         catch(Exception e){
+    //             throw e;
+    //         }
+    //         finally{
+    //             await con.CloseAsync();
+    //         }
+    //         return products;
+    //     }
+
+
+     public async Task<Product> GetProductDetails(string title)
+        {
+            Product product = new Product();
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = _conString;
             try{
-                string query = "SELECT products.id, products.title,products.unitprice,products.stockavailable,products.image,categories.title from categories inner join products where categories.id=products.categoryid and categories.title=@categoryName";
+                string query = "select * from products where title = @title";
                 MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@categoryName",categoryName);
+                cmd.Parameters.AddWithValue("@title",title);
                 await con.OpenAsync();
                 MySqlDataReader reader = cmd.ExecuteReader();
                 while(await reader.ReadAsync())
-                {
-                    int productId = int.Parse(reader["id"].ToString());
+                {   int id =int.Parse(reader["id"].ToString());
                     string productTitle = reader["title"].ToString();
                     double unitPrice = double.Parse(reader["unitprice"].ToString());
                     int stockAvailable = int.Parse(reader["stockavailable"].ToString());
                     string image = reader["image"].ToString();
-                    string categoryTitle = reader["title"].ToString();
+                    int categoryId = int.Parse(reader["categoryid"].ToString());
 
-                    Products product = new Products()
+                    product = new Product()
                     {
-                        Id = productId,
+                        Id=id,
                         Title = productTitle,
                         UnitPrice = unitPrice,
                         StockAvailable = stockAvailable,
                         Image = image,
-                        CategoryTitle = categoryTitle
+                        CategoryId = categoryId
 
                     };
-                    products.Add(product);
-                   
+
                 }
-                 await reader.CloseAsync();
-                
+                await reader.CloseAsync();
             }
             catch(Exception e){
                 throw e;
@@ -391,9 +278,11 @@ public class CatalogRepository : ICatalogRepository
             finally{
                 await con.CloseAsync();
             }
-            return products;
+            return product;
         }
 
-    
+        
     }
+
 }
+    
