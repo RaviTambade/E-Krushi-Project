@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 <form [formGroup]="form">
     <h4>Nested Selects: Country-State-City</h4>
@@ -22,12 +21,47 @@
                 <button (click)="city.reset()">Clear</button>
             </td>
         </tr>
+        <tr>
+            <td>
+                <label>State</label>
+            </td>
+            <td>
+                <select  [formControl]="state"  name="state">
+                <option *ngFor="let state of states" [value]="state">
+                {{ state }}
+                </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <button (click)="city.reset()">Clear</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>City</label>
+            </td>
+            <td>
+                <select  [formControl]="city"  name="city">
+                <option *ngFor="let city of cities" [value]="city">
+                {{ city }}
+                </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <button (click)="city.reset()">Clear</button>
+            </td>
+        </tr>
     </table>
    
     <p>Country: {{ country.value }}</p>
+    <p>State: {{ state.value }}</p>
+    <p>Cite: {{ city.value }}</p>
   </form>
-=======
-<!-- <app-insert></app-insert> -->
-<app-productlist></app-productlist>
-<app-update></app-update>
->>>>>>> c206f144d1bc5027256d0fe64d74d4f6d287fbd5
