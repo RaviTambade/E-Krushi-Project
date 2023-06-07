@@ -8,7 +8,6 @@ interface Country {
   name: string;
 }
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -16,10 +15,4 @@ interface Country {
 })
 export class AppComponent  {
   title = 'frontend';
-
-  
-  }
-
-  
-
-
+}
