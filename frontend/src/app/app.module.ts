@@ -8,8 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { UpdateComponent } from './update/update.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { AppService } from './aap.service';
-import { RadioComponent } from './radio/radio.component';
-import { NestedDropdownComponent } from './nested-dropdown/nested-dropdown.component';
 
 
 @NgModule({
@@ -17,9 +15,7 @@ import { NestedDropdownComponent } from './nested-dropdown/nested-dropdown.compo
     AppComponent,
     InsertComponent,
     UpdateComponent,
-    ProductlistComponent,
-    RadioComponent,
-    NestedDropdownComponent
+    ProductlistComponent
   
   ],
   imports: [

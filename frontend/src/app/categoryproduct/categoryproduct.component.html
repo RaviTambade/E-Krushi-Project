@@ -1,23 +1,15 @@
-<<<<<<< HEAD
-<!--<nested-dropdown> </nested-dropdown>-->
 
-<app-radio></app-radio>
-
-<!--<form [formGroup]="form">
-=======
-<!-- 
 <form [formGroup]="form">
->>>>>>> fdff22723ca054b92d351038689b09419d9c160a
     <h4>Nested Selects: Country-State-City</h4>
     <table>
         <tr>
             <td>
-                <label>Country</label>
+                <label>Category</label>
             </td>
             <td>
-                <select  [formControl]="country"  name="country">
-                <option *ngFor="let country of countries" [value]="country.name">
-                {{ country.name }}
+                <select  [formControl]="category"  name="category">
+                <option *ngFor="let category of categories" [value]="category.title">
+                {{ category.title }}
                 </option>
                 </select>
             </td>
@@ -26,10 +18,10 @@
             <td>
             </td>
             <td>
-                <button (click)="city.reset()">Clear</button>
+                <button (click)="category.reset()">Clear</button>
             </td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td>
                 <label>State</label>
             </td>
@@ -66,17 +58,10 @@
             <td>
                 <button (click)="city.reset()">Clear</button>
             </td>
-        </tr>
+        </tr> -->
     </table>
    
-    <p>Country: {{ country.value }}</p>
-    <p>State: {{ state.value }}</p>
-    <p>Cite: {{ city.value }}</p>
-<<<<<<< HEAD
+    <p>Category: {{ category.value }}</p>
+    <!-- <p>State: {{ state.value }}</p>
+    <p>Cite: {{ city.value }}</p> -->
   </form>
--->
-=======
-  </form> -->
-
-  <app-categoryproduct></app-categoryproduct>
->>>>>>> fdff22723ca054b92d351038689b09419d9c160a

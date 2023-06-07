@@ -49,4 +49,10 @@ getData(): Observable<any>{
   return this.subject.asObservable();
 }
 
+
+
+public getCategories():Observable<any>{
+  let url = "http://localhost:5137/api/categories/categories";
+  return this.http.get<any>(url);
+}
 }
