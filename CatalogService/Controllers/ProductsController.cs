@@ -16,7 +16,7 @@ public class ProductController : ControllerBase
         _service = service;
     }
 
-     [HttpGet]
+     [HttpGet("products")]
     public async Task<List<Product>> GetAllProducts()
     {
         List<Product> products = await _service.GetAllProducts();
@@ -57,13 +57,13 @@ public class ProductController : ControllerBase
     }
 
 
-    // [HttpGet]
-    // [Route("/category/{categoryName}")]
-    // public async Task<List<Products>> GetProductsDetails(string categoryName)
-    // {
-    //     List<Products> products = await _service.GetProductsDetails(categoryName);
-    //     return products;
-    // }
+    [HttpGet]
+    [Route("/{categoryName}")]
+    public async Task<List<Product>> GetProductsDetails(string categoryName)
+    {
+        List<Product> products = await _service.GetProductsDetails(categoryName);
+        return products;
+    }
 
     [HttpGet("{title}")]
     public async Task<Product> GetProductDetails(string title)

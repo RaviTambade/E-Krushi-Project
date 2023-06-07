@@ -13,6 +13,6 @@ namespace CatalogService.Repositories.Interfaces
     Task<Product> GetProductDetails(string title);
      
 
-     //Task<List<Products>> GetProductsDetails(string categoryName);
+     Task<List<Product>> GetProductsDetails(string categoryName);
     }
 }
