@@ -1,4 +1,4 @@
-<table> 
+<!-- <table> 
     <thead> 
        <tr> 
           <th>Product Id</th>
@@ -11,9 +11,49 @@
         <th scope="row">{{ product.id }}</th> 
         <th>{{ product.title }}</th> 
         <td>{{ product.stockAvailable}}</td> 
-        <!-- <td>{{ entry.location }}</td> 
-        <td>{{ entry.spendOn | date: 'medium' }}</td> 
-        <td><a href="">View</a> |<a href="">Remove</a>|<a href="">Update</a></td>  -->
+        <td><a href="">View</a>  | <a href="">Remove</a> | <a href="">Update</a></td>
      </tr> 
   </tbody> 
+ </table> -->
+
+
+ <table class="table align-middle mb-0 bg-white">
+   <thead class="bg-light">
+     <tr>
+      <th>Product Id</th>
+      <th>Title</th> 
+      <th>StockAvailable</th> 
+     </tr>
+   </thead>
+   <tbody>
+     <tr *ngFor="let product of products" >
+       <td>
+         <div class="d-flex align-items-center">
+           <div class="ms-3">
+             <p class="fw-bold mb-1">{{ product.id }}</p>
+           </div>
+         </div>
+       </td>
+       <td>
+         <p class="fw-normal mb-1">{{ product.title }}</p>
+       </td>
+       <td>
+         <p class="text-muted mb-0">{{ product.stockAvailable}}</p>
+       </td>
+       <td>
+         <button type="button" class="btn btn-link btn-sm btn-rounded">
+           Edit
+         </button>
+       </td>
+       <td>
+         <button type="button" class="btn btn-link btn-sm btn-rounded">
+           View
+         </button>
+       </td>
+       <td>
+         <button type="button" class="btn btn-link btn-sm btn-rounded">
+           Update
+         </button>
+       </td>
+     </tr>
  </table>
