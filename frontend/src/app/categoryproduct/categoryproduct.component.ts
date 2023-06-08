@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ProducthubService } from '../producthub.service';
 import { Category } from '../category';
+import { Product } from '../product';
 
 @Component({
   selector: 'app-categoryproduct',
@@ -14,13 +15,17 @@ export class CategoryproductComponent implements OnInit{
   // matcher = new MyErrorStateMatcher();
 
   categories: Category[] | undefined;
+  products: Product[]| any;
+  categoryName:string | any;
 
   category = new FormControl(null, [Validators.required]);
+  product = new FormControl(null, [Validators.required]);
 
   constructor(private service: ProducthubService) {
     //fetch all available countries from service
     this.form = new FormGroup({
-      category: this.category
+      category: this.category,
+      product:this.product
     });
   }
 
@@ -29,6 +34,14 @@ export class CategoryproductComponent implements OnInit{
       this.categories = response;
       console.log(this.categories);
     });
+      this.category.valueChanges.subscribe((category) => {
+       this.product.reset();
+       this.product.disable();
+       if (category) {
+         this.products = this.service.getProducts(category);
+         this.product.enable();
+      }
+     });
   }
 }
 

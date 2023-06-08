@@ -21,14 +21,14 @@
                 <button (click)="category.reset()">Clear</button>
             </td>
         </tr>
-        <!-- <tr>
+         <tr>
             <td>
-                <label>State</label>
+                <label>Product</label>
             </td>
             <td>
-                <select  [formControl]="state"  name="state">
-                <option *ngFor="let state of states" [value]="state">
-                {{ state }}
+                <select  [formControl]="product"  name="product">
+                <option *ngFor="let product of products" [value]="product.title">
+                {{ product.title }}
                 </option>
                 </select>
             </td>
@@ -37,10 +37,10 @@
             <td>
             </td>
             <td>
-                <button (click)="city.reset()">Clear</button>
+                <button (click)="product.reset()">Clear</button>
             </td>
         </tr>
-        <tr>
+        <!-- <tr> 
             <td>
                 <label>City</label>
             </td>
@@ -60,8 +60,7 @@
             </td>
         </tr> -->
     </table>
-   
     <p>Category: {{ category.value }}</p>
-    <!-- <p>State: {{ state.value }}</p>
-    <p>Cite: {{ city.value }}</p> -->
+     <p>Product: {{ product.value }}</p> 
+    <!-- <p>Cite: {{ city.value }}</p> -->
   </form>

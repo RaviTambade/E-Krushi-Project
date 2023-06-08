@@ -199,7 +199,7 @@ namespace CatalogService.Repositories
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = _conString;
             try{
-                string query = "SELECT products.id, products.title,products.unitprice,products.stockavailable,products.image,categories.title,categories.categoryid from categories inner join products where categories.id=products.categoryid and categories.title=@categoryName";
+                string query = "SELECT products.id, products.title,products.unitprice,products.stockavailable,products.image,categories.title from categories inner join products where categories.id=products.categoryid and categories.title=@categoryName";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@categoryName",categoryName);
                 await con.OpenAsync();
@@ -212,7 +212,6 @@ namespace CatalogService.Repositories
                     int stockAvailable = int.Parse(reader["stockavailable"].ToString());
                     string image = reader["image"].ToString();
                     string categoryTitle = reader["title"].ToString();
-                    int categoryId = int.Parse(reader["categoryid"].ToString());
 
                     Product product = new Product()
                     {
@@ -221,8 +220,7 @@ namespace CatalogService.Repositories
                         UnitPrice = unitPrice,
                         StockAvailable = stockAvailable,
                         Image = image,
-                        CategoryTitle = categoryTitle,
-                          CategoryId  =categoryId
+                        CategoryTitle = categoryTitle
 
                     };
                     products.Add(product);
