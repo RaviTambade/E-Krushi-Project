@@ -46,15 +46,14 @@
            Edit
          </button> 
        </td>
-        <td>
+        <!-- <td>
          <button type="button" [routerLink]="[product.id]"class="btn btn-link btn-sm btn-rounded">
            View
          </button>
-       </td>
+       </td> -->
        <td>
-         <button type="button" (click)="Delete(product.id)" class="btn btn-link btn-sm btn-rounded">
-           Delete
-         </button>
+        <li><button  class="btn btn-link btn-sm btn-rounded" (click)="Delete(id)">Delete</button></li>
+         
        </td>
      </tr> 
  </table>
