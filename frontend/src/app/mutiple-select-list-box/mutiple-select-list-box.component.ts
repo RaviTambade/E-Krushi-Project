@@ -8,30 +8,41 @@ import { FormBuilder, FormGroup, FormControl, Validators, FormArray} from '@angu
 })
 export class MutipleSelectListBoxComponent implements OnInit{
    members:any[];
-   result:any;
+   result:any[];
    selItems:any[];
    form: FormGroup;
+   selMembers:any ;
   constructor(private formBuilder: FormBuilder){
     this.members=[];
-    this.result="";
+    this.result=[];
     this.selItems=[];
     this.form = this.formBuilder.group({
       members: this.formBuilder.array([])
+
+      
     })
   }
+
+
   ngOnInit(): void {
     //get data from rest api and assign to members
       this.members=["Shiv","Ganesh", "Charu", "Rajiv"];
+      this.selMembers= new FormControl("",Validators.required)
   }
 
   changeMembers(e: any){
-   this.result=e.target.value;
-   this.selItems.push(this.result);
-   console.log(this.selItems);
+  //  this.selItems=e.target.value;
+  //   if(!this.selItems.includes(e)){
+  //     this.selItems.push(e);
+  //   }
+  //  console.log(this.selItems);
   }
 
   submit(){
     console.log(this.result);
+   this.selItems= this.selMembers.value;
+   console.log(this.selItems);
+
     //call rest api to store assigned roles to user 
     //in database
   }

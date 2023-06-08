@@ -2,7 +2,7 @@
 
 
 <div>
-    <select Name="members" Size="4" (change)="changeMembers($event)"  >  
+    <select  [formControl]="selMembers" Name="members" Size="4" (change)="changeMembers($event)" multiple >  
         <option *ngFor="let member of members" > {{member}} </option> 
     </select>  
 </div>
@@ -11,10 +11,18 @@
 <button type="submit" [disabled]="!form.valid">Submit</button>
 
 
+<!-- <div>
+<ol>
+    <li *ngFor=" let item of selItems">{{item}}</li>
+</ol>
+</div>  -->
+
 <div>
 <ol>
     <li *ngFor=" let item of selItems">{{item}}</li>
 </ol>
 </div> 
+
+
 
 </form>
