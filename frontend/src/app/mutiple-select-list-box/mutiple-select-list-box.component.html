@@ -1,31 +1,20 @@
-<form [formGroup]="form" (ngSubmit)="submit()">     
-
-<div>
-    <select  [formControl]="selMembers" Name="members" Size="4" (change)="changeMembers($event)" multiple >  
-        <option *ngFor="let member of members" > {{member}} </option> 
-    </select>  
-</div>
-    <button type="submit" [disabled]="!form.valid">Submit</button>
-
-    <div>
-        <select Name="selectedmembers" Size="4" >  
-            <option *ngFor="let member of selectedmembers"> {{member}} </option> 
+     <table>
+        <tr>
+            <td>Team A 
+                <select  Name="members" Size="4" (change)="changeMembersFrom($event)" multiple >  
+                <option *ngFor="let member of members" > {{member}} </option> 
+            </select>  
+        </td>
+        <td><table>
+            <tr>
+                <button (click)="submit1()">>></button>
+            </tr>
+            <tr><button (click)="submit2()"><<</button></tr>
+        </table></td>    
+        <td>Team B
+            <select Name="selectedmembers"  Size="4"  (change)="changeMembersTo($event)" multiple >  
+            <option *ngFor="let mem of selectedmembers"> {{mem}} </option> 
         </select>  
-    </div>
-
-
-<!-- <div>
-<ol>
-    <li *ngFor=" let item of selItems">{{item}}</li>
-</ol>
-</div>  -->
-
-<div>
-<ol>
-    <li *ngFor=" let item of selItems">{{item}}</li>
-</ol>
-</div> 
-
-
-
-</form>
+        </td>
+        </tr>
+    </table>
