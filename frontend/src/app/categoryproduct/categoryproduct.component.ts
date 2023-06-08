@@ -36,9 +36,14 @@ export class CategoryproductComponent implements OnInit{
     });
       this.category.valueChanges.subscribe((category) => {
        this.product.reset();
-       this.product.disable();
+      // this.product.disable();
        if (category) {
-         this.products = this.service.getProducts(category);
+         this.service.getProducts(category).subscribe((response)=>{
+          this.products=response;
+          console.log(this.products);
+
+         })
+
          this.product.enable();
       }
      });
