@@ -1,8 +1,8 @@
 <form [formGroup]="form" (ngSubmit)="submit()">     
 
 <div>
-    <select Name="members" Size="4" (change)="changeMembers($event)">  
-        <option *ngFor="let member of members"> {{member}} </option> 
+    <select  [formControl]="selMembers" Name="members" Size="4" (change)="changeMembers($event)" multiple >  
+        <option *ngFor="let member of members" > {{member}} </option> 
     </select>  
 </div>
     <button type="submit" [disabled]="!form.valid">Submit</button>
@@ -12,5 +12,20 @@
             <option *ngFor="let member of selectedmembers"> {{member}} </option> 
         </select>  
     </div>
+
+
+<!-- <div>
+<ol>
+    <li *ngFor=" let item of selItems">{{item}}</li>
+</ol>
+</div>  -->
+
+<div>
+<ol>
+    <li *ngFor=" let item of selItems">{{item}}</li>
+</ol>
+</div> 
+
+
 
 </form>
