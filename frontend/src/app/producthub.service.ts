@@ -60,4 +60,16 @@ public getProducts(category:string):Observable<any>{
   let url="http://localhost:5137/api/products/category/"+ category;
   return this.http.get<any>(url);
 }
+
+public getById(id:number):Observable<any>{
+  let url=" http://localhost:5137/api/products/product/"+ id;
+  return this.http.get<any>(url);
+}
+
+public Delete(id:number):Observable<any>{
+  let url=" http://localhost:5137/api/products/"+ id;
+  return this.http.delete<any>(url);
+}
+
+
 }

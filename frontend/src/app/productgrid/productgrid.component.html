@@ -41,19 +41,24 @@
          <p class="text-muted mb-0">{{ product.stockAvailable}}</p>
        </td>
        <td>
-         <button type="button" class="btn btn-link btn-sm btn-rounded">
+         <!-- <td><a href="http://localhost:5137/api/products/product/" + product.id>View</a> |<a href="">Remove</a>|<a href="">Update</a></td>  -->
+          <button type="button" class="btn btn-link btn-sm btn-rounded">
            Edit
-         </button>
+         </button> 
        </td>
-       <td>
-         <button type="button" class="btn btn-link btn-sm btn-rounded">
+        <td>
+         <button type="button" [routerLink]="[product.id]"class="btn btn-link btn-sm btn-rounded">
            View
          </button>
        </td>
        <td>
-         <button type="button" class="btn btn-link btn-sm btn-rounded">
-           Update
+         <button type="button" (click)="Delete(product.id)" class="btn btn-link btn-sm btn-rounded">
+           Delete
          </button>
        </td>
-     </tr>
+     </tr> 
  </table>
+
+
+
+ 
