@@ -8,11 +8,13 @@ import { FormBuilder, FormGroup, FormControl, Validators, FormArray} from '@angu
 })
 export class MutipleSelectListBoxComponent implements OnInit{
    members:any[];
+   selectedmembers:any[];
    result:any;
    selItems:any[];
    form: FormGroup;
   constructor(private formBuilder: FormBuilder){
     this.members=[];
+    this.selectedmembers=[];
     this.result="";
     this.selItems=[];
     this.form = this.formBuilder.group({
@@ -26,11 +28,13 @@ export class MutipleSelectListBoxComponent implements OnInit{
 
   changeMembers(e: any){
    this.result=e.target.value;
+   
   }
 
   submit(){
     console.log(this.result);
     //call rest api to store assigned roles to user 
     //in database
+    this.selectedmembers.push(this.result);
   }
 }
