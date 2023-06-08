@@ -8,42 +8,42 @@ import { FormBuilder, FormGroup, FormControl, Validators, FormArray} from '@angu
 })
 export class MutipleSelectListBoxComponent implements OnInit{
    members:any[];
-   result:any[];
-   selItems:any[];
+   selectedmembers:any[];
+   resultTo:any;
+   resultFrom:any;
    form: FormGroup;
-   selMembers:any ;
+
   constructor(private formBuilder: FormBuilder){
     this.members=[];
-    this.result=[];
-    this.selItems=[];
+    this.selectedmembers=[];
+    this.resultTo="";
+    this.resultFrom="";
     this.form = this.formBuilder.group({
       members: this.formBuilder.array([])
-
-      
     })
   }
 
-
   ngOnInit(): void {
     //get data from rest api and assign to members
-      this.members=["Shiv","Ganesh", "Charu", "Rajiv"];
-      this.selMembers= new FormControl("",Validators.required)
+    this.members=["Shiv","Ganesh", "Charu", "Rajiv"];
+    this.selectedmembers=[];
   }
 
-  changeMembers(e: any){
-  //  this.selItems=e.target.value;
-  //   if(!this.selItems.includes(e)){
-  //     this.selItems.push(e);
-  //   }
-  //  console.log(this.selItems);
+  changeMembersFrom(e: any){
+   this.resultFrom=e.target.value; 
   }
 
-  submit(){
-    console.log(this.result);
-   this.selItems= this.selMembers.value;
-   console.log(this.selItems);
+  changeMembersTo(e: any){
+    this.resultTo=e.target.value;
+  }
 
-    //call rest api to store assigned roles to user 
-    //in database
+  submit1(){
+    this.members=this.members.filter((item)=>{return (item !=this.resultFrom)});
+    this.selectedmembers.push(this.resultFrom);
+  }
+
+  submit2(){
+    this.selectedmembers=this.selectedmembers.filter((item)=>{return (item !=this.resultTo)});
+    this.members.push(this.resultTo);
   }
 }

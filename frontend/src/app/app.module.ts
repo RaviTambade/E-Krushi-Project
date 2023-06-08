@@ -11,8 +11,11 @@ import { AppService } from './aap.service';
 import { RadioComponent } from './radio/radio.component';
 import { CheckBoxComponent } from './check-box/check-box.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
-import { CategoryproductComponent } from './categoryproduct/categoryproduct.component';
+ 
 import { MutipleSelectListBoxComponent } from './mutiple-select-list-box/mutiple-select-list-box.component';
+ 
+import { CategoryproductComponent } from './categoryproduct/categoryproduct.component';
+ 
 
 
 @NgModule({
@@ -24,7 +27,6 @@ import { MutipleSelectListBoxComponent } from './mutiple-select-list-box/mutiple
     RadioComponent,
     CheckBoxComponent,
     FileUploadComponent,
-    CategoryproductComponent,
     MutipleSelectListBoxComponent
   
   ],
