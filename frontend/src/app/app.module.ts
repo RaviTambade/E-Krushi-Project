@@ -15,6 +15,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { MutipleSelectListBoxComponent } from './mutiple-select-list-box/mutiple-select-list-box.component';
  
 import { CategoryproductComponent } from './categoryproduct/categoryproduct.component';
+import { ProductgridComponent } from './productgrid/productgrid.component';
  
 
 
@@ -27,7 +28,8 @@ import { CategoryproductComponent } from './categoryproduct/categoryproduct.comp
     RadioComponent,
     CheckBoxComponent,
     FileUploadComponent,
-    MutipleSelectListBoxComponent
+    MutipleSelectListBoxComponent,
+    ProductgridComponent
   
   ],
   imports: [

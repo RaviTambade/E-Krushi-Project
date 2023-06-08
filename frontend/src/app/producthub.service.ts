@@ -10,7 +10,7 @@ export class ProducthubService {
   constructor(private http : HttpClient) { }
   private subject = new Subject<any>();
   public getAllProducts():Observable<any>{
-    let url = "http://localhost:5137/product";
+    let url = "http://localhost:5137/api/products";
     return this.http.get<any>(url);
   }
   sendProduct(data:any){

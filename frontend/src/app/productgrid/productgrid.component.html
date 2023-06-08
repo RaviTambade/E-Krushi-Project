@@ -1,0 +1,19 @@
+<table> 
+    <thead> 
+       <tr> 
+          <th>Product Id</th>
+          <th>Title</th> 
+          <th>StockAvailable</th> 
+       </tr> 
+    </thead> 
+    <tbody> 
+     <tr *ngFor="let product of products"> 
+        <th scope="row">{{ product.id }}</th> 
+        <th>{{ product.title }}</th> 
+        <td>{{ product.stockAvailable}}</td> 
+        <!-- <td>{{ entry.location }}</td> 
+        <td>{{ entry.spendOn | date: 'medium' }}</td> 
+        <td><a href="">View</a> |<a href="">Remove</a>|<a href="">Update</a></td>  -->
+     </tr> 
+  </tbody> 
+ </table>
