@@ -26,6 +26,8 @@ export class MutipleSelectListBoxComponent implements OnInit{
 
   changeMembers(e: any){
    this.result=e.target.value;
+   this.selItems.push(this.result);
+   console.log(this.selItems);
   }
 
   submit(){

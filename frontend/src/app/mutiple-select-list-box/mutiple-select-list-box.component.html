@@ -2,12 +2,19 @@
 
 
 <div>
-    <select Name="members" Size="4" (change)="changeMembers($event)">  
-        <option *ngFor="let member of members"> {{member}} </option> 
+    <select Name="members" Size="4" (change)="changeMembers($event)"  >  
+        <option *ngFor="let member of members" > {{member}} </option> 
     </select>  
 </div>
 
 
 <button type="submit" [disabled]="!form.valid">Submit</button>
+
+
+<div>
+<ol>
+    <li *ngFor=" let item of selItems">{{item}}</li>
+</ol>
+</div> 
 
 </form>
