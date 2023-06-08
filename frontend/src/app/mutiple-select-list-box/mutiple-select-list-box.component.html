@@ -1,0 +1,13 @@
+<form [formGroup]="form" (ngSubmit)="submit()">     
+
+
+<div>
+    <select Name="members" Size="4" (change)="changeMembers($event)">  
+        <option *ngFor="let member of members"> {{member}} </option> 
+    </select>  
+</div>
+
+
+<button type="submit" [disabled]="!form.valid">Submit</button>
+
+</form>
