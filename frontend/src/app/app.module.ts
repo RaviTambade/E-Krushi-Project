@@ -17,6 +17,7 @@ import { MutipleSelectListBoxComponent } from './mutiple-select-list-box/mutiple
 import { CategoryproductComponent } from './categoryproduct/categoryproduct.component';
 import { ProductgridComponent } from './productgrid/productgrid.component';
 import { PaggingComponent } from './pagging/pagging.component';
+import { SortedlistComponent } from './sortedlist/sortedlist.component';
  
 
 
@@ -31,7 +32,8 @@ import { PaggingComponent } from './pagging/pagging.component';
     FileUploadComponent,
     MutipleSelectListBoxComponent,
     ProductgridComponent,
-    PaggingComponent
+    PaggingComponent,
+    SortedlistComponent
   ],
   imports: [
     BrowserModule,
