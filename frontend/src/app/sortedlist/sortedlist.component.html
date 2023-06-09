@@ -1,7 +1,13 @@
 <p>sortedlist works!</p>
-
+<!-- 
 <ol *ngFor="let number of numbers">
     <p>{{number}}</p>
+</ol>
+
+<button (click)="onChange()">sort</button> -->
+
+<ol *ngFor="let entry of expenseEntries ">
+    <p>{{entry.amount}}</p>
 </ol>
 
 <button (click)="onChange()">sort</button>
