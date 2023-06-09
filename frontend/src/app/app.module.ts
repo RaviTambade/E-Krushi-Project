@@ -16,6 +16,7 @@ import { MutipleSelectListBoxComponent } from './mutiple-select-list-box/mutiple
  
 import { CategoryproductComponent } from './categoryproduct/categoryproduct.component';
 import { ProductgridComponent } from './productgrid/productgrid.component';
+import { PaggingComponent } from './pagging/pagging.component';
  
 
 
@@ -29,8 +30,8 @@ import { ProductgridComponent } from './productgrid/productgrid.component';
     CheckBoxComponent,
     FileUploadComponent,
     MutipleSelectListBoxComponent,
-    ProductgridComponent
-  
+    ProductgridComponent,
+    PaggingComponent
   ],
   imports: [
     BrowserModule,

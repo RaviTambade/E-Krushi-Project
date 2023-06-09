@@ -47,9 +47,17 @@
          </button> 
        </td>
         <td>
-         <button type="button" [routerLink]="[product.id]"class="btn btn-link btn-sm btn-rounded">
+         <div *ngIf="product && product.id !=0">
+            <p><label>categoryId:</label>{{product.id}}</p>
+            <p><label>categoryId:</label>{{product.title}}</p>
+            <p><label>categoryId:</label>{{product.unitPrice}}</p>
+            <p><label>categoryId:</label>{{product.stockAvailable}}</p>
+            <p><label>categoryId:</label>{{product.image}}</p>
+            <p><label>categoryId:</label>{{product.categoryId}}</p>
+         <button type="button" class="btn btn-link btn-sm btn-rounded">
            View
          </button>
+      </div>
        </td>
        <td>
          <button type="button" (click)="Delete(product.id)" class="btn btn-link btn-sm btn-rounded">
@@ -58,7 +66,6 @@
        </td>
      </tr> 
  </table>
-
-
+ 
 
  
