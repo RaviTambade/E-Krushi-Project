@@ -15,7 +15,10 @@ public class ProductsController : ControllerBase
     {
         _service = service;
     }
+     
 
+    // http://localhost:5137/api/products
+    // this method gives list of all products.
     [HttpGet]
     public async Task<List<Product>> GetAllProducts()
     {
@@ -23,6 +26,10 @@ public class ProductsController : ControllerBase
         return products;
     }
 
+
+
+    //http://localhost:5137/api/products/product/{id}
+    //this method gives product by id.
     [HttpGet("product/{id}")]
     public async Task<Product> GetProduct(int id)
     {
@@ -56,7 +63,7 @@ public class ProductsController : ControllerBase
         return result;
     }
 
-
+     
     [HttpGet]
     [Route("category/{categoryName}")]
     public async Task<List<Product>> GetProductsDetails(string categoryName)
