@@ -46,6 +46,7 @@
            Edit
          </button> 
        </td>
+<<<<<<< HEAD
         <td>
          <div *ngIf="product && product.id !=0">
             <p><label>categoryId:</label>{{product.id}}</p>
@@ -59,10 +60,16 @@
          </button>
       </div>
        </td>
-       <td>
-         <button type="button" (click)="Delete(product.id)" class="btn btn-link btn-sm btn-rounded">
-           Delete
+=======
+        <!-- <td>
+         <button type="button" [routerLink]="[product.id]"class="btn btn-link btn-sm btn-rounded">
+           View
          </button>
+       </td> -->
+>>>>>>> b5dede013e7d88712838611e439e2106273bd9df
+       <td>
+        <li><button  class="btn btn-link btn-sm btn-rounded" (click)="Delete(id)">Delete</button></li>
+         
        </td>
      </tr> 
  </table>

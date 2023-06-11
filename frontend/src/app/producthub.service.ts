@@ -67,7 +67,7 @@ public getById(id:number):Observable<any>{
 }
 
 public Delete(id:number):Observable<any>{
-  let url=" http://localhost:5137/api/products/"+ id;
+  let url="http://localhost:5137/api/products/"+ {id};
   return this.http.delete<any>(url);
 }
 

@@ -18,6 +18,7 @@ import { CategoryproductComponent } from './categoryproduct/categoryproduct.comp
 import { ProductgridComponent } from './productgrid/productgrid.component';
 import { PaggingComponent } from './pagging/pagging.component';
 import { SortedlistComponent } from './sortedlist/sortedlist.component';
+import { ProductListDetailsComponent } from './product-list-details/product-list-details.component';
  
 
 
@@ -33,7 +34,9 @@ import { SortedlistComponent } from './sortedlist/sortedlist.component';
     MutipleSelectListBoxComponent,
     ProductgridComponent,
     PaggingComponent,
-    SortedlistComponent
+    SortedlistComponent,
+    ProductListDetailsComponent
+    
   ],
   imports: [
     BrowserModule,

@@ -10,13 +10,14 @@ import { Product } from '../product';
 export class ProductgridComponent implements OnInit {
 products:Product[] |undefined
 id:number |any;
-product:Product  |undefined;
+product:any;
 
   constructor(private svc:ProducthubService){}
 
   ngOnInit(): void {
     this.svc.getAllProducts().subscribe((res)=>{
       this.products=res;
+      console.log(this.products);
     })
   }
   getById(id:number){
@@ -27,7 +28,12 @@ product:Product  |undefined;
 
   Delete(id:number){
     this.svc.Delete(id).subscribe((res)=>{
-      this.product=res;
+
+      // this.products = this.products.filter(this.product => this.product.id !== id)
+      this.product=res
     })
   }
+
+  
+  
 }

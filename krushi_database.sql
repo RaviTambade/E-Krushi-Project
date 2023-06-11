@@ -597,3 +597,6 @@ answers.id =smeanswers.answerid and subjectmatterexperts.id=smeanswers.smeid and
 select description from answers where questionid =1;
 
 select (description) as answer from answers where questionid =1;
+
+-- This query gives all accounts of user
+select * from accounts where userid =1;
