@@ -600,3 +600,7 @@ select (description) as answer from answers where questionid =1;
 
 -- This query gives all accounts of user
 select * from accounts where userid =1;
+
+-- This query gives address of particular customer
+select * from addresses where custid=2;
+
