@@ -4,67 +4,23 @@
 <table class="table align-middle mb-0 bg-white">
     <thead class="bg-light">
       <tr>
-       <th>Product Id</th>
        <th>Title</th> 
-       <th>StockAvailable</th> 
-       <th>UnitPrice</th> 
-       <th>Image</th> 
-       <th>Category Id</th> 
-
+       <th>Image</th>  
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let product of products" >
         <td>
-          <div class="d-flex align-items-center">
-            <div class="ms-3">
-              <p class="fw-bold mb-1">{{ product.id }}</p>
-            </div>
-          </div>
-        </td>
-        <td>
           <p class="fw-normal mb-1">{{ product.title }}</p>
         </td>
-        <td>
-          <p class="text-muted mb-0">{{ product.stockAvailable}}</p>
-        </td>
-        <td>
-            <p class="text-muted mb-0">{{ product.unitPrice}}</p>
-          </td>
           <td>
             <p class="text-muted mb-0">{{ product.image}}</p>
           </td>
           <td>
-            <p class="text-muted mb-0">{{ product.categoryId}}</p>
+            <button type="button" class="btn btn-link btn-sm btn-rounded">
+                Details
+              </button> 
           </td>
         
       </tr> 
   </table>
-
-  <!-- On rows
-<tr class="table-active">...</tr>
-
-<tr class="table-primary">...</tr>
-<tr class="table-secondary">...</tr>
-<tr class="table-success">...</tr>
-<tr class="table-danger">...</tr>
-<tr class="table-warning">...</tr>
-<tr class="table-info">...</tr>
-<tr class="table-light">...</tr>
-<tr class="table-dark">...</tr>
-
- On cells (`td` or `th`) -->
-<!-- <tr>
-  <td class="table-active">...</td>
-
-  <td class="table-primary">...</td>
-  <td class="table-secondary">...</td>
-  <td class="table-success">...</td>
-  <td class="table-danger">...</td>
-  <td class="table-warning">...</td>
-  <td class="table-info">...</td>
-  <td class="table-light">...</td>
-  <td class="table-dark">...</td>
-</tr> -->
-
-<!-- has context menu -->
