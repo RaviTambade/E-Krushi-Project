@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Product } from 'src/app/product';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-store',
@@ -9,7 +10,9 @@ import { Product } from 'src/app/product';
 })
 export class StoreComponent implements OnInit {
   products:Product[] |any;
-  constructor(private svc:EmployeeService){}
+  @Input() id:any ;
+
+  constructor(private svc:EmployeeService,private router:Router){}
 
   ngOnInit(): void {
     this.svc.getAllProducts().subscribe((res)=>{
@@ -17,4 +20,8 @@ export class StoreComponent implements OnInit {
     })
   }
 
+  onSelectProduct(id:any){
+    console.log(id);
+    this.router.navigate(['./details',id])
+  }
 }

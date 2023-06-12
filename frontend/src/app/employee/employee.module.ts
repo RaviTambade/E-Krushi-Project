@@ -7,12 +7,14 @@ import { OrderComponent } from './order/order.component';
 import { RoutingComponent } from './routing/routing.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductdetailsComponent } from './productdetails/productdetails.component';
 
 const routes : Routes=[
   {path:'home', component:HomeComponent},
   {path:'order', component:OrderComponent },
   {path:'profile', component:ProfileComponent},
   {path:'store', component:StoreComponent},
+  {path:'details/:id', component:ProductdetailsComponent}
 ]
 
 @NgModule({
@@ -21,7 +23,8 @@ const routes : Routes=[
     StoreComponent,
     ProfileComponent,
     OrderComponent,
-    RoutingComponent
+    RoutingComponent,
+    ProductdetailsComponent
   ],
   imports: [
     CommonModule,
