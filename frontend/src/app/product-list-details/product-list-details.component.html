@@ -1,80 +1,39 @@
+<div>
+  <ul> 
+     <li *ngFor="let product of products"> 
+          <a href="#" (click)="onSelectProduct(product.id)">
+              {{product.title}}
+            </a> 
+       </li> 
+    </ul>
+ 
 
-<section style="background-color: #eee;"> 
-  <div class="row">
-     <div class="col-lg-4">
-       <div class="card mb-4">
-         <div class="card-body text-center">
-           <ul> 
-              <li *ngFor="let product of products"> 
-                   <a href="#" (click)="onSelectProduct(product.id)">
-                       {{product.title}}
-                     </a> 
-                </li> 
-             </ul>
-           </div>
-       </div>
-     </div>
-    
-     <div class="col-lg-8">
-       <div class="card mb-4">
-         <div class="card-body">
-           <div class="row">
-             <div class="col-sm-3">
-               <p class="mb-0">Product</p>
-             </div>
-             <div class="col-sm-9">
-               <p class="text-muted mb-0" id="title">{{selectedProduct.title}}</p>
-             </div>
-           </div>
-           <hr>
-           <div class="row">
-            <div class="col-sm-3">
-              <p class="mb-0">Id</p>
-            </div>
-            <div class="col-sm-9">
-              <p class="text-muted mb-0" id="id">{{selectedProduct.id}}</p>
-            </div>
-          </div>
-          <hr>
-           <div class="row">
-             <div class="col-sm-3">
-               <p class="mb-0">UnitPrice</p>
-             </div>
-             <div class="col-sm-9">
-               <p class="text-muted mb-0" id="unitPrice">{{selectedProduct.unitPrice}}</p>
-             </div>
-           </div>
-           <hr>
-           <div class="row">
-             <div class="col-sm-3">
-               <p class="mb-0">StockAvailable </p>
-             </div>
-             <div class="col-sm-9">
-               <p class="text-muted mb-0" id="stockAvailable">{{selectedProduct.stockAvailable}}</p>
-             </div>
-           </div>
-           <hr>
-           <div class="row">
-             <div class="col-sm-3">
-               <p class="mb-0">Image</p>
-             </div>
-             <div class="col-sm-9">
-               <p class="text-muted mb-0" id="image">{{selectedProduct.image}}</p>
-             </div>
-           </div>
-           <hr>
-           <div class="row">
-            <div class="col-sm-3">
-              <p class="mb-0">Category Id</p>
-            </div>
-            <div class="col-sm-9">
-              <p class="text-muted mb-0" id="categoryId">{{selectedProduct.categoryId}}</p>
-            </div>
-          </div>
-           <hr>
-         </div>
-       </div>
-     </div>
-  </div>
- </section> 
+<div>
+<table class="table table-bordered">
+<thead>
+<th scope="col">Title</th>
 
+<th scope="col">Id</th>
+<th scope="col">UnitPrice</th>
+<th scope="col">UnitPrice</th>
+<th scope="col">StockAvailable</th>
+<th scope="col">Image</th>
+<th scope="col">categoryId</th>
+</thead>
+<tbody>
+<tr scope="row">
+<td >{{selectedProduct.title}}</td>
+
+<td >{{selectedProduct.id}}</td>
+<td >{{selectedProduct.unitPrice}}</td>
+<td >{{selectedProduct.stockAvailable}}</td>
+<td >{{selectedProduct.image}}</td>
+<td >{{selectedProduct.categoryId}}</td>
+
+
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
