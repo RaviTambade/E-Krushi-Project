@@ -13,12 +13,12 @@ import { CheckBoxComponent } from './check-box/check-box.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
  
 import { MutipleSelectListBoxComponent } from './mutiple-select-list-box/mutiple-select-list-box.component';
- 
-import { CategoryproductComponent } from './categoryproduct/categoryproduct.component';
 import { ProductgridComponent } from './productgrid/productgrid.component';
 import { PaggingComponent } from './pagging/pagging.component';
 import { SortedlistComponent } from './sortedlist/sortedlist.component';
 import { ProductListDetailsComponent } from './product-list-details/product-list-details.component';
+import { EmployeeModule } from './employee/employee.module';
+import { RoutingComponent } from './employee/routing/routing.component';
  
 
 
@@ -35,14 +35,14 @@ import { ProductListDetailsComponent } from './product-list-details/product-list
     ProductgridComponent,
     PaggingComponent,
     SortedlistComponent,
-    ProductListDetailsComponent
-    
+    ProductListDetailsComponent,   
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    EmployeeModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
