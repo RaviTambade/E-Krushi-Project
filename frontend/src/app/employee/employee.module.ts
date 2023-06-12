@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { OrderComponent } from './order/order.component';
 import { RoutingComponent } from './routing/routing.component';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes : Routes=[
   {path:'home', component:HomeComponent},
@@ -24,10 +25,12 @@ const routes : Routes=[
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     RouterModule.forRoot(routes)
   ],
   exports: [
-    RoutingComponent
+    RoutingComponent,
+    StoreComponent
   ]
 })
 export class EmployeeModule { }
