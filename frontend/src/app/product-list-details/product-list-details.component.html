@@ -6,7 +6,7 @@
          <div class="card-body text-center">
            <ul> 
               <li *ngFor="let product of products"> 
-                   <a href="#" (click)="onSelectProduct(product)">
+                   <a href="#" (click)="onSelectProduct(product.id)">
                        {{product.title}}
                      </a> 
                 </li> 

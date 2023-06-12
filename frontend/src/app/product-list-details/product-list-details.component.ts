@@ -17,12 +17,14 @@ export class ProductListDetailsComponent implements OnInit {
   ngOnInit():void{
    this.svc.getAllProducts().subscribe((res)=>{
    this.products=res;
+   this.selectedProduct=this.products[0];
    console.log(this.products);
    })
-   this.selectedProduct=this.products[0];
 }
 
   onSelectProduct(product:any){
-   this.selectedProduct=product;
+    this.svc.getById(product).subscribe((res)=>{
+      this.selectedProduct=res;
+    })
   }
 }

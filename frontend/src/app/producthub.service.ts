@@ -62,7 +62,7 @@ public getProducts(category:string):Observable<any>{
 }
 
 public getById(id:number):Observable<any>{
-  let url=" http://localhost:5137/api/products/product/"+ id;
+  let url="http://localhost:5137/api/products/product/"+ id;
   return this.http.get<any>(url);
 }
 
