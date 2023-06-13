@@ -20,8 +20,7 @@ public class CartRepository : ICartRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "SELECT products.id,products.title,products.image,products.unitprice,cartitems.quantity FROM products,cartitems" + 
-                           "WHERE products.id=cartitems.productid AND cartid=@cartId";
+            string query = "SELECT products.title,products.image,products.unitprice,cartitems.quantity,cartitems.productid FROM products inner join cartitems on products.id=cartitems.productid where cartitems.cartid=@cartId";
             
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
