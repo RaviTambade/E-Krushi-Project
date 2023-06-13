@@ -12,6 +12,54 @@ public class CartRepository : ICartRepository
         _configuration = configuration;
         _conString = this._configuration.GetConnectionString("DefaultConnection");
     }
+
+    public async Task<Cart> GetCart(int id)
+    {
+        Cart cart = new Cart();
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = _conString;
+        try
+        {
+            string query = "SELECT products.id,products.title,products.image,products.unitprice,cartitems.quantity FROM products,cartitems" + 
+                           "WHERE products.id=cartitems.productid AND cartid=@cartId";
+            
+            await con.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, con);
+            command.Parameters.AddWithValue("@cartId", id);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+                int productId = int.Parse(reader["productid"].ToString());
+                string productTitle = reader["title"].ToString();
+                string imageURL = reader["image"].ToString();
+                int quantity = int.Parse(reader["quantity"].ToString());
+                double unitPrice = double.Parse(reader["unitprice"].ToString());
+                Item item = new Item()
+                {
+                    Id = productId,
+                    Title = productTitle,
+                    Image = imageURL,
+                    Quantity = quantity,
+                    UnitPrice = unitPrice
+                };
+                cart.Items.Add(item);
+                cart.CartId = id;
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            await con.CloseAsync();
+        }
+        return cart;
+    }
+
+
+
     public async Task<bool> AddItem(int cartId, Item item)
     {
         bool status = false;
@@ -20,7 +68,7 @@ public class CartRepository : ICartRepository
         {
             con.ConnectionString = _conString;
             await con.OpenAsync();
-            string query = "INSERT into cart_items(cart_id,product_id,quantity) VALUES (@cartId, @productId,@quantity)";
+            string query = "INSERT into cartitems(cartid,productid,quantity) VALUES (@cartId, @productId,@quantity)";
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@cartId", cartId);
             command.Parameters.AddWithValue("@productId", item.Id);

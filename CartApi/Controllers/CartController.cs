@@ -11,41 +11,35 @@ namespace ShoppingCartService.Controllers
     {
         
         private readonly ICartService _cartSrv;
-        private readonly ILogger<CartController> _logger;
-        public CartController(ILogger<CartController> logger, ICartService cartService)
+        public CartController( ICartService cartService)
         {
-            _cartSrv = cartService;
-            _logger = logger;
-            
+            _cartSrv = cartService;       
         }
 
+        [HttpGet("getcartdetails/{id}")]
+        public async Task<Cart> GetCart(int id)
+        {
+            Cart cart = await _cartSrv.GetCart(id);
+            Console.WriteLine(id);
+            return cart;
+        }
 
-
-
-        // [HttpPost]
-        // [Route("addtocart/{id}")]
-        // public async Task<bool> AddToCart(int id, Item item)
-        // {
-        //     if (cart == null)
-        //     {
-        //         cart = await _cartSrv.GetCart(id);
-        //         cart.Items.Add(item);
-        //         _logger.LogInformation($" item is added to cart " + id + " First it is fetched from database");
-
-        //     }
-        //     else
-        //     {
-        //         cart.Items.Add(item);
-        //         _logger.LogInformation($" item is added to cart " + id);
-        //     }
-
-
-        //     bool status = await _cartSrv.AddItem(cart.CartId, item);
-        //     if (status)
-        //     {
-        //         await _distributedCache.RemoveAsync(cacheKey);
-        //     }
-        //     return status;
-        // }
+        [HttpPost]
+        [Route("addtocart/{id}")]
+        public async Task<bool> AddItem(int id, Item item)
+        {
+            Cart cart = await _cartSrv.GetCart(id);
+            if (cart == null)
+            {
+                cart = await _cartSrv.GetCart(id);
+                cart.Items.Add(item);    
+            }
+            else
+            {
+                cart.Items.Add(item);
+            }
+            bool status = await _cartSrv.AddItem(cart.CartId, item);
+            return status;
+        }
     }
 }
