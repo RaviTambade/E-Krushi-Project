@@ -11,21 +11,30 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ProductdetailsComponent implements OnInit{
 
-  product: Product |any;
+  product: any;
   id:any; 
   
   constructor(private svc:EmployeeService,private route:ActivatedRoute,private router:Router){}
   
+  
   ngOnInit(): void {
-      this.route.paramMap.subscribe((params)=>{
-      this.id = params.get('id');
-      console.log(this.id);
+    console.log("ng on init")
+    this.id = this.route.snapshot.paramMap.get('id');
+    console.log(this.id);
+    this.svc.getById(this.id).subscribe((res)=>{
+    this.product=res;
       })
-      this.svc.getById(this.id).subscribe((res)=>{
-      this.product=res;
-      })
-    }
-  }
+ }
+// ngOnInit(): void {
+//   this.route.paramMap.subscribe((params) =>
+//   {
+//     this.id=params.get('id');
+//   });
+//   this.svc.getById(this.id).subscribe((response) =>{
+//     this.product = response;
+//   });
 
+//  }
+}
   
 

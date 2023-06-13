@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home/home.component';
 import { StoreComponent } from './store/store.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -8,13 +7,15 @@ import { RoutingComponent } from './routing/routing.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 const routes : Routes=[
   {path:'home', component:HomeComponent},
   {path:'order', component:OrderComponent },
   {path:'profile', component:ProfileComponent},
   {path:'store', component:StoreComponent},
-  {path:'details/:id', component:ProductdetailsComponent}
+  {path:'store/details/:id', component:ProductdetailsComponent}
 ]
 
 @NgModule({
@@ -24,10 +25,11 @@ const routes : Routes=[
     ProfileComponent,
     OrderComponent,
     RoutingComponent,
-    ProductdetailsComponent
+    ProductdetailsComponent 
   ],
   imports: [
     CommonModule,
+    FormsModule,
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],

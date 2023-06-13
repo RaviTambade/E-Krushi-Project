@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { EmployeeService } from '../employee.service';
 import { Product } from 'src/app/product';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-store',
@@ -10,9 +10,11 @@ import { Router } from '@angular/router';
 })
 export class StoreComponent implements OnInit {
   products:Product[] |any;
-  @Input() id:any ;
+  selectedProduct:any;
 
-  constructor(private svc:EmployeeService,private router:Router){}
+  constructor(private svc:EmployeeService,private router:Router,private route:ActivatedRoute){
+    this.products=[];
+  }
 
   ngOnInit(): void {
     this.svc.getAllProducts().subscribe((res)=>{
@@ -20,8 +22,11 @@ export class StoreComponent implements OnInit {
     })
   }
 
-  onSelectProduct(id:any){
+  onSelectProduct(id:any): void{
     console.log(id);
-    this.router.navigate(['./details',id])
+    this.router.navigate(['./details',id],{relativeTo:this.route});
   }
 }
+
+
+
