@@ -59,7 +59,7 @@ public class CartRepository : ICartRepository
 
 
 
-    public async Task<bool> AddItem(int cartId, Item item)
+    public async Task<bool> AddItem(int id, Item item)
     {
         bool status = false;
         MySqlConnection con = new MySqlConnection();
@@ -69,7 +69,7 @@ public class CartRepository : ICartRepository
             await con.OpenAsync();
             string query = "INSERT into cartitems(cartid,productid,quantity) VALUES (@cartId, @productId,@quantity)";
             MySqlCommand command = new MySqlCommand(query, con);
-            command.Parameters.AddWithValue("@cartId", cartId);
+            command.Parameters.AddWithValue("@cartId", id);
             command.Parameters.AddWithValue("@productId", item.Id);
             command.Parameters.AddWithValue("@quantity", item.Quantity);
             int rowsAffected = await command.ExecuteNonQueryAsync();

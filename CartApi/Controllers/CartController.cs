@@ -25,21 +25,17 @@ namespace ShoppingCartService.Controllers
         }
 
         [HttpPost]
+
         [Route("addtocart/{id}")]
-        public async Task<bool> AddItem(int id, Item item)
+
+        public async Task<bool> AddItem(int id,[FromBody] Item item)
+
         {
-            Cart cart = await _cartSrv.GetCart(id);
-            if (cart == null)
-            {
-                cart = await _cartSrv.GetCart(id);
-                cart.Items.Add(item);    
-            }
-            else
-            {
-                cart.Items.Add(item);
-            }
-            bool status = await _cartSrv.AddItem(cart.CartId, item);
+
+            bool status = await _cartSrv.AddItem(id, item);
+
             return status;
+
         }
     }
 }
