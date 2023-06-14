@@ -20,7 +20,7 @@ public class CartRepository : ICartRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "SELECT products.title,products.image,products.unitprice,cartitems.quantity,cartitems.productid FROM products inner join cartitems on products.id=cartitems.productid where cartitems.cartid=@cartId";
+            string query = "SELECT products.title,products.image,products.unitprice,cartitems.quantity,cartitems.productid,cartitems.cartid FROM products inner join cartitems on products.id=cartitems.productid where cartitems.cartid=@cartId";
             
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
@@ -29,13 +29,15 @@ public class CartRepository : ICartRepository
             while (await reader.ReadAsync())
             {
                 int productId = int.Parse(reader["productid"].ToString());
+                int cartId = int.Parse(reader["cartid"].ToString());
                 string productTitle = reader["title"].ToString();
                 string imageURL = reader["image"].ToString();
                 int quantity = int.Parse(reader["quantity"].ToString());
                 double unitPrice = double.Parse(reader["unitprice"].ToString());
                 Item item = new Item()
                 {
-                    Id = productId,
+                    ProductId = productId,
+                    CartId=cartId,
                     Title = productTitle,
                     Image = imageURL,
                     Quantity = quantity,
@@ -62,6 +64,9 @@ public class CartRepository : ICartRepository
     public async Task<bool> AddItem( Item item)
     {
         bool status = false;
+        Console.WriteLine(item.CartId);
+        Console.WriteLine(item.ProductId);
+        Console.WriteLine(item.Quantity);
         MySqlConnection con = new MySqlConnection();
         try
         {
@@ -70,7 +75,7 @@ public class CartRepository : ICartRepository
             string query = "INSERT into cartitems(cartid,productid,quantity) VALUES (@cartId, @productId,@quantity)";
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@cartId",item.CartId);
-            command.Parameters.AddWithValue("@productId", item.Id);
+            command.Parameters.AddWithValue("@productId", item.ProductId);
             command.Parameters.AddWithValue("@quantity", item.Quantity);
             int rowsAffected = await command.ExecuteNonQueryAsync();
             if (rowsAffected >= 1)
