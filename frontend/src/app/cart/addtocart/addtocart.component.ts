@@ -9,23 +9,31 @@ import { Item } from '../items';
 })
 export class AddtocartComponent implements OnInit{
   item:Item={
-    productId:0,
+    id:0,
+    cartId:0,
     quantity:0,
-    Title:'',
+    title:'',
     image:'',
     unitPrice:0
   }
+  status:boolean |undefined;
 
   constructor(private svc:CartService){}
   ngOnInit(): void {
     }
 
 
-public addToCart(id:number){
-    this.svc.addToCart(id).subscribe((res)=>{
-    this.item =res;
+public addToCart(id:number,item:Item){
+    this.svc.addToCart(id,item).subscribe((res)=>{
+    this.status=res;
     console.log(this.item)
+    if(res){
+      window.location.reload();
+      alert("Record Inserted Successfully");
     }
-    )
+    else{
+      alert("Error While Inserting Record")
+    }
+    });
   }
 }

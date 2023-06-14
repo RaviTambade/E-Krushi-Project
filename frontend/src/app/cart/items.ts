@@ -1,8 +1,9 @@
 export class Item{
-    constructor(public productId:number,
+    constructor(public id:number,
                 public quantity:number,
-                public Title:string,
+                public title:string,
                 public image:string,
+                public cartId:number,
                 public unitPrice:number){}
             }
     
