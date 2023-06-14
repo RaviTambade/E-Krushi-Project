@@ -10,8 +10,8 @@ export class CartService {
 
   constructor(private http:HttpClient) { }
   
-   public addToCart(id:number,item:Item):Observable<any> {
-    let url= "http://localhost:5282/api/cart/addtocart/"+ id;
+   public addToCart(item:Item):Observable<any> {
+    let url= "http://localhost:5282/api/cart/addtocart";
      return this.http.post<any>(url,item);
    }
 }
