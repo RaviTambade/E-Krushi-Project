@@ -2,17 +2,17 @@
 
 
 
-<form #cartForm="ngForm" (ngSubmit)="addtocart(cartForm.value)">
+<form #cartForm="ngForm" (ngSubmit)="addToCart(cartForm.value)">
 
     <div class="mb-3">
       <label><b>cart id :</b></label>
-      <input type="text" name="title" [(ngModel)]="items.cartid"/>
-      <br>
+      <input type="number" name="cartId" [(ngModel)]="item.cartId"/>
+      <br> 
       <label><b>product id :</b></label>
-      <input type="number" name="unitPrice" [(ngModel)]="items.id"/>
+      <input type="number" name="id" [(ngModel)]="item.id"/>
       <br>
       <label><b>quantity :</b></label>
-      <input type="number" name="stockAvailable" [(ngModel)]="items.quantity"/>
+      <input type="number" name="quantity" [(ngModel)]="item.quantity"/>
       <br>
       <button class="btn btn-success " type="submit">AddToCart</button>
     </div>

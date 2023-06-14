@@ -29,13 +29,10 @@ namespace ShoppingCartService.Controllers
         [Route("addtocart/{id}")]
 
         public async Task<bool> AddItem(int id,[FromBody] Item item)
-
         {
-
             bool status = await _cartSrv.AddItem(id, item);
 
             return status;
-
         }
     }
 }

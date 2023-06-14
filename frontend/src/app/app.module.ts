@@ -37,8 +37,7 @@ import { AddtocartComponent } from './cart/addtocart/addtocart.component';
     ProductgridComponent,
     PaggingComponent,
     SortedlistComponent,
-    ProductListDetailsComponent, 
-    AddtocartComponent,  
+    ProductListDetailsComponent,  
   ],
   imports: [
     BrowserModule,
