@@ -19,6 +19,8 @@ import { SortedlistComponent } from './sortedlist/sortedlist.component';
 import { ProductListDetailsComponent } from './product-list-details/product-list-details.component';
 import { EmployeeModule } from './employee/employee.module';
 import { RoutingComponent } from './employee/routing/routing.component';
+import { CartModule } from './cart/cart.module';
+import { AddtocartComponent } from './cart/addtocart/addtocart.component';
  
 
 
@@ -35,14 +37,16 @@ import { RoutingComponent } from './employee/routing/routing.component';
     ProductgridComponent,
     PaggingComponent,
     SortedlistComponent,
-    ProductListDetailsComponent,   
+    ProductListDetailsComponent, 
+    AddtocartComponent,  
   ],
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    EmployeeModule
+    EmployeeModule,
+    CartModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
