@@ -3,6 +3,7 @@ namespace ShoppingCartService.Models
     public class Item
     {
         public int Id{get; set;}
+        public int CartId{get; set;}
 
         public string? Title{get; set;}
 

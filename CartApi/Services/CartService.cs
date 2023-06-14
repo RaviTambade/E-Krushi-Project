@@ -11,9 +11,9 @@ public class CartService : ICartService
         this._repo = repo;
     }
 
-    public async Task<bool> AddItem(int id, Item item)
+    public async Task<bool> AddItem( Item item)
     {
-        return await _repo.AddItem(id, item);
+        return await _repo.AddItem( item);
     }
 
     public async Task<Cart> GetCart(int id)
