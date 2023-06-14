@@ -9,7 +9,6 @@ namespace ShoppingCartService.Models
         public Cart()
         {
             this.Items = new List<Item>();
-        }
-        
+        }     
     }
 }

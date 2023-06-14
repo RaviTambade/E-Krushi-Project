@@ -23,17 +23,20 @@ export class AddtocartComponent implements OnInit{
     }
 
 
-public addToCart(id:number,item:Item){
-    this.svc.addToCart(id,item).subscribe((res)=>{
-    this.status=res;
-    console.log(this.item)
-    if(res){
-      window.location.reload();
-      alert("Record Inserted Successfully");
-    }
-    else{
-      alert("Error While Inserting Record")
-    }
-    });
+public addToCart(cartForm:any){
+    console.log(cartForm);
+    let id = cartForm.cartId;
+    console.log(id);
+    // this.svc.addToCart().subscribe((res)=>{
+    // this.status=res;
+    // console.log(this.item)
+    // if(res){
+    //   window.location.reload();
+    //   alert("Record Inserted Successfully");
+    // }
+    // else{
+    //   alert("Error While Inserting Record")
+    // }
+    // });
   }
 }
