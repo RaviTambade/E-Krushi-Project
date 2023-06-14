@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 import { Item } from '../items';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-addtocart',
@@ -19,7 +19,7 @@ export class AddtocartComponent implements OnInit{
   }
   status:boolean |undefined;
     id:any;
-  constructor(private svc:CartService,private router:Route,private route:ActivatedRoute){}
+  constructor(private svc:CartService,private router:Router,private route:ActivatedRoute){}
   ngOnInit(): void {
     }
 
