@@ -4,17 +4,23 @@
 
 <form #cartForm="ngForm" (ngSubmit)="addToCart(cartForm.value)">
 
-    <div class="mb-3">
+    <div class="form-group">
       <label><b>cart id :</b></label>
       <input type="number" name="cartId" [(ngModel)]="item.cartId"/>
+   </div>
+   <div class="form-group">
       <br> 
       <label><b>product id :</b></label>
       <input type="number" name="productId" [(ngModel)]="item.productId"/>
+    </div>
+    <div class="form-group">
       <br>
       <label><b>quantity :</b></label>
       <input type="number" name="quantity" [(ngModel)]="item.quantity"/>
+    </div>
+    <div class="form-group">
       <br>
-      <button class="btn btn-success " type="submit">AddToCart</button>
+      <button class="btn btn-default" type="submit">AddToCart</button>
     </div>
   </form>
   

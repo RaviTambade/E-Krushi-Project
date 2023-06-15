@@ -95,14 +95,13 @@ public class CartRepository : ICartRepository
         return status;
     }
 
-    public async Task<List<Cart>> GetAll(int custId)
+    public async Task<Cart> GetAll(int custId)
     {
         Cart cart = new Cart();
-        List<Item> cartItems = new List<Item>();
         MySqlConnection con = new MySqlConnection(_conString);
         try
         {
-            string query = "SELECT cartitems.cartid, products.title,products.image,products.unitprice,cartitems.quantity,cartitems.productid,carts.custid FROM products inner join " + 
+            string query = "SELECT carts.custid,cartitems.cartid, products.title,products.image,products.unitprice,cartitems.quantity,cartitems.productid,carts.custid FROM products inner join " + 
                            "cartitems on products.id=cartitems.productid inner join carts on carts.id=cartitems.cartid where carts.custid=@custId";
             MySqlCommand cmd = new MySqlCommand(query, con);
             cmd.Parameters.AddWithValue("@custId", custId);
@@ -124,10 +123,11 @@ public class CartRepository : ICartRepository
                     Title = productTitle,
                     Image = imageURL,
                     Quantity = quantity,
-                    UnitPrice = unitPrice
+                    UnitPrice = unitPrice,
+                    CustomerId = custId
                 };
-                cartItems.Add(item);
-                cart.CustomerId = custId;
+               cart.Items.Add(item);
+               cart.CustomerId=custId;
             }
             await reader.CloseAsync();
         }
@@ -139,6 +139,8 @@ public class CartRepository : ICartRepository
         {
             await con.CloseAsync();
         }
-        return cartItems;
+        return cart;
     }
+
+    
 }

@@ -4,7 +4,7 @@ namespace ShoppingCartService.Repositories.Interfaces{
 
     public interface ICartRepository{
 
-        Task<List<Cart>> GetAll(int custid);
+        Task<Cart> GetAll(int custid);
         Task<Cart> GetCart(int id);
         Task<bool> AddItem(Item item);
 

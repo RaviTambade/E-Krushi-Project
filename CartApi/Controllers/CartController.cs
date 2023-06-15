@@ -16,11 +16,11 @@ namespace ShoppingCartService.Controllers
             _cartSrv = cartService;       
         }
 
-        [HttpGet("getall/{id}")]
-        public async Task<List<Item>> GetAll(int id)
+        [HttpGet("getall/{custId}")]
+        public async Task<Cart> GetAll(int custId)
         {
-            List<Item> items = await _cartSrv.GetAll(id);
-            Console.WriteLine(id);
+           Cart items = await _cartSrv.GetAll(custId);
+            Console.WriteLine(custId);
             return items;
         }
 
