@@ -15,7 +15,7 @@ export class EmployeeService {
   }
 
   public getById(id:number):Observable<any>{
-    let url = "http://localhost:5137/api/products/product/"+ id;
+    let url = "http://localhost:5282/api/cart/getcartdetails/"+ id;
     console.log("url");
     return this.http.get<any>(url);
     

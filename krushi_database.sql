@@ -569,3 +569,7 @@ SELECT products.id, products.title,products.unitprice,products.stockavailable,pr
 
 
 INSERT into cartitems(cartid,productid,quantity) VALUES (1, 2,3);
+
+
+SELECT products.title,products.image,products.unitprice,cartitems.quantity,cartitems.productid,carts.custid FROM products inner join 
+cartitems on products.id=cartitems.productid inner join carts on carts.id=cartitems.cartid where carts.custid=1;

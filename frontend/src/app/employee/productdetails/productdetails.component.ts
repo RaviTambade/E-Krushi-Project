@@ -35,6 +35,11 @@ export class ProductdetailsComponent implements OnInit{
 //   });
 
 //  }
+
+    addToCart(id:number,cartId:number,quantity:number){
+      console.log(id);
+      console.log(cartId);
+    }
 }
   
 

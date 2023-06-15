@@ -13,6 +13,7 @@ public class CartRepository : ICartRepository
         _conString = this._configuration.GetConnectionString("DefaultConnection");
     }
 
+
     public async Task<Cart> GetCart(int id)
     {
         Cart cart = new Cart();
@@ -61,7 +62,7 @@ public class CartRepository : ICartRepository
 
 
 
-    public async Task<bool> AddItem( Item item)
+    public async Task<bool> AddItem(Item item)
     {
         bool status = false;
         Console.WriteLine(item.CartId);
@@ -72,9 +73,9 @@ public class CartRepository : ICartRepository
         {
             con.ConnectionString = _conString;
             await con.OpenAsync();
-            string query = "INSERT into cartitems(cartid,productid,quantity) VALUES (@cartId, @productId,@quantity)";
+            string query = "INSERT into cartitems(cartid,productid,quantity) VALUES ((select id from carts where custid=@custId),@productId,@quantity)";
             MySqlCommand command = new MySqlCommand(query, con);
-            command.Parameters.AddWithValue("@cartId",item.CartId);
+            command.Parameters.AddWithValue("@custId",item.CustomerId);
             command.Parameters.AddWithValue("@productId", item.ProductId);
             command.Parameters.AddWithValue("@quantity", item.Quantity);
             int rowsAffected = await command.ExecuteNonQueryAsync();
@@ -92,5 +93,52 @@ public class CartRepository : ICartRepository
             await con.CloseAsync();
         }
         return status;
+    }
+
+    public async Task<List<Cart>> GetAll(int custId)
+    {
+        Cart cart = new Cart();
+        List<Item> cartItems = new List<Item>();
+        MySqlConnection con = new MySqlConnection(_conString);
+        try
+        {
+            string query = "SELECT cartitems.cartid, products.title,products.image,products.unitprice,cartitems.quantity,cartitems.productid,carts.custid FROM products inner join " + 
+                           "cartitems on products.id=cartitems.productid inner join carts on carts.id=cartitems.cartid where carts.custid=@custId";
+            MySqlCommand cmd = new MySqlCommand(query, con);
+            cmd.Parameters.AddWithValue("@custId", custId);
+            await con.OpenAsync();
+            MySqlDataReader reader = cmd.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+                int productId = int.Parse(reader["productid"].ToString());
+                int cartId = int.Parse(reader["cartid"].ToString());
+                string productTitle = reader["title"].ToString();
+                string imageURL = reader["image"].ToString();
+                int quantity = int.Parse(reader["quantity"].ToString());
+                double unitPrice = double.Parse(reader["unitprice"].ToString());
+
+                Item item = new Item()
+                {
+                    ProductId = productId,
+                    CartId=cartId,
+                    Title = productTitle,
+                    Image = imageURL,
+                    Quantity = quantity,
+                    UnitPrice = unitPrice
+                };
+                cartItems.Add(item);
+                cart.CustomerId = custId;
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            await con.CloseAsync();
+        }
+        return cartItems;
     }
 }

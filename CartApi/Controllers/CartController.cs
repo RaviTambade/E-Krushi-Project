@@ -16,6 +16,14 @@ namespace ShoppingCartService.Controllers
             _cartSrv = cartService;       
         }
 
+        [HttpGet("getall/{id}")]
+        public async Task<List<Item>> GetAll(int id)
+        {
+            List<Item> items = await _cartSrv.GetAll(id);
+            Console.WriteLine(id);
+            return items;
+        }
+
         [HttpGet("getcartdetails/{id}")]
         public async Task<Cart> GetCart(int id)
         {
@@ -25,7 +33,6 @@ namespace ShoppingCartService.Controllers
         }
 
         [HttpPost]
-
         [Route("addtocart")]
 
         public async Task<bool> AddItem([FromBody] Item item)

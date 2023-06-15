@@ -9,6 +9,11 @@ namespace ShoppingCartService.Models
         public Cart()
         {
             this.Items = new List<Item>();
-        }     
+        }
+
+        public double TotalAmount
+       {
+            get { return Items.Sum(p => p.Quantity * p.UnitPrice); }
+       }   
     }
 }
