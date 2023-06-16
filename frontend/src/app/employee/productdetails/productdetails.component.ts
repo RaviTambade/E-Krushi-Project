@@ -23,6 +23,7 @@ export class ProductdetailsComponent implements OnInit{
     console.log(this.id);
     this.svc.getById(this.id).subscribe((res)=>{
     this.product=res;
+    console.log(this.product);
       })
  }
 
