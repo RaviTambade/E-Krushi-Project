@@ -142,5 +142,30 @@ public class CartRepository : ICartRepository
         return cart;
     }
 
-    
+    public async Task<int> GetCartId(int custId)
+        {
+        int cartId=0;
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = _conString;
+        try
+        {
+            string query = "select id from carts where custid =@custId";
+            MySqlCommand command = new MySqlCommand(query, con);
+            command.Parameters.AddWithValue("@custId", custId);
+            await con.OpenAsync();
+            MySqlDataReader reader = command.ExecuteReader();
+            if(reader.Read()){
+            cartId =int.Parse(reader["id"].ToString());
+            }  
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            await con.CloseAsync();
+        }
+        return (int)cartId;
+    }
 }

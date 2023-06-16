@@ -25,4 +25,9 @@ public class CartService : ICartService
     {
         return await _repo.GetCart(id);
     }
+
+    public async Task<int> GetCartId(int custId)
+    {
+        return await _repo.GetCartId(custId);
+    }
 }

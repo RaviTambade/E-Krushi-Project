@@ -15,9 +15,9 @@ export class EmployeeService {
     return this.http.get<any>(url);
   }
 
-  public getById(id:number):Observable<any>{
+  public getById(id:any):Observable<any>{
+    localStorage.setItem('id',id);
     let url = "http://localhost:5137/api/products/product/"+ id;
-    console.log("url");
     return this.http.get<any>(url);
   }
 
