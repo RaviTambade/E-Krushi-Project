@@ -21,6 +21,8 @@ import { EmployeeModule } from './employee/employee.module';
 import { RoutingComponent } from './employee/routing/routing.component';
 import { CartModule } from './cart/cart.module';
 import { AddtocartComponent } from './cart/addtocart/addtocart.component';
+import { CategoryproductComponent } from './categoryproduct/categoryproduct.component';
+import { CommonModule } from '@angular/common';
  
 
 
@@ -37,7 +39,8 @@ import { AddtocartComponent } from './cart/addtocart/addtocart.component';
     ProductgridComponent,
     PaggingComponent,
     SortedlistComponent,
-    ProductListDetailsComponent,  
+    ProductListDetailsComponent,
+    CategoryproductComponent,  
   ],
   imports: [
     BrowserModule,

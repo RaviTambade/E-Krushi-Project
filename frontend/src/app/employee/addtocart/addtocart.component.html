@@ -15,12 +15,15 @@
     </div>
     <div class="form-group">
       <br>
+      <label><b>UnitPrice :{{unitPrice}}</b></label>
+      <br>
       <label><b>quantity :</b></label>
       <input type="number" name="quantity" [(ngModel)]="item.quantity"/>
-    </div>
+     </div>
     <div>
-      <label><b>TotalAmount :</b></label>
-      <input type="text" name="totalAmount" [(ngModel)]="totalAmount"/>
+      <br>
+      <label><b>TotalAmount :{{item.quantity*unitPrice}}</b></label>
+      
     </div>
     <div class="form-group">
       <br>
