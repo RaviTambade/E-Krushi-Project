@@ -1,4 +1,4 @@
---  drop database ekrushi;
+-- drop database ekrushi;
 CREATE DATABASE ekrushi;
 USE ekrushi;
 
@@ -212,15 +212,11 @@ INSERT INTO orderdetails(orderid,productid,quantity) VALUES (6,7,63);
 
 -- CARTS DATA
 INSERT INTO carts(custid) VALUES (1);
-INSERT INTO carts(custid) VALUES (1);
-INSERT INTO carts(custid) VALUES (2);
 INSERT INTO carts(custid) VALUES (2);
 INSERT INTO carts(custid) VALUES (3);
-INSERT INTO carts(custid) VALUES (3);
 INSERT INTO carts(custid) VALUES (4);
-INSERT INTO carts(custid) VALUES (3);
-INSERT INTO carts(custid) VALUES (3);
-INSERT INTO carts(custid) VALUES (4);
+INSERT INTO carts(custid) VALUES (5);
+
 
 
 -- CARTS ITEMS DATA
@@ -339,14 +335,6 @@ INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (2,4,'2023-
 INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (3,3,'2022-05-15');
 INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (4,2,'2022-08-15');
 
-SELECT * FROM employees;
-SELECT * FROM feedbacks;
-select * from agridoctors;
-SELECT * FROM questions;
-SELECT * FROM solutions;
-SELECT * FROM questionsolutions;
-SELECT * FROM users;
-
 -- CRUD OPERATIONS CUSTOMERS TABLE
 -- GET ALL DETAILS OF CUSTOMERS
 SELECT * FROM products;
@@ -422,7 +410,6 @@ select title from products where categoryid in (select id from categories where 
 SELECT products.title FROM products INNER JOIN categories ON products.categoryid = categories.id WHERE categories.title="fertilizers";
 
 -- This query gives customer first_name, last_name whose cust_id= 4 AND status= cancelled
-SELECT customers.id,customers.firstname,customers.lastname,orders.status from customers INNER JOIN orders ON customers.id = orders.custid WHERE orders.status= "delivered" AND customers.id=1 ;
 
 -- This query gives orderdetails where cust_id =1 AND status=delivered
 SELECT * FROM orders WHERE id=1 AND status="delivered"; 
@@ -571,5 +558,37 @@ SELECT products.id, products.title,products.unitprice,products.stockavailable,pr
 INSERT into cartitems(cartid,productid,quantity) VALUES (1, 2,3);
 
 
-SELECT products.title,products.image,products.unitprice,cartitems.quantity,cartitems.productid,carts.custid FROM products inner join 
-cartitems on products.id=cartitems.productid inner join carts on carts.id=cartitems.cartid where carts.custid=1;
+  -- we give cart items with the help of cart Id and insert order in orders table as well as orders details table and 
+--   then we delete this record from cart items table
+DELIMITER $$
+CREATE PROCEDURE CreateOrder(IN cartId BIGINT )
+BEGIN
+DECLARE noMoreRow INT default 0; 
+DECLARE orderId INT;
+DECLARE productId INT;
+DECLARE quantity INT;
+DECLARE custId INT;
+DECLARE cartcursor CURSOR  FOR SELECT cartitems.productid,cartitems.quantity FROM cartitems WHERE cartid=cartId; 
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET noMoreRow = 1;
+SELECT custid INTO custId FROM carts WHERE id=cartId;
+INSERT INTO orders (orderdate,shippeddate, custid,total,status) VALUES (now(),now(),1,0,'initiated');
+SET orderId=last_insert_id();
+OPEN cartcursor ;
+cartitems:LOOP
+    FETCH cartcursor INTO productId,quantity;
+    IF noMoreRow=1 THEN 
+		LEAVE cartitems;
+    END IF;
+     INSERT INTO orderdetails(orderid, productid, quantity)VALUES(orderId,productId,quantity); 
+END LOOP cartitems;
+DELETE FROM cartitems WHERE cartid=cartId;
+CLOSE cartcursor;
+END $$
+DELIMITER ;
+CALL CreateOrder(4);
+drop procedure createorder;
+select * from carts;
+select * from cartitems;
+select * from orders;
+select * from orderdetails;
+
