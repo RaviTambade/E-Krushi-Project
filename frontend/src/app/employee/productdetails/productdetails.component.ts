@@ -13,6 +13,7 @@ export class ProductdetailsComponent implements OnInit{
 
   product: any;
   id:any; 
+  unitPrice:any;
   
   constructor(private svc:EmployeeService,private route:ActivatedRoute,private router:Router){}
   
@@ -23,6 +24,7 @@ export class ProductdetailsComponent implements OnInit{
     console.log(this.id);
     this.svc.getById(this.id).subscribe((res)=>{
     this.product=res;
+    localStorage.setItem("price",res.unitPrice);
     console.log(this.product);
       })
  }

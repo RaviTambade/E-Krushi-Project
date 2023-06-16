@@ -16,10 +16,18 @@ export class AddtocartComponent implements OnInit{
     productId:any;
     customerId:any=2;
     cartId:any;
+    unitPrice:any;
+    totalAmount:any;
 
-  constructor(private svc:EmployeeService,private router:Router,private route:ActivatedRoute){}
+  constructor(private svc:EmployeeService,private router:Router,private route:ActivatedRoute){
+    this.unitPrice = localStorage.getItem("price");
+    
+  }
   
   ngOnInit(): void {
+    console.log(this.unitPrice);
+    console.log(this.item.quantity);
+    
     this.productId = this.route.snapshot.paramMap.get('id');
     console.log("ProductId"+this.productId);
      this.svc.getCartId(this.customerId).subscribe((res)=>{
@@ -31,13 +39,14 @@ export class AddtocartComponent implements OnInit{
 
 public addToCart(form:any){
     console.log(form);
+    this.totalAmount = (this.item.quantity * this.unitPrice);
     this.svc.addToCart(form).subscribe((res)=>{
     this.status=res;
     console.log(res);
     console.log(this.item);
     if(res){
       window.location.reload();
-      alert("Record Inserted Successfully");
+      alert(" product added Successfully");
     }
     else{
       alert("Error While Inserting Record")

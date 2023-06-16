@@ -13,8 +13,8 @@ namespace ShoppingCartService.Models
         }
 
         public double TotalAmount
-       {
+        {
             get { return Items.Sum(p => p.Quantity * p.UnitPrice); }
-       }   
+        }   
     }
 }
