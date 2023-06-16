@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AddtocartComponent } from '../cart/addtocart/addtocart.component';
+import { AddtocartComponent } from '../employee/addtocart/addtocart.component';
 
 const routes : Routes=[
   {path:'home', component:HomeComponent},
@@ -17,7 +17,7 @@ const routes : Routes=[
   {path:'profile', component:ProfileComponent},
   {path:'store', component:StoreComponent},
   {path:'store/details/:id', component:ProductdetailsComponent},
-  {path:'store/details/:id/addtocart', component:AddtocartComponent}
+  {path:'store/details/:id/addtocart/:id', component:AddtocartComponent}
 ]
 
 @NgModule({
@@ -27,7 +27,8 @@ const routes : Routes=[
     ProfileComponent,
     OrderComponent,
     RoutingComponent,
-    ProductdetailsComponent
+    ProductdetailsComponent,
+    AddtocartComponent
   ],
   imports: [
     CommonModule,

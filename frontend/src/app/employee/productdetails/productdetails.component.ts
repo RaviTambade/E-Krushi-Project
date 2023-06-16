@@ -26,9 +26,9 @@ export class ProductdetailsComponent implements OnInit{
       })
  }
 
-Onclick(id:number){
-this.router.navigate(["/./",id,"addtocart"])
-}
+    onClick(id:any){
+      this.router.navigate(['./addtocart',id],{relativeTo:this.route})
+    }
 }
   
 

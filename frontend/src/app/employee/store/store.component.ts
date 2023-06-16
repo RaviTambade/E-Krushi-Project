@@ -26,10 +26,7 @@ export class StoreComponent implements OnInit {
     console.log(id);
     this.router.navigate(['./details',id],{relativeTo:this.route});
   }
-  addToCart(id:any): void{
-    console.log(id);
-    this.router.navigate(['./addtocart',id],{relativeTo:this.route});
-  }
+  
 }
 
 
