@@ -25,21 +25,10 @@ export class ProductdetailsComponent implements OnInit{
     this.product=res;
       })
  }
-// ngOnInit(): void {
-//   this.route.paramMap.subscribe((params) =>
-//   {
-//     this.id=params.get('id');
-//   });
-//   this.svc.getById(this.id).subscribe((response) =>{
-//     this.product = response;
-//   });
 
-//  }
-
-    addToCart(id:number,cartId:number,quantity:number){
-      console.log(id);
-      console.log(cartId);
-    }
+Onclick(id:number){
+this.router.navigate(["/./",id,"addtocart"])
+}
 }
   
 

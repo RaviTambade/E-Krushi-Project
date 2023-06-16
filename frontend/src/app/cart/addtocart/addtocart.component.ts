@@ -10,12 +10,9 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 })
 export class AddtocartComponent implements OnInit{
   item:Item={
-    productId:0,
-    cartId:0,
-    quantity:0,
-    title:'',
-    image:'',
-    unitPrice:0
+    productId:1,
+    cartId:1,
+    quantity:0
   }
   status:boolean |undefined;
     id:any;
@@ -24,11 +21,11 @@ export class AddtocartComponent implements OnInit{
     }
 
 
-public addToCart(cartForm:any){
-    console.log(cartForm);
-    this.id = this.route.snapshot.paramMap.get('cartid');
+public addToCart(item:Item){
+    console.log(item);
+    this.id = this.route.snapshot.paramMap.get('id');
     console.log(this.id);
-    this.svc.addToCart(cartForm).subscribe((res)=>{
+    this.svc.addToCart(item).subscribe((res)=>{
     this.status=res;
     // console.log(this.item)
     // if(res){

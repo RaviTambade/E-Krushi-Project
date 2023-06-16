@@ -73,9 +73,9 @@ public class CartRepository : ICartRepository
         {
             con.ConnectionString = _conString;
             await con.OpenAsync();
-            string query = "INSERT into cartitems(cartid,productid,quantity) VALUES ((select id from carts where custid=@custId),@productId,@quantity)";
+            string query = "INSERT into cartitems(cartid,productid,quantity) VALUES (@cartid,@productId,@quantity)";
             MySqlCommand command = new MySqlCommand(query, con);
-            command.Parameters.AddWithValue("@custId",item.CustomerId);
+            command.Parameters.AddWithValue("@cartid",item.CartId);
             command.Parameters.AddWithValue("@productId", item.ProductId);
             command.Parameters.AddWithValue("@quantity", item.Quantity);
             int rowsAffected = await command.ExecuteNonQueryAsync();
