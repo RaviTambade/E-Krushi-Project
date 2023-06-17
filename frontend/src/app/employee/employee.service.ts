@@ -29,4 +29,9 @@ export class EmployeeService {
     let url ="http://localhost:5282/api/cart/addtocart";
     return this.http.post<Item>(url,item);
     }
+
+    public removeFromCart(productId:number):Observable<any>{
+      let url ="http://localhost:5282/api/cart/removecartitem/" +productId;
+      return this.http.delete<any>(url);
+      }
 }

@@ -53,4 +53,12 @@ public addToCart(form:any){
     }
     });
   }
+
+
+  public removeFromCart(productId:any){
+    this.svc.removeFromCart(this.productId).subscribe((res)=>{
+      this.productId=res;
+      console.log(this.productId);
+     })
+  }
 }
