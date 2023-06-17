@@ -168,4 +168,50 @@ public class CartRepository : ICartRepository
         }
         return (int)cartId;
     }
+
+    public async Task<List<Item>> GetCartDetails(int custId)
+    {
+        List<Item> items = new List<Item>();
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = _conString;
+        try
+        {
+            string query = "select cartitems.cartid,products.title,products.image,products.unitprice,cartitems.productid,cartitems.quantity from carts inner join cartitems on carts.id =cartitems.cartid inner join products on products.id=cartitems.productid where custid=@custId";
+            
+            await con.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, con);
+            command.Parameters.AddWithValue("@custId", custId);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+                int productId = int.Parse(reader["productid"].ToString());
+                int cartId = int.Parse(reader["cartid"].ToString());
+                string productTitle = reader["title"].ToString();
+                string imageURL = reader["image"].ToString();
+                int quantity = int.Parse(reader["quantity"].ToString());
+                double unitPrice = double.Parse(reader["unitprice"].ToString());
+
+                Item item = new Item()
+                {
+                    ProductId = productId,
+                    CartId=cartId,
+                    Title = productTitle,
+                    Image = imageURL,
+                    Quantity = quantity,
+                    UnitPrice = unitPrice
+                };
+                items.Add(item);    
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            await con.CloseAsync();
+        }
+        return items;
+    }
 }

@@ -30,4 +30,11 @@ public class CartService : ICartService
     {
         return await _repo.GetCartId(custId);
     }
+
+    public async Task<List<Item>> GetCartDetails(int custId)
+    {
+        return await _repo.GetCartDetails(custId);
+    }
+
+
 }

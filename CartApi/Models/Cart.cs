@@ -4,7 +4,7 @@ namespace ShoppingCartService.Models
     {
         public int CartId{get; set;}
         
-         public int CustomerId{get; set;}
+        public int CustomerId{get; set;}
         public List<Item> Items{get; set;}
 
         public Cart()
