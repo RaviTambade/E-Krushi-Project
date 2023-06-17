@@ -39,7 +39,6 @@ export class AddtocartComponent implements OnInit{
 
 public addToCart(form:any){
     console.log(form);
-    this.totalAmount = (this.item.quantity * this.unitPrice);
     this.svc.addToCart(form).subscribe((res)=>{
     this.status=res;
     console.log(res);
