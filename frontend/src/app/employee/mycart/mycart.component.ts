@@ -12,21 +12,15 @@ export class MycartComponent implements OnInit{
   carts:any[];
   custId:number=2;
   
-
+  
   constructor(private svc :EmployeeService){
     this.carts=[];
-
   }
 
-  ngOnInit(): void {
+  ngOnInit():void {
     this.svc.getCartDetails(this.custId).subscribe((res)=>{
-      this.carts =res;
+      this.carts=res;
       console.log(this.carts);
    })
   }
-
-
-
-
-
 }
