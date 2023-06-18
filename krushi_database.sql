@@ -592,3 +592,13 @@ select * from cartitems;
 select * from orders;
 select * from orderdetails;
 
+-- This query gives particular customer carts
+SELECT products.title,products.image,products.unitprice,cartitems.quantity,cartitems.productid,carts.custid FROM products inner join 
+cartitems on products.id=cartitems.productid inner join carts on carts.id=cartitems.cartid where carts.custid=2;
+
+-- This query gives id of particular customer
+select id from carts where custid =2 ;
+
+
+select cartitems.cartid,products.title,products.image,products.unitprice,cartitems.productid,cartitems.quantity from carts inner join cartitems on carts.id =cartitems.cartid inner join products
+on products.id=cartitems.productid where custid=2;

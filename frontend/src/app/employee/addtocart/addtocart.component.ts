@@ -12,6 +12,7 @@ export class AddtocartComponent implements OnInit{
   item:Item={
     quantity:0,
   }
+  
   status:boolean |undefined;
     productId:any;
     customerId:any=2;
@@ -21,29 +22,23 @@ export class AddtocartComponent implements OnInit{
 
   constructor(private svc:EmployeeService,private router:Router,private route:ActivatedRoute){
     this.unitPrice = localStorage.getItem("price");
-    
-  }
+    }
   
   ngOnInit(): void {
     console.log(this.unitPrice);
-    console.log(this.item.quantity);
-    
+    console.log(this.item.quantity);  
     this.productId = this.route.snapshot.paramMap.get('id');
     console.log("ProductId"+this.productId);
-    
      this.svc.getCartId(this.customerId).subscribe((res)=>{
       this.cartId=res;
-
       console.log("CartId"+this.cartId);
      })
-    }
-
+  }
 
 public addToCart(form:any){
     console.log(form);
     this.svc.addToCart(form).subscribe((res)=>{
     this.status=res;
-    // this.productId =res.id;
     console.log(res);
     console.log(this.item);
     if(res){
@@ -51,15 +46,10 @@ public addToCart(form:any){
       alert(" product added Successfully");
     }
     else{
-      alert("Error While Inserting Record")
+      alert("Error While Adding Record")
     }
     });
   }
-  
-  public onSelectProduct(productId:any){
-      console.log(productId);
-      this.router.navigate(['mycart/',productId],{relativeTo:this.route});
-   }
 }
 
 

@@ -16,15 +16,14 @@ export class MycartComponent implements OnInit{
   
   constructor(private svc :EmployeeService,private router:Router,private route:ActivatedRoute){
     this.carts=[];
-    // this.productId = localStorage.getItem("productId");
   }
 
   ngOnInit():void {
     this.svc.getCartDetails(this.custId).subscribe((res)=>{
       this.carts=res;
-    console.log(this.carts);
+      this.productId=res.productId;
+  console.log(this.carts);
    })
-   this.productId = this.route.snapshot.paramMap.get('id');
   }
 
   onRemoveProduct(productId:any){
@@ -37,7 +36,7 @@ export class MycartComponent implements OnInit{
         alert(" product remove Successfully");
       }
       else{
-        alert("Error While Inserting Record")
+        alert("Error While deleting Record")
       }
     })
   }
