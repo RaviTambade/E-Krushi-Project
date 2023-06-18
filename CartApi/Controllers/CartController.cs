@@ -57,5 +57,15 @@ namespace ShoppingCartService.Controllers
             List<Item> items = await _cartSrv.GetCartDetails(custId);
             return items;
         }
+
+        [HttpDelete]
+        [Route("remove/{productId}")]
+
+        public async Task<bool> RemoveItem(int productId)
+        {
+            bool status = await _cartSrv.RemoveItem(productId);
+
+            return status;
+        }    
     }
 }

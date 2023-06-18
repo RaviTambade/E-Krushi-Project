@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeModule } from '../employee.module';
 import { EmployeeService } from '../employee.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-mycart',
@@ -11,9 +12,11 @@ export class MycartComponent implements OnInit{
 
   carts:any[];
   custId:number=2;
+  productId:any;
   
-  constructor(private svc :EmployeeService){
+  constructor(private svc :EmployeeService,private router:Router,private route:ActivatedRoute){
     this.carts=[];
+    // this.productId = localStorage.getItem("productId");
   }
 
   ngOnInit():void {
@@ -21,5 +24,21 @@ export class MycartComponent implements OnInit{
       this.carts=res;
     console.log(this.carts);
    })
+   this.productId = this.route.snapshot.paramMap.get('id');
+  }
+
+  onRemoveProduct(productId:any){
+    console.log(this.productId);
+    this.svc.removeFromCart(productId).subscribe((res)=>{
+      this.productId=res;
+      console.log(this.productId);
+      if(res){
+        window.location.reload();
+        alert(" product remove Successfully");
+      }
+      else{
+        alert("Error While Inserting Record")
+      }
+    })
   }
 }

@@ -25,6 +25,7 @@ export class ProductdetailsComponent implements OnInit{
     this.svc.getById(this.id).subscribe((res)=>{
     this.product=res;
     localStorage.setItem("price",res.unitPrice);
+    // localStorage.setItem("productId",res.id);
     console.log(this.product);
       })
  }

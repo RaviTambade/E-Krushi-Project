@@ -9,7 +9,7 @@
     <label><b>TotalAmount :{{cart.quantity * cart.unitPrice}}</b></label>    
     <div class="form-group">
         <br>
-        <button class="btn btn-default" type="submit">Remove</button>
+        <button class="btn btn-default" (click)="onRemoveProduct(productId)" type="submit">Remove</button>
       </div>    
     <br>
 </div>

@@ -214,4 +214,31 @@ public class CartRepository : ICartRepository
         }
         return items;
     }
+    public async Task<bool>  RemoveItem(int productId)
+        {
+            bool status = false;
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = _conString;
+            try
+            {
+                string query="Delete from cartitems where productId = @productId";
+                MySqlCommand cmd = new MySqlCommand(query,con);
+                cmd.Parameters.AddWithValue("@productId",productId);
+                await con.OpenAsync();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if(rowsAffected > 0)
+                {
+                    status=true;
+                }
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                await con.CloseAsync();
+            }
+            return status;
+        }
 }

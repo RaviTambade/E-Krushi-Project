@@ -9,7 +9,7 @@ namespace ShoppingCartService.Repositories.Interfaces{
         Task<bool> AddItem(Item item);
 
         // Task<bool> UpdateItem(int CartId,Item item);
-        // Task<bool> RemoveItem(int CartId,Item item);    
+        Task<bool> RemoveItem(int productId);    
         Task<int> GetCartId(int custId);
 
         Task<List<Item>> GetCartDetails(int custId);

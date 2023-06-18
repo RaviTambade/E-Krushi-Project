@@ -30,8 +30,10 @@ export class AddtocartComponent implements OnInit{
     
     this.productId = this.route.snapshot.paramMap.get('id');
     console.log("ProductId"+this.productId);
+    
      this.svc.getCartId(this.customerId).subscribe((res)=>{
       this.cartId=res;
+
       console.log("CartId"+this.cartId);
      })
     }
@@ -41,6 +43,7 @@ public addToCart(form:any){
     console.log(form);
     this.svc.addToCart(form).subscribe((res)=>{
     this.status=res;
+    // this.productId =res.id;
     console.log(res);
     console.log(this.item);
     if(res){
@@ -52,10 +55,11 @@ public addToCart(form:any){
     }
     });
   }
-  public removeFromCart(productId:any){
-    this.svc.removeFromCart(this.productId).subscribe((res)=>{
-      this.productId=res;
-      console.log(this.productId);
-     })
-  }
+  
+  public onSelectProduct(productId:any){
+      console.log(productId);
+      this.router.navigate(['mycart/',productId],{relativeTo:this.route});
+   }
 }
+
+
