@@ -48,6 +48,8 @@ export class MycartComponent implements OnInit{
     this.router.navigate(['./mycart',productId],{relativeTo:this.route});
   }
 
+  
+
 
 
   

@@ -6,7 +6,7 @@ using OrderProcessingService.Services.Interfaces;
 namespace OrderProcessingService.Controllers
 {
     [ApiController]
-    [Route("[Controller]")]
+    [Route("api/[Controller]")]
     public class OrdersController : ControllerBase
     {
         private readonly IOrderService _ordersvc;
@@ -73,6 +73,13 @@ namespace OrderProcessingService.Controllers
         {
             int totalCounts = await _ordersvc.TotalCount();
             return totalCounts;
+        }
+
+        [HttpGet("customer/{id}")]          
+        public async Task<List<Order>> OrderByCustId(int id)
+        {
+            List<Order> orders = await _ordersvc.OrderByCustId(id);
+            return orders;
         }
     }
 }

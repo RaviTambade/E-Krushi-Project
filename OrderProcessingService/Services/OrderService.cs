@@ -16,7 +16,7 @@ public class OrderService : IOrderService{
 
     public async Task<Order> GetOrder(int id) => await _repo.GetOrder(id);
 
-    public async Task<Order> OrderByCustId(int id) =>await _repo.OrderByCustId(id);
+    public async Task<List<Order>> OrderByCustId(int id) =>await _repo.OrderByCustId(id);
 
     public async Task<bool> Insert(Order order)=> await _repo.Insert(order);
 

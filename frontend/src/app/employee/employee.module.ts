@@ -44,9 +44,11 @@ const routes : Routes=[
   ],
   exports: [
     RoutingComponent,
-    StoreComponent
+    StoreComponent,
+    OrderComponent
   ]
 })
+
 export class EmployeeModule { }
 
 

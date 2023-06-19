@@ -105,9 +105,9 @@ public class OrderRepository : IOrderRepository
     
 
    
-    public async Task<Order> OrderByCustId(int id)
+    public async Task<List<Order>> OrderByCustId(int id)
     {
-        Order order = new Order();
+        List<Order> orders = new List<Order>();
         MySqlConnection con = new MySqlConnection();
         con.ConnectionString = _conString;
         try
@@ -117,15 +117,15 @@ public class OrderRepository : IOrderRepository
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@customerId",id);
             MySqlDataReader reader = command.ExecuteReader();
-            if (await reader.ReadAsync())
+            while (await reader.ReadAsync())
             {
-                int orderId = int.Parse(reader["orderid"].ToString());
+                int orderId = int.Parse(reader["id"].ToString());
                 DateTime orderDate = DateTime.Parse(reader["orderdate"].ToString());
                 DateTime shippedDate = DateTime.Parse(reader["shippeddate"].ToString());
                 double total = double.Parse(reader["total"].ToString());
                 string? status = reader["status"].ToString();
 
-                order = new Order()
+                Order order = new Order()
                 {
                     Id = orderId,
                     CustomerId = id,
@@ -134,6 +134,7 @@ public class OrderRepository : IOrderRepository
                     Total = total,
                     Status = status
                 };
+                orders.Add(order);
             }
         }
         catch (Exception e)
@@ -144,7 +145,7 @@ public class OrderRepository : IOrderRepository
         {
             await con.CloseAsync();
         }
-        return order;
+        return orders;
     }
     public async Task<bool> Insert(Order order)
     {

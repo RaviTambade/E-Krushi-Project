@@ -1,1 +1,9 @@
-<p>order works!</p>
+<div *ngFor="let order of orders">
+    <br>
+    <label><b>orderdate:</b>{{order.orderDate}}<br></label>
+    <label><b>shippeddate:</b>{{order.shippedDate}}<br></label>
+    <label><b>custId:</b>{{order.custId}}<br></label>
+    <label><b>total:</b>{{order.total}}<br></label>
+    <label><b>status :{{order.status}}</b></label>         
+    <br>
+</div>

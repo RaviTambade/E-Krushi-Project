@@ -276,7 +276,7 @@ public class CartRepository : ICartRepository
     }
 
            public async Task<bool> Update(Item item)
-        {
+           {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = _conString;
@@ -304,5 +304,4 @@ public class CartRepository : ICartRepository
             }
             return status;
         }
-        
-}
+    }
