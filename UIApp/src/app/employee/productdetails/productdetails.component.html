@@ -1,0 +1,9 @@
+<div *ngIf="product" >
+            <p>Product Id: {{ product.id }}</p>
+            <p>Title: {{ product.title }}</p>
+            <p>StockAvailable :{{ product.stockAvailable }}</p>
+            <p>unitPrice: {{ product.unitPrice }}</p>
+            <p>image :{{ product.image}}</p>
+            <p>category Id: {{ product.categoryId }}</p>
+            <!-- <a routerLink="cart/addtocart">AddToCar</a>    -->
+       <button (click)="add()">add</button>

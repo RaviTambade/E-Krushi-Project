@@ -14,7 +14,7 @@ export class MycartComponent implements OnInit{
   custId:number=2;
   productId:any;
   cartId:any;
-  
+  id:any;
   
   
   constructor(private svc :EmployeeService,private router:Router,private route:ActivatedRoute){
@@ -44,8 +44,8 @@ export class MycartComponent implements OnInit{
     })
   }
 
-  onUpdateProduct(productId:any): void{
-    this.router.navigate(['./mycart',productId],{relativeTo:this.route});
+  onUpdateProduct(): void{
+    this.router.navigate(['./update'],{relativeTo:this.route});
   }
 
 

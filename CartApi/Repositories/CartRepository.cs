@@ -176,7 +176,7 @@ public class CartRepository : ICartRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "select cartitems.cartid,products.title,products.image,products.unitprice,cartitems.productid,cartitems.quantity from carts inner join cartitems on carts.id =cartitems.cartid inner join products on products.id=cartitems.productid where custid=@custId";
+            string query = "select cartitems.id,cartitems.cartid,products.title,products.image,products.unitprice,cartitems.productid,cartitems.quantity from carts inner join cartitems on carts.id =cartitems.cartid inner join products on products.id=cartitems.productid where custid=@custId";
             
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
@@ -242,39 +242,7 @@ public class CartRepository : ICartRepository
             return status;
         }
 
-        public async Task<bool> UpdateItem(Item item)
-    {
-        bool status = false;
-        Console.WriteLine(item.CartId);
-        Console.WriteLine(item.ProductId);
-        Console.WriteLine(item.Quantity);
-        MySqlConnection con = new MySqlConnection();
-        try
-        {
-            con.ConnectionString = _conString;
-            await con.OpenAsync();
-            string query = "INSERT into cartitems(cartid,productid,quantity) VALUES (@cartid,@productId,@quantity)";
-            MySqlCommand command = new MySqlCommand(query, con);
-            command.Parameters.AddWithValue("@cartid",item.CartId);
-            command.Parameters.AddWithValue("@productId", item.ProductId);
-            command.Parameters.AddWithValue("@quantity", item.Quantity);
-            int rowsAffected = await command.ExecuteNonQueryAsync();
-            if (rowsAffected >= 1)
-            {
-                status = true;
-            }
-        }
-        catch (Exception e)
-        {
-            throw e;
-        }
-        finally
-        {
-            await con.CloseAsync();
-        }
-        return status;
-    }
-
+       
            public async Task<bool> Update(Item item)
         {
             bool status = false;
@@ -282,12 +250,13 @@ public class CartRepository : ICartRepository
             con.ConnectionString = _conString;
             try
             {
-                string query="update cartitems set quantity =@quantity where productid=@productId and cartid=@cartId";
+                string query="update cartitems set quantity =@quantity , productid=@productId , cartid=@cartId  where id=@id";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 await con.OpenAsync();
                 cmd.Parameters.AddWithValue("@productId",item.ProductId);
                 cmd.Parameters.AddWithValue("@quantity",item.Quantity);
-                cmd.Parameters.AddWithValue("@cartId",item.UnitPrice);
+                cmd.Parameters.AddWithValue("@cartId",item.CartId);
+                cmd.Parameters.AddWithValue("@id",item.CartItemId);
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if(rowsAffected > 0)
                 {

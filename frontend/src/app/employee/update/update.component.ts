@@ -11,26 +11,29 @@ import { Item } from '../items';
 export class UpdateComponent implements OnInit{
 
   item:Item={
+  
     quantity:0,
+
   }
   
   status:boolean |undefined;
     productId:any;
     customerId:any=2;
     cartId:any;
-    
+    cartItemId:any;
     totalAmount:any;
 
-  constructor(private svc:EmployeeService,private router:Router,private route:ActivatedRoute){}
+  constructor(private svc:EmployeeService,private router:Router,private route:ActivatedRoute){
+    
+  }
   
 
  
     ngOnInit(): void { 
-    this.productId = this.route.snapshot.paramMap.get('id');
-    console.log("ProductId"+this.productId);
-     this.svc.getCartId(this.customerId).subscribe((res)=>{
-      this.cartId=res;
-      console.log("CartId"+this.cartId);
+      this.svc.getCartDetails(this.customerId).subscribe((res)=>{
+        this.customerId=res;
+        this.cartItemId=res.id;
+    console.log(this.customerId);
      })
     }
 
