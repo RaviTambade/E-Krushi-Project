@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AddtocartComponent } from '../employee/addtocart/addtocart.component';
 import { MycartComponent } from './mycart/mycart.component';
+import { UpdateComponent } from './update/update.component';
 
 const routes : Routes=[
   {path:'home', component:HomeComponent},
@@ -20,7 +21,7 @@ const routes : Routes=[
   {path:'store/details/:id', component:ProductdetailsComponent},
   {path:'store/details/:id/addtocart/:id', component:AddtocartComponent},
   {path:'mycart', component:MycartComponent},
-  {path:'store/details/:id/addtocart/:id/mycart/:id', component:MycartComponent}
+  {path:'store/mycart/:id', component:MycartComponent}
 ]
 
 @NgModule({
@@ -32,7 +33,8 @@ const routes : Routes=[
     RoutingComponent,
     ProductdetailsComponent,
     AddtocartComponent,
-    MycartComponent
+    MycartComponent,
+    UpdateComponent
   ],
   imports: [
     CommonModule,

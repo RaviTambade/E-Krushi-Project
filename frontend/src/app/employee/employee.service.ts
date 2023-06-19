@@ -39,4 +39,9 @@ export class EmployeeService {
       let url = "http://localhost:5282/api/cart/getcart/" +custId
       return this.http.get<any>(url);
     }
+
+    public updateQuantity(item:Item):Observable<any>{
+      let url = " http://localhost:5282/api/cart/update" 
+      return this.http.put<any>(url,item);
+    }
 }

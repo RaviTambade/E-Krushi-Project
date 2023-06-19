@@ -13,6 +13,9 @@ export class MycartComponent implements OnInit{
   carts:any[];
   custId:number=2;
   productId:any;
+  cartId:any;
+  
+  
   
   constructor(private svc :EmployeeService,private router:Router,private route:ActivatedRoute){
     this.carts=[];
@@ -40,4 +43,16 @@ export class MycartComponent implements OnInit{
       }
     })
   }
+
+  onUpdateProduct(productId:any): void{
+    this.router.navigate(['./mycart',productId],{relativeTo:this.route});
+  }
+
+
+
+  
+
+
+
+
 }

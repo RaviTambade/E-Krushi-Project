@@ -40,4 +40,9 @@ public class CartService : ICartService
     {
         return await _repo.RemoveItem(productId);
     }
+
+    public async Task<bool> UpdateItem(Item item)
+    {
+        return await _repo.UpdateItem(item);
+    }
 }
