@@ -10,10 +10,10 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 })
 export class AddtocartComponent implements OnInit{
   item:Item={
+    cartId: 0,
     quantity: 0,
-    cartid: 0,
-    productid: 0,
-    id: 0
+    productId: 0,
+    cartItemId: 0
   }
   
   status:boolean |undefined;

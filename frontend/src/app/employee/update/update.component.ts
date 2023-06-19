@@ -12,9 +12,9 @@ export class UpdateComponent implements OnInit{
 
   item:Item={
     quantity: 0,
-    cartid: 0,
-    productid: 0,
-    id: 0
+    cartId: 0,
+    productId: 0,
+    cartItemId: 0
   }
   
   status:boolean |undefined;
@@ -35,8 +35,8 @@ export class UpdateComponent implements OnInit{
       this.cartItemId = this.route.snapshot.paramMap.get('id');
       console.log(this.cartItemId);
       this.svc.get(this.cartItemId).subscribe((res)=>{
-
-        console.log(res);
+        this.item=res;
+      console.log(res);
     
      })
     }

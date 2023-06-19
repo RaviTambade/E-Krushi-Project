@@ -12,11 +12,6 @@ export class GetCartDetailsComponent {
   category:any | undefined;
   @Output () sendCategory=new EventEmitter();
 
-  getCategory(categoryId:number){
-    this.svc.getCategoryDetails(categoryId).subscribe((Response=>{
-      this.category= Response;
-      this.sendCategory.emit({category:this.category});
-    }))
- }
+ 
 
 }
