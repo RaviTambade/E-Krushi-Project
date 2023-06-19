@@ -1,6 +1,21 @@
 
 <form #cartForm="ngForm" (ngSubmit)="onUpdateProduct(cartForm.value)">
   <div>
+    <br>
+    <label><b>cartId :</b></label>
+    <input type="number" name="quantity" [(ngModel)]="item.cartid"/>
+</div>
+<div>
+  <br>
+  <label><b>productId :</b></label>
+  <input type="number" name="quantity" [(ngModel)]="item.productid"/>
+</div>
+<div>
+  <br>
+  <label><b>CartItemsId :</b></label>
+  <input type="number" name="quantity" [(ngModel)]="item.cartitemid"/>
+</div>
+  <div>
       <br>
       <label><b>quantity :</b></label>
       <input type="number" name="quantity" [(ngModel)]="item.quantity"/>

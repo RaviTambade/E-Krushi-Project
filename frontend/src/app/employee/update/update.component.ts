@@ -11,9 +11,10 @@ import { Item } from '../items';
 export class UpdateComponent implements OnInit{
 
   item:Item={
-  
-    quantity:0,
-
+    quantity: 0,
+    cartid: 0,
+    productid: 0,
+    cartitemid: 0
   }
   
   status:boolean |undefined;
@@ -52,6 +53,9 @@ export class UpdateComponent implements OnInit{
     }
     });
   }
+
+
+  
 }  
 
   
