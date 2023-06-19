@@ -77,5 +77,14 @@ namespace ShoppingCartService.Controllers
 
             return status;
         }  
+
+
+        [HttpGet("get/{id}")]
+        public async Task<Item> Get(int id)
+        {
+            Console.WriteLine(id);
+            Item items = await _cartSrv.Get(id);
+            return items;
+        }
     }
 }

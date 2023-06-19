@@ -45,4 +45,11 @@ public class CartService : ICartService
     {
         return await _repo.Update(item);
     }
+
+
+
+     public async Task<Item> Get(int id)
+    {
+        return await _repo.Get(id);
+    }
 }

@@ -13,7 +13,7 @@ export class AddtocartComponent implements OnInit{
     quantity: 0,
     cartid: 0,
     productid: 0,
-    cartitemid: 0
+    id: 0
   }
   
   status:boolean |undefined;

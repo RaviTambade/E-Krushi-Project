@@ -14,7 +14,7 @@ export class UpdateComponent implements OnInit{
     quantity: 0,
     cartid: 0,
     productid: 0,
-    cartitemid: 0
+    id: 0
   }
   
   status:boolean |undefined;
@@ -31,10 +31,13 @@ export class UpdateComponent implements OnInit{
 
  
     ngOnInit(): void { 
-      this.svc.getCartDetails(this.customerId).subscribe((res)=>{
-        this.customerId=res;
-        this.cartItemId=res.id;
-    console.log(this.customerId);
+
+      this.cartItemId = this.route.snapshot.paramMap.get('id');
+      console.log(this.cartItemId);
+      this.svc.get(this.cartItemId).subscribe((res)=>{
+
+        console.log(res);
+    
      })
     }
 

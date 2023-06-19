@@ -12,6 +12,8 @@ namespace ShoppingCartService.Repositories.Interfaces{
         Task<bool> RemoveItem(int productId);    
         Task<int> GetCartId(int custId);
 
+        Task<Item> Get(int id);
+
         Task<List<Item>> GetCartDetails(int custId);
         
     }

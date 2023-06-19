@@ -184,6 +184,7 @@ public class CartRepository : ICartRepository
             MySqlDataReader reader = command.ExecuteReader();
             while (await reader.ReadAsync())
             {
+                  int cartItemId = int.Parse(reader["id"].ToString());
                 int productId = int.Parse(reader["productid"].ToString());
                 int cartId = int.Parse(reader["cartid"].ToString());
                 string productTitle = reader["title"].ToString();
@@ -192,7 +193,7 @@ public class CartRepository : ICartRepository
                 double unitPrice = double.Parse(reader["unitprice"].ToString());
 
                 Item item = new Item()
-                {
+                {   CartItemId=cartItemId,
                     ProductId = productId,
                     CartId=cartId,
                     Title = productTitle,
@@ -273,5 +274,50 @@ public class CartRepository : ICartRepository
             }
             return status;
         }
+
+
+
+
+        public async Task<Item> Get(int id)
+    {
+          Item item = new Item();
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = _conString;
+        try
+        {
+            string query = "select * FROM cartitems where id =@id;";
+            
+            await con.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, con);
+            command.Parameters.AddWithValue("@id", id);
+            MySqlDataReader reader = command.ExecuteReader();
+            if (await reader.ReadAsync())
+            {
+                int productId = int.Parse(reader["productid"].ToString());
+                int cartId = int.Parse(reader["cartid"].ToString());
+                int quantity = int.Parse(reader["quantity"].ToString());
+              
+
+             item = new Item()
+                {
+                    ProductId = productId,
+                    CartId=cartId,
+                    Quantity = quantity,
+                    CartItemId = id
+                };
+              
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            await con.CloseAsync();
+        }
+        return item;
+    }
         
 }
