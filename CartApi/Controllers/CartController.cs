@@ -69,13 +69,21 @@ namespace ShoppingCartService.Controllers
         }    
 
         [HttpPut]
-        [Route("update/{productId}")]
+        [Route("update")]
 
-        public async Task<bool> UpdateItem(Item item)
+        public async Task<bool> Update(Item item)
         {
-            bool status = await _cartSrv.UpdateItem(item);
+            bool status = await _cartSrv.Update(item);
 
             return status;
+        }
+
+        [HttpGet("getcartitemid/{id}")]
+        public async Task<Cart> GetCart(int id)
+        {
+            Cart cart = await _cartSrv.GetCart(id);
+            Console.WriteLine(id);
+            return cart;
         }  
     }
 }

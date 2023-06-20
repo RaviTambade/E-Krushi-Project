@@ -1,24 +1,25 @@
 
 <form #cartForm="ngForm" (ngSubmit)="onUpdateProduct(cartForm.value)">
-
-    <div class="form-group">
-      <label hidden><b>cart id :</b></label>
-      <input type="number" name="cartId" [(ngModel)]="cartId" type="hidden"/>
-   </div>
-   <div class="form-group">
-      <br> 
-      <label hidden><b>product id :</b></label>
-      <input type="number" name="productId" [(ngModel)]="productId" type="hidden"/>
-    </div>
-    <div class="form-group">
-      <br>
+  <div>
+    <br>
+    <label><b>cartId :</b></label>
+    <input type="number" name="cartid" [(ngModel)]="item.cartid"/>
+</div>
+<div>
+  <br>
+  <label><b>productId :</b></label>
+  <input type="number" name="productid" [(ngModel)]="item.productid"/>
+</div>
+<div>
+  <br>
+  <label><b>CartItemsId :</b></label>
+  <input type="number" name="cartitemid" [(ngModel)]="item.cartitemid"/>
+</div>
+  <div>
       <br>
       <label><b>quantity :</b></label>
       <input type="number" name="quantity" [(ngModel)]="item.quantity"/>
-     </div>
-    <div>
-      <br>
-    </div>
+  </div>
     <div class="form-group">
       <br>
       <button class="btn btn-default" type="submit">Submit</button>

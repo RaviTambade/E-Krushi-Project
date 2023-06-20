@@ -36,7 +36,7 @@ export class EmployeeService {
       }
 
     public getCartDetails(custId:number):Observable<any>{
-      let url = "http://localhost:5282/api/cart/getcart/" +custId
+      let url = "http://localhost:5282/api/cart/getcart/" +custId;
       return this.http.get<any>(url);
     }
 

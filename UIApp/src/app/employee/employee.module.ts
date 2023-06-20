@@ -9,9 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AddtocartComponent } from '../employee/addtocart/addtocart.component';
-import { MycartComponent } from './mycart/mycart.component';
-import { UpdateComponent } from './update/update.component';
+import { AddtocartComponent } from '../cart/addtocart/addtocart.component';
+import { AddtocartComponent } from './addtocart/addtocart.component';
 
 const routes : Routes=[
   {path:'home', component:HomeComponent},
@@ -19,9 +18,7 @@ const routes : Routes=[
   {path:'profile', component:ProfileComponent},
   {path:'store', component:StoreComponent},
   {path:'store/details/:id', component:ProductdetailsComponent},
-  {path:'store/details/:id/addtocart/:id', component:AddtocartComponent},
-  {path:'mycart', component:MycartComponent},
-  {path:'mycart/update', component:UpdateComponent}
+  {path:'store/details/:id/addtocart', component:AddtocartComponent}
 ]
 
 @NgModule({
@@ -32,9 +29,7 @@ const routes : Routes=[
     OrderComponent,
     RoutingComponent,
     ProductdetailsComponent,
-    AddtocartComponent,
-    MycartComponent,
-    UpdateComponent
+    AddtocartComponent
   ],
   imports: [
     CommonModule,
@@ -44,11 +39,9 @@ const routes : Routes=[
   ],
   exports: [
     RoutingComponent,
-    StoreComponent,
-    OrderComponent
+    StoreComponent
   ]
 })
-
 export class EmployeeModule { }
 
 

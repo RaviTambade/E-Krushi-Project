@@ -41,8 +41,13 @@ public class CartService : ICartService
         return await _repo.RemoveItem(productId);
     }
 
-    public async Task<bool> UpdateItem(Item item)
+    public async Task<bool> Update(Item item)
     {
-        return await _repo.UpdateItem(item);
+        return await _repo.Update(item);
+    }
+
+    public async Task<Item> GetById(int id)
+    {
+        return await _repo.GetById(id);
     }
 }
