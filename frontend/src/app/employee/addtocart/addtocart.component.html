@@ -14,7 +14,17 @@
       <input type="number" name="productId" [(ngModel)]="productId" type="hidden"/>
     </div>
     <div class="form-group">
-      <br>
+      <br> 
+      <label ><b>product Title :</b></label>
+      <input type="text" name="title" [(ngModel)]="title" />
+    </div>
+    <div class="form-group">
+      <br> 
+      <label ><b>Image:</b></label>
+      <input type="text" name="image" [(ngModel)]="image" />
+    </div>
+    <br>
+    <div class="form-group">
       <label><b>UnitPrice :{{unitPrice}}</b></label>
       <br>
       <label><b>quantity :</b></label>
@@ -26,7 +36,7 @@
     </div>
     <div class="form-group">
       <br>
-      <button class="btn btn-default" type="submit">AddToCart</button>
+      <button class="btn btn-default"  type="submit">AddToCart</button>
     </div>
   </form>
   

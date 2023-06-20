@@ -1,8 +1,8 @@
 export class Item{
-    constructor(public cartid:number,
+    constructor(public cartId:number,
                 public quantity:number,
-                 public productid:number,
-                 public cartitemid:number)
+                 public productId:number,
+                 public cartItemId:number)
                 // public cartId:number)
                 // public unitPrice:number)
                 {}

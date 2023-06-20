@@ -25,6 +25,7 @@ export class MycartComponent implements OnInit{
     this.svc.getCartDetails(this.custId).subscribe((res)=>{
       this.carts=res;
       this.productId=res.productId;
+      this.id=res.cartItemId;
   console.log(this.carts);
    })
   }
@@ -44,8 +45,8 @@ export class MycartComponent implements OnInit{
     })
   }
 
-  onUpdateProduct(): void{
-    this.router.navigate(['./update'],{relativeTo:this.route});
+  onUpdateProduct(id:number): void{
+    this.router.navigate(['./update',id],{relativeTo:this.route});
   }
 
   

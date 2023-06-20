@@ -10,10 +10,10 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 })
 export class AddtocartComponent implements OnInit{
   item:Item={
+    cartId: 0,
     quantity: 0,
-    cartid: 0,
-    productid: 0,
-    cartitemid: 0
+    productId: 0,
+    cartItemId: 0
   }
   
   status:boolean |undefined;
@@ -22,9 +22,13 @@ export class AddtocartComponent implements OnInit{
     cartId:any;
     unitPrice:any;
     totalAmount:any;
+    title:any;
+    image:any;
 
   constructor(private svc:EmployeeService,private router:Router,private route:ActivatedRoute){
     this.unitPrice = localStorage.getItem("price");
+    this.title = localStorage.getItem("title");
+    this.image = localStorage.getItem("image");
     }
   
   ngOnInit(): void {
