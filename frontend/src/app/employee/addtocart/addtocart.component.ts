@@ -58,14 +58,10 @@ public addToCart(form:any){
     });
   }
 
-<<<<<<< HEAD
   onClick(): void{
     this.router.navigate(['store'],{relativeTo:this.route});
   }
 
-=======
- 
->>>>>>> c3ad7f9784a4ee11ee99849c7f22012c46858bda
 }
 
 

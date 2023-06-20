@@ -52,7 +52,7 @@ export class EmployeeService {
     }
 
     public getOrderDetails(custId:number):Observable<any>{
-      let url ="http://localhost:5057/api/orders/customer/" +custId;
+      let url ="http://localhost:5057/api/orders/orderhistory/" +custId;
       return this.http.get<any>(url);
       }
 }
