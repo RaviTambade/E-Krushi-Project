@@ -374,4 +374,53 @@ public class OrderRepository : IOrderRepository
         }
         return (int)count;
     }
+
+    public async Task<List<OrderHistory>> GetOrderHistory(int custId)
+    {
+        List<OrderHistory> orders = new List<OrderHistory>();
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = _conString;
+        try
+        {
+            string query = "select products.title,products.image,products.unitprice,orders.orderdate,orders.shippeddate,(products.unitprice*cartitems.quantity)as total,orders.status ,cartitems.quantity from products,orders,cartitems inner join carts on carts.id = cartitems.cartid where products.id =cartitems.productid and orders.custid =carts.custid and orders.custid=@custId";           
+            await con.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, con);
+            command.Parameters.AddWithValue("@custId",custId);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+                DateTime orderDate = DateTime.Parse(reader["orderdate"].ToString());
+                DateTime shippedDate = DateTime.Parse(reader["shippeddate"].ToString());
+                double total = double.Parse(reader["total"].ToString());
+                string? status = reader["status"].ToString();
+                string? title = reader["title"].ToString();
+                string? image = reader["image"].ToString();
+                int unitPrice = int.Parse(reader["unitprice"].ToString());
+                int quantity = int.Parse(reader["quantity"].ToString());
+                
+                OrderHistory orderHistory = new OrderHistory()
+                {
+                    OrderDate = orderDate,
+                    ShippedDate = shippedDate,
+                    Total = total,
+                    Status = status,
+                    Title = title,
+                    Image = image,
+                    UnitPrice = unitPrice,
+                    Quantity = quantity
+                    
+                };
+                orders.Add(orderHistory);
+            }
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            await con.CloseAsync();
+        }
+        return orders;
+    }
 }

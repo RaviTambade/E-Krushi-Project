@@ -14,5 +14,6 @@ public interface IOrderRepository{
     Task<List<Order>> Cancelled();
     Task<int> GetCountByDate(DateTime date);
     Task<int>  TotalCount();
+    Task<List<OrderHistory>> GetOrderHistory(int custId);
     
 }

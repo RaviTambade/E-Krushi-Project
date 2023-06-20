@@ -31,4 +31,7 @@ public class OrderService : IOrderService{
     public async Task<int> GetCountByDate(DateTime date) => await _repo.GetCountByDate(date);
 
     public async Task<int> TotalCount() => await _repo.TotalCount();
+
+    public async Task<List<OrderHistory>> GetOrderHistory(int custId) => await _repo.GetOrderHistory(custId);
+
 }
