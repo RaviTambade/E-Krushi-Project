@@ -65,22 +65,12 @@ export class MycartComponent implements OnInit{
 
 
  Total():number{
-    let total = 0;
-    for (let cart of this.carts) {
-       
-          total += cart.unitPrice * cart.quantity;
-       
-        
+    let total:any = 0;
+    for (let cart of this.carts) {  
+          total += cart.unitPrice * cart.quantity;  
     }
+    localStorage.setItem("total",total);
+    console.log(total);
     return total;
-}
-  
-
-
-
-  
-
-
-
-
+  }
 }

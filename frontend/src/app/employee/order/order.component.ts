@@ -10,9 +10,11 @@ export class OrderComponent implements OnInit{
   
   custId:any=2;
   orders:any[];
+  totalAmount:any;
   
   constructor(private svc : EmployeeService){
     this.orders=[]
+    this.totalAmount = localStorage.getItem("total");
   }
   
   ngOnInit(): void {
