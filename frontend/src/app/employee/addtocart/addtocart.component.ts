@@ -57,6 +57,11 @@ public addToCart(form:any){
     }
     });
   }
+
+  onClick(): void{
+    this.router.navigate(['store'],{relativeTo:this.route});
+  }
+
 }
 
 
