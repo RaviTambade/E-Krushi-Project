@@ -57,6 +57,8 @@ public addToCart(form:any){
     }
     });
   }
+
+ 
 }
 
 

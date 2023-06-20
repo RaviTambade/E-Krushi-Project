@@ -11,14 +11,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class MycartComponent implements OnInit{
 
   carts:any[];
+  
   custId:number=2;
   productId:any;
   cartId:any;
   id:any;
-  
-  
+  totalamount:any;
+  unitPrice:any;
+  quantity:any;
+
+
   constructor(private svc :EmployeeService,private router:Router,private route:ActivatedRoute){
     this.carts=[];
+    
   }
 
   ngOnInit():void {
@@ -26,6 +31,9 @@ export class MycartComponent implements OnInit{
       this.carts=res;
       this.productId=res.productId;
       this.id=res.cartItemId;
+      this.unitPrice=res.unitPrice;
+      this.quantity=res.quantity;
+
   console.log(this.carts);
    })
   }
@@ -54,6 +62,18 @@ export class MycartComponent implements OnInit{
     this.router.navigate(['./orderpayment'],{relativeTo:this.route});
   }
 
+
+
+ Total():number{
+    let total = 0;
+    for (let cart of this.carts) {
+       
+          total += cart.unitPrice * cart.quantity;
+       
+        
+    }
+    return total;
+}
   
 
 
