@@ -1,24 +1,4 @@
 
-<!-- <div *ngFor="let cart of carts">
-    <br>
-    <label><b>product Title:</b>{{cart.title}}<br></label>
-    <label><b>Image:</b>{{cart.image}}<br></label>
-    <label><b>UnitPrice:</b>{{cart.unitPrice}}<br></label>
-    <label><b>Quantity:</b>{{cart.quantity}}<br></label>
-    <label><b>ProductId:</b>{{cart.productId}}<br></label>
-    <label><b>TotalAmount :{{cart.quantity * cart.unitPrice}}</b></label>    
-    <div class="form-group">
-        <br>
-        <button class="btn btn-default" (click)="onRemoveProduct(cart.productId)" type="submit">Remove</button>
-      </div> 
-      <div class="form-group">
-        <br>
-        <button class="btn btn-default" (click)="onUpdateProduct(cart.cartItemId)" type="submit">Update</button>
-      </div>    
-    <br> -->
-
-
-
     <h1>My Cart</h1>
                 <table>
                     <thead>
@@ -32,7 +12,7 @@
                     </thead>
                     <tbody>
                         <tr  *ngFor="let cart of carts">
-                            <th>{{ cart.title }}</th>
+                            <td>{{ cart.title }}</td>
                             <td>{{ cart.image }}</td>
                             <td>{{ cart.unitPrice }}</td>
                             <td>{{ cart.quantity }}</td>
@@ -44,8 +24,14 @@
                                 <button class="btn btn-default" (click)="onUpdateProduct(cart.cartItemId)" type="submit">Update</button>
                             </td>
                         </tr>
+                        
                     </tbody>
                 </table>
-            
 
-           
+    <br>
+    <p><b>TotalAmount:</b>{{Total()}}</p>
+
+
+  <br>
+    <button   class="btn btn-default" (click)="onClick()" type="submit">Order</button>
+                       
