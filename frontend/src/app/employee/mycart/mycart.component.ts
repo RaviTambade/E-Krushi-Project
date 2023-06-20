@@ -49,6 +49,11 @@ export class MycartComponent implements OnInit{
     this.router.navigate(['./update',id],{relativeTo:this.route});
   }
 
+
+  onClick(): void{
+    this.router.navigate(['./orderpayment'],{relativeTo:this.route});
+  }
+
   
 
 

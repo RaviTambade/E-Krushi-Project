@@ -23,6 +23,7 @@ import { CartModule } from './cart/cart.module';
 import { AddtocartComponent } from './cart/addtocart/addtocart.component';
 import { CategoryproductComponent } from './categoryproduct/categoryproduct.component';
 import { CommonModule } from '@angular/common';
+import { PaymentModule } from './payment/payment.module';
  
 
 
@@ -48,7 +49,8 @@ import { CommonModule } from '@angular/common';
     ReactiveFormsModule,
     HttpClientModule,
     EmployeeModule,
-    CartModule
+    CartModule,
+    PaymentModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

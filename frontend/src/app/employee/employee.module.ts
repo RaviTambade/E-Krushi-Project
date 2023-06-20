@@ -13,6 +13,7 @@ import { AddtocartComponent } from '../employee/addtocart/addtocart.component';
 import { MycartComponent } from './mycart/mycart.component';
 import { UpdateComponent } from './update/update.component';
 import { GetCartDetailsComponent } from './get-cart-details/get-cart-details.component';
+import { OrderpaymentComponent } from '../payment/orderpayment/orderpayment.component';
 
 const routes : Routes=[
   {path:'home', component:HomeComponent},
@@ -22,7 +23,8 @@ const routes : Routes=[
   {path:'store/details/:id', component:ProductdetailsComponent},
   {path:'store/details/:id/addtocart/:id', component:AddtocartComponent},
   {path:'mycart', component:MycartComponent},
-  {path:'mycart/update/:id', component:UpdateComponent}
+  {path:'mycart/update/:id', component:UpdateComponent},
+  {path:'mycart/orderpayment', component:OrderpaymentComponent}
 ]
 
 @NgModule({
