@@ -36,41 +36,81 @@
     <div class="form-group">
       <br> 
       <label ><b>Id :</b></label>
-      <input type="number" name="id" [(ngModel)]="card.id" />
+      <input type="number" name="id" [(ngModel)]="creditCard.id" />
     </div>
     <div class="form-group">
       <br> 
       <label ><b>AccountId:</b></label>
-      <input type="number" name="accountId" [(ngModel)]="card.accountId" />
+      <input type="number" name="accountId" [(ngModel)]="creditCard.accountId" />
     </div>
     <div class="form-group">
       <br> 
       <label ><b>Card Number:</b></label>
-      <input type="text" name="cardNumber" [(ngModel)]="card.cardNumber" />
+      <input type="text" name="cardNumber" [(ngModel)]="creditCard.cardNumber" />
     </div>
     <div class="form-group">
       <br> 
       <label ><b>pin number :</b></label>
-      <input type="number" name="pinNumber" [(ngModel)]="card.pinNumber" />
+      <input type="number" name="pinNumber" [(ngModel)]="creditCard.pinNumber" />
     </div>
     <div class="form-group">
       <br> 
       <label ><b>cvv:</b></label>
-      <input type="number" name="cvv" [(ngModel)]="card.cvv" />
+      <input type="number" name="cvv" [(ngModel)]="creditCard.cvv" />
     </div>
     <div class="form-group">
       <br> 
       <label ><b>expiry date :</b></label>
-      <input type="text" name="expiryDate" [(ngModel)]="card.expiryDate" />
+      <input type="text" name="expiryDate" [(ngModel)]="creditCard.expiryDate" />
     </div>
     <div class="form-group">
       <br> 
       <label ><b>credit limit:</b></label>
-      <input type="number" name="creditLimit" [(ngModel)]="card.creditLimit" />
+      <input type="number" name="creditLimit" [(ngModel)]="creditCard.creditLimit" />
     </div>
     <div class="form-group">
       <br> 
       <label ><b>balance:</b></label>
-      <input type="number" name="balance" [(ngModel)]="card.balance" />
+      <input type="number" name="balance" [(ngModel)]="creditCard.balance" />
+    </div>
+   </form> 
+
+
+   <form (ngSubmit)="submit()">
+    <!-- <form #cardForm="ngForm" (ngSubmit)="addCard(cardForm.value)"> -->
+    <div class="form-group">
+      <br> 
+      <label ><b>Id :</b></label>
+      <input type="number" name="id" [(ngModel)]="debitCard.id" />
+    </div>
+    <div class="form-group">
+      <br> 
+      <label ><b>AccountId:</b></label>
+      <input type="number" name="accountId" [(ngModel)]="debitCard.accountId" />
+    </div>
+    <div class="form-group">
+      <br> 
+      <label ><b>Card Number:</b></label>
+      <input type="text" name="cardNumber" [(ngModel)]="debitCard.cardNumber" />
+    </div>
+    <div class="form-group">
+      <br> 
+      <label ><b>pin number :</b></label>
+      <input type="number" name="pinNumber" [(ngModel)]="debitCard.pinNumber" />
+    </div>
+    <div class="form-group">
+      <br> 
+      <label ><b>cvv:</b></label>
+      <input type="number" name="cvv" [(ngModel)]="debitCard.cvv" />
+    </div>
+    <div class="form-group">
+      <br> 
+      <label ><b>expiry date :</b></label>
+      <input type="text" name="expiryDate" [(ngModel)]="debitCard.expiryDate" />
+    </div>
+    <div class="form-group">
+      <br> 
+      <label ><b>customer Id:</b></label>
+      <input type="number" name="customerId" [(ngModel)]="debitCard.customerId" />
     </div>
    </form> 

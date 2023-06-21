@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PaymentService } from '../payment.service';
 import { CreditCard } from '../creditcard';
+import { DebitCard } from '../debitcard';
 
 @Component({
   selector: 'app-orderpayment',
@@ -12,7 +13,7 @@ export class OrderpaymentComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  card:CreditCard={
+  creditCard:CreditCard={
     id: 0,
     pinNumber: 0,
     accountId: 0,
@@ -22,6 +23,18 @@ export class OrderpaymentComponent implements OnInit{
     creditLimit: 0,
     balance: 0
   }
+
+  debitCard:DebitCard={
+    id: 0,
+    customerId: 0,
+    pinNumber: 0,
+    accountId: 0,
+    cardNumber: '',
+    expiryDate: '',
+    cvv: 0
+  }
+
+
 
   constructor(private svc:PaymentService){}
  
@@ -41,13 +54,18 @@ export class OrderpaymentComponent implements OnInit{
     console.log(e.target.value);
 
     if(e.target.value=="credit card"){
-        this.svc.addCreditCard(this.card).subscribe((res)=>{
-        this.card = res;
-      
+        this.svc.addCreditCard(this.creditCard).subscribe((res)=>{
+        this.creditCard = res;
       })
     }
+    else(e.target.value=="Debit Card")
+        this.svc.addDebitCard(this.debitCard).subscribe((res)=>{
+        this.debitCard = res;
+      })
     }
-  }
+}
+  
+  
 
 
 
