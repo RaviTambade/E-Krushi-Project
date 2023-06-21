@@ -41,7 +41,7 @@ export class OrderpaymentComponent implements OnInit{
     console.log(e.target.value);
 
     if(e.target.value=="credit card"){
-        this.svc.addCard(this.card).subscribe((res)=>{
+        this.svc.addCreditCard(this.card).subscribe((res)=>{
         this.card = res;
       
       })
