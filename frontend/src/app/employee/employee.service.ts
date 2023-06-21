@@ -60,6 +60,11 @@ export class EmployeeService {
         let url = "http://localhost:5057/api/orders/orders";
         return this.http.get<any>(url);
       }
+
+      public getDetails(orderId:number):Observable<any>{
+        let url = "http://localhost:5057/orderdetails/order/"+orderId;
+        return this.http.get<any>(url);
+      }
 }
 
 

@@ -56,5 +56,13 @@ namespace OrderProcessingService.Controllers
             bool status = await _ordersvc.Delete(id);
             return status;
         }
+
+
+        [HttpGet("order/{orderId}")]          
+        public async Task<List<OrderHistory>> GetDetails(int orderId)
+        {
+            List<OrderHistory> orders = await _ordersvc.GetDetails(orderId);
+            return orders;
+        }
     }
 }

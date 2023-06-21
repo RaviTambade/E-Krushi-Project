@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class OrderComponent implements OnInit{
 
   orders:any[];
-
+  id:any;
   constructor(private svc:EmployeeService,private router:Router,private route:ActivatedRoute){
     this.orders=[];
   }
@@ -23,7 +23,8 @@ export class OrderComponent implements OnInit{
     }) 
   }
 
-  onSelectOrder(){
-    this.router.navigate(["./orderdetails"],{relativeTo:this.route});
+  onSelectOrder(id:any){
+    console.log(id);
+    this.router.navigate(["./orderdetails",id],{relativeTo:this.route});
   }
 }

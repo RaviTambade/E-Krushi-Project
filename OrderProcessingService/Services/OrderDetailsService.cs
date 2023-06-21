@@ -23,5 +23,7 @@ public class OrderDetailsService : IOrderDetailsService{
 
     public async Task<bool> Delete(int id)=> await _repo.Delete(id);
 
+     public async Task<List<OrderHistory>> GetDetails(int orderId) => await _repo.GetDetails(orderId);
+
 
 }

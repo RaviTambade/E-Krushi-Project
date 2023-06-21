@@ -14,6 +14,8 @@ public interface IOrderDetailsRepository{
 
     Task<bool> Delete(int id);
 
+    Task<List<OrderHistory>> GetDetails(int orderId);
+
     
     
 }

@@ -1,0 +1,33 @@
+
+
+
+
+<h1>My Order</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>product Title</th>
+                            <th>Image</th>
+                            <th>UnitPrice</th>
+                            <th>Quantity</th>
+                            <th>OrderDate</th>
+                            <th>ShippedDate</th>
+                            <th>Total</th>
+                            <th>Status</th>     
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr  *ngFor="let order of orderDetails">
+                            <td>{{ order.title }}</td>
+                            <td>{{ order.image }}</td>
+                            <td>{{ order.unitPrice }}</td>
+                            <td>{{ order.quantity }}</td>
+                            <td>{{ order.orderDate }}</td>
+                            <td>{{ order.shippedDate }}</td>
+                            <td>{{ order.total }}</td>
+                            <td>{{ order.status }}</td>
+                        </tr> 
+                    </tbody>
+                </table>
+
+                
