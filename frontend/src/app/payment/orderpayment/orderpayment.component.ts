@@ -58,12 +58,12 @@ export class OrderpaymentComponent implements OnInit{
         this.creditCard = res;
       })
     }
-    else(e.target.value=="Debit Card")
+    else(e.target.value=="Debit Card"){
         this.svc.addDebitCard(this.debitCard).subscribe((res)=>{
         this.debitCard = res;
       })
     }
-}
+}git
   
   
 
