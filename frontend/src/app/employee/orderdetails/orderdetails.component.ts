@@ -25,4 +25,9 @@ export class OrderdetailsComponent  implements OnInit{
    
   }
 
+  onClick(){
+      
+     this.router.navigate(["./orderpayment"],{relativeTo:this.route});
+  }
+
 }
