@@ -1,4 +1,6 @@
-<!-- 
+
+
+
 
 <h1>My Order</h1>
                 <table>
@@ -28,32 +30,4 @@
                     </tbody>
                 </table>
 
-                <p><b>TotalAmount:</b>{{totalAmount}}</p> -->
-
-                <h2>Products for selling</h2>
-    
-
-                <table class="table align-middle mb-0 bg-white">
-                    <thead class="bg-light">
-                      <tr>
-                        <th>OrderId</th> 
-                       <th>OrderDate</th> 
-                       <th></th>  
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr *ngFor="let order of orders" >
-                        <td>
-                          <p class="fw-normal mb-1">{{ order.id }}</p>
-                        </td>
-                          <td>
-                            <p class="text-muted mb-0">{{ order.orderDate}}</p>
-                          </td>
-                          <td>
-                            <button type="button" (click)="onSelectOrder(order.id)" class="btn btn-link btn-sm btn-rounded">
-                               OrderDetails
-                            </button> 
-                          </td>
-                        
-                      </tr> 
-                  </table>
+                <p><b>TotalAmount:</b>{{totalAmount}}</p>
