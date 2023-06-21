@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { EmployeeService } from '../employee.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-orderhistory',
@@ -12,7 +13,7 @@ export class OrderhistoryComponent {
   orders:any[];
   totalAmount:any;
   
-  constructor(private svc : EmployeeService){
+  constructor(private svc : EmployeeService,private router:Router,private route:ActivatedRoute ){
     this.orders=[]
     this.totalAmount = localStorage.getItem("total");
   }

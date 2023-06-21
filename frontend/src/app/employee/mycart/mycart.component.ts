@@ -10,8 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class MycartComponent implements OnInit{
 
-  carts:any[];
-  
+  carts:any[]; 
   custId:number=2;
   productId:any;
   cartId:any;

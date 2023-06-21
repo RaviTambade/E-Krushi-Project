@@ -19,10 +19,11 @@ export class OrderComponent implements OnInit{
   ngOnInit(): void {
     this.svc.getAllOrders().subscribe((res)=>{
       this.orders=res;
+
     }) 
   }
 
-  onSelectOrder(id:any){
-    this.router.navigate(["./order",id],{relativeTo:this.route});
+  onSelectOrder(){
+    this.router.navigate(["./orderdetails"],{relativeTo:this.route});
   }
 }
