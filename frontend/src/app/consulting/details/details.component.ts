@@ -11,16 +11,14 @@ export class DetailsComponent implements OnInit{
 
   question:any;
   id:number | any;
+
 constructor(private svc:ConsultingService,private router:Router,private route:ActivatedRoute){}
 
   ngOnInit(): void {
-   }
-  getQuestion(id:number){
     this.id=this.route.snapshot.paramMap.get("id");
     this.svc.getQuestion(this.id).subscribe((res)=>{
       this.question=res;
       console.log(this.question);
     })
-  }
-
+   }
 }

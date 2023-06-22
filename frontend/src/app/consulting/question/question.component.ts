@@ -20,11 +20,12 @@ id:any;
   ngOnInit(): void {
     this.svc.getAllQuestions().subscribe((res)=>{
       this.questions=res;
+      console.log(this.questions);
     })
   }
 
   onSelectQuestion(id:any){
     this.router.navigate(["./detail",id],{relativeTo:this.route});
-
+    
   }
 }
