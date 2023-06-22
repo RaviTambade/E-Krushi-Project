@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConsultingService } from '../consulting.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-question',
@@ -9,7 +10,10 @@ import { ConsultingService } from '../consulting.service';
 export class QuestionComponent implements OnInit{
 
 questions:any[];
-  constructor(private svc:ConsultingService){
+id:any;
+
+
+  constructor(private svc:ConsultingService,private router:Router,private route:ActivatedRoute){
     this.questions=[];
   }
 
@@ -17,5 +21,10 @@ questions:any[];
     this.svc.getAllQuestions().subscribe((res)=>{
       this.questions=res;
     })
+  }
+
+  onSelectQuestion(id:any){
+    this.router.navigate(["./detail",id],{relativeTo:this.route});
+
   }
 }

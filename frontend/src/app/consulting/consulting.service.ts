@@ -14,8 +14,8 @@ export class ConsultingService {
     return this.http.get<any>(url);
   }
 
-
-
-
-   //http://localhost:5279/api/consulting/questions
+  public getQuestion(id:number):Observable<any>{
+    let url="localhost:5279/api/consulting/questions/" +id;
+    return this.http.get<any>(url);
+  }
 }

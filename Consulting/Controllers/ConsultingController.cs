@@ -32,7 +32,7 @@ public class ConsultingController : ControllerBase
 
 
     //This method gives question details by id.
-    //http://localhost:5279/consulting/questions/{id}
+    //http://localhost:5279/api/consulting/questions/{id}
     [HttpGet("questions/{id}")]
     public async Task<Question> getQuestion(int id)
     {
