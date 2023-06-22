@@ -10,7 +10,14 @@ import { DebitCard } from '../debitcard';
   styleUrls: ['./orderpayment.component.css']
 })
 export class OrderpaymentComponent implements OnInit{
+
+  byCreditCard:boolean=false;
+  byDebitCard:boolean=false;
+  byMobilePayment:boolean=false;
+  byCash:boolean=false;
+
   ngOnInit(): void {
+    
   }
 
   creditCard:CreditCard={
@@ -34,6 +41,15 @@ export class OrderpaymentComponent implements OnInit{
     cvv: 0
   }
 
+  addCreditCard(creditCard:CreditCard){
+    this.byCreditCard=true;
+      this.byDebitCard=false;
+      this.byMobilePayment=false;
+      this.byCash=false;
+  this.svc.addCreditCard(creditCard).subscribe((res)=>{
+    this.creditCard = res;
+  })
+  }
 
 
   constructor(private svc:PaymentService){}
@@ -54,16 +70,25 @@ export class OrderpaymentComponent implements OnInit{
     console.log(e.target.value);
 
     if(e.target.value=="credit card"){
+      this.byCreditCard=true;
+      this.byDebitCard=false;
+      this.byMobilePayment=false;
+      this.byCash=false;
         this.svc.addCreditCard(this.creditCard).subscribe((res)=>{
         this.creditCard = res;
       })
-    }
-    else(e.target.value=="Debit Card"){
+  }
+  
+    else(e.target.value=="debit card")
+    this.byCreditCard=false;
+    this.byDebitCard=true;
+    this.byMobilePayment=false;
+    this.byCash=false;
         this.svc.addDebitCard(this.debitCard).subscribe((res)=>{
         this.debitCard = res;
       })
     }
-}git
+}
   
   
 

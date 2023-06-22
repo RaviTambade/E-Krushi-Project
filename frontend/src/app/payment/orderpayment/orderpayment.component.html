@@ -6,20 +6,20 @@
               <input id="cash payment" type="radio" value="cash payment" name="payment" (change)="changePayment($event)">
               <label for="cash payment">Cash Payment</label>
               <br>
-              <input  id="cash payment" type="radio" value="Debit Card" name="payment" (change)="changePayment($event)">
-              <label for="Debit Card">Debit Card</label>
+              <input  id="cash payment" type="radio" value="debit card" name="payment" (change)="changePayment($event)">
+              <label for="debit card">Debit Card</label>
               <br>
-              <input id="credit card"  type="radio" value="credit card" name="payment" (change)="changePayment($event)">
+              <input id="cash payment"  type="radio" value="credit card" name="payment" (change)="changePayment($event)">
               <label for="credit card">Credit Card</label>
               <br>
-              <input id="cash payment" type="radio" value="Mobile Payment" name="payment" (change)="changePayment($event)">
-              <label for="Mobile Payment">Mobile Payment</label>
+              <input id="cash payment" type="radio" value="mobile payment" name="payment" (change)="changePayment($event)">
+              <label for="mobile payment">Mobile Payment</label>
               <br>
             </div>
             <div *ngIf="f.payment.touched && f.payment.invalid" class="alert alert-danger">
             </div> 
         
-            <button c type="submit" [disabled]="!form.valid">Submit</button>
+            <!-- <button c type="submit" [disabled]="!form.valid">Submit</button> -->
         
             <!-- <div>
                 <ul id="list" name="list">
@@ -31,8 +31,8 @@
     </div>
     
 
-    <form (ngSubmit)="submit()">
-    <!-- <form #cardForm="ngForm" (ngSubmit)="addCard(cardForm.value)"> -->
+    <div *ngIf="byCreditCard">
+    <form #cardForm="ngForm" (ngSubmit)="addCreditCard(cardForm.value)">
     <div class="form-group">
       <br> 
       <label ><b>Id :</b></label>
@@ -73,10 +73,11 @@
       <label ><b>balance:</b></label>
       <input type="number" name="balance" [(ngModel)]="creditCard.balance" />
     </div>
-   </form> 
+
+  <button  type="submit" >Submit</button> 
 
 
-   <form (ngSubmit)="submit()">
+  <div *ngIf="byDebitCard">
     <!-- <form #cardForm="ngForm" (ngSubmit)="addCard(cardForm.value)"> -->
     <div class="form-group">
       <br> 
@@ -113,4 +114,5 @@
       <label ><b>customer Id:</b></label>
       <input type="number" name="customerId" [(ngModel)]="debitCard.customerId" />
     </div>
-   </form> 
+   <div> 
+    <button  type="submit" >Submit</button>
