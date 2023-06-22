@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace E_krushiApp.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class ConsultingController : ControllerBase
 {
     private readonly IConsultingService _srv;
@@ -18,7 +18,7 @@ public class ConsultingController : ControllerBase
 
 
     //This method gives question List.
-    //http://localhost:5279/consulting/questions
+    //http://localhost:5279/api/consulting/questions
     [HttpGet("questions")]
 
     public async Task<List<Question>> getAllQuestions()

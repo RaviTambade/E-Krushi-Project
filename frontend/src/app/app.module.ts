@@ -24,6 +24,7 @@ import { AddtocartComponent } from './cart/addtocart/addtocart.component';
 import { CategoryproductComponent } from './categoryproduct/categoryproduct.component';
 import { CommonModule } from '@angular/common';
 import { PaymentModule } from './payment/payment.module';
+import { ConsultingModule } from './consulting/consulting.module';
  
 
 
@@ -50,7 +51,8 @@ import { PaymentModule } from './payment/payment.module';
     HttpClientModule,
     EmployeeModule,
     CartModule,
-    PaymentModule
+    PaymentModule,
+    ConsultingModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
