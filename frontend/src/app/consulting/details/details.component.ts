@@ -26,4 +26,8 @@ constructor(private svc:ConsultingService,private router:Router,private route:Ac
    onClick(id:any){
     this.router.navigate(["./addquestion",id],{relativeTo:this.route})
    }
+
+   onNewQuestion(){
+    this.router.navigate(["./newquestion"],{relativeTo:this.route})
+   }
 }

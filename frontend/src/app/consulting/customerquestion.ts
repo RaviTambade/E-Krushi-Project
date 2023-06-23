@@ -6,7 +6,4 @@ export class CustomerQuestion{
         public customerId:number,
         public questionDate:string
     ){}
-
-    
-
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CustomerQuestion } from './customerquestion';
+import { Question } from './Question';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,10 @@ export class ConsultingService {
   public GetCustomerQuestionDetails(custId:any):Observable<any>{
     let url="http://localhost:5279/api/consulting/questionDetails/"+custId;
     return this.http.get<any>(url);
+  }
+
+  public insertQuestion(question:Question):Observable<any>{
+    let url="http://localhost:5279/api/consulting/question";
+    return this.http.post<any>(url,question);
   }
 }

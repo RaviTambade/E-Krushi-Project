@@ -1,0 +1,19 @@
+
+
+<form #questionForm="ngForm" (ngSubmit)="insertQuestion(questionForm.value)">
+
+    <div class="form-group">
+      <label><b>Description :</b></label>
+      <input type="text" name="description" [(ngModel)]="question.description"  />
+   </div>
+   <div class="form-group">
+      <br> 
+      <label ><b>category Id :</b></label>
+      <input type="number" name="categoryId" [(ngModel)]="categoryId" />
+    </div>
+    <div class="form-group">
+        <br>
+        <button class="btn btn-default" type="submit">AddNewQuestion</button>
+      </div>
+  </form>
+  
