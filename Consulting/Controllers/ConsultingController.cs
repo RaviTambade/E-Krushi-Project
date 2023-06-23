@@ -185,4 +185,13 @@ public class ConsultingController : ControllerBase
         return questions;
     }
 
+    [HttpPost("question")]
+    public async Task<bool> InsertQuestion(Question question)
+    {
+
+        bool status = await _srv.InsertQuestion(question);
+
+        return status;
+    }
+
 }

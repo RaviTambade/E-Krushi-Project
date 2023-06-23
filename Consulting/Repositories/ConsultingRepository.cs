@@ -558,7 +558,7 @@ public class ConsultingRepository : IConsultingRepository
 
 
      public async Task<List<CustomerQuestion>> QuestionDetailsByCustomer(int custId){
-         List<CustomerQuestion> questions = new List<CustomerQuestion>();
+        List<CustomerQuestion> questions = new List<CustomerQuestion>();
         MySqlConnection con = new MySqlConnection();
         con.ConnectionString = _conString;
         try
@@ -594,6 +594,35 @@ public class ConsultingRepository : IConsultingRepository
         }
         return questions;
     }
+
+    public async Task<bool> InsertQuestion(Question question)
+        {
+            bool status = false;
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = _conString;
+            try
+            {
+                string query="Insert into questions(description,categoryid) VALUES(@description,@categoryId)";
+                MySqlCommand cmd = new MySqlCommand(query,con);
+                cmd.Parameters.AddWithValue("@description",question.Description);
+                cmd.Parameters.AddWithValue("@categoryId",question.CategoryId);
+                await con.OpenAsync();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if(rowsAffected > 0)
+                {
+                    status=true;
+                }
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                await con.CloseAsync();
+            }
+            return status;
+        }
 
 
     
