@@ -590,3 +590,5 @@ select orders.id, products.title,products.image,products.unitprice,orders.orderd
 delete from orders where custid=2;
 
 insert into customerquestions(questionid,custid,questiondate) values (1,2,now());
+select questions.description,customerquestions.questiondate from questions 
+inner join customerquestions on customerquestions.questionid=questions.id where customerquestions.custid=2;
