@@ -19,6 +19,11 @@ constructor(private svc:ConsultingService,private router:Router,private route:Ac
     this.svc.getQuestion(this.id).subscribe((res)=>{
       this.question=res;
       console.log(this.question);
+  localStorage.setItem("question",res.description);
     })
+   }
+
+   onClick(id:any){
+    this.router.navigate(["./addquestion",id],{relativeTo:this.route})
    }
 }

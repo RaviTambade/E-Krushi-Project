@@ -1,0 +1,31 @@
+
+
+
+
+<form #questionForm="ngForm" (ngSubmit)="insertCustomerQuestion(questionForm.value)">
+    <div>
+        <b>question:{{questionName}}</b>
+        
+     </div>
+
+    <div class="form-group">
+      <label hidden><b>question id :</b></label>
+      <input type="number" name="questionId" [(ngModel)]="questionId"  type="hidden"/>
+   </div>
+   <div class="form-group">
+      <br> 
+      <label hidden><b>customer id :</b></label>
+      <input type="number" name="customerId" [(ngModel)]="customerId" type="hidden"/>
+    </div>
+    <div class="form-group">
+      <br> 
+      <label ><b>question date :</b></label>
+      <input type="text" name="questionDate" [(ngModel)]="question.questionDate" />
+    </div>
+    <div class="form-group">
+        <br>
+        <button class="btn btn-default" type="submit">Add Question</button>
+      </div>
+   
+  </form>
+  

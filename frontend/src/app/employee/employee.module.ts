@@ -18,6 +18,7 @@ import { OrderhistoryComponent } from './orderhistory/orderhistory.component';
 import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 import { QuestionComponent } from '../consulting/question/question.component';
 import { DetailsComponent } from '../consulting/details/details.component';
+import { AddquestionComponent } from '../consulting/addquestion/addquestion.component';
 
 const routes : Routes=[
   {path:'home', component:HomeComponent},
@@ -33,7 +34,9 @@ const routes : Routes=[
   {path:'mycart/order/orderdetails/:id', component:OrderdetailsComponent},
   {path:'mycart/order/orderdetails/:id/orderpayment', component:OrderpaymentComponent},
   {path:'question/detail/:id', component:DetailsComponent},
-  {path:'question', component:QuestionComponent}
+  {path:'question', component:QuestionComponent},
+  {path:'question/detail/:id/addquestion/:id', component:AddquestionComponent},
+
 ]
 
 @NgModule({

@@ -25,7 +25,7 @@ import { CategoryproductComponent } from './categoryproduct/categoryproduct.comp
 import { CommonModule } from '@angular/common';
 import { PaymentModule } from './payment/payment.module';
 import { ConsultingModule } from './consulting/consulting.module';
-import { AddquestionComponent } from './addquestion/addquestion.component';
+
  
 
 
@@ -43,8 +43,7 @@ import { AddquestionComponent } from './addquestion/addquestion.component';
     PaggingComponent,
     SortedlistComponent,
     ProductListDetailsComponent,
-    CategoryproductComponent,
-    AddquestionComponent,  
+    CategoryproductComponent,  
   ],
   imports: [
     BrowserModule,

@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { QuestionComponent } from './question/question.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailsComponent } from './details/details.component';
+import { AddquestionComponent } from './addquestion/addquestion.component';
 
 
 
 @NgModule({
   declarations: [
     QuestionComponent,
-    DetailsComponent
+    DetailsComponent,
+    AddquestionComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { DetailsComponent } from './details/details.component';
     ReactiveFormsModule
   ],
   exports: [
-    QuestionComponent
+    QuestionComponent,
+    AddquestionComponent
   ]
 
 })
