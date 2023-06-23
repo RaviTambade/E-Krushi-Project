@@ -19,6 +19,7 @@ import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 import { QuestionComponent } from '../consulting/question/question.component';
 import { DetailsComponent } from '../consulting/details/details.component';
 import { AddquestionComponent } from '../consulting/addquestion/addquestion.component';
+import { MyquestionComponent } from '../consulting/myquestion/myquestion.component';
 
 const routes : Routes=[
   {path:'home', component:HomeComponent},
@@ -36,6 +37,7 @@ const routes : Routes=[
   {path:'question/detail/:id', component:DetailsComponent},
   {path:'question', component:QuestionComponent},
   {path:'question/detail/:id/addquestion/:id', component:AddquestionComponent},
+  {path:'myQuestion', component:MyquestionComponent},
 
 ]
 

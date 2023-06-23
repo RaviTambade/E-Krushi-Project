@@ -4,6 +4,7 @@ import { QuestionComponent } from './question/question.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DetailsComponent } from './details/details.component';
 import { AddquestionComponent } from './addquestion/addquestion.component';
+import { MyquestionComponent } from './myquestion/myquestion.component';
 
 
 
@@ -11,7 +12,8 @@ import { AddquestionComponent } from './addquestion/addquestion.component';
   declarations: [
     QuestionComponent,
     DetailsComponent,
-    AddquestionComponent
+    AddquestionComponent,
+    MyquestionComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import { AddquestionComponent } from './addquestion/addquestion.component';
   ],
   exports: [
     QuestionComponent,
-    AddquestionComponent
+    AddquestionComponent,
+    MyquestionComponent
   ]
 
 })

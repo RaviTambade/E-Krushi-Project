@@ -1,0 +1,13 @@
+<div >
+<h1>My Questions</h1>
+<table>
+    <tr>
+    <th>question</th>
+    <th>question Date</th>
+</tr>
+<tr *ngFor="let question of customerQuestions" >
+    <td>{{question.description}}</td>
+    <td>{{question.questionDate}}</td>
+</tr>
+</table>
+</div>
