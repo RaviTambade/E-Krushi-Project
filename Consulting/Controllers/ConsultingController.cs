@@ -154,5 +154,23 @@ public class ConsultingController : ControllerBase
 
     }
 
+    [HttpPost("customerquestion")]
+    public async Task<bool> AddCustomerQuestion(CustomerQuestion question)
+    {
+
+        bool status = await _srv.AddCustomerQuestion(question);
+
+        return status;
+    }
+
+    [HttpGet("getallcustomerquestions")]
+
+    public async Task<List<CustomerQuestion>> getAllCustomerQuestion()
+    {
+
+        List<CustomerQuestion> questions = await _srv.getAllCustomerQuestion();
+
+        return questions;
+    }
 
 }

@@ -484,7 +484,76 @@ public class ConsultingRepository : IConsultingRepository
         return Category;
     }
 
-   
+     public async Task<bool> AddCustomerQuestion(CustomerQuestion question)
+        {
+            bool status = false;
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = _conString;
+            try
+            {
+                string query="Insert into customerquestions(questionid,custid,questiondate) VALUES(@questionId,@custId,@questionDate)";
+                MySqlCommand cmd = new MySqlCommand(query,con);
+                cmd.Parameters.AddWithValue("@questionId",question.QuestionId);
+                cmd.Parameters.AddWithValue("@custId",question.CustomerId);
+                cmd.Parameters.AddWithValue("@questionDate",question.QuestionDate);
+                await con.OpenAsync();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if(rowsAffected > 0)
+                {
+                    status=true;
+                }
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                await con.CloseAsync();
+            }
+            return status;
+        }
+
+
+    public async Task<List<CustomerQuestion>> getAllCustomerQuestion()
+    {
+       List<CustomerQuestion> customerQuestions = new List<CustomerQuestion>();
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = _conString;
+        try
+        {
+            string query = "select * from customerquestions";
+            await con.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, con);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+                int id = int.Parse(reader["id"].ToString());
+                int questionId = int.Parse(reader["questionid"].ToString());
+                int custId =int.Parse( reader["custid"].ToString());
+                DateTime questionDate = DateTime.Parse(reader["questiondate"].ToString());
+                CustomerQuestion customerQuestion = new CustomerQuestion
+                {
+                    Id=id,
+                    QuestionId=questionId,
+                    CustomerId=custId,
+                    QuestionDate=questionDate
+
+                };
+                customerQuestions.Add(customerQuestion);
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception ee)
+        {
+            throw ee;
+        }
+        finally
+        {
+            await con.CloseAsync();
+        }
+        return customerQuestions; 
+    }
 }
 
 

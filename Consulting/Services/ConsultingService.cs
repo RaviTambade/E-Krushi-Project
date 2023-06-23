@@ -24,4 +24,10 @@ public class ConsultingService:IConsultingService{
 
     public async Task<List<QuestionCategory>> getAllCategories()=> await _repo.getAllCategories();
     public async Task<QuestionCategory> getQuestionCategory(int id)=> await _repo.getQuestionCategory(id);
+
+    public async Task<bool> AddCustomerQuestion(CustomerQuestion question)=> await _repo.AddCustomerQuestion(question);
+
+
+    public async Task<List<CustomerQuestion>> getAllCustomerQuestion() => await _repo.getAllCustomerQuestion(); 
+    
 }

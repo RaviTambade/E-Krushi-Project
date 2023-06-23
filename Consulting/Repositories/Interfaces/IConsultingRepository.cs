@@ -18,4 +18,8 @@ public interface IConsultingRepository{
 
     Task<List<QuestionCategory>> getAllCategories();
     Task<QuestionCategory> getQuestionCategory(int id);
+
+    Task<bool> AddCustomerQuestion(CustomerQuestion question);
+
+    Task<List<CustomerQuestion>> getAllCustomerQuestion();
 }
