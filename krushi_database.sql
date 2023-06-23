@@ -588,3 +588,5 @@ select orders.id, products.title,products.image,products.unitprice,orders.orderd
 
 
 delete from orders where custid=2;
+
+insert into customerquestions(questionid,custid,questiondate) values (1,2,now());
