@@ -173,4 +173,16 @@ public class ConsultingController : ControllerBase
         return questions;
     }
 
+
+
+    [HttpGet("questionDetails/{custId}")]
+
+    public async Task<List<CustomerQuestion>> QuestionDetailsByCustomer(int custId)
+    {
+
+        List<CustomerQuestion> questions = await _srv.QuestionDetailsByCustomer(custId);
+
+        return questions;
+    }
+
 }
