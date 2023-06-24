@@ -194,4 +194,17 @@ public class ConsultingController : ControllerBase
         return status;
     }
 
+
+
+    [HttpDelete("deleteQuestion/{id}")]
+    public async Task<bool> DeleteQuestion(int id)
+    {
+
+        bool status = await _srv.DeleteQuestion(id);
+        if(status){
+            Console.WriteLine("your question is deleted succeefully");
+        }
+        return status;
+    }
+
 }

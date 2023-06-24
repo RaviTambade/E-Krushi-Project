@@ -24,6 +24,7 @@ public interface IConsultingRepository{
     Task<List<CustomerQuestion>> getAllCustomerQuestion();
     Task<List<CustomerQuestion>> QuestionDetailsByCustomer(int custId);
 
-    Task<bool> InsertQuestion(Question question);
-
+    Task<bool> InsertQuestion(Question question); 
+    
+    Task<bool> DeleteQuestion(int id); 
 }

@@ -563,7 +563,7 @@ public class ConsultingRepository : IConsultingRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "select questions.description,customerquestions.questiondate from questions inner join customerquestions on customerquestions.questionid=questions.id where customerquestions.custid=@custId";
+            string query = "select customerquestions.id, questions.description,customerquestions.questiondate from questions inner join customerquestions on customerquestions.questionid=questions.id where customerquestions.custid=@custId";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@custId", custId);
@@ -571,12 +571,12 @@ public class ConsultingRepository : IConsultingRepository
             MySqlDataReader reader = command.ExecuteReader();
             while(await reader.ReadAsync())
             {
-                
+                int id=int.Parse(reader["id"].ToString());
                 string description= reader["description"].ToString();
                 DateTime questionDate=DateTime.Parse(reader["questiondate"].ToString());
                 
               CustomerQuestion question= new CustomerQuestion
-                {
+                {   Id=id,
                     Description = description,
                     QuestionDate = questionDate
                 };
@@ -626,6 +626,36 @@ public class ConsultingRepository : IConsultingRepository
 
 
     
+
+     public async Task<bool> DeleteQuestion(int id)
+        {
+            bool status = false;
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = _conString;
+            try
+            {
+                string query="delete from customerquestions where id =@id";
+                MySqlCommand cmd = new MySqlCommand(query,con);
+                cmd.Parameters.AddWithValue("@id",id);
+            
+                await con.OpenAsync();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if(rowsAffected > 0)
+                {
+                    status=true;
+                }
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                await con.CloseAsync();
+            }
+            return status;
+        }
+
     
 }
 
