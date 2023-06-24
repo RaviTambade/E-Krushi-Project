@@ -28,9 +28,16 @@ id:number|any;
 
   removeQuestion(id:number){
     this.svc.removeQuestion(id).subscribe((res)=>
-    {
-      
+    { 
       console.log(res);
+      if(res){
+        window.location.reload();
+        alert("question deleted succesfully");
+        
+      }
+      else{
+        alert("while deleting error");
+      }
     })
   }
 

@@ -14,11 +14,11 @@ export class AddquestionComponent implements OnInit{
      id: 0,
      questionId: 0,
      customerId: 0,
-     questionDate: ''
+     questionDate: new Date()
    };
    questionId:any;
    customerId:number=2;
-  questionName:any;
+   questionName:any;
   constructor(private svc:ConsultingService,private router:Router,private route:ActivatedRoute){
     this.questionName=localStorage.getItem("question");
   }

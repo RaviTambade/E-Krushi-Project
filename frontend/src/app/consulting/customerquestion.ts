@@ -4,6 +4,6 @@ export class CustomerQuestion{
         public id:number,
         public questionId:number,
         public customerId:number,
-        public questionDate:string
+        public questionDate:Date
     ){}
 }
