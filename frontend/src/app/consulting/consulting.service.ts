@@ -24,7 +24,7 @@ export class ConsultingService {
 
   public insertCustomerQuestion(question:CustomerQuestion):Observable<any>{
     let url="http://localhost:5279/api/consulting/customerquestion";
-    return this.http.post<any>(url,question);
+    return this.http.post<CustomerQuestion>(url,question);
   }
 
   public GetCustomerQuestionDetails(custId:any):Observable<any>{
@@ -34,7 +34,7 @@ export class ConsultingService {
 
   public insertQuestion(question:Question):Observable<any>{
     let url="http://localhost:5279/api/consulting/question";
-    return this.http.post<any>(url,question);
+    return this.http.post<Question>(url,question);
   }
 
   public removeQuestion(id:number):Observable<any>{

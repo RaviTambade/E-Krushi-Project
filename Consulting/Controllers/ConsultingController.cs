@@ -177,10 +177,10 @@ public class ConsultingController : ControllerBase
 
     [HttpGet("questionDetails/{custId}")]
 
-    public async Task<List<CustomerQuestion>> QuestionDetailsByCustomer(int custId)
+    public async Task<List<NewQuestion>> QuestionDetailsByCustomer(int custId)
     {
 
-        List<CustomerQuestion> questions = await _srv.QuestionDetailsByCustomer(custId);
+        List<NewQuestion> questions = await _srv.QuestionDetailsByCustomer(custId);
 
         return questions;
     }

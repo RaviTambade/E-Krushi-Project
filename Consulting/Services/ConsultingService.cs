@@ -30,7 +30,7 @@ public class ConsultingService:IConsultingService{
 
     public async Task<List<CustomerQuestion>> getAllCustomerQuestion() => await _repo.getAllCustomerQuestion(); 
     
-     public async Task<List<CustomerQuestion>> QuestionDetailsByCustomer(int custId) => await _repo.QuestionDetailsByCustomer(custId); 
+     public async Task<List<NewQuestion>> QuestionDetailsByCustomer(int custId) => await _repo.QuestionDetailsByCustomer(custId); 
 
     public async Task<bool> InsertQuestion(Question question)=> await _repo.InsertQuestion(question);
 

@@ -557,8 +557,8 @@ public class ConsultingRepository : IConsultingRepository
 
 
 
-     public async Task<List<CustomerQuestion>> QuestionDetailsByCustomer(int custId){
-        List<CustomerQuestion> questions = new List<CustomerQuestion>();
+     public async Task<List<NewQuestion>> QuestionDetailsByCustomer(int custId){
+        List<NewQuestion> questions = new List<NewQuestion>();
         MySqlConnection con = new MySqlConnection();
         con.ConnectionString = _conString;
         try
@@ -575,7 +575,7 @@ public class ConsultingRepository : IConsultingRepository
                 string description= reader["description"].ToString();
                 DateTime questionDate=DateTime.Parse(reader["questiondate"].ToString());
                 
-              CustomerQuestion question= new CustomerQuestion
+              NewQuestion question= new NewQuestion
                 {   Id=id,
                     Description = description,
                     QuestionDate = questionDate
