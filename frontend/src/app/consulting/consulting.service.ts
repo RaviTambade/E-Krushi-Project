@@ -36,4 +36,10 @@ export class ConsultingService {
     let url="http://localhost:5279/api/consulting/question";
     return this.http.post<any>(url,question);
   }
+
+  public removeQuestion(id:number):Observable<any>{
+
+    let url="http://localhost:5279/api/consulting/deleteQuestion/"+id;
+    return this.http.delete<any>(url);
+  }
 }

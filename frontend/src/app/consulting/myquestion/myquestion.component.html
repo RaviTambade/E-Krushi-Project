@@ -8,6 +8,12 @@
 <tr *ngFor="let question of customerQuestions" >
     <td>{{question.description}}</td>
     <td>{{question.questionDate}}</td>
+ <td>
+        <button class="btn btn-default" (click)="removeQuestion(question.id)" type="submit">Remove</button>
+</td>
+<!-- <td>
+        <button class="bgittn btn-default" (click)="onUpdateProduct(cart.cartItemId)" type="submit">Update</button>
+</td> -->
 </tr>
 </table>
 </div>
