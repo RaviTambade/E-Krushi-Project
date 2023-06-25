@@ -88,5 +88,12 @@ namespace OrderProcessingService.Controllers
             List<OrderHistory> orders = await _ordersvc.GetOrderHistory(custId);
             return orders;
         }
+
+        [HttpGet("customerorders")]          
+        public async Task<IEnumerable<CustomerOrder>> GetOrderDetails()
+        {
+            List<CustomerOrder> customerOrders= await _ordersvc.GetOrderDetails();
+            return customerOrders;
+        }
     }
 }

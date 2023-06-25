@@ -32,8 +32,7 @@ id:number|any;
       console.log(res);
       if(res){
         window.location.reload();
-        alert("question deleted succesfully");
-        
+        alert("question deleted succesfully");      
       }
       else{
         alert("while deleting error");

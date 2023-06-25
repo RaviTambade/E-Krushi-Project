@@ -34,4 +34,6 @@ public class OrderService : IOrderService{
 
     public async Task<List<OrderHistory>> GetOrderHistory(int custId) => await _repo.GetOrderHistory(custId);
 
+     public async Task<List<CustomerOrder>> GetOrderDetails() => await _repo.GetOrderDetails();
+
 }

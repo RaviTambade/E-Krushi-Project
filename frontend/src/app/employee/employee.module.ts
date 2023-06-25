@@ -39,7 +39,7 @@ const routes : Routes=[
   {path:'question', component:QuestionComponent},
   {path:'question/detail/:id/addquestion/:id', component:AddquestionComponent},
   {path:'myQuestion', component:MyquestionComponent},
-  {path:'question/detail/:id/newquestion', component:NewquestionComponent},
+  {path:'question/newquestion', component:NewquestionComponent},
 
 ]
 

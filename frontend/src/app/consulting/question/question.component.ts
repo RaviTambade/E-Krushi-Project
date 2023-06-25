@@ -28,4 +28,8 @@ id:any;
     this.router.navigate(["./detail",id],{relativeTo:this.route});
     
   }
+
+  onNewQuestion(){
+    this.router.navigate(["./newquestion"],{relativeTo:this.route})
+   }
 }
