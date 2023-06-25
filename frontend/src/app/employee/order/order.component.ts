@@ -19,7 +19,6 @@ export class OrderComponent implements OnInit{
   ngOnInit(): void {
     this.svc.getAllOrders().subscribe((res)=>{
       this.orders=res;
-
     }) 
   }
 

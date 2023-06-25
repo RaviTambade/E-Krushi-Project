@@ -57,7 +57,7 @@ export class EmployeeService {
       }
 
       public getAllOrders():Observable<any>{
-        let url = "http://localhost:5057/api/orders/orders";
+        let url = "http://localhost:5057/api/orders/customerorders";
         return this.http.get<any>(url);
       }
 

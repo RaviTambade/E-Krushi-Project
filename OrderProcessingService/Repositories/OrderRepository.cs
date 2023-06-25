@@ -423,4 +423,48 @@ public class OrderRepository : IOrderRepository
         }
         return orders;
     }
+
+    public async Task<List<CustomerOrder>> GetOrderDetails()
+    {
+        List<CustomerOrder> customerOrders = new List<CustomerOrder>();
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = _conString;
+        try
+        {
+            string query = "select orders.id,orders.orderdate,customers.firstname,customers.lastname from orders inner join customers on customers.id=orders.custid";
+            await con.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, con);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+                int id = int.Parse(reader["id"].ToString());
+                DateTime orderDate = DateTime.Parse(reader["orderdate"].ToString());
+                string firstName= reader["firstname"].ToString();
+                string lastName = reader["lastname"].ToString();
+                
+
+                CustomerOrder customerOrder = new CustomerOrder()
+                {
+                    Id = id,
+                    OrderDate = orderDate,
+                    FirstName = firstName,
+                    LastName = lastName
+                    
+                };
+
+                customerOrders.Add(customerOrder);
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            await con.CloseAsync();
+        }
+        return customerOrders;
+    }
+
 }

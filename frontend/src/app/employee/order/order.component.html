@@ -7,7 +7,10 @@
                     <thead class="bg-light">
                       <tr>
                         <th>OrderId</th> 
-                       <th>OrderDate</th> 
+                       <th>OrderDate</th>
+                       <th>FirstName</th>
+                       <th>LastName</th>
+
                        <th></th>  
                       </tr>
                     </thead>
@@ -18,6 +21,12 @@
                         </td>
                           <td>
                             <p class="text-muted mb-0">{{ order.orderDate}}</p>
+                          </td>
+                          <td>
+                            <p class="text-muted mb-0">{{ order.firstName}}</p>
+                          </td>
+                          <td>
+                            <p class="text-muted mb-0">{{ order.lastName}}</p>
                           </td>
                           <td>
                             <button type="button" (click)="onSelectOrder(order.id)" class="btn btn-link btn-sm btn-rounded">

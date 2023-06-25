@@ -11,23 +11,18 @@ export class OrderdetailsComponent  implements OnInit{
   orderId:number |any;
   orderDetails:any[];
   constructor(private svc : EmployeeService,private router:Router,private route:ActivatedRoute){
-    this.orderDetails=[];
-    
+    this.orderDetails=[];  
   }
   
   
   ngOnInit(): void {
     this.orderId = this.route.snapshot.paramMap.get('id');
     this.svc.getDetails(this.orderId).subscribe((res)=>{
-
       this.orderDetails =res;
     })
-   
   }
 
-  onClick(){
-      
+  onClick(){     
      this.router.navigate(["./orderpayment"],{relativeTo:this.route});
   }
-
 }
