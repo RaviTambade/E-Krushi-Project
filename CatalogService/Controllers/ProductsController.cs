@@ -37,6 +37,8 @@ public class ProductsController : ControllerBase
         return product;
     }
 
+    //this method is used for insert product
+
     [HttpPost]
     public async Task<bool> Insert([FromBody] Product product)
     {
@@ -44,6 +46,9 @@ public class ProductsController : ControllerBase
         return result;
     }
     
+
+
+    //this method is used for Update product
     [HttpPut]
     public async Task<bool> Update(int id, [FromBody] Product product)
     {
@@ -56,6 +61,9 @@ public class ProductsController : ControllerBase
         return result;
     }
 
+
+
+// this method is used for delete product.
     [HttpDelete]
     public async Task<bool> DeleteProduct(int id)
     {
