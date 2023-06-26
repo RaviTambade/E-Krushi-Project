@@ -11,6 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class StoreComponent implements OnInit {
   products:Product[] |any;
   selectedProduct:any;
+  
+
 
   constructor(private svc:EmployeeService,private router:Router,private route:ActivatedRoute){
     this.products=[];

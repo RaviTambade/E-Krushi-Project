@@ -15,14 +15,15 @@
     </div>
     <div class="form-group">
       <br> 
-      <label ><b>product Title :</b></label>
-      <input type="text" name="title" [(ngModel)]="title" />
+      <label ><b>product Title :</b>{{title}}</label>
+      
     </div>
     <div class="form-group">
       <br> 
       <label ><b>Image:</b></label>
-      <input type="text" name="image" [(ngModel)]="image" />
+      <img [src]="image" width="200" height="200"/>
     </div>
+    
     <br>
     <div class="form-group">
       <label><b>UnitPrice :{{unitPrice}}</b></label>

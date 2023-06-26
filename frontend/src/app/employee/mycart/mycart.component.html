@@ -13,7 +13,7 @@
                     <tbody>
                         <tr  *ngFor="let cart of carts">
                             <td>{{ cart.title }}</td>
-                            <td>{{ cart.image }}</td>
+                            <td><img [src]="cart.image" width="200" height="200"/></td>
                             <td>{{ cart.unitPrice }}</td>
                             <td>{{ cart.quantity }}</td>
                             <td>{{cart.quantity * cart.unitPrice}}</td>

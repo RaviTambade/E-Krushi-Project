@@ -14,13 +14,12 @@
           <p class="fw-normal mb-1">{{ product.title }}</p>
         </td>
           <td>
-            <p class="text-muted mb-0">{{ product.image}}</p>
+            <p class="text-muted mb-0"><img [src]="product.image" width="200" height="200"/></p>
           </td>
           <td>
             <button type="button" (click)="onSelectProduct(product.id)" class="btn btn-link btn-sm btn-rounded">
                 Details
               </button> 
-          </td>
-        
+          </td>       
       </tr> 
   </table>
