@@ -11,8 +11,11 @@ export class OrderdetailsComponent  implements OnInit{
   orderId:number |any;
   orderDetails:any[];
   custId:any|number;
+  customerName:any|string;
   constructor(private svc : EmployeeService,private router:Router,private route:ActivatedRoute){
-    this.orderDetails=[];  
+    this.orderDetails=[]; 
+    
+    this.customerName=localStorage.getItem("CustomerName");
   }
   
   

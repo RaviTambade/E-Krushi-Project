@@ -210,8 +210,6 @@ public class OrderDetailsRepository : IOrderDetailsRepository
                 
                 OrderHistory orderHistory = new OrderHistory()
                 {
-                    FirstName = firstName,
-                    LastName = lastName,
                     Total = total,
                     Status = status,
                     Title = title,

@@ -389,6 +389,7 @@ public class OrderRepository : IOrderRepository
             MySqlDataReader reader = command.ExecuteReader();
             while (await reader.ReadAsync())
             {
+                int orderId = int.Parse(reader["id"].ToString());
                 DateTime orderDate = DateTime.Parse(reader["orderdate"].ToString());
                 DateTime shippedDate = DateTime.Parse(reader["shippeddate"].ToString());
                 double total = double.Parse(reader["total"].ToString());
@@ -401,6 +402,7 @@ public class OrderRepository : IOrderRepository
                 string? lastName = reader["lastname"].ToString();
                 OrderHistory orderHistory = new OrderHistory()
                 {
+                    OrderId=orderId,
                     OrderDate = orderDate,
                     ShippedDate = shippedDate,
                     Total = total,
@@ -408,9 +410,8 @@ public class OrderRepository : IOrderRepository
                     Title = title,
                     Image = image,
                     UnitPrice = unitPrice,
-                    Quantity = quantity,
-                    FirstName = firstName,
-                    LastName=lastName
+                    Quantity = quantity
+                  
                     
                 };
                 orders.Add(orderHistory);

@@ -2,6 +2,8 @@ namespace OrderProcessingService.Models;
 
 public class OrderHistory{
 
+   
+    public int OrderId{get; set;}
     public string? Title{get; set;}
 
     public string? Image{get; set;}
@@ -18,10 +20,7 @@ public class OrderHistory{
 
     public int Quantity{get; set;}
 
-    public string? FirstName{get; set;}
-
-    public string? LastName{get; set;}
-
+   
 
 
 
