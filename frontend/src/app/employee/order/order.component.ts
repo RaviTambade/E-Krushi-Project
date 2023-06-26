@@ -15,8 +15,10 @@ export class OrderComponent implements OnInit{
   custId:number=2;
   customer:any;
   customerName:any|string;
+  total:any;
   constructor(private svc:EmployeeService,private router:Router,private route:ActivatedRoute){
     this.orders=[];
+    this.total=localStorage.getItem("total");
   }
 
   ngOnInit(): void {
