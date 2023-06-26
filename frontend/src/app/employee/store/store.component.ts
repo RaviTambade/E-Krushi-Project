@@ -8,26 +8,12 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './store.component.html',
   styleUrls: ['./store.component.css']
 })
-export class StoreComponent implements OnInit {
-  products:Product[] |any;
-  selectedProduct:any;
+export class StoreComponent  {
+ 
   
 
 
-  constructor(private svc:EmployeeService,private router:Router,private route:ActivatedRoute){
-    this.products=[];
-  }
-
-  ngOnInit(): void {
-    this.svc.getAllProducts().subscribe((res)=>{
-      this.products=res;
-    })
-  }
-
-  onSelectProduct(id:any): void{
-    console.log(id);
-    this.router.navigate(['./details',id],{relativeTo:this.route});
-  }
+  
 }
 
 
