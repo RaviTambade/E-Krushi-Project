@@ -17,7 +17,7 @@ export class OrderdetailsComponent  implements OnInit{
   
   
   ngOnInit(): void {
-    this.custId = this.route.snapshot.paramMap.get('custid');
+    this.custId = this.route.snapshot.paramMap.get('custId');
     this.svc.getOrderDetails(this.custId).subscribe((res)=>{
       this.orderDetails=res;
     }) 

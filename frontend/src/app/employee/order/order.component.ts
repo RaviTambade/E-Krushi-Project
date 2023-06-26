@@ -26,6 +26,8 @@ export class OrderComponent implements OnInit{
 
     this.svc.getOrderDetails(this.custId).subscribe((res)=>{
       this.orders=res;
+
+      console.log(this.orders);
     }) 
   }
 
