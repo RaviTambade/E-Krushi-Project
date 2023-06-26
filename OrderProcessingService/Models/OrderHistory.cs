@@ -11,8 +11,6 @@ public class OrderHistory{
     public DateTime OrderDate{get; set;}
 
     public DateTime ShippedDate{get; set;}
-
-    public int CustomerId{get; set;}
    
     public double Total{get; set;}
 

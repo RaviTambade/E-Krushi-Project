@@ -216,8 +216,8 @@ public class OrderDetailsRepository : IOrderDetailsRepository
                     Status = status,
                     Title = title,
                     UnitPrice = unitPrice,
-                    Quantity = quantity,
-                    CustomerId=custid
+                    Quantity = quantity
+                  
                 };
                 orders.Add(orderHistory);
             }

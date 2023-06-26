@@ -8,7 +8,7 @@ namespace KrushiProject.Repositories
       
     public class CustomerRepository : ICustomerRepository
     {
-        public static string conString = "server=localhost; port=3306; user=root; password=Password; database=ekrushi";
+        public static string conString = "server=localhost; port=3306; user=root; password=PASSWORD; database=ekrushi";
        
 
         public List<Customer> GetAllCustomers()

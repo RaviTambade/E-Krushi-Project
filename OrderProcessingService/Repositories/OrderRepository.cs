@@ -382,7 +382,7 @@ public class OrderRepository : IOrderRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "select products.title,products.image,products.unitprice,orders.orderdate,orders.shippeddate,(products.unitprice*cartitems.quantity)as total,orders.status ,cartitems.quantity from products,orders,cartitems inner join carts on carts.id = cartitems.cartid where products.id =cartitems.productid and orders.custid =carts.custid and orders.custid=@custId";           
+            string query = "select orders.id,customers.firstname,customers.lastname,orders.orderdate,orders.shippeddate, products.title,products.unitprice,(products.unitprice*cartitems.quantity)as total,orders.status ,products.image,cartitems.quantity from customers,orderdetails,orders,cartitems inner join products on products.id = cartitems.productid where orders.id = orderdetails.orderid and orderdetails.productid =cartitems.productid and customers.id=orders.custid and orders.custid=@custId";           
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@custId",custId);
@@ -397,7 +397,8 @@ public class OrderRepository : IOrderRepository
                 string? image = reader["image"].ToString();
                 int unitPrice = int.Parse(reader["unitprice"].ToString());
                 int quantity = int.Parse(reader["quantity"].ToString());
-                
+                string? firstName = reader["firstname"].ToString();
+                string? lastName = reader["lastname"].ToString();
                 OrderHistory orderHistory = new OrderHistory()
                 {
                     OrderDate = orderDate,
@@ -407,7 +408,9 @@ public class OrderRepository : IOrderRepository
                     Title = title,
                     Image = image,
                     UnitPrice = unitPrice,
-                    Quantity = quantity
+                    Quantity = quantity,
+                    FirstName = firstName,
+                    LastName=lastName
                     
                 };
                 orders.Add(orderHistory);
