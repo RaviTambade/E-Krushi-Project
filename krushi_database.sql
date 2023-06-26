@@ -595,3 +595,4 @@ select questions.description,customerquestions.questiondate from questions
 inner join customerquestions on customerquestions.questionid=questions.id where customerquestions.custid=2;
 
 select orders.id,orders.orderdate,customers.firstname,customers.lastname from orders inner join customers on customers.id=orders.custid;
+

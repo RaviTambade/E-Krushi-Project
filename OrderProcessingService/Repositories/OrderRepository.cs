@@ -431,7 +431,8 @@ public class OrderRepository : IOrderRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "select orders.id,orders.orderdate,customers.firstname,customers.lastname from orders inner join customers on customers.id=orders.custid";
+            string query = " SELECT orders.id,customers.firstname,customers.lastname,orders.orderdate from orders inner join customers on customers.id=orders.custid";
+
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             MySqlDataReader reader = command.ExecuteReader();
@@ -440,13 +441,12 @@ public class OrderRepository : IOrderRepository
                 int id = int.Parse(reader["id"].ToString());
                 DateTime orderDate = DateTime.Parse(reader["orderdate"].ToString());
                 string firstName= reader["firstname"].ToString();
-                string lastName = reader["lastname"].ToString();
-                
+                string lastName = reader["lastname"].ToString();      
 
                 CustomerOrder customerOrder = new CustomerOrder()
                 {
                     Id = id,
-                    OrderDate = orderDate,
+                    OrderDate = orderDate, 
                     FirstName = firstName,
                     LastName = lastName
                     
