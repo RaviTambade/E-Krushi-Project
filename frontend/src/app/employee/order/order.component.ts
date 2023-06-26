@@ -12,18 +12,25 @@ export class OrderComponent implements OnInit{
 
   orders:any[];
   id:any;
+  custId:number=2;
+  customer:any;
   constructor(private svc:EmployeeService,private router:Router,private route:ActivatedRoute){
     this.orders=[];
   }
 
   ngOnInit(): void {
-    this.svc.getAllOrders().subscribe((res)=>{
+    this.svc.getCustomer(this.custId).subscribe((res)=>{
+      this.customer=res;
+    
+    }) 
+
+    this.svc.getOrderDetails(this.custId).subscribe((res)=>{
       this.orders=res;
     }) 
   }
 
-  onSelectOrder(id:any){
-    console.log(id);
-    this.router.navigate(["./orderdetails",id],{relativeTo:this.route});
+  onSelectOrder(custId:any){
+    console.log(custId);
+    this.router.navigate(["./orderdetails",custId],{relativeTo:this.route});
   }
 }

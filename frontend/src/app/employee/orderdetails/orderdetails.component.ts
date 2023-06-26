@@ -10,16 +10,17 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class OrderdetailsComponent  implements OnInit{
   orderId:number |any;
   orderDetails:any[];
+  custId:any|number;
   constructor(private svc : EmployeeService,private router:Router,private route:ActivatedRoute){
     this.orderDetails=[];  
   }
   
   
   ngOnInit(): void {
-    this.orderId = this.route.snapshot.paramMap.get('id');
-    this.svc.getDetails(this.orderId).subscribe((res)=>{
-      this.orderDetails =res;
-    })
+    this.custId = this.route.snapshot.paramMap.get('custid');
+    this.svc.getOrderDetails(this.custId).subscribe((res)=>{
+      this.orderDetails=res;
+    }) 
   }
 
   onClick(){     

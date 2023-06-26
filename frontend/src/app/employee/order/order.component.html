@@ -1,13 +1,30 @@
 <h2>Orders</h2>
-<div *ngFor="let order of orders">             
-<!-- <p><b>OrderId:</b> {{ order.id }}</p>  -->
-<p><b>Date:</b> {{ order.orderDate | date:'M/d/yy'}}  </p>
-<p><b>Time:</b> {{ order.orderDate  | date:'h:mm:ss a'}}  </p>
-<p><b>FirstName:</b> {{ order.firstName}}</p>
-<p><b>LastName:</b> {{ order.lastName}}</p>  
-<button type="button" (click)="onSelectOrder(order.id)" class="btn btn-link btn-sm btn-rounded">
-OrderDetails
-</button> 
-</div>                         
-                        
+<div >
+    <p><b>CustomerName:</b> {{customer.firstName}} {{customer.lastName}}</p>
+</div>
+
+
+<table>
+    <tr>
+        <th> OrderId</th><br>
+        <th>Date</th><br>
+        <th>Time</th><br>
+        <th>Status</th>
+    </tr>
+    <tr *ngFor="let order of orders">
+    <td>{{ order.id }} </td><br>
+    <td>{{ order.orderDate | date:'M/d/yy'}} </td><br>
+    <td>{{ order.orderDate  | date:'h:mm:ss a'}}</td><br>
+    <td>{{order.status}}</td>
+<td>
+    <button type="button" (click)="onSelectOrder(order.id)" class="btn btn-link btn-sm btn-rounded">
+        OrderDetails
+        </button> 
+    </td>
+</tr>
+    
+    
+</table>
+
+                 
                       
