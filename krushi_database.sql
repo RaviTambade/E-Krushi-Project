@@ -1,5 +1,5 @@
--- drop database ekrushi;
---  CREATE DATABASE ekrushi;
+ -- drop database ekrushi;
+ CREATE DATABASE ekrushi;
 USE ekrushi;
 
 CREATE TABLE users(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,email varchar(255) unique,password varchar(255),contactnumber varchar(255));
@@ -131,34 +131,34 @@ INSERT INTO categories(title,description,image) VALUES('Agricultural sprayers','
 INSERT INTO categories(title,description,image) VALUES('plants micronutrients','for spraying','/image/micronutrient.jpg');
 
 -- PRODUCTS DATA
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('oats',10,500,'/image/oats.jpg',1);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('wheat',14,50,'/image/sunflower.jpg',1);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('corn',1000,50,'/image/sunflower.jpg',1);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('barley',200,50,'/image/sunflower.jpg',1);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('sorghum',2200,50,'/image/sunflower.jpg',1);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('sunflower',1200,50,'/image/sunflower.jpg',1);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('oats',10,500,'/assets/image/oat.jfif',1);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('wheat',14,50,'/assets/image/wheat.jpg',1);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('corn',1000,50,'/assets/image/corn.jfif',1);
+-- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('barley',200,50,'/image/sunflower.jpg',1);
+-- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('sorghum',2200,50,'/image/sunflower.jpg',1);
+-- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('sunflower',1200,50,'/image/sunflower.jpg',1);
 
 
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('tractor',1400,50,'/image/sunflower.jpg',2);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('harvesters',2200,50,'/image/sunflower.jpg',2);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid)values('balers',1000,50,'/image/sunflower.jpg',2);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('fertilizer spreaders',109,50,'/image/sunflower.jpg',2);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('tractor',1400,50,'/assets/image/tractor.jfif',2);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('harvesters',2200,50,'/assets/image/harvestor.jfif',2);
+-- INSERT INTO products(title,unitprice,stockavailable,image,categoryid)values('balers',1000,50,'/image/sunflower.jpg',2);
+-- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('fertilizer spreaders',109,50,'/image/sunflower.jpg',2);
 
 -- FERTILIZERS
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('wood ash',1200,500,'/image/woodash.jpg',3);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('bone meal',1500,500,'/image/bonemeal.jpg',3);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('blood meal',1400,500,'/image/bloodmeal.jpg',3);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('manure',2100,500,'/image/manure.jpg',3);
+-- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('wood ash',1200,500,'/image/woodash.jpg',3);
+-- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('bone meal',1500,500,'/image/bonemeal.jpg',3);
+-- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('blood meal',1400,500,'/image/bloodmeal.jpg',3);
+-- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('manure',2100,500,'/image/manure.jpg',3);
 
 -- PESTISIDES
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('karate',1100,500,'/image/woodash.jpg',4);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('soloman',3100,500,'/image/manure.jpg',4);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('wood ash',1900,500,'/image/woodash.jpg',4);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('karate',1100,500,'/assets/image/karate.jfif',4);
+-- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('soloman',3100,500,'/image/manure.jpg',4);
+-- INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('wood ash',1900,500,'/image/woodash.jpg',4);
 
--- Agricultural sprayers
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('Knapsack sprayer',200,500,'/image/woodash.jpg',5);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('portable power sprayer',500,500,'/image/manure.jpg',5);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('mist dust sprayer',800,500,'/image/woodash.jpg',5);
+-- -- Agricultural sprayers
+-- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('Knapsack sprayer',200,500,'/image/woodash.jpg',5);
+-- INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('portable power sprayer',500,500,'/image/manure.jpg',5);
+-- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('mist dust sprayer',800,500,'/image/woodash.jpg',5);
 
 -- ORDERS DATA
 INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',1,500,'initiated');
@@ -207,7 +207,7 @@ INSERT INTO orderdetails(orderid,productid,quantity) VALUES (4,3,15);
 INSERT INTO orderdetails(orderid,productid,quantity) VALUES (4,3,48);
 INSERT INTO orderdetails(orderid,productid,quantity) VALUES (5,5,41);
 INSERT INTO orderdetails(orderid,productid,quantity) VALUES (7,6,63);
-INSERT INTO orderdetails(orderid,productid,quantity) VALUES (6,7,63);
+INSERT INTO orderdetails(orderid,productid,quantity) VALUES (6,2,63);
 
 
 -- CARTS DATA
@@ -571,6 +571,7 @@ INSERT into cartitems(cartid,productid,quantity) VALUES (1, 2,3);
 SELECT products.title,products.image,products.unitprice,cartitems.quantity,cartitems.productid,carts.custid FROM products inner join 
 cartitems on products.id=cartitems.productid inner join carts on carts.id=cartitems.cartid where carts.custid=2;
 
+
 select id from carts where custid =2 ;
 
 select * from orderdetails;
@@ -584,22 +585,29 @@ update cartitems set quantity =5 where productid=5 and cartid=2;
 select products.title,products.image,products.unitprice,orders.orderdate,orders.shippeddate,(products.unitprice*cartitems.quantity)as total,orders.status ,cartitems.quantity from products,orders,cartitems inner join carts on carts.id = cartitems.cartid where products.id =cartitems.productid and orders.custid =carts.custid and orders.custid=2;
 
 -- this query gives orderdetails of particular orderid
-select orders.id,customers.firstname,customers.lastname, products.title,products.unitprice,orders.custid,(products.unitprice*cartitems.quantity)as total,orders.status ,cartitems.quantity from customers,orderdetails,orders,cartitems inner join products on products.id = cartitems.productid where orders.id = orderdetails.orderid 
-and orderdetails.productid =cartitems.productid and customers.id=orders.custid and orders.id=2;
+select orders.id, products.title,products.image,products.unitprice,orders.orderdate,orders.shippeddate,(products.unitprice*cartitems.quantity)as total,orders.status ,cartitems.quantity from orderdetails,orders,cartitems inner join products on products.id = cartitems.productid where orders.id = orderdetails.orderid and orderdetails.productid =cartitems.productid and orders.id=1;
+
 
 delete from orders where custid=2;
 
 insert into customerquestions(questionid,custid,questiondate) values (1,2,now());
-
 select questions.description,customerquestions.questiondate from questions 
 inner join customerquestions on customerquestions.questionid=questions.id where customerquestions.custid=2;
 
+select * from orders;
+select * from customers;
+
 select orders.id,orders.orderdate,customers.firstname,customers.lastname from orders inner join customers on customers.id=orders.custid;
 
-select products.title,products.image,products.unitprice,orders.orderdate,orders.shippeddate,(products.unitprice*cartitems.quantity)as total,orders.status ,cartitems.quantity 
-from products,orders,cartitems inner join carts on carts.id = cartitems.cartid 
-where products.id =cartitems.productid and orders.custid =carts.custid and orders.custid=2;
+select orders.id,customers.firstname,customers.lastname, products.title,products.unitprice,orders.custid,(products.unitprice*cartitems.quantity)as total,orders.status ,cartitems.quantity from customers,orderdetails,orders,cartitems inner join products on products.id = cartitems.productid where orders.id = orderdetails.orderid 
+and orderdetails.productid =cartitems.productid and customers.id=orders.custid and orders.id=2;
 
-select orders.id,customers.firstname,customers.lastname,orders.orderdate,orders.shippeddate, products.title,products.unitprice,(products.unitprice*cartitems.quantity)as total,orders.status ,cartitems.quantity from customers,orderdetails,orders,cartitems inner join products on products.id = cartitems.productid where orders.id = orderdetails.orderid 
-and orderdetails.productid =cartitems.productid and customers.id=orders.custid and orders.custid=2;
 
+   
+    SELECT orders.id,customers.firstname,customers.lastname,date(orders.orderdate),time(orders.orderdate) from orders inner join customers
+    on customers.id=orders.custid;
+    
+     
+-- Cast(orders.orderdate as date) AS date;
+select DATE(orderdate)  from orders ;
+select TIME(orderdate)  from orders;
