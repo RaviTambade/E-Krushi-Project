@@ -28,14 +28,11 @@ export class AddquestionComponent implements OnInit{
  
  insertCustomerQuestion(form:any){
   console.log(form);
-       this.svc.insertCustomerQuestion(form).subscribe((res=>{
+      this.svc.insertCustomerQuestion(form).subscribe((res=>{
       this.question=res;
-
-
       if(res){
         window.location.reload();
-        alert("question added succesfully");
-        
+        alert("question added succesfully");      
       }
       else{
         alert("while inserting error");

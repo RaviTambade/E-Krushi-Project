@@ -36,9 +36,9 @@ public class CartService : ICartService
         return await _repo.GetCartDetails(custId);
     }
 
-    public async Task<bool> RemoveItem(int productId)
+    public async Task<bool> RemoveItem(int cartItemId)
     {
-        return await _repo.RemoveItem(productId);
+        return await _repo.RemoveItem(cartItemId);
     }
 
     public async Task<bool> Update(Item item)

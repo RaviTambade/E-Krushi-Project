@@ -18,7 +18,7 @@ export class MycartComponent implements OnInit{
   totalamount:any;
   unitPrice:any;
   quantity:any;
-
+  cartItemId:any;
 
   constructor(private svc :EmployeeService,private router:Router,private route:ActivatedRoute){
     this.carts=[];  
@@ -28,18 +28,18 @@ export class MycartComponent implements OnInit{
     this.svc.getCartDetails(this.custId).subscribe((res)=>{
       this.carts=res;
       this.productId=res.productId;
-      this.id=res.cartItemId;
+      this.cartItemId=res.cartItemId;
       this.unitPrice=res.unitPrice;
       this.quantity=res.quantity;
   console.log(this.carts);
    })
   }
 
-  onRemoveProduct(productId:any){
-    console.log(this.productId);
-    this.svc.removeFromCart(productId).subscribe((res)=>{
-      this.productId=res;
-      console.log(this.productId);
+  onRemoveProduct(cartItemId:any){
+    console.log(this.cartItemId);
+    this.svc.removeFromCart(cartItemId).subscribe((res)=>{
+      this.cartItemId=res;
+      console.log(this.cartItemId);
       if(res){
         window.location.reload();
         alert(" product remove Successfully");

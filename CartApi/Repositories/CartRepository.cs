@@ -215,16 +215,16 @@ public class CartRepository : ICartRepository
         }
         return items;
     }
-    public async Task<bool>  RemoveItem(int productId)
+    public async Task<bool>  RemoveItem(int cartItemId)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = _conString;
             try
             {
-                string query="Delete from cartitems where productId = @productId";
+                string query="Delete from cartitems where id = @cartItemId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@productId",productId);
+                cmd.Parameters.AddWithValue("@cartItemId",cartItemId);
                 await con.OpenAsync();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if(rowsAffected > 0)

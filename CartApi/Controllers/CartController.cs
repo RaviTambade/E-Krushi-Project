@@ -59,11 +59,11 @@ namespace ShoppingCartService.Controllers
         }
 
         [HttpDelete]
-        [Route("remove/{productId}")]
+        [Route("remove/{cartItemId}")]
 
-        public async Task<bool> RemoveItem(int productId)
+        public async Task<bool> RemoveItem(int cartItemId)
         {
-            bool status = await _cartSrv.RemoveItem(productId);
+            bool status = await _cartSrv.RemoveItem(cartItemId);
 
             return status;
         }    
