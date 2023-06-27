@@ -35,4 +35,6 @@ public class ConsultingService:IConsultingService{
     public async Task<bool> InsertQuestion(Question question)=> await _repo.InsertQuestion(question);
 
      public async Task<bool> DeleteQuestion(int id)=> await _repo.DeleteQuestion(id);
+          public async Task<List<Question>> GetQuestions(string categoryName) => await _repo.GetQuestions(categoryName); 
+
 }

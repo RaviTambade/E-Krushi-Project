@@ -207,4 +207,16 @@ public class ConsultingController : ControllerBase
         return status;
     }
 
+
+
+    [HttpGet("categoryquestions/{categoryName}")]
+
+    public async Task<List<Question>> GetQuestions(string categoryName)
+    {
+
+        List<Question> questions = await _srv.GetQuestions(categoryName);
+
+        return questions;
+    }
+
 }

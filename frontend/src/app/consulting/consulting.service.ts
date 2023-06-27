@@ -48,4 +48,9 @@ export class ConsultingService {
     let url="http://localhost:5279/api/consulting/questioncatagories";
     return this.http.get<any>(url);
   }
+
+  public getAllQuestionsByCategory(category:any):Observable<any>{
+    let url="http://localhost:5279/api/consulting/categoryquestions/"+category;
+    return this.http.get<any>(url);
+  }
 }

@@ -18,15 +18,13 @@
                 <button (click)="category.reset()">Clear</button>
             </td>
         </tr>
-        <!-- <tr>
+        <tr>
           <td>
-          <div *ngFor="let product of products">
-              <p>Title: {{ product.title }}</p>
-              <p>
-                <img [src]="product.image" width="200" height="200"/>
-              </p>
-            <button type="submit" (click)="onSelectProduct(product.id)">Details</button>   
-            </div>         -->
+          <div *ngFor="let question of questions">
+              <p>Title: {{ question.description }}</p>
+              
+            <button type="submit" (click)="onSelectQuestion(question.id)">Details</button>   
+            </div>        
       </table>
       <p>Category: {{ category.value }}</p>  
     </form>

@@ -27,4 +27,7 @@ public interface IConsultingRepository{
     Task<bool> InsertQuestion(Question question); 
     
     Task<bool> DeleteQuestion(int id); 
+
+
+Task<List<Question>> GetQuestions(string categoryName);
 }
