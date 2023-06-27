@@ -6,6 +6,8 @@ import { DetailsComponent } from './details/details.component';
 import { AddquestionComponent } from './addquestion/addquestion.component';
 import { MyquestionComponent } from './myquestion/myquestion.component';
 import { NewquestionComponent } from './newquestion/newquestion.component';
+import { QuestioncategoryComponent } from './questioncategory/questioncategory.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -15,18 +17,21 @@ import { NewquestionComponent } from './newquestion/newquestion.component';
     DetailsComponent,
     AddquestionComponent,
     MyquestionComponent,
-    NewquestionComponent
+    NewquestionComponent,
+    QuestioncategoryComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
+   HttpClientModule,
     ReactiveFormsModule
   ],
   exports: [
     QuestionComponent,
     AddquestionComponent,
     MyquestionComponent,
-    NewquestionComponent
+    NewquestionComponent,
+    QuestioncategoryComponent
   ]
 
 })

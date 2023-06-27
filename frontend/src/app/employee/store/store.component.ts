@@ -14,7 +14,7 @@ import { ProducthubService } from 'src/app/producthub.service';
 export class StoreComponent implements OnInit {
  id:any;
   
-  form: FormGroup;
+ form: FormGroup;
   // matcher = new MyErrorStateMatcher();
 
   categories: Category[] | undefined;

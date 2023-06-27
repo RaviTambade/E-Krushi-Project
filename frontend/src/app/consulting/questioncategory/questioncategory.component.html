@@ -1,0 +1,32 @@
+<form [formGroup]="form">
+    <h4>Nested Selects</h4>
+    <table>
+        <tr>
+            <td>
+                <label>Category</label>
+            </td>
+            <td>
+                <select  [formControl]="category"  name="category">
+                <option *ngFor="let category of categories" [value]="category.category">
+                {{ category.category }}
+                </option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button (click)="category.reset()">Clear</button>
+            </td>
+        </tr>
+        <!-- <tr>
+          <td>
+          <div *ngFor="let product of products">
+              <p>Title: {{ product.title }}</p>
+              <p>
+                <img [src]="product.image" width="200" height="200"/>
+              </p>
+            <button type="submit" (click)="onSelectProduct(product.id)">Details</button>   
+            </div>         -->
+      </table>
+      <p>Category: {{ category.value }}</p>  
+    </form>

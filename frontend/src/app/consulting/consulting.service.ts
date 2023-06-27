@@ -42,4 +42,10 @@ export class ConsultingService {
     let url="http://localhost:5279/api/consulting/deleteQuestion/"+id;
     return this.http.delete<any>(url);
   }
+
+
+  public getAllQuestionCategories():Observable<any>{
+    let url="http://localhost:5279/api/consulting/questioncatagories";
+    return this.http.get<any>(url);
+  }
 }
