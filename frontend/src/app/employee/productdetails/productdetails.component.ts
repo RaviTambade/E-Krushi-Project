@@ -3,6 +3,7 @@ import { EmployeeModule } from '../employee.module';
 import { Product } from 'src/app/product';
 import { EmployeeService } from '../employee.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProducthubService } from 'src/app/producthub.service';
 
 @Component({
   selector: 'app-productdetails',
@@ -16,6 +17,26 @@ export class ProductdetailsComponent implements OnInit{
   unitPrice:any;
   
   constructor(private svc:EmployeeService,private route:ActivatedRoute,private router:Router){}
+  
+//   products:Product[] |any ;
+//  selectedProduct:any;
+  
+//  constructor(private svc:EmployeeService,private router:Router,private route: ActivatedRoute){ }
+  
+
+  //   ngOnInit():void{
+  //     this.svc.getAllProducts().subscribe((res)=>{
+  //     this.products=res;
+  //     this.selectedProduct=this.products[0];
+  //     console.log(this.products);
+  //     })
+  //  }
+   
+    //  onSelectProduct(product:any){
+    //    this.svc.getById(product).subscribe((res)=>{
+    //      this.selectedProduct=res;
+    //    })
+    //  }
   
   
   ngOnInit(): void {

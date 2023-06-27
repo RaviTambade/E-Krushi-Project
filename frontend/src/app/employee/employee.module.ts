@@ -7,7 +7,7 @@ import { RoutingComponent } from './routing/routing.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AddtocartComponent } from '../employee/addtocart/addtocart.component';
 import { MycartComponent } from './mycart/mycart.component';
@@ -40,7 +40,8 @@ const routes : Routes=[
   {path:'question/detail/:id/addquestion/:id', component:AddquestionComponent},
   {path:'myQuestion', component:MyquestionComponent},
   {path:'question/newquestion', component:NewquestionComponent},
-
+  {path:'store/details/:id', component:ProductdetailsComponent},
+  {path:'store/details/:id/addtocart/:id', component:AddtocartComponent},
 ]
 
 @NgModule({
@@ -62,6 +63,7 @@ const routes : Routes=[
     CommonModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   exports: [

@@ -12,6 +12,7 @@ export class OrderhistoryComponent {
   custId:any=2;
   orders:any[];
   totalAmount:any;
+  cartItemId:any;
   
   constructor(private svc : EmployeeService,private router:Router,private route:ActivatedRoute ){
     this.orders=[]
@@ -21,6 +22,7 @@ export class OrderhistoryComponent {
   ngOnInit(): void {
     this.svc.getOrderDetails(this.custId).subscribe((res)=>{
       this.orders=res;
+      console.log(this.cartItemId);
   }) 
 }
 }

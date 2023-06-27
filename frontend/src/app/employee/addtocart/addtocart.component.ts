@@ -35,10 +35,10 @@ export class AddtocartComponent implements OnInit{
     console.log(this.unitPrice);
     console.log(this.item.quantity);  
     this.productId = this.route.snapshot.paramMap.get('id');
-    console.log("ProductId"+this.productId);
+    console.log("ProductId:"+this.productId);
      this.svc.getCartId(this.customerId).subscribe((res)=>{
       this.cartId=res;
-      console.log("CartId"+this.cartId);
+      console.log("CartId:"+this.cartId);
      })
   }
 
@@ -58,9 +58,9 @@ public addToCart(form:any){
     });
   }
 
-  onClick(): void{
-    this.router.navigate(['store'],{relativeTo:this.route});
-  }
+  // onClick(): void{
+  //   this.router.navigate(['store'],{relativeTo:this.route});
+  // }
 
 }
 
