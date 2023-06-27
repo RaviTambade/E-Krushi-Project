@@ -43,7 +43,7 @@ category = new FormControl(null, [Validators.required]);
 
   onSelectQuestion(id:any){
     console.log(id);
-    this.router.navigate(["details",id],{relativeTo:this.route});
+    this.router.navigate(["./details",id],{relativeTo:this.route});
   }
 
 }

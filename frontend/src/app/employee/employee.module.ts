@@ -35,7 +35,7 @@ const routes : Routes=[
   {path:'addtocart/home', component:HomeComponent},
   {path:'mycart/order/orderdetails/:custId', component:OrderdetailsComponent},
   {path:'mycart/order/orderdetails/:id/orderpayment', component:OrderpaymentComponent},
-  {path:'question/detail/:id', component:DetailsComponent},
+  {path:'details/:id', component:DetailsComponent},
   {path:'question', component:QuestionComponent},
   {path:'question/detail/:id/addquestion/:id', component:AddquestionComponent},
   {path:'myQuestion', component:MyquestionComponent},
