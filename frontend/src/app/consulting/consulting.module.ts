@@ -8,6 +8,7 @@ import { MyquestionComponent } from './myquestion/myquestion.component';
 import { NewquestionComponent } from './newquestion/newquestion.component';
 import { QuestioncategoryComponent } from './questioncategory/questioncategory.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CategorylistComponent } from './categorylist/categorylist.component';
 
 
 
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     AddquestionComponent,
     MyquestionComponent,
     NewquestionComponent,
-    QuestioncategoryComponent
+    QuestioncategoryComponent,
+    CategorylistComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     AddquestionComponent,
     MyquestionComponent,
     NewquestionComponent,
-    QuestioncategoryComponent
+    QuestioncategoryComponent,
+    CategorylistComponent
   ]
 
 })
