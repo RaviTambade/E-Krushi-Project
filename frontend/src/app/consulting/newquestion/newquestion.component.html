@@ -1,19 +1,39 @@
+<form [formGroup]="form">
+  <h4>Nested Selects</h4>
+  <div>
+      
+  <label>Category:</label>
+         
+   <select  [formControl]="category"  name="category" >
+  <option [ngValue]="null" selected disabled   >Choose Category</option>
+  <option *ngFor="let category of categories"    selected="category"  [value]="category.category"    >
+  {{ category.category }}
+  </option>
+  </select>
+</div>
+  <br>
+  <p>Category: {{ category.value }}</p> 
+  
+      </form>
 
 
-<form #questionForm="ngForm" (ngSubmit)="insertQuestion(questionForm.value)">
 
-    <div class="form-group">
-      <label><b>Description :</b></label>
-      <input type="text" name="description" [(ngModel)]="question.description"  />
-   </div>
-   <div class="form-group">
-      <br> 
-      <label hidden><b>category Id :</b></label>
-      <input type="number" name="categoryId" [(ngModel)]="categoryId" type="hidden"/>
-    </div>
-    <div class="form-group">
-        <br>
-        <button class="btn btn-default" type="submit">AddNewQuestion</button>
-      </div>
-  </form>
+
+      <form #questionForm="ngForm" (ngSubmit)="insertQuestion(questionForm.value)">
+
+          <div class="form-group">
+            <label><b>Description :</b></label>
+            <input type="text" name="description" [(ngModel)]="question.description"  />
+         </div>
+         <div class="form-group">
+            <br> 
+            <label hidden><b>category Id :</b></label>
+            <input type="number" name="categoryId" [(ngModel)]="categoryId" type="hidden"/>
+          </div>
+          <div class="form-group">
+              <br>
+              <button class="btn btn-default" type="submit">AddNewQuestion</button>
+            </div>
+        </form>
+
   

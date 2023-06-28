@@ -23,6 +23,7 @@ import { MyquestionComponent } from '../consulting/myquestion/myquestion.compone
 import { NewquestionComponent } from '../consulting/newquestion/newquestion.component';
 import { QuestioncategoryComponent } from '../consulting/questioncategory/questioncategory.component';
 
+
 const routes : Routes=[
   {path:'home', component:HomeComponent},
   {path:'orderhistory', component:OrderhistoryComponent },
@@ -36,13 +37,15 @@ const routes : Routes=[
   {path:'addtocart/home', component:HomeComponent},
   {path:'mycart/order/orderdetails/:custId', component:OrderdetailsComponent},
   {path:'mycart/order/orderdetails/:id/orderpayment', component:OrderpaymentComponent},
-  {path:'questioncategory/details/:id', component:DetailsComponent},
+  {path:'questioncategory/newquestion', component:NewquestionComponent},
+  // {path:'questioncategory/newquestion/newquestion/:categoryId', component:NewquestionComponent},
   {path:'questioncategory', component:QuestioncategoryComponent},
   {path:'questioncategory/details/:id/addquestion/:id', component:AddquestionComponent},
   {path:'myQuestion', component:MyquestionComponent},
   {path:'questioncategory/newquestion', component:NewquestionComponent},
   {path:'store/details/:id', component:ProductdetailsComponent},
   {path:'store/details/:id/addtocart/:id', component:AddtocartComponent},
+
 ]
 
 @NgModule({
