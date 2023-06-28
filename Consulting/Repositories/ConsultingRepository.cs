@@ -696,6 +696,36 @@ public class ConsultingRepository : IConsultingRepository
             return products;
         }
 
+
+
+
+      public async Task<int> GetCategoryId(string categoryName)
+        {
+        int categoryId=0;
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = _conString;
+        try
+        {
+            string query = "select id from questioncategories where category =@categoryName";
+            MySqlCommand command = new MySqlCommand(query, con);
+            command.Parameters.AddWithValue("@categoryName", categoryName);
+            await con.OpenAsync();
+            MySqlDataReader reader = command.ExecuteReader();
+            if(reader.Read()){
+            categoryId =int.Parse(reader["id"].ToString());
+            }  
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            await con.CloseAsync();
+        }
+        return (int)categoryId;
+    }
+
     
 }
 

@@ -219,4 +219,16 @@ public class ConsultingController : ControllerBase
         return questions;
     }
 
+
+
+    [HttpGet("categoryid/{categoryName}")]
+
+    public async Task<int> GetCategoryId(string categoryName)
+    {
+
+        int categoryId = await _srv.GetCategoryId(categoryName);
+
+        return categoryId;
+    }
+
 }
