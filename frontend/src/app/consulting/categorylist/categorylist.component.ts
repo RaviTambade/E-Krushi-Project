@@ -26,10 +26,10 @@ category = new FormControl(null, [Validators.required]);
       console.log(this.category);
       console.log(this.categories);
     });
-    this.category.valueChanges.subscribe((category) => {
-      this.category.reset();
+    // this.category.valueChanges.subscribe((category) => {
+    //   this.category.reset();
     //  this.category.disable();
-   });
+  //  });
     
   }
 }
