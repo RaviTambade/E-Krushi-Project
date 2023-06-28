@@ -11,15 +11,18 @@ export class DetailsComponent implements OnInit{
 
   question:any;
   id:number | any;
+  category:any |string;
 
-constructor(private svc:ConsultingService,private router:Router,private route:ActivatedRoute){}
+constructor(private svc:ConsultingService,private router:Router,private route:ActivatedRoute){
+  this.category=localStorage.getItem("category");
+}
 
   ngOnInit(): void {
     this.id=this.route.snapshot.paramMap.get("id");
     this.svc.getQuestion(this.id).subscribe((res)=>{
       this.question=res;
       console.log(this.question);
-  localStorage.setItem("question",res.description);
+  
     })
    }
 

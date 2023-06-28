@@ -24,6 +24,7 @@ category = new FormControl(null, [Validators.required]);
   ngOnInit(): void {
     this.svc.getAllQuestionCategories().subscribe((res)=>{
       this.categories=res;
+      console.log(this.category);
       console.log(this.categories);
     });
     this.category.valueChanges.subscribe((category) => {
@@ -32,9 +33,10 @@ category = new FormControl(null, [Validators.required]);
       if (category) {
         this.svc.getAllQuestionsByCategory(category).subscribe((response)=>{
          this.questions=response;
+         localStorage.setItem("category",category);
          console.log(this.questions);
         })
-        this.questions.enable();
+        this.question.enable();
        }
    });
     
@@ -45,5 +47,9 @@ category = new FormControl(null, [Validators.required]);
     console.log(id);
     this.router.navigate(["./details",id],{relativeTo:this.route});
   }
+
+  onNewQuestion(){
+    this.router.navigate(["./newquestion"],{relativeTo:this.route})
+   }
 
 }
