@@ -619,3 +619,6 @@ select * from customerquestions where questionid=2;
 
 
 SELECT * FROM customerquestions WHERE  questiondate BETWEEN '2022-05-15' AND '2023-06-28';
+
+
+select name from subjectmatterexperts inner join smeanswers on subjectmatterexperts.id = smeanswers.smeid where smeanswers.questionid=1;
