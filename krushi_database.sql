@@ -616,3 +616,6 @@ select TIME(orderdate)  from orders;
 select * from customerquestions where custid=2;
 
 select * from customerquestions where questionid=2;
+
+
+SELECT * FROM customerquestions WHERE  questiondate BETWEEN '2022-05-15' AND '2023-06-28';
