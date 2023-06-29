@@ -611,3 +611,8 @@ and orderdetails.productid =cartitems.productid and customers.id=orders.custid a
 -- Cast(orders.orderdate as date) AS date;
 select DATE(orderdate)  from orders ;
 select TIME(orderdate)  from orders;
+
+
+select * from customerquestions where custid=2;
+
+select * from customerquestions where questionid=2;
