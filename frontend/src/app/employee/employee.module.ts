@@ -45,7 +45,7 @@ const routes : Routes=[
   {path:'questioncategory/newquestion', component:NewquestionComponent},
   {path:'store/details/:id', component:ProductdetailsComponent},
   {path:'store/details/:id/addtocart/:id', component:AddtocartComponent},
-
+  {path:'questioncategory/details/:id', component:DetailsComponent},
 ]
 
 @NgModule({
