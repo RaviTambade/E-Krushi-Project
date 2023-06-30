@@ -611,3 +611,14 @@ and orderdetails.productid =cartitems.productid and customers.id=orders.custid a
 -- Cast(orders.orderdate as date) AS date;
 select DATE(orderdate)  from orders ;
 select TIME(orderdate)  from orders;
+
+
+select * from customerquestions where custid=2;
+
+select * from customerquestions where questionid=2;
+
+
+SELECT * FROM customerquestions WHERE  questiondate BETWEEN '2022-05-15' AND '2023-06-28';
+
+
+select name from subjectmatterexperts inner join smeanswers on subjectmatterexperts.id = smeanswers.smeid where smeanswers.questionid=1;
