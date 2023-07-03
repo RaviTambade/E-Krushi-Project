@@ -69,6 +69,9 @@ export class OrderpaymentComponent implements OnInit{
   changePayment(e:any) {
     console.log(e.target.value);
 
+    if(e.target.value){
+      
+    
     if(e.target.value=="credit card"){
       this.byCreditCard=true;
       this.byDebitCard=false;
@@ -86,10 +89,10 @@ export class OrderpaymentComponent implements OnInit{
     this.byCash=false;
         this.svc.addDebitCard(this.debitCard).subscribe((res)=>{
         this.debitCard = res;
-      })
-    }
+    })
+  }
 }
-  
+}
   
 
 

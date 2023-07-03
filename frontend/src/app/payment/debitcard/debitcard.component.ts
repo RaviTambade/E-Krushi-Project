@@ -29,8 +29,8 @@ export class DebitcardComponent {
     this.credential.fromIfsc=form.value.ifsc;
     console.log(this.credential)
     this.svc.fundTransfer(this.credential).subscribe((res)=>{
-      console.log(res)
       this.transactionId=res;
+      console.log(this.transactionId);
     })
  
   }
