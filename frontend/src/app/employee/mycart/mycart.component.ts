@@ -56,7 +56,7 @@ export class MycartComponent implements OnInit{
 
 
   onClick(): void{
-    this.router.navigate(['./order'],{relativeTo:this.route});
+    this.router.navigate(['./orderpayment'],{relativeTo:this.route});
   }
 
  Total():number{
