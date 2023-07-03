@@ -561,17 +561,17 @@ SELECT products.id,products.title,products.image,products.unitprice,cartitems.qu
 select * from cartitems;
 select * from carts;
 
+-- this query gives the category of given questionid
 select category from questioncategories where id in(select id from questions where id=1);
-SELECT products.id, products.title,products.unitprice,products.stockavailable,products.image,categories.title,categories.id from categories inner join products on categories.id=products.categoryid and categories.title=seeds;
 
+-- this query gives the details of particular category
+SELECT products.id, products.title,products.unitprice,products.stockavailable,products.image,categories.title,categories.id from categories inner join products on categories.id=products.categoryid and categories.title="seeds";
 
-INSERT into cartitems(cartid,productid,quantity) VALUES (1, 2,3);
-
-
+-- this query gives the orderhistory of particular products
 SELECT products.title,products.image,products.unitprice,cartitems.quantity,cartitems.productid,carts.custid FROM products inner join 
 cartitems on products.id=cartitems.productid inner join carts on carts.id=cartitems.cartid where carts.custid=2;
 
-
+-- this query gives the cartid of particular customer
 select id from carts where custid =2 ;
 
 select * from orderdetails;
@@ -579,39 +579,29 @@ select * from orders;
 select * from cartitems;
 select * from products;
 
-update cartitems set quantity =5 where productid=5 and cartid=2;
-
 -- this query gives orderhistory of particular customer
 select products.title,products.image,products.unitprice,orders.orderdate,orders.shippeddate,(products.unitprice*cartitems.quantity)as total,orders.status ,cartitems.quantity from products,orders,cartitems inner join carts on carts.id = cartitems.cartid where products.id =cartitems.productid and orders.custid =carts.custid and orders.custid=2;
 
 -- this query gives orderdetails of particular orderid
 select orders.id, products.title,products.image,products.unitprice,orders.orderdate,orders.shippeddate,(products.unitprice*cartitems.quantity)as total,orders.status ,cartitems.quantity from orderdetails,orders,cartitems inner join products on products.id = cartitems.productid where orders.id = orderdetails.orderid and orderdetails.productid =cartitems.productid and orders.id=1;
 
-
-delete from orders where custid=2;
-
-insert into customerquestions(questionid,custid,questiondate) values (1,2,now());
+-- this query gives the question and questiondate
 select questions.description,customerquestions.questiondate from questions 
 inner join customerquestions on customerquestions.questionid=questions.id where customerquestions.custid=2;
 
 select * from orders;
 select * from customers;
 
-select orders.id,orders.orderdate,customers.firstname,customers.lastname from orders inner join customers on customers.id=orders.custid;
-
+-- this query gives orderhistory of particular orderid
 select orders.id,customers.firstname,customers.lastname, products.title,products.unitprice,orders.custid,(products.unitprice*cartitems.quantity)as total,orders.status ,cartitems.quantity from customers,orderdetails,orders,cartitems inner join products on products.id = cartitems.productid where orders.id = orderdetails.orderid 
-and orderdetails.productid =cartitems.productid and customers.id=orders.custid and orders.id=2;
-
-
+and orderdetails.productid =cartitems.productid and customers.id=orders.custid and orders.id=3;
    
-    SELECT orders.id,customers.firstname,customers.lastname,date(orders.orderdate),time(orders.orderdate) from orders inner join customers
-    on customers.id=orders.custid;
-    
-     
+SELECT orders.id,customers.firstname,customers.lastname,date(orders.orderdate),time(orders.orderdate) from orders inner join customers
+on customers.id=orders.custid;
+        
 -- Cast(orders.orderdate as date) AS date;
 select DATE(orderdate)  from orders ;
 select TIME(orderdate)  from orders;
-
 
 -- this query gives details in between date
 SELECT * FROM customerquestions WHERE  questiondate BETWEEN '2022-05-15' AND '2023-06-28';
@@ -622,5 +612,4 @@ select * from customerquestions where custid=2;
 -- this query gives details of particular question
 select * from customerquestions where questionid=2;
 
-
-select name from subjectmatterexperts inner join smeanswers on subjectmatterexperts.id = smeanswers.smeid where smeanswers.questionid=1;
+select name from subjectmatterexperts inner join smeanswers on subjectmatterexperts.id = smeanswers.smeid where smeanswers.questionid=1
