@@ -7,23 +7,26 @@
                             <th>Image</th>
                             <th>UnitPrice</th>
                             <th>Quantity</th>
-                            <th>TotalAmount</th>     
+                            <th>TotalAmount</th> 
+                            <th>Actions</th>    
                         </tr>
                     </thead>
                     <tbody>
+                        
                         <tr  *ngFor="let cart of carts">
+        
                             <td>{{ cart.title }}</td>
                             <td><img [src]="cart.image" width="50" height="50"/></td>
                             <td>{{ cart.unitPrice }}</td>
                             <td>{{ cart.quantity }}</td>
                             <td>{{cart.quantity * cart.unitPrice}}</td>
                             <td>
-                                <button class="btn btn-default" (click)="onRemoveProduct(cart.cartItemId)" type="submit">Remove</button>
-                            </td>
-                            <td>
+                                <button class="btn btn-default" (click)="onRemoveProduct(cart.cartItemId)" type="submit">Remove</button> |
                                 <button class="bgittn btn-default" (click)="onUpdateProduct(cart.cartItemId)" type="submit">Update</button>
                             </td>
+                            
                         </tr>
+                        
                     </tbody>
                 </table>
 

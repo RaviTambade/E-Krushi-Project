@@ -11,3 +11,10 @@ table, td, th {
   th, td {
     padding: 15px;
   }
+  
+  th {
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  tr:hover {background-color: coral;}
