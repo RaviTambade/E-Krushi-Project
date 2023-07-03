@@ -565,6 +565,9 @@ select category from questioncategories where id in(select id from questions whe
 -- this query gives the details of particular category
 SELECT products.id, products.title,products.unitprice,products.stockavailable,products.image,categories.title,categories.id from categories inner join products on categories.id=products.categoryid and categories.title="seeds";
 
+-- this query gives roles of user
+select role from roles where id in (select roleid from userroles where userid=1);
+
 -- this query gives the orderhistory of particular products
 SELECT products.title,products.image,products.unitprice,cartitems.quantity,cartitems.productid,carts.custid FROM products inner join 
 cartitems on products.id=cartitems.productid inner join carts on carts.id=cartitems.cartid where carts.custid=2;
