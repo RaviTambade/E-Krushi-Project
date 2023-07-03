@@ -535,8 +535,6 @@ select * from questioncategories;
 select * from questionsolutions;
 select * from solutions;
 
-
-
 -- This query gives all questions where category_id =1
 select * from questions where categoryid=1;
 
