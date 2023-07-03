@@ -3,12 +3,16 @@ import { CommonModule } from '@angular/common';
 import { OrderpaymentComponent } from './orderpayment/orderpayment.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DebitcardComponent } from './debitcard/debitcard.component';
+import { AccountComponent } from './account/account.component';
 
 
 
 @NgModule({
   declarations: [
-    OrderpaymentComponent
+    OrderpaymentComponent,
+    DebitcardComponent,
+    AccountComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule
   ],
   exports:[
-    OrderpaymentComponent
+    OrderpaymentComponent,
+    DebitcardComponent
   ]
 })
 export class PaymentModule { }
