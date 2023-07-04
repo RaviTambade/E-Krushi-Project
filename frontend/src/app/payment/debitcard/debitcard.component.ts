@@ -20,7 +20,9 @@ export class DebitcardComponent {
     "toAcct":'46556565566',
      "toIfsc":'AXIS0000296',
   }
-  constructor(private svc:PaymentService){}
+  constructor(private svc:PaymentService){
+    this.credential.amount=localStorage.getItem("total");
+  }
 
 
  public  onProceed(form:NgForm){
