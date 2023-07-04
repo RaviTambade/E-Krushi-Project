@@ -22,6 +22,7 @@ import { AddquestionComponent } from '../consulting/addquestion/addquestion.comp
 import { MyquestionComponent } from '../consulting/myquestion/myquestion.component';
 import { NewquestionComponent } from '../consulting/newquestion/newquestion.component';
 import { QuestioncategoryComponent } from '../consulting/questioncategory/questioncategory.component';
+import { DebitcardComponent } from '../payment/debitcard/debitcard.component';
 
 
 const routes : Routes=[
@@ -46,6 +47,7 @@ const routes : Routes=[
   {path:'store/details/:id', component:ProductdetailsComponent},
   {path:'store/details/:id/addtocart/:id', component:AddtocartComponent},
   {path:'questioncategory/details/:id', component:DetailsComponent},
+  {path:'mycart/orderpayment/debitcard', component:DebitcardComponent},
 ]
 
 @NgModule({
