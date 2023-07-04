@@ -563,7 +563,7 @@ public class ConsultingRepository : IConsultingRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "select customerquestions.id, questions.description,customerquestions.questiondate from questions inner join customerquestions on customerquestions.questionid=questions.id where customerquestions.custid=@custId";
+            string query = "select customerquestions.id, questions.description,customerquestions.questiondate,(select count(*) from answers where questionid=customerquestions.questionid)as answers  from questions inner join customerquestions on customerquestions.questionid=questions.id where customerquestions.custid=@custId";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@custId", custId);
@@ -574,11 +574,13 @@ public class ConsultingRepository : IConsultingRepository
                 int id=int.Parse(reader["id"].ToString());
                 string description= reader["description"].ToString();
                 DateTime questionDate=DateTime.Parse(reader["questiondate"].ToString());
+                string answer = reader["answers"].ToString();
                 
               NewQuestion question= new NewQuestion
                 {   Id=id,
                     Description = description,
-                    QuestionDate = questionDate
+                    QuestionDate = questionDate,
+                    Answers = answer
                 };
                 questions.Add(question);
             }
