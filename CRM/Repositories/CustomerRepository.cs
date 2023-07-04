@@ -8,10 +8,10 @@ namespace KrushiProject.Repositories
       
     public class CustomerRepository : ICustomerRepository
     {
-        public static string conString = "server=localhost; port=3306; user=root; password=PASSWORD; database=ekrushi";
+        public static string conString = "server=localhost; port=3306; user=root; password=Password; database=ekrushi";
        
 
-        public List<Customer> GetAllCustomers()
+        public async Task<List<Customer>> GetAllCustomers()
         {
             List<Customer> customers = new List<Customer>();
             MySqlConnection con = new MySqlConnection();
@@ -19,9 +19,9 @@ namespace KrushiProject.Repositories
         try{
             string query = "select * from customers";
             MySqlCommand cmd = new MySqlCommand(query,con);
-            con.Open();
+            await con.OpenAsync();
             MySqlDataReader reader = cmd.ExecuteReader();
-            while(reader.Read())
+            while(await reader.ReadAsync())
             {
                 int Id = int.Parse(reader["id"].ToString());
                 string firstName = reader["firstname"].ToString();
@@ -37,29 +37,29 @@ namespace KrushiProject.Repositories
             };
             customers.Add(customer);
             }
-            reader.Close();
+            await reader.CloseAsync();
         }
         catch(Exception e){
             throw e;
         }
         finally{
-            con.Close();
+            await con.CloseAsync();
         }
         return customers;
         }
 
-        public Customer GetCustomer(int id)
+        public async Task<Customer> GetCustomer(int id)
         {
             Customer customer = new Customer();
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = conString;
             try{
                 string query = "select * from customers where id = @customerId";
-                con.Open();
+                await con.OpenAsync();
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@customerId",id);
                 MySqlDataReader reader = cmd.ExecuteReader();
-                if(reader.Read())
+                if(await reader.ReadAsync())
                 {
                     string firstName = reader["firstname"].ToString();
                     string lastName = reader["lastname"].ToString();
@@ -74,17 +74,17 @@ namespace KrushiProject.Repositories
 
                 };
                 }
-                reader.Close();
+                await reader.CloseAsync();
             }
             catch(Exception e){
                 throw e;
             }
             finally{
-                con.Close();
+                await con.CloseAsync();
             }
             return customer;
         }
-        public bool Insert(Customer customer)
+        public async Task<bool> Insert(Customer customer)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
@@ -106,7 +106,7 @@ namespace KrushiProject.Repositories
                 throw e;
             }
             finally{
-                con.Close();
+                await con.CloseAsync();
             }
             return status;
         }
