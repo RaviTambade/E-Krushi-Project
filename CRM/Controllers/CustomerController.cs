@@ -1,6 +1,5 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using krushiproject.Models;
 using KrushiProject.Service.Interfaces;
 using KrushiProject.Models;
 
@@ -45,22 +44,28 @@ public class CustomerController : ControllerBase
    
    [HttpPut]
    [Route ("updatecustomer")]
-   public bool Update(Customer customer)
+   public async Task<bool> Update(Customer customer)
    {
-    bool result = _srv.Update(customer);
+    bool result = await _srv.Update(customer);
     return result;
 
    }
    
    [HttpDelete]
    [Route ("delete/{id}")]
-   public bool Delete(int id)
+   public async Task<bool> Delete(int id)
    {
-    bool result = _srv.Delete(id);
+    bool result =await _srv.Delete(id);
     return result;
    }
 
-
+ [HttpGet]
+   [Route ("getuser/{id}")]
+    public async Task<Customer> GetUser(int id)
+    {
+        var customer = await _srv.GetUser(id);
+        return customer;
+    }
     
    
 }

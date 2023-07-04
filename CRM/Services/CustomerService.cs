@@ -15,9 +15,9 @@ namespace KrushiProject.Service
             public async Task<List<Customer>> GetAllCustomers() => await _repo.GetAllCustomers();
             public async Task<Customer> GetCustomer(int id)=> await _repo.GetCustomer(id);
             public async Task<bool> Insert(Customer customer)=> await _repo.Insert(customer);
-            public bool Update(Customer customer)=>_repo.Update(customer);
-            public bool Delete(int id)=>_repo.Delete(id);
-            public Customer GetUser(int id) => _repo.GetUser(id);
+            public Task<bool> Update(Customer customer)=>_repo.Update(customer);
+            public Task<bool> Delete(int id)=>_repo.Delete(id);
+            public async Task<Customer> GetUser(int id) =>  await _repo.GetUser(id);
 
        
     }

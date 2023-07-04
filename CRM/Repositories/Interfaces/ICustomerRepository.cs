@@ -9,10 +9,10 @@ namespace KrushiProject.Repositories.Interfaces
 
         Task<bool> Insert(Customer customer);
 
-        bool Update(Customer customer);
+        Task<bool> Update(Customer customer);
 
-        bool Delete(int id);
+        Task<bool> Delete(int id);
 
-        Customer GetUser(int userId);
+        Task<Customer> GetUser(int userId);
     }
 }

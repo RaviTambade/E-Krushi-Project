@@ -111,7 +111,7 @@ namespace KrushiProject.Repositories
             return status;
         }
 
-        public bool Update(Customer customer)
+        public async Task<bool> Update(Customer customer)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
@@ -124,7 +124,7 @@ namespace KrushiProject.Repositories
                 cmd.Parameters.AddWithValue("@firstName",customer.FirstName);
                 cmd.Parameters.AddWithValue("@lastName",customer.LastName);
                 cmd.Parameters.AddWithValue("@userId",customer.UserId);
-                con.Open();
+               await con.OpenAsync();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 {
                     if( rowsAffected > 0)
@@ -137,12 +137,12 @@ namespace KrushiProject.Repositories
                 throw e;
             }
             finally{
-                con.Close();  
+             await con.CloseAsync();  
             }
             return status;
         }
 
-        public bool Delete(int id)
+        public async Task<bool> Delete(int id)
         {
             bool status = false;
             MySqlConnection con = new MySqlConnection();
@@ -152,7 +152,7 @@ namespace KrushiProject.Repositories
                 string query = "delete from customers where id = @customerId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("customerId",id);
-                con.Open();
+                await con.OpenAsync();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if(rowsAffected > 0)
                 {
@@ -165,11 +165,11 @@ namespace KrushiProject.Repositories
             }
             finally
             {
-                con.Close();
+               await con.CloseAsync();
             }
             return status;
         }
-        public Customer GetUser(int userId)
+        public async Task<Customer> GetUser(int userId)
         {
             Customer customer = new Customer();
             MySqlConnection con = new MySqlConnection();
@@ -179,7 +179,7 @@ namespace KrushiProject.Repositories
                 string query = "select * from customers where id = @userId";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@userId", userId);
-                con.Open();
+               await con.OpenAsync();
                 MySqlDataReader reader = cmd.ExecuteReader();
                 if(reader.Read())
                 {
@@ -198,7 +198,7 @@ namespace KrushiProject.Repositories
 
                 };
                 }
-                reader.Close();
+               await reader.CloseAsync();
             }
             catch(Exception e)
             {
@@ -207,7 +207,7 @@ namespace KrushiProject.Repositories
             }
             finally
             {
-                con.Close();
+               await con.CloseAsync();
             }
             return customer;
         }
