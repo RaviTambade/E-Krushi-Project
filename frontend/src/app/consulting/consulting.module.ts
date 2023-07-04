@@ -8,6 +8,7 @@ import { MyquestionComponent } from './myquestion/myquestion.component';
 import { NewquestionComponent } from './newquestion/newquestion.component';
 import { QuestioncategoryComponent } from './questioncategory/questioncategory.component';
 import { HttpClientModule } from '@angular/common/http';
+import { QuestionanswerComponent } from './questionanswer/questionanswer.component';
 
 
 
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     MyquestionComponent,
     NewquestionComponent,
     QuestioncategoryComponent,
+    QuestionanswerComponent,
     
   ],
   imports: [

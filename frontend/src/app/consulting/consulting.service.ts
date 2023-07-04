@@ -38,7 +38,6 @@ export class ConsultingService {
   }
 
   public removeQuestion(id:number):Observable<any>{
-
     let url="http://localhost:5279/api/consulting/deleteQuestion/"+id;
     return this.http.delete<any>(url);
   }
@@ -57,6 +56,11 @@ export class ConsultingService {
 
   public getCategoryId(category:any):Observable<any>{
     let url="http://localhost:5279/api/consulting/categoryid/"+category;
+    return this.http.get<any>(url);
+  }
+
+  public getCustomerQuestionAnswer(questionId:any):Observable<any>{
+    let url="http://localhost:5279/api/consulting/customerquestionanswer/"+questionId;
     return this.http.get<any>(url);
   }
 }
