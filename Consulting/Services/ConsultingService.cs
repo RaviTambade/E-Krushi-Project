@@ -37,6 +37,7 @@ public class ConsultingService:IConsultingService{
      public async Task<bool> DeleteQuestion(int id)=> await _repo.DeleteQuestion(id);
     public async Task<List<Question>> GetQuestions(string categoryName) => await _repo.GetQuestions(categoryName); 
     
-     public async Task<int> GetCategoryId(string categoryName) => await _repo.GetCategoryId(categoryName); 
+    public async Task<int> GetCategoryId(string categoryName) => await _repo.GetCategoryId(categoryName); 
 
+    public async Task<List<QuestionAnswer>> CustomerQuestionAnswer(int questionId) => await _repo.CustomerQuestionAnswer(questionId);
 }

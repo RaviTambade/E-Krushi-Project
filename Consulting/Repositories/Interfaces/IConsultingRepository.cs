@@ -25,12 +25,8 @@ public interface IConsultingRepository{
     Task<List<NewQuestion>> QuestionDetailsByCustomer(int custId);
 
     Task<bool> InsertQuestion(Question question); 
-    
     Task<bool> DeleteQuestion(int id); 
-
-
-Task<List<Question>> GetQuestions(string categoryName);
-
-
-Task<int> GetCategoryId(string categoryName);
+    Task<List<Question>> GetQuestions(string categoryName);
+    Task<int> GetCategoryId(string categoryName);
+    Task<List<QuestionAnswer>> CustomerQuestionAnswer(int questionId);
 }
