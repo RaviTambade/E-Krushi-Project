@@ -13,8 +13,8 @@ table, td, th {
   }
   
   th {
-    background-color: #04AA6D;
+    background-color: #f55a06;
     color: white;
   }
 
-  tr:hover {background-color: rgb(82, 42, 125);}
+  tr:hover {background-color: rgb(62, 24, 214);}
