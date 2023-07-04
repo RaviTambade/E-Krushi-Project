@@ -728,7 +728,43 @@ public class ConsultingRepository : IConsultingRepository
         return (int)categoryId;
     }
 
-    
+    public async Task<List<QuestionAnswer>> CustomerQuestionAnswer(int questionId)
+    {
+        List<QuestionAnswer> answers = new List<QuestionAnswer>();
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = _conString;
+        try
+        {
+            string query = "select distinct(questions.description)as question ,(answers.description) as answers from questions inner join answers on questions.id =answers.questionid inner join  customerquestions on customerquestions.questionid =questions.id where customerquestions.questionid=@questionId";
+            await con.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, con);
+            command.Parameters.AddWithValue("@questionId",questionId);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+                string question = reader["question"].ToString();
+                string answer = reader["answers"].ToString();
+                
+                QuestionAnswer ans = new QuestionAnswer
+                {
+                    Question=question,
+                    Answer=answer
+
+                };
+                answers.Add(ans);
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception ee)
+        {
+            throw ee;
+        }
+        finally
+        {
+            await con.CloseAsync();
+        }
+        return answers;
+    }   
 }
 
 

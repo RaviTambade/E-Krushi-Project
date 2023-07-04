@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConsultingService } from '../consulting.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-myquestion',
@@ -12,7 +13,7 @@ customerQuestions:any[];
 custId:any=2;
 id:number|any;
   
-  constructor(private svc :ConsultingService){
+  constructor(private svc :ConsultingService,private router:Router,private route:ActivatedRoute){
     this.customerQuestions=[]
   }
   
@@ -23,7 +24,6 @@ id:number|any;
       this.id=res.id;
       console.log(this.customerQuestions);
     })
-  
   }
 
   removeQuestion(id:number){
@@ -40,4 +40,7 @@ id:number|any;
     })
   }
 
+  onSelectQuestion(questionId:any){
+    this.router.navigate(["./answers",questionId],{relativeTo:this.route});
+  }
 }

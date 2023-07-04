@@ -3,11 +3,11 @@ namespace KrushiProject.Repositories.Interfaces
 {
     public interface ICustomerRepository
     {
-        List<Customer> GetAllCustomers();
+        Task<List<Customer>> GetAllCustomers();
 
-        Customer GetCustomer(int id);
+        Task<Customer> GetCustomer(int id);
 
-        bool Insert(Customer customer);
+        Task<bool> Insert(Customer customer);
 
         Task<bool> Update(Customer customer);
 

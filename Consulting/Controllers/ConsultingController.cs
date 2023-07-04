@@ -231,4 +231,11 @@ public class ConsultingController : ControllerBase
         return categoryId;
     }
 
+    [HttpGet("customerquestionanswer/{questionId}")]
+    public async Task<List<QuestionAnswer>> CustomerQuestionAnswer(int questionId)
+    {
+
+        List<QuestionAnswer> answers = await _srv.CustomerQuestionAnswer(questionId);
+        return answers;
+    }
 }

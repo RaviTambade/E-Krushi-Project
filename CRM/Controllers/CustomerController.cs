@@ -18,26 +18,26 @@ public class CustomerController : ControllerBase
     
     [HttpGet]
     [Route ("getAll")]
-    public IEnumerable<Customer> GetAll()
+    public async Task<List<Customer>> GetAll()
     {
-        var customers = _srv.GetAllCustomers();
+        List<Customer> customers = await _srv.GetAllCustomers();
         return customers;
     }
 
 
    [HttpGet]
    [Route ("getcustomer/{id}")]
-    public Customer GetCustomer(int id)
+    public async Task<Customer> GetCustomer(int id)
     {
-        var customer = _srv.GetCustomer(id);
+        Customer customer = await _srv.GetCustomer(id);
         return customer;
     }
 
     [HttpPost]
     [Route ("insertcustomer")]
-     public bool Insert([FromBody] Customer customer)
+     public async Task<bool> Insert([FromBody] Customer customer)
    {    
-        bool result =_srv.Insert(customer);
+        bool result = await _srv.Insert(customer);
         return result;
    }
 
