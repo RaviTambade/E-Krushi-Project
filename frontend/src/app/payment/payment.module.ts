@@ -24,7 +24,8 @@ import { BillingComponent } from './billing/billing.component';
   ],
   exports:[
     OrderpaymentComponent,
-    DebitcardComponent
+    DebitcardComponent,
+    BillingComponent
   ]
 })
 export class PaymentModule { }
