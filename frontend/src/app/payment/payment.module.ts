@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DebitcardComponent } from './debitcard/debitcard.component';
 import { AccountComponent } from './account/account.component';
+import { BillingComponent } from './billing/billing.component';
 
 
 
@@ -12,7 +13,8 @@ import { AccountComponent } from './account/account.component';
   declarations: [
     OrderpaymentComponent,
     DebitcardComponent,
-    AccountComponent
+    AccountComponent,
+    BillingComponent
   ],
   imports: [
     CommonModule,

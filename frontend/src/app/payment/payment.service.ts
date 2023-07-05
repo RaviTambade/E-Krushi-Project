@@ -23,8 +23,15 @@ export class PaymentService {
       return this.http.post<CreditCard>(url,card);
       }
 
-     public  fundTransfer(credential:any){
+    public  fundTransfer(credential:any){
         let url ="http://localhost:5041/FundTransfer";
         return this.http.post(url,credential);
       }
+
+    public addBill(card:CreditCard):Observable<any>{
+        let url ="http://localhost:5181/api/creditcards/creditcard";
+        return this.http.post<CreditCard>(url,card);
+        }
+
+
 }
