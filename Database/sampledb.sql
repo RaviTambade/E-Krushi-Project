@@ -258,3 +258,8 @@ INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (2,2,'2023-
 INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (2,4,'2023-01-15');
 INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (3,3,'2022-05-15');
 INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (4,2,'2022-08-15');
+
+
+INSERT INTO billing(custid,productid,quantity,discount,date) VALUES (2,1,100,0,'2022-02-12 00:00:00');
+INSERT INTO billing(custid,productid,quantity,discount,date) VALUES (3,4,400,0,'2022-02-12 00:00:00');
+INSERT INTO billing(custid,productid,quantity,discount,date) VALUES (1,3,1200,0,'2022-02-12 00:00:00');
