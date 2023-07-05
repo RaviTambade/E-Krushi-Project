@@ -1,0 +1,45 @@
+
+components:
+
+Customer Module:
+1.signIn:                   registration                         -public
+2.login:                    already registered                   -public
+3.Store:                    categorywise product list            -public
+4.product Details:          product details by id                -public
+5.AddToCart:                Add product in shopping cart         -public
+6.MyCart:                   show product list                    -public
+7.Home:                     list of products                     -public
+8.Order:                    show order                           -public
+9.OrderDetails:             show orderdetails                    -public
+10.OrderHistory:            show the orderhistory                -public
+11.update:                  Update product quantity              -public
+ 
+Employee Module:
+1.Customers:                Customer list                        -private
+2.customer:                 details by id                        -private
+1.insert:                   Add new product                      -private
+2.Delete:                   Delete Existing Product              -private
+3.Update:                   Update Existing Product              -private
+
+Consulting Module:
+1.question:                 question list                          -public
+2.Details:                  question details by id                 -public
+3.AddQuestion:              Add question in my question list       -public
+4.MyQuestion:               Show my question list                  -public
+5.NewQuestion:              Add new question                       -public
+6.QuestionCategory:         categorywise product list              -public
+7.QuestionAnswer:           Show all answer of particular questionid- public
+
+Payment Module:         
+1.orderpayment:             select payment mode                     -public
+2.Debit Card:               trasfer payment through debit card      -public
+3.Credit Card               trasfer payment through credit card     -public
+4.cash payment              
+5.UPI Payment
+
+Admin Module:
+1.Employees:                Employee list                           -private
+2.Employee:                 details                                 -private
+3.NewEmployee:              Add new Employee                        -private
+4.Update:                   Update Existing Employee                -private
+5.Delete:                   Delete Existing Employee                -private
