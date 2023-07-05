@@ -1,9 +1,5 @@
-<p>billing works!</p>
 
-
-
-
-<form #billingForm="ngForm" (ngSubmit)="addToCart(billingForm.value)">
+<form #billingForm="ngForm" (ngSubmit)="addBill(billingForm.value)">
 
     <div class="form-group">
       <label hidden><b>cust Id:</b></label>
@@ -22,28 +18,28 @@
     <div class="form-group">
         <br> 
         <label hidden><b>Billing date :</b></label>
-        <input type="text" name="billDate" [(ngModel)]="billDate" type="hidden" />
+        <input type="datetime" name="billDate" [(ngModel)]="bill.billDate" type="hidden" />
       </div>
     <div class="form-group">
       <br> 
-      <label ><b>product Title :</b>{{title}}</label>
+      <!-- <label ><b>product Title :</b>{{title}}</label> -->
     </div>
-    <div class="form-group">
+    <!-- <div class="form-group">
       <br> 
       <label ><b>Image:</b></label>
       <img [src]="image" width="200" height="200"/>
-    </div>
+    </div> -->
     
     <br>
     <div class="form-group">
       <label><b>UnitPrice :{{unitPrice}}</b></label>
       <br>
-      <label><b>quantity :</b></label>
-      <input type="number" name="quantity" [(ngModel)]="quantity"/>
+      <!-- <label><b>quantity :</b></label>
+      <input type="number" name="quantity" [(ngModel)]="quantity"/> -->
      </div>
     <div>
       <br>
-      <label><b>TotalAmount :{{total}}</b></label>   
+      <!-- <label><b>TotalAmount :{{total}}</b></label>    -->
     </div>
     <div class="form-group">
       <br>

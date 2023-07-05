@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from 'src/app/employee/employee.service';
 import { Billing } from '../billing';
 import { PaymentService } from '../payment.service';
 
@@ -9,7 +10,6 @@ import { PaymentService } from '../payment.service';
 })
 export class BillingComponent implements OnInit{
 
-
   bill:Billing={
     Id: 0,
     custId: 0,
@@ -17,21 +17,26 @@ export class BillingComponent implements OnInit{
     quantity: 0,
     billDate : new Date()
   }
-  title:any;
-  image:any;
-  unitPrice:any;
-  custId:number=2;
-  totalAmount:any;
 
-  constructor(private svc:PaymentService){
-    this.title = localStorage.getItem("title");
-    this.image = localStorage.getItem("image");
-    this.unitPrice = localStorage.getItem("price");
-    this.totalAmount= localStorage.getItem("total");
-    this.totalAmount= localStorage.getItem("quantity");
+  carts:any[];
+  custId:number=2;
+  productId:any;
+  unitPrice:any;
+  quantity:any
+
+  constructor(private svc:PaymentService,private service:EmployeeService){
+    this.carts=[];
   }
   
   ngOnInit(): void {
+    this.service.getCartDetails(this.custId).subscribe((res)=>{
+      this.carts=res;
+      this.productId=res.productId;
+      this.unitPrice=res.unitPrice;
+      this.quantity=res.quantity;
+    console.log(this.carts);
+   })
+   
   }
   
   addBill(form:any){
