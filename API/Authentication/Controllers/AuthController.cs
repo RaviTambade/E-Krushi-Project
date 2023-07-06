@@ -15,7 +15,7 @@ namespace AuthenticationService.Controllers
             _svc = svc;
 
         }
-
+      
         [HttpPost("authenticate")] 
         public async Task<IActionResult> Authenticate([FromBody] AuthenticateRequest request)
         {
@@ -27,7 +27,7 @@ namespace AuthenticationService.Controllers
             return Ok(user);
         }
 
-        
+        //get users
 
         [HttpGet("users")]  
         public async Task<IEnumerable<User>> Users()
