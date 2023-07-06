@@ -14,11 +14,11 @@ public class BillingController:ControllerBase{
         _srv=srv;
     }
 
-[HttpPost]
+    [HttpPost]
     [Route ("insertBill")]
-     public async Task<bool> AddBill([FromBody] Billing bill)
-   {    
+    public async Task<bool> AddBill([FromBody] Billing bill)
+    {    
         bool result = await _srv.AddBill(bill);
         return result;
-   }
+    }
  }

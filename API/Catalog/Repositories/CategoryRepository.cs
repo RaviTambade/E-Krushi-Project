@@ -15,7 +15,7 @@ public class CategoryRepository : ICategoryRepository
     }
        
 
-        public async Task<List<Category>> GetAllCategories()
+        public async Task<List<Category>> GetAll()
         {
             List<Category> categories = new List<Category>();
             MySqlConnection con = new MySqlConnection();
@@ -51,7 +51,7 @@ public class CategoryRepository : ICategoryRepository
         }
         return categories;
         }
-        public async Task<Category> GetCategory(int id)
+        public async Task<Category> GetById(int id)
         {
             Category category = new Category();
             MySqlConnection con = new MySqlConnection();
