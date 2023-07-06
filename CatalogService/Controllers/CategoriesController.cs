@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace CatalogService.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("[controller]")]
 public class CategoriesController : ControllerBase
 {
     private readonly ICategoryService _service;
@@ -18,9 +18,9 @@ public class CategoriesController : ControllerBase
   //this  method is used for get all categories.
     [HttpGet]
     [Route("Categories")]
-    public async Task<IEnumerable<Category>> GetAllCategories()
+    public async Task<IEnumerable<Category>> GetAll()
     {
-        List<Category> categories = await _service.GetAllCategories();
+        List<Category> categories = await _service.GetAll();
         return categories;
     }
 
@@ -28,14 +28,14 @@ public class CategoriesController : ControllerBase
    //this method gives category by id.
     [HttpGet]
     [Route("Categories/{id}")]
-    public async Task<Category> GetCategory(int id)
+    public async Task<Category> GetById(int id)
     {
-        Category category = await _service.GetCategory(id);
+        Category category = await _service.GetById(id);
         return category;
     }
 
     [HttpPost]
-    [Route("Insert")]
+    [Route("categories")]
     public async Task<bool> Insert([FromBody] Category category)
     {
         bool result =  await _service.Insert(category);
@@ -44,7 +44,7 @@ public class CategoriesController : ControllerBase
 
    //this method is used for update category
     [HttpPut]
-    [Route("Update")]
+    [Route("categories")]
     public async Task<bool> Update([FromBody] Category category)
     {
         bool result =await  _service.Update(category);
@@ -53,6 +53,7 @@ public class CategoriesController : ControllerBase
     
     //this method is used for delete category
     [HttpDelete]
+    [Route("categories/{id}")]
     public async Task<bool> Delete(int id)
     {
         bool result =await  _service.Delete(id);
