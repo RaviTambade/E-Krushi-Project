@@ -11,7 +11,7 @@ namespace KrushiProject.Repositories
         public static string conString = "server=localhost; port=3306; user=root; password=PASSWORD; database=ekrushi";
        
 
-        public async Task<List<Customer>> GetAllCustomers()
+        public async Task<List<Customer>> GetAll()
         {
             List<Customer> customers = new List<Customer>();
             MySqlConnection con = new MySqlConnection();
@@ -48,7 +48,7 @@ namespace KrushiProject.Repositories
         return customers;
         }
 
-        public async Task<Customer> GetCustomer(int id)
+        public async Task<Customer> GetById(int id)
         {
             Customer customer = new Customer();
             MySqlConnection con = new MySqlConnection();
@@ -169,7 +169,7 @@ namespace KrushiProject.Repositories
             }
             return status;
         }
-        public async Task<Customer> GetUser(int userId)
+        public async Task<Customer> GetByUserId(int userId)
         {
             Customer customer = new Customer();
             MySqlConnection con = new MySqlConnection();

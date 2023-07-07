@@ -6,7 +6,7 @@ using KrushiProject.Models;
 namespace krushiproject.Controllers;
 
 [ApiController]
-[Route("/api/[controller]")]
+[Route("/api/customers")]
 public class CustomerController : ControllerBase
 {
     private readonly ICustomerService _srv;
@@ -17,33 +17,30 @@ public class CustomerController : ControllerBase
     }
     
     [HttpGet]
-    [Route ("getAll")]
     public async Task<List<Customer>> GetAll()
     {
-        List<Customer> customers = await _srv.GetAllCustomers();
+        List<Customer> customers = await _srv.GetAll();
         return customers;
     }
 
 
    [HttpGet]
-   [Route ("getcustomer/{id}")]
-    public async Task<Customer> GetCustomer(int id)
+   [Route ("{id}")]
+    public async Task<Customer> GetById(int id)
     {
-        Customer customer = await _srv.GetCustomer(id);
+        Customer customer = await _srv.GetById(id);
         return customer;
     }
 
     [HttpPost]
-    [Route ("insertcustomer")]
-     public async Task<bool> Insert([FromBody] Customer customer)
-   {    
+    public async Task<bool> Insert([FromBody] Customer customer)
+    {    
         bool result = await _srv.Insert(customer);
         return result;
-   }
+    }
 
    
    [HttpPut]
-   [Route ("updatecustomer")]
    public async Task<bool> Update(Customer customer)
    {
     bool result = await _srv.Update(customer);
@@ -52,20 +49,19 @@ public class CustomerController : ControllerBase
    }
    
    [HttpDelete]
-   [Route ("delete/{id}")]
+   [Route ("{id}")]
    public async Task<bool> Delete(int id)
    {
     bool result =await _srv.Delete(id);
-    return result;
+    return result; 
    }
 
- [HttpGet]
-   [Route ("getuser/{id}")]
-    public async Task<Customer> GetUser(int id)
+   [HttpGet]
+   [Route ("user/{id}")]
+    public async Task<Customer> GetByUserId(int id)
     {
-        var customer = await _srv.GetUser(id);
+        var customer = await _srv.GetByUserId(id);
         return customer;
     }
-    
    
 }
