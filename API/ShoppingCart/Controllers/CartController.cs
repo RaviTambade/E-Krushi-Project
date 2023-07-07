@@ -6,7 +6,7 @@ using ShoppingCartService.Services.Interfaces;
 namespace ShoppingCartService.Controllers
 {
     [ApiController]
-    [Route("/api/[controller]")]
+    [Route("/api/cart")]
     public class CartController : ControllerBase
     {
         

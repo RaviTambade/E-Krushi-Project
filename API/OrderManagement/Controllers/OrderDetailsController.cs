@@ -7,50 +7,52 @@ using OrderProcessingService.Services.Interfaces;
 namespace OrderProcessingService.Controllers
 {
     [ApiController]
-    [Route("[Controller]")]
+    [Route("orderdetails")]
     public class OrderDetailsController : ControllerBase
     {
         private readonly IOrderDetailsService _ordersvc;
         public OrderDetailsController(IOrderDetailsService ordersvc)
         {
             _ordersvc = ordersvc;
-        } 
+        }
 
-        [HttpGet("orderdetails")]
+
+
+
         public async Task<IEnumerable<OrderDetails>> GetAllOrderDetails()
         {
             List<OrderDetails> orderDetails = await _ordersvc.GetAllOrderDetails();
             return orderDetails;
         }
 
-        [HttpGet("getorderDetails/{id}")]
+        [HttpGet("{id}")]
         public async Task<OrderDetails> GetOrderDetail(int id)
         {
             OrderDetails orderDetail = await _ordersvc.GetOrderDetail(id);
             return orderDetail;
         }
 
-        [HttpPost("insert")]
+
         public async Task<bool> Insert([FromBody] OrderDetails orderDetail)
         {
             bool status = await _ordersvc.Insert(orderDetail);
             return status;
         }
 
-        [HttpPut("update/{id}")]
-        public async Task<bool> Update(int id,[FromBody] OrderDetails orderDetail)
+        [HttpPut("{id}")]
+        public async Task<bool> Update(int id, [FromBody] OrderDetails orderDetail)
         {
             OrderDetails oldOrderDetail = await _ordersvc.GetOrderDetail(id);
-            if(oldOrderDetail.Id==0)
+            if (oldOrderDetail.Id == 0)
             {
                 return false;
             }
-            orderDetail.Id =id;
+            orderDetail.Id = id;
             bool status = await _ordersvc.Update(orderDetail);
             return status;
         }
 
-        [HttpDelete("delete/{id}")]
+        [HttpDelete("{id}")]
         public async Task<bool> DeleteOrderDetail(int id)
         {
             bool status = await _ordersvc.Delete(id);
@@ -58,7 +60,7 @@ namespace OrderProcessingService.Controllers
         }
 
 
-        [HttpGet("order/{orderId}")]          
+        [HttpGet("order/{orderId}")]
         public async Task<List<OrderHistory>> GetDetails(int orderId)
         {
             List<OrderHistory> orders = await _ordersvc.GetDetails(orderId);
