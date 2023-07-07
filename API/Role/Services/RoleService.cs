@@ -16,8 +16,8 @@ public class RoleService:IRoleService{
 
    
 
-    public async Task<List<Role>> Roles() => await _repo.Roles();
-    public async Task<Role> Role(int id)=>await _repo.Role(id);
+    public async Task<List<Role>> GetAll() => await _repo.GetAll();
+    public async Task<Role> GetById(int id)=>await _repo.GetById(id);
     
     public  Task<bool> Insert(Role role)=> _repo.Insert(role);
 

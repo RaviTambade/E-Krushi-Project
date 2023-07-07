@@ -5,40 +5,33 @@ using E_krushiApp.Service.Interface;
 namespace E_krushiApp.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("/api/roles")]
 public class RolesController : ControllerBase
 {
-
-
     private readonly IRoleService _srv;
 
     public RolesController(IRoleService srv)
     {
         _srv = srv;
     }
-
-
-    [HttpGet("roles")]
    
-    public async Task<List<Role>> Roles()
+    public async Task<List<Role>> GetAll()
     {
 
-        List<Role> roles = await _srv.Roles();
+        List<Role> roles = await _srv.GetAll();
 
         return roles;
     }
 
 
-    [HttpGet("role/{id}")]
-    public  async Task<Role> Role(int id)
+    [HttpGet("{id}")]
+    public  async Task<Role> GetById(int id)
     {
-        Role role = await  _srv.Role(id);
+        Role role = await  _srv.GetById(id);
 
         return role;
     }
 
-
-    [HttpPost("Insert")]
     public async  Task<bool> Insert(Role role)
     {
 
@@ -48,23 +41,15 @@ public class RolesController : ControllerBase
         return status;
     }
 
-    [HttpPut("Update/{id}")]
-    public async  Task<bool> Update(int id, [FromBody] Role role)
+    public async  Task<bool> Update([FromBody] Role role)
     {
-        Role oldRole = await _srv.Role(id);
-        if (oldRole.Id == 0)
-        {
-
-            return false;
-        }
-        role.Id = id;
         bool status = await _srv.Update(role);
 
         return status;
     }
 
 
-    [HttpDelete("delete/{id}")]
+    [HttpDelete("{id}")]
     public async Task<bool> Delete(int id)
     {
 

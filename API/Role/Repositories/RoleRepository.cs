@@ -18,7 +18,7 @@ public class RoleRepository : IRoleRepository
     }
 
     
-    public async Task<List<Role>> Roles()
+    public async Task<List<Role>> GetAll()
     {
         List<Role> roles = new List<Role>();
         MySqlConnection connection = new MySqlConnection();
@@ -32,13 +32,8 @@ public class RoleRepository : IRoleRepository
 
             while (await reader.ReadAsync())
             {
-
-
                 int roleid = int.Parse(reader["id"].ToString());
                 string role = reader["role"].ToString();
-
-
-
                 Role r1 = new Role
                 {
 
@@ -64,7 +59,7 @@ public class RoleRepository : IRoleRepository
     }
 
 
-    public async Task<Role> Role(int id)
+    public async Task<Role> GetById(int id)
     {
         Role role = new Role();
         MySqlConnection connection = new MySqlConnection();
@@ -91,13 +86,7 @@ public class RoleRepository : IRoleRepository
                     Name = RoleName
 
                 };
-
-
-
-
             }
-
-
         }
 
         catch (Exception ee)
@@ -171,27 +160,19 @@ public class RoleRepository : IRoleRepository
             {
 
                 status = true;
-
-
             }
         }
-
-
         catch (Exception ee)
         {
 
             throw ee;
-
-
         }
 
         finally
         {
            await connection.CloseAsync();
         }
-
         return status;
-
     }
 
 
@@ -212,14 +193,10 @@ public class RoleRepository : IRoleRepository
             if(rowsaffected>0){
                 status =true;
             }
-
         }
-
         catch(Exception ee){
             throw ee;
         }
-
-
         finally{
            await connection.CloseAsync();
         }
