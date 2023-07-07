@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 
 [ApiController]
-[Route("/api/[controller]")]
+[Route("/api/billing")]
 public class BillingController:ControllerBase{
     
 
@@ -14,8 +14,7 @@ public class BillingController:ControllerBase{
         _srv=srv;
     }
 
-    [HttpPost]
-    [Route ("insertBill")]
+    //http://localhost:5238/api/billing
     public async Task<bool> AddBill([FromBody] Billing bill)
     {    
         bool result = await _srv.AddBill(bill);

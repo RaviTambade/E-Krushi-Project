@@ -6,7 +6,7 @@ namespace AuthenticationService.Controllers
 {
 
     [ApiController]
-    [Route("/api/[controller]")]
+    [Route("/api/authenticate")]
     public class AuthController : ControllerBase
     {
         private readonly IUserService _svc;
@@ -16,7 +16,6 @@ namespace AuthenticationService.Controllers
 
         }
       
-        [HttpPost("authenticate")] 
         public async Task<IActionResult> Authenticate([FromBody] AuthenticateRequest request)
         {
             var user =await _svc.Authenticate(request);
@@ -27,7 +26,7 @@ namespace AuthenticationService.Controllers
             return Ok(user);
         }
 
-        //get users
+        
 
         [HttpGet("users")]  
         public async Task<IEnumerable<User>> Users()
