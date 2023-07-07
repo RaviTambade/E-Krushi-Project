@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace E_krushiApp.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/consulting")]
 public class ConsultingController : ControllerBase
 {
     private readonly IConsultingService _srv;
@@ -18,8 +18,7 @@ public class ConsultingController : ControllerBase
 
 
     //This method gives question List.
-    //http://localhost:5279/api/consulting/questions
-    [HttpGet("questions")]
+    //http://localhost:5279/api/consulting
 
     public async Task<List<Question>> getAllQuestions()
     {
@@ -153,6 +152,10 @@ public class ConsultingController : ControllerBase
         return category;
 
     }
+  
+
+    //this method used to add customerquestion.
+    //http://localhost:5279/consulting/customerquestion
 
     [HttpPost("customerquestion")]
     public async Task<bool> AddCustomerQuestion(CustomerQuestion question)
@@ -162,6 +165,10 @@ public class ConsultingController : ControllerBase
 
         return status;
     }
+
+
+     //this method is used to get all customerquestions.
+    //http://localhost:5279/consulting/getallcustomerquestions
 
     [HttpGet("getallcustomerquestions")]
 
@@ -175,6 +182,8 @@ public class ConsultingController : ControllerBase
 
 
 
+     //this method gives duestions details by customer id.
+    //http://localhost:5279/consulting/questionDetails/{custId}
     [HttpGet("questionDetails/{custId}")]
 
     public async Task<List<NewQuestion>> QuestionDetailsByCustomer(int custId)
@@ -184,6 +193,12 @@ public class ConsultingController : ControllerBase
 
         return questions;
     }
+
+
+
+
+    //this method is used for insert question.
+    //http://localhost:5279/consulting/question
 
     [HttpPost("question")]
     public async Task<bool> InsertQuestion(Question question)
@@ -196,12 +211,16 @@ public class ConsultingController : ControllerBase
 
 
 
+    //this method is used for delete question by particular id.
+    //http://localhost:5279/consulting/deleteQuestion/{id}
+
     [HttpDelete("deleteQuestion/{id}")]
     public async Task<bool> DeleteQuestion(int id)
     {
 
         bool status = await _srv.DeleteQuestion(id);
-        if(status){
+        if (status)
+        {
             Console.WriteLine("your question is deleted succeefully");
         }
         return status;
@@ -209,6 +228,8 @@ public class ConsultingController : ControllerBase
 
 
 
+    //this method gives categorywise question list.
+    //http://localhost:5279/consulting/categoryquestions/{categoryName}
     [HttpGet("categoryquestions/{categoryName}")]
 
     public async Task<List<Question>> GetQuestions(string categoryName)
@@ -219,7 +240,9 @@ public class ConsultingController : ControllerBase
         return questions;
     }
 
-
+    
+    //this method gives category id of provided question.
+    //http://localhost:5279/consulting/categoryid/{categoryName}
 
     [HttpGet("categoryid/{categoryName}")]
 
@@ -230,6 +253,11 @@ public class ConsultingController : ControllerBase
 
         return categoryId;
     }
+
+
+    
+    //this method gives us answer of provided question id.
+    //http://localhost:5279/consulting/customerquestionanswer/{questionId}
 
     [HttpGet("customerquestionanswer/{questionId}")]
     public async Task<List<QuestionAnswer>> CustomerQuestionAnswer(int questionId)
