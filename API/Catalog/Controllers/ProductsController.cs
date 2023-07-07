@@ -6,7 +6,7 @@ using CatalogService.Service.Interfaces;
 namespace CatalogService.Controllers;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("/api/products")]
 public class ProductsController : ControllerBase
 {
     private readonly IProductService _service;
@@ -20,18 +20,16 @@ public class ProductsController : ControllerBase
     // http://localhost:5137/api/products
     // this method gives list of all products.
     [HttpGet]
-    public async Task<List<Product>> GetAllProducts()
+    public async Task<List<Product>> GetAll()
     {
         List<Product> products = await _service.GetAllProducts();
         return products;
     }
 
-
-
     //http://localhost:5137/api/products/product/{id}
     //this method gives product by id.
-    [HttpGet("product/{id}")]
-    public async Task<Product> GetProduct(int id)
+    [HttpGet("{id}")]
+    public async Task<Product> GetById(int id)
     {
         Product product = await _service.GetProduct(id);
         return product;
@@ -46,25 +44,16 @@ public class ProductsController : ControllerBase
         return result;
     }
     
-
-
-    //this method is used for Update product
     [HttpPut]
-    public async Task<bool> Update(int id, [FromBody] Product product)
+    //this method is used for Update product
+    public async Task<bool> Update([FromBody] Product product)
     {
-        Product oldProduct = await _service.GetProduct(id);
-        if(oldProduct.Id==0){
-            return false;
-        }
-        product.Id = id;
-        bool result = await _service.Update(product);
+        bool result =await  _service.Update(product);
         return result;
     }
 
-
-
-// this method is used for delete product.
-    [HttpDelete]
+    //this method is used for delete product.
+    [HttpDelete("{id}")]
     public async Task<bool> DeleteProduct(int id)
     {
         bool result = await _service.DeleteProduct(id);
@@ -73,7 +62,7 @@ public class ProductsController : ControllerBase
 
      
     [HttpGet]
-    [Route("category/{categoryName}")]
+    [Route("categoryname/{categoryName}")]
     public async Task<List<Product>> GetProductsDetails(string categoryName)
     {
         List<Product> products = await _service.GetProductsDetails(categoryName);

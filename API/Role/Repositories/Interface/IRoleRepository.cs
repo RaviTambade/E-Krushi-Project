@@ -5,9 +5,9 @@ public interface IRoleRepository
 {
 
 
-    public Task<List<Role>> Roles();
+    public Task<List<Role>> GetAll();
 
-    public Task<Role> Role(int id);
+    public Task<Role> GetById(int id);
     public Task<bool> Insert(Role role);
 
     public Task<bool> Update(Role role);
