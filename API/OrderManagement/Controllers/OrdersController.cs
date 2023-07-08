@@ -6,7 +6,7 @@ using OrderProcessingService.Services.Interfaces;
 namespace OrderProcessingService.Controllers
 {
     [ApiController]
-    [Route("api/[Controller]")]
+    [Route("api/orders")]
     public class OrdersController : ControllerBase
     {
         private readonly IOrderService _ordersvc;
@@ -15,14 +15,14 @@ namespace OrderProcessingService.Controllers
         _ordersvc = ordersvc;
         } 
 
-        [HttpGet("orders")]          
+                
         public async Task<IEnumerable<Order>> Orders()
         {
             List<Order> orders = await _ordersvc.Orders();
             return orders;
         }
 
-        [HttpGet("getorder/{id}")]
+        [HttpGet("{id}")]
         public async Task<Order> GetById(int id)
         {
             Order order = await _ordersvc.GetOrder(id);
@@ -30,14 +30,14 @@ namespace OrderProcessingService.Controllers
         }
 
        
-        [HttpPost("insert")]
+      
         public async Task<bool> Insert([FromBody] Order order)
         {
             bool status = await _ordersvc.Insert(order);
             return status;
         }
 
-        [HttpPut("update/{id}")]
+        [HttpPut("{id}")]
         public async Task<bool> Update(int id,[FromBody] Order order)
         {
             Order oldOrder = await _ordersvc.GetOrder(id);
@@ -50,7 +50,7 @@ namespace OrderProcessingService.Controllers
             return status;
         }
 
-        [HttpDelete("delete/{id}")]
+        [HttpDelete("{id}")]
         public async Task<bool> Delete(int id)
         {
             bool status = await _ordersvc.Delete(id);
