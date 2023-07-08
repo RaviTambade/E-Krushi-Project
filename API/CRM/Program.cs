@@ -1,3 +1,4 @@
+using KrushiProject.Helpers;
 using KrushiProject.Repositories;
 using KrushiProject.Repositories.Interfaces;
 using KrushiProject.Service;
@@ -34,6 +35,8 @@ app.UseAuthorization();
 app.UseCors(x => x.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader());
+
+app.UseMiddleware<JwtMiddleware>();
 
 app.MapControllers();
 
