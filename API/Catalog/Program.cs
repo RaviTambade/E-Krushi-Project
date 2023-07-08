@@ -1,3 +1,4 @@
+using CatalogService.Helpers;
 using CatalogService.Repositories;
 using CatalogService.Repositories.Interfaces;
 using CatalogService.Service.Interfaces;
@@ -35,6 +36,8 @@ app.UseCors(x => x.AllowAnyOrigin()
                    .AllowAnyHeader());
                    
 app.UseAuthorization();
+
+app.UseMiddleware<JwtMiddleware>();
 
 app.MapControllers();
 
