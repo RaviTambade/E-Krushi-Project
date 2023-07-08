@@ -1,32 +1,5 @@
 
 
-INSERT INTO users(email,password,contactnumber) VALUES ('akashajab@gmail.com','akash@12',9089777678);
-INSERT INTO users(email,password,contactnumber) VALUES ('sahil@gmail.com','sahil@12',9067894590);
-INSERT INTO users(email,password,contactnumber) VALUES ('akshaytanpure@gmail.com','akshay@12',9881571271);
-INSERT INTO users(email,password,contactnumber) VALUES ('vedantyadav@gmail.com','vedant@12',9089898078);
-INSERT INTO users(email,password,contactnumber) VALUES ('rohitgore@gmail.com','rohit@12',9881571273);
-INSERT INTO users(email,password,contactnumber) VALUES ('rushikeshchikne@gmail.com','rushikesh12',9881571274);
-INSERT INTO users(email,password,contactnumber) VALUES ('shubham@gmail.com','shubham@12',9881571275);
-INSERT INTO users(email,password,contactnumber) VALUES ('chetan@gmail.com','chetan@12',9081571275);
-INSERT INTO users(email,password,contactnumber) VALUES ('abhishek@gmail.com','abhishek@12',9181571275);
-INSERT INTO users(email,password,contactnumber) VALUES ('anil@gmail.com','anil@12',9281571275);
-INSERT INTO users(email,password,contactnumber) VALUES ('rohan@gmail.com','rohan@12',9381571275);
-INSERT INTO users(email,password,contactnumber) VALUES ('ajay@gmail.com','ajay@12',9481571275);
-INSERT INTO users(email,password,contactnumber) VALUES ('vijay@gmail.com','vijay@12',9581571275);
-INSERT INTO users(email,password,contactnumber) VALUES ('tara@gmail.com','tara@12',9181578790);
-INSERT INTO users(email,password,contactnumber) VALUES ('anaya@gmail.com','anaya@12',9281404760);
-INSERT INTO users(email,password,contactnumber) VALUES ('riddhi@gmail.com','riddhi@12',7498571275);
-INSERT INTO users(email,password,contactnumber) VALUES ('soumya@gmail.com','soumya@12',7356771275);
-INSERT INTO users(email,password,contactnumber) VALUES ('ruhi@gmail.com','ruhi@12',9581573465);
-INSERT INTO users(email,password,contactnumber) VALUES ('akshita@gmail.com','akshita@12',7498012275);
-INSERT INTO users(email,password,contactnumber) VALUES ('aarohi@gmail.com','aarohi@12',7356771350);
-INSERT INTO users(email,password,contactnumber) VALUES ('aaradhya@gmail.com','aaradhya@12',9581573054);
-INSERT INTO users(email,password,contactnumber) VALUES ('pratimapatil@gmail.com','pratima@12',7709736561);
-INSERT INTO users(email,password,contactnumber) VALUES ('kiranrakshe@gmail.com','kiran@12',7709736562);
-INSERT INTO users(email,password,contactnumber) VALUES ('mayurgorade@gmail.com','mayur@12',7703726563);
-
-
-
 -- ROLE TABLE DATA
 INSERT INTO roles(role) VALUES ('Admin');
 INSERT INTO roles(role) VALUES ('Customer');
@@ -59,31 +32,22 @@ INSERT INTO categories(title,description,image) VALUES('plants micronutrients','
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('oats',10,500,'/assets/image/oat.jfif',1);
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('wheat',14,50,'/assets/image/wheat.jpg',1);
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('corn',1000,50,'/assets/image/corn.jfif',1);
--- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('barley',200,50,'/image/sunflower.jpg',1);
--- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('sorghum',2200,50,'/image/sunflower.jpg',1);
--- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('sunflower',1200,50,'/image/sunflower.jpg',1);
 
 
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('tractor',1400,50,'/assets/image/tractor.jfif',2);
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('harvesters',2200,50,'/assets/image/harvestor.jfif',2);
--- INSERT INTO products(title,unitprice,stockavailable,image,categoryid)values('balers',1000,50,'/image/sunflower.jpg',2);
--- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('fertilizer spreaders',109,50,'/image/sunflower.jpg',2);
 
--- FERTILIZERS
--- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('wood ash',1200,500,'/image/woodash.jpg',3);
--- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('bone meal',1500,500,'/image/bonemeal.jpg',3);
--- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('blood meal',1400,500,'/image/bloodmeal.jpg',3);
--- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('manure',2100,500,'/image/manure.jpg',3);
+--FERTILIZERS
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('wood ash',1200,500,'/image/woodash.jpg',3);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('bone meal',1500,500,'/image/bonemeal.jpg',3);
+
 
 -- PESTISIDES
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('karate',1100,500,'/assets/image/karate.jfif',4);
--- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('soloman',3100,500,'/image/manure.jpg',4);
--- INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('wood ash',1900,500,'/image/woodash.jpg',4);
 
 -- -- Agricultural sprayers
--- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('Knapsack sprayer',200,500,'/image/woodash.jpg',5);
--- INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('portable power sprayer',500,500,'/image/manure.jpg',5);
--- INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('mist dust sprayer',800,500,'/image/woodash.jpg',5);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('Knapsack sprayer',200,500,'/image/woodash.jpg',5);
+INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('portable power sprayer',500,500,'/image/manure.jpg',5);
 
 -- ORDERS DATA
 INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',1,500,'initiated');
