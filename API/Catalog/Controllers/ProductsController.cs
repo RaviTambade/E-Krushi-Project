@@ -1,7 +1,7 @@
 using CatalogService.Models;
 using Microsoft.AspNetCore.Mvc;
 using CatalogService.Service.Interfaces;
-
+using CatalogService.Helpers;
 
 namespace CatalogService.Controllers;
 
@@ -36,7 +36,7 @@ public class ProductsController : ControllerBase
     }
 
     //this method is used for insert product
-
+    [Authorize]
     [HttpPost]
     public async Task<bool> Insert([FromBody] Product product)
     {

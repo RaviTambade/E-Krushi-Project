@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using KrushiProject.Service.Interfaces;
 using KrushiProject.Models;
+using KrushiProject.Helpers;
 
 namespace krushiproject.Controllers;
 
@@ -15,7 +16,8 @@ public class CustomerController : ControllerBase
     {
         _srv = srv;
     }
-    
+
+    [Authorize]
     [HttpGet]
     public async Task<List<Customer>> GetAll()
     {
