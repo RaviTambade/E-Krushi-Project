@@ -115,4 +115,14 @@ public class ConsultingRepository:IConsultingRepository{
 
         return question;
     }
+
+    List<Question> IConsultingRepository.Questions()
+    {
+        throw new NotImplementedException();
+    }
+
+    Question IConsultingRepository.GetQuestion(int id)
+    {
+        throw new NotImplementedException();
+    }
 }

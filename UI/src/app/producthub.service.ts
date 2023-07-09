@@ -52,17 +52,17 @@ getData(): Observable<any>{
 
 
 public getCategories():Observable<any>{
-  let url = "http://localhost:5137/api/categories/categories";
+  let url = "http://localhost:5137/api/categories";
   return this.http.get<any>(url);
 }
 
 public getProducts(category:string):Observable<any>{
-  let url="http://localhost:5137/api/products/category/"+ category;
+  let url="http://localhost:5137/api/products/categoryname/"+ category;
   return this.http.get<any>(url);
 }
 
 public getById(id:number):Observable<any>{
-  let url="http://localhost:5137/api/products/product/"+ id;
+  let url="http://localhost:5137/api/products/"+ id;
   return this.http.get<any>(url);
 }
 

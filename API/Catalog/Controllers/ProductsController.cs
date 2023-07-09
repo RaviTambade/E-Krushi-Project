@@ -28,7 +28,7 @@ public class ProductsController : ControllerBase
 
     //http://localhost:5137/api/products/product/{id}
     //this method gives product by id.
-    [HttpGet("{id}")]
+    [HttpGet("product/{id}")]
     public async Task<Product> GetById(int id)
     {
         Product product = await _service.GetProduct(id);
