@@ -17,6 +17,7 @@ public class CustomerController : ControllerBase
         _srv = srv;
     }
 
+    //http://localhost:5027/api/customers
     [Authorize]
     [HttpGet]
     public async Task<List<Customer>> GetAll()
@@ -25,7 +26,7 @@ public class CustomerController : ControllerBase
         return customers;
     }
 
-
+   //http://localhost:5027/api/customers/{id}
    [HttpGet]
    [Route ("{id}")]
     public async Task<Customer> GetById(int id)
@@ -34,6 +35,7 @@ public class CustomerController : ControllerBase
         return customer;
     }
 
+    //http://localhost:5027/api/customers
     [HttpPost]
     public async Task<bool> Insert([FromBody] Customer customer)
     {    
@@ -41,15 +43,15 @@ public class CustomerController : ControllerBase
         return result;
     }
 
-   
+   //http://localhost:5027/api/customers
    [HttpPut]
    public async Task<bool> Update(Customer customer)
    {
     bool result = await _srv.Update(customer);
     return result;
-
    }
-   
+
+   //http://localhost:5027/api/customers/{id}
    [HttpDelete]
    [Route ("{id}")]
    public async Task<bool> Delete(int id)
@@ -58,12 +60,12 @@ public class CustomerController : ControllerBase
     return result; 
    }
 
+   //http://localhost:5027/api/customers/user/{id}
    [HttpGet]
    [Route ("user/{id}")]
     public async Task<Customer> GetByUserId(int id)
     {
         var customer = await _srv.GetByUserId(id);
         return customer;
-    }
-   
+    } 
 }
