@@ -2,6 +2,7 @@ using CatalogService.Models;
 using Microsoft.AspNetCore.Mvc;
 using CatalogService.Service.Interfaces;
 using CatalogService.Helpers;
+using System.Net.Http.Headers;
 
 namespace CatalogService.Controllers;
 

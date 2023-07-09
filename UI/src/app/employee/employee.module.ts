@@ -23,6 +23,7 @@ import { NewquestionComponent } from '../consulting/newquestion/newquestion.comp
 import { QuestioncategoryComponent } from '../consulting/questioncategory/questioncategory.component';
 import { DebitcardComponent } from '../payment/debitcard/debitcard.component';
 import { QuestionanswerComponent } from '../consulting/questionanswer/questionanswer.component';
+import { UploadfileComponent } from './uploadfile/uploadfile.component';
 
 
 const routes : Routes=[
@@ -63,7 +64,8 @@ const routes : Routes=[
     MycartComponent,
     UpdateComponent,
     OrderhistoryComponent,
-    OrderdetailsComponent
+    OrderdetailsComponent,
+    UploadfileComponent
   ],
   imports: [
     CommonModule,
@@ -75,7 +77,8 @@ const routes : Routes=[
   exports: [
     RoutingComponent,
     StoreComponent,
-    OrderComponent
+    OrderComponent,
+    UploadfileComponent
   ]
 })
 
