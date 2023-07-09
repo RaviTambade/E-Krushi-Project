@@ -36,6 +36,7 @@ public class ProductsController : ControllerBase
     }
 
     //this method is used for insert product
+    //http://localhost:5137/api/products
     [Authorize]
     [HttpPost]
     public async Task<bool> Insert([FromBody] Product product)
@@ -46,6 +47,7 @@ public class ProductsController : ControllerBase
     
     [HttpPut]
     //this method is used for Update product
+    //http://localhost:5137/api/products
     public async Task<bool> Update([FromBody] Product product)
     {
         bool result =await  _service.Update(product);
@@ -53,6 +55,7 @@ public class ProductsController : ControllerBase
     }
 
     //this method is used for delete product.
+    //http://localhost:5137/api/products/{id}
     [HttpDelete("{id}")]
     public async Task<bool> DeleteProduct(int id)
     {
@@ -60,7 +63,7 @@ public class ProductsController : ControllerBase
         return result;
     }
 
-     
+    //http://localhost:5137/api/products/categoryname/{categoryName} 
     [HttpGet]
     [Route("categoryname/{categoryName}")]
     public async Task<List<Product>> GetProductsDetails(string categoryName)
@@ -68,7 +71,8 @@ public class ProductsController : ControllerBase
         List<Product> products = await _service.GetProductsDetails(categoryName);
         return products;
     }
-
+ 
+    //http://localhost:5137/api/products/{title}
     [HttpGet("{title}")]
     public async Task<Product> GetProductDetails(string title)
     {
