@@ -38,7 +38,7 @@ public class ProductsController : ControllerBase
 
     //this method is used for insert product
     //http://localhost:5137/api/products
-    [Authorize]
+    
     [HttpPost]
     public async Task<bool> Insert([FromBody] Product product)
     {
@@ -46,6 +46,7 @@ public class ProductsController : ControllerBase
         return result;
     }
     
+    [Authorize]
     [HttpPut]
     //this method is used for Update product
     //http://localhost:5137/api/products
@@ -57,6 +58,7 @@ public class ProductsController : ControllerBase
 
     //this method is used for delete product.
     //http://localhost:5137/api/products/{id}
+    [Authorize]
     [HttpDelete("{id}")]
     public async Task<bool> DeleteProduct(int id)
     {
