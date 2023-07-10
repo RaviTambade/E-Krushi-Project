@@ -81,7 +81,7 @@ public class ProductsController : ControllerBase
         return product;
     }
 
-    [HttpPost, DisableRequestSizeLimit]
+    [HttpPost ("uploadfile") , DisableRequestSizeLimit]
     public IActionResult Upload()
     {
         try
@@ -110,6 +110,4 @@ public class ProductsController : ControllerBase
             return StatusCode(500, $"Internal server error: {ex}");
         }
     }
-
-
 }    
