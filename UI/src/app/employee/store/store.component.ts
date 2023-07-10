@@ -43,6 +43,7 @@ export class StoreComponent implements OnInit {
        if (category) {
          this.service.getProducts(category).subscribe((response)=>{
           this.products=response;
+          localStorage.setItem("category",category);
           console.log(this.products);
          })
          this.product.enable();

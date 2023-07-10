@@ -15,31 +15,14 @@ export class ProductdetailsComponent implements OnInit{
   product: any;
   id:any; 
   unitPrice:any;
-  
-  constructor(private svc:EmployeeService,private route:ActivatedRoute,private router:Router){}
-  
-//   products:Product[] |any ;
-//  selectedProduct:any;
-  
-//  constructor(private svc:EmployeeService,private router:Router,private route: ActivatedRoute){ }
-  
+  category:any;
 
-  //   ngOnInit():void{
-  //     this.svc.getAllProducts().subscribe((res)=>{
-  //     this.products=res;
-  //     this.selectedProduct=this.products[0];
-  //     console.log(this.products);
-  //     })
-  //  }
-   
-    //  onSelectProduct(product:any){
-    //    this.svc.getById(product).subscribe((res)=>{
-    //      this.selectedProduct=res;
-    //    })
-    //  }
-  
+  constructor(private svc:EmployeeService,private route:ActivatedRoute,private router:Router){
+    this.category =localStorage.getItem("category");
+  }
   
   ngOnInit(): void {
+    console.log(this.category);
     console.log("ng on init")
     this.id = this.route.snapshot.paramMap.get('id');
     console.log(this.id);
@@ -49,8 +32,8 @@ export class ProductdetailsComponent implements OnInit{
     localStorage.setItem("title",res.title);
     localStorage.setItem("image",res.image);
     console.log(this.product);
-      })
- }
+    });
+}
 
     onClick(id:any){
       this.router.navigate(['./addtocart',id],{relativeTo:this.route})

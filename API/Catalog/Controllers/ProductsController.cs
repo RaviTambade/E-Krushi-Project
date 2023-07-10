@@ -83,6 +83,7 @@ public class ProductsController : ControllerBase
         return product;
     }
 
+    //http://localhost:5137/api/products/uploadfile
     [HttpPost ("uploadfile") , DisableRequestSizeLimit]
     public IActionResult Upload()
     {
