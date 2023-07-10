@@ -18,3 +18,17 @@ table, td, th {
   }
 
   tr:hover {background-color: rgb(242, 246, 217);}
+
+
+  .button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 0px 0px;
+    cursor: pointer;
+  }

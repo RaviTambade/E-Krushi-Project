@@ -10,9 +10,9 @@
 <tr *ngFor="let question of customerQuestions" >
     <td>{{question.description}}</td>
     <td>{{question.questionDate}}</td>
-    <td>{{question.answers}}   | <button class="bgittn btn-default" (click)="onSelectQuestion(question.id)" type="submit">Answer</button></td>
+    <td>{{question.answers}}   | <button class="button" (click)="onSelectQuestion(question.id)" type="submit">Answer</button></td>
  <td>
-        <button class="btn btn-default" (click)="removeQuestion(question.id)" type="submit">Remove</button>
+        <button class="button" (click)="removeQuestion(question.id)" type="submit">Remove</button>
 </td>
 </tr>
 </table>
