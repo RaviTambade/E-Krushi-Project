@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProductService } from '../product.service';
 import { Product } from 'src/app/product';
 import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/http';
@@ -8,10 +8,12 @@ import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/ht
   templateUrl: './newproduct.component.html',
   styleUrls: ['./newproduct.component.css']
 })
-export class NewproductComponent {
+export class NewproductComponent implements OnInit{
   message: string | undefined;
   progress: number =0;
   file:any;
+  categories:any;
+
   product:Product={
     id: 0,
     title: '',
@@ -24,7 +26,16 @@ export class NewproductComponent {
 
   status:Boolean | undefined;
   @Output() public onUploadFinished = new EventEmitter();
-  constructor(private svc:ProductService,private http:HttpClient){}
+  constructor(private svc:ProductService,private http:HttpClient){
+    this.categories=[];
+  }
+
+  ngOnInit(): void {
+    this.svc.getAllCategories().subscribe((res)=>{
+      this.categories=res;
+      console.log(this.categories);
+    })
+  }
 
   
  //get file info
@@ -38,7 +49,7 @@ export class NewproductComponent {
 
 onSubmit(form:any){
 //set material value  
-this.product.image= "/assets/img/"+this.file.name;
+this.product.image= "/assets/image/"+this.file.name;
     this.svc.newProduct(this.product).subscribe((res)=>{
       this.status=res;
       console.log("Insert is Called"+ res);

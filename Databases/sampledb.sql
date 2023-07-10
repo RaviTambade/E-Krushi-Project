@@ -37,7 +37,7 @@ INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('co
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('tractor',1400,50,'/assets/image/tractor.jfif',2);
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('harvesters',2200,50,'/assets/image/harvestor.jfif',2);
 
---FERTILIZERS
+ -- FERTILIZERS
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('wood ash',1200,500,'/image/woodash.jpg',3);
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('bone meal',1500,500,'/image/bonemeal.jpg',3);
 
@@ -143,9 +143,6 @@ INSERT INTO employees(firstname,lastname,birthdate,hiredate,photo,reportsto,user
 INSERT INTO employees(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('rohan','amate','2015-09-15','2022-07-13','/image/prakash.jpg',4,11);
 INSERT INTO employees(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('ajay','lanke','1988-09-15','2022-08-11','/image/nilesh.jpg',1,12);
 
-
-select * from users;
-select * from users;
 
 -- SHIPPERS DATA
 INSERT INTO shippers(companyname,userid) VALUES('agrotech pvt.ltd',13);

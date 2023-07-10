@@ -15,4 +15,8 @@ export class ProductService {
     return this.http.post<Product>(url,product);
     }
 
+  public getAllCategories():Observable<any>{
+      let url = "http://localhost:5137/api/categories";
+      return this.http.get<any>(url);
+    }
 }
