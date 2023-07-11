@@ -21,8 +21,8 @@
                             <td>{{ cart.quantity }}</td>
                             <td>{{cart.quantity * cart.unitPrice}}</td>
                             <td>
-                                <button class="btn btn-default" (click)="onRemoveProduct(cart.cartItemId)" type="submit" >Remove</button> |
-                                <button class="bgittn btn-default" (click)="onUpdateProduct(cart.cartItemId)" type="submit" >Update</button>
+                                <button class="button" (click)="onRemoveProduct(cart.cartItemId)" type="submit" >Remove</button> |
+                                <button class="button"  (click)="onUpdateProduct(cart.cartItemId)" type="submit" >Update</button>
                             </td>
                             
                         </tr>
@@ -35,5 +35,5 @@
 
     <br>
     <p>MAKE PAYMENT AND CONFIRM YOUR ORDER.</p>
-    <button   class="btn btn-default" (click)="onClick()" type="submit">Make Payment</button>
+    <button   class="button"  (click)="onClick()" type="submit">Make Payment</button>
                        
