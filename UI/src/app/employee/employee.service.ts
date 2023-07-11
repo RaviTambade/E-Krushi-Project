@@ -66,7 +66,7 @@ export class EmployeeService {
         return this.http.get<any>(url);
       }
       public getCustomer(custId:number):Observable<any>{
-        let url = "http://localhost:5027/api/customer/getcustomer/" +custId;
+        let url = "http://localhost:5027/api/customers/customer/" +custId;
         return this.http.get<any>(url);
       }
 

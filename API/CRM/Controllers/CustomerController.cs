@@ -26,9 +26,9 @@ public class CustomerController : ControllerBase
         return customers;
     }
 
-   //http://localhost:5027/api/customers/{id}
+   //http://localhost:5027/api/customers/customer/{id}
    [HttpGet]
-   [Route ("{id}")]
+   [Route ("customer/{id}")]
     public async Task<Customer> GetById(int id)
     {
         Customer customer = await _srv.GetById(id);

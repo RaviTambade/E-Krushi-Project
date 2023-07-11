@@ -18,30 +18,38 @@ export class BillingComponent implements OnInit{
     billDate : new Date()
   }
 
-  carts:any[];
-  custId:number=2;
-  productId:any;
-  unitPrice:any;
-  quantity:any
 
-  constructor(private svc:PaymentService,private service:EmployeeService){
-    this.carts=[];
+  custId:number=2;
+  orderDetails:any[];
+  CustomerName:any|string;
+
+  constructor(private svc:EmployeeService,private service:EmployeeService){
+    this.orderDetails=[];
+    this.CustomerName=localStorage.getItem("CustomerName");
   }
   
   ngOnInit(): void {
-    this.service.getCartDetails(this.custId).subscribe((res)=>{
-      this.carts=res;
-      this.productId=res.productId;
-      this.unitPrice=res.unitPrice;
-      this.quantity=res.quantity;
-    console.log(this.carts);
+
+    this.svc.getCustomer(this.custId).subscribe((res)=>{
+      this.CustomerName=res;
+      console.log(this.CustomerName);
+      this.CustomerName=(res.firstName+" "+res.lastName);
+      console.log(this.CustomerName);
+      localStorage.setItem("CustomerName",this.CustomerName);
+    }) 
+    this.svc.getOrderDetails(this.custId).subscribe((res)=>{
+      this.orderDetails=res;
+      console.log(this.orderDetails);
+     
+   
+   
    })
    
   }
   
-  addBill(form:any){
-    this.svc.addBill(form).subscribe((res)=>{
-      this.bill=res;
-    })
+  // addBill(form:any){
+  //   this.svc.addBill(form).subscribe((res)=>{
+  //     this.bill=res;
+  //   })
   }
-}
+

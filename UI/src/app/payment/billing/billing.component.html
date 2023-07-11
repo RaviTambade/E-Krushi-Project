@@ -1,5 +1,31 @@
-<h1>billing work<h1>
-<form #billingForm="ngForm" (ngSubmit)="addBill(billingForm.value)">
+<h2>CustomerName:{{CustomerName}} </h2>
+                <table>
+                    <thead>
+                        <tr>                         
+                            <th>product Title</th>
+                            <th>UnitPrice</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr  *ngFor="let order of orderDetails">
+                            <td>{{ order.title }}</td>
+                            <td>{{ order.unitPrice }}</td>
+                            <td>{{ order.quantity }}</td>
+                            <td>{{ order.total }}</td>
+                            <td>{{ order.status }}</td>
+                        </tr> 
+                    </tbody>
+                </table>
+
+      <button class="button" type="submit">Make Payment</button>
+      
+
+
+
+<!-- <form #billingForm="ngForm" (ngSubmit)="addBill(billingForm.value)">
 
     <div class="form-group">
       <label><b>cust Id:</b></label>
@@ -19,31 +45,15 @@
         <br> 
         <label><b>Billing date :</b></label>
         <input type="datetime" name="billDate" [(ngModel)]="bill.billDate"/>
-      </div>
-    <div class="form-group">
-      <br> 
-      <!-- <label ><b>product Title :</b>{{title}}</label> -->
     </div>
-    <!-- <div class="form-group">
-      <br> 
-      <label ><b>Image:</b></label>
-      <img [src]="image" width="200" height="200"/>
-    </div> -->
-    
     <br>
     <div class="form-group">
       <label><b>UnitPrice :{{unitPrice}}</b></label>
-      <br>
-      <!-- <label><b>quantity :</b></label>
-      <input type="number" name="quantity" [(ngModel)]="quantity"/> -->
      </div>
-    <div>
-      <br>
-      <!-- <label><b>TotalAmount :{{total}}</b></label>    -->
-    </div>
+   
     <div class="form-group">
       <br>
       <button class="btn btn-default" type="submit">Make Payment</button>
     </div>
   </form>
-  
+   -->
