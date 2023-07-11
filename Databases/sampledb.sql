@@ -221,6 +221,6 @@ INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (3,3,'2022-
 INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (4,2,'2022-08-15');
 
 
-INSERT INTO billing(custid,productid,quantity,discount,date) VALUES (2,1,100,0,'2022-02-12 00:00:00');
-INSERT INTO billing(custid,productid,quantity,discount,date) VALUES (3,4,400,0,'2022-02-12 00:00:00');
-INSERT INTO billing(custid,productid,quantity,discount,date) VALUES (1,3,1200,0,'2022-02-12 00:00:00');
+INSERT INTO billing(custid,orderid,Total,date) VALUES (2,1,1000,'2022-02-12 00:00:00');
+INSERT INTO billing(custid,orderid,Total,date) VALUES (3,2,400,'2022-02-12 00:00:00');
+INSERT INTO billing(custid,orderid,Total,date) VALUES (1,3,1200,'2022-02-12 00:00:00');

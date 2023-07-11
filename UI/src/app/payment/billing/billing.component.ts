@@ -22,10 +22,11 @@ export class BillingComponent implements OnInit{
   custId:number=2;
   orderDetails:any[];
   CustomerName:any|string;
-
+   total:any|number;
   constructor(private svc:EmployeeService,private service:EmployeeService){
     this.orderDetails=[];
     this.CustomerName=localStorage.getItem("CustomerName");
+    this.total=localStorage.getItem("total");
   }
   
   ngOnInit(): void {
@@ -51,5 +52,5 @@ export class BillingComponent implements OnInit{
   //   this.svc.addBill(form).subscribe((res)=>{
   //     this.bill=res;
   //   })
-  }
-
+  // }
+}
