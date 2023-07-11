@@ -21,14 +21,12 @@ constructor(private svc:ConsultingService,private router:Router,private route:Ac
     this.id=this.route.snapshot.paramMap.get("id");
     this.svc.getQuestion(this.id).subscribe((res)=>{
       this.question=res;
+    localStorage.setItem("question",res.description);
       console.log(this.question);
-  
     })
    }
 
    onClick(id:any){
     this.router.navigate(["./addquestion",id],{relativeTo:this.route})
-   }
-
-   
+  }   
 }
