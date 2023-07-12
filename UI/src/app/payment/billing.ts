@@ -1,8 +1,7 @@
 export class Billing{
     constructor(public Id:number,
                 public custId:number,
-                public productId:number,
-                public quantity:number,
+                public orderId:number,
                 public billDate:Date)
                 {}
             }

@@ -16,9 +16,6 @@ namespace OrderProcessingService.Controllers
             _ordersvc = ordersvc;
         }
 
-
-
-
         public async Task<IEnumerable<OrderDetails>> GetAllOrderDetails()
         {
             List<OrderDetails> orderDetails = await _ordersvc.GetAllOrderDetails();
@@ -31,7 +28,6 @@ namespace OrderProcessingService.Controllers
             OrderDetails orderDetail = await _ordersvc.GetOrderDetail(id);
             return orderDetail;
         }
-
 
         public async Task<bool> Insert([FromBody] OrderDetails orderDetail)
         {
