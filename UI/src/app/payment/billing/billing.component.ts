@@ -14,17 +14,18 @@ export class BillingComponent implements OnInit{
     Id: 0,
     custId: 0,
     orderId: 0,
+    totalAmount:0,
     billDate : new Date()
   }
 
   custId:number=2;
   orderDetails:any[];
   CustomerName:any|string;
-  orderId:any;
-
-  constructor(private svc:EmployeeService,private service:PaymentService){
+  total:any|number;
+  constructor(private svc:EmployeeService,private service:EmployeeService){
     this.orderDetails=[];
     this.CustomerName=localStorage.getItem("CustomerName");
+    this.total=localStorage.getItem("total");
   }
   
   ngOnInit(): void {
@@ -37,15 +38,13 @@ export class BillingComponent implements OnInit{
     }) 
     this.svc.getOrderDetails(this.custId).subscribe((res)=>{
       this.orderDetails=res;
-      this.orderId = res.orderId;
       console.log(this.orderDetails);
    }) 
   }
   
-  addBill(form:any){
-    this.service.addBill(form).subscribe((res)=>{
-      this.bill=res;
-    })
-  }
+  // addBill(form:any){
+  //   this.svc.addBill(form).subscribe((res)=>{
+  //     this.bill=res;
+  //   })
+  // }
 }
-

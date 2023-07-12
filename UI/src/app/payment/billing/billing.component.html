@@ -1,6 +1,7 @@
-<h2>CustomerName:{{CustomerName}} </h2>
-                <table>
+
+                <table   class="about-section">
                     <thead>
+                      <th>Customer Name:{{CustomerName}} </th>
                         <tr>                         
                             <th>product Title</th>
                             <th>UnitPrice</th>
@@ -18,25 +19,49 @@
                             <td>{{ order.status }}</td>
                         </tr> 
                     </tbody>
+                    <b>Total Amount : {{total}}</b>
+                    <br>
+                    <button type="button" class="button" >Make Payment</button>
+         
                 </table>
+          
+  
 
-<form #billingForm="ngForm" (ngSubmit)="addBill(billingForm.value)">
+
+
+ <!-- <form #billingForm="ngForm" (ngSubmit)="addBill(billingForm.value)"    *ngFor="let order of orderDetails">
 
     <div class="form-group">
       <label><b>cust Id:</b></label>
-      <input type="number" name="custId" [(ngModel)]="custId"/>
+      <input type="number" name="custId" [(ngModel)]="order.custId"/>
    </div>
    <div class="form-group">
       <br> 
       <label ><b>product Id :</b></label>
+<<<<<<< HEAD
       <input type="number" name="orderId" [(ngModel)]="orderId" />
     </div>
     <div class="form-group">
         <br> 
+=======
+      <input type="number" name="productId" [(ngModel)]="order.productId" />
+    </div>
+    <div class="form-group">
+        <br> 
+        <label ><b>Quantity :</b></label>
+        <input type="number" name="quantity" [(ngModel)]="order.quantity" />
+      </div>
+    <div class="form-group">
+        <br> 
+>>>>>>> 09f9424defe6335c981934cdc810e63d91290b2d
         <label><b>Billing date :</b></label>
-        <input type="datetime" name="billDate" [(ngModel)]="bill.billDate"/>
+        <input type="datetime" name="billDate" [(ngModel)]="order.billDate"/>
     </div>
     <br>
+<<<<<<< HEAD
+=======
+   
+>>>>>>> 09f9424defe6335c981934cdc810e63d91290b2d
     <div class="form-group">
       <br>
       <button class="btn btn-default" (click)="onClick()" type="submit">Make Payment</button>
