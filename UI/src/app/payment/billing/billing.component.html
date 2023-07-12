@@ -24,47 +24,31 @@
                     <button type="button" class="button" >Make Payment</button>
          
                 </table>
-          
+           
   
 
 
 
- <!-- <form #billingForm="ngForm" (ngSubmit)="addBill(billingForm.value)"    *ngFor="let order of orderDetails">
+ <form #billingForm="ngForm" (ngSubmit)="addBill(billingForm.value)" >
 
     <div class="form-group">
       <label><b>cust Id:</b></label>
-      <input type="number" name="custId" [(ngModel)]="order.custId"/>
+      <input type="number" name="custId" [(ngModel)]="custId"/>
    </div>
    <div class="form-group">
       <br> 
-      <label ><b>product Id :</b></label>
-<<<<<<< HEAD
+      <label ><b>order Id :</b></label>
       <input type="number" name="orderId" [(ngModel)]="orderId" />
     </div>
     <div class="form-group">
         <br> 
-=======
-      <input type="number" name="productId" [(ngModel)]="order.productId" />
-    </div>
-    <div class="form-group">
-        <br> 
-        <label ><b>Quantity :</b></label>
-        <input type="number" name="quantity" [(ngModel)]="order.quantity" />
-      </div>
-    <div class="form-group">
-        <br> 
->>>>>>> 09f9424defe6335c981934cdc810e63d91290b2d
         <label><b>Billing date :</b></label>
-        <input type="datetime" name="billDate" [(ngModel)]="order.billDate"/>
+        <input type="datetime" name="billDate" [(ngModel)]="bill.billDate"/>
     </div>
     <br>
-<<<<<<< HEAD
-=======
-   
->>>>>>> 09f9424defe6335c981934cdc810e63d91290b2d
     <div class="form-group">
       <br>
-      <button class="btn btn-default" (click)="onClick()" type="submit">Make Payment</button>
+      <button class="btn btn-default"  type="submit">Make Payment</button>
     </div>
     <button class="button" type="submit">Make Payment</button>
   </form>

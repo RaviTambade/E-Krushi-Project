@@ -22,7 +22,8 @@ export class BillingComponent implements OnInit{
   orderDetails:any[];
   CustomerName:any|string;
   total:any|number;
-  constructor(private svc:EmployeeService,private service:EmployeeService){
+  orderId:any;
+  constructor(private svc:EmployeeService,private service:PaymentService){
     this.orderDetails=[];
     this.CustomerName=localStorage.getItem("CustomerName");
     this.total=localStorage.getItem("total");
@@ -38,13 +39,14 @@ export class BillingComponent implements OnInit{
     }) 
     this.svc.getOrderDetails(this.custId).subscribe((res)=>{
       this.orderDetails=res;
+      this.orderId=res.orderId;
       console.log(this.orderDetails);
    }) 
   }
   
-  // addBill(form:any){
-  //   this.svc.addBill(form).subscribe((res)=>{
-  //     this.bill=res;
-  //   })
-  // }
+  addBill(form:any){
+    this.service.addBill(form).subscribe((res)=>{
+      this.bill=res;
+    })
+  }
 }
