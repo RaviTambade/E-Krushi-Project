@@ -20,11 +20,11 @@ public class BillingRepository : IBillingRepository
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = _conString;
             try{
-                string query = "Insert into billing(custid,productid,quantity,discount,date) VALUES(@custid,@productid,@quantity,@discount,@date)";
+                string query = "Insert into billing(custid,orderid,totalamount,discount,date) VALUES(@custId,@orderId,@totalAmount,@discount,@date)";
                 MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@custid",bill.Custid);
-                cmd.Parameters.AddWithValue("@productid",bill.ProductId);
-                cmd.Parameters.AddWithValue("@quantity",bill.Quantity);
+                cmd.Parameters.AddWithValue("@custId",bill.CustId);
+                cmd.Parameters.AddWithValue("@orderId",bill.OrderId);
+                cmd.Parameters.AddWithValue("@totalAmount",bill.TotalAmount);
                 cmd.Parameters.AddWithValue("@discount",bill.Discount);
                 cmd.Parameters.AddWithValue("@date",bill.Date);
                await con.OpenAsync();
@@ -41,5 +41,5 @@ public class BillingRepository : IBillingRepository
                 await con.CloseAsync();
             }
             return status;
-        }
+    }
 }

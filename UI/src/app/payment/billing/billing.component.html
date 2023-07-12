@@ -38,6 +38,12 @@
    <div class="form-group">
       <br> 
       <label ><b>product Id :</b></label>
+<<<<<<< HEAD
+      <input type="number" name="orderId" [(ngModel)]="orderId" />
+    </div>
+    <div class="form-group">
+        <br> 
+=======
       <input type="number" name="productId" [(ngModel)]="order.productId" />
     </div>
     <div class="form-group">
@@ -47,14 +53,19 @@
       </div>
     <div class="form-group">
         <br> 
+>>>>>>> 09f9424defe6335c981934cdc810e63d91290b2d
         <label><b>Billing date :</b></label>
         <input type="datetime" name="billDate" [(ngModel)]="order.billDate"/>
     </div>
     <br>
+<<<<<<< HEAD
+=======
    
+>>>>>>> 09f9424defe6335c981934cdc810e63d91290b2d
     <div class="form-group">
       <br>
-      <button class="btn btn-default" type="submit">Make Payment</button>
+      <button class="btn btn-default" (click)="onClick()" type="submit">Make Payment</button>
     </div>
+    <button class="button" type="submit">Make Payment</button>
   </form>
-   -->
+  

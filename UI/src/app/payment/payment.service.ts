@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Order } from './order';
 import { CreditCard } from './creditcard';
 import { DebitCard } from './debitcard';
+import { Billing } from './billing';
 
 @Injectable({
   providedIn: 'root'
@@ -28,10 +29,10 @@ export class PaymentService {
         return this.http.post(url,credential);
       }
 
-    public addBill(card:CreditCard):Observable<any>{
-        let url ="http://localhost:5181/api/creditcards/creditcard";
-        return this.http.post<CreditCard>(url,card);
-        }
+    public addBill(bill:Billing):Observable<any>{
+        let url ="http://localhost:5238/api/billing";
+        return this.http.post<CreditCard>(url,bill);
+      }
 
 
 }
