@@ -179,6 +179,8 @@ INSERT INTO questioncategories(category) VALUES('soil related questions');
 INSERT INTO questioncategories(category) VALUES('weather releted questions');
 
 
+-- QUESTION TABLE DATA
+
 INSERT INTO questions(description,categoryid) VALUES('How can I increase crop yield?',1);
 INSERT INTO questions(description,categoryid) VALUES('How can I prevent crop damage from pests and diseases?',1);
 INSERT INTO questions(description,categoryid) VALUES('How can I improve soil fertility? ',2);
@@ -188,6 +190,9 @@ INSERT INTO questions(description,categoryid) VALUES('What should I do if there 
 INSERT INTO questions(description,categoryid) VALUES('What should I do if there is heavy rainfall? ',3);
 INSERT INTO questions(description,categoryid) VALUES('What should I do if there is extreme heat?',3);
 
+
+
+-- ANSWERS TABLE DATA
 
 INSERT INTO answers(description,questionid) VALUES('Soil health: Ensure the soil is healthy by adding organic matter and nutrients, improving drainage and water retention, and avoiding soil erosion.',1);
 INSERT INTO answers(description,questionid) VALUES('Monitor crops regularly for signs of pests and diseases and take appropriate measures to prevent and control them.
@@ -202,10 +207,15 @@ INSERT INTO answers(description,questionid) VALUES('Irrigation: Use irrigation t
 INSERT INTO answers(description,questionid) VALUES('Soil erosion prevention: Implement soil erosion prevention practices, such as planting cover crops, to help protect soil from being washed away.
 										  Crop selection: Choose crops that are better suited to wet conditions.',3);
 
+
+
+-- SME TABLE DATA
 INSERT INTO subjectmatterexperts(name,expertise,userid) VALUES('pratima patil','crop related information',22);
 INSERT INTO subjectmatterexperts(name,expertise,userid) VALUES('kiran rakshe','soil related information',23);
 INSERT INTO subjectmatterexperts(name,expertise,userid) VALUES('mayur gorade','Weather related information',24);
 
+
+-- SME ANSWERS
 INSERT INTO smeanswers(answerid,questionid,answerdate,smeid) VALUES (1,1,'2023-04-05 12:08:06',1);
 INSERT INTO smeanswers(answerid,questionid,answerdate,smeid) VALUES (1,1,'2023-06-05 12:20:19',1);
 INSERT INTO smeanswers(answerid,questionid,answerdate,smeid) VALUES (2,1,'2023-07-10 12:23:08',2);
@@ -214,12 +224,15 @@ INSERT INTO smeanswers(answerid,questionid,answerdate,smeid) VALUES (3,1,'2023-0
 
 
 
+-- CUSTOMERQUESTIONS TABLE DATA
 INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (1,1,'2022-01-15');
 INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (2,2,'2023-02-15');
 INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (2,4,'2023-01-15');
 INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (3,3,'2022-05-15');
 INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (4,2,'2022-08-15');
 
+
+-- BILING TABLE DATA
 
 INSERT INTO billing(custid,orderid,Total,date) VALUES (2,1,1000,'2022-02-12 00:00:00');
 INSERT INTO billing(custid,orderid,Total,date) VALUES (3,2,400,'2022-02-12 00:00:00');
