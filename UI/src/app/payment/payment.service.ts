@@ -31,7 +31,7 @@ export class PaymentService {
 
     public addBill(bill:Billing):Observable<any>{
         let url ="http://localhost:5238/api/billing";
-        return this.http.post<CreditCard>(url,bill);
+        return this.http.post<Billing>(url,bill);
       }
 
 

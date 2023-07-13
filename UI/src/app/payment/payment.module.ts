@@ -21,6 +21,7 @@ import { BillingComponent } from './billing/billing.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule
+
   ],
   exports:[
     OrderpaymentComponent,
