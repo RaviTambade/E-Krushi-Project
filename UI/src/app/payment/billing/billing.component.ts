@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from 'src/app/employee/employee.service';
 import { Billing } from '../billing';
 import { PaymentService } from '../payment.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-billing',
@@ -13,20 +14,20 @@ export class BillingComponent implements OnInit{
   bill:Billing={
     Id: 0,
     custId: 0,
-    orderId: 0,
     totalAmount:0,
     billDate : new Date()
   }
 
   custId:number=2;
-  orderDetails:any[];
+  carts:any[];
   CustomerName:any|string;
-  total:any|number;
+  totalAmount:any|number;
   orderId:any;
-  constructor(private svc:EmployeeService,private service:PaymentService){
-    this.orderDetails=[];
+
+  constructor(private svc:EmployeeService,private service:PaymentService,private router:Router,private route:ActivatedRoute){
+    this.carts=[];
     this.CustomerName=localStorage.getItem("CustomerName");
-    this.total=localStorage.getItem("total");
+    this.totalAmount=localStorage.getItem("total");
   }
   
   ngOnInit(): void {
@@ -37,16 +38,27 @@ export class BillingComponent implements OnInit{
       console.log(this.CustomerName);
       localStorage.setItem("CustomerName",this.CustomerName);
     }) 
-    this.svc.getOrderDetails(this.custId).subscribe((res)=>{
-      this.orderDetails=res;
-      this.orderId=res.orderId;
-      console.log(this.orderDetails);
+    this.svc.getCartDetails(this.custId).subscribe((res)=>{
+      this.carts=res;
+      console.log(this.carts);
    }) 
   }
   
   addBill(form:any){
     this.service.addBill(form).subscribe((res)=>{
       this.bill=res;
+      if(res){
+        window.location.reload();
+        alert("  Successfully");
+      }
+      else{
+        alert("Error While deleting Record")
+      }
+
     })
+  }
+
+  checkBill(){
+    this.router.navigate(['./orderpayment'],{relativeTo:this.route});
   }
 }

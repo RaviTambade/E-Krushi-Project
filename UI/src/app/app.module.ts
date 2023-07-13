@@ -27,9 +27,6 @@ import { PaymentModule } from './payment/payment.module';
 import { ConsultingModule } from './consulting/consulting.module';
 import { ProductModule } from './product/product.module';
 
- 
-
-
 @NgModule({
   declarations: [
     AppComponent,

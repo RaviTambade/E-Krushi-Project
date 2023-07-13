@@ -37,6 +37,7 @@ const routes : Routes=[
   {path:'mycart', component:MycartComponent},
   {path:'mycart/update/:id', component:UpdateComponent},
   {path:'mycart/billing', component:BillingComponent},
+  {path:'mycart/billing/orderpayment', component:OrderpaymentComponent},
   {path:'addtocart/home', component:HomeComponent},
   {path:'mycart/order/orderdetails/:custId', component:OrderdetailsComponent},
   {path:'mycart/order/orderdetails/:id/orderpayment', component:OrderpaymentComponent},
@@ -49,7 +50,7 @@ const routes : Routes=[
   {path:'store/details/:id', component:ProductdetailsComponent},
   {path:'store/details/:id/addtocart/:id', component:AddtocartComponent},
   {path:'questioncategory/details/:id', component:DetailsComponent},
-  {path:'mycart/orderpayment/debitcard', component:DebitcardComponent},
+  {path:'mycart/billing/orderpayment/debitcard', component:DebitcardComponent},
   {path:'myQuestion/answers/:questionId', component:QuestionanswerComponent},
 ]
 

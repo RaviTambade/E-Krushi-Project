@@ -1,55 +1,46 @@
 
-                <table   class="about-section">
+
+
+                <table>
                     <thead>
-                      <th>Customer Name:{{CustomerName}} </th>
+                    <tr>
+                      <h3>Customer Name:{{CustomerName}}</h3>
+                    </tr>
                         <tr>                         
                             <th>product Title</th>
                             <th>UnitPrice</th>
                             <th>Quantity</th>
-                            <th>Total</th>
-                            <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr  *ngFor="let order of orderDetails">
+                        <tr  *ngFor="let order of carts ">
                             <td>{{ order.title }}</td>
                             <td>{{ order.unitPrice }}</td>
                             <td>{{ order.quantity }}</td>
-                            <td>{{ order.total }}</td>
-                            <td>{{ order.status }}</td>
                         </tr> 
                     </tbody>
-                    <b>Total Amount : {{total}}</b>
+                    <b>Total Amount : {{totalAmount}}</b>
                     <br>
-                    <button type="button" class="button" >Make Payment</button>
-         
                 </table>
-           
-  
-
-
-
- <form #billingForm="ngForm" (ngSubmit)="addBill(billingForm.value)" >
+          
+  <form #billingForm="ngForm" (ngSubmit)="addBill(billingForm.value)">
 
     <div class="form-group">
-      <label><b>cust Id:</b></label>
-      <input type="number" name="custId" [(ngModel)]="custId"/>
+      <label hidden><b>cust Id:</b></label>
+      <input type="number" name="custId" [(ngModel)]="custId" type="hidden"/>
    </div>
-   <div class="form-group">
-      <br> 
-      <label ><b>order Id :</b></label>
-      <input type="number" name="orderId" [(ngModel)]="orderId" />
-    </div>
     <div class="form-group">
         <br> 
-        <label><b>Billing date :</b></label>
-        <input type="datetime" name="billDate" [(ngModel)]="bill.billDate"/>
+        <label hidden ><b>TotalAmount :</b></label>
+        <input type="number" name="totalAmount" [(ngModel)]="totalAmount" type="hidden"/>
+      </div>
+    <div class="form-group">
+        <br> 
+        <label hidden><b>Billing date :</b></label>
+        <input type="datetime" name="billDate" [(ngModel)]="bill.billDate" type="hidden"/>
     </div>
     <br>
-    <div class="form-group">
-      <br>
-      <button class="btn btn-default"  type="submit">Make Payment</button>
-    </div>
-    <button class="button" type="submit">Make Payment</button>
+    <button type="submit" class="button" (click)="checkBill()" >Make Payment</button>
   </form>
+
   
