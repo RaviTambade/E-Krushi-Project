@@ -1,13 +1,34 @@
-<div *ngIf="product" >
-            <p>Product Id: {{ product.id }}</p>
+
+            <!-- <p>Product Id: {{ product.id }}</p>
             <p>Title: {{ product.title }}</p>
             <p>StockAvailable :{{ product.stockAvailable }}</p>
             <p>unitPrice: {{ product.unitPrice }}</p>
             <p>
               <img [src]="product.image" width="200" height="200"/>
             </p>
-            <p>category: {{ category }}</p> 
-             <button (click)="onClick(product.id)">addToCart</button>    
+            <p>category: {{ category }}</p>  -->
+            <div   class="about-section" *ngIf="product" >
+            <table>
+              <tr>
+              <th>Product Id</th>
+              <th>Title</th>
+              <th>StockAvailable</th>
+              <th>UnitPrice</th>
+              <th>Image</th>
+              <th>category</th>
+
+            </tr>
+            <tr>
+              <td>{{ product.id }}</td>
+              <td>{{ product.title }}</td>
+              <td>{{ product.stockAvailable }}</td>
+              <td>{{ product.unitPrice }}</td>
+              <td><img [src]="product.image" width="50" height="50"/></td>
+              <td>{{ category }}</td>
+            </tr>
+            <button   (click)="onClick(product.id)">addToCart</button>  
+            </table>
+               
           </div> 
 
         
