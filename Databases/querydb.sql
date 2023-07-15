@@ -262,11 +262,13 @@ select * from customerquestions where custid=2;
 -- this query gives details of particular question
 select * from customerquestions where questionid=2;
 
+-- get name where questionid=1
 select name from subjectmatterexperts inner join smeanswers on subjectmatterexperts.id = smeanswers.smeid where smeanswers.questionid=1;
 
-
+-- Get answer count of particular question
 select count(*) from answers where questionid=2;
 
+-- get answer of particular question
 select distinct(questions.description)as question ,(answers.description) as answers from questions 
 inner join answers on questions.id =answers.questionid 
 inner join  customerquestions on customerquestions.questionid =questions.id 

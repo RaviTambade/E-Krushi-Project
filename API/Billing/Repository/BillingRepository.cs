@@ -20,14 +20,12 @@ public class BillingRepository : IBillingRepository
             MySqlConnection con = new MySqlConnection();
             con.ConnectionString = _conString;
             try{
-                string query = "Insert into billing(custid,orderid,totalamount,discount,date) VALUES(@custId,@orderId,@totalAmount,@discount,@date)";
+                string query = "Insert into billing(custid,totalamount,date) VALUES(@custId,@totalAmount,@date)";
                 MySqlCommand cmd = new MySqlCommand(query,con);
                 cmd.Parameters.AddWithValue("@custId",bill.CustId);
-                cmd.Parameters.AddWithValue("@orderId",bill.OrderId);
                 cmd.Parameters.AddWithValue("@totalAmount",bill.TotalAmount);
-                cmd.Parameters.AddWithValue("@discount",bill.Discount);
                 cmd.Parameters.AddWithValue("@date",bill.Date);
-               await con.OpenAsync();
+                await con.OpenAsync();
                 int rowsAffected = cmd.ExecuteNonQuery();
                 if (rowsAffected > 0)
                 {
