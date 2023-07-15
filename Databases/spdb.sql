@@ -10,7 +10,7 @@ COMMIT;
 END $$
 DELIMITER ;
 
-
+-- this procedure is used for creation of order 
 DELIMITER $$
 CREATE PROCEDURE CreateOrder(IN cartId BIGINT )
 BEGIN
