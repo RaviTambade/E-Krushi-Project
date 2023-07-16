@@ -282,4 +282,6 @@ CALL stockavailableupdateinventory(1,2,500);
 -- stored procedure create order
 -- CALL CreateOrder(2);
 
-SELECT * FROM biling
+SELECT * FROM biling;
+
+select * from shippers where userid =1;
