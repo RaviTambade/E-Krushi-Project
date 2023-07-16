@@ -280,4 +280,6 @@ select customerquestions.id, questions.description,customerquestions.questiondat
 CALL stockavailableupdateinventory(1,2,500);
 
 -- stored procedure create order
-CALL CreateOrder(2);
+-- CALL CreateOrder(2);
+
+SELECT * FROM biling
