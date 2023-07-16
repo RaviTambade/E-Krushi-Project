@@ -26,6 +26,7 @@ import { CommonModule } from '@angular/common';
 import { PaymentModule } from './payment/payment.module';
 import { ConsultingModule } from './consulting/consulting.module';
 import { ProductModule } from './product/product.module';
+import { AuthenticationModule } from './authentication/authentication.module';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { ProductModule } from './product/product.module';
     CartModule,
     PaymentModule,
     ConsultingModule,
-    ProductModule
+    ProductModule,
+    AuthenticationModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
