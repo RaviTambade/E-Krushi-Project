@@ -21,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
   ],
   exports: [
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ]
 })
 export class AuthenticationModule { }

@@ -15,4 +15,11 @@ export class AuthenticationService {
     let url="http://localhost:5077/api/authentication/register";
     return this.http.post<any>(url,credential);
   }
+
+  validate(credential: Credential): Observable<any> {
+    let url = "http://localhost:5077/api/authentication/signin";
+    return this.http.post<any>(url, credential);
+  }
+
+
 }
