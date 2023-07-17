@@ -7,7 +7,7 @@ using OrderProcessingService.Services.Interfaces;
 namespace OrderProcessingService.Controllers
 {
     [ApiController]
-    [Route("orderdetails")]
+    [Route("api/orderdetails")]
     public class OrderDetailsController : ControllerBase
     {
         private readonly IOrderDetailsService _ordersvc;
@@ -16,12 +16,14 @@ namespace OrderProcessingService.Controllers
             _ordersvc = ordersvc;
         }
 
+        //http://localhost:5057/api/orderdetails 
         public async Task<IEnumerable<OrderDetails>> GetAllOrderDetails()
         {
             List<OrderDetails> orderDetails = await _ordersvc.GetAllOrderDetails();
             return orderDetails;
         }
 
+        //http://localhost:5057/api/orderdetails/{id} 
         [HttpGet("{id}")]
         public async Task<OrderDetails> GetOrderDetail(int id)
         {
@@ -29,12 +31,14 @@ namespace OrderProcessingService.Controllers
             return orderDetail;
         }
 
+        //http://localhost:5057/api/orderdetails 
         public async Task<bool> Insert([FromBody] OrderDetails orderDetail)
         {
             bool status = await _ordersvc.Insert(orderDetail);
             return status;
         }
 
+        //http://localhost:5057/api/orderdetails/{id}
         [HttpPut("{id}")]
         public async Task<bool> Update(int id, [FromBody] OrderDetails orderDetail)
         {
@@ -48,6 +52,7 @@ namespace OrderProcessingService.Controllers
             return status;
         }
 
+        //http://localhost:5057/api/orderdetails/{id} 
         [HttpDelete("{id}")]
         public async Task<bool> DeleteOrderDetail(int id)
         {
@@ -55,7 +60,7 @@ namespace OrderProcessingService.Controllers
             return status;
         }
 
-
+        //http://localhost:5057/api/orderdetails/order/{orderId} 
         [HttpGet("order/{orderId}")]
         public async Task<List<OrderHistory>> GetDetails(int orderId)
         {
