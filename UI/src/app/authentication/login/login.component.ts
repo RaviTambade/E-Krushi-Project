@@ -8,7 +8,6 @@ import { Credential } from '../Credential';
 })
 export class LoginComponent {
 
-
   credential: Credential = {
     contactNumber: '',
     password: ''
