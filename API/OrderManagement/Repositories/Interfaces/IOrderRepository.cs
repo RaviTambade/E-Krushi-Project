@@ -15,7 +15,6 @@ public interface IOrderRepository{
     Task<int> GetCountByDate(DateTime date);
     Task<int>  TotalCount();
     Task<List<OrderHistory>> GetOrderHistory(int custId);
-
     Task<List<CustomerOrder>> GetOrderDetails();
-    
+    Task<List<Order>> FilterDate(DateTime fromDate,DateTime toDate);
 }

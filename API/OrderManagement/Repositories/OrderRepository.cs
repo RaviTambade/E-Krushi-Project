@@ -10,7 +10,6 @@ public class OrderRepository : IOrderRepository
 
     public OrderRepository(IConfiguration configuration)
     {
-
         _configuration = configuration;
         _conString = this._configuration.GetConnectionString("DefaultConnection");
     }
@@ -471,4 +470,50 @@ public class OrderRepository : IOrderRepository
         return customerOrders;
     }
 
+    public async Task<List<Order>> FilterDate(DateTime fromDate,DateTime toDate)
+    {
+        List<Order> orders = new List<Order>();
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = _conString;
+        try
+        {
+            string query = "SELECT * FROM orders WHERE orderdate BETWEEN @fromDate AND @toDate";
+            await con.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, con);
+            command.Parameters.AddWithValue("@fromDate",fromDate);
+            command.Parameters.AddWithValue("@toDate",toDate);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+                int id = int.Parse(reader["id"].ToString());
+                DateTime orderDate = DateTime.Parse(reader["orderdate"].ToString());
+                DateTime shippedDate = DateTime.Parse(reader["shippeddate"].ToString());
+                int customerId = int.Parse(reader["custid"].ToString());
+                double total = double.Parse(reader["total"].ToString());
+                string? status = reader["status"].ToString();
+
+                Order order = new Order()
+                {
+                    Id = id,
+                    OrderDate = orderDate,
+                    ShippedDate = shippedDate,
+                    CustomerId = customerId,
+                    Total = total,
+                    Status = status
+                };
+
+                orders.Add(order);
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            await con.CloseAsync();
+        }
+        return orders;
+    }
 }

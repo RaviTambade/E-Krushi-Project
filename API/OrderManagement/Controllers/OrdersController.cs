@@ -15,6 +15,7 @@ namespace OrderProcessingService.Controllers
         _ordersvc = ordersvc;
         } 
 
+        
         //http://localhost:5057/api/orders        
         public async Task<IEnumerable<Order>> Orders()
         {
@@ -30,7 +31,7 @@ namespace OrderProcessingService.Controllers
             return order;
         }
 
-       
+        [HttpPost("insert")]
         //http://localhost:5057/api/orders 
         public async Task<bool> Insert([FromBody] Order order)
         {
@@ -101,6 +102,14 @@ namespace OrderProcessingService.Controllers
         {
             List<CustomerOrder> customerOrders= await _ordersvc.GetOrderDetails();
             return customerOrders;
+        }
+
+        //http://localhost:5057/api/orders/orderDate/{fromDate}/{toData}
+        [HttpGet("orderDate/{fromDate}/{toDate}")] 
+        public async Task<IEnumerable<Order>> FilterDate(DateTime fromDate,DateTime toDate)
+        {
+            List<Order> orders= await _ordersvc.FilterDate(fromDate,toDate);
+            return orders;
         }
     }
 }
