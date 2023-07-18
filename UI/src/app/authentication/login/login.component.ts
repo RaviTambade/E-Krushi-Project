@@ -21,7 +21,6 @@ export class LoginComponent {
       console.log(response);
       localStorage.setItem("jwt",response.token)
       alert("Login sucessfull")
-
     })
   }
 }

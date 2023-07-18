@@ -111,6 +111,5 @@ namespace OrderProcessingService.Controllers
             List<Order> orders= await _ordersvc.FilterDate(fromDate,toDate);
             return orders;
         }
-
     }
 }

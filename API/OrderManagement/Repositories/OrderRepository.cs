@@ -10,7 +10,6 @@ public class OrderRepository : IOrderRepository
 
     public OrderRepository(IConfiguration configuration)
     {
-
         _configuration = configuration;
         _conString = this._configuration.GetConnectionString("DefaultConnection");
     }

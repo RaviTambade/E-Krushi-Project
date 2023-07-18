@@ -27,6 +27,7 @@ import { PaymentModule } from './payment/payment.module';
 import { ConsultingModule } from './consulting/consulting.module';
 import { ProductModule } from './product/product.module';
 import { AuthenticationModule } from './authentication/authentication.module';
+import { OrderModule } from './order/order.module';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { AuthenticationModule } from './authentication/authentication.module';
     PaymentModule,
     ConsultingModule,
     ProductModule,
-    AuthenticationModule
+    AuthenticationModule,
+    OrderModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
