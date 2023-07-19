@@ -6,7 +6,7 @@
     <input type="date" name="orderDate" [(ngModel)]="fromDate"/>
     <br>
     <label><b>ToDate</b></label>
-    <input type="date" name="orderDate" [(ngModel)]="toDate"/>
+    <input type="date" name="orderDate" [(ngModel)]="toDate"/><br>
     <button (click)="onSubmit()"> Search</button>
 </div>
 
@@ -22,8 +22,8 @@
         <td>{{ order.orderDate }} </td><br>
         <td>{{ order.shippedDate}} </td><br>
         <td>{{ order.customerId }}</td><br>
-        <td>{{order.total}}</td><br>
-        <td>{{order.status}}</td>
+        <td>{{ order.total}}</td><br>
+        <td>{{ order.status}}</td>
     </tr>
 </table>
 
