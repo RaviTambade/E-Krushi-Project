@@ -170,9 +170,7 @@ SELECT count(*) FROM orders WHERE  date BETWEEN '2020-06-01' AND '2020-06-31';
 SELECT COUNT(*) from orders where date < '2020-04-30' ;
 
 -- //this query returns the list of products given category;
-
 SELECT products.id, products.title,products.unitprice,products.stockavailable,products.image,categories.title from categories inner join products where categories.id=products.categoryid and categories.title='seeds';
-
 
 -- get roles of user using inner join
 select roles.role from userroles inner join roles on userroles.roleid =roles.id where userroles.userid=6;
@@ -186,13 +184,6 @@ select * from solutions;
 
 -- This query gives all questions where category_id =1
 select * from questions where categoryid=1;
-
-select * from subjectmatterexperts;
-select * from questions;
-select * from answers;
-select * from categories;
-select * from smeanswers;
-select * from customerquestions;
 
 -- this query gives all questions of particular smeid
 select questions.description from questions Inner join smeanswers on questions.id = smeanswers.questionid where smeanswers.smeid=1;
@@ -282,6 +273,8 @@ CALL stockavailableupdateinventory(1,2,500);
 -- stored procedure create order
 -- CALL CreateOrder(2);
 
-SELECT * FROM biling;
-
+-- this query gives the list of shippers where userid=1;
 select * from shippers where userid =1;
+
+-- this query gives the list of orders where status=delivered;
+select * from orders where status="delivered";
