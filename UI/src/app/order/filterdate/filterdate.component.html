@@ -1,14 +1,30 @@
 
 <h1>Orderlist</h1>
 
-<div>
+<!-- <div>
     <label><b>FromDate</b></label>
     <input type="date" name="orderDate" [(ngModel)]="fromDate"/>
     <br>
     <label><b>ToDate</b></label>
     <input type="date" name="orderDate" [(ngModel)]="toDate"/><br>
     <button (click)="onSubmit()"> Search</button>
+</div> -->
+
+
+<div id = "myForm">
+    <form>
+        <p> <label for="FromDate">FromDate : </label>
+            <input type="date" id="username" name="orderDate" size=20  [(ngModel)]="fromDate"/></p>
+            <br>
+            <label><b>ToDate : </b></label>
+           <input type="date" name="orderDate" [(ngModel)]="toDate"/>
+           
+           <br>
+           <button (click)="onSubmit()"> Search</button>
+    </form>
 </div>
+
+<br>
 
 <table id="customers">
     <tr>
