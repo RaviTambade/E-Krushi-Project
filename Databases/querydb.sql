@@ -248,7 +248,7 @@ where customerquestions.questionid=2;
 
 select customerquestions.id, questions.description,customerquestions.questiondate,(select count(*) from answers where questionid=customerquestions.questionid)as answers  from questions inner join customerquestions on customerquestions.questionid=questions.id where customerquestions.custid=2;
 
-
+--stored procedure for updation of stock available
 CALL stockavailableupdateinventory(1,2,500);
 
 -- stored procedure create order
@@ -259,3 +259,7 @@ select * from shippers where userid =1;
 
 -- this query gives the list of orders where status=delivered;
 select * from orders where status="delivered";
+
+--this query gives the productlist where categoryid=1;
+select * from products where categoryid=1;
+
