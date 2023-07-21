@@ -139,15 +139,6 @@ FROM accounts WHERE userid=1;
 --   this query return user_id of employees;
 select userid from userroles where roleid in (SELECT id from roles where role="Employee");
 
-select * from answers;
-select * from users;
-select * from userroles;
-select * from roles;
-select * from userroles;
-SELECT * FROM feedbacks;
-select * from subjectmatterexperts;
-select * from orders;
-select * from orderdetails;
 
 SELECT count(*) from orders ;
 
@@ -178,9 +169,6 @@ select roles.role from userroles inner join roles on userroles.roleid =roles.id 
 -- get roles of user using nested query
 SELECT role from roles where id in  (select roleid from userroles where userid=1);
 
-select * from questioncategories;
-select * from questionsolutions;
-select * from solutions;
 
 -- This query gives all questions where category_id =1
 select * from questions where categoryid=1;
@@ -196,8 +184,6 @@ answers.id =smeanswers.answerid and subjectmatterexperts.id=smeanswers.smeid and
 select description from answers where questionid =1;
 
 SELECT products.id,products.title,products.image,products.unitprice,cartitems.quantity FROM products inner join cartitems on products.id=cartitems.productid where cartitems.cartid=2;
-select * from cartitems;
-select * from carts;
 
 -- this query gives the category of given questionid
 select category from questioncategories where id in(select id from questions where id=1);
@@ -214,11 +200,6 @@ cartitems on products.id=cartitems.productid inner join carts on carts.id=cartit
 
 -- this query gives the cartid of particular customer
 select id from carts where custid =2 ;
-
-select * from orderdetails;
-select * from orders;
-select * from cartitems;
-select * from products;
 
 -- this query gives orderhistory of particular customer
 select products.title,products.image,products.unitprice,orders.orderdate,orders.shippeddate,(products.unitprice*cartitems.quantity)as total,orders.status ,cartitems.quantity from products,orders,cartitems inner join carts on carts.id = cartitems.cartid where products.id =cartitems.productid and orders.custid =carts.custid and orders.custid=2;
