@@ -278,3 +278,7 @@ select * from shippers where userid =1;
 
 -- this query gives the list of orders where status=delivered;
 select * from orders where status="delivered";
+
+--this query gives the productlist where categoryid=1;
+select * from products where categoryid=1;
+
