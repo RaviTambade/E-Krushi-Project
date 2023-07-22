@@ -319,5 +319,31 @@ public class CartRepository : ICartRepository
         }
         return item;
     }
-        
+    public async Task<bool> CreateOrder(int CartId)
+        {
+            bool status = false;
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString=_conString;
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand("CreateOrder", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@cartId",CartId);
+                await  con.OpenAsync();
+                int rowsAffected = await cmd.ExecuteNonQueryAsync();
+                if (rowsAffected > 0)
+                {
+                    status = true;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+              await con.CloseAsync();
+            }
+            return status;
+        }      
 }
