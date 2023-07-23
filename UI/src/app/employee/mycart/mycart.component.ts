@@ -31,6 +31,7 @@ export class MycartComponent implements OnInit{
       this.cartItemId=res.cartItemId;
       this.unitPrice=res.unitPrice;
       this.quantity=res.quantity;
+      localStorage.setItem("cartId",res.cartId);
   console.log(this.carts);
    })
   }

@@ -11,6 +11,7 @@ export class DebitcardComponent {
 
 
   transactionId:any;
+  cartId : any;
   successful:boolean=false;
   failed:boolean=false;
   credential:any={
@@ -22,6 +23,7 @@ export class DebitcardComponent {
   }
   constructor(private svc:PaymentService){
     this.credential.amount=localStorage.getItem("total");
+    this.cartId=localStorage.getItem("cartId");
   }
 
 
@@ -33,7 +35,22 @@ export class DebitcardComponent {
     this.svc.fundTransfer(this.credential).subscribe((res)=>{
       this.transactionId=res;
       console.log(this.transactionId);
+
+      if(res){
+        window.location.reload();
+        alert("  Successfully");
+      }
+      else{
+        alert("Error While deleting Record")
+      }
     })
  
+  }
+
+
+  public createOrder(cartId:number){
+    this.svc.createOrder(this.cartId).subscribe((res)=>{
+      console.log(cartId);
+    })
   }
 }
