@@ -86,8 +86,8 @@ namespace ShoppingCartService.Controllers
             return items;
         }
 
-        [HttpPost("createorder")]
-        public async Task<bool> CreateOrder([FromBody] int CartId)
+        [HttpGet("createorder/{CartId}")]
+        public async Task<bool> CreateOrder( int CartId)
         {
             return await _cartSrv.CreateOrder(CartId);
         }
