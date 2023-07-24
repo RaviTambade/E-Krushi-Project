@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PaymentService } from '../payment.service';
 import { NgForm } from '@angular/forms';
 
@@ -7,7 +7,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './debitcard.component.html',
   styleUrls: ['./debitcard.component.css']
 })
-export class DebitcardComponent {
+export class DebitcardComponent implements OnInit {
 
 
   transactionId:any;
@@ -25,17 +25,17 @@ export class DebitcardComponent {
     this.credential.amount=localStorage.getItem("total");
     this.cartId=localStorage.getItem("cartId");
   }
+  ngOnInit(): void {
+  }
 
-
- public  onProceed(form:NgForm){
+ public onProceed(form:NgForm){
     this.credential.fromAcct=form.value.acctno;
-    this.credential.amount=parseFloat(form.value.amount);
+    this.credential.amount=this.credential.amount;
     this.credential.fromIfsc=form.value.ifsc;
-    console.log(this.credential)
+    console.log(this.credential.amount);
     this.svc.fundTransfer(this.credential).subscribe((res)=>{
       this.transactionId=res;
       console.log(this.transactionId);
-
       if(res){
         window.location.reload();
         alert("  Successfully");
@@ -44,13 +44,12 @@ export class DebitcardComponent {
         alert("Error While deleting Record")
       }
     })
- 
   }
-
-
-  public createOrder(cartId:number){
+  
+  createOrder(cartId:any){
+    console.log(this.cartId);
     this.svc.createOrder(this.cartId).subscribe((res)=>{
-      console.log(cartId);
-    })
-  }
+    console.log(this.cartId);
+  });
+ }
 }

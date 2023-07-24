@@ -38,6 +38,7 @@ export class AddtocartComponent implements OnInit{
     console.log("ProductId:"+this.productId);
      this.svc.getCartId(this.customerId).subscribe((res)=>{
       this.cartId=res;
+      localStorage.setItem("cartId",this.cartId);
       console.log("CartId:"+this.cartId);
      })
   }

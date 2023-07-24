@@ -24,9 +24,9 @@ export class PaymentService {
       return this.http.post<CreditCard>(url,card);
       }
 
-    public  fundTransfer(credential:any){
-        let url ="http://localhost:5041/FundTransfer";
-        return this.http.post(url,credential);
+    public  fundTransfer(credential:any):Observable<any>{
+        let url ="http://localhost:5041/fundstransfer";
+        return this.http.post<any>(url,credential);
       }
 
     public addBill(bill:Billing):Observable<any>{
@@ -36,6 +36,6 @@ export class PaymentService {
 
       public createOrder(id : number):Observable<any>{
         let url ="http://localhost:5282/api/cart/createorder/"+id;
-        return this.http.post<any>(url,id);
+        return this.http.get<any>(url);
       }
 }
