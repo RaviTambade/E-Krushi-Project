@@ -49,19 +49,17 @@ public addToCart(form:any){
     this.status=res;
     console.log(res);
     console.log(this.item);
-    if(res){
-      window.location.reload();
-      alert(" product added Successfully");
-    }
-    else{
-      alert("Error While Adding Record")
-    }
+    this.router.navigate(['/home']);
+    // if(res){
+    //   window.location.reload();
+    //   alert(" product added Successfully");
+    // }
+    // else{
+    //   alert("Error While Adding Record")
+    // }
     });
   }
 
-  // onClick(): void{
-  //   this.router.navigate(['store'],{relativeTo:this.route});
-  // }
 
 }
 
