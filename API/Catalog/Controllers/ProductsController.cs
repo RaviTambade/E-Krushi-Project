@@ -83,6 +83,13 @@ public class ProductsController : ControllerBase
         return product;
     }
 
+    [HttpPost("updatestockavailable")]
+    public async Task<bool> UpdateStockAvailable([FromBody] UpdateStockSP updateStock)
+    {
+        return await _service.UpdateStockAvailable(updateStock);
+         
+    }
+
     //http://localhost:5137/api/products/uploadfile
     [HttpPost ("uploadfile") , DisableRequestSizeLimit]
     public IActionResult Upload()

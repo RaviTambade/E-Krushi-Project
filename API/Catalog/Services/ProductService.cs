@@ -15,9 +15,6 @@ public class ProductService : IProductService{
         _repo = repo;
     }
 
-    
-
-
      public async Task<List<Product>> GetAllProducts() => await _repo.GetAllProducts();
 
     public async Task<Product> GetProduct(int id) =>await _repo.GetProduct(id);
@@ -32,4 +29,5 @@ public class ProductService : IProductService{
 
     public async Task<Product> GetProductDetails(string title) =>await _repo.GetProductDetails(title);
     
+    public async Task<bool> UpdateStockAvailable(UpdateStockSP updateStock) =>await _repo.UpdateStockAvailable(updateStock);
 }

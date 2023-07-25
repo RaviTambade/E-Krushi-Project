@@ -1,6 +1,7 @@
 using CatalogService.Models;
 using MySql.Data.MySqlClient;
 using CatalogService.Repositories.Interfaces;
+using System.Data;
 
 namespace CatalogService.Repositories
 {
@@ -281,8 +282,40 @@ namespace CatalogService.Repositories
             return product;
         }
 
-        
-    }
+    public async Task<bool> UpdateStockAvailable(UpdateStockSP updateStock)
+        {
+            Console.WriteLine(updateStock.OrderId);
+            Console.WriteLine(updateStock.ProductId);
+            Console.WriteLine(updateStock.Quantity);
 
+            bool status = false;
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = _conString;
+            try
+            {
+                MySqlCommand cmd = new MySqlCommand("stockavailableupdateinventory",con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                await con.OpenAsync();
+                cmd.Parameters.AddWithValue("@orderid",updateStock.OrderId);
+                cmd.Parameters.AddWithValue("@productid",updateStock.ProductId);
+                cmd.Parameters.AddWithValue("@quantity",updateStock.Quantity); 
+                int rowsAffected = cmd.ExecuteNonQuery();
+                Console.WriteLine("rowsAffected");
+                if(rowsAffected > 0)
+                {
+                    status=true;
+                }
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
+            finally
+            {
+                await con.CloseAsync();
+            }
+            return status;
+        }
+    }
 }
     
