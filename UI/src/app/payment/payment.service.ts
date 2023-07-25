@@ -35,7 +35,7 @@ export class PaymentService {
       }
 
       public createOrder(id : number):Observable<any>{
-        let url ="http://localhost:5282/api/cart/createorder/"+id;
+        let url ="http://localhost:5282/api/cart/createOrder/"+id;
         return this.http.get<any>(url);
       }
 }
