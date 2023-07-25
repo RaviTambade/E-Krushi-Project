@@ -44,15 +44,15 @@ export class UpdateComponent implements OnInit{
     this.status=res;
     console.log(res);
     console.log(this.item);
-    if(res){
-      window.location.reload();
-      alert(" product added Successfully");
-    }
-    else{
-      alert("Error While Adding Record")
-    }
+    this.router.navigate(['/mycart']);
+   
     });
+  
+    
+   
   } 
+
+  
 }  
 
   
