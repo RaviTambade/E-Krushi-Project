@@ -38,8 +38,7 @@ export class RegisterComponent {
         
         if(response){
           this.router.navigate(['/login']);
-        } 
-        
+        }  
       })
     }
     else{

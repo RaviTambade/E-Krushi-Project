@@ -33,7 +33,7 @@ export class OrderpaymentComponent implements OnInit{
     if(e.target.value){
   
     if(e.target.value=="debit card"){
-      this.router.navigate(['./debitcard'],{relativeTo:this.route});
+      this.router.navigateByUrl('/debitcard');
     }   
   }
  }

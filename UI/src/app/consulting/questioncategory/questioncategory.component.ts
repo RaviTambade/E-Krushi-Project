@@ -49,7 +49,7 @@ category = new FormControl(null, [Validators.required]);
   }
 
   onNewQuestion(){
-    this.router.navigate(["./newquestion"],{relativeTo:this.route})
+    this.router.navigateByUrl("/newquestion")
    }
 
 }

@@ -59,6 +59,6 @@ export class BillingComponent implements OnInit{
   }
 
   checkBill(){
-    this.router.navigate(['./orderpayment'],{relativeTo:this.route});
+    this.router.navigateByUrl('/orderpayment');
   }
 }

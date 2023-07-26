@@ -50,7 +50,7 @@ public addToCart(form:any){
     this.status=res;
     console.log(res);
     console.log(this.item);
-    this.router.navigate(['/home']);
+    this.router.navigateByUrl('/home');
     // if(res){
     //   window.location.reload();
     //   alert(" product added Successfully");
