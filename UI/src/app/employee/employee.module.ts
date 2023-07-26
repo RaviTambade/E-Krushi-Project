@@ -25,10 +25,12 @@ import { QuestioncategoryComponent } from '../consulting/questioncategory/questi
 import { DebitcardComponent } from '../payment/debitcard/debitcard.component';
 import { QuestionanswerComponent } from '../consulting/questionanswer/questionanswer.component';
 import { UploadfileComponent } from './uploadfile/uploadfile.component';
+import { LoginComponent } from '../authentication/login/login.component';
 
 
 const routes : Routes=[
   {path:'home', component:HomeComponent},
+  {path:'login', component:LoginComponent},
   {path:'orderhistory', component:OrderhistoryComponent },
   {path:'profile', component:ProfileComponent},
   {path:'store', component:StoreComponent},
@@ -39,6 +41,7 @@ const routes : Routes=[
   {path:'mycart/billing', component:BillingComponent},
   {path:'mycart/billing/orderpayment', component:OrderpaymentComponent},
   {path:'addtocart/home', component:HomeComponent},
+  {path:'addtocart', component:AddtocartComponent},
   {path:'mycart/order/orderdetails/:custId', component:OrderdetailsComponent},
   {path:'mycart/order/orderdetails/:id/orderpayment', component:OrderpaymentComponent},
   {path:'questioncategory/newquestion', component:NewquestionComponent},

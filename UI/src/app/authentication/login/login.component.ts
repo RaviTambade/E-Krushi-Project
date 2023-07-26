@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { Credential } from '../Credential';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,14 +14,18 @@ export class LoginComponent {
     password: ''
   }
 
-  constructor(private svc: AuthenticationService) { }
+  constructor(private svc: AuthenticationService,private router:Router) {
+    // this.productId=localStorage.getItem("")
+   }
 
   onLogin(form: any) {
     console.log(form);
     this.svc.validate(form).subscribe((response) => {
       console.log(response);
       localStorage.setItem("jwt",response.token)
-      alert("Login sucessfull")
+      if(response){
+        this.router.navigate(['home']);
+      } 
     })
   }
 }

@@ -29,12 +29,13 @@ export class AddtocartComponent implements OnInit{
     this.unitPrice = localStorage.getItem("price");
     this.title = localStorage.getItem("title");
     this.image = localStorage.getItem("image");
+    this.productId=localStorage.getItem("productId");
     }
   
   ngOnInit(): void {
     console.log(this.unitPrice);
     console.log(this.item.quantity);  
-    this.productId = this.route.snapshot.paramMap.get('id');
+    // this.productId = this.route.snapshot.paramMap.get('id');
     console.log("ProductId:"+this.productId);
      this.svc.getCartId(this.customerId).subscribe((res)=>{
       this.cartId=res;

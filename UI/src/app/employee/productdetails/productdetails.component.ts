@@ -31,6 +31,7 @@ export class ProductdetailsComponent implements OnInit{
     localStorage.setItem("price",res.unitPrice);
     localStorage.setItem("title",res.title);
     localStorage.setItem("image",res.image);
+    localStorage.setItem("productId",res.id);
     console.log(this.product);
     });
 }
