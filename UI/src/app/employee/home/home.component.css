@@ -8,7 +8,7 @@
   background-color: hsl(154, 90%, 44%);
   text-align: center;
   cursor: pointer;
-  width: 100%;
+  width: 50%;
 } 
 
 .grid-container {
@@ -18,7 +18,7 @@
 }
 .grid-item {
   background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(0, 0, 0, 0.8);
+  border: 2px solid rgba(0, 0, 0, 0.8);
   padding: 50px;
   font-size: 20px;
   text-align: center;
