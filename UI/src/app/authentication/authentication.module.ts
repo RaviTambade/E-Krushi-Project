@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NewuserComponent } from './newuser/newuser.component';
 
 
 
@@ -12,7 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     SigninComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    NewuserComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   exports: [
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    NewuserComponent
   ]
 })
 export class AuthenticationModule { }

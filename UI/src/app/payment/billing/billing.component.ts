@@ -54,7 +54,6 @@ export class BillingComponent implements OnInit{
       else{
         alert("Error While deleting Record")
       }
-
     })
   }
 
