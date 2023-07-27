@@ -300,7 +300,7 @@ namespace CatalogService.Repositories
                 cmd.Parameters.AddWithValue("@productid",updateStock.ProductId);
                 cmd.Parameters.AddWithValue("@quantity",updateStock.Quantity); 
                 int rowsAffected = cmd.ExecuteNonQuery();
-                Console.WriteLine("rowsAffected");
+                Console.WriteLine(rowsAffected);
                 if(rowsAffected > 0)
                 {
                     status=true;
