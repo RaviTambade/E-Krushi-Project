@@ -1,10 +1,3 @@
-SELECT * FROM employees;
-SELECT * FROM feedbacks;
-select * from agridoctors;
-SELECT * FROM questions;
-SELECT * FROM solutions;
-SELECT * FROM questionsolutions;
-SELECT * FROM users;
 
 -- CRUD OPERATIONS CUSTOMERS TABLE
 -- GET ALL DETAILS OF CUSTOMERS
