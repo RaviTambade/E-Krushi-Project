@@ -23,7 +23,9 @@ namespace ShoppingCartService.Controllers
             Console.WriteLine(custId);
             return items;
         }
+          
 
+          //these method is used for get cart details by id.
         [HttpGet("getcartdetails/{id}")]
         public async Task<Cart> GetCart(int id)
         {
@@ -31,7 +33,9 @@ namespace ShoppingCartService.Controllers
             Console.WriteLine(id);
             return cart;
         }
+         
 
+         //this method is used for add item into cart
         [HttpPost]
         [Route("addtocart")]
 
