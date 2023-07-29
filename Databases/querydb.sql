@@ -95,9 +95,6 @@ FROM orderdetails, products
 WHERE  products.id =orderdetails.productid 
 AND orderid= 1;
 
-select * from transactions;
-
-
 SELECT
   accounts.number,
   transactions.id,
@@ -127,16 +124,14 @@ SELECT userid,
 	   number
 FROM accounts WHERE userid=1;
 
-
-
 --   this query return user_id of employees;
 select userid from userroles where roleid in (SELECT id from roles where role="Employee");
 
-
+-- this method gives the total count of orders
 SELECT count(*) from orders ;
 
+-- this method gives the count of orders where orderdate is greater than 2020-02-07T12:14:13
 SELECT count(*) from orders where date <'2020-02-07T12:14:13';
-
 
 -- this query return count of orders of 1st month of 2020; 
 SELECT count(*) FROM orders WHERE  date BETWEEN '2020-01-01 12:12:12' AND '2020-01-31 12:12:12';
@@ -161,7 +156,6 @@ select roles.role from userroles inner join roles on userroles.roleid =roles.id 
 
 -- get roles of user using nested query
 SELECT role from roles where id in  (select roleid from userroles where userid=1);
-
 
 -- This query gives all questions where category_id =1
 select * from questions where categoryid=1;
@@ -203,9 +197,6 @@ select orders.id, products.title,products.image,products.unitprice,orders.orderd
 -- this query gives the question and questiondate
 select questions.description,customerquestions.questiondate from questions 
 inner join customerquestions on customerquestions.questionid=questions.id where customerquestions.custid=2;
-
-select * from orders;
-select * from customers;
 
 -- this query gives orderhistory of particular orderid
 select orders.id,customers.firstname,customers.lastname, products.title,products.unitprice,orders.custid,(products.unitprice*cartitems.quantity)as total,orders.status ,cartitems.quantity from customers,orderdetails,orders,cartitems inner join products on products.id = cartitems.productid where orders.id = orderdetails.orderid 
