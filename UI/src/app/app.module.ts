@@ -28,6 +28,7 @@ import { ConsultingModule } from './consulting/consulting.module';
 import { ProductModule } from './product/product.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { OrderModule } from './order/order.module';
+import { ChartsModule } from './charts/charts.module';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { OrderModule } from './order/order.module';
     ConsultingModule,
     ProductModule,
     AuthenticationModule,
-    OrderModule
+    OrderModule,
+    ChartsModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
