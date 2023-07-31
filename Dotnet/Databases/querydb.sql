@@ -247,3 +247,4 @@ select * from orders where status="delivered";
 --this query gives the productlist where categoryid=1;
 select * from products where categoryid=1;
 
+select * from subjectmatterexperts;
