@@ -111,5 +111,15 @@ namespace OrderProcessingService.Controllers
             List<Order> orders= await _ordersvc.FilterDate(fromDate,toDate);
             return orders;
         }
+
+
+         [HttpGet("Count/month/{year}")]                    //This query gives count of order by date
+        public async Task<List<OrderChart>> GetCountByMonth(int year)
+        {
+            
+            Console.WriteLine(year);
+            List<OrderChart> counts = await _ordersvc.GetCountByMonth(year);
+            return counts;
+        }
     }
 }
