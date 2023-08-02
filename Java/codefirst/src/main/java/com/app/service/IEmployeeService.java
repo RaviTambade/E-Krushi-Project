@@ -7,11 +7,8 @@ public interface IEmployeeService {
     List<Employee> getAllEmployees();
 
     Employee getById(int empId);
-    String delete(int empId);
+    boolean delete(int empId);
     Employee newEmp(Employee employee);
     Employee updateEmp(Employee emp);
-    
-
-
-    
+      
 }

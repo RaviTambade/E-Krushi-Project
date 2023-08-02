@@ -31,14 +31,14 @@ public class EmployeeController {
 	}
 	//add req handling method (REST API call) to send all emps
 	@GetMapping
-	public List<Employee> listAllEmps()
+	public List<Employee> getAllEmps()
 	{
 		System.out.println("in list emps");
 		return empService.getAllEmployees();		
 	}
 	//add req handling method to create new emp
 	@PostMapping
-	public Employee saveEmpDetails(@RequestBody  Employee emp)
+	public Employee newEmp(@RequestBody  Employee emp)
 	//To inform SC , to un marshall(de-serialization , json/xml  --> Java obj) the method arg.
 	{
 		System.out.println("in save emp "+emp);//id : null...
@@ -47,10 +47,11 @@ public class EmployeeController {
 	//add req handling method to delete emp details
 	@DeleteMapping("/{empId}")//can use ANY name for a path var.
 	//@PathVariable => a binding between a path var to method arg.
-	public String deleteEmpDetails(@PathVariable int empId)
+	public boolean deleteEmp(@PathVariable int empId)
 	{
+		boolean msg=empService.delete(empId);
 		System.out.println("in del emp "+empId);
-		return empService.delete(empId);
+		return msg;
 	}
 	//add a method to get specific emp dtls
 	@GetMapping("/{id}")
@@ -62,7 +63,7 @@ public class EmployeeController {
 	}
 	//add a method to update existing resource
 	@PutMapping
-	public Employee updateEmpDetails(@RequestBody Employee emp)
+	public Employee updateEmp(@RequestBody Employee emp)
 	{
 		System.out.println("in update emp "+emp);//id not null
 		return empService.updateEmp(emp);

@@ -19,27 +19,21 @@ public class EmployeeService implements IEmployeeService {
     public List<Employee> getAllEmployees(){
       return empRepo.findAll();
     }
-    // @Override
-    // public Employee getById(int empId){
-    //   return empRepo.findById(empId)
-    //   .orElseThrow(() -> new ResourceNotFoundException("Invalid emp id !!!!!!" + empId));
-	// }
-
 
     @Override
 	public Employee getById(int empId) {
 		// TODO Auto-generated method stub
 		return empRepo.findById(empId)
-				.orElseThrow();
+        .orElseThrow(() -> new ResourceNotFoundException("Invalid emp id !!!!!!" + empId));
 	}
     
     @Override
-    public String delete(int empId){
-        String mesg = "Deletion of emp details failed!!!!!!!!!!!";
+    public boolean delete(int empId){
+        boolean mesg = false;
 
 		if (empRepo.existsById(empId)) {
 			empRepo.deleteById(empId);
-			mesg = "Emp details deleted successfully , for emp id :" + empId;
+			mesg = true;
 		}
 
 		return mesg;
