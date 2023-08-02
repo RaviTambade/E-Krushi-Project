@@ -1,5 +1,6 @@
 import { Component,OnInit} from '@angular/core';
 import Chart from 'chart.js/auto';
+import { ChartsService } from '../charts.service';
 
 @Component({
   selector: 'app-bar-chart',
@@ -9,27 +10,38 @@ import Chart from 'chart.js/auto';
 
 export class BarChartComponent implements OnInit{
 
-  public chart: any;
+year:number=2020;
+orders:any;
+public chart: any;
+month:any[]=[];
+totalCount:any[]=[];
+
+  constructor(private svc:ChartsService){
+  this.orders=[];
+
+  }
     ngOnInit(): void {
-      this.createChart();
+      this.svc.getCountByMonth(this.year).subscribe((res)=>{
+        this.orders=res;
+        if(this.orders!=null){
+          for(let i=0;i<this.orders.length; i++){
+            this.month.push(this.orders[i].monthName);
+            this.totalCount.push(this.orders[i].count);
+          }
+        }
+        this.createChart(this.month,this.totalCount);
+      });   
     }
-    createChart(){
+
+    createChart(month:any,totalCount:any){
       this.chart = new Chart("MyChart", {
         type: 'bar', //this denotes tha type of chart
         data: {// values on X-Axis
-          labels: ['2022-05-10', '2022-05-11', '2022-05-12','2022-05-13',
-                   '2022-05-14', '2022-05-15', '2022-05-16','2022-05-17', ], 
+          labels: month, 
            datasets: [
             {
-              label: "Sales",
-              data: ['467','576', '572', '79', '92',
-                   '574', '573', '576'],
-              backgroundColor: 'blue'
-            },
-            {
-              label: "Profit",
-              data: ['542', '542', '536', '327', '17',
-                     '0.00', '538', '541'],
+              label: "Orders",
+              data:totalCount , 
               backgroundColor: 'orange'
             }  
           ]

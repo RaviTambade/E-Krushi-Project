@@ -526,24 +526,21 @@ public class OrderRepository : IOrderRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "SELECT   monthname(orderdate) as monthname, COUNT(*) as count FROM orders WHERE     YEAR(orderdate) = @year GROUP BY  monthname(orderdate);";
+            string query = "SELECT monthname(orderdate) as monthname, COUNT(*) as count FROM orders WHERE     YEAR(orderdate) = @year GROUP BY  monthname(orderdate);";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@year",year);
-           MySqlDataReader reader = command.ExecuteReader();   
-         while (await reader.ReadAsync())
+            MySqlDataReader reader = command.ExecuteReader();   
+            while (await reader.ReadAsync())
             {
-                int count = int.Parse(reader["count"].ToString());
-               
+                int count = int.Parse(reader["count"].ToString()); 
                 string? monthName = reader["monthname"].ToString();
 
                 OrderChart order = new OrderChart()
                 {
                     Count = count,
-                    MonthName = monthName
-                    
+                    MonthName = monthName   
                 };
-
                 orders.Add(order);
             }
             await reader.CloseAsync();
