@@ -248,3 +248,6 @@ select * from orders where status="delivered";
 select * from products where categoryid=1;
 
 select * from subjectmatterexperts;
+
+--this query is used for showing orders data in chart
+SELECT MONTHNAME(orderdate) AS monthname, COUNT(*) AS count FROM orders WHERE YEAR(orderdate) = 2020 GROUP BY MONTHNAME(orderdate), MONTH(orderdate) ORDER BY MONTH(orderdate) ASC;
