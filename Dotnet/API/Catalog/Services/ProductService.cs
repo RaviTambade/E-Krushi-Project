@@ -30,4 +30,6 @@ public class ProductService : IProductService{
     public async Task<Product> GetProductDetails(string title) =>await _repo.GetProductDetails(title);
     
     public async Task<bool> UpdateStockAvailable(UpdateStockSP updateStock) =>await _repo.UpdateStockAvailable(updateStock);
+
+    public async Task<List<ProductSale>> GetProductReport(int year) => await _repo.GetProductReport(year);
 }

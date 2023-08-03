@@ -316,6 +316,44 @@ namespace CatalogService.Repositories
             }
             return status;
         }
+        public async Task<List<ProductSale>> GetProductReport(int year)
+       {
+
+        List<ProductSale> questions = new List<ProductSale>();
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _conString;
+        try
+        {
+            string query = "select title,productid,sum(quantity) as quantity from products inner join orderdetails on products.id=orderdetails.productid  inner join orders on orders.id=orderdetails.orderid where year(shippeddate)=@year group by productid";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@year",year);
+            await connection.OpenAsync();
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+                string title = reader["title"].ToString();
+                int quantity = int.Parse(reader["quantity"].ToString());
+                
+
+                ProductSale question = new ProductSale()
+                {
+                    Title =title,
+                    Quantity = quantity,  
+                };
+                questions.Add(question);
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception ee)
+        {
+            throw ee;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+        return questions;
+    } 
     }
 }
     

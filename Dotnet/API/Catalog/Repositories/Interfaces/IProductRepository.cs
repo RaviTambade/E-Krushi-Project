@@ -13,5 +13,6 @@ namespace CatalogService.Repositories.Interfaces
     Task<Product> GetProductDetails(string title);
     Task<List<Product>> GetProductsDetails(string categoryName);
     Task<bool> UpdateStockAvailable(UpdateStockSP updateStock);
+    Task<List<ProductSale>> GetProductReport(int year);
     }
 }

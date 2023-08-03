@@ -120,4 +120,12 @@ public class ProductsController : ControllerBase
             return StatusCode(500, $"Internal server error: {ex}");
         }
     }
+
+    [HttpGet]
+    [Route("sale/{year}")]
+    public async Task<List<ProductSale>> GetProductReport(int year)
+    {
+        List<ProductSale> products = await _service.GetProductReport(year);
+        return products;
+    }
 }    

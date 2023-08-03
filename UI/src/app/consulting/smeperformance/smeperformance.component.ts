@@ -41,7 +41,9 @@ export class SMEPerformanceComponent {
               {
                 label: "Answers",
                 data:totalCount , 
-                backgroundColor: 'blue'
+                backgroundColor:[ 'red',
+                                  'blue',
+                                  'green']
               }  
             ]
           },
