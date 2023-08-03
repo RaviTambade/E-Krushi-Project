@@ -248,3 +248,18 @@ select * from orders where status="delivered";
 select * from products where categoryid=1;
 
 select * from subjectmatterexperts;
+
+SELECT * FROM ORDERS;
+
+-- THIS QUERY IS USED FOR COLLECTING TOTAL ORDERS PER MAONTH
+SELECT    COUNT(*)
+FROM      orders
+WHERE     YEAR(orderdate) = '2020' 
+GROUP BY  MONTH(orderdate);
+
+
+
+-- yearly performance of subjectmatterexperts
+SELECT name,smeid,count(*) FROM SMEANSWERS 
+inner join subjectmatterexperts on SMEANSWERS.smeid=subjectmatterexperts.id WHERE YEAR(answerdate) = 2023 
+group by smeid;
