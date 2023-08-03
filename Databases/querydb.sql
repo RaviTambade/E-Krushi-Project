@@ -260,3 +260,8 @@ group by smeid;
 --this query is used for showing orders data in chart
 SELECT MONTHNAME(orderdate) AS monthname, COUNT(*) AS count FROM orders WHERE YEAR(orderdate) = 2020 GROUP BY MONTHNAME(orderdate), MONTH(orderdate) ORDER BY MONTH(orderdate) ASC;
 
+--this query is used for showing product sale
+select title,productid,sum(quantity) as quantity from products inner join orderdetails on products.id=orderdetails.productid  
+inner join orders on orders.id=orderdetails.orderid
+where year(shippeddate)=2020 group by productid;
+
