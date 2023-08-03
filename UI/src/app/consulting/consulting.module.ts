@@ -9,6 +9,7 @@ import { NewquestionComponent } from './newquestion/newquestion.component';
 import { QuestioncategoryComponent } from './questioncategory/questioncategory.component';
 import { HttpClientModule } from '@angular/common/http';
 import { QuestionanswerComponent } from './questionanswer/questionanswer.component';
+import { SMEPerformanceComponent } from './smeperformance/smeperformance.component';
 
 
 
@@ -22,6 +23,7 @@ import { QuestionanswerComponent } from './questionanswer/questionanswer.compone
     NewquestionComponent,
     QuestioncategoryComponent,
     QuestionanswerComponent,
+    SMEPerformanceComponent,
     
   ],
   imports: [
@@ -36,6 +38,7 @@ import { QuestionanswerComponent } from './questionanswer/questionanswer.compone
     MyquestionComponent,
     NewquestionComponent,
     QuestioncategoryComponent,
+    SMEPerformanceComponent
     
   ]
 
