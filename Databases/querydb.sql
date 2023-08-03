@@ -249,17 +249,14 @@ select * from products where categoryid=1;
 
 select * from subjectmatterexperts;
 
+<<<<<<< HEAD
 SELECT * FROM ORDERS;
-
--- THIS QUERY IS USED FOR COLLECTING TOTAL ORDERS PER MAONTH
-SELECT    COUNT(*)
-FROM      orders
-WHERE     YEAR(orderdate) = '2020' 
-GROUP BY  MONTH(orderdate);
-
-
 
 -- yearly performance of subjectmatterexperts
 SELECT name,smeid,count(*) FROM SMEANSWERS 
 inner join subjectmatterexperts on SMEANSWERS.smeid=subjectmatterexperts.id WHERE YEAR(answerdate) = 2023 
 group by smeid;
+
+--this query is used for showing orders data in chart
+SELECT MONTHNAME(orderdate) AS monthname, COUNT(*) AS count FROM orders WHERE YEAR(orderdate) = 2020 GROUP BY MONTHNAME(orderdate), MONTH(orderdate) ORDER BY MONTH(orderdate) ASC;
+
