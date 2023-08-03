@@ -265,3 +265,5 @@ select title,productid,sum(quantity) as quantity from products inner join orderd
 inner join orders on orders.id=orderdetails.orderid
 where year(shippeddate)=2020 group by productid;
 
+--this query gives the count of cash and online payment
+select mode,count(*) as count from payments where year(date)=2022 group by mode;
