@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { NewproductComponent } from './newproduct/newproduct.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductsellComponent } from './productsell/productsell.component';
 
 
 
 @NgModule({
   declarations: [
-    NewproductComponent
+    NewproductComponent,
+    ProductsellComponent
   ],
   imports: [
     CommonModule,
@@ -16,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   exports: [
-    NewproductComponent
+    NewproductComponent,
+    ProductsellComponent
   ]
 })
 export class ProductModule { }
