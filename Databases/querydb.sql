@@ -249,11 +249,11 @@ select * from products where categoryid=1;
 
 select * from subjectmatterexperts;
 
-<<<<<<< HEAD
+
 SELECT * FROM ORDERS;
 
 -- yearly performance of subjectmatterexperts
-SELECT name,smeid,count(*) FROM SMEANSWERS 
+SELECT name,smeid,count(*)as count FROM SMEANSWERS 
 inner join subjectmatterexperts on SMEANSWERS.smeid=subjectmatterexperts.id WHERE YEAR(answerdate) = 2023 
 group by smeid;
 

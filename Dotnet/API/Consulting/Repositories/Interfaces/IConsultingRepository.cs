@@ -29,4 +29,7 @@ public interface IConsultingRepository{
     Task<List<Question>> GetQuestions(string categoryName);
     Task<int> GetCategoryId(string categoryName);
     Task<List<QuestionAnswer>> CustomerQuestionAnswer(int questionId);
+
+    Task<List<SMEReport>> GetSMEReport(int year);
+
 }
