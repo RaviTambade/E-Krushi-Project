@@ -14,5 +14,7 @@ namespace KrushiProject.Repositories.Interfaces
         Task<bool> Delete(int id);
 
         Task<Customer> GetByUserId(int userId);
+
+        Task<List<CustomerReport>> GetCustomerReport(int custId);
     }
 }
