@@ -267,3 +267,12 @@ where year(shippeddate)=2020 group by productid;
 
 --this query gives the count of cash and online payment
 select mode,count(*) as count from payments where year(date)=2022 group by mode;
+
+--this query is used for showing product sales for particular customer
+select title,productid,sum(quantity) as total from products inner join orderdetails on products.id=orderdetails.productid inner join orders on orders.id = orderdetails.orderid where custid =2 group by productid ;
+
+--this query is used for showing order chart
+select status,sum(status) as total from orders where year(orderdate)=2020 group by status;
+
+--this query is used for showing order chart of particular customer
+select status,sum(status) as total from orders where year(orderdate)=2020 and custid=2 group by status;
