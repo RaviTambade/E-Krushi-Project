@@ -555,4 +555,51 @@ public class OrderRepository : IOrderRepository
         }
         return orders;
     }
+
+
+
+    
+
+    public async Task<List<OrderChart>> OrderStatus(int year )
+    {
+
+       List<OrderChart> orders = new List<OrderChart>();
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = _conString;
+        try
+        {
+            string query = "select status,sum(status) as total from orders where year(orderdate)=@year group by status;";
+            await con.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, con);
+            command.Parameters.AddWithValue("@year",year);
+            MySqlDataReader reader = command.ExecuteReader();   
+            while (await reader.ReadAsync())
+            {
+                string status = reader["status"].ToString(); 
+                int total = int.Parse(reader["total"].ToString());
+
+                OrderChart order = new OrderChart()
+                {
+                    Status = status,
+                    Total = total   
+                };
+                orders.Add(order);
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            await con.CloseAsync();
+        }
+        return orders;
+    }
+
+
+
+
+
 }

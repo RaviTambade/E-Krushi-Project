@@ -18,5 +18,7 @@ public interface IOrderRepository{
     Task<List<CustomerOrder>> GetOrderDetails();
     Task<List<Order>> FilterDate(DateTime fromDate,DateTime toDate);
    Task<List<OrderChart>> GetCountByMonth(int year);
+   Task<List<OrderChart>> OrderStatus(int year);
+
 
 }
