@@ -34,13 +34,13 @@ export class OrderStatusComponent {
   
       createChart(status:any,total:any){
         this.chart = new Chart("MyChart", {
-          type: 'doughnut', //this denotes tha type of chart
+          type: 'pie', //this denotes tha type of chart
           data: {// values on X-Axis
             labels: status, 
             
              datasets: [
               {
-                label: "sell",
+                label: "orderStatus",
                 data:total , 
                 backgroundColor: ['orange','blue','green','red','pink']
               }  
