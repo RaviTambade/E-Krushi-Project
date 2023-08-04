@@ -27,6 +27,7 @@ import { QuestionanswerComponent } from '../consulting/questionanswer/questionan
 import { UploadfileComponent } from './uploadfile/uploadfile.component';
 import { LoginComponent } from '../authentication/login/login.component';
 import { RegisterComponent } from '../authentication/register/register.component';
+import { CustomerproductsaleComponent } from './customerproductsale/customerproductsale.component';
 
 
 const routes : Routes=[
@@ -70,7 +71,8 @@ const routes : Routes=[
     UpdateComponent,
     OrderhistoryComponent,
     OrderdetailsComponent,
-    UploadfileComponent
+    UploadfileComponent,
+    CustomerproductsaleComponent
   ],
   imports: [
     CommonModule,
@@ -83,6 +85,7 @@ const routes : Routes=[
     RoutingComponent,
     StoreComponent,
     OrderComponent,
+    CustomerproductsaleComponent,
     UploadfileComponent
   ]
 })
