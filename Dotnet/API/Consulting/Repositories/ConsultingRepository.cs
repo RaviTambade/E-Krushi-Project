@@ -765,46 +765,6 @@ public class ConsultingRepository : IConsultingRepository
         }
         return answers;
     }  
-    public async Task<List<SMEReport>> GetSMEReport(int year)
-    {
-
-        List<SMEReport> questions = new List<SMEReport>();
-        MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = _conString;
-
-        try
-        {
-
-            string query = "SELECT name,smeid,count(*) as count FROM SMEANSWERS inner join subjectmatterexperts on SMEANSWERS.smeid=subjectmatterexperts.id WHERE YEAR(answerdate) = @year group by smeid";
-            MySqlCommand command = new MySqlCommand(query, connection);
-            command.Parameters.AddWithValue("@year",year);
-            await connection.OpenAsync();
-            MySqlDataReader reader = command.ExecuteReader();
-            while (await reader.ReadAsync())
-            {
-                string name = reader["name"].ToString();
-                int count = int.Parse(reader["count"].ToString());
-                
-
-                SMEReport question = new SMEReport()
-                {
-                    Name =name,
-                    Count = count,  
-                };
-                questions.Add(question);
-            }
-            await reader.CloseAsync();
-        }
-        catch (Exception ee)
-        {
-            throw ee;
-        }
-        finally
-        {
-            await connection.CloseAsync();
-        }
-        return questions;
-    } 
 }
 
 

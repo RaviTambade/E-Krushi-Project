@@ -267,10 +267,5 @@ public class ConsultingController : ControllerBase
         return answers;
     }
 
-    [HttpGet("smereport/{year}")]
-    public async Task<List<SMEReport>> GetSMEReport(int year)
-    {
-        List<SMEReport> answers = await _srv.GetSMEReport(year);
-        return answers;
-    }
+    
 }

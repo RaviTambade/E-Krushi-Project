@@ -47,5 +47,12 @@ namespace BIService.Controllers
             List<CustomerReport> customers = await _svc.GetCustomerReport(custId);
             return customers;
         } 
+
+        [HttpGet("smereport/{year}")]
+        public async Task<List<SMEReport>> GetSMEReport(int year)
+        {
+            List<SMEReport> answers = await _svc.GetSMEReport(year);
+            return answers;
+        }
     }
 }

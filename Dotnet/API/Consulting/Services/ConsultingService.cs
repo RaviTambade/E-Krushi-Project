@@ -41,5 +41,5 @@ public class ConsultingService:IConsultingService{
 
     public async Task<List<QuestionAnswer>> CustomerQuestionAnswer(int questionId) => await _repo.CustomerQuestionAnswer(questionId);
 
-    public async Task<List<SMEReport>> GetSMEReport(int year) => await _repo.GetSMEReport(year);
+    
 }

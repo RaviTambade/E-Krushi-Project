@@ -9,4 +9,6 @@ public interface IBIRepository{
    Task<List<ProductSale>> GetProductReport(int year);
 
    Task<List<CustomerReport>> GetCustomerReport(int custId);
+
+   Task<List<SMEReport>> GetSMEReport(int year);
 }
