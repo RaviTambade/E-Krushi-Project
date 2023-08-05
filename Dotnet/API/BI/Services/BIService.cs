@@ -11,7 +11,9 @@ public class BIServices : IBIService{
         this._repo=repo;
     }
 
-     public async Task<List<OrderChart>> GetCountByMonth(int year) => await _repo.GetCountByMonth(year);
+    public async Task<List<OrderChart>> GetCountByMonth(int year) => await _repo.GetCountByMonth(year);
 
-     public async Task<List<OrderChart>> OrderStatus(int year) => await _repo.OrderStatus(year);
+    public async Task<List<OrderChart>> OrderStatus(int year) => await _repo.OrderStatus(year);
+
+    public async Task<List<ProductSale>> GetProductReport(int year) => await _repo.GetProductReport(year);
 }

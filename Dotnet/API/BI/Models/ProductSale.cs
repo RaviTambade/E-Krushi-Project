@@ -1,4 +1,4 @@
-namespace CatalogService.Models;
+namespace BIService.Models;
 
 public class ProductSale{
 

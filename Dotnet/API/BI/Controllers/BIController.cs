@@ -31,11 +31,13 @@ namespace BIService.Controllers
             List<OrderChart> counts = await _svc.OrderStatus(year);
             return counts;
         }
-    
-    
-    
-    
-    
-    
+
+        [HttpGet]
+        [Route("sale/{year}")]
+        public async Task<List<ProductSale>> GetProductReport(int year)
+        {
+            List<ProductSale> products = await _svc.GetProductReport(year);
+            return products;
+        }
     }
-    }
+}

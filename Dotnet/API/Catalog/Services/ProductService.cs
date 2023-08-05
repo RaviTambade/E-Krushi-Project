@@ -31,5 +31,5 @@ public class ProductService : IProductService{
     
     public async Task<bool> UpdateStockAvailable(UpdateStockSP updateStock) =>await _repo.UpdateStockAvailable(updateStock);
 
-    public async Task<List<ProductSale>> GetProductReport(int year) => await _repo.GetProductReport(year);
+    
 }
