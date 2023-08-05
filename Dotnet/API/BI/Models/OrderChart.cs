@@ -1,4 +1,4 @@
-namespace OrderProcessingService.Models;
+namespace BIService.Models;
 
 public class OrderChart{
     public int Count{get; set;}

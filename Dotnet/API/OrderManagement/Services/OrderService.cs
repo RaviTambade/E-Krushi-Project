@@ -38,7 +38,5 @@ public class OrderService : IOrderService{
 
     public async Task<List<Order>> FilterDate(DateTime fromDate,DateTime toDate) => await _repo.FilterDate(fromDate,toDate);
 
-     public async Task<List<OrderChart>> GetCountByMonth(int year) => await _repo.GetCountByMonth(year);
-
-     public async Task<List<OrderChart>> OrderStatus(int year) => await _repo.OrderStatus(year);
+    
 }

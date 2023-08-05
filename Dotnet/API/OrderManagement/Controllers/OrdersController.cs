@@ -113,23 +113,6 @@ namespace OrderProcessingService.Controllers
         }
 
 
-         [HttpGet("Count/month/{year}")]                    //This query gives count of order by date
-        public async Task<List<OrderChart>> GetCountByMonth(int year)
-        {
-            
-            Console.WriteLine(year);
-            List<OrderChart> counts = await _ordersvc.GetCountByMonth(year);
-            return counts;
-        }
-
-
-        [HttpGet("Order/{year}")]                    //This query gives count of order by date
-        public async Task<List<OrderChart>> OrderStatus(int year)
-        {
-            
-            Console.WriteLine(year);
-            List<OrderChart> counts = await _ordersvc.OrderStatus(year);
-            return counts;
-        }
+         
     }
 }
