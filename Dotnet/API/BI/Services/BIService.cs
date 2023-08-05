@@ -16,4 +16,6 @@ public class BIServices : IBIService{
     public async Task<List<OrderChart>> OrderStatus(int year) => await _repo.OrderStatus(year);
 
     public async Task<List<ProductSale>> GetProductReport(int year) => await _repo.GetProductReport(year);
+
+    public async Task<List<CustomerReport>> GetCustomerReport(int custId) => await _repo.GetCustomerReport(custId);
 }

@@ -7,4 +7,6 @@ public interface IBIRepository{
    Task<List<OrderChart>> OrderStatus(int year);
 
    Task<List<ProductSale>> GetProductReport(int year);
+
+   Task<List<CustomerReport>> GetCustomerReport(int custId);
 }

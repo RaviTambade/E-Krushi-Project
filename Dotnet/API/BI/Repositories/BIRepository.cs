@@ -128,4 +128,38 @@ public class BIRepository : IBIRepository
         }
         return questions;
     }
+    public async Task<List<CustomerReport>> GetCustomerReport(int custId)
+        {
+            List<CustomerReport> customers = new List<CustomerReport>();
+            MySqlConnection con = new MySqlConnection();
+            con.ConnectionString = _conString;
+            try{
+                string query = "select title,productid,sum(quantity) as total from products inner join orderdetails on products.id=orderdetails.productid inner join orders on orders.id = orderdetails.orderid where custid =@custId group by productid";
+                MySqlCommand cmd = new MySqlCommand(query,con);
+                cmd.Parameters.AddWithValue("@custId", custId);
+                await con.OpenAsync();
+                MySqlDataReader reader = cmd.ExecuteReader();
+                while(await reader.ReadAsync())
+                {
+                    int totalQuantity = int.Parse(reader["total"].ToString());
+                    string title = reader["title"].ToString();
+                    
+                
+                CustomerReport customer = new CustomerReport()
+                {
+                    TotalQuantity=totalQuantity,
+                    Title=title
+                };
+                customers.Add(customer);
+                }
+                await reader.CloseAsync();
+            }
+        catch(Exception e){
+            throw e;
+        }
+        finally{
+            await con.CloseAsync();
+        }
+        return customers;
+    }
 }

@@ -68,11 +68,4 @@ public class CustomerController : ControllerBase
         var customer = await _srv.GetByUserId(id);
         return customer;
     }
-    [HttpGet]
-    [Route ("details/{custId}")]
-    public async Task<List<CustomerReport>> GetCustomerReport(int custId)
-    {
-        List<CustomerReport> customers = await _srv.GetCustomerReport(custId);
-        return customers;
-    } 
 }

@@ -1,4 +1,4 @@
-namespace KrushiProject.Models
+namespace BIService.Models
 {
     public class CustomerReport
     {

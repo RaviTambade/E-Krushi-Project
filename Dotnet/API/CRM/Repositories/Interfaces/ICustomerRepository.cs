@@ -15,6 +15,6 @@ namespace KrushiProject.Repositories.Interfaces
 
         Task<Customer> GetByUserId(int userId);
 
-        Task<List<CustomerReport>> GetCustomerReport(int custId);
+        
     }
 }
