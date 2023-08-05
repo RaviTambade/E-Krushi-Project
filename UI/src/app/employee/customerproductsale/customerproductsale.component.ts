@@ -9,7 +9,7 @@ import { Chart } from 'chart.js';
 })
 export class CustomerproductsaleComponent {
 
-custId:number=2;
+custId:number=1;
 products:any;
 public chart: any;
 title:any[]=[];
@@ -22,6 +22,7 @@ totalQuantity:any[]=[];
     ngOnInit(): void {
       this.svc.getCustomerReport(this.custId).subscribe((res)=>{
         this.products=res;
+        console.log(res);
         if(this.products!=null){
           for(let i=0;i<this.products.length; i++){
             this.title.push(this.products[i].title);
@@ -42,11 +43,16 @@ totalQuantity:any[]=[];
               label: "Products",
               data:totalQuantity , 
               backgroundColor: 'orange'
+            }  ,
+            {
+              label: "Products",
+              data:totalQuantity , 
+              backgroundColor: 'orange'
             }  
           ]
         },
         options: {
-          aspectRatio:2.5
+          aspectRatio:5
         }
       });
     }
