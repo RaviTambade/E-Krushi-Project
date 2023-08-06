@@ -2,6 +2,7 @@ using OrderProcessingService.Repositories;
 using OrderProcessingService.Repositories.Interfaces;
 using OrderProcessingService.Services;
 using OrderProcessingService.Services.Interfaces;
+using OrderProcessingService.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,7 @@ app.UseCors(x => x.AllowAnyOrigin()
                     .AllowAnyHeader());
 
 app.UseAuthorization();
+app.UseMiddleware<JwtMiddleware>();
 
 app.MapControllers();
 

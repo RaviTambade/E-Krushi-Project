@@ -2,6 +2,7 @@ using OrderProcessingService.Models;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
 using OrderProcessingService.Services.Interfaces;
+using OrderProcessingService.Helpers;
 
 namespace OrderProcessingService.Controllers
 {
@@ -15,7 +16,7 @@ namespace OrderProcessingService.Controllers
         _ordersvc = ordersvc;
         } 
 
-        
+        [Authorize]  
         //http://localhost:5057/api/orders        
         public async Task<IEnumerable<Order>> Orders()
         {
