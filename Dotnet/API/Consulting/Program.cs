@@ -2,6 +2,7 @@ using E_krushiApp.Repository;
 using E_krushiApp.Repository.Interface;
 using E_krushiApp.Services;
 using E_krushiApp.Services.Interface;
+using E_krushiApp.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,7 @@ app.UseCors(x => x.AllowAnyOrigin()
                     
 app.UseAuthorization();
 
+app.UseMiddleware<JwtMiddleware>();
 app.MapControllers();
 
 app.Run();

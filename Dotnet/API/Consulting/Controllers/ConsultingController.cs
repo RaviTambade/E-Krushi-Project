@@ -2,6 +2,7 @@ using E_krushiApp.Models;
 using E_krushiApp.Services.Interface;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using E_krushiApp.Helpers;
 namespace E_krushiApp.Controllers;
 
 [ApiController]
@@ -43,6 +44,7 @@ public class ConsultingController : ControllerBase
 
     //This method gives all subject matter experts available in Krishi Seva
     //http://localhost:5279/consulting/experts
+    [Authorize]
     [HttpGet("experts")]
     public async Task<List<SubjectMatterExpert>> getAllExperts()
     {
