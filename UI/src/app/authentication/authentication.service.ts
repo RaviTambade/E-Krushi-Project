@@ -23,11 +23,9 @@ export class AuthenticationService {
   }
  
 
-  resisterUser(user:User):Observable<boolean>{
-
-    let url="http://localhost:5102/api/users";
-    return this.http.post<any>(url,user);
-  }
+  
+  
+  
   newUser(user:User):Observable<boolean>{
 
     let url="http://localhost:5102/api/users";

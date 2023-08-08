@@ -6,7 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NewuserComponent } from './newuser/newuser.component';
-import { PersonalInfoRegistrationComponent } from './personal-info-registration/personal-info-registration.component';
+
 
 
 
@@ -15,8 +15,8 @@ import { PersonalInfoRegistrationComponent } from './personal-info-registration/
     SigninComponent,
     LoginComponent,
     RegisterComponent,
-    NewuserComponent,
-    PersonalInfoRegistrationComponent,
+    NewuserComponent
+    
 
   ],
   imports: [
@@ -29,8 +29,8 @@ import { PersonalInfoRegistrationComponent } from './personal-info-registration/
   exports: [
     RegisterComponent,
     LoginComponent,
-    NewuserComponent,
-    PersonalInfoRegistrationComponent
+    NewuserComponent
+   
   ]
 })
 export class AuthenticationModule { }
