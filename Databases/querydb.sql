@@ -276,3 +276,6 @@ select status,sum(status) as total from orders where year(orderdate)=2020 group 
 
 --this query is used for showing order chart of particular customer
 select status,sum(status) as total from orders where year(orderdate)=2020 and custid=2 group by status;
+
+--this query is used for showing total revenue in year
+SELECT MONTHNAME(orderdate) AS monthname,sum(total) as total from orders where year(orderdate)=2020 group by MONTHNAME(orderdate), MONTH(orderdate) ORDER BY MONTH(orderdate) ASC;
