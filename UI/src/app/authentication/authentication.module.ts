@@ -9,23 +9,28 @@ import { NewuserComponent } from './newuser/newuser.component';
 
 
 
+
 @NgModule({
   declarations: [
     SigninComponent,
     LoginComponent,
     RegisterComponent,
     NewuserComponent
+    
+
   ],
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    
   ],
   exports: [
     RegisterComponent,
     LoginComponent,
     NewuserComponent
+   
   ]
 })
 export class AuthenticationModule { }

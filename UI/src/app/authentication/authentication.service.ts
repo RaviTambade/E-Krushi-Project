@@ -22,10 +22,13 @@ export class AuthenticationService {
     return this.http.post<any>(url, credential);
   }
  
+
+  
+  
+  
   newUser(user:User):Observable<boolean>{
 
     let url="http://localhost:5102/api/users";
     return this.http.post<any>(url,user);
   }
-  
 }
