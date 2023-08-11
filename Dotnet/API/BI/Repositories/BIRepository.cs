@@ -202,4 +202,43 @@ public class BIRepository : IBIRepository
         }
         return questions;
     } 
+
+    public async Task<List<OrderChart>> GetTotalRevenue(int year)
+    {
+
+        List<OrderChart> questions = new List<OrderChart>();
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _conString;
+        try
+        {
+            string query = "SELECT MONTHNAME(orderdate) AS monthname,sum(total) as total from orders where year(orderdate)=@year group by MONTHNAME(orderdate), MONTH(orderdate) ORDER BY MONTH(orderdate) ASC";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@year",year);
+            await connection.OpenAsync();
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+                string monthName = reader["monthname"].ToString();
+                int total = int.Parse(reader["total"].ToString());
+                
+
+                OrderChart question = new OrderChart()
+                {
+                    MonthName =monthName,
+                    Total = total,  
+                };
+                questions.Add(question);
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception ee)
+        {
+            throw ee;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+        return questions;
+    } 
 }
