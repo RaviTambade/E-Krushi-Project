@@ -30,6 +30,8 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { OrderModule } from './order/order.module';
 import { ChartsModule } from './charts/charts.module';
 
+import { BIModule } from './bi/bi.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +60,8 @@ import { ChartsModule } from './charts/charts.module';
     ProductModule,
     AuthenticationModule,
     OrderModule,
-    ChartsModule
+    ChartsModule,
+    BIModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
