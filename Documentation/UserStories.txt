@@ -1,0 +1,45 @@
+
+
+
+
+
+As a [type of user], I want [an action] so that [a benefit/a value]
+
+
+     1)  As a farmer ,I want purchase product so that i can purchase any product anytime for my agriculture.
+
+     2)  As a admin ,  I want add new employees so that i can manage my application.
+     
+     3)  As a Employee ,I want add product in product list so that i can eligible for adding product or removing product as per customers requirements.
+
+     4)  As a farmer ,I want delete some products from my cart so that i able to handle my cart.
+     
+     5)  As a SubjectMatterExperts , I want to see farmers question so that i will solve it anytime anywhere.
+
+     6)  As a farmer ,I want ask farm related questions so that i will improve my krushi related knowledge.
+
+     7)  As a any user ,I want to change my password in the system so that I can ensure the security of my account.
+   
+     8) As a farmer , I want to add  Products to my cart before sending an order, and be able to edit or remove products from the cart as needed.
+
+     9)As a Employee, I want chek orders of farmer so that i will diliver it within time.
+
+     10)As a farmer ,I want to see status of my order (processing, shipped, delivered) so that I am aware of its progress.
+
+     11)As a farmer ,I want to search for specific products in the products catagory so that I can quickly order what I need.
+
+     12)As a farmer ,I want to access a dashboard that displays graphical representations of my monthly, yearly, and weekly product orders.
+    
+     13)As a admin ,I want to chek all orders graphical representaion so that i chek quikly all orders in a one graph.
+
+     14)As a farmer ,I want ro chek my orders history so that i can do  plan for shopping.
+
+     15)As a SubjectMatterExperts,I want to access a dashboard that displays graphical representations of my monthly, yearly, and weekly question answers so that it helps me to chek my performance. 
+
+
+
+
+
+
+
+
