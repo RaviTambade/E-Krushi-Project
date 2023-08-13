@@ -36,6 +36,22 @@ As a [type of user], I want [an action] so that [a benefit/a value]
 
      15)As a SubjectMatterExperts,I want to access a dashboard that displays graphical representations of my monthly, yearly, and weekly question answers so that it helps me to chek my performance. 
 
+     17)As a admin, I want to edit the information of employee, such as their personal details.
+ 
+     18)As a admin, I want to delete the information of employee, such as their personal details.
+
+     19)As a Employee, I want to update product information such as description, and unitprice, keeping the data up to date.
+
+     20)As a Employee,I want to remove products from product list.
+
+     21)As a Employee,I want to remove customers along with their personal details.
+
+     22)As a Employee,I want to create new categories of products and assign products to these categories, facilitating organized inventory management.
+
+
+
+
+
 
 
 
