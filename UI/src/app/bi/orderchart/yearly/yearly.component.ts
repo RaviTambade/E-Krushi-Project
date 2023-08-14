@@ -1,38 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
-import { BiService } from '../bi.service';
+import { BiService } from '../../bi.service';
+
 
 @Component({
-  selector: 'app-barchart',
-  templateUrl: './barchart.component.html',
-  styleUrls: ['./barchart.component.css']
+  selector: 'app-yearly',
+  templateUrl: './yearly.component.html',
+  styleUrls: ['./yearly.component.css']
 })
-export class BarchartComponent implements OnInit{
+export class YearlyComponent implements OnInit {
 
     year:number=2020;
-    list:any;
+    orders:any;
     public chart: any;
     month:any[]=[];
-    totalRevenue:any[]=[];
+    totalCount:any[]=[];
     
       constructor(private svc:BiService){
-      this.list=[];
+      this.orders=[];
     
       }
         ngOnInit(): void {
-          this.svc.getTotalRevenue(this.year).subscribe((res)=>{
-            this.list=res;
-            if(this.list!=null){
-              for(let i=0;i<this.list.length; i++){
-                this.month.push(this.list[i].monthName);
-                this.totalRevenue.push(this.list[i].total);
+          this.svc.getCountByMonth(this.year).subscribe((res)=>{
+            this.orders=res;
+            if(this.orders!=null){
+              for(let i=0;i<this.orders.length; i++){
+                this.month.push(this.orders[i].monthName);
+                this.totalCount.push(this.orders[i].count);
               }
             }
-            this.createChart(this.month,this.totalRevenue);
+            this.createChart(this.month,this.totalCount);
           });   
         }
     
-        createChart(month:any,totalRevenue:any){
+        createChart(month:any,totalCount:any){
           this.chart = new Chart("MyChart", {
             type: 'bar', //this denotes tha type of chart
             data: {// values on X-Axis
@@ -40,7 +41,7 @@ export class BarchartComponent implements OnInit{
                datasets: [
                 {
                   label: "Orders",
-                  data:totalRevenue , 
+                  data:totalCount , 
                   backgroundColor: 'orange'
                 }  
               ]

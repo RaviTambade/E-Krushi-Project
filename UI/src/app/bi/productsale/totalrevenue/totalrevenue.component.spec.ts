@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BarchartComponent } from './barchart.component';
+import { TotalrevenueComponent } from './totalrevenue.component';
 
-describe('BarchartComponent', () => {
-  let component: BarchartComponent;
-  let fixture: ComponentFixture<BarchartComponent>;
+describe('TotalrevenueComponent', () => {
+  let component: TotalrevenueComponent;
+  let fixture: ComponentFixture<TotalrevenueComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BarchartComponent ]
+      declarations: [ TotalrevenueComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(BarchartComponent);
+    fixture = TestBed.createComponent(TotalrevenueComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

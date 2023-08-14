@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Chart } from 'chart.js';
-import { BiService } from '../bi.service';
+import { BiService } from '../../bi.service';
+
 
 @Component({
   selector: 'app-weekly',
