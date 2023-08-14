@@ -62,10 +62,10 @@ namespace BIService.Controllers
             return answers;
         }
 
-        [HttpGet("monthly/{year}")]
+        [HttpGet("weekly/{year}")]
         public async Task<List<OrderChart>> GetMonthlyOrders(int year)
         {
-            List<OrderChart> orders = await _svc.GetMonthlyOrders(year);
+            List<OrderChart> orders = await _svc.GetWeeklyOrders(year);
             return orders;
         }
     }

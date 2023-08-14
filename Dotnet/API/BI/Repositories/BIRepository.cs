@@ -1,3 +1,4 @@
+using System.Data;
 using BIService.Models;
 using BIService.Repositories.Interfaces;
 using MySql.Data.MySqlClient;
@@ -242,7 +243,7 @@ public class BIRepository : IBIRepository
         return questions;
     } 
 
-    public async Task<List<OrderChart>> GetMonthlyOrders(int year)
+    public async Task<List<OrderChart>> GetWeeklyOrders(int year)
     {
 
         List<OrderChart> orders = new List<OrderChart>();
@@ -270,14 +271,15 @@ public class BIRepository : IBIRepository
             }
             await reader.CloseAsync();
         }
-        catch (Exception ee)
+        catch (Exception e)
         {
-            throw ee;
+            throw e;
         }
         finally
         {
             await connection.CloseAsync();
         }
         return orders;
-    } 
+    }
+
 }

@@ -23,7 +23,7 @@ public class BIServices : IBIService{
 
     public async Task<List<OrderChart>> GetTotalRevenue(int year) => await _repo.GetTotalRevenue(year);
   
-    public async Task<List<OrderChart>> GetMonthlyOrders(int year) => await _repo.GetMonthlyOrders(year);
+    public async Task<List<OrderChart>> GetWeeklyOrders(int year) => await _repo.GetMonthlyOrders(year);
 
 
 
