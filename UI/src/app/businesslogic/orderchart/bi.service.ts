@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ChartsService {
+export class BiService {
 
   constructor(private http:HttpClient) { }
 
