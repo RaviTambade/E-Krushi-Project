@@ -241,4 +241,43 @@ public class BIRepository : IBIRepository
         }
         return questions;
     } 
+
+    public async Task<List<OrderChart>> GetMonthlyOrders(int year)
+    {
+
+        List<OrderChart> orders = new List<OrderChart>();
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _conString;
+        try
+        {
+            string query = "SELECT WEEK(orderdate, 1) AS WeekNumber, count(*) AS total FROM orders WHERE  YEAR(orderdate) = @year GROUP BY WEEK(orderdate, 1) ORDER BY WEEK(orderdate, 1)"; 
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@year",year);
+            await connection.OpenAsync();
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+                string weekNumber = reader["WeekNumber"].ToString();
+                int total = int.Parse(reader["total"].ToString());
+                
+
+                OrderChart order = new OrderChart()
+                {
+                    WeekNumber =weekNumber,
+                    Total = total,  
+                };
+                orders.Add(order);
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception ee)
+        {
+            throw ee;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+        return orders;
+    } 
 }

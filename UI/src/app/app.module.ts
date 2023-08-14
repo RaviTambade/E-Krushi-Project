@@ -28,9 +28,8 @@ import { ConsultingModule } from './consulting/consulting.module';
 import { ProductModule } from './product/product.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { OrderModule } from './order/order.module';
-import { ChartsModule } from './charts/charts.module';
-
 import { BIModule } from './bi/bi.module';
+import { OrderchartModule } from './businesslogic/orderchart/orderchart.module';
 
 @NgModule({
   declarations: [
@@ -60,8 +59,8 @@ import { BIModule } from './bi/bi.module';
     ProductModule,
     AuthenticationModule,
     OrderModule,
-    ChartsModule,
-    BIModule
+    BIModule,
+    OrderchartModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

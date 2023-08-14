@@ -13,4 +13,9 @@ export class BiService {
     let url="http://localhost:5057/api/orders/count/month/" +year;
     return this.http.get<any>(url);
   }
+
+  public getMonthlyOrders(year:number):Observable<any>{
+    let url="http://localhost:5161/api/bi/monthly/" +year;
+    return this.http.get<any>(url);
+  } 
 }

@@ -8,5 +8,8 @@ public class OrderChart{
     public string Status{get;set;}
 
     public int Total{get;set;}
+    
+    public string WeekNumber{get;set;}
+
 
 }

@@ -18,6 +18,10 @@ import { QuarterlyComponent } from './quarterly/quarterly.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    MonthlyComponent,
+    WeeklyComponent
   ]
 })
 export class OrderchartModule { }

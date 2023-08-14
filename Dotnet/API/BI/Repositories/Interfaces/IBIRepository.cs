@@ -14,4 +14,6 @@ public interface IBIRepository{
    Task<List<SMEReport>> GetSMEReport(int year);
 
    Task<List<OrderChart>> GetTotalRevenue(int year);
+
+   Task<List<OrderChart>> GetMonthlyOrders(int year);
 }
