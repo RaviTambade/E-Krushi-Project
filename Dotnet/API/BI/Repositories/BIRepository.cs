@@ -1,3 +1,4 @@
+using System.Data;
 using BIService.Models;
 using BIService.Repositories.Interfaces;
 using MySql.Data.MySqlClient;
@@ -241,4 +242,44 @@ public class BIRepository : IBIRepository
         }
         return questions;
     } 
+
+
+    public async Task<List<SMEReport>> SMEPerformanceByMonth(int year , int month )
+    {
+
+       List<SMEReport> orders = new List<SMEReport>();
+        MySqlConnection con = new MySqlConnection();
+        con.ConnectionString = _conString;
+        try
+        {
+            string query = "SELECT MONTHNAME(orderdate) AS monthname, COUNT(*) AS count FROM orders WHERE YEAR(orderdate) = @year GROUP BY MONTHNAME(orderdate), MONTH(orderdate) ORDER BY MONTH(orderdate) ASC;";
+            await con.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, con);
+            command.Parameters.AddWithValue("@year",year);
+            MySqlDataReader reader = command.ExecuteReader();   
+            while (await reader.ReadAsync())
+            {
+                int count = int.Parse(reader["count"].ToString()); 
+                string? monthName = reader["monthname"].ToString();
+
+                SMEReport order = new SMEReport()
+                {
+                    Count = count,
+                    Name = monthName   
+                };
+                orders.Add(order);
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception e)
+        {
+            throw e;
+        }
+        finally
+        {
+            await con.CloseAsync();
+        }
+        return orders;
+    }
+
 }

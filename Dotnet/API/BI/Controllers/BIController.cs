@@ -61,5 +61,15 @@ namespace BIService.Controllers
             List<OrderChart> answers = await _svc.GetTotalRevenue(year);
             return answers;
         }
+
+
+        [HttpGet("Count/month/{year}")]                    //This query gives count of order by date
+        public async Task<List<SMEReport>> SMEReportsByMonth(int year, int month)
+        {  
+            Console.WriteLine(year);
+            List<SMEReport> counts = await _svc.SMEPerformanceByMonth(year,month);
+            return counts;
+        }
+
     }
 }

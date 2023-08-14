@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ChartsService } from './charts.service';
+import { BiService } from './bi.service';
 
-describe('ChartsService', () => {
-  let service: ChartsService;
+describe('BiService', () => {
+  let service: BiService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ChartsService);
+    service = TestBed.inject(BiService);
   });
 
   it('should be created', () => {

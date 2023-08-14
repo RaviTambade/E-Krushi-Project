@@ -281,10 +281,8 @@ select status,sum(status) as total from orders where year(orderdate)=2020 and cu
 SELECT MONTHNAME(orderdate) AS monthname,sum(total) as total from orders where year(orderdate)=2020 group by MONTHNAME(orderdate), MONTH(orderdate) ORDER BY MONTH(orderdate) ASC;
 
 
---weekly orders
+--weekly sme performance
+SELECT CONCAT('week', ROW_NUMBER() OVER (ORDER BY WEEK(answerdate))) AS week_number, COUNT(*) AS count  FROM SMEANSWERS WHERE answerdate >= '2023-06-05' AND answerdate <= '2023-09-15'  GROUP BY YEAR(answerdate), WEEK(answerdate);
 
-SELECT WEEK(orderdate, 1) AS Week_number, count(*) AS total
-FROM orders
-WHERE  YEAR(orderdate) = "2020"
-GROUP BY WEEK(orderdate, 1)
-ORDER BY WEEK(orderdate, 1);
+--weekly orders
+SELECT CONCAT('week', ROW_NUMBER() OVER (ORDER BY WEEK(orderdate))) AS week_number, COUNT(*) AS count  FROM orders WHERE orderdate >= '2023-02-05' AND orderdate <= '2023-12-15'  GROUP BY YEAR(orderdate), WEEK(orderdate);

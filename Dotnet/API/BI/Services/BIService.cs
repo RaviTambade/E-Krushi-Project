@@ -22,4 +22,6 @@ public class BIServices : IBIService{
     public async Task<List<SMEReport>> GetSMEReport(int year) => await _repo.GetSMEReport(year);
 
     public async Task<List<OrderChart>> GetTotalRevenue(int year) => await _repo.GetTotalRevenue(year);
+
+     public async Task<List<SMEReport>> SMEPerformanceByMonth(int year ,int month) => await _repo.SMEPerformanceByMonth(year ,month);
 }
