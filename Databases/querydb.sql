@@ -279,3 +279,12 @@ select status,sum(status) as total from orders where year(orderdate)=2020 and cu
 
 --this query is used for showing total revenue in year
 SELECT MONTHNAME(orderdate) AS monthname,sum(total) as total from orders where year(orderdate)=2020 group by MONTHNAME(orderdate), MONTH(orderdate) ORDER BY MONTH(orderdate) ASC;
+
+
+--weekly orders
+
+SELECT WEEK(orderdate, 1) AS Week_number, count(*) AS total
+FROM orders
+WHERE  YEAR(orderdate) = "2020"
+GROUP BY WEEK(orderdate, 1)
+ORDER BY WEEK(orderdate, 1);
