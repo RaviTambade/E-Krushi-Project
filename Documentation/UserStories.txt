@@ -48,7 +48,7 @@ As a [type of user], I want [an action] so that [a benefit/a value]
 
      22)As a Employee,I want to create new categories of products and assign products to these categories, facilitating organized inventory management.
 
-
+     23)As a Admin,I want to change image associated with products,allowing for visual representation of the item.
 
 
 
