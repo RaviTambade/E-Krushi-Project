@@ -26,9 +26,12 @@ import { ConsultingModule } from './consulting/consulting.module';
 import { ProductModule } from './product/product.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { OrderModule } from './order/order.module';
-import { OrderchartModule } from './bi/orderchart/orderchart.module';
+
 import { ProductsaleModule } from './bi/productsale/productsale.module';
-import { MonthlyComponent } from './bi/monthly/monthly.component';
+import { MonthlyComponent } from './bi/orderchart/monthly/monthly.component';
+import { YearlyComponent } from './bi/orderchart/yearly/yearly.component';
+import { OrderchartModule } from './bi/orderchart/orderchart.module';
+
 
 
 @NgModule({
@@ -46,7 +49,6 @@ import { MonthlyComponent } from './bi/monthly/monthly.component';
     SortedlistComponent,
     ProductListDetailsComponent,
     CategoryproductComponent,
-    MonthlyComponent,  
   ],
   imports: [
     BrowserModule,

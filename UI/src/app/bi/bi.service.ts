@@ -22,4 +22,12 @@ export class BiService {
     let url="http://localhost:5161/api/bi/totalrevenue/" +year;
     return this.http.get<any>(url);
   }
+
+  public getYearlyOrders():Observable<any>{
+    let url=" http://localhost:5161/api/bi/yearly";
+    return this.http.get<any>(url);
+  }
+
+
+ 
 }

@@ -11,5 +11,6 @@ public class OrderChart{
     
     public string WeekNumber{get;set;}
 
+    public int Year{get; set;}
 
 }

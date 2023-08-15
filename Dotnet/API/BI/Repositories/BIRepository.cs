@@ -282,4 +282,42 @@ public class BIRepository : IBIRepository
         return orders;
     }
 
+    public async Task<List<OrderChart>> GetYearlyOrders()
+    {
+
+        List<OrderChart> orders = new List<OrderChart>();
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _conString;
+        try
+        {
+            string query = "SELECT  year(orderdate) AS year, count(*) AS total FROM orders GROUP BY  year(orderdate) ORDER BY year(orderdate) ASC ";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            await connection.OpenAsync();
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+                int year = int.Parse(reader["year"].ToString());
+                int total = int.Parse(reader["total"].ToString());
+                
+
+                OrderChart order = new OrderChart()
+                {
+                    Year =year,
+                    Total = total,  
+                };
+                orders.Add(order);
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception ee)
+        {
+            throw ee;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+        return orders;
+    } 
+
 }

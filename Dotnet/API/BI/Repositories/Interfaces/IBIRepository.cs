@@ -16,4 +16,6 @@ public interface IBIRepository{
    Task<List<OrderChart>> GetTotalRevenue(int year);
 
    Task<List<OrderChart>> GetWeeklyOrders(int year);
+
+   Task<List<OrderChart>> GetYearlyOrders();
 }
