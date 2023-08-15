@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Chart } from 'chart.js';
-import { BiService } from '../../bi.service';
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-yearly',
@@ -10,7 +7,6 @@ import { BiService } from '../../bi.service';
 })
 export class YearlyComponent {
 
-    
-    }
-    
+  
 
+}
