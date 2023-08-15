@@ -28,6 +28,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { OrderModule } from './order/order.module';
 import { OrderchartModule } from './bi/orderchart/orderchart.module';
 import { ProductsaleModule } from './bi/productsale/productsale.module';
+import { MonthlyComponent } from './bi/monthly/monthly.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { ProductsaleModule } from './bi/productsale/productsale.module';
     PaggingComponent,
     SortedlistComponent,
     ProductListDetailsComponent,
-    CategoryproductComponent,  
+    CategoryproductComponent,
+    MonthlyComponent,  
   ],
   imports: [
     BrowserModule,
