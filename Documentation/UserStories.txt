@@ -30,3 +30,9 @@
       so that it helps me to chek my performance.
    
    26)As a krushi owner,  I want to add new seller so that I can manage my application.
+   27)As a subjectMatterExperts, I want to view a dashboard that displays graphical representations of my monthly, yearly, and weekly answers so that I can check my answers information.
+   28)As a farmer, I want to update products quantity in carts so that I can give accurate quantity.
+   29)As a farmer, I want to remove Products from cart so that I can manage my application.
+   30)As a seller, I want to create new categories of questions and assign questions to these categories so that I can maintain new questions.
+   
+
