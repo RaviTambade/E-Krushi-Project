@@ -68,5 +68,12 @@ namespace BIService.Controllers
             List<OrderChart> orders = await _svc.GetWeeklyOrders(year);
             return orders;
         }
+
+        [HttpGet("yearly")]
+        public async Task<List<OrderChart>> GetYearlyOrders()
+        {
+            List<OrderChart> orders = await _svc.GetYearlyOrders();
+            return orders;
+        }
     }
 }

@@ -39,9 +39,9 @@ export class TotalrevenueComponent implements OnInit{
               labels: month, 
                datasets: [
                 {
-                  label: "Orders",
+                  label: "revenue",
                   data:totalRevenue , 
-                  backgroundColor: 'orange'
+                  backgroundColor: 'green'
                 }  
               ]
             },

@@ -2,18 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { BiService } from '../../bi.service';
 
-
 @Component({
   selector: 'app-yearly',
   templateUrl: './yearly.component.html',
   styleUrls: ['./yearly.component.css']
 })
-export class YearlyComponent implements OnInit {
 
-    year:number=2020;
+export class YearlyComponent implements OnInit{
+ 
     orders:any;
     public chart: any;
-    month:any[]=[];
+    year:any[]=[];
     totalCount:any[]=[];
     
       constructor(private svc:BiService){
@@ -21,23 +20,23 @@ export class YearlyComponent implements OnInit {
     
       }
         ngOnInit(): void {
-          this.svc.getCountByMonth(this.year).subscribe((res)=>{
+          this.svc.getYearlyOrders().subscribe((res)=>{
             this.orders=res;
             if(this.orders!=null){
               for(let i=0;i<this.orders.length; i++){
-                this.month.push(this.orders[i].monthName);
-                this.totalCount.push(this.orders[i].count);
+                this.year.push(this.orders[i].year);
+                this.totalCount.push(this.orders[i].total);
               }
             }
-            this.createChart(this.month,this.totalCount);
+            this.createChart(this.year,this.totalCount);
           });   
         }
     
-        createChart(month:any,totalCount:any){
+        createChart(year:any,totalCount:any){
           this.chart = new Chart("MyChart", {
             type: 'bar', //this denotes tha type of chart
             data: {// values on X-Axis
-              labels: month, 
+              labels: year, 
                datasets: [
                 {
                   label: "Orders",
@@ -52,5 +51,8 @@ export class YearlyComponent implements OnInit {
           });
         }
     }
+   
+    
+    
     
 

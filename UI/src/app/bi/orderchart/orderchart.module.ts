@@ -21,7 +21,8 @@ import { QuarterlyComponent } from './quarterly/quarterly.component';
   ],
   exports: [
     MonthlyComponent,
-    WeeklyComponent
+    WeeklyComponent,
+    YearlyComponent
   ]
 })
 export class OrderchartModule { }
