@@ -65,8 +65,5 @@ export class ConsultingService {
   }
 
 
-  public getCountByMonth(year:number):Observable<any>{
-    let url="http://localhost:5279/api/consulting/smereport/" +year;
-    return this.http.get<any>(url);
-  }
+  
 }

@@ -26,14 +26,10 @@ import { ConsultingModule } from './consulting/consulting.module';
 import { ProductModule } from './product/product.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { OrderModule } from './order/order.module';
-
 import { ProductsaleModule } from './bi/productsale/productsale.module';
-import { MonthlyComponent } from './bi/orderchart/monthly/monthly.component';
-import { YearlyComponent } from './bi/orderchart/yearly/yearly.component';
 import { OrderchartModule } from './bi/orderchart/orderchart.module';
 import { OrderstatusModule } from './bi/orderstatus/orderstatus.module';
-
-
+import { ConsultingchartsModule } from './bi/consultingcharts/consultingcharts.module';
 
 
 @NgModule({
@@ -51,6 +47,7 @@ import { OrderstatusModule } from './bi/orderstatus/orderstatus.module';
     SortedlistComponent,
     ProductListDetailsComponent,
     CategoryproductComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -66,7 +63,8 @@ import { OrderstatusModule } from './bi/orderstatus/orderstatus.module';
     OrderModule,
     OrderchartModule,
     ProductsaleModule,
-    OrderstatusModule
+    OrderstatusModule,
+    ConsultingchartsModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
