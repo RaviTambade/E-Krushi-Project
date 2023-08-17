@@ -28,9 +28,9 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { OrderModule } from './order/order.module';
 
 import { ProductsaleModule } from './bi/productsale/productsale.module';
-import { MonthlyComponent } from './bi/orderchart/monthly/monthly.component';
-import { YearlyComponent } from './bi/orderchart/yearly/yearly.component';
+
 import { OrderchartModule } from './bi/orderchart/orderchart.module';
+import { ConsultingchartsModule } from './bi/consultingcharts/consultingcharts.module';
 
 
 
@@ -49,6 +49,7 @@ import { OrderchartModule } from './bi/orderchart/orderchart.module';
     SortedlistComponent,
     ProductListDetailsComponent,
     CategoryproductComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -63,7 +64,8 @@ import { OrderchartModule } from './bi/orderchart/orderchart.module';
     AuthenticationModule,
     OrderModule,
     OrderchartModule,
-    ProductsaleModule
+    ProductsaleModule,
+    ConsultingchartsModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

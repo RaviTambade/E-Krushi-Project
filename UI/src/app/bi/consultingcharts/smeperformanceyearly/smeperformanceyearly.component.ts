@@ -1,25 +1,26 @@
 import { Component } from '@angular/core';
-import Chart from 'chart.js/auto';
-import { ConsultingService } from '../consulting.service';
+import { BiService } from '../../bi.service';
+import { Chart } from 'chart.js';
 
 @Component({
-  selector: 'app-smeperformance',
-  templateUrl: './smeperformance.component.html',
-  styleUrls: ['./smeperformance.component.css']
+  selector: 'app-smeperformanceyearly',
+  templateUrl: './smeperformanceyearly.component.html',
+  styleUrls: ['./smeperformanceyearly.component.css']
 })
-export class SMEPerformanceComponent {
+export class SmeperformanceyearlyComponent {
+
   year:number=2023;
   sme:any;
   public chart: any;
   name:any[]=[];
   totalCount:any[]=[];
   
-    constructor(private svc:ConsultingService){
+    constructor(private svc:BiService){
     this.sme=[];
   
     }
       ngOnInit(): void {
-        this.svc.getCountByMonth(this.year).subscribe((res)=>{
+        this.svc.SmePerformanceByMonth(this.year).subscribe((res)=>{
           this.sme=res;
           if(this.sme!=null){
             for(let i=0;i<this.sme.length; i++){
@@ -58,4 +59,5 @@ export class SMEPerformanceComponent {
         }
         });
       }
-}
+  }
+  
