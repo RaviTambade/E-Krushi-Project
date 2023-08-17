@@ -28,13 +28,11 @@
    24)As a sign-in user,I want to login using my mobile number and password so that I can access my account.
    25)As a SubjectMatterExperts,I want to view graphical representations of my monthly, yearly, and weekly question answers information
       so that it helps me to chek my performance.
-  
    26)As a krushi owner,  I want to add new seller so that I can manage my application.
    27)As a subjectMatterExperts, I want to view a dashboard that displays graphical representations of my monthly, yearly, and weekly answers so that I can check my answers information.
-   28)As a farmer, I want to update products quantity in carts so that I can give accurate quantity.
-   29)As a farmer, I want to remove Products from cart so that I can manage my application.
-   30)As a seller, I want to create new categories of questions and assign questions to these categories so that I can maintain new questions.
-   
+   28)As a farmer, I want to update products quantity in carts so that I can order accurate quantity.
+   29)As a farmer, I want to remove krushi Products from my cart so that I can manage my cart list.
+   30)As a seller, I want to create new categories of questions and assign questions to these categories so that I can maintain new questions. 
    31)As a buyer, I want to store my credit card information in the app so I make my next purchases fast.
    32)As a visitor,I want to register on the website so that I can browse and buy listed products from the krushi application.
    33)As a Registered user, I want to be able to buy listed products, so that I can use the product I buy.
@@ -45,3 +43,16 @@
    38)As a registered user, I want to be able to login to my account so that I can access my saved information.
    39)As a registered user, I want to update my profile information so that it can accurate and up to date.
    40)As a registered user, I want to be securely entered my payment information and complete my purchase so that I can buy the products I want.
+   41)As a farmer ,I want to purchase required amount of products so that I can saves my time.
+   42)As a farmer, I want to view different answers of particular question in my question so that I can get many solutions.
+   43)As a farmer, I want to remove questions in my question so that I can manage my question list.
+   44)As a seller, I want to add new agri products categories so that I can manage my application.
+   45)As a farmer, I want to view my bill so that I can pay.
+   46)As a farmer, I want to buy agri equipment so that I can do precision farming.
+   47)As a sign-in-user, I want to view my profile so that I check my personal information.
+
+
+
+
+
+
