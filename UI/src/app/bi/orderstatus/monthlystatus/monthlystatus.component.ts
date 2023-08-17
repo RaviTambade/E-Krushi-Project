@@ -1,31 +1,32 @@
 import { Component } from '@angular/core';
-import Chart from 'chart.js/auto';
-import { OrderhubService } from '../orderhub.service';
+import { BiService } from '../../bi.service';
+import { Chart } from 'chart.js';
 
 @Component({
-  selector: 'app-order-status',
-  templateUrl: './order-status.component.html',
-  styleUrls: ['./order-status.component.css']
+  selector: 'app-monthlystatus',
+  templateUrl: './monthlystatus.component.html',
+  styleUrls: ['./monthlystatus.component.css']
 })
-export class OrderStatusComponent {
+export class MonthlystatusComponent {
+
   year:number=2020;
-  product:any;
+  orders:any;
   public chart: any;
   status:any[]=[];
   total:any[]=[];
   
-    constructor(private svc:OrderhubService){
-    this.product=[];
+    constructor(private svc:BiService){
+    this.orders=[];
   
     }
       ngOnInit(): void {
         this.svc.orderStatus(this.year).subscribe((res)=>{
-          this.product=res;
+          this.orders=res;
           console.log(res);
-          if(this.product!=null){
-            for(let i=0;i<this.product.length; i++){
-              this.status.push(this.product[i].status);
-              this.total.push(this.product[i].total);
+          if(this.orders!=null){
+            for(let i=0;i<this.orders.length; i++){
+              this.status.push(this.orders[i].status);
+              this.total.push(this.orders[i].total);
             }
           }
           this.createChart(this.status,this.total);
@@ -58,3 +59,5 @@ export class OrderStatusComponent {
         });
       }
 }
+
+

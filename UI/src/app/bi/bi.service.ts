@@ -28,6 +28,10 @@ export class BiService {
     return this.http.get<any>(url);
   }
 
+  public orderStatus(year:any):Observable<any>{
+    let url="http://localhost:5161/api/bi/order/"+year;
+    return this.http.get<any>(url);
+  }
 
  
 }

@@ -31,6 +31,8 @@ import { ProductsaleModule } from './bi/productsale/productsale.module';
 import { MonthlyComponent } from './bi/orderchart/monthly/monthly.component';
 import { YearlyComponent } from './bi/orderchart/yearly/yearly.component';
 import { OrderchartModule } from './bi/orderchart/orderchart.module';
+import { OrderstatusModule } from './bi/orderstatus/orderstatus.module';
+
 
 
 
@@ -63,7 +65,8 @@ import { OrderchartModule } from './bi/orderchart/orderchart.module';
     AuthenticationModule,
     OrderModule,
     OrderchartModule,
-    ProductsaleModule
+    ProductsaleModule,
+    OrderstatusModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]

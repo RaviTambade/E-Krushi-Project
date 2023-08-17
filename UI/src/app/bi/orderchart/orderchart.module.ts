@@ -6,8 +6,6 @@ import { MonthlyComponent } from './monthly/monthly.component';
 import { YearlyComponent } from './yearly/yearly.component';
 import { QuarterlyComponent } from './quarterly/quarterly.component';
 
-
-
 @NgModule({
   declarations: [
     DailyComponent,

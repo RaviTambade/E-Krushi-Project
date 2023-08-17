@@ -3,14 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FilterdateComponent } from './filterdate/filterdate.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { OrderStatusComponent } from './order-status/order-status.component';
 
 
 
 @NgModule({
   declarations: [
-    FilterdateComponent,
-    OrderStatusComponent
+    FilterdateComponent
   ],
   imports: [
     CommonModule,
@@ -19,8 +17,7 @@ import { OrderStatusComponent } from './order-status/order-status.component';
     FormsModule
   ],
   exports: [
-    FilterdateComponent,
-    OrderStatusComponent
+    FilterdateComponent
   ]
 })
 export class OrderModule { }
