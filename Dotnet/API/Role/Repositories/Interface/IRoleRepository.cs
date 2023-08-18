@@ -13,4 +13,6 @@ public interface IRoleRepository
     public Task<bool> Update(Role role);
 
     public Task<bool> Delete(int id);
+
+    public Task<List<string>> GetRolesOfUser(int id);
 }

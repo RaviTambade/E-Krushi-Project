@@ -23,4 +23,5 @@ public class RoleService:IRoleService{
 
     public Task<bool> Update(Role role)=>_repo.Update(role);
     public Task<bool> Delete(int id )=>_repo.Delete(id);
+     public Task<List<string>> GetRolesOfUser(int id )=>_repo.GetRolesOfUser(id);
 }

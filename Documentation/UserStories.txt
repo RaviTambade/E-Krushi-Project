@@ -1,7 +1,3 @@
-
-
-
-
    1) As a farmer, I need to authenticate myself, so that I can see my account details.
    2)As a farmer, I want to submit feedback, so that the shop owner can consider my opinion related  to krushi products and consulting.
    3)As a farmer , I want to ask queries related farming , so that I can get feedback on issues.

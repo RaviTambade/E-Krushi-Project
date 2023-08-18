@@ -56,4 +56,12 @@ public class RolesController : ControllerBase
         bool status =await _srv.Delete(id);
         return status;
     }
+
+    [HttpGet("user/{id}")]
+    public  async Task<List<string>> GetRolesOfUser(int id)
+    {
+        List<string> roles = await  _srv.GetRolesOfUser(id);
+
+        return roles;
+    }
 }
