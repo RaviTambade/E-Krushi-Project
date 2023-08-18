@@ -34,7 +34,7 @@ export class SmeperformanceyearlyComponent {
   
       createChart(name:any,totalCount:any){
         this.chart = new Chart("MyChart", {
-          type: 'doughnut', //this denotes tha type of chart
+          type: 'bar', //this denotes tha type of chart
           data: {// values on X-Axis
             labels: name, 
             

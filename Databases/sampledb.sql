@@ -1,5 +1,7 @@
 
 
+
+
 -- ROLE TABLE DATA
 INSERT INTO roles(role) VALUES ('Shop owner');
 INSERT INTO roles(role) VALUES ('Customer');
@@ -11,7 +13,8 @@ INSERT INTO roles(role) VALUES ('SubjectMatterExpert');
 select * from products;
 
 -- CUSTOMERS DATA
-INSERT INTO customers(firstname,lastname,userid) VALUES('akash','ajab',1);                       
+INSERT INTO customers(firstname,lastname,userid) VALUES('pragati','bangar',1);  
+INSERT INTO customers(firstname,lastname,userid) VALUES('akash','ajab',2);                       
 INSERT INTO customers(firstname,lastname,userid) VALUES('sahil','mankar',2);
 INSERT INTO customers(firstname,lastname,userid) VALUES('akshay','tanpure',3);             
 INSERT INTO customers(firstname,lastname,userid) VALUES('vedant','yadav',4);     
@@ -137,11 +140,11 @@ INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country
 INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(4,'permanent','houseNo.234','Pune-Nashik Highway','Rajgurunagar','Maharashtra','India','1213');
 
 -- EMPLOYESS DATA
-INSERT INTO employees(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('chetan','ajab','1999-09-15','2022-05-12','/image/akash.jpg',3,8);
-INSERT INTO employees(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('abhishek','Bangar','2005-09-15','2022-05-12','/image/vedant.jpg',2,9);
-INSERT INTO employees(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('anil','hinge','2023-09-15','2022-06-14','/image/sahil.jpg',2,10);
-INSERT INTO employees(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('rohan','amate','2015-09-15','2022-07-13','/image/prakash.jpg',4,11);
-INSERT INTO employees(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('ajay','lanke','1988-09-15','2022-08-11','/image/nilesh.jpg',1,12);
+INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('akash','ajab','1999-09-15','2022-05-12','/image/akash.jpg',2,2);
+INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('pragati','Bangar','2000-12-18','2022-05-12','/image/vedant.jpg',1,1);
+INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('anil','hinge','2023-09-15','2022-06-14','/image/sahil.jpg',2,10);
+INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('rohan','amate','2015-09-15','2022-07-13','/image/prakash.jpg',4,11);
+INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('ajay','lanke','1988-09-15','2022-08-11','/image/nilesh.jpg',1,12);
 
 
 -- SHIPPERS DATA
@@ -158,13 +161,10 @@ INSERT INTO suppliers(companyname,suppliername,address,city,state,userid) VALUES
 INSERT INTO suppliers(companyname,suppliername,address,city,state,userid) VALUES('kavya','kavya bangar','chandoli','pune','maharashtra',20);
 
 -- USER ROLES DATA
+INSERT INTO userroles(userid,roleid) VALUES (1,2);
+INSERT INTO userroles(userid,roleid) VALUES (2,1);
 INSERT INTO userroles(userid,roleid) VALUES (1,1);
-INSERT INTO userroles(userid,roleid) VALUES (1,1);
-INSERT INTO userroles(userid,roleid) VALUES (1,1);
-INSERT INTO userroles(userid,roleid) VALUES (1,1);
-INSERT INTO userroles(userid,roleid) VALUES (1,1);
-INSERT INTO userroles(userid,roleid) VALUES (1,1);
-INSERT INTO userroles(userid,roleid) VALUES (1,1);
+INSERT INTO userroles(userid,roleid) VALUES (2,2);
 
 
 

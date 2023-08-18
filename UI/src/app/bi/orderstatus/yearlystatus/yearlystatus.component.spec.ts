@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { YearlyComponent } from './yearly.component';
+import { YearlystatusComponent } from './yearlystatus.component';
 
-describe('YearlyComponent', () => {
-  let component: YearlyComponent;
-  let fixture: ComponentFixture<YearlyComponent>;
+describe('YearlystatusComponent', () => {
+  let component: YearlystatusComponent;
+  let fixture: ComponentFixture<YearlystatusComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ YearlyComponent ]
+      declarations: [ YearlystatusComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(YearlyComponent);
+    fixture = TestBed.createComponent(YearlystatusComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

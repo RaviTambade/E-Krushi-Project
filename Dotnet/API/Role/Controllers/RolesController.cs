@@ -32,6 +32,9 @@ public class RolesController : ControllerBase
         return role;
     }
 
+
+
+[HttpPost]
     public async  Task<bool> Insert(Role role)
     {
 
@@ -41,6 +44,8 @@ public class RolesController : ControllerBase
         return status;
     }
 
+
+[HttpPut]
     public async  Task<bool> Update([FromBody] Role role)
     {
         bool status = await _srv.Update(role);

@@ -320,4 +320,45 @@ public class BIRepository : IBIRepository
         return orders;
     } 
 
+    public async Task<List<OrderChart>> GetYearlySMEPerformance
+    ()
+    {
+
+        List<OrderChart> orders = new List<OrderChart>();
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _conString;
+        try
+        {
+            string query = "select year(orders.shippeddate) as year, status,sum(status) as total  from orders group by year(orders.shippeddate) ,status ";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            await connection.OpenAsync();
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+                int year = int.Parse(reader["year"].ToString());
+                int total = int.Parse(reader["total"].ToString());
+                string status =reader["status"].ToString();
+                
+
+                OrderChart order = new OrderChart()
+                {
+                    Year =year,
+                    Total = total,  
+                    Status = status
+                };
+                orders.Add(order);
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception ee)
+        {
+            throw ee;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+        return orders;
+    }
+
 }

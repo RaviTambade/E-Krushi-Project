@@ -18,4 +18,6 @@ public interface IBIRepository{
    Task<List<OrderChart>> GetWeeklyOrders(int year);
 
    Task<List<OrderChart>> GetYearlyOrders();
+
+   Task<List<OrderChart>> GetYearlySMEPerformance();
 }

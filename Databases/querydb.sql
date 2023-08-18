@@ -230,3 +230,13 @@ SELECT CONCAT('week', ROW_NUMBER() OVER (ORDER BY WEEK(orderdate))) AS week_numb
 SELECT  year(orderdate) AS year, count(*) AS total
 FROM orders
 GROUP BY  year(orderdate) ORDER BY year(orderdate) ASC ;
+
+
+select * from seller;
+SELECT * FROM customers where userid=2;
+
+select * from userroles where userid=1;
+
+select id from users where contactnumber ='9881571268';
+				 select roles.role from roles inner join userroles on roles.id = userroles.roleid where userroles.userid=2;
+                 
