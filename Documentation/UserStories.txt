@@ -3,16 +3,16 @@
 
 
    1) As a farmer, I need to authenticate myself, so that I can see my account details.
-   2)As a farmer, I want to submit feedback, so that the krushi owner can consider my opinion related  to krushi products and consulting.
+   2)As a farmer, I want to submit feedback, so that the shop owner can consider my opinion related  to krushi products and consulting.
    3)As a farmer , I want to ask queries related farming , so that I can get feedback on issues.
-   4)As a krushi owner , I want to see dashboard, so that I can evaluate consultant performance.
+   4)As a shop owner , I want to see dashboard, so that I can evaluate consultant performance.
    5)As a sign-in user, I want to view a list of krushi products, so that I can select some to purchase.
    6)As a sign-in user, I want to  view list of krushi products cart, so that I can assure it before the order.
    7)As a farmer, I want to create an account, save my payment information, so that I can have a personalized shopping experience.
    8)As a farmer, I want to view my order history, so that I can  easily track my purchases.
    9)As a farmer, I want to view product details, including images, descriptions, prices, so that I can make informed purchasing decisions.
-   10)As a krushi owner, I want to manage my krushi product inventory, update product details, so that I can effectively manage my online krushi store.
-   11)As a krushi owner,I want to track sales and revenue so that I can make data-driven decisions about my business.
+   10)As a shop owner, I want to manage my krushi product inventory, update product details, so that I can effectively manage my online krushi store.
+   11)As a shop owner,I want to track sales and revenue so that I can make data-driven decisions about my business.
    12)As a SubjectMatterExperts , I want to see queries related farming, so that i will solve it anytime anywhere.
    13)As a user ,I want to reset password  so that I can ensure the security of my account.
    14)As a farmer ,I want to see status of my order (processing, shipped, delivered) so that I am aware of its progress.
@@ -28,7 +28,7 @@
    24)As a sign-in user,I want to login using my mobile number and password so that I can access my account.
    25)As a SubjectMatterExperts,I want to view graphical representations of my monthly, yearly, and weekly question answers information
       so that it helps me to chek my performance.
-   26)As a krushi owner,  I want to add new seller so that I can manage my application.
+   26)As a shop owner,  I want to add new seller so that I can manage my application.
    27)As a subjectMatterExperts, I want to view a dashboard that displays graphical representations of my monthly, yearly, and weekly answers so that I can check my answers information.
    28)As a farmer, I want to update products quantity in carts so that I can order accurate quantity.
    29)As a farmer, I want to remove krushi Products from my cart so that I can manage my cart list.
@@ -37,8 +37,8 @@
    32)As a visitor,I want to register on the website so that I can browse and buy listed products from the krushi application.
    33)As a Registered user, I want to be able to buy listed products, so that I can use the product I buy.
    34)As a farmer,I want to search for agri experts so that I can choose specialist for my query.
-   35)As a krushi owner,I want to easily compare prices and read reviews so that I can make informed purchasing decisions.
-   36)As a krushi owner,I want to be able to see farmer reviews for products so that I can make more informed purchasing decisions.
+   35)As a shop owner,I want to easily compare prices and read reviews so that I can make informed purchasing decisions.
+   36)As a shop owner,I want to be able to see farmer reviews for products so that I can make more informed purchasing decisions.
    37)As a farmer,I want to review my cart so that I can make adjustment prior to checkout.
    38)As a registered user, I want to be able to login to my account so that I can access my saved information.
    39)As a registered user, I want to update my profile information so that it can accurate and up to date.
