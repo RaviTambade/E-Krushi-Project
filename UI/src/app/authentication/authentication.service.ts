@@ -31,4 +31,17 @@ export class AuthenticationService {
     let url="http://localhost:5102/api/users";
     return this.http.post<any>(url,user);
   }
+
+
+  getUserId(contactNumber:any):Observable<any>{
+
+    let url="http://localhost:5102/api/users/userid/"+contactNumber;
+    return this.http.get<any>(url,contactNumber);
+  }
+
+  getRolesOfUser(userId:any):Observable<any>{
+
+    let url="http://localhost:5007/api/roles/user/"+userId;
+    return this.http.get<any>(url,userId);
+  }
 }
