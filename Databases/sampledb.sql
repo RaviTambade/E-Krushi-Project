@@ -1,9 +1,9 @@
 
 
 -- ROLE TABLE DATA
-INSERT INTO roles(role) VALUES ('Admin');
+INSERT INTO roles(role) VALUES ('Shop owner');
 INSERT INTO roles(role) VALUES ('Customer');
-INSERT INTO roles(role) VALUES ('Employee');
+INSERT INTO roles(role) VALUES ('Seller');
 INSERT INTO roles(role) VALUES ('Supplier');
 INSERT INTO roles(role) VALUES ('Shipper');
 INSERT INTO roles(role) VALUES ('SubjectMatterExpert');
