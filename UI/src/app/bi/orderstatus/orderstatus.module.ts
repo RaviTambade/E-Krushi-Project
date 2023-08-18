@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MonthlyComponent } from './monthly/monthly.component';
 import { QuartrlyComponent } from './quartrly/quartrly.component';
-import { YearlyComponent } from './yearly/yearly.component';
 import { MonthlystatusComponent } from './monthlystatus/monthlystatus.component';
+import { YearlystatusComponent } from './yearlystatus/yearlystatus.component';
 
 
 
@@ -11,14 +11,15 @@ import { MonthlystatusComponent } from './monthlystatus/monthlystatus.component'
   declarations: [
     MonthlyComponent,
     QuartrlyComponent,
-    YearlyComponent,
-    MonthlystatusComponent
+    MonthlystatusComponent,
+    YearlystatusComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    MonthlystatusComponent
+    MonthlystatusComponent,
+    YearlystatusComponent
   ],
 
 })

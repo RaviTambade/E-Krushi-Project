@@ -27,5 +27,7 @@ public class BIServices : IBIService{
 
     public async Task<List<OrderChart>> GetYearlyOrders() => await _repo.GetYearlyOrders();
 
+    public async Task<List<OrderChart>> GetYearlySMEPerformance() => await _repo.GetYearlySMEPerformance();
+
 
 }

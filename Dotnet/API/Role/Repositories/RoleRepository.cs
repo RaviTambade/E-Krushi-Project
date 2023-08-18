@@ -211,7 +211,6 @@ public class RoleRepository : IRoleRepository
         connection.ConnectionString = _conString;
         try
         {
-
             string query = "select roles.role from roles inner join userroles on roles.id= userroles.roleid where userroles.userid=@userId";
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@userId", id);
@@ -222,7 +221,7 @@ public class RoleRepository : IRoleRepository
                 string role = reader["role"].ToString();
                  roles.Add(role);
             }
-await reader.CloseAsync();
+            await reader.CloseAsync();
         }
 
         catch (Exception ee)

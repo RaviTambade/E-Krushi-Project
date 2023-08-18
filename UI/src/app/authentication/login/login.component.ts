@@ -23,6 +23,7 @@ export class LoginComponent {
     this.svc.validate(form).subscribe((response) => {
       console.log(response);
       localStorage.setItem("contactNumber",response.contactNumber);
+      
       localStorage.setItem("jwt",response.token)
       if(response){
         this.router.navigate(['home']);

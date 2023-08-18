@@ -4,9 +4,11 @@ import { SmeperformanceyearlyComponent } from './smeperformanceyearly/smeperform
 
 
 
+
 @NgModule({
   declarations: [
-    SmeperformanceyearlyComponent
+    SmeperformanceyearlyComponent,
+    
   ],
   imports: [
     CommonModule
