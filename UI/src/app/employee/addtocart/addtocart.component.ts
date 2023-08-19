@@ -18,18 +18,21 @@ export class AddtocartComponent implements OnInit{
   
   status:boolean |undefined;
     productId:any;
-    customerId:any=2;
+    customerId:any;
     cartId:any;
     unitPrice:any;
     totalAmount:any;
     title:any;
     image:any;
+    role:any;
 
   constructor(private svc:EmployeeService,private router:Router,private route:ActivatedRoute){
     this.unitPrice = localStorage.getItem("price");
     this.title = localStorage.getItem("title");
     this.image = localStorage.getItem("image");
     this.productId=localStorage.getItem("productId");
+    this.role=localStorage.getItem("role");
+    this.customerId=localStorage.getItem("userId");
     }
   
   ngOnInit(): void {
@@ -61,7 +64,12 @@ public addToCart(form:any){
     });
   }
 
-
+  getRole(): boolean{
+    if(this.role==null){
+     this.router.navigate(["register"]);
+    } 
+    return true;
+  }
 }
 
 

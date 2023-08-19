@@ -18,7 +18,7 @@ export class BillingComponent implements OnInit{
     billDate : new Date()
   }
 
-  custId:number=2;
+  userId:any;
   carts:any[];
   CustomerName:any|string;
   totalAmount:any|number;
@@ -28,17 +28,18 @@ export class BillingComponent implements OnInit{
     this.carts=[];
     this.CustomerName=localStorage.getItem("CustomerName");
     this.totalAmount=localStorage.getItem("total");
+    this.userId=localStorage.getItem("userId");
   }
   
   ngOnInit(): void {
-    this.svc.getCustomer(this.custId).subscribe((res)=>{
+    this.svc.getCustomer(this.userId).subscribe((res)=>{
       this.CustomerName=res;
       console.log(this.CustomerName);
       this.CustomerName=(res.firstName+" "+res.lastName);
       console.log(this.CustomerName);
       localStorage.setItem("CustomerName",this.CustomerName);
     }) 
-    this.svc.getCartDetails(this.custId).subscribe((res)=>{
+    this.svc.getCartDetails(this.userId).subscribe((res)=>{
       this.carts=res;
       console.log(this.carts);
    }) 

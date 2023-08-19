@@ -1,4 +1,6 @@
 
+<nav class="navbar">
+    <ul class="nav-links">
 <div class="about-section">
 <li>
 <a routerLink="register">Register</a> 
@@ -10,10 +12,9 @@
 <a *ngIf="isrolecustomer()" routerLink="mycart">MyCart</a> 
 <a *ngIf="isrolecustomer()" routerLink="questioncategory">Consulting</a>
 <a *ngIf="isrolecustomer()" routerLink="myQuestion">MyQuestions</a> 
-<a *ngIf="isroleshopowner()" routerLink="home">Home</a>
 </li>
-
-
 <router-outlet></router-outlet>
 </div>
+</ul>
+</nav>
 
