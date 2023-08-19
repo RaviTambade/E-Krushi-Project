@@ -233,10 +233,13 @@ GROUP BY  year(orderdate) ORDER BY year(orderdate) ASC ;
 
 
 select * from seller;
+--this query gives data where userid=1
 SELECT * FROM customers where userid=2;
 
+--this query gives data where userid=1
 select * from userroles where userid=1;
 
+-- this query gives the roles of particular user
 select id from users where contactnumber ='9881571268';
 select roles.role from roles inner join userroles on roles.id = userroles.roleid where userroles.userid=2;
                  
