@@ -56,6 +56,7 @@ const routes : Routes=[
   {path:'questioncategory/details/:id', component:DetailsComponent},
   {path:'debitcard', component:DebitcardComponent},
   {path:'myQuestion/answers/:questionId', component:QuestionanswerComponent},
+  {path:'Employee/routing', component:RoutingComponent},
 ]
 
 @NgModule({

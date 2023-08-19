@@ -1,14 +1,19 @@
 
 <div class="about-section">
-<a routerLink="register">Register</a> |
-<a routerLink="login">Login</a> |
-<a routerLink="home">Home</a> |
-<a routerLink="store">Store</a> | 
-<a routerLink="orderhistory">OrderHistory</a>| 
-<a routerLink="profile">Profile</a> |
-<a routerLink="mycart">MyCart</a> | 
-<a routerLink="questioncategory">Consulting</a> |
-<a routerLink="myQuestion">MyQuestions</a> 
+<li>
+<a routerLink="register">Register</a> 
+<a routerLink="login">Login</a> 
+<a routerLink="home">Home</a> 
+<a *ngIf="isrolecustomer()" routerLink="store">Store</a> 
+<a *ngIf="isrolecustomer()" routerLink="orderhistory">OrderHistory</a>
+<a *ngIf="isrolecustomer()" routerLink="profile">Profile</a> 
+<a *ngIf="isrolecustomer()" routerLink="mycart">MyCart</a> 
+<a *ngIf="isrolecustomer()" routerLink="questioncategory">Consulting</a>
+<a *ngIf="isrolecustomer()" routerLink="myQuestion">MyQuestions</a> 
+<a *ngIf="isroleshopowner()" routerLink="home">Home</a>
+</li>
+
 
 <router-outlet></router-outlet>
 </div>
+

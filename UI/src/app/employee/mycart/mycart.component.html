@@ -1,5 +1,4 @@
-
-    <h1>My Cart</h1>
+<h1>My Cart</h1>
                 <table>
                     <thead>
                         <tr>
@@ -14,7 +13,6 @@
                     <tbody>
                         
                         <tr  *ngFor="let cart of carts">
-        
                             <td>{{ cart.title }}</td>
                             <td><img [src]="cart.image" width="50" height="50"/></td>
                             <td>{{ cart.unitPrice }}</td>
@@ -23,12 +21,12 @@
                             <td>
                                 <button class="button" (click)="onRemoveProduct(cart.cartItemId)" type="submit" >Remove</button> |
                                 <button class="button"  (click)="onUpdateProduct(cart.cartItemId)" type="submit" >Update</button>
-                            </td>
-                            
+                            </td>  
                         </tr>
                         
-                    </tbody>
+                </tbody>
                 </table>
+                <!-- <div> {{Total()}}</div> -->
 
     <br>
 

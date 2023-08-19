@@ -25,14 +25,9 @@ export class MycartComponent implements OnInit{
   }
 
   ngOnInit():void {
-    this.svc.getCartDetails(this.custId).subscribe((res)=>{
-      this.carts=res;
-      this.productId=res.productId;
-      this.cartItemId=res.cartItemId;
-      this.unitPrice=res.unitPrice;
-      this.quantity=res.quantity;
-      console.log(this.cartId);
-  console.log(this.carts);
+    this.svc.getCartDetails(this.custId).subscribe((response)=>{
+      this.carts=response;
+      console.log(response);
    })
   }
 
@@ -64,8 +59,8 @@ export class MycartComponent implements OnInit{
     let total:any = 0;
     for (let cart of this.carts) {  
           total += cart.unitPrice * cart.quantity;  
+          localStorage.setItem("total",total );
     }
-    localStorage.setItem("total",total);
     console.log(total);
     return total;
   }

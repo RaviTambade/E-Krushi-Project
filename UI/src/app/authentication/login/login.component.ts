@@ -46,6 +46,7 @@ status:boolean=false;
 
        if(this.roles?.length< 1){
       //  const role=this.roles;
+      this.router.navigate(['/Employee/routing/', this.credential.contactNumber])
        } 
        })
      }) 
@@ -58,9 +59,11 @@ status:boolean=false;
      this.router.navigate(['home']);
      break;
 
-    case 'Shop owner':
-    this.router.navigate(['register']);
-    break;
+     
+
+    // case 'Shop owner':
+    // this.router.navigate(['register']);
+    // break;
   }
   }
 
