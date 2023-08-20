@@ -20,8 +20,8 @@ export class EmployeeService {
     return this.http.get<any>(url);
   }
 
-  public getCartId(id:number):Observable<any>{
-  let url ="http://localhost:5282/api/cart/getcartid/" +id;
+  public getCartId(userId:number):Observable<any>{
+  let url ="http://localhost:5282/api/cart/getcartid/" +userId;
   return this.http.get<any>(url);
   }
 

@@ -37,7 +37,6 @@ export class BillingComponent implements OnInit{
       console.log(this.CustomerName);
       this.CustomerName=(res.firstName+" "+res.lastName);
       console.log(this.CustomerName);
-      localStorage.setItem("CustomerName",this.CustomerName);
     }) 
     this.svc.getCartDetails(this.userId).subscribe((res)=>{
       this.carts=res;

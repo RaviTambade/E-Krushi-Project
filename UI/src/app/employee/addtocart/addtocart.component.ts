@@ -18,7 +18,7 @@ export class AddtocartComponent implements OnInit{
   
   status:boolean |undefined;
     productId:any;
-    customerId:any;
+    userId:any;
     cartId:any;
     unitPrice:any;
     totalAmount:any;
@@ -32,7 +32,7 @@ export class AddtocartComponent implements OnInit{
     this.image = localStorage.getItem("image");
     this.productId=localStorage.getItem("productId");
     this.role=localStorage.getItem("role");
-    this.customerId=localStorage.getItem("userId");
+    this.userId=localStorage.getItem("userId");
     }
   
   ngOnInit(): void {
@@ -40,8 +40,9 @@ export class AddtocartComponent implements OnInit{
     console.log(this.item.quantity);  
     // this.productId = this.route.snapshot.paramMap.get('id');
     console.log("ProductId:"+this.productId);
-     this.svc.getCartId(this.customerId).subscribe((res)=>{
+     this.svc.getCartId(this.userId).subscribe((res)=>{
       this.cartId=res;
+      console.log(this.cartId);
       localStorage.setItem("cartId",this.cartId);
       console.log("CartId:"+this.cartId);
      })
@@ -52,7 +53,9 @@ public addToCart(form:any){
     this.svc.addToCart(form).subscribe((res)=>{
     this.status=res;
     console.log(res);
-    console.log(this.item);
+    console.log(res.cartItemId);
+    console.log(res.cartId);
+    console.log(res.productId);
     this.router.navigateByUrl('/home');
     // if(res){
     //   window.location.reload();

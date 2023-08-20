@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class MycartComponent implements OnInit{
 
   carts:any[]; 
-  custId:number=2;
+  userId:number |any;
   productId:any;
   cartId:any;
   id:any;
@@ -22,10 +22,11 @@ export class MycartComponent implements OnInit{
 
   constructor(private svc :EmployeeService,private router:Router,private route:ActivatedRoute){
     this.carts=[];  
+    this.userId=localStorage.getItem("userId");
   }
 
   ngOnInit():void {
-    this.svc.getCartDetails(this.custId).subscribe((response)=>{
+    this.svc.getCartDetails(this.userId).subscribe((response)=>{
       this.carts=response;
       console.log(response);
    })
