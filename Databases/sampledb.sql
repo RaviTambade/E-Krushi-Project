@@ -165,7 +165,11 @@ INSERT INTO userroles(userid,roleid) VALUES (1,2);
 INSERT INTO userroles(userid,roleid) VALUES (2,1);
 INSERT INTO userroles(userid,roleid) VALUES (1,1);
 INSERT INTO userroles(userid,roleid) VALUES (2,2);
-
+INSERT INTO userroles(userid,roleid) VALUES (3,3);
+INSERT INTO userroles(userid,roleid) VALUES (4,6);
+INSERT INTO userroles(userid,roleid) VALUES (5,4);
+INSERT INTO userroles(userid,roleid) VALUES (6,5);
+INSERT INTO userroles(userid,roleid) VALUES (7,3);
 
 
 -- FEEDBACKS DATA
