@@ -1,20 +1,21 @@
 <nav class="navbar">
-    <ul class="nav-links">
+  
 <div class="about-section">
+    <ul class="nav-links">
 <li>
-<a routerLink="register">Register</a> 
-<a routerLink="login">Login</a> 
-<a routerLink="home">Home</a> 
-<a *ngIf="isrolecustomer()" routerLink="store">Store</a> 
-<a *ngIf="isrolecustomer()" routerLink="orderhistory">OrderHistory</a>
-<a *ngIf="isrolecustomer()" routerLink="profile">Profile</a> 
-<a *ngIf="isrolecustomer()" routerLink="mycart">MyCart</a> 
-<a *ngIf="isrolecustomer()" routerLink="questioncategory">Consulting</a>
-<a *ngIf="isrolecustomer()" routerLink="myQuestion">MyQuestions</a>
-<a *ngIf="isroleSME()" routerLink="myQuestion">myquestion</a> 
-</li>
+<a routerLink="register">Register</a> </li>
+<li><a routerLink="login">Login</a></li> 
+<li><a routerLink="home">Agri Products</a> </li>
+<li><a *ngIf="isrolecustomer()" routerLink="store">Store</a> </li>
+<li><a *ngIf="isrolecustomer()" routerLink="orderhistory">OrderHistory</a></li>
+<li><a *ngIf="isrolecustomer()" routerLink="profile">Profile</a> </li>
+<li><a *ngIf="isrolecustomer()" routerLink="mycart">MyCart</a> </li>
+<li><a *ngIf="isrolecustomer()" routerLink="questioncategory">Consulting</a></li>
+<li><a *ngIf="isrolecustomer()" routerLink="myQuestion">MyQuestions</a></li>
+<li><a *ngIf="isroleSME()" routerLink="myQuestion">myquestion</a> </li>
+</ul>
 <router-outlet></router-outlet>
 </div>
-</ul>
+
 </nav>
 

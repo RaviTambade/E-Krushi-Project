@@ -2,36 +2,29 @@
   
    
 
-.about-section {
-    padding: 25px;
-    text-align: center;
-  }
 
-  .navbar {
-    /* background-color: #333; */
-    /* color: #fff; */
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 10px;
+
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #1b29bc;
   }
   
-  .nav-links li {
-    display: inline-block;
-    margin-left: 20px;
+  li {
+    float: left;
   }
   
-  .nav-links a {
-    /* color: #fff; */
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
     text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 5px;
   }
   
-  /* Add a different background color for the active link */
-  .nav-links a.router-link-active {
-    background-color: #555;
+  li a:hover {
+    background-color: #e4861b;
   }
- 
-  
