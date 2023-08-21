@@ -13,9 +13,14 @@
     <td>{{question.questionDate | date:'M/d/yy'}}</td>
     <td>{{question.questionDate |  date:'hh:mm:ss a'}}</td>
     <td>{{question.answers}}   | <button class="button" (click)="onSelectQuestion(question.id)" type="submit">Answer</button></td>
- <td>
+    <div>
+ <td *ngIf="isroleCustomer()">
         <button class="button" (click)="removeQuestion(question.id)" type="submit">Remove</button>
 </td>
+<td *ngIf="isroleSME()">
+    <button class="button"  type="submit">AddSolution</button>
+</td>
+</div>
 </tr>
 </table>
 </div>

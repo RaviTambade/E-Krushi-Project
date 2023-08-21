@@ -10,15 +10,35 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class MyquestionComponent implements OnInit{
 
 customerQuestions:any[];
-custId:any=2;
+userId:any;
 id:number|any;
+
+status:Boolean=false;
   
   constructor(private svc :ConsultingService,private router:Router,private route:ActivatedRoute){
     this.customerQuestions=[]
+
+    this.userId=localStorage.getItem("userId");
   }
+
+  isroleCustomer():Boolean{
+  let role=localStorage.getItem("role");
+  if(role =="Customer" ){
+    return true;
+  }
+  return false;
+  }
+
+  isroleSME():Boolean{
+    let role=localStorage.getItem("role");
+    if(role =="SubjectMatterExpert" ){
+      return true;
+    }
+    return false;
+    }
   
   ngOnInit(): void {
-   this.svc.GetCustomerQuestionDetails(this.custId).subscribe((res)=>
+   this.svc.GetCustomerQuestionDetails(this.userId).subscribe((res)=>
     {
       this.customerQuestions=res;
       this.id=res.id;

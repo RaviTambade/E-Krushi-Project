@@ -30,7 +30,8 @@ import { RegisterComponent } from '../authentication/register/register.component
 import { CustomerproductsaleComponent } from './customerproductsale/customerproductsale.component';
 
 
-const routes : Routes=[
+const routes : Routes=[ 
+  // {path:'**', component:HomeComponent},
   {path:'register', component:RegisterComponent},
   {path:'home', component:HomeComponent},
   {path:'login', component:LoginComponent},

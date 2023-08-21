@@ -220,6 +220,7 @@ public class RoleRepository : IRoleRepository
             {
                 string role = reader["role"].ToString();
                  roles.Add(role);
+                 Console.WriteLine(roles);
             }
             await reader.CloseAsync();
         }

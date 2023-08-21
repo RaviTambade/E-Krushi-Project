@@ -28,6 +28,11 @@ export class RoutingComponent {
     return role == 'shipper';
   }
 
+  isroleSME(): boolean {
+    const role = localStorage.getItem("role")
+    return role == 'SubjectMatterExpert';
+  }
+
 //   openUserProfile() {
 //     this.router.navigate(['userinfo']);
 // }

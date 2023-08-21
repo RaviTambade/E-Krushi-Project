@@ -27,8 +27,8 @@ export class ConsultingService {
     return this.http.post<CustomerQuestion>(url,question);
   }
 
-  public GetCustomerQuestionDetails(custId:any):Observable<any>{
-    let url="http://localhost:5279/api/consulting/questionDetails/"+custId;
+  public GetCustomerQuestionDetails(userId:any):Observable<any>{
+    let url="http://localhost:5279/api/consulting/questionDetails/"+userId;
     return this.http.get<any>(url);
   }
 

@@ -22,6 +22,7 @@ id:any;
       this.questions=res;
       console.log(this.questions);
     })
+    
   }
 
   onSelectQuestion(id:any){

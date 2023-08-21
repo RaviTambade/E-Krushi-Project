@@ -10,7 +10,8 @@
 <a *ngIf="isrolecustomer()" routerLink="profile">Profile</a> 
 <a *ngIf="isrolecustomer()" routerLink="mycart">MyCart</a> 
 <a *ngIf="isrolecustomer()" routerLink="questioncategory">Consulting</a>
-<a *ngIf="isrolecustomer()" routerLink="myQuestion">MyQuestions</a> 
+<a *ngIf="isrolecustomer()" routerLink="myQuestion">MyQuestions</a>
+<a *ngIf="isroleSME()" routerLink="myQuestion">myquestion</a> 
 </li>
 <router-outlet></router-outlet>
 </div>
