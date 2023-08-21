@@ -28,10 +28,11 @@ import { UploadfileComponent } from './uploadfile/uploadfile.component';
 import { LoginComponent } from '../authentication/login/login.component';
 import { RegisterComponent } from '../authentication/register/register.component';
 import { CustomerproductsaleComponent } from './customerproductsale/customerproductsale.component';
+import { DefaultComponent } from './default/default.component';
 
 
 const routes : Routes=[ 
-  // {path:'**', component:HomeComponent},
+  {path:'', component:DefaultComponent},
   {path:'register', component:RegisterComponent},
   {path:'home', component:HomeComponent},
   {path:'login', component:LoginComponent},
@@ -74,7 +75,8 @@ const routes : Routes=[
     OrderhistoryComponent,
     OrderdetailsComponent,
     UploadfileComponent,
-    CustomerproductsaleComponent
+    CustomerproductsaleComponent,
+    DefaultComponent
   ],
   imports: [
     CommonModule,
@@ -88,7 +90,8 @@ const routes : Routes=[
     StoreComponent,
     OrderComponent,
     CustomerproductsaleComponent,
-    UploadfileComponent
+    UploadfileComponent,
+    DefaultComponent
   ]
 })
 
