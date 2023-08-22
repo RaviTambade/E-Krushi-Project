@@ -30,6 +30,7 @@ import { ProductsaleModule } from './bi/productsale/productsale.module';
 import { OrderchartModule } from './bi/orderchart/orderchart.module';
 import { OrderstatusModule } from './bi/orderstatus/orderstatus.module';
 import { ConsultingchartsModule } from './bi/consultingcharts/consultingcharts.module';
+import { UsersModule } from './users/users.module';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { ConsultingchartsModule } from './bi/consultingcharts/consultingcharts.m
     OrderchartModule,
     ProductsaleModule,
     OrderstatusModule,
-    ConsultingchartsModule
+    ConsultingchartsModule,
+    UsersModule
   ],
   providers: [AppService],
   bootstrap: [AppComponent]
