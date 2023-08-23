@@ -10,10 +10,7 @@ export class EmployeeService {
 
   constructor(private http:HttpClient) { }
 
-  public getAllProducts():Observable<any>{
-    let url = "http://localhost:5137/api/products";
-    return this.http.get<any>(url);
-  }
+  
 
   public getById(id:any):Observable<any>{
     let url = "http://localhost:5137/api/products/product/" +id;

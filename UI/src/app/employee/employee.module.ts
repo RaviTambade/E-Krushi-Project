@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { HomeComponent } from './home/home.component';
 import { StoreComponent } from './store/store.component';
 import { RoutingComponent } from './routing/routing.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -26,6 +25,7 @@ import { AddtocartComponent } from '../cart/addtocart/addtocart.component';
 import { MycartComponent } from '../cart/mycart/mycart.component';
 import { OrderdetailsComponent } from '../order/orderdetails/orderdetails.component';
 import { OrderhistoryComponent } from '../order/orderhistory/orderhistory.component';
+import { HomeComponent } from '../default/home/home.component';
 
 
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/product';
-import { EmployeeService } from '../employee.service';
+import { DefaultService } from '../default.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Product } from 'src/app/product';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   products:Product[] |any;
   selectedProduct:any;
-  constructor(private svc:EmployeeService,private router:Router,private route:ActivatedRoute){
+  constructor(private svc:DefaultService,private router:Router,private route:ActivatedRoute){
     this.products=[];
   }
 
