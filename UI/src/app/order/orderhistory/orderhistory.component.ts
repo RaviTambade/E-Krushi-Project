@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EmployeeService } from '../employee.service';
+import { OrderhubService } from '../orderhub.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -9,18 +9,20 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class OrderhistoryComponent {
 
-  custId:any=2;
+
+  userId:any;
   orders:any[];
   totalAmount:any;
   cartItemId:any;
   
-  constructor(private svc : EmployeeService,private router:Router,private route:ActivatedRoute ){
-    this.orders=[]
+  constructor(private svc : OrderhubService,private router:Router,private route:ActivatedRoute ){
+    this.orders=[];
+    this.userId=localStorage.getItem("userId");
     this.totalAmount = localStorage.getItem("total");
   }
   
   ngOnInit(): void {
-    this.svc.getOrderDetails(this.custId).subscribe((res)=>{
+    this.svc.getOrderDetails(this.userId).subscribe((res)=>{
       this.orders=res;
       console.log(this.cartItemId);
   }) 
