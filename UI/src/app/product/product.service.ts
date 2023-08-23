@@ -24,5 +24,11 @@ export class ProductService {
     public getCountByMonth(year:number):Observable<any>{
       let url="http://localhost:5137/api/products/sale/" +year;
       return this.http.get<any>(url);
-}
+    }
+
+      public getById(id:any):Observable<any>{
+        let url = "http://localhost:5137/api/products/product/" +id;
+        return this.http.get<any>(url);
+      }
+
 }
