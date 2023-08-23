@@ -7,8 +7,6 @@ export class User{
         public gender :string,
         public email:string ,
         public contactNumber :string)
-                // public cartId:number)
-                // public unitPrice:number)
                 {}
             }
     

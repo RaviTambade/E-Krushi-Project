@@ -9,6 +9,7 @@ import { Chart } from 'chart.js';
 })
 export class CustomerproductsaleComponent {
 
+  //use actual Model class instead of any
 custId:number=1;
 products:any;
 public chart: any;

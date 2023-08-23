@@ -10,31 +10,60 @@ import { ActivatedRoute, Route, Router } from '@angular/router';
 })
 export class AddtocartComponent implements OnInit{
   item:Item={
-    productId:1,
-    cartId:1,
-    quantity:0
+    cartId: 0,
+    quantity: 0,
+    productId: 0,
+    cartItemId: 0
   }
+  
   status:boolean |undefined;
-    id:any;
-  constructor(private svc:CartService,private router:Router,private route:ActivatedRoute){}
-  ngOnInit(): void {
+    productId:any;
+    userId:any;
+    cartId:any;
+    unitPrice:any;
+    totalAmount:any;
+    title:any;
+    image:any;
+    role:any;
+
+  constructor(private svc:CartService,private router:Router,private route:ActivatedRoute){
+    this.unitPrice = localStorage.getItem("price");
+    this.title = localStorage.getItem("title");
+    this.image = localStorage.getItem("image");
+    this.productId=localStorage.getItem("productId");
+    this.role=localStorage.getItem("role");
+    this.userId=localStorage.getItem("userId");
     }
+  
+  ngOnInit(): void {
+    console.log(this.unitPrice);
+    console.log(this.item.quantity);  
+    // this.productId = this.route.snapshot.paramMap.get('id');
+    console.log("ProductId:"+this.productId);
+     this.svc.getCartId(this.userId).subscribe((res)=>{
+      this.cartId=res;
+      console.log(this.cartId);
+      localStorage.setItem("cartId",this.cartId);
+      console.log("CartId:"+this.cartId);
+     })
+  }
 
-
-public addToCart(item:Item){
-    console.log(item);
-    this.id = this.route.snapshot.paramMap.get('id');
-    console.log(this.id);
-    this.svc.addToCart(item).subscribe((res)=>{
+public addToCart(form:any){
+    console.log(form);
+    this.svc.addToCart(form).subscribe((res)=>{
     this.status=res;
-    // console.log(this.item)
-    // if(res){
-    //   window.location.reload();
-    //   alert("Record Inserted Successfully");
-    // }
-    // else{
-    //   alert("Error While Inserting Record")
-    // }
+    console.log(res);
+    console.log(res.cartItemId);
+    console.log(res.cartId);
+    console.log(res.productId);
+    this.router.navigateByUrl('/home');
     });
+  }
+
+  getRole(): boolean{
+    if(this.role==null){
+     this.router.navigate(["register"]);
+    } 
+    return true;
   }
 }

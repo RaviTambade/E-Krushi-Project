@@ -46,10 +46,11 @@ export class BillingComponent implements OnInit{
   
   addBill(form:any){
     this.service.addBill(form).subscribe((res)=>{
+      //dont use bill object for response.. instead use boolean variable
       this.bill=res;
       if(res){
         window.location.reload();
-        alert("  Successfully");
+        alert("Successfully");
       }
       else{
         alert("Error While deleting Record")
