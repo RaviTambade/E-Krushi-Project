@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
-import { EmployeeModule } from '../employee.module';
-import { EmployeeService } from '../employee.service';
+import { Component } from '@angular/core';
+import { CartService } from '../cart.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Item } from '../items';
 
 @Component({
   selector: 'app-mycart',
   templateUrl: './mycart.component.html',
   styleUrls: ['./mycart.component.css']
 })
-export class MycartComponent implements OnInit{
+export class MycartComponent {
 
-  carts:any[]; 
+  
+  //remove unused variables.
+  carts:any[];
+  items:Item[]=[] 
   userId:number |any;
   productId:any;
   cartId:any;
@@ -20,7 +23,7 @@ export class MycartComponent implements OnInit{
   quantity:any;
   cartItemId:any;
 
-  constructor(private svc :EmployeeService,private router:Router,private route:ActivatedRoute){
+  constructor(private svc :CartService,private router:Router,private route:ActivatedRoute){
     this.carts=[];  
     this.userId=localStorage.getItem("userId");
   }

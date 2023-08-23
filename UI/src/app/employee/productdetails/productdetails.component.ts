@@ -16,7 +16,7 @@ export class ProductdetailsComponent implements OnInit{
   id:any; 
   unitPrice:any;
   category:any;
-
+  //set full object in localstorage instead of setting one by one
   constructor(private svc:EmployeeService,private route:ActivatedRoute,private router:Router){
     this.category =localStorage.getItem("category");
   }

@@ -20,17 +20,12 @@ export class EmployeeService {
     return this.http.get<any>(url);
   }
 
-  
+  public getCartDetails(custId:number):Observable<any>{
+    let url = "http://localhost:5282/api/cart/getcart/" +custId;
+    return this.http.get<any>(url);
+  }
 
-    public removeFromCart(productId:number):Observable<any>{
-      let url ="http://localhost:5282/api/cart/remove/" +productId;
-      return this.http.delete<any>(url);
-    }
-
-    public getCartDetails(custId:number):Observable<any>{
-      let url = "http://localhost:5282/api/cart/getcart/" +custId;
-      return this.http.get<any>(url);
-    }
+    
 
     public updateQuantity(item:Item):Observable<any>{
       let url = " http://localhost:5282/api/cart/update" 
