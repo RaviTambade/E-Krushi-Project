@@ -16,6 +16,7 @@ export class AddtocartComponent implements OnInit{
   }
   status:boolean |undefined;
     id:any;
+    // remove unwanted code.
   constructor(private svc:CartService,private router:Router,private route:ActivatedRoute){}
   ngOnInit(): void {
     }

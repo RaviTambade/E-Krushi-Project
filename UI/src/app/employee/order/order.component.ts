@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class OrderComponent implements OnInit{
 
+  //remove console.log()
   orders:any[];
   id:any;
   custId:number=2;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmployeeModule } from '../employee.module';
 import { EmployeeService } from '../employee.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Item } from '../items';
 
 @Component({
   selector: 'app-mycart',
@@ -10,7 +11,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class MycartComponent implements OnInit{
 
-  carts:any[]; 
+  //remove unused variables.
+  carts:any[];
+  items:Item[]=[] 
   userId:number |any;
   productId:any;
   cartId:any;
