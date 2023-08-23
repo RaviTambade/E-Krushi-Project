@@ -1,23 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { EmployeeModule } from '../employee.module';
-import { Product } from 'src/app/product';
-import { EmployeeService } from '../employee.service';
+import { Component } from '@angular/core';
+import { ProductService } from '../product.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProducthubService } from 'src/app/producthub.service';
 
 @Component({
   selector: 'app-productdetails',
   templateUrl: './productdetails.component.html',
   styleUrls: ['./productdetails.component.css']
 })
-export class ProductdetailsComponent implements OnInit{
+export class ProductdetailsComponent {
 
   product: any;
   id:any; 
   unitPrice:any;
   category:any;
   //set full object in localstorage instead of setting one by one
-  constructor(private svc:EmployeeService,private route:ActivatedRoute,private router:Router){
+  constructor(private svc:ProductService,private route:ActivatedRoute,private router:Router){
     this.category =localStorage.getItem("category");
   }
   
@@ -40,5 +37,3 @@ export class ProductdetailsComponent implements OnInit{
       this.router.navigate(['./addtocart',id],{relativeTo:this.route})
     }
 }
-  
-

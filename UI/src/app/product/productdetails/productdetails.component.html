@@ -1,0 +1,26 @@
+
+            <div   class="about-section" *ngIf="product" >
+                <table>
+                  <tr>
+                  <th>Product Id</th>
+                  <th>Title</th>
+                  <th>StockAvailable</th>
+                  <th>UnitPrice</th>
+                  <th>Image</th>
+                  <th>category</th>
+    
+                </tr>
+                <tr>
+                  <td>{{ product.id }}</td>
+                  <td>{{ product.title }}</td>
+                  <td>{{ product.stockAvailable }}</td>
+                  <td>{{ product.unitPrice }}</td>
+                  <td><img [src]="product.image" width="50" height="50"/></td>
+                  <td>{{ category }}</td>
+                </tr>
+                <button   (click)="onClick(product.id)">addToCart</button>  
+                </table>
+                   
+              </div> 
+    
+            

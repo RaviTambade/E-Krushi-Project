@@ -3,7 +3,6 @@ import { StoreComponent } from './store/store.component';
 import { RoutingComponent } from './routing/routing.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { UpdateComponent } from './update/update.component';
@@ -24,6 +23,7 @@ import { DefaultComponent } from './default/default.component';
 import { AddtocartComponent } from '../cart/addtocart/addtocart.component';
 import { MycartComponent } from '../cart/mycart/mycart.component';
 import { OrderdetailsComponent } from '../order/orderdetails/orderdetails.component';
+import { ProductdetailsComponent } from '../product/productdetails/productdetails.component';
 import { OrderhistoryComponent } from '../order/orderhistory/orderhistory.component';
 import { HomeComponent } from '../default/home/home.component';
 
@@ -64,7 +64,6 @@ const routes : Routes=[
     HomeComponent,
     StoreComponent,
     RoutingComponent,
-    ProductdetailsComponent,
     UpdateComponent,
     UploadfileComponent,
     DefaultComponent
