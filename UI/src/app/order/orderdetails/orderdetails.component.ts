@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../employee.service';
+import { Component } from '@angular/core';
+import { OrderhubService } from '../orderhub.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -7,21 +7,23 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './orderdetails.component.html',
   styleUrls: ['./orderdetails.component.css']
 })
-export class OrderdetailsComponent  implements OnInit{
+export class OrderdetailsComponent {
+ 
   orderId:number |any;
   orderDetails:any[];
-  custId:any|number;
+  userId:any|number;
   customerName:any|string;
-  constructor(private svc : EmployeeService,private router:Router,private route:ActivatedRoute){
+
+  constructor(private svc : OrderhubService,private router:Router,private route:ActivatedRoute){
     this.orderDetails=[]; 
-    
     this.customerName=localStorage.getItem("CustomerName");
+    this.userId=localStorage.getItem("userId");
   }
   
   
   ngOnInit(): void {
-    this.custId = this.route.snapshot.paramMap.get('custId');
-    this.svc.getOrderDetails(this.custId).subscribe((res)=>{
+    this.orderId = this.route.snapshot.paramMap.get('orderId');
+    this.svc.getOrderDetails(this.userId).subscribe((res)=>{
       this.orderDetails=res;
     }) 
   }

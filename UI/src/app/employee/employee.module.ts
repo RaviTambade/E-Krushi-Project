@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { HomeComponent } from './home/home.component';
 import { StoreComponent } from './store/store.component';
-import { OrderComponent } from './order/order.component';
 import { RoutingComponent } from './routing/routing.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -12,7 +11,6 @@ import { UpdateComponent } from './update/update.component';
 import { BillingComponent } from '../payment/billing/billing.component';
 import { OrderpaymentComponent } from '../payment/orderpayment/orderpayment.component';
 import { OrderhistoryComponent } from './orderhistory/orderhistory.component';
-import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
 import { QuestionComponent } from '../consulting/question/question.component';
 import { DetailsComponent } from '../consulting/details/details.component';
 import { AddquestionComponent } from '../consulting/addquestion/addquestion.component';
@@ -28,6 +26,7 @@ import { CustomerproductsaleComponent } from './customerproductsale/customerprod
 import { DefaultComponent } from './default/default.component';
 import { AddtocartComponent } from '../cart/addtocart/addtocart.component';
 import { MycartComponent } from '../cart/mycart/mycart.component';
+import { OrderdetailsComponent } from '../order/orderdetails/orderdetails.component';
 
 
 
@@ -58,18 +57,17 @@ const routes : Routes=[
   {path:'debitcard', component:DebitcardComponent},
   {path:'myQuestion/answers/:questionId', component:QuestionanswerComponent},
   {path:'Employee/routing', component:RoutingComponent},
+  {path:'orderdetails/:userId', component:OrderdetailsComponent}
 ]
 
 @NgModule({
   declarations: [
     HomeComponent,
     StoreComponent,
-    OrderComponent,
     RoutingComponent,
     ProductdetailsComponent,
     UpdateComponent,
     OrderhistoryComponent,
-    OrderdetailsComponent,
     UploadfileComponent,
     CustomerproductsaleComponent,
     DefaultComponent
@@ -84,7 +82,6 @@ const routes : Routes=[
   exports: [
     RoutingComponent,
     StoreComponent,
-    OrderComponent,
     CustomerproductsaleComponent,
     UploadfileComponent,
     DefaultComponent

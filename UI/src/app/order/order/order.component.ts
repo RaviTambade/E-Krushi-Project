@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../employee.service';
-import { Order } from 'src/app/payment/order';
+import { Component } from '@angular/core';
+import { OrderhubService } from '../orderhub.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -8,22 +7,21 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.css']
 })
-export class OrderComponent implements OnInit{
-
-  //remove console.log()
+export class OrderComponent {
   orders:any[];
   id:any;
-  custId:number=2;
+  userId:any;
   customer:any;
   customerName:any|string;
   total:any;
-  constructor(private svc:EmployeeService,private router:Router,private route:ActivatedRoute){
+  constructor(private svc:OrderhubService,private router:Router,private route:ActivatedRoute){
     this.orders=[];
     this.total=localStorage.getItem("total");
+    this.userId=localStorage.getItem("userId");
   }
 
   ngOnInit(): void {
-    this.svc.getCustomer(this.custId).subscribe((res)=>{
+    this.svc.getCustomer(this.userId).subscribe((res)=>{
       this.customer=res;
       console.log(this.customer);
       this.customerName=(res.firstName+" "+res.lastName);
@@ -32,15 +30,15 @@ export class OrderComponent implements OnInit{
     
     }) 
 
-    this.svc.getOrderDetails(this.custId).subscribe((res)=>{
+    this.svc.getOrderDetails(this.userId).subscribe((res)=>{
       this.orders=res;
 
       console.log(this.orders);
     }) 
   }
 
-  onSelectOrder(custId:any){
-    console.log(custId);
-    this.router.navigate(["./orderdetails",custId],{relativeTo:this.route});
+  onSelectOrder(orderId:any){
+    console.log(orderId);
+    this.router.navigate(["./orderdetails",orderId],{relativeTo:this.route});
   }
 }

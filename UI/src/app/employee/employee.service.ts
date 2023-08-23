@@ -38,10 +38,7 @@ export class EmployeeService {
       return this.http.get<any>(url);
     }
 
-    public getOrderDetails(custId:number):Observable<any>{
-      let url ="http://localhost:5057/api/orders/orderhistory/" +custId;
-      return this.http.get<any>(url);
-      }
+    
 
       public getAllOrders():Observable<any>{
         let url = "http://localhost:5057/api/orders/customerorders";
@@ -67,6 +64,11 @@ export class EmployeeService {
         let url="http://localhost:5161/api/bi/details/" +custId;
         return this.http.get<any>(url);
       }
+
+      public getOrderDetails(custId:number):Observable<any>{
+        let url ="http://localhost:5057/api/orders/orderhistory/" +custId;
+        return this.http.get<any>(url);
+        }
       
 }
 
