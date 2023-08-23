@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AddtocartComponent } from '../employee/addtocart/addtocart.component';
+
 import { MycartComponent } from './mycart/mycart.component';
 import { UpdateComponent } from './update/update.component';
 import { BillingComponent } from '../payment/billing/billing.component';
@@ -28,6 +28,8 @@ import { LoginComponent } from '../authentication/login/login.component';
 import { RegisterComponent } from '../authentication/register/register.component';
 import { CustomerproductsaleComponent } from './customerproductsale/customerproductsale.component';
 import { DefaultComponent } from './default/default.component';
+import { AddtocartComponent } from '../cart/addtocart/addtocart.component';
+
 
 
 const routes : Routes=[ 
@@ -66,7 +68,6 @@ const routes : Routes=[
     OrderComponent,
     RoutingComponent,
     ProductdetailsComponent,
-    AddtocartComponent,
     MycartComponent,
     UpdateComponent,
     OrderhistoryComponent,
