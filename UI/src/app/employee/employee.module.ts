@@ -9,7 +9,6 @@ import { CommonModule } from '@angular/common';
 import { UpdateComponent } from './update/update.component';
 import { BillingComponent } from '../payment/billing/billing.component';
 import { OrderpaymentComponent } from '../payment/orderpayment/orderpayment.component';
-import { OrderhistoryComponent } from './orderhistory/orderhistory.component';
 import { QuestionComponent } from '../consulting/question/question.component';
 import { DetailsComponent } from '../consulting/details/details.component';
 import { AddquestionComponent } from '../consulting/addquestion/addquestion.component';
@@ -21,17 +20,17 @@ import { QuestionanswerComponent } from '../consulting/questionanswer/questionan
 import { UploadfileComponent } from './uploadfile/uploadfile.component';
 import { LoginComponent } from '../authentication/login/login.component';
 import { RegisterComponent } from '../authentication/register/register.component';
-import { CustomerproductsaleComponent } from './customerproductsale/customerproductsale.component';
 import { DefaultComponent } from './default/default.component';
 import { AddtocartComponent } from '../cart/addtocart/addtocart.component';
 import { MycartComponent } from '../cart/mycart/mycart.component';
 import { OrderdetailsComponent } from '../order/orderdetails/orderdetails.component';
 import { ProductdetailsComponent } from '../product/productdetails/productdetails.component';
+import { OrderhistoryComponent } from '../order/orderhistory/orderhistory.component';
 
 
 
 const routes : Routes=[ 
-  {path:'', component:DefaultComponent},
+  {path:'', component:HomeComponent},
   {path:'register', component:RegisterComponent},
   {path:'home', component:HomeComponent},
   {path:'login', component:LoginComponent},
@@ -66,9 +65,7 @@ const routes : Routes=[
     StoreComponent,
     RoutingComponent,
     UpdateComponent,
-    OrderhistoryComponent,
     UploadfileComponent,
-    CustomerproductsaleComponent,
     DefaultComponent
   ],
   imports: [
@@ -81,7 +78,6 @@ const routes : Routes=[
   exports: [
     RoutingComponent,
     StoreComponent,
-    CustomerproductsaleComponent,
     UploadfileComponent,
     DefaultComponent
   ]

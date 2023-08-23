@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderComponent } from './order/order.component';
 import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
+import { OrderhistoryComponent } from './orderhistory/orderhistory.component';
 
 
 
@@ -12,7 +13,8 @@ import { OrderdetailsComponent } from './orderdetails/orderdetails.component';
   declarations: [
     FilterdateComponent,
     OrderComponent,
-    OrderdetailsComponent
+    OrderdetailsComponent,
+    OrderhistoryComponent
   ],
   imports: [
     CommonModule,
