@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductsellComponent } from './productsell/productsell.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { ProductlistComponent } from './productlist/productlist.component';
+import { UploadfileComponent } from './uploadfile/uploadfile.component';
 
 
 
@@ -14,7 +15,8 @@ import { ProductlistComponent } from './productlist/productlist.component';
     NewproductComponent,
     ProductsellComponent,
     ProductdetailsComponent,
-    ProductlistComponent
+    ProductlistComponent,
+    UploadfileComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { ProductlistComponent } from './productlist/productlist.component';
   exports: [
     NewproductComponent,
     ProductsellComponent,
-    ProductlistComponent
+    ProductlistComponent,
+    UploadfileComponent
   ]
 })
 export class ProductModule { }

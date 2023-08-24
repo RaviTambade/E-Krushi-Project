@@ -16,7 +16,6 @@ import { NewquestionComponent } from '../consulting/newquestion/newquestion.comp
 import { QuestioncategoryComponent } from '../consulting/questioncategory/questioncategory.component';
 import { DebitcardComponent } from '../payment/debitcard/debitcard.component';
 import { QuestionanswerComponent } from '../consulting/questionanswer/questionanswer.component';
-import { UploadfileComponent } from './uploadfile/uploadfile.component';
 import { LoginComponent } from '../authentication/login/login.component';
 import { RegisterComponent } from '../authentication/register/register.component';
 import { AddtocartComponent } from '../cart/addtocart/addtocart.component';
@@ -68,8 +67,7 @@ const routes : Routes=[
   declarations: [
     HomeComponent,
     RoutingComponent,
-    UpdateComponent,
-    UploadfileComponent
+    UpdateComponent
   ],
   imports: [
     CommonModule,
@@ -79,8 +77,7 @@ const routes : Routes=[
     RouterModule.forRoot(routes)
   ],
   exports: [
-    RoutingComponent,
-    UploadfileComponent
+    RoutingComponent
   ]
 })
 
