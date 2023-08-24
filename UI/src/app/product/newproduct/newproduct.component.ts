@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProductService } from '../product.service';
-import { Product } from 'src/app/product';
+import { Product } from 'src/app/product/product';
 import { HttpClient, HttpErrorResponse, HttpEventType } from '@angular/common/http';
 
 @Component({

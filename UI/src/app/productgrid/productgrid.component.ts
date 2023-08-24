@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProducthubService } from '../producthub.service';
-import { Product } from '../product';
+import { Product } from '../product/product';
+import { ProductService } from '../product/product.service';
 
 @Component({
   selector: 'app-productgrid',
@@ -12,7 +12,7 @@ products:Product[] |undefined
 id:number |any;
 product:any;
 
-  constructor(private svc:ProducthubService){}
+  constructor(private svc:ProductService){}
 
   ngOnInit(): void {
     this.svc.getAllProducts().subscribe((res)=>{

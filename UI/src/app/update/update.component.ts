@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { ProducthubService } from '../producthub.service';
+import { ProductService } from '../product/product.service';
+
 
 @Component({
   selector: 'app-update',
@@ -9,7 +10,7 @@ import { ProducthubService } from '../producthub.service';
 })
 export class UpdateComponent {
   
-  constructor(private svc:ProducthubService) {}
+  constructor(private svc:ProductService) {}
 
   subscription:Subscription |undefined;
   product : any | undefined;

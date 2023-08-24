@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { StoreComponent } from './store/store.component';
+
 import { RoutingComponent } from './routing/routing.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -19,7 +19,6 @@ import { QuestionanswerComponent } from '../consulting/questionanswer/questionan
 import { UploadfileComponent } from './uploadfile/uploadfile.component';
 import { LoginComponent } from '../authentication/login/login.component';
 import { RegisterComponent } from '../authentication/register/register.component';
-import { DefaultComponent } from './default/default.component';
 import { AddtocartComponent } from '../cart/addtocart/addtocart.component';
 import { MycartComponent } from '../cart/mycart/mycart.component';
 import { OrderdetailsComponent } from '../order/orderdetails/orderdetails.component';
@@ -28,6 +27,8 @@ import { OrderhistoryComponent } from '../order/orderhistory/orderhistory.compon
 import { HomeComponent } from '../default/home/home.component';
 import { LogoutComponent } from '../authentication/logout/logout.component';
 
+import { ProductlistComponent } from '../product/productlist/productlist.component';
+import { UserprofileComponent } from '../users/userprofile/userprofile.component';
 
 
 const routes : Routes=[ 
@@ -36,7 +37,7 @@ const routes : Routes=[
   {path:'home', component:HomeComponent},
   {path:'login', component:LoginComponent},
   {path:'orderhistory', component:OrderhistoryComponent },
-  {path:'store', component:StoreComponent},
+  {path:'store', component:ProductlistComponent},
   {path:'home/details/:id', component:ProductdetailsComponent},
   {path:'home/details/:id/addtocart/:id', component:AddtocartComponent},
   {path:'mycart', component:MycartComponent},
@@ -59,17 +60,16 @@ const routes : Routes=[
   {path:'Employee/routing', component:RoutingComponent},
   {path:'orderdetails/:userId', component:OrderdetailsComponent},
   {path:'logout', component:LogoutComponent},
+  {path:'profile', component:UserprofileComponent}
 
 ]
 
 @NgModule({
   declarations: [
     HomeComponent,
-    StoreComponent,
     RoutingComponent,
     UpdateComponent,
-    UploadfileComponent,
-    DefaultComponent
+    UploadfileComponent
   ],
   imports: [
     CommonModule,
@@ -80,9 +80,7 @@ const routes : Routes=[
   ],
   exports: [
     RoutingComponent,
-    StoreComponent,
-    UploadfileComponent,
-    DefaultComponent
+    UploadfileComponent
   ]
 })
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../product';
-import { ProducthubService } from '../producthub.service';
+import { Product } from '../product/product';
+import { ProductService } from '../product/product.service';
+
 
 @Component({
   selector: 'app-pagging',
@@ -15,7 +16,7 @@ export class PaggingComponent implements OnInit{
   products:Product[]; 
   selectedItems :Product[];
 
-  constructor(private svc :ProducthubService ){
+  constructor(private svc :ProductService ){
     this.selectedItems=[];
     this.products=[];
     this.size= 5;
