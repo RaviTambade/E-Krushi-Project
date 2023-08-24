@@ -26,6 +26,7 @@ import { OrderdetailsComponent } from '../order/orderdetails/orderdetails.compon
 import { ProductdetailsComponent } from '../product/productdetails/productdetails.component';
 import { OrderhistoryComponent } from '../order/orderhistory/orderhistory.component';
 import { HomeComponent } from '../default/home/home.component';
+import { LogoutComponent } from '../authentication/logout/logout.component';
 
 
 
@@ -56,7 +57,9 @@ const routes : Routes=[
   {path:'debitcard', component:DebitcardComponent},
   {path:'myQuestion/answers/:questionId', component:QuestionanswerComponent},
   {path:'Employee/routing', component:RoutingComponent},
-  {path:'orderdetails/:userId', component:OrderdetailsComponent}
+  {path:'orderdetails/:userId', component:OrderdetailsComponent},
+  {path:'logout', component:LogoutComponent},
+
 ]
 
 @NgModule({

@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NewuserComponent } from './newuser/newuser.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 
@@ -15,7 +16,8 @@ import { NewuserComponent } from './newuser/newuser.component';
     SigninComponent,
     LoginComponent,
     RegisterComponent,
-    NewuserComponent
+    NewuserComponent,
+    LogoutComponent
     
 
   ],
