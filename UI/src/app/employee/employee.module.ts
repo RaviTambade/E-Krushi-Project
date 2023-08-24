@@ -16,7 +16,6 @@ import { NewquestionComponent } from '../consulting/newquestion/newquestion.comp
 import { QuestioncategoryComponent } from '../consulting/questioncategory/questioncategory.component';
 import { DebitcardComponent } from '../payment/debitcard/debitcard.component';
 import { QuestionanswerComponent } from '../consulting/questionanswer/questionanswer.component';
-import { UploadfileComponent } from './uploadfile/uploadfile.component';
 import { LoginComponent } from '../authentication/login/login.component';
 import { RegisterComponent } from '../authentication/register/register.component';
 import { DefaultComponent } from './default/default.component';
@@ -64,7 +63,6 @@ const routes : Routes=[
     HomeComponent,
     RoutingComponent,
     UpdateComponent,
-    UploadfileComponent,
     DefaultComponent
   ],
   imports: [
@@ -76,7 +74,6 @@ const routes : Routes=[
   ],
   exports: [
     RoutingComponent,
-    UploadfileComponent,
     DefaultComponent
   ]
 })

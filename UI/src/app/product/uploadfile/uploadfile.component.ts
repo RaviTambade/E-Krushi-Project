@@ -7,6 +7,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./uploadfile.component.css']
 })
 export class UploadfileComponent {
+
   progress: number | undefined;
   message: string | undefined;
   @Output() public onUploadFinished = new EventEmitter();
