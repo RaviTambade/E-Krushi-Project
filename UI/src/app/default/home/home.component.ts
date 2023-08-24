@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DefaultService } from '../default.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from 'src/app/product';
+import { Product } from 'src/app/product/product';
 
 @Component({
   selector: 'app-home',

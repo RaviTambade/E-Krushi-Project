@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ProducthubService } from '../producthub.service';
-import { Category } from '../category';
-import { Product } from '../product';
+
+import { Category } from '../product/category';
+import { Product } from '../product/product';
+import { ProductService } from '../product/product.service';
 
 @Component({
   selector: 'app-categoryproduct',
@@ -21,7 +22,7 @@ export class CategoryproductComponent implements OnInit{
   category = new FormControl(null, [Validators.required]);
   product = new FormControl(null, [Validators.required]);
 
-  constructor(private service: ProducthubService) {
+  constructor(private service: ProductService) {
     //fetch all available countries from service
     this.form = new FormGroup({
       category: this.category,

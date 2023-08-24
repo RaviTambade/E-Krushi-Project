@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { StoreComponent } from './store/store.component';
+
 import { RoutingComponent } from './routing/routing.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,7 +26,7 @@ import { OrderdetailsComponent } from '../order/orderdetails/orderdetails.compon
 import { ProductdetailsComponent } from '../product/productdetails/productdetails.component';
 import { OrderhistoryComponent } from '../order/orderhistory/orderhistory.component';
 import { HomeComponent } from '../default/home/home.component';
-
+import { ProductlistComponent } from '../product/productlist/productlist.component';
 
 
 const routes : Routes=[ 
@@ -35,7 +35,7 @@ const routes : Routes=[
   {path:'home', component:HomeComponent},
   {path:'login', component:LoginComponent},
   {path:'orderhistory', component:OrderhistoryComponent },
-  {path:'store', component:StoreComponent},
+  {path:'store', component:ProductlistComponent},
   {path:'home/details/:id', component:ProductdetailsComponent},
   {path:'home/details/:id/addtocart/:id', component:AddtocartComponent},
   {path:'mycart', component:MycartComponent},
@@ -62,7 +62,6 @@ const routes : Routes=[
 @NgModule({
   declarations: [
     HomeComponent,
-    StoreComponent,
     RoutingComponent,
     UpdateComponent,
     UploadfileComponent,
@@ -77,7 +76,6 @@ const routes : Routes=[
   ],
   exports: [
     RoutingComponent,
-    StoreComponent,
     UploadfileComponent,
     DefaultComponent
   ]
