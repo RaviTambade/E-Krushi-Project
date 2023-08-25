@@ -12,8 +12,9 @@
 <li><a *ngIf="isrolecustomer()" routerLink="questioncategory">Consulting</a></li>
 <li><a *ngIf="isrolecustomer()" routerLink="myQuestion">MyQuestions</a></li>
 <li><a *ngIf="isroleSME()" routerLink="myQuestion">myquestion</a> </li>
-<li><a routerLink="logout">LogOut</a></li> 
-<li><a routerLink="login">UserProfile</a></li> 
+<li><a *ngIf="isroleSME()" routerLink="logout">LogOut</a></li> 
+<li><a *ngIf="isrolecustomer()" routerLink="logout">LogOut</a></li> 
+<li><a routerLink="profile">UserProfile</a></li> 
 </ul>
 <router-outlet></router-outlet>
 </div>

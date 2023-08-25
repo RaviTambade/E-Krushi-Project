@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UpdateComponent } from './update/update.component';
 import { AppService } from './aap.service';
 import { RadioComponent } from './radio/radio.component';
@@ -29,6 +29,7 @@ import { OrderchartModule } from './bi/orderchart/orderchart.module';
 import { OrderstatusModule } from './bi/orderstatus/orderstatus.module';
 import { ConsultingchartsModule } from './bi/consultingcharts/consultingcharts.module';
 import { UsersModule } from './users/users.module';
+import { Addjwtheaderintercepter } from './addjwtheaderintercepter';
 
 
 @NgModule({
@@ -64,7 +65,12 @@ import { UsersModule } from './users/users.module';
     ConsultingchartsModule,
     UsersModule
   ],
-  providers: [AppService],
+  providers: [AppService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: Addjwtheaderintercepter,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 
