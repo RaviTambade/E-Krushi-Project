@@ -20,6 +20,9 @@
   </li> -->
   <li><a *ngIf="isUser()" (click)="openUserProfile()">Profile</a></li>
   <li><a *ngIf="isUser()" (click)="loggedOut()">Logout</a></li>
+<li><a *ngIf="isroleSME()" routerLink="logout">LogOut</a></li> 
+<li><a *ngIf="isrolecustomer()" routerLink="logout">LogOut</a></li> 
+<li><a routerLink="profile">UserProfile</a></li> 
 </ul>
 
 

@@ -1,14 +1,16 @@
 
-
-<p>User Profile</p>
-<p>firstName:{{user.user.firstName}}</p>
-<p>lastName:{{user.lastName}}</p>
-<p>gender:{{user.gender}}</p>
-<p>email:{{user.email}}</p>
-<p>contactNumber:{{user.contactNumber}}</p>
-<p>aadharid:{{user.aadharid}}</p>
-<p>birthdate:{{user.birthdate}}</p>
-<p>imageurl:{{user.imageurl}}</p>
-<!-- <p>longitude:{{Location.longitude}}</p>
-<p>latitude:{{landMark}}</p>
-<p>pincode:{{pinCode}}</p> -->
+<!-- <p>User Profile</p> -->
+<!-- <p class="center"><img   [src]="user.user.imageUrl"  width="100" height="100"/></p> -->
+<p>firstName:{{userProfile.user.firstName}}</p>
+<p>lastName:{{userProfile.user.lastName}}</p>
+<p>gender:{{userProfile.user.gender}}</p>
+<p>email:{{userProfile.user.email}}</p>
+<p>contactNumber:{{userProfile.user.contactNumber}}</p>
+<p>aadharid:{{userProfile.user.aadharId}}</p>
+<p>birthdate:{{userProfile.user.birthDate}}</p>
+<p>longitude:{{userProfile.location.longitude}}</p>
+<p>latitude:{{userProfile.location.latitude}}</p>
+<p>landMark:{{userProfile.location.landMark}}</p>
+<p>pincode:{{userProfile.location.pinCode}}</p>
+<a routerLink="editprofile">update details</a> 
+<router-outlet></router-outlet>

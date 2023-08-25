@@ -28,6 +28,7 @@ import { LogoutComponent } from '../authentication/logout/logout.component';
 
 import { ProductlistComponent } from '../product/productlist/productlist.component';
 import { UserprofileComponent } from '../users/userprofile/userprofile.component';
+import { EdituserComponent } from '../users/edituser/edituser.component';
 
 
 const routes : Routes=[ 
@@ -59,7 +60,8 @@ const routes : Routes=[
   {path:'Employee/routing', component:RoutingComponent},
   {path:'orderdetails/:userId', component:OrderdetailsComponent},
   {path:'logout', component:LogoutComponent},
-  {path:'profile', component:UserprofileComponent}
+  {path:'profile', component:UserprofileComponent},
+  {path:'profile/editprofile', component:EdituserComponent}
 
 ]
 
