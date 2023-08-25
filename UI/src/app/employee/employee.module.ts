@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { UpdateComponent } from './update/update.component';
+
 import { BillingComponent } from '../payment/billing/billing.component';
 import { OrderpaymentComponent } from '../payment/orderpayment/orderpayment.component';
 import { QuestionComponent } from '../consulting/question/question.component';
@@ -30,6 +30,7 @@ import { ProductlistComponent } from '../product/productlist/productlist.compone
 import { UserprofileComponent } from '../users/userprofile/userprofile.component';
 import { EdituserComponent } from '../users/edituser/edituser.component';
 import { ResetpasswordComponent } from '../users/resetpassword/resetpassword.component';
+import { UpdatequantityComponent } from '../product/updatequantity/updatequantity.component';
 
 
 const routes : Routes=[ 
@@ -42,7 +43,7 @@ const routes : Routes=[
   {path:'home/details/:id', component:ProductdetailsComponent},
   {path:'home/details/:id/addtocart/:id', component:AddtocartComponent},
   {path:'mycart', component:MycartComponent},
-  {path:'mycart/update/:id', component:UpdateComponent},
+  {path:'mycart/update/:id', component:UpdatequantityComponent},
   {path:'billing', component:BillingComponent},
   {path:'orderpayment', component:OrderpaymentComponent},
   {path:'addtocart', component:AddtocartComponent},
@@ -70,7 +71,6 @@ const routes : Routes=[
   declarations: [
     HomeComponent,
     RoutingComponent,
-    UpdateComponent
   ],
   imports: [
     CommonModule,

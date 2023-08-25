@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { Product } from './product';
+import { Item } from '../cart/items';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,17 @@ export class ProductService {
     let url ="http://localhost:5137/api/products";
     return this.http.post<Product>(url,product);
     }
+
+    public updateQuantity(item:Item):Observable<any>{
+      let url = " http://localhost:5282/api/cart/update" 
+      return this.http.put<any>(url,item);
+    }
+
+    public get(cartItemId:number):Observable<any>{
+      let url = "http://localhost:5282/api/cart/get/" +cartItemId;
+      return this.http.get<any>(url);
+    }
+
 
   public getAllCategories():Observable<any>{
       let url = "http://localhost:5137/api/categories";

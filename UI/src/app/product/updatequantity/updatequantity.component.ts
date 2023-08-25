@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { EmployeeService } from '../employee.service';
+import { Component } from '@angular/core';
+import { ProductService } from '../product.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Item } from '../items';
+import { Item } from 'src/app/cart/items';
 
 @Component({
-  selector: 'app-update',
-  templateUrl: './update.component.html',
-  styleUrls: ['./update.component.css']
+  selector: 'app-updatequantity',
+  templateUrl: './updatequantity.component.html',
+  styleUrls: ['./updatequantity.component.css']
 })
-export class UpdateComponent implements OnInit{
+export class UpdatequantityComponent {
 
   item:Item={
     quantity: 0,
@@ -19,12 +19,13 @@ export class UpdateComponent implements OnInit{
   
   status:boolean |undefined;
     productId:any;
-    customerId:any=2;
+    userId:any;
     cartId:any;
     cartItemId:any;
     totalAmount:any;
 
-  constructor(private svc:EmployeeService,private router:Router,private route:ActivatedRoute){   
+  constructor(private svc:ProductService,private router:Router,private route:ActivatedRoute){ 
+    this.userId=localStorage.getItem("userId");  
   }
   
     ngOnInit(): void { 
@@ -34,7 +35,6 @@ export class UpdateComponent implements OnInit{
       this.svc.get(this.cartItemId).subscribe((res)=>{
         this.item=res;
       console.log(res);
-    
      })
     }
 
@@ -44,15 +44,7 @@ export class UpdateComponent implements OnInit{
     this.status=res;
     console.log(res);
     console.log(this.item);
-    this.router.navigate(['/mycart']);
-   
+    this.router.navigate(['/mycart']);  
     });
-  
-    
-   
   } 
-
-  
-}  
-
-  
+}
