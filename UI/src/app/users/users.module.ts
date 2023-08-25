@@ -5,13 +5,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { EdituserComponent } from './edituser/edituser.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 
 
 @NgModule({
   declarations: [
     UserprofileComponent,
-    EdituserComponent
+    EdituserComponent,
+    ResetpasswordComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +23,8 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     UserprofileComponent,
-    EdituserComponent
+    EdituserComponent,
+    ResetpasswordComponent
   ]
 })
 export class UsersModule { }

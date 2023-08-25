@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './user';
 import { Location } from './location';
+import { ResetPassword } from './ResetPassword';
+
 
 @Injectable({
   providedIn: 'root'
@@ -25,4 +27,11 @@ export class UsersService {
     let url="http://localhost:5102/api/locations/"+userId;
     return this.http.put<any>(url,location);
   }
+
+  public resetPassword(resetPassword:ResetPassword):Observable<any>{
+    let url="http://localhost:5077/api/authentication/update/password";
+    return this.http.put<any>(url,resetPassword);
+  }
+
+
 }

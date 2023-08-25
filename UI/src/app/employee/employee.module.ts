@@ -29,6 +29,7 @@ import { LogoutComponent } from '../authentication/logout/logout.component';
 import { ProductlistComponent } from '../product/productlist/productlist.component';
 import { UserprofileComponent } from '../users/userprofile/userprofile.component';
 import { EdituserComponent } from '../users/edituser/edituser.component';
+import { ResetpasswordComponent } from '../users/resetpassword/resetpassword.component';
 
 
 const routes : Routes=[ 
@@ -61,8 +62,8 @@ const routes : Routes=[
   {path:'orderdetails/:userId', component:OrderdetailsComponent},
   {path:'logout', component:LogoutComponent},
   {path:'profile', component:UserprofileComponent},
-  {path:'profile/editprofile', component:EdituserComponent}
-
+  {path:'profile/editprofile', component:EdituserComponent},
+  {path:'profile/resetpassword', component:ResetpasswordComponent}
 ]
 
 @NgModule({

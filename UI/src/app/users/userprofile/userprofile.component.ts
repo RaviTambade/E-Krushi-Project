@@ -25,13 +25,6 @@ ngOnInit(): void {
   })
 }
 
-gotoprofile(){
-  this.router.navigate(['editprofile'],{relativeTo:this.route});
-}
 
-// onSelectProduct(id:any){
-//   console.log(id);
-//   this.router.navigate(["details",id],{relativeTo:this.route});
-// }
 
 }
