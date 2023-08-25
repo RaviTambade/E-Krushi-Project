@@ -2,20 +2,31 @@
   
 <div class="about-section">
     <ul class="nav-links">
-<!-- <li><a routerLink=" "></a> </li> -->
 <li><a routerLink="home">Home</a> </li>
-<li><a routerLink="register">Register</a> </li>
-<li><a routerLink="login">Login</a></li> 
+<li><a   *ngIf="isLoggedIn()" routerLink="register">Register</a> </li>
+<li><a  *ngIf="isLoggedIn()" routerLink="login">Login</a></li> 
 <li><a *ngIf="isrolecustomer()" routerLink="store">Category</a> </li>
 <li><a *ngIf="isrolecustomer()" routerLink="orderhistory">OrderHistory</a></li>
 <li><a *ngIf="isrolecustomer()" routerLink="mycart">MyCart</a> </li>
 <li><a *ngIf="isrolecustomer()" routerLink="questioncategory">Consulting</a></li>
 <li><a *ngIf="isrolecustomer()" routerLink="myQuestion">MyQuestions</a></li>
 <li><a *ngIf="isroleSME()" routerLink="myQuestion">myquestion</a> </li>
+
+<!-- <li *ngIf="isUser()" class="user-profile-icon" (click)="openUserProfile()">
+    <i class="fa fa-user-circle"></i>
+  </li>
+  <li *ngIf="isUser()" (click)="loggedOut()">
+    <i class="fas fa-sign-out-alt"></i>
+  </li> -->
+  <li><a *ngIf="isUser()" (click)="openUserProfile()">Profile</a></li>
+  <li><a *ngIf="isUser()" (click)="loggedOut()">Logout</a></li>
 <li><a *ngIf="isroleSME()" routerLink="logout">LogOut</a></li> 
 <li><a *ngIf="isrolecustomer()" routerLink="logout">LogOut</a></li> 
 <li><a routerLink="profile">UserProfile</a></li> 
 </ul>
+
+
+
 <router-outlet></router-outlet>
 </div>
 

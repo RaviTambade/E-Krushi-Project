@@ -33,27 +33,27 @@ export class RoutingComponent {
     return role == 'SubjectMatterExpert';
   }
 
-//   openUserProfile() {
-//     this.router.navigate(['userinfo']);
-// }
+  openUserProfile() {
+    this.router.navigate(['profile']);
+}
 
-// isUser():boolean{
-//   const userId = localStorage.getItem("userId")
-//   if (userId != null) {
-//     return true;
-//   }
-//   return false;
-// }
+isUser():boolean{
+  const userId = localStorage.getItem("userId")
+  if (userId != null) {
+    return true;
+  }
+  return false;
+}
 
-// isLoggedIn():boolean{
-//   const jwt =localStorage.getItem("jwt")
-//   if (jwt != null) {
-//     return false;
-//   }
-//   return true;
-// }
-// loggedOut(){
-//   this.router.navigate(['userlogout']);
-// }
+isLoggedIn():boolean{
+  const jwt =localStorage.getItem("jwt")
+  if (jwt != null) {
+    return false;
+  }
+  return true;
+}
+loggedOut(){
+  this.router.navigate(['logout']);
+}
 
 }
