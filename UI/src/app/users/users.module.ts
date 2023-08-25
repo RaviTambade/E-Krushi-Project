@@ -6,6 +6,7 @@ import { EdituserComponent } from './edituser/edituser.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { ChangecontactnumberComponent } from './changecontactnumber/changecontactnumber.component';
 
 
 
@@ -13,7 +14,8 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
   declarations: [
     UserprofileComponent,
     EdituserComponent,
-    ResetpasswordComponent
+    ResetpasswordComponent,
+    ChangecontactnumberComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
   exports: [
     UserprofileComponent,
     EdituserComponent,
-    ResetpasswordComponent
+    ResetpasswordComponent,
+    ChangecontactnumberComponent
   ]
 })
 export class UsersModule { }

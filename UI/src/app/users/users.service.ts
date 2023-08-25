@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from './user';
 import { Location } from './location';
 import { ResetPassword } from './ResetPassword';
+import { ContactNumber } from './contactnumber';
 
 
 @Injectable({
@@ -31,6 +32,12 @@ export class UsersService {
   public resetPassword(resetPassword:ResetPassword):Observable<any>{
     let url="http://localhost:5077/api/authentication/update/password";
     return this.http.put<any>(url,resetPassword);
+  }
+
+
+  public changeContactNumber( contactnumber:ContactNumber):Observable<any>{
+    let url="http://localhost:5077/api/authentication/update/contactnumber";
+    return this.http.put<any>(url,contactnumber);
   }
 
 

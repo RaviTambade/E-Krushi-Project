@@ -38,7 +38,7 @@ export class RoutingComponent {
 }
 
 isUser():boolean{
-  const userId = localStorage.getItem("userId")
+  const userId = localStorage.getItem("userId");
   if (userId != null) {
     return true;
   }
@@ -46,12 +46,13 @@ isUser():boolean{
 }
 
 isLoggedIn():boolean{
-  const jwt =localStorage.getItem("jwt")
+  const jwt =localStorage.getItem("jwt");
   if (jwt != null) {
     return false;
   }
   return true;
 }
+
 loggedOut(){
   this.router.navigate(['logout']);
 }
