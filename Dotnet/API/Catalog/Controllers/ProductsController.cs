@@ -16,7 +16,7 @@ public class ProductsController : ControllerBase
     {
         _service = service;
     }
-     
+
 
     // http://localhost:5137/api/products
     // this method gives list of all products.
@@ -38,21 +38,21 @@ public class ProductsController : ControllerBase
 
     //this method is used for insert product
     //http://localhost:5137/api/products
-    
+
     [HttpPost]
     public async Task<bool> Insert([FromBody] Product product)
     {
         bool result = await _service.Insert(product);
         return result;
     }
-    
+
     [Authorize]
     [HttpPut]
     //this method is used for Update product
     //http://localhost:5137/api/products
     public async Task<bool> Update([FromBody] Product product)
     {
-        bool result =await  _service.Update(product);
+        bool result = await _service.Update(product);
         return result;
     }
 
@@ -74,7 +74,7 @@ public class ProductsController : ControllerBase
         List<Product> products = await _service.GetProductsDetails(categoryName);
         return products;
     }
- 
+
     //http://localhost:5137/api/products/{title}
     [HttpGet("{title}")]
     public async Task<Product> GetProductDetails(string title)
@@ -84,14 +84,14 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPost("updatestockavailable")]
-    public async Task<bool> UpdateStockAvailable([FromBody] UpdateStockSP updateStock)
+    public async Task<bool> UpdateStockAvailable([FromBody] Procedure updateStock)
     {
         return await _service.UpdateStockAvailable(updateStock);
-         
+
     }
 
     //http://localhost:5137/api/products/uploadfile
-    [HttpPost ("uploadfile") , DisableRequestSizeLimit]
+    [HttpPost("uploadfile"), DisableRequestSizeLimit]
     public IActionResult Upload()
     {
         try
@@ -120,4 +120,4 @@ public class ProductsController : ControllerBase
             return StatusCode(500, $"Internal server error: {ex}");
         }
     }
-}    
+}

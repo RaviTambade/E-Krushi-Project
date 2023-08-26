@@ -1,118 +1,127 @@
-using KrushiProject.Repositories.Interfaces;
+using Transflower.EKrushi.CRM.Repositories.Interfaces;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
-using KrushiProject.Models;
+using Transflower.EKrushi.CRM.Models;
 
-namespace KrushiProject.Repositories
+namespace Transflower.EKrushi.CRM.Repositories
 {
-      
+
     public class CustomerRepository : ICustomerRepository
     {
-    private readonly IConfiguration _configuration;
-    private readonly string _conString;
+        private readonly IConfiguration _configuration;
+        private readonly string _connectionString;
 
-    public CustomerRepository(IConfiguration configuration)
-    {
+        public CustomerRepository(IConfiguration configuration)
+        {
 
-        _configuration = configuration;
-        _conString = this._configuration.GetConnectionString("DefaultConnection");
-    }
+            _configuration = configuration;
+            _connectionString = this._configuration.GetConnectionString("DefaultConnection");
+        }
         public async Task<List<Customer>> GetAll()
         {
             List<Customer> customers = new List<Customer>();
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
-            try{
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
+            try
+            {
                 string query = "select * from customers";
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                await con.OpenAsync();
-                MySqlDataReader reader = cmd.ExecuteReader();
-                while(await reader.ReadAsync())
+                MySqlCommand command = new MySqlCommand(query, connection);
+                await connection.OpenAsync();
+                MySqlDataReader reader = command.ExecuteReader();
+                while (await reader.ReadAsync())
                 {
                     int Id = int.Parse(reader["id"].ToString());
                     string firstName = reader["firstname"].ToString();
                     string lastName = reader["lastname"].ToString();
                     int userId = int.Parse(reader["userid"].ToString());
-                
-                Customer customer = new Customer()
-                {
-                    Id = Id,
-                    FirstName = firstName,
-                    LastName = lastName,
-                    UserId = userId
-                };
-                customers.Add(customer);
+
+                    Customer customer = new Customer()
+                    {
+                        Id = Id,
+                        FirstName = firstName,
+                        LastName = lastName,
+                        UserId = userId
+                    };
+                    customers.Add(customer);
                 }
                 await reader.CloseAsync();
             }
-        catch(Exception e){
-            throw e;
-        }
-        finally{
-            await con.CloseAsync();
-        }
-        return customers;
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                await connection.CloseAsync();
+            }
+            return customers;
         }
 
         public async Task<Customer> GetById(int id)
         {
             Customer customer = new Customer();
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
-            try{
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
+            try
+            {
                 string query = "select * from customers where id = @customerId";
-                await con.OpenAsync();
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@customerId",id);
-                MySqlDataReader reader = cmd.ExecuteReader();
-                if(await reader.ReadAsync())
+                await connection.OpenAsync();
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@customerId", id);
+                MySqlDataReader reader = command.ExecuteReader();
+                if (await reader.ReadAsync())
                 {
                     string firstName = reader["firstname"].ToString();
                     string lastName = reader["lastname"].ToString();
-                    int userId = int.Parse(reader["userid"].ToString());  
-                
-                customer = new Customer()
-                {
-                    Id = id,
-                    FirstName = firstName,
-                    LastName = lastName,
-                    UserId = userId
+                    int userId = int.Parse(reader["userid"].ToString());
 
-                };
+                    customer = new Customer()
+                    {
+                        Id = id,
+                        FirstName = firstName,
+                        LastName = lastName,
+                        UserId = userId
+
+                    };
                 }
                 await reader.CloseAsync();
             }
-            catch(Exception e){
-                throw e;
+            catch (Exception)
+            {
+                throw;
             }
-            finally{
-                await con.CloseAsync();
+            finally
+            {
+                await connection.CloseAsync();
             }
             return customer;
         }
         public async Task<bool> Insert(Customer customer)
         {
             bool status = false;
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
-            try{
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
+            try
+            {
                 string query = "Insert into customers(firstname,lastname,userid) VALUES(@firstName,@lastName,@userId)";
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@firstName",customer.FirstName);
-                cmd.Parameters.AddWithValue("@lastName",customer.LastName);
-                cmd.Parameters.AddWithValue("@userId",customer.UserId);
-                con.Open();
-                int rowsAffected = cmd.ExecuteNonQuery();
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@firstName", customer.FirstName);
+                command.Parameters.AddWithValue("@lastName", customer.LastName);
+                command.Parameters.AddWithValue("@userId", customer.UserId);
+                connection.Open();
+                int rowsAffected = command.ExecuteNonQuery();
                 if (rowsAffected > 0)
                 {
                     status = true;
                 }
             }
-            catch(Exception e){
-                throw e;
+            catch (Exception)
+            {
+                throw;
             }
-            finally{
-                await con.CloseAsync();
+            finally
+            {
+                await connection.CloseAsync();
             }
             return status;
         }
@@ -120,30 +129,32 @@ namespace KrushiProject.Repositories
         public async Task<bool> Update(Customer customer)
         {
             bool status = false;
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
             try
             {
-                string query = "update customers set firstname=@firstName, lastname=@lastName,userid = @userId  Where id= @customerId" ;
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@customerId",customer.Id);
-                cmd.Parameters.AddWithValue("@firstName",customer.FirstName);
-                cmd.Parameters.AddWithValue("@lastName",customer.LastName);
-                cmd.Parameters.AddWithValue("@userId",customer.UserId);
-               await con.OpenAsync();
-                int rowsAffected = cmd.ExecuteNonQuery();
+                string query = "update customers set firstname=@firstName, lastname=@lastName,userid = @userId  Where id= @customerId";
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@customerId", customer.Id);
+                command.Parameters.AddWithValue("@firstName", customer.FirstName);
+                command.Parameters.AddWithValue("@lastName", customer.LastName);
+                command.Parameters.AddWithValue("@userId", customer.UserId);
+                await connection.OpenAsync();
+                int rowsAffected = command.ExecuteNonQuery();
                 {
-                    if( rowsAffected > 0)
+                    if (rowsAffected > 0)
                     {
                         status = true;
                     }
                 }
             }
-            catch(Exception e){
-                throw e;
+            catch (Exception)
+            {
+                throw;
             }
-            finally{
-             await con.CloseAsync();  
+            finally
+            {
+                await connection.CloseAsync();
             }
             return status;
         }
@@ -151,69 +162,69 @@ namespace KrushiProject.Repositories
         public async Task<bool> Delete(int id)
         {
             bool status = false;
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
             try
             {
                 string query = "delete from customers where id = @customerId";
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("customerId",id);
-                await con.OpenAsync();
-                int rowsAffected = cmd.ExecuteNonQuery();
-                if(rowsAffected > 0)
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("customerId", id);
+                await connection.OpenAsync();
+                int rowsAffected = command.ExecuteNonQuery();
+                if (rowsAffected > 0)
                 {
                     status = true;
                 }
             }
-            catch(Exception e)
+            catch (Exception)
             {
-                 throw e;
+                throw;
             }
             finally
             {
-               await con.CloseAsync();
+                await connection.CloseAsync();
             }
             return status;
         }
         public async Task<Customer> GetByUserId(int userId)
         {
             Customer customer = new Customer();
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
             try
             {
                 string query = "select * from customers where id = @userId";
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@userId", userId);
-               await con.OpenAsync();
-                MySqlDataReader reader = cmd.ExecuteReader();
-                if(reader.Read())
+                MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.AddWithValue("@userId", userId);
+                await connection.OpenAsync();
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
                 {
                     int customerId = int.Parse(reader["id"].ToString());
                     string firstName = reader["firstname"].ToString();
                     string lastName = reader["lastname"].ToString();
                     //int userId = int.Parse(reader["user_id"].ToString());
 
-                
-                customer = new Customer()
-                {
-                    Id = customerId,
-                    FirstName = firstName,
-                    LastName = lastName,
-                    UserId = userId
 
-                };
+                    customer = new Customer()
+                    {
+                        Id = customerId,
+                        FirstName = firstName,
+                        LastName = lastName,
+                        UserId = userId
+
+                    };
                 }
-               await reader.CloseAsync();
+                await reader.CloseAsync();
             }
-            catch(Exception e)
+            catch (Exception)
             {
-                throw e;
+                throw;
 
             }
             finally
             {
-               await con.CloseAsync();
+                await connection.CloseAsync();
             }
             return customer;
         }

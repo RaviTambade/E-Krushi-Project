@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace KrushiProject.Helpers
+namespace Transflower.EKrushi.CRM.Helpers
 {
     public class JwtMiddleware
     {
@@ -47,9 +47,9 @@ namespace KrushiProject.Helpers
 
                 context.Items["contactNumber"] = contactNumber;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine("Exception" + e);
+                Console.WriteLine("Exception");
             }
         }
     }

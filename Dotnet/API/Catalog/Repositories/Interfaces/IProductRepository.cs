@@ -12,7 +12,7 @@ namespace Transflower.EKrushi.Catalog.Repositories.Interfaces
     Task<bool> DeleteProduct(int id);
     Task<Product> GetProductDetails(string title);
     Task<List<Product>> GetProductsDetails(string categoryName);
-    Task<bool> UpdateStockAvailable(UpdateStockSP updateStock);
+    Task<bool> UpdateStockAvailable(Procedure updateStock);
     
     }
 }
