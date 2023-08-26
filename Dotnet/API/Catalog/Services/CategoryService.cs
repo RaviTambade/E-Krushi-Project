@@ -1,8 +1,8 @@
-using CatalogService.Models;
-using CatalogService.Repositories.Interfaces;
-using CatalogService.Service.Interfaces;
+using Transflower.EKrushi.Catalog.Models;
+using Transflower.EKrushi.Catalog.Repositories.Interfaces;
+using Transflower.EKrushi.Catalog.Service.Interfaces;
 
-namespace CatalogService.Repositories;
+namespace Transflower.EKrushi.Catalog.Repositories;
 
 public class CategoryService : ICategoryService{
 

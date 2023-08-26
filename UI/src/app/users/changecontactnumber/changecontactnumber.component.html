@@ -1,0 +1,35 @@
+
+
+
+            <form #contactForm="ngForm" (ngSubmit)="changeContactNumber(contactForm.value)">
+                
+            <div class="form-floating mb-3">
+              <input
+                type="password"
+                class="form-control"
+                id="oldpassword"
+                name="newcontactnumber"
+                placeholder="newcontactnumber"
+                [(ngModel)]="contactnumber.newcontactnumber"
+              />
+              <label for="newcontactnumber"> New Contactnumber</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input
+                  type="password"
+                  class="form-control"
+                  id="newpassword"
+                  name="password"
+                  placeholder="password"
+                  [(ngModel)]="contactnumber.password"
+                />
+                <label for="password">Password</label>
+              </div>
+
+            <div class="d-grid">
+              <button class="btn btn-success fw-bold" style="color: inherit; text-decoration:none;display: block;" type="submit">
+              Submit
+              </button>
+            </div>
+          </form>
+        

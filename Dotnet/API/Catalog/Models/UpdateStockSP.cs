@@ -1,4 +1,4 @@
-namespace CatalogService.Models;
+namespace Transflower.EKrushi.Catalog.Models;
 
 public class UpdateStockSP{
     public int OrderId{get; set;}

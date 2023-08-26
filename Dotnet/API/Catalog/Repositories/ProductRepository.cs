@@ -1,32 +1,31 @@
-using CatalogService.Models;
+using Transflower.EKrushi.Catalog.Models;
 using MySql.Data.MySqlClient;
-using CatalogService.Repositories.Interfaces;
+using Transflower.EKrushi.Catalog.Repositories.Interfaces;
 using System.Data;
 
-namespace CatalogService.Repositories
-{
+namespace Transflower.EKrushi.Catalog.Repositories;
 
     public class ProductRepository : IProductRepository
     {
-    private IConfiguration _configuration;
-    private string? _conString;
+        private IConfiguration _configuration;
+        private string? _connectionString;
     public ProductRepository(IConfiguration configuration)
     {
         _configuration = configuration;
-        _conString = this._configuration.GetConnectionString("DefaultConnection");
+        _connectionString = this._configuration.GetConnectionString("DefaultConnection");
     }
 
     public async Task<List<Product>> GetAllProducts()
         {
             List<Product> products = new List<Product>();
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
             try
             {
                 string query = "select * from products";
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                await con.OpenAsync();
-                MySqlDataReader reader = cmd.ExecuteReader();
+                MySqlCommand command  = new MySqlCommand(query,connection);
+                await connection.OpenAsync();
+                MySqlDataReader reader = command .ExecuteReader();
                 while(await reader.ReadAsync())
                 {
                     int id = int.Parse(reader["id"].ToString());
@@ -50,11 +49,11 @@ namespace CatalogService.Repositories
                 }
                 await reader.CloseAsync();
             }
-            catch(Exception e){
-                throw e;
+            catch(Exception){
+                throw;
             }
             finally{
-                await con.CloseAsync();
+                await connection.CloseAsync();
             }
             return products;
         }
@@ -62,14 +61,14 @@ namespace CatalogService.Repositories
         public async Task<Product> GetProduct(int id)
         {
             Product product = new Product();
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
             try{
                 string query = "select * from products where id = @productId";
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@productId",id);
-                await con.OpenAsync();
-                MySqlDataReader reader = cmd.ExecuteReader();
+                MySqlCommand command  = new MySqlCommand(query,connection);
+                command .Parameters.AddWithValue("@productId",id);
+                await connection.OpenAsync();
+                MySqlDataReader reader = command .ExecuteReader();
                 while(await reader.ReadAsync())
                 {
                     string productTitle = reader["title"].ToString();
@@ -92,42 +91,42 @@ namespace CatalogService.Repositories
                 }
                 await reader.CloseAsync();
             }
-            catch(Exception e){
-                throw e;
+            catch(Exception){
+                throw ;
             }
             finally{
-                await con.CloseAsync();
+                await connection.CloseAsync();
             }
             return product;
         }
         public async Task<bool> Insert(Product product)
         {
             bool status = false;
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
             try
             {
                 string query="Insert into products(title,unitprice,stockavailable,image,categoryid) VALUES(@productTitle,@unitPrice,@stockAvailable,@image,@categoryId)";
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@productTitle",product.Title);
-                cmd.Parameters.AddWithValue("@unitPrice",product.UnitPrice);
-                cmd.Parameters.AddWithValue("@stockAvailable",product.StockAvailable);
-                cmd.Parameters.AddWithValue("@image",product.Image);
-                cmd.Parameters.AddWithValue("@categoryId",product.CategoryId);
-                await con.OpenAsync();
-                int rowsAffected = cmd.ExecuteNonQuery();
+                MySqlCommand command  = new MySqlCommand(query,connection);
+                command .Parameters.AddWithValue("@productTitle",product.Title);
+                command .Parameters.AddWithValue("@unitPrice",product.UnitPrice);
+                command .Parameters.AddWithValue("@stockAvailable",product.StockAvailable);
+                command .Parameters.AddWithValue("@image",product.Image);
+                command .Parameters.AddWithValue("@categoryId",product.CategoryId);
+                await connection.OpenAsync();
+                int rowsAffected = command .ExecuteNonQuery();
                 if(rowsAffected > 0)
                 {
                     status=true;
                 }
             }
-            catch(Exception e)
+            catch(Exception)
             {
-                throw e;
+                throw;
             }
             finally
             {
-                await con.CloseAsync();
+                await connection.CloseAsync();
             }
             return status;
         }
@@ -135,59 +134,59 @@ namespace CatalogService.Repositories
         public async Task<bool> Update(Product product)
         {
             bool status = false;
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
             try
             {
                 string query="Update products set title=@productTitle, unitprice = @unitPrice, stockavailable = @stockAvailable, image = @image ,categoryid = @categoryId Where id = @productId";
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                await con.OpenAsync();
-                cmd.Parameters.AddWithValue("@productId",product.Id);
-                cmd.Parameters.AddWithValue("@productTitle",product.Title);
-                cmd.Parameters.AddWithValue("@unitPrice",product.UnitPrice);
-                cmd.Parameters.AddWithValue("@stockAvailable",product.StockAvailable);
-                cmd.Parameters.AddWithValue("@image",product.Image);
-                cmd.Parameters.AddWithValue("@categoryId",product.CategoryId);
-                int rowsAffected = cmd.ExecuteNonQuery();
+                MySqlCommand command  = new MySqlCommand(query,connection);
+                await connection.OpenAsync();
+                command .Parameters.AddWithValue("@productId",product.Id);
+                command .Parameters.AddWithValue("@productTitle",product.Title);
+                command .Parameters.AddWithValue("@unitPrice",product.UnitPrice);
+                command .Parameters.AddWithValue("@stockAvailable",product.StockAvailable);
+                command .Parameters.AddWithValue("@image",product.Image);
+                command .Parameters.AddWithValue("@categoryId",product.CategoryId);
+                int rowsAffected = command .ExecuteNonQuery();
                 if(rowsAffected > 0)
                 {
                     status=true;
                 }
             }
-            catch(Exception e)
+            catch(Exception)
             {
-                throw e;
+                throw;
             }
             finally
             {
-                await con.CloseAsync();
+                await connection.CloseAsync();
             }
             return status;
         }
         public async Task<bool>  DeleteProduct(int id)
         {
             bool status = false;
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
             try
             {
                 string query="Delete from products where id = @productId";
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@productId",id);
-                await con.OpenAsync();
-                int rowsAffected = cmd.ExecuteNonQuery();
+                MySqlCommand command  = new MySqlCommand(query,connection);
+                command .Parameters.AddWithValue("@productId",id);
+                await connection.OpenAsync();
+                int rowsAffected = command .ExecuteNonQuery();
                 if(rowsAffected > 0)
                 {
                     status=true;
                 }
             }
-            catch(Exception e)
+            catch(Exception)
             {
-                throw e;
+                throw;
             }
             finally
             {
-                await con.CloseAsync();
+                await connection.CloseAsync();
             }
             return status;
         }
@@ -197,14 +196,14 @@ namespace CatalogService.Repositories
     {
         
            List<Product> products = new List<Product>();
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
             try{
                 string query = "SELECT products.id, products.title,products.unitprice,products.stockavailable,products.image,categories.title from categories inner join products where categories.id=products.categoryid and categories.title=@categoryName";
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@categoryName",categoryName);
-                await con.OpenAsync();
-                MySqlDataReader reader = cmd.ExecuteReader();
+                MySqlCommand command  = new MySqlCommand(query,connection);
+                command .Parameters.AddWithValue("@categoryName",categoryName);
+                await connection.OpenAsync();
+                MySqlDataReader reader = command .ExecuteReader();
                 while(await reader.ReadAsync())
                 {
                     int productId = int.Parse(reader["id"].ToString());
@@ -230,11 +229,11 @@ namespace CatalogService.Repositories
                  await reader.CloseAsync();
                 
             }
-            catch(Exception e){
-                throw e;
+            catch(Exception){
+                throw;
             }
             finally{
-                await con.CloseAsync();
+                await connection.CloseAsync();
             }
             return products;
         }
@@ -243,14 +242,14 @@ namespace CatalogService.Repositories
      public async Task<Product> GetProductDetails(string title)
         {
             Product product = new Product();
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
             try{
                 string query = "select * from products where title = @title";
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@title",title);
-                await con.OpenAsync();
-                MySqlDataReader reader = cmd.ExecuteReader();
+                MySqlCommand command  = new MySqlCommand(query,connection);
+                command .Parameters.AddWithValue("@title",title);
+                await connection.OpenAsync();
+                MySqlDataReader reader = command .ExecuteReader();
                 while(await reader.ReadAsync())
                 {   int id =int.Parse(reader["id"].ToString());
                     string productTitle = reader["title"].ToString();
@@ -273,50 +272,46 @@ namespace CatalogService.Repositories
                 }
                 await reader.CloseAsync();
             }
-            catch(Exception e){
-                throw e;
+            catch(Exception){
+                throw;
             }
             finally{
-                await con.CloseAsync();
+                await connection.CloseAsync();
             }
             return product;
         }
 
     public async Task<bool> UpdateStockAvailable(UpdateStockSP updateStock)
         {
-            Console.WriteLine(updateStock.OrderId);
-            Console.WriteLine(updateStock.ProductId);
-            Console.WriteLine(updateStock.Quantity);
-
+            
             bool status = false;
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
             try
             {
-                MySqlCommand cmd = new MySqlCommand("stockavailableupdateinventory",con);
-                cmd.CommandType = CommandType.StoredProcedure;
-                await con.OpenAsync();
-                cmd.Parameters.AddWithValue("@orderid",updateStock.OrderId);
-                cmd.Parameters.AddWithValue("@productid",updateStock.ProductId);
-                cmd.Parameters.AddWithValue("@quantity",updateStock.Quantity); 
-                int rowsAffected = cmd.ExecuteNonQuery();
+                MySqlCommand command  = new MySqlCommand("stockavailableupdateinventory",connection);
+                command .CommandType = CommandType.StoredProcedure;
+                await connection.OpenAsync();
+                command .Parameters.AddWithValue("@orderid",updateStock.OrderId);
+                command .Parameters.AddWithValue("@productid",updateStock.ProductId);
+                command .Parameters.AddWithValue("@quantity",updateStock.Quantity); 
+                int rowsAffected = command .ExecuteNonQuery();
                 Console.WriteLine(rowsAffected);
                 if(rowsAffected > 0)
                 {
                     status=true;
                 }
             }
-            catch(Exception e)
+            catch(Exception)
             {
-                throw e;
+                throw;
             }
             finally
             {
-                await con.CloseAsync();
+                await connection.CloseAsync();
             }
             return status;
         }
          
     }
-}
     

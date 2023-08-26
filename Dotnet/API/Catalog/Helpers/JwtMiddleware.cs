@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace CatalogService.Helpers
+namespace Transflower.EKrushi.Catalog.Helpers
 {
     public class JwtMiddleware
     {

@@ -1,8 +1,8 @@
-using CatalogService.Models;
-using CatalogService.Service.Interfaces;
+using Transflower.EKrushi.Catalog.Models;
+using Transflower.EKrushi.Catalog.Service.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CatalogService.Controllers;
+namespace Transflower.EKrushi.Catalog.Controllers;
 
 [ApiController]
 [Route("/api/categories")]

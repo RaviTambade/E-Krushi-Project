@@ -1,10 +1,10 @@
-using CatalogService.Models;
+using Transflower.EKrushi.Catalog.Models;
 using Microsoft.AspNetCore.Mvc;
-using CatalogService.Service.Interfaces;
-using CatalogService.Helpers;
+using Transflower.EKrushi.Catalog.Service.Interfaces;
+using Transflower.EKrushi.Catalog.Helpers;
 using System.Net.Http.Headers;
 
-namespace CatalogService.Controllers;
+namespace Transflower.EKrushi.Catalog.Controllers;
 
 [ApiController]
 [Route("/api/products")]
