@@ -1,10 +1,10 @@
-using OrderProcessingService.Models;
+using Transflower.EKrushi.OrderManagement.Models;
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
-using OrderProcessingService.Services;
-using OrderProcessingService.Services.Interfaces;
+using Transflower.EKrushi.OrderManagement.Services;
+using Transflower.EKrushi.OrderManagement.Services.Interfaces;
 
-namespace OrderProcessingService.Controllers
+namespace Transflower.EKrushi.OrderManagement.Controllers
 {
     [ApiController]
     [Route("api/orderdetails")]

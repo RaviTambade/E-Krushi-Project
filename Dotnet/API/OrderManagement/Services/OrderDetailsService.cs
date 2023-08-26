@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Threading.Tasks;
-using OrderProcessingService.Models;
-using OrderProcessingService.Repositories.Interfaces;
-using OrderProcessingService.Services.Interfaces;
+using Transflower.EKrushi.OrderManagement.Models;
+using Transflower.EKrushi.OrderManagement.Repositories.Interfaces;
+using Transflower.EKrushi.OrderManagement.Services.Interfaces;
 
-namespace OrderProcessingService.Services;
+namespace Transflower.EKrushi.OrderManagement.Services;
 
 public class OrderDetailsService : IOrderDetailsService{
     private readonly IOrderDetailsRepository _repo;

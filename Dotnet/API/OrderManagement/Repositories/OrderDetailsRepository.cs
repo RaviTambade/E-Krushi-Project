@@ -1,31 +1,31 @@
-using OrderProcessingService.Models;
+using Transflower.EKrushi.OrderManagement.Models;
 using MySql.Data.MySqlClient;
-using OrderProcessingService.Repositories.Interfaces;
+using Transflower.EKrushi.OrderManagement.Repositories.Interfaces;
 
-namespace OrderProcessingService.Repositories;
+namespace Transflower.EKrushi.OrderManagement.Repositories;
 
 public class OrderDetailsRepository : IOrderDetailsRepository
 {
     private readonly IConfiguration _configuration;
-    private readonly string _conString;
+    private readonly string _connectionString;
 
     public OrderDetailsRepository(IConfiguration configuration)
     {
 
         _configuration = configuration;
-        _conString = this._configuration.GetConnectionString("DefaultConnection");
+        _connectionString = this._configuration.GetConnectionString("DefaultConnection");
     }
 
     public async Task<List<OrderDetails>> GetAllOrderDetails()
     {
         List<OrderDetails> orderDetails = new List<OrderDetails>();
-        MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = _conString;
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _connectionString;
         try
         {
             string query = "SELECT * FROM orderdetails";
-            await con.OpenAsync();
-            MySqlCommand command = new MySqlCommand(query, con);
+            await connection.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, connection);
             MySqlDataReader reader = command.ExecuteReader();
             while (await reader.ReadAsync())
             {
@@ -47,13 +47,13 @@ public class OrderDetailsRepository : IOrderDetailsRepository
             }
             await reader.CloseAsync();
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            throw e;
+            throw;
         }
         finally
         {
-            await con.CloseAsync();
+            await connection.CloseAsync();
         }
         return orderDetails;
     }
@@ -61,13 +61,13 @@ public class OrderDetailsRepository : IOrderDetailsRepository
     public async Task<OrderDetails> GetOrderDetail(int id)
     {
         OrderDetails orderDetail = new OrderDetails();
-        MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = _conString;
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _connectionString;
         try
         {
             string query = "SELECT * FROM orderdetails where id=@orderDetailsId";
-            await con.OpenAsync();
-            MySqlCommand command = new MySqlCommand(query, con);
+            await connection.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@orderDetailsId",id);
             MySqlDataReader reader = command.ExecuteReader();
             if (await reader.ReadAsync())
@@ -88,26 +88,26 @@ public class OrderDetailsRepository : IOrderDetailsRepository
                 };
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            throw e;
+            throw;
         }
         finally
         {
-            await con.CloseAsync();
+            await connection.CloseAsync();
         }
         return orderDetail;
     }
     public async Task<bool> Insert(OrderDetails orderDetail)
     {
         bool status = false;
-        MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = _conString;
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _connectionString;
         try
         {
             string query = "INSERT INTO orderdetails(orderid,productid,quantity,discount) VALUES(@orderId,@productId,@quantity,@discount)";
-            await con.OpenAsync();
-            MySqlCommand command = new MySqlCommand(query, con);
+            await connection.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@orderId",orderDetail.OrderId);
             command.Parameters.AddWithValue("@productId",orderDetail.ProductId);
             command.Parameters.AddWithValue("@quantity",orderDetail.Quantity);
@@ -117,13 +117,13 @@ public class OrderDetailsRepository : IOrderDetailsRepository
             status = true;
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            throw e;
+            throw;
         }
         finally
         {
-            await con.CloseAsync();
+            await connection.CloseAsync();
         }
         return status;
     }
@@ -131,13 +131,13 @@ public class OrderDetailsRepository : IOrderDetailsRepository
     public async Task<bool> Update(OrderDetails orderDetail)
     {
         bool status = false;
-        MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = _conString;
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _connectionString;
         try
         {
             string query = "Update orderdetails set orderid=@orderId, productid=@productId,quantity=@quantity, discount=@discount Where id =@orderDetailsId";
-            await con.OpenAsync();
-            MySqlCommand command = new MySqlCommand(query, con);
+            await connection.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@orderDetailsId",orderDetail.Id);
             command.Parameters.AddWithValue("@orderId",orderDetail.OrderId);
             command.Parameters.AddWithValue("@productId",orderDetail.ProductId);
@@ -148,39 +148,39 @@ public class OrderDetailsRepository : IOrderDetailsRepository
                status = true;
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            throw e;
+            throw;
         }
         finally
         {
-            await con.CloseAsync();
+            await connection.CloseAsync();
         }
         return status;
     }
     public async Task<bool> Delete(int id)
     {
         bool status = false;
-        MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = _conString;
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _connectionString;
         try
         {
             string query = "DELETE FROM orderDetails where id =@orderDetailsId";
-            await con.OpenAsync();
-            MySqlCommand command = new MySqlCommand(query, con);
+            await connection.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@orderDetailsId",id);
             int rowsAffected =command.ExecuteNonQuery();
             if(rowsAffected > 0){
                 status = true;
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            throw e;
+            throw;
         }
         finally
         {
-            await con.CloseAsync();
+            await connection.CloseAsync();
         }
         return status;
     }
@@ -188,13 +188,13 @@ public class OrderDetailsRepository : IOrderDetailsRepository
     public async Task<List<OrderHistory>> GetDetails(int orderId)
     {
         List<OrderHistory> orders = new List<OrderHistory>();
-        MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = _conString;
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _connectionString;
         try
         {
             string query = "select orders.id,customers.firstname,customers.lastname, products.title,products.unitprice,orders.custid,(products.unitprice*cartitems.quantity)as total,orders.status ,cartitems.quantity from customers,orderdetails,orders,cartitems inner join products on products.id = cartitems.productid where orders.id = orderdetails.orderid and orderdetails.productid =cartitems.productid and customers.id=orders.custid and orders.id=@orderId";           
-            await con.OpenAsync();
-            MySqlCommand command = new MySqlCommand(query, con);
+            await connection.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@orderId",orderId);
             MySqlDataReader reader = command.ExecuteReader();
             while (await reader.ReadAsync())
@@ -220,13 +220,13 @@ public class OrderDetailsRepository : IOrderDetailsRepository
                 orders.Add(orderHistory);
             }
         }
-        catch (Exception e)
+        catch (Exception)
         {
-            throw e;
+            throw;
         }
         finally
         {
-            await con.CloseAsync();
+            await connection.CloseAsync();
         }
         return orders;
     }

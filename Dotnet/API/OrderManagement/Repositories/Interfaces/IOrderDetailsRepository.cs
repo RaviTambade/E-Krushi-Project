@@ -1,6 +1,6 @@
-using OrderProcessingService.Models;
+using Transflower.EKrushi.OrderManagement.Models;
 
-namespace OrderProcessingService.Repositories.Interfaces;
+namespace Transflower.EKrushi.OrderManagement.Repositories.Interfaces;
 
 public interface IOrderDetailsRepository{
 
