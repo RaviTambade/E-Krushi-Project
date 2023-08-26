@@ -1,7 +1,8 @@
-using BIService.Models;
+
 using Microsoft.AspNetCore.Mvc;
 using MySql.Data.MySqlClient;
-using BIService.Services.Interfaces;
+using Transflower.EKrushi.BIService.Models;
+using Transflower.EKrushi.BIService.Services.Interfaces;
 
 namespace BIService.Controllers
 {

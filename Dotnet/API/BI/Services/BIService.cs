@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Threading.Tasks;
-using BIService.Models;
-using BIService.Repositories.Interfaces;
-using BIService.Services.Interfaces;
+using Transflower.EKrushi.BIService.Models;
+using Transflower.EKrushi.BIService.Repositories.Interfaces;
+using Transflower.EKrushi.BIService.Services.Interfaces;
 
-namespace BIService.Services;
+namespace Transflower.EKrushi.BIService.Services;
 public class BIServices : IBIService{
     private readonly IBIRepository _repo;
     public BIServices(IBIRepository repo){
