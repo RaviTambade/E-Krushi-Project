@@ -1,8 +1,8 @@
-using OrderProcessingService.Repositories;
-using OrderProcessingService.Repositories.Interfaces;
-using OrderProcessingService.Services;
-using OrderProcessingService.Services.Interfaces;
-using OrderProcessingService.Helpers;
+using Transflower.EKrushi.OrderManagement.Repositories;
+using Transflower.EKrushi.OrderManagement.Repositories.Interfaces;
+using Transflower.EKrushi.OrderManagement.Services;
+using Transflower.EKrushi.OrderManagement.Services.Interfaces;
+using Transflower.EKrushi.OrderManagement.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 

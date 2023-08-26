@@ -1,4 +1,4 @@
-namespace OrderProcessingService.Models;
+namespace Transflower.EKrushi.OrderManagement.Models;
 
 public class OrderHistory{
 
