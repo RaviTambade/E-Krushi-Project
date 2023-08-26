@@ -4,7 +4,7 @@ using System.Text;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
-namespace E_krushiApp.Helpers
+namespace Transflower.EKrushi.Consulting.Helpers
 {
     public class JwtMiddleware
     {
@@ -12,10 +12,10 @@ namespace E_krushiApp.Helpers
         private readonly IConfiguration _configuration;
 
 
-        public JwtMiddleware(RequestDelegate next,IConfiguration configuration)
+        public JwtMiddleware(RequestDelegate next, IConfiguration configuration)
         {
             _next = next;
-            _configuration = configuration; 
+            _configuration = configuration;
         }
 
         public async Task Invoke(HttpContext context)
@@ -26,7 +26,7 @@ namespace E_krushiApp.Helpers
             await _next(context);
         }
 
-        private void attachUserToContext(HttpContext context,  string token)
+        private void attachUserToContext(HttpContext context, string token)
         {
             try
             {
@@ -43,7 +43,7 @@ namespace E_krushiApp.Helpers
                 }, out SecurityToken validatedToken);
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
-                var contactNumber=jwtToken.Claims.First(x => x.Type == "contactNumber").Value;
+                var contactNumber = jwtToken.Claims.First(x => x.Type == "contactNumber").Value;
 
                 context.Items["contactNumber"] = contactNumber;
             }

@@ -1,4 +1,4 @@
-namespace E_krushiApp.Models;
+namespace Transflower.EKrushi.Consulting.Models;
 public class NewQuestion:CustomerQuestion{
 
    public string Description{get;set;}
