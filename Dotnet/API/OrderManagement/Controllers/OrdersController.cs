@@ -10,17 +10,17 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
     [Route("api/orders")]
     public class OrdersController : ControllerBase
     {
-        private readonly IOrderService _ordersvc;
-        public OrdersController(IOrderService ordersvc)
+        private readonly IOrderService _orderService;
+        public OrdersController(IOrderService orderService)
         {
-        _ordersvc = ordersvc;
+       _orderService = orderService;
         } 
 
         [Authorize]  
         //http://localhost:5057/api/orders        
         public async Task<IEnumerable<Order>> Orders()
         {
-            List<Order> orders = await _ordersvc.Orders();
+            List<Order> orders = await _orderService.Orders();
             return orders;
         }
 
@@ -28,7 +28,7 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
         [HttpGet("{id}")]
         public async Task<Order> GetById(int id)
         {
-            Order order = await _ordersvc.GetOrder(id);
+            Order order = await _orderService.GetOrder(id);
             return order;
         }
 
@@ -36,7 +36,7 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
         //http://localhost:5057/api/orders 
         public async Task<bool> Insert([FromBody] Order order)
         {
-            bool status = await _ordersvc.Insert(order);
+            bool status = await _orderService.Insert(order);
             return status;
         }
 
@@ -44,13 +44,13 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
         [HttpPut("{id}")]
         public async Task<bool> Update(int id,[FromBody] Order order)
         {
-            Order oldOrder = await _ordersvc.GetOrder(id);
+            Order oldOrder = await _orderService.GetOrder(id);
             if(oldOrder.Id==0)
             {
                 return false;
             }
             order.Id =id;
-            bool status = await _ordersvc.Update(order);
+            bool status = await _orderService.Update(order);
             return status;
         }
 
@@ -58,7 +58,7 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
         [HttpDelete("{id}")]
         public async Task<bool> Delete(int id)
         {
-            bool status = await _ordersvc.Delete(id);
+            bool status = await _orderService.Delete(id);
             return status;
         }
 
@@ -69,7 +69,7 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
         {
             
             Console.WriteLine(date);
-            int counts = await _ordersvc.GetCountByDate(date);
+            int counts = await _orderService.GetCountByDate(date);
             return counts;
         }
 
@@ -77,7 +77,7 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
         [HttpGet("totalcount")]                     //This query gives total count of orders
         public async Task<int> TotalCount()
         {
-            int totalCounts = await _ordersvc.TotalCount();
+            int totalCounts = await _orderService.TotalCount();
             return totalCounts;
         }
 
@@ -85,7 +85,7 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
         [HttpGet("customer/{id}")]          
         public async Task<List<Order>> OrderByCustId(int id)
         {
-            List<Order> orders = await _ordersvc.OrderByCustId(id);
+            List<Order> orders = await _orderService.OrderByCustId(id);
             return orders;
         }
 
@@ -93,7 +93,7 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
         [HttpGet("orderhistory/{custId}")]          
         public async Task<List<OrderHistory>> GetOrderHistory(int custId)
         {
-            List<OrderHistory> orders = await _ordersvc.GetOrderHistory(custId);
+            List<OrderHistory> orders = await _orderService.GetOrderHistory(custId);
             return orders;
         }
 
@@ -101,7 +101,7 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
         [HttpGet("customerorders")]          
         public async Task<IEnumerable<CustomerOrder>> GetOrderDetails()
         {
-            List<CustomerOrder> customerOrders= await _ordersvc.GetOrderDetails();
+            List<CustomerOrder> customerOrders= await _orderService.GetOrderDetails();
             return customerOrders;
         }
 
@@ -109,7 +109,7 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
         [HttpGet("orderDate/{fromDate}/{toDate}")] 
         public async Task<IEnumerable<Order>> FilterDate(DateTime fromDate,DateTime toDate)
         {
-            List<Order> orders= await _ordersvc.FilterDate(fromDate,toDate);
+            List<Order> orders= await _orderService.FilterDate(fromDate,toDate);
             return orders;
         }
 
