@@ -22,19 +22,12 @@ export class AuthenticationService {
     return this.http.post<any>(url, credential);
   }
  
-
-  
-  
-  
   newUser(user:User):Observable<boolean>{
-
     let url="http://localhost:5102/api/users";
     return this.http.post<any>(url,user);
   }
 
-
   getUserId(contactNumber:any):Observable<any>{
-
     let url="http://localhost:5102/api/users/userid/"+contactNumber;
     return this.http.get<any>(url,contactNumber);
   }

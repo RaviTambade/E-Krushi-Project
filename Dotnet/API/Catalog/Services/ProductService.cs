@@ -1,10 +1,10 @@
 
-using CatalogService.Models;
-using CatalogService.Service.Interfaces;
-using CatalogService.Repositories.Interfaces;
+using Transflower.EKrushi.Catalog.Models;
+using Transflower.EKrushi.Catalog.Service.Interfaces;
+using Transflower.EKrushi.Catalog.Repositories.Interfaces;
 
 
-namespace CatalogService.Repositories;
+namespace Transflower.EKrushi.Catalog.Repositories;
 
 public class ProductService : IProductService{
 

@@ -1,6 +1,5 @@
-using CatalogService.Models;
-
-namespace CatalogService.Repositories.Interfaces
+using Transflower.EKrushi.Catalog.Models;
+namespace Transflower.EKrushi.Catalog.Repositories.Interfaces
 {
     public interface ICategoryRepository{
 

@@ -29,7 +29,6 @@ import { OrderchartModule } from './bi/orderchart/orderchart.module';
 import { OrderstatusModule } from './bi/orderstatus/orderstatus.module';
 import { ConsultingchartsModule } from './bi/consultingcharts/consultingcharts.module';
 import { UsersModule } from './users/users.module';
-import { faFontAwesome } from '@fortawesome/free-solid-svg-icons';
 import { Addjwtheaderintercepter } from './addjwtheaderintercepter';
 
 

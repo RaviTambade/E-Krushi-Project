@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Item } from './items';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,29 +10,10 @@ export class EmployeeService {
 
   constructor(private http:HttpClient) { }
 
-  
-
-  
-
   public getCartDetails(custId:number):Observable<any>{
     let url = "http://localhost:5282/api/cart/getcart/" +custId;
     return this.http.get<any>(url);
   }
-
-    
-
-    public updateQuantity(item:Item):Observable<any>{
-      let url = " http://localhost:5282/api/cart/update" 
-      return this.http.put<any>(url,item);
-    }
-
-
-    public get(cartItemId:number):Observable<any>{
-      let url = "http://localhost:5282/api/cart/get/" +cartItemId;
-      return this.http.get<any>(url);
-    }
-
-    
 
       public getAllOrders():Observable<any>{
         let url = "http://localhost:5057/api/orders/customerorders";

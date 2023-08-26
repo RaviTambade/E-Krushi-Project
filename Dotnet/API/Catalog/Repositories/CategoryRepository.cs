@@ -1,30 +1,30 @@
-using CatalogService.Models;
-using CatalogService.Repositories.Interfaces;
+using Transflower.EKrushi.Catalog.Models;
+using Transflower.EKrushi.Catalog.Repositories.Interfaces;
 using MySql.Data.MySqlClient;
 
-namespace CatalogService.Repositories{
+namespace Transflower.EKrushi.Catalog.Repositories{
 
 public class CategoryRepository : ICategoryRepository
     {
         private IConfiguration _configuration;
-    private string? _conString;
+    private string? _connectionString;
     public CategoryRepository(IConfiguration configuration)
     {
         _configuration = configuration;
-        _conString = this._configuration.GetConnectionString("DefaultConnection");
+        _connectionString = this._configuration.GetConnectionString("DefaultConnection");
     }
        
 
         public async Task<List<Category>> GetAll()
         {
             List<Category> categories = new List<Category>();
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
         try{
             string query = "select * from categories";
-            MySqlCommand cmd = new MySqlCommand(query,con);
-           await con.OpenAsync();
-            MySqlDataReader reader = cmd.ExecuteReader();
+            MySqlCommand  command = new MySqlCommand(query,connection);
+           await connection.OpenAsync();
+            MySqlDataReader reader = command .ExecuteReader();
             while( await reader.ReadAsync())
             {
                 int categoryId = Int32.Parse(reader["id"].ToString());
@@ -43,25 +43,25 @@ public class CategoryRepository : ICategoryRepository
             }
            await reader.CloseAsync();
         }
-        catch(Exception e){
-            throw e;
+        catch(Exception){
+            throw;
         }
         finally{
-            con.Close();
+            connection.Close();
         }
         return categories;
         }
         public async Task<Category> GetById(int id)
         {
             Category category = new Category();
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
             try{
                 string query = "select * from categories where id = @categoryId";
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@categoryId",id);
-               await  con.OpenAsync();
-                MySqlDataReader reader = cmd.ExecuteReader();
+                MySqlCommand command  = new MySqlCommand(query,connection);
+                command .Parameters.AddWithValue("@categoryId",id);
+               await  connection.OpenAsync();
+                MySqlDataReader reader = command .ExecuteReader();
                 if(await reader.ReadAsync())
                 {
                     int categoryId = int.Parse(reader["id"].ToString());
@@ -80,11 +80,11 @@ public class CategoryRepository : ICategoryRepository
                await reader.CloseAsync();
             }
             }
-            catch(Exception e){
-                throw e;
+            catch(Exception){
+                throw;
             }
             finally{
-               await con.CloseAsync();
+               await connection.CloseAsync();
             }
             return category;
         }
@@ -92,77 +92,77 @@ public class CategoryRepository : ICategoryRepository
         public async Task<bool> Insert(Category category)
         {
             bool status = false;
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
             try{
                 string query = "Insert into categories(title,description,image) VALUES(@categoryTitle,@description,@image)";
-                 await con.OpenAsync();
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@categoryTitle",category.Title);
-                cmd.Parameters.AddWithValue("@description",category.Description);
-                cmd.Parameters.AddWithValue("@image",category.Image);
-                int rowsAffected = cmd.ExecuteNonQuery();
+                 await connection.OpenAsync();
+                MySqlCommand command  = new MySqlCommand(query,connection);
+                command .Parameters.AddWithValue("@categoryTitle",category.Title);
+                command .Parameters.AddWithValue("@description",category.Description);
+                command .Parameters.AddWithValue("@image",category.Image);
+                int rowsAffected = command .ExecuteNonQuery();
                 if(rowsAffected > 0)
                 {
                     status = true;
                 }
             }
-            catch(Exception e){
-                throw e;
+            catch(Exception){
+                throw;
             }
             finally{
-                 await con.CloseAsync();
+                 await connection.CloseAsync();
             }
             return status;
         }
         public async Task<bool> Update(Category category)
         {
             bool status = false;
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
             try{
                 string query = "Update categories set title = @categoryTitle, description= @description, image = @image where id = @categoryId";
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@categoryId",category.Id);
-                cmd.Parameters.AddWithValue("@categoryTitle",category.Title);
-                cmd.Parameters.AddWithValue("@description",category.Description);
-                cmd.Parameters.AddWithValue("@image",category.Image);
-                await con.OpenAsync();
-                int rowsAffected = cmd.ExecuteNonQuery();
+                MySqlCommand command  = new MySqlCommand(query,connection);
+                command .Parameters.AddWithValue("@categoryId",category.Id);
+                command .Parameters.AddWithValue("@categoryTitle",category.Title);
+                command .Parameters.AddWithValue("@description",category.Description);
+                command .Parameters.AddWithValue("@image",category.Image);
+                await connection.OpenAsync();
+                int rowsAffected = command .ExecuteNonQuery();
                 if(rowsAffected > 0)
                 {
                     status = true;
                 }
             }
-            catch(Exception e){
-                throw e;
+            catch(Exception){
+                throw;
             }
             finally{
-               await con.CloseAsync();
+               await connection.CloseAsync();
             }
             return status;
         }
         public async Task<bool> Delete(int id)
         {
             bool status = false;
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
             try{
                 string query = "Delete from categories Where id = @categoryId";
-                await con.OpenAsync();
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@categoryId",id);
-                int rowsAffected = cmd.ExecuteNonQuery();
+                await connection.OpenAsync();
+                MySqlCommand command  = new MySqlCommand(query,connection);
+                command .Parameters.AddWithValue("@categoryId",id);
+                int rowsAffected = command .ExecuteNonQuery();
                 if(rowsAffected > 0)
                 {
                     status = true;
                 }
             }
-            catch(Exception e){
-                throw e;
+            catch(Exception){
+                throw;
             }
             finally{
-                await con.CloseAsync();
+                await connection.CloseAsync();
             }
             return status;
         }

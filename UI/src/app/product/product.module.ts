@@ -7,6 +7,7 @@ import { ProductsellComponent } from './productsell/productsell.component';
 import { ProductdetailsComponent } from './productdetails/productdetails.component';
 import { ProductlistComponent } from './productlist/productlist.component';
 import { UploadfileComponent } from './uploadfile/uploadfile.component';
+import { UpdatequantityComponent } from './updatequantity/updatequantity.component';
 
 
 
@@ -16,7 +17,8 @@ import { UploadfileComponent } from './uploadfile/uploadfile.component';
     ProductsellComponent,
     ProductdetailsComponent,
     ProductlistComponent,
-    UploadfileComponent
+    UploadfileComponent,
+    UpdatequantityComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { UploadfileComponent } from './uploadfile/uploadfile.component';
     NewproductComponent,
     ProductsellComponent,
     ProductlistComponent,
-    UploadfileComponent
+    UploadfileComponent,
+    UpdatequantityComponent
   ]
 })
 export class ProductModule { }

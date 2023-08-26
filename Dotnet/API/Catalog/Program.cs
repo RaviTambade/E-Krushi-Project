@@ -1,7 +1,7 @@
-using CatalogService.Helpers;
-using CatalogService.Repositories;
-using CatalogService.Repositories.Interfaces;
-using CatalogService.Service.Interfaces;
+using Transflower.EKrushi.Catalog.Helpers;
+using Transflower.EKrushi.Catalog.Repositories;
+using Transflower.EKrushi.Catalog.Repositories.Interfaces;
+using Transflower.EKrushi.Catalog.Service.Interfaces;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.FileProviders;
 var builder = WebApplication.CreateBuilder(args);

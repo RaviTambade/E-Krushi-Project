@@ -1,6 +1,6 @@
-using CatalogService.Models;
+using Transflower.EKrushi.Catalog.Models;
 
-namespace CatalogService.Repositories.Interfaces
+namespace Transflower.EKrushi.Catalog.Repositories.Interfaces
 {
     public interface IProductRepository{
 
