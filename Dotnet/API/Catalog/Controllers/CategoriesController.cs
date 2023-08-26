@@ -15,8 +15,8 @@ public class CategoriesController : ControllerBase
         _service = service;
     }
 
-   //http://localhost:5137/api/categories
-  //this  method is used for get all categories.
+    //http://localhost:5137/api/categories
+    //this  method is used for get all categories.
     [HttpGet]
     public async Task<IEnumerable<Category>> GetAll()
     {
@@ -38,7 +38,7 @@ public class CategoriesController : ControllerBase
     [HttpPost]
     public async Task<bool> Insert([FromBody] Category category)
     {
-        bool result =  await _service.Insert(category);
+        bool result = await _service.Insert(category);
         return result;
     }
 
@@ -47,7 +47,7 @@ public class CategoriesController : ControllerBase
     [HttpPut]
     public async Task<bool> Update([FromBody] Category category)
     {
-        bool result =await  _service.Update(category);
+        bool result = await _service.Update(category);
         return result;
     }
     //http://localhost:5137/api/categories/{id}
@@ -56,8 +56,8 @@ public class CategoriesController : ControllerBase
     [Route("{id}")]
     public async Task<bool> Delete(int id)
     {
-        bool result =await  _service.Delete(id);
+        bool result = await _service.Delete(id);
         return result;
     }
-}    
+}
 

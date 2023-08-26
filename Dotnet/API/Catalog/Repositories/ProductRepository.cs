@@ -281,7 +281,7 @@ namespace Transflower.EKrushi.Catalog.Repositories;
             return product;
         }
 
-    public async Task<bool> UpdateStockAvailable(UpdateStockSP updateStock)
+    public async Task<bool> UpdateStockAvailable(Procedure updateStock)
         {
             
             bool status = false;

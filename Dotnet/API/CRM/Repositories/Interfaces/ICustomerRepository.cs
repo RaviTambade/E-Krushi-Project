@@ -1,5 +1,5 @@
-using KrushiProject.Models;
-namespace KrushiProject.Repositories.Interfaces
+using Transflower.EKrushi.CRM.Models;
+namespace Transflower.EKrushi.CRM.Repositories.Interfaces
 {
     public interface ICustomerRepository
     {
@@ -15,6 +15,6 @@ namespace KrushiProject.Repositories.Interfaces
 
         Task<Customer> GetByUserId(int userId);
 
-        
+
     }
 }

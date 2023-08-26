@@ -1,8 +1,8 @@
-using KrushiProject.Service.Interfaces;
-using KrushiProject.Models;
-using KrushiProject.Repositories.Interfaces;
+using Transflower.EKrushi.CRM.Interfaces;
+using Transflower.EKrushi.CRM.Models;
+using Transflower.EKrushi.CRM.Repositories.Interfaces;
 
-namespace KrushiProject.Service
+namespace Transflower.EKrushi.CRM.Service
 {
     public class CustomerService : ICustomerService
     {

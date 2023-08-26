@@ -1,8 +1,8 @@
-using KrushiProject.Helpers;
-using KrushiProject.Repositories;
-using KrushiProject.Repositories.Interfaces;
-using KrushiProject.Service;
-using KrushiProject.Service.Interfaces;
+using Transflower.EKrushi.CRM.Helpers;
+using Transflower.EKrushi.CRM.Repositories;
+using Transflower.EKrushi.CRM.Repositories.Interfaces;
+using Transflower.EKrushi.CRM.Service;
+using Transflower.EKrushi.CRM.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors();
