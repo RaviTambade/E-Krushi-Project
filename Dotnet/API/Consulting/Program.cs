@@ -1,8 +1,8 @@
-using E_krushiApp.Repository;
-using E_krushiApp.Repository.Interface;
-using E_krushiApp.Services;
-using E_krushiApp.Services.Interface;
-using E_krushiApp.Helpers;
+using Transflower.EKrushi.Consulting.Repositories;
+using Transflower.EKrushi.Consulting.Repositories.Interfaces;
+using Transflower.EKrushi.Consulting.Services.Interfaces;
+using Transflower.EKrushi.Consulting.Services;
+using Transflower.EKrushi.Consulting.Helpers;
 
 var builder = WebApplication.CreateBuilder(args);
 

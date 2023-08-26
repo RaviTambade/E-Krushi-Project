@@ -1,4 +1,4 @@
-namespace E_krushiApp.Models{
+namespace Transflower.EKrushi.Consulting.Models{
 
 
 

@@ -1,6 +1,6 @@
-using E_krushiApp.Repository.Interface;
+using Transflower.EKrushi.Consulting.Repositories.Interfaces;
 
-namespace E_krushiApp.Services.Interface;
+namespace Transflower.EKrushi.Consulting.Services.Interfaces;
 public interface IConsultingService:IConsultingRepository{
 
 }
