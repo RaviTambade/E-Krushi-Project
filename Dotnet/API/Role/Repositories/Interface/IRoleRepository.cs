@@ -1,16 +1,14 @@
-using E_krushiApp.Models;
-namespace E_krushiApp.Repositories.Interface;
+using Transflower.EKrushi.Role.Models;
+namespace Transflower.EKrushi.Role.Repositories.Interface;
 
 public interface IRoleRepository
 {
+    public Task<List<UserRole>> GetAll();
 
+    public Task<UserRole> GetById(int id);
+    public Task<bool> Insert(UserRole role);
 
-    public Task<List<Role>> GetAll();
-
-    public Task<Role> GetById(int id);
-    public Task<bool> Insert(Role role);
-
-    public Task<bool> Update(Role role);
+    public Task<bool> Update(UserRole role);
 
     public Task<bool> Delete(int id);
 

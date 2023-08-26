@@ -1,27 +1,27 @@
-using E_krushiApp.Models;
-using E_krushiApp.Repositories.Interface;
-using E_krushiApp.Service.Interface;
+using Transflower.EKrushi.Role.Models;
+using Transflower.EKrushi.Role.Repositories.Interface;
+using Transflower.EKrushi.Role.Service.Interface;
 
-namespace E_krushiApp.Service;
+namespace Transflower.EKrushi.Role.Service;
 
 public class RoleService:IRoleService{
 
-    private readonly IRoleRepository _repo;
+    private readonly IRoleRepository _repository;
 
 
-    public RoleService (IRoleRepository repo)
+    public RoleService (IRoleRepository repository)
     {
-        _repo=repo;
+        _repository=repository;
     }
 
    
 
-    public async Task<List<Role>> GetAll() => await _repo.GetAll();
-    public async Task<Role> GetById(int id)=>await _repo.GetById(id);
+    public async Task<List<UserRole>> GetAll() => await _repository.GetAll();
+    public async Task<UserRole> GetById(int id)=>await _repository.GetById(id);
     
-    public  Task<bool> Insert(Role role)=> _repo.Insert(role);
+    public  Task<bool> Insert(UserRole role)=> _repository.Insert(role);
 
-    public Task<bool> Update(Role role)=>_repo.Update(role);
-    public Task<bool> Delete(int id )=>_repo.Delete(id);
-     public Task<List<string>> GetRolesOfUser(int id )=>_repo.GetRolesOfUser(id);
+    public Task<bool> Update(UserRole role)=> _repository.Update(role);
+    public Task<bool> Delete(int id )=> _repository.Delete(id);
+     public Task<List<string>> GetRolesOfUser(int id )=> _repository.GetRolesOfUser(id);
 }
