@@ -1,4 +1,4 @@
-namespace Transflower.EKrushi.BIService.Models
+namespace BIService.Models
 {
     public class CustomerReport
     {

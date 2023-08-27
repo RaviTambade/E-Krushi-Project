@@ -6,7 +6,6 @@ namespace Transflower.EKrushi.Role.Repositories;
 
 public class RoleRepository : IRoleRepository
 {
-
     private readonly IConfiguration _configuration;
     private readonly string _connectionString;
 

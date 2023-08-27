@@ -23,7 +23,7 @@ public class BIRepository : IBIRepository
         con.ConnectionString = _conString;
         try
         {
-            string query = "SELECT MONTHNAME(orderdate) AS monthname, COUNT(*) AS count FROM orders WHERE YEAR(orderdate) = @year GROUP BY MONTHNAME(orderdate), MONTH(orderdate) ORDER BY MONTH(orderdate) ASC;";
+            string query = "SELECT MONTHNAME(orderdate) AS monthname, COUNT(*) AS count FROM orders WHERE YEAR(orderdate) = @year GROUP BY MONTHNAME(orderdate), MONTH(orderdate) ORDER BY MONTH(orderdate) ASC";
             await con.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, con);
             command.Parameters.AddWithValue("@year",year);
