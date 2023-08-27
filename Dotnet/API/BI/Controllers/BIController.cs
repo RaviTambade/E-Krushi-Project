@@ -83,10 +83,5 @@ namespace BIService.Controllers
             List<OrderChart> orders = await _svc.GetYearlySMEPerformance();
             return orders;
         }
-
-
-
-
-        
     }
 }

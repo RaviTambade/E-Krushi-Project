@@ -25,6 +25,7 @@ export class ProductdetailsComponent {
     console.log(this.id);
     this.svc.getById(this.id).subscribe((res)=>{
     this.product=res;
+    localStorage.setItem("product",res.product);
     localStorage.setItem("price",res.unitPrice);
     localStorage.setItem("title",res.title);
     localStorage.setItem("image",res.image);

@@ -1,7 +1,7 @@
-using E_krushiApp.Repositories;
-using E_krushiApp.Repositories.Interface;
-using E_krushiApp.Service.Interface;
-using E_krushiApp.Service;
+using Transflower.EKrushi.Role.Repositories;
+using Transflower.EKrushi.Role.Repositories.Interface;
+using Transflower.EKrushi.Role.Service.Interface;
+using Transflower.EKrushi.Role.Service;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

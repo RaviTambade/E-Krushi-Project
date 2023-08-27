@@ -24,7 +24,4 @@ ngOnInit(): void {
     console.log(this.userProfile);
   })
 }
-
-
-
 }

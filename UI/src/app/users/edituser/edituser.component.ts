@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
-
 import { User } from '../user';
 import { Location } from '../location';
 
@@ -21,7 +20,7 @@ export class EdituserComponent implements OnInit{
   ngOnInit(): void {
     this.svc.userProfile(this.userId).subscribe((res)=>{
       // this.userProfile=res;
-      console.log(res)
+      
       this.location=res.location;
       this.user=res.user;
     })

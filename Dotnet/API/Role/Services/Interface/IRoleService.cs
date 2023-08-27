@@ -1,7 +1,7 @@
-using E_krushiApp.Models;
-using E_krushiApp.Repositories.Interface;
+using Transflower.EKrushi.Role.Models;
+using Transflower.EKrushi.Role.Repositories.Interface;
 
-namespace E_krushiApp.Service.Interface;
+namespace Transflower.EKrushi.Role.Service.Interface;
 
 public interface IRoleService:IRoleRepository
 {
