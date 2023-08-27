@@ -13,10 +13,10 @@
 <li><a *ngIf="isroleSME()" routerLink="myQuestion">myquestion</a> </li>
 <li><a *ngIf="isUser()" (click)="openUserProfile()">Profile</a></li>
  <li><a *ngIf="isUser()" (click)="loggedOut()">Logout</a></li> 
-
+ <li><a *ngIf="isroleshopowner()" routerLink="orderstatus">Order status</a></li> 
+ <li><a *ngIf="isroleshopowner()" routerLink="monthlystatus">Monthly status</a></li> 
 </ul>
 <router-outlet></router-outlet>
 </div>
-
 </nav>
 

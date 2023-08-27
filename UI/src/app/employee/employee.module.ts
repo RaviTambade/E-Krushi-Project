@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
-
 import { RoutingComponent } from './routing/routing.component';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
 import { BillingComponent } from '../payment/billing/billing.component';
 import { OrderpaymentComponent } from '../payment/orderpayment/orderpayment.component';
 import { QuestionComponent } from '../consulting/question/question.component';
@@ -25,13 +23,14 @@ import { ProductdetailsComponent } from '../product/productdetails/productdetail
 import { OrderhistoryComponent } from '../order/orderhistory/orderhistory.component';
 import { HomeComponent } from '../default/home/home.component';
 import { LogoutComponent } from '../authentication/logout/logout.component';
-
 import { ProductlistComponent } from '../product/productlist/productlist.component';
 import { UserprofileComponent } from '../users/userprofile/userprofile.component';
 import { EdituserComponent } from '../users/edituser/edituser.component';
 import { ResetpasswordComponent } from '../users/resetpassword/resetpassword.component';
 import { ChangecontactnumberComponent } from '../users/changecontactnumber/changecontactnumber.component';
 import { UpdatequantityComponent } from '../product/updatequantity/updatequantity.component';
+import { YearlystatusComponent } from '../bi/orderstatus/yearlystatus/yearlystatus.component';
+import { MonthlystatusComponent } from '../bi/orderstatus/monthlystatus/monthlystatus.component';
 
 
 const routes : Routes=[ 
@@ -66,7 +65,9 @@ const routes : Routes=[
   {path:'profile', component:UserprofileComponent},
   {path:'profile/editprofile', component:EdituserComponent},
   {path:'profile/resetpassword', component:ResetpasswordComponent},
-  {path:'changecontactnumber', component:ChangecontactnumberComponent}
+  {path:'changecontactnumber', component:ChangecontactnumberComponent},
+  {path:'orderstatus', component:YearlystatusComponent},
+  {path:'monthlystatus', component:MonthlystatusComponent}
 ]
 
 @NgModule({
