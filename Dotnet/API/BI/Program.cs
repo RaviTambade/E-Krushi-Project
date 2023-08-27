@@ -1,7 +1,7 @@
-using BIService.Repositories;
-using BIService.Repositories.Interfaces;
-using BIService.Services;
-using BIService.Services.Interfaces;
+using Transflower.EKrushi.BIService.Repositories;
+using Transflower.EKrushi.BIService.Repositories.Interfaces;
+using Transflower.EKrushi.BIService.Services;
+using Transflower.EKrushi.BIService.Services.Interfaces;
 
 
 var builder = WebApplication.CreateBuilder(args);

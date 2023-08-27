@@ -1,4 +1,4 @@
-namespace BIService.Models;
+namespace Transflower.EKrushi.BIService.Models;
 
 public class ProductSale{
 

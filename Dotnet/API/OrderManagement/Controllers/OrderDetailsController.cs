@@ -10,16 +10,16 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
     [Route("api/orderdetails")]
     public class OrderDetailsController : ControllerBase
     {
-        private readonly IOrderDetailsService _ordersvc;
-        public OrderDetailsController(IOrderDetailsService ordersvc)
+        private readonly IOrderDetailsService _orderService;
+        public OrderDetailsController(IOrderDetailsService orderService)
         {
-            _ordersvc = ordersvc;
+           _orderService = orderService;
         }
 
         //http://localhost:5057/api/orderdetails 
         public async Task<IEnumerable<OrderDetails>> GetAllOrderDetails()
         {
-            List<OrderDetails> orderDetails = await _ordersvc.GetAllOrderDetails();
+            List<OrderDetails> orderDetails = await _orderService.GetAllOrderDetails();
             return orderDetails;
         }
 
@@ -27,14 +27,14 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
         [HttpGet("{id}")]
         public async Task<OrderDetails> GetOrderDetail(int id)
         {
-            OrderDetails orderDetail = await _ordersvc.GetOrderDetail(id);
+            OrderDetails orderDetail = await _orderService.GetOrderDetail(id);
             return orderDetail;
         }
 
         //http://localhost:5057/api/orderdetails 
         public async Task<bool> Insert([FromBody] OrderDetails orderDetail)
         {
-            bool status = await _ordersvc.Insert(orderDetail);
+            bool status = await _orderService.Insert(orderDetail);
             return status;
         }
 
@@ -42,13 +42,13 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
         [HttpPut("{id}")]
         public async Task<bool> Update(int id, [FromBody] OrderDetails orderDetail)
         {
-            OrderDetails oldOrderDetail = await _ordersvc.GetOrderDetail(id);
+            OrderDetails oldOrderDetail = await _orderService.GetOrderDetail(id);
             if (oldOrderDetail.Id == 0)
             {
                 return false;
             }
             orderDetail.Id = id;
-            bool status = await _ordersvc.Update(orderDetail);
+            bool status = await _orderService.Update(orderDetail);
             return status;
         }
 
@@ -56,7 +56,7 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
         [HttpDelete("{id}")]
         public async Task<bool> DeleteOrderDetail(int id)
         {
-            bool status = await _ordersvc.Delete(id);
+            bool status = await _orderService.Delete(id);
             return status;
         }
 
@@ -64,7 +64,7 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
         [HttpGet("order/{orderId}")]
         public async Task<List<OrderHistory>> GetDetails(int orderId)
         {
-            List<OrderHistory> orders = await _ordersvc.GetDetails(orderId);
+            List<OrderHistory> orders = await _orderService.GetDetails(orderId);
             return orders;
         }
     }

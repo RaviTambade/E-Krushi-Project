@@ -1,31 +1,31 @@
 using System.Data;
-using BIService.Models;
-using BIService.Repositories.Interfaces;
+using Transflower.EKrushi.BIService.Models;
+using Transflower.EKrushi.BIService.Repositories.Interfaces;
 using MySql.Data.MySqlClient;
 
-namespace BIService.Repositories;
+namespace Transflower.EKrushi.BIService.Repositories;
 public class BIRepository : IBIRepository
 {
     private readonly IConfiguration _configuration;
-    private readonly string _conString;
+    private readonly string _connectionString;
 
     public BIRepository(IConfiguration configuration)
     {
         _configuration = configuration;
-        _conString = this._configuration.GetConnectionString("DefaultConnection");
+        _connectionString = this._configuration.GetConnectionString("DefaultConnection");
     }
 
     public async Task<List<OrderChart>> GetCountByMonth(int year )
     {
 
        List<OrderChart> orders = new List<OrderChart>();
-        MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = _conString;
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _connectionString;
         try
         {
-            string query = "SELECT MONTHNAME(orderdate) AS monthname, COUNT(*) AS count FROM orders WHERE YEAR(orderdate) = @year GROUP BY MONTHNAME(orderdate), MONTH(orderdate) ORDER BY MONTH(orderdate) ASC";
-            await con.OpenAsync();
-            MySqlCommand command = new MySqlCommand(query, con);
+            string query = "SELECT MONTHNAME(orderdate) AS monthname, COUNT(*) AS count FROM orders WHERE YEAR(orderdate) = @year GROUP BY MONTHNAME(orderdate), MONTH(orderdate) ORDER BY MONTH(orderdate) ASC;";
+            await connection.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@year",year);
             MySqlDataReader reader = command.ExecuteReader();   
             while (await reader.ReadAsync())
@@ -42,13 +42,13 @@ public class BIRepository : IBIRepository
             }
             await reader.CloseAsync();
         }
-        catch (Exception e)
+        catch (Exception )
         {
-            throw e;
+            throw ;
         }
         finally
         {
-            await con.CloseAsync();
+            await connection.CloseAsync();
         }
         return orders;
     }
@@ -57,13 +57,13 @@ public class BIRepository : IBIRepository
     {
 
        List<OrderChart> orders = new List<OrderChart>();
-        MySqlConnection con = new MySqlConnection();
-        con.ConnectionString = _conString;
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _connectionString;
         try
         {
             string query = "select status,sum(status) as total from orders where year(orderdate)=@year group by status;";
-            await con.OpenAsync();
-            MySqlCommand command = new MySqlCommand(query, con);
+            await connection.OpenAsync();
+            MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@year",year);
             MySqlDataReader reader = command.ExecuteReader();   
             while (await reader.ReadAsync())
@@ -80,13 +80,13 @@ public class BIRepository : IBIRepository
             }
             await reader.CloseAsync();
         }
-        catch (Exception e)
+        catch (Exception )
         {
-            throw e;
+            throw ;
         }
         finally
         {
-            await con.CloseAsync();
+            await connection.CloseAsync();
         }
         return orders;
     }
@@ -96,7 +96,7 @@ public class BIRepository : IBIRepository
 
         List<ProductSale> questions = new List<ProductSale>();
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = _conString;
+        connection.ConnectionString = _connectionString;
         try
         {
             string query = "select title,productid,sum(quantity) as quantity from products inner join orderdetails on products.id=orderdetails.productid  inner join orders on orders.id=orderdetails.orderid where year(shippeddate)=@year group by productid";
@@ -132,14 +132,14 @@ public class BIRepository : IBIRepository
     public async Task<List<CustomerReport>> GetCustomerReport(int custId)
         {
             List<CustomerReport> customers = new List<CustomerReport>();
-            MySqlConnection con = new MySqlConnection();
-            con.ConnectionString = _conString;
+            MySqlConnection connection = new MySqlConnection();
+            connection.ConnectionString = _connectionString;
             try{
                 string query = "select title,productid,sum(quantity) as total from products inner join orderdetails on products.id=orderdetails.productid inner join orders on orders.id = orderdetails.orderid where custid =@custId group by productid";
-                MySqlCommand cmd = new MySqlCommand(query,con);
-                cmd.Parameters.AddWithValue("@custId", custId);
-                await con.OpenAsync();
-                MySqlDataReader reader = cmd.ExecuteReader();
+                MySqlCommand command = new MySqlCommand(query,connection);
+                command.Parameters.AddWithValue("@custId", custId);
+                await connection.OpenAsync();
+                MySqlDataReader reader = command.ExecuteReader();
                 while(await reader.ReadAsync())
                 {
                     int totalQuantity = int.Parse(reader["total"].ToString());
@@ -155,11 +155,11 @@ public class BIRepository : IBIRepository
                 }
                 await reader.CloseAsync();
             }
-        catch(Exception e){
-            throw e;
+        catch(Exception ){
+            throw ;
         }
         finally{
-            await con.CloseAsync();
+            await connection.CloseAsync();
         }
         return customers;
     }
@@ -168,7 +168,7 @@ public class BIRepository : IBIRepository
 
         List<SMEReport> questions = new List<SMEReport>();
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = _conString;
+        connection.ConnectionString = _connectionString;
 
         try
         {
@@ -209,7 +209,7 @@ public class BIRepository : IBIRepository
 
         List<OrderChart> questions = new List<OrderChart>();
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = _conString;
+        connection.ConnectionString = _connectionString;
         try
         {
             string query = "SELECT MONTHNAME(orderdate) AS monthname,sum(total) as total from orders where year(orderdate)=@year group by MONTHNAME(orderdate), MONTH(orderdate) ORDER BY MONTH(orderdate) ASC";
@@ -248,7 +248,7 @@ public class BIRepository : IBIRepository
 
         List<OrderChart> orders = new List<OrderChart>();
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = _conString;
+        connection.ConnectionString = _connectionString;
         try
         {
             string query = "SELECT WEEK(orderdate, 1) AS WeekNumber, count(*) AS total FROM orders WHERE  YEAR(orderdate) = @year GROUP BY WEEK(orderdate, 1) ORDER BY WEEK(orderdate, 1)"; 
@@ -271,9 +271,9 @@ public class BIRepository : IBIRepository
             }
             await reader.CloseAsync();
         }
-        catch (Exception e)
+        catch (Exception )
         {
-            throw e;
+            throw ;
         }
         finally
         {
@@ -287,7 +287,7 @@ public class BIRepository : IBIRepository
 
         List<OrderChart> orders = new List<OrderChart>();
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = _conString;
+        connection.ConnectionString = _connectionString;
         try
         {
             string query = "SELECT  year(orderdate) AS year, count(*) AS total FROM orders GROUP BY  year(orderdate) ORDER BY year(orderdate) ASC ";
@@ -326,7 +326,7 @@ public class BIRepository : IBIRepository
 
         List<OrderChart> orders = new List<OrderChart>();
         MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = _conString;
+        connection.ConnectionString = _connectionString;
         try
         {
             string query = "select year(orders.shippeddate) as year, status,sum(status) as total  from orders group by year(orders.shippeddate) ,status ";

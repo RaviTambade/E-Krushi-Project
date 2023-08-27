@@ -1,6 +1,6 @@
-using ShoppingCartService.Models;
-using ShoppingCartService.Repositories.Interfaces;
-using ShoppingCartService.Services.Interfaces;
+using Transflower.EKrushi.ShoppingCartService.Models;
+using Transflower.EKrushi.ShoppingCartService.Repositories.Interfaces;
+using Transflower.EKrushi.ShoppingCartService.Interfaces;
 
 namespace ShoppingCartService.Services;
 public class CartService : ICartService

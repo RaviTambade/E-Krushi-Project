@@ -1,6 +1,6 @@
-using BIService.Models;
+using Transflower.EKrushi.BIService.Models;
 
-namespace BIService.Repositories.Interfaces;
+namespace Transflower.EKrushi.BIService.Repositories.Interfaces;
 
 public interface IBIRepository{
    Task<List<OrderChart>> GetCountByMonth(int year);

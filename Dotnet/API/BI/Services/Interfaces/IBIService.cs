@@ -1,6 +1,6 @@
-using BIService.Repositories.Interfaces;
+using Transflower.EKrushi.BIService.Repositories.Interfaces;
 
-namespace BIService.Services.Interfaces;
+namespace Transflower.EKrushi.BIService.Services.Interfaces;
 
 public interface IBIService: IBIRepository
 {

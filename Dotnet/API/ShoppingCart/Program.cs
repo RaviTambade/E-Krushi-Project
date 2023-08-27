@@ -1,6 +1,6 @@
-using ShoppingCartService.Repositories;
-using ShoppingCartService.Repositories.Interfaces;
-using ShoppingCartService.Services.Interfaces;
+using Transflower.EKrushi.ShoppingCartService.Repositories;
+using Transflower.EKrushi.ShoppingCartService.Repositories.Interfaces;
+using Transflower.EKrushi.ShoppingCartService.Interfaces;
 using ShoppingCartService.Services;
 
 

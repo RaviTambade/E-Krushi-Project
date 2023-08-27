@@ -1,25 +1,25 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Distributed;
-using ShoppingCartService.Models;
-using ShoppingCartService.Services.Interfaces;
+using Transflower.EKrushi.ShoppingCartService.Models;
+using Transflower.EKrushi.ShoppingCartService.Interfaces;
 
-namespace ShoppingCartService.Controllers
+namespace Transflower.EKrushi.ShoppingCartService.Controllers
 {
     [ApiController]
     [Route("/api/cart")]
     public class CartController : ControllerBase
     {
         
-        private readonly ICartService _cartSrv;
+        private readonly ICartService _cartService;
         public CartController( ICartService cartService)
         {
-            _cartSrv = cartService;       
+            _cartService = cartService;       
         }
 
         [HttpGet("getall/{custId}")]
         public async Task<Cart> GetAll(int custId)
         {
-           Cart items = await _cartSrv.GetAll(custId);
+           Cart items = await _cartService.GetAll(custId);
             Console.WriteLine(custId);
             return items;
         }
@@ -29,7 +29,7 @@ namespace ShoppingCartService.Controllers
         [HttpGet("getcartdetails/{id}")]
         public async Task<Cart> GetCart(int id)
         {
-            Cart cart = await _cartSrv.GetCart(id);
+            Cart cart = await _cartService.GetCart(id);
             Console.WriteLine(id);
             return cart;
         }
@@ -41,7 +41,7 @@ namespace ShoppingCartService.Controllers
 
         public async Task<bool> AddItem([FromBody] Item item)
         {
-            bool status = await _cartSrv.AddItem( item);
+            bool status = await _cartService.AddItem( item);
 
             return status;
         }
@@ -50,7 +50,7 @@ namespace ShoppingCartService.Controllers
         [HttpGet("getcartId/{custId}")]
         public async Task<int> GetCartId(int custId)
         {
-            int cartId = await _cartSrv.GetCartId(custId);
+            int cartId = await _cartService.GetCartId(custId);
             return cartId;
         }
 
@@ -58,7 +58,7 @@ namespace ShoppingCartService.Controllers
         public async Task<List<Item>> GetCartDetails(int custId)
         {
             Console.WriteLine(custId);
-            List<Item> items = await _cartSrv.GetCartDetails(custId);
+            List<Item> items = await _cartService.GetCartDetails(custId);
             return items;
         }
 
@@ -67,7 +67,7 @@ namespace ShoppingCartService.Controllers
 
         public async Task<bool> RemoveItem(int cartItemId)
         {
-            bool status = await _cartSrv.RemoveItem(cartItemId);
+            bool status = await _cartService.RemoveItem(cartItemId);
 
             return status;
         }    
@@ -77,7 +77,7 @@ namespace ShoppingCartService.Controllers
 
         public async Task<bool> Update(Item item)
         {
-            bool status = await _cartSrv.Update(item);
+            bool status = await _cartService.Update(item);
 
             return status;
         }
@@ -86,14 +86,14 @@ namespace ShoppingCartService.Controllers
         public async Task<Item> Get(int id)
         {
             Console.WriteLine(id);
-            Item items = await _cartSrv.Get(id);
+            Item items = await _cartService.Get(id);
             return items;
         }
 
         [HttpGet("createorder/{CartId}")]
         public async Task<bool> CreateOrder( int CartId)
         {
-            return await _cartSrv.CreateOrder(CartId);
+            return await _cartService.CreateOrder(CartId);
         }
     }
 }

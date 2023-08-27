@@ -1,4 +1,4 @@
-namespace ShoppingCartService.Models
+namespace Transflower.EKrushi.ShoppingCartService.Models
 {
     public class Cart
     {
