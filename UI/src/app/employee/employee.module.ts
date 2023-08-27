@@ -32,6 +32,7 @@ import { EdituserComponent } from '../users/edituser/edituser.component';
 import { ResetpasswordComponent } from '../users/resetpassword/resetpassword.component';
 import { ChangecontactnumberComponent } from '../users/changecontactnumber/changecontactnumber.component';
 import { UpdatequantityComponent } from '../product/updatequantity/updatequantity.component';
+import { SmeperformanceyearlyComponent } from '../bi/consultingcharts/smeperformanceyearly/smeperformanceyearly.component';
 
 
 const routes : Routes=[ 
@@ -66,7 +67,8 @@ const routes : Routes=[
   {path:'profile', component:UserprofileComponent},
   {path:'profile/editprofile', component:EdituserComponent},
   {path:'profile/resetpassword', component:ResetpasswordComponent},
-  {path:'changecontactnumber', component:ChangecontactnumberComponent}
+  {path:'changecontactnumber', component:ChangecontactnumberComponent},
+  {path:'expertPerformance',component:SmeperformanceyearlyComponent}
 ]
 
 @NgModule({
