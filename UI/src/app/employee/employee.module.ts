@@ -29,8 +29,9 @@ import { EdituserComponent } from '../users/edituser/edituser.component';
 import { ResetpasswordComponent } from '../users/resetpassword/resetpassword.component';
 import { ChangecontactnumberComponent } from '../users/changecontactnumber/changecontactnumber.component';
 import { UpdatequantityComponent } from '../product/updatequantity/updatequantity.component';
-import { YearlystatusComponent } from '../bi/orderstatus/yearlystatus/yearlystatus.component';
+import { SmeperformanceyearlyComponent } from '../bi/consultingcharts/smeperformanceyearly/smeperformanceyearly.component';
 import { MonthlystatusComponent } from '../bi/orderstatus/monthlystatus/monthlystatus.component';
+import { YearlystatusComponent } from '../bi/orderstatus/yearlystatus/yearlystatus.component';
 
 
 const routes : Routes=[ 
@@ -66,6 +67,7 @@ const routes : Routes=[
   {path:'profile/editprofile', component:EdituserComponent},
   {path:'profile/resetpassword', component:ResetpasswordComponent},
   {path:'changecontactnumber', component:ChangecontactnumberComponent},
+  {path:'expertPerformance',component:SmeperformanceyearlyComponent},
   {path:'orderstatus', component:YearlystatusComponent},
   {path:'monthlystatus', component:MonthlystatusComponent}
 ]

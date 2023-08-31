@@ -48,9 +48,9 @@ isUser():boolean{
 isLoggedIn():boolean{
   const jwt =localStorage.getItem("jwt");
   if (jwt != null) {
-    return false;
+    return true;
   }
-  return true;
+  return false;
 }
 
 loggedOut(){
