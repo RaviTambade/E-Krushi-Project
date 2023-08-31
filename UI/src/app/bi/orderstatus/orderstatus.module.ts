@@ -4,6 +4,7 @@ import { MonthlyComponent } from './monthly/monthly.component';
 import { QuartrlyComponent } from './quartrly/quartrly.component';
 import { MonthlystatusComponent } from './monthlystatus/monthlystatus.component';
 import { YearlystatusComponent } from './yearlystatus/yearlystatus.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -15,7 +16,8 @@ import { YearlystatusComponent } from './yearlystatus/yearlystatus.component';
     YearlystatusComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   exports: [
     MonthlystatusComponent,
