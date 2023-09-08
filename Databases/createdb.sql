@@ -1,11 +1,13 @@
--- drop database ekrushi;
+-- Active: 1682349138553@@127.0.0.1@3306@ekrushi
+drop database ekrushi;
  CREATE DATABASE ekrushi;
 USE ekrushi;
 
 
 
-CREATE TABLE roles(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, role varchar(250));
-              
+CREATE TABLE roles(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name varchar(250));            
+CREATE TABLE userroles(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,userid INT NOT NULL UNIQUE,roleid INT NOT NULL,CONSTRAINT fkroleid FOREIGN KEY(roleid) REFERENCES roles(id) ON UPDATE CASCADE ON DELETE CASCADE);
+
 CREATE TABLE customers(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,firstname VARCHAR(255),lastname VARCHAR(25),userid INT NOT NULL);
 CREATE TABLE categories(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,title varchar(255),description varchar(255),image varchar(255));
                         
@@ -13,7 +15,7 @@ CREATE TABLE products(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,title varchar(2
 categoryid INT NOT NULL, CONSTRAINT fkcategoryid FOREIGN KEY (categoryid) REFERENCES categories(id) ON UPDATE CASCADE ON DELETE CASCADE);
  
 CREATE TABLE orders(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,orderdate DATETIME NOT NULL ,shippeddate DATETIME NOT NULL,custid INT NOT NULL,
-CONSTRAINT fk_cust_id_11 FOREIGN KEY (custid) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE CASCADE, 
+CONSTRAINT fk_cust_id_11 FOREIGN KEY (custid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE, 
 total DOUBLE ,status ENUM('approved','initiated','cancelled','delivered','inprogress') NOT NULL);
 
 CREATE TABLE orderdetails(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,orderid INT NOT NULL,
@@ -49,7 +51,6 @@ userid INT NOT NULL);
 
 
 
-CREATE TABLE userroles(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,userid INT NOT NULL,roleid INT NOT NULL,CONSTRAINT fkroleid FOREIGN KEY(roleid) REFERENCES roles(id) ON UPDATE CASCADE ON DELETE CASCADE);
   
 CREATE TABLE feedbacks(id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,description VARCHAR(255),custid INT NOT NULL ,
 CONSTRAINT fk_022 FOREIGN KEY (custid) REFERENCES customers(id) ON UPDATE CASCADE ON DELETE CASCADE);

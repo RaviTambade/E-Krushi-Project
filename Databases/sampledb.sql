@@ -3,24 +3,35 @@
 
 
 -- ROLE TABLE DATA
-INSERT INTO roles(role) VALUES ('Shop owner');
-INSERT INTO roles(role) VALUES ('Customer');
-INSERT INTO roles(role) VALUES ('Seller');
-INSERT INTO roles(role) VALUES ('Supplier');
-INSERT INTO roles(role) VALUES ('Shipper');
-INSERT INTO roles(role) VALUES ('SubjectMatterExpert');
+INSERT INTO roles(name) VALUES ('Shop owner');
+INSERT INTO roles(name) VALUES ('Customer');
+INSERT INTO roles(name) VALUES ('Supplier');
+INSERT INTO roles(name) VALUES ('Shipper');
+INSERT INTO roles(name) VALUES ('SubjectMatterExpert');
 
-select * from products;
+
+INSERT INTO userroles(userid,roleid) VALUES (1,1);
+INSERT INTO userroles(userid,roleid) VALUES (2,2);
+INSERT INTO userroles(userid,roleid) VALUES (3,2);
+INSERT INTO userroles(userid,roleid) VALUES (4,3);
+INSERT INTO userroles(userid,roleid) VALUES (5,3);
+INSERT INTO userroles(userid,roleid) VALUES (6,4);
+INSERT INTO userroles(userid,roleid) VALUES (7,4);
+INSERT INTO userroles(userid,roleid) VALUES (8,5);
+INSERT INTO userroles(userid,roleid) VALUES (9,5);
+
+
+SELECT * FROM userroles;
 
 -- CUSTOMERS DATA
-INSERT INTO customers(firstname,lastname,userid) VALUES('pragati','bangar',1);  
-INSERT INTO customers(firstname,lastname,userid) VALUES('akash','ajab',2);                       
-INSERT INTO customers(firstname,lastname,userid) VALUES('sahil','mankar',2);
-INSERT INTO customers(firstname,lastname,userid) VALUES('akshay','tanpure',3);             
-INSERT INTO customers(firstname,lastname,userid) VALUES('vedant','yadav',4);     
-INSERT INTO customers(firstname,lastname,userid) VALUES('rohit','gore',5);     
-INSERT INTO customers(firstname,lastname,userid) VALUES('rushikesh','chikne',6);                       
-INSERT INTO customers(firstname,lastname,userid) VALUES('shubham','teli',7);
+-- INSERT INTO customers(firstname,lastname,userid) VALUES('pragati','bangar',1);  
+-- INSERT INTO customers(firstname,lastname,userid) VALUES('akash','ajab',2);                       
+-- INSERT INTO customers(firstname,lastname,userid) VALUES('sahil','mankar',2);
+-- INSERT INTO customers(firstname,lastname,userid) VALUES('akshay','tanpure',3);             
+-- INSERT INTO customers(firstname,lastname,userid) VALUES('vedant','yadav',4);     
+-- INSERT INTO customers(firstname,lastname,userid) VALUES('rohit','gore',5);     
+-- INSERT INTO customers(firstname,lastname,userid) VALUES('rushikesh','chikne',6);                       
+-- INSERT INTO customers(firstname,lastname,userid) VALUES('shubham','teli',7);
 
 
 -- CATEGORIES DATA
@@ -133,44 +144,34 @@ INSERT INTO payments(date,mode,transactionid,userid,orderid)  VALUES('2022-06-10
 
 
 -- ADDRESS DATA
-INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(1,'permanent','houseNo.32','akshara garden','pune','maharashtra','india','410503');
-INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(1,'billing','houseNo.32','akshara dairy','pune','maharashtra','india','410502');
-INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(2,'permanent','houseNo.32','season mall','pune','maharashtra','india','410504');
-INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(3,'billing','houseNo.32','Peth-Kurwandi Road','Manchar','Maharashtra','India','410506');
-INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(4,'permanent','houseNo.234','Pune-Nashik Highway','Rajgurunagar','Maharashtra','India','1213');
+-- INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(1,'permanent','houseNo.32','akshara garden','pune','maharashtra','india','410503');
+-- INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(1,'billing','houseNo.32','akshara dairy','pune','maharashtra','india','410502');
+-- INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(2,'permanent','houseNo.32','season mall','pune','maharashtra','india','410504');
+-- INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(3,'billing','houseNo.32','Peth-Kurwandi Road','Manchar','Maharashtra','India','410506');
+-- INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(4,'permanent','houseNo.234','Pune-Nashik Highway','Rajgurunagar','Maharashtra','India','1213');
 
 -- EMPLOYESS DATA
-INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('akash','ajab','1999-09-15','2022-05-12','/image/akash.jpg',2,2);
-INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('pragati','Bangar','2000-12-18','2022-05-12','/image/vedant.jpg',1,1);
-INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('anil','hinge','2023-09-15','2022-06-14','/image/sahil.jpg',2,10);
-INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('rohan','amate','2015-09-15','2022-07-13','/image/prakash.jpg',4,11);
-INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('ajay','lanke','1988-09-15','2022-08-11','/image/nilesh.jpg',1,12);
+-- INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('akash','ajab','1999-09-15','2022-05-12','/image/akash.jpg',2,2);
+-- INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('pragati','Bangar','2000-12-18','2022-05-12','/image/vedant.jpg',1,1);
+-- INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('anil','hinge','2023-09-15','2022-06-14','/image/sahil.jpg',2,10);
+-- INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('rohan','amate','2015-09-15','2022-07-13','/image/prakash.jpg',4,11);
+-- INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('ajay','lanke','1988-09-15','2022-08-11','/image/nilesh.jpg',1,12);
 
 
 -- SHIPPERS DATA
-INSERT INTO shippers(companyname,userid) VALUES('agrotech pvt.ltd',13);
-INSERT INTO shippers(companyname,userid) VALUES('agrilens pvt.ltd',14);
-INSERT INTO shippers(companyname,userid) VALUES('croproot pvt.ltd',15);
-INSERT INTO shippers(companyname,userid) VALUES('greenery pvt.ltd',16);
+-- INSERT INTO shippers(companyname,userid) VALUES('agrotech pvt.ltd',13);
+-- INSERT INTO shippers(companyname,userid) VALUES('agrilens pvt.ltd',14);
+-- INSERT INTO shippers(companyname,userid) VALUES('croproot pvt.ltd',15);
+-- INSERT INTO shippers(companyname,userid) VALUES('greenery pvt.ltd',16);
 
 
 -- SUPPLIERS DATA
-INSERT INTO suppliers(companyname,suppliername,address,city,state,userid) VALUES('kaveri','abhishek bhor','pimpalgaon','pune','maharashtra',17);
-INSERT INTO suppliers(companyname,suppliername,address,city,state,userid) VALUES('kalash seeds','pratik wagh','khadaki','pune','maharashtra',18);
-INSERT INTO suppliers(companyname,suppliername,address,city,state,userid) VALUES('greenary','datta dhoble','manchar','pune','maharashtra',19);
-INSERT INTO suppliers(companyname,suppliername,address,city,state,userid) VALUES('kavya','kavya bangar','chandoli','pune','maharashtra',20);
+-- INSERT INTO suppliers(companyname,suppliername,address,city,state,userid) VALUES('kaveri','abhishek bhor','pimpalgaon','pune','maharashtra',17);
+-- INSERT INTO suppliers(companyname,suppliername,address,city,state,userid) VALUES('kalash seeds','pratik wagh','khadaki','pune','maharashtra',18);
+-- INSERT INTO suppliers(companyname,suppliername,address,city,state,userid) VALUES('greenary','datta dhoble','manchar','pune','maharashtra',19);
+-- INSERT INTO suppliers(companyname,suppliername,address,city,state,userid) VALUES('kavya','kavya bangar','chandoli','pune','maharashtra',20);
 
 -- USER ROLES DATA
-INSERT INTO userroles(userid,roleid) VALUES (1,2);
-INSERT INTO userroles(userid,roleid) VALUES (2,1);
-INSERT INTO userroles(userid,roleid) VALUES (1,1);
-INSERT INTO userroles(userid,roleid) VALUES (2,2);
-INSERT INTO userroles(userid,roleid) VALUES (3,3);
-INSERT INTO userroles(userid,roleid) VALUES (4,6);
-INSERT INTO userroles(userid,roleid) VALUES (5,4);
-INSERT INTO userroles(userid,roleid) VALUES (6,5);
-INSERT INTO userroles(userid,roleid) VALUES (7,3);
-
 
 -- FEEDBACKS DATA
 INSERT INTO feedbacks(description,custid) VALUES ('very good facilitities',1);
@@ -185,7 +186,7 @@ INSERT INTO questioncategories(category) VALUES('weather releted questions');
 
 -- QUESTION TABLE DATA
 
-INSERT INTO questions(description,categoryid) VALUES('How can I increase crop yield?',1);
+INSERT INTO questions(description,categoryid,custid,questiondate) VALUES('How can I increase crop yield?',1);
 INSERT INTO questions(description,categoryid) VALUES('How can I prevent crop damage from pests and diseases?',1);
 INSERT INTO questions(description,categoryid) VALUES('How can I improve soil fertility? ',2);
 INSERT INTO questions(description,categoryid) VALUES('How can I improve soil structure? ',2);
@@ -193,6 +194,18 @@ INSERT INTO questions(description,categoryid)VALUES('How can I prevent soil eros
 INSERT INTO questions(description,categoryid) VALUES('What should I do if there is a drought?',3);
 INSERT INTO questions(description,categoryid) VALUES('What should I do if there is heavy rainfall? ',3);
 INSERT INTO questions(description,categoryid) VALUES('What should I do if there is extreme heat?',3);
+
+-- CUSTOMERQUESTIONS TABLE DATA
+INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (1,1,'2022-01-15');
+INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (2,2,'2023-02-15');
+INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (2,4,'2023-01-15');
+INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (3,3,'2022-05-15');
+INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (4,2,'2022-08-15');
+
+-- SME TABLE DATA
+INSERT INTO subjectmatterexperts(name,expertise,userid) VALUES('pratima patil','crop related information',22);
+INSERT INTO subjectmatterexperts(name,expertise,userid) VALUES('kiran rakshe','soil related information',23);
+INSERT INTO subjectmatterexperts(name,expertise,userid) VALUES('mayur gorade','Weather related information',24);
 
 
 
@@ -212,13 +225,6 @@ INSERT INTO answers(description,questionid) VALUES('Soil erosion prevention: Imp
 										  Crop selection: Choose crops that are better suited to wet conditions.',3);
 
 
-
--- SME TABLE DATA
-INSERT INTO subjectmatterexperts(name,expertise,userid) VALUES('pratima patil','crop related information',22);
-INSERT INTO subjectmatterexperts(name,expertise,userid) VALUES('kiran rakshe','soil related information',23);
-INSERT INTO subjectmatterexperts(name,expertise,userid) VALUES('mayur gorade','Weather related information',24);
-
-
 -- SME ANSWERS
 INSERT INTO smeanswers(answerid,questionid,answerdate,smeid) VALUES (1,1,'2023-04-05 12:08:06',1);
 INSERT INTO smeanswers(answerid,questionid,answerdate,smeid) VALUES (1,1,'2023-06-05 12:20:19',1);
@@ -228,12 +234,6 @@ INSERT INTO smeanswers(answerid,questionid,answerdate,smeid) VALUES (3,1,'2023-0
 
 
 
--- CUSTOMERQUESTIONS TABLE DATA
-INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (1,1,'2022-01-15');
-INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (2,2,'2023-02-15');
-INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (2,4,'2023-01-15');
-INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (3,3,'2022-05-15');
-INSERT INTO customerquestions(custid,questionid,questiondate) VALUES (4,2,'2022-08-15');
 
 
 -- BILING TABLE DATA
