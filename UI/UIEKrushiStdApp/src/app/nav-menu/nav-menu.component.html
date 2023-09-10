@@ -3,7 +3,7 @@
     class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
   >
     <div class="container">
-      <a class="navbar-brand">EKrushi App</a>
+      <a class="navbar-brand"><b>EKrushi Seva</b></a>
       <button class="navbar-toggler" type="button"
         data-toggle="collapse"
         data-target=".navbar-collapse"
@@ -19,16 +19,16 @@
         <ul class="navbar-nav flex-grow">
           <li
             class="nav-item">
-            <a class="nav-link text-dark">Home</a>
+            <a class="nav-link text-dark"  [routerLink]="['/home']">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark">Counter</a>
+            <a class="nav-link text-dark" [routerLink]="['/AboutUs']">AboutUs</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-dark">Fetch data</a>
+            <a class="nav-link text-dark" [routerLink]="['/ContactUs']">ContactUs</a>
           </li>
           <li class="nav-item" *ngIf="isLoggedIn()">
-            <a class="nav-link text-dark"> Hello {{name}}</a>
+            <a class="nav-link text-dark"> Hello,{{name}}</a>
           </li>
         <li class="nav-item" *ngIf="isLoggedIn()">
           <a class="nav-link text-dark" (click)="logOut()">LogOut</a>

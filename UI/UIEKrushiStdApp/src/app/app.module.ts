@@ -6,8 +6,8 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { AboutUsComponent } from './AboutUs/AboutUs.component';
+import { ContactUsComponent } from './ContactUs/ContactUs.component';
 import { LoginComponent } from './authentication/login/login.component';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
@@ -22,8 +22,8 @@ import { supplierRoutes } from './supplier/supplier.module';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
+    AboutUsComponent,
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,7 +33,9 @@ import { supplierRoutes } from './supplier/supplier.module';
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
+      { path: 'AboutUs', component: AboutUsComponent },
+      { path: 'home', component: HomeComponent },
+      { path: 'ContactUs', component: ContactUsComponent },
       { path: 'login', component: LoginComponent },
       {path:'customer',children:customerRoutes},
       {path:'shipper',children:shipperRoutes},
