@@ -1,13 +1,10 @@
 <div class="container">
-    <div class="row">
-  
-        <div class="col-xl-8" *ngFor="let item of items">
+    <div class="row"  *ngFor="let item of items;let i=index">
+        <div class="col-8">
             <app-order-product-details [item]="item"></app-order-product-details>
         </div>
-        <div class="col-xl-4">
-            <div class="mt-5 mt-lg-0">
+        <div class="col-4" *ngIf="i==0">
             <app-order-summery></app-order-summery>
         </div>
     </div>
-</div>
 </div>

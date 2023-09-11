@@ -23,7 +23,8 @@ import { SecondaryNavMenuComponent } from './secondary-nav-menu/secondary-nav-me
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    SecondaryNavMenuComponent
+    SecondaryNavMenuComponent,
+    
     // CounterComponent,
     // FetchDataComponent,
   ],
