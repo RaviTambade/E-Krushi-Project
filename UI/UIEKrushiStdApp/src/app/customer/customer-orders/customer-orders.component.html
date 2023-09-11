@@ -1,4 +1,4 @@
-<button> <a class="nav-link text-dark" [routerLink]="['/customer/orders/pending']">Pending</a>
+<!-- <button > <a class="nav-link text-dark" [routerLink]="['/customer/orders/pending']" routerLinkActive="router-link-active">Pending</a>
 </button>
 <button> <a class="nav-link text-dark" [routerLink]="['/customer/orders/delivered']">Delivered</a>
 </button>
@@ -6,4 +6,32 @@
 </button>
 <div class="container">
     <router-outlet></router-outlet>
+  </div> -->
+
+  <div class="container">
+    <h2>My Orders</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders">
+              <td>{{ order.date | date }}</td>
+              <td>{{ order.amount }}</td>
+              <td>{{ order.status }}</td>
+              <td>
+                <button class="btn btn-primary" (click)="viewDetails(order.id)">Details</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
+  <router-outlet></router-outlet>

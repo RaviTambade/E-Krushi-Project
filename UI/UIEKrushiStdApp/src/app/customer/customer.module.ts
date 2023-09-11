@@ -5,9 +5,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { CustomerOrdersComponent } from './customer-orders/customer-orders.component';
 import { CustomerWishlistComponent } from './customer-wishlist/customer-wishlist.component';
 import { CustomerPaymenthistoryComponent } from './customer-paymenthistory/customer-paymenthistory.component';
-import { DeliveredOrdersComponent } from './customer-orders/delivered-orders/delivered-orders.component';
-import { PendingOrdersComponent } from './customer-orders/pending-orders/pending-orders.component';
-import { CancelledOrdersComponent } from './customer-orders/cancelled-orders/cancelled-orders.component';
+import { OrderProductDetailsComponent } from './customer-orders/order-product-details/order-product-details.component';
+import { OrderDetailsComponent } from './customer-orders/order-details/order-details.component';
+import { OrderSummeryComponent } from './customer-orders/order-summery/order-summery.component';
 
 export const customerRoutes: Routes = [
   { path: 'dashboard', component: CustomerDashboardComponent },
@@ -15,9 +15,7 @@ export const customerRoutes: Routes = [
     path: 'orders',
     component: CustomerOrdersComponent,
     children: [
-      { path: 'delivered', component: DeliveredOrdersComponent },
-      { path: 'pending', component: PendingOrdersComponent },
-      { path: 'cancelled', component: CancelledOrdersComponent },
+      { path: 'details/:orderid', component: OrderDetailsComponent },
     ],
   },
   { path: 'paymentlist', component: CustomerPaymenthistoryComponent },
@@ -30,9 +28,9 @@ export const customerRoutes: Routes = [
     CustomerOrdersComponent,
     CustomerWishlistComponent,
     CustomerPaymenthistoryComponent,
-    DeliveredOrdersComponent,
-    PendingOrdersComponent,
-    CancelledOrdersComponent,
+    OrderProductDetailsComponent,
+    OrderDetailsComponent,
+    OrderSummeryComponent,
   ],
   imports: [CommonModule,RouterModule],
 })
