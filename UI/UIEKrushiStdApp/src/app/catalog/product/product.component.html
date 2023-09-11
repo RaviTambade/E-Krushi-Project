@@ -1,22 +1,13 @@
-<!-- <div style="text-align:center">
 
-<div class="card">
-  <img src="/assets/mira.webp" alt="" style="width:100%">
-  <h1>Targa Super</h1>
-  <p class="price">{{price |currency:"INR"}}</p>
-  <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-  <p><button>Details</button></p>
-</div>
-</div> -->
 
 
 <div class="w3-row" *ngFor ="let product of products">
     <div class="column">
       <div class="card">
-        <img src="{{product.imagepath}}" alt="" height="250" width="250">
-        <h3>Targa Super</h3>
+        <img  src="{{product.imagepath}}" alt="" height="250" width="250">
+     <h3>{{product.name}}</h3>
         <p class="price"><b>{{product.price |currency:"INR"}}</b></p>
       </div>
+      <br>
     </div>
-  
-    
+
