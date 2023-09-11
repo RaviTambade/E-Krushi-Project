@@ -31,6 +31,8 @@ import { CatalogModule } from './catalog/catalog.module';
     ContactUsComponent,
     ProductNavbarComponent
     
+    
+    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
