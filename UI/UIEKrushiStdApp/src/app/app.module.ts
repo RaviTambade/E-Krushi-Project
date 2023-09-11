@@ -16,6 +16,7 @@ import { shipperRoutes } from './shipper/shipper.module';
 import { shopRoutes } from './shop-owner/shop-owner.module';
 import { subjetcMatterExpertRoutes } from './subject-matter-expert/subject-matter-expert.module';
 import { supplierRoutes } from './supplier/supplier.module';
+import { SecondaryNavMenuComponent } from './secondary-nav-menu/secondary-nav-menu.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { supplierRoutes } from './supplier/supplier.module';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
+    SecondaryNavMenuComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

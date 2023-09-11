@@ -43,6 +43,7 @@ INSERT INTO categories(title,description,image) VALUES('Agricultural sprayers','
 INSERT INTO categories(title,description,image) VALUES('plants micronutrients','for spraying','/image/micronutrient.jpg');
 
 -- PRODUCTS DATA
+-- add supplier id in product 
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('oats',10,500,'/assets/image/oat.jfif',1);
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('wheat',14,50,'/assets/image/wheat.jpg',1);
 INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('corn',1000,50,'/assets/image/corn.jfif',1);
@@ -159,10 +160,15 @@ INSERT INTO payments(date,mode,transactionid,userid,orderid)  VALUES('2022-06-10
 
 
 -- SHIPPERS DATA
--- INSERT INTO shippers(companyname,userid) VALUES('agrotech pvt.ltd',13);
--- INSERT INTO shippers(companyname,userid) VALUES('agrilens pvt.ltd',14);
--- INSERT INTO shippers(companyname,userid) VALUES('croproot pvt.ltd',15);
--- INSERT INTO shippers(companyname,userid) VALUES('greenery pvt.ltd',16);
+INSERT INTO shippers(corporateid,userid) VALUES('agrotech pvt.ltd',13);
+INSERT INTO shippers(companyname,userid) VALUES('agrilens pvt.ltd',14);
+INSERT INTO shippers(companyname,userid) VALUES('croproot pvt.ltd',15);
+INSERT INTO shippers(companyname,userid) VALUES('greenery pvt.ltd',16);
+
+--shipments 
+ shipperordermapper -
+ shipperid orderid 
+
 
 
 -- SUPPLIERS DATA
