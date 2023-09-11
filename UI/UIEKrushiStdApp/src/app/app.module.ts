@@ -6,8 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-// import { CounterComponent } from './counter/counter.component';
-// import { FetchDataComponent } from './fetch-data/fetch-data.component';
+
 import { LoginComponent } from './authentication/login/login.component';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
@@ -17,25 +16,33 @@ import { shopRoutes } from './shop-owner/shop-owner.module';
 import { subjetcMatterExpertRoutes } from './subject-matter-expert/subject-matter-expert.module';
 import { supplierRoutes } from './supplier/supplier.module';
 import { SecondaryNavMenuComponent } from './secondary-nav-menu/secondary-nav-menu.component';
+import { AboutUsComponent } from './AboutUs/AboutUs.component';
+import { ContactUsComponent } from './ContactUs/ContactUs.component';
+import { ProductNavbarComponent } from './product-navbar/product-navbar.component';
+import { CatalogModule } from './catalog/catalog.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    SecondaryNavMenuComponent
-    // CounterComponent,
-    // FetchDataComponent,
+    SecondaryNavMenuComponent,
+    AboutUsComponent,
+    ContactUsComponent,
+    ProductNavbarComponent
+    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     AuthenticationModule,
+    CatalogModule,
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      // { path: 'counter', component: CounterComponent },
+      { path: 'aboutus', component: AboutUsComponent },
+      { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       {path:'customer',children:customerRoutes},
       {path:'shipper',children:shipperRoutes},
