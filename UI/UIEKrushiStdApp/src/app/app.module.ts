@@ -20,6 +20,7 @@ import { AboutUsComponent } from './AboutUs/AboutUs.component';
 import { ContactUsComponent } from './ContactUs/ContactUs.component';
 import { ProductNavbarComponent } from './product-navbar/product-navbar.component';
 import { CatalogModule } from './catalog/catalog.module';
+import { ShoppingcartComponent } from './catalog/shoppingcart/shoppingcart.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { CatalogModule } from './catalog/catalog.module';
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'aboutus', component: AboutUsComponent },
       { path: 'home', component: HomeComponent },
+      { path: 'shoppingcart', component: ShoppingcartComponent },
       { path: 'login', component: LoginComponent },
       {path:'customer',children:customerRoutes},
       {path:'shipper',children:shipperRoutes},
