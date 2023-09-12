@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ProductComponent } from './product/product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { Route, RouterModule, Routes } from '@angular/router';
+import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 
 export const catlogRoutes:Routes=[
   {
@@ -11,12 +12,16 @@ export const catlogRoutes:Routes=[
   },
 ]
 @NgModule({
-  declarations: [ProductComponent, ProductDetailsComponent],
+  declarations: [ProductComponent, ProductDetailsComponent,ShoppingcartComponent],
+
   imports: [
     CommonModule,
     RouterModule
 
   ],
-  exports: [ProductComponent],
+  exports: [
+    ProductComponent,
+    ShoppingcartComponent
+  ]
 })
 export class CatalogModule {}

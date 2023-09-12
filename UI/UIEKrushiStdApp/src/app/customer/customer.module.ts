@@ -8,6 +8,7 @@ import { CustomerPaymenthistoryComponent } from './customer-paymenthistory/custo
 import { OrderProductDetailsComponent } from './customer-orders/order-product-details/order-product-details.component';
 import { OrderDetailsComponent } from './customer-orders/order-details/order-details.component';
 import { OrderSummeryComponent } from './customer-orders/order-summery/order-summery.component';
+import { ShoppingcartComponent } from '../catalog/shoppingcart/shoppingcart.component';
 
 export const customerRoutes: Routes = [
   { path: 'dashboard', component: CustomerDashboardComponent },
@@ -20,6 +21,7 @@ export const customerRoutes: Routes = [
   },
   { path: 'paymentlist', component: CustomerPaymenthistoryComponent },
   { path: 'wishlist', component: CustomerWishlistComponent },
+ 
 ];
 
 @NgModule({
