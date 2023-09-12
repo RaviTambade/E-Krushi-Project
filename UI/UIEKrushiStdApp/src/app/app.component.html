@@ -1,15 +1,11 @@
 <body>
-  
-  <app-nav-menu></app-nav-menu>
-  <app-product-navbar></app-product-navbar>
 
-  <!-- <app-secondary-nav-menu *ngIf="isLoggedIn()"></app-secondary-nav-menu> -->
+  <app-nav-menu></app-nav-menu>
+  <!-- <app-product-navbar></app-product-navbar> -->
+
+  <app-secondary-nav-menu *ngIf="isLoggedIn()"></app-secondary-nav-menu>
   <main class="container">
     <router-outlet></router-outlet>
   </main>
 </body>
-
-
-
-
 
