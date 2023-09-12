@@ -3,11 +3,13 @@
 
 <div class="w3-row" *ngFor ="let product of products">
     <div class="column">
-      <div class="card">
+      <div class="card" (click)="onClickDetails()">
         <img  src="{{product.imagepath}}" alt="" height="60%" width="50%">
-     <h3>{{product.name}}</h3>
+     <h3  >{{product.name}}</h3>
         <p class="price"><b>{{product.price |currency:"INR"}}</b></p>
       </div>
       <br>
-    </div>
+</div>
+<!-- <router-outlet></router-outlet> -->
+
 

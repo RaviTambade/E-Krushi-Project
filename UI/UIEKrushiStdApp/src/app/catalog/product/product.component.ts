@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class ProductComponent {
   price :number=100;
-
+  constructor(private router:Router){}
   products:any =[{
     imagepath:"/assets/mira.webp" , size :"250 gm" ,price : 100,name : "Admire"
   },
@@ -47,4 +48,7 @@ export class ProductComponent {
     imagepath:"/assets/targa-super.png" , size :"250 gm" ,price : 500,name : "TARGA SUPER"
   }]
 
+  onClickDetails(){
+    this.router.navigate(['/catalog/productdetail']);
+  }
 }

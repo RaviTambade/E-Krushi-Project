@@ -19,7 +19,7 @@ import { SecondaryNavMenuComponent } from './secondary-nav-menu/secondary-nav-me
 import { AboutUsComponent } from './AboutUs/AboutUs.component';
 import { ContactUsComponent } from './ContactUs/ContactUs.component';
 import { ProductNavbarComponent } from './product-navbar/product-navbar.component';
-import { CatalogModule } from './catalog/catalog.module';
+import { CatalogModule, catlogRoutes } from './catalog/catalog.module';
 
 @NgModule({
   declarations: [
@@ -30,9 +30,6 @@ import { CatalogModule } from './catalog/catalog.module';
     AboutUsComponent,
     ContactUsComponent,
     ProductNavbarComponent
-    
-    
-    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -47,6 +44,7 @@ import { CatalogModule } from './catalog/catalog.module';
       { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       {path:'customer',children:customerRoutes},
+      {path:'catalog',children:catlogRoutes},
       {path:'shipper',children:shipperRoutes},
       {path:'shop',children:shopRoutes},
       {path:'sme',children:subjetcMatterExpertRoutes},
