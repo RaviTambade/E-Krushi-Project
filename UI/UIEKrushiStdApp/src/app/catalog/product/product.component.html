@@ -1,18 +1,15 @@
 
-<header>
-  <nav
-    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
-  >
-  <div *ngFor="let category of categories">
-<ul class="navbar-nav ">
-  <li >
-    <img src="{{category.imageUrl}}" alt=""  height="40%" width="40%">
-    <p>{{category.title}}</p>
-  </li>&nbsp;&nbsp;&nbsp;
-</ul>
+
+<div class="w3-row" *ngFor="let category of categories">
+  <div class="column2">
+    <div class="card" >
+      <img src="{{category.imageUrl}}" class="categoryimg">
+      <h6>{{category.title}}</h6>
+    </div>
+    <br>
+  </div>
 </div>
-</nav>
-</header>
+<marquee >cxdedidkindwd</marquee>
 
 <app-product-carousel></app-product-carousel>
 <hr>
