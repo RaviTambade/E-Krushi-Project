@@ -4,6 +4,7 @@ import { ProductComponent } from './product/product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { Route, RouterModule, Routes } from '@angular/router';
 import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
+import { ProductSimilarItemsComponent } from './product-similar-items/product-similar-items.component';
 
 export const catlogRoutes:Routes=[
   {
@@ -12,7 +13,7 @@ export const catlogRoutes:Routes=[
   },
 ]
 @NgModule({
-  declarations: [ProductComponent, ProductDetailsComponent,ShoppingcartComponent],
+  declarations: [ProductComponent, ProductDetailsComponent,ShoppingcartComponent, ProductSimilarItemsComponent],
 
   imports: [
     CommonModule,

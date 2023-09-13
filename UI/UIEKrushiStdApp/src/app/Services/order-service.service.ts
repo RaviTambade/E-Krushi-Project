@@ -21,13 +21,13 @@ export class OrderService {
 
   getOrderdItems(orderId:number):OrderedItem[]{
     var items:OrderedItem[]=[
-      {orderid:1, image:'/assets/mira.webp',title:"oberon",amount:500,quantity:3,total:1500},
-      {orderid:1, image:'/assets/mira.webp',title:"goal",amount:200,quantity:2,total:400},
-      {orderid:1, image:'/assets/mira.webp',title:"targa",amount:300,quantity:3,total:900},
-      {orderid:2, image:'/assets/mira.webp',title:"saver sticker",amount:100,quantity:4,total:400},
-      {orderid:2, image:'/assets/mira.webp',title:"rogor",amount:120,quantity:5,total:600},
-      {orderid:3, image:'/assets/mira.webp',title:"mera 71",amount:50,quantity:2,total:100},
-      {orderid:3, image:'/assets/mira.webp',title:"avatar",amount:150,quantity:1,total:150},
+      {orderid:1, image:'/assets/mira.webp',title:"Oberon",price:500, size:'100gm', quantity:3,total:1500 },
+      {orderid:1, image:'/assets/mira.webp',title:"Goal",price:200, size:'100gm',quantity:2,total:400},
+      {orderid:1, image:'/assets/mira.webp',title:"Targa",price:300, size:'100gm',quantity:3,total:900},
+      {orderid:2, image:'/assets/mira.webp',title:"Saver sticker",price:100,size:'100gm',quantity:4,total:400},
+      {orderid:2, image:'/assets/mira.webp',title:"Rogor",price:120,size:'100gm',quantity:5,total:600},
+      {orderid:3, image:'/assets/mira.webp',title:"Mera 71",price:50,size:'100gm',quantity:2,total:100},
+      {orderid:3, image:'/assets/mira.webp',title:"Avatar",price:150,size:'100gm',quantity:1,total:150},
     ];
     var filterdData=items.filter(item=> item.orderid ==orderId);
     return filterdData;

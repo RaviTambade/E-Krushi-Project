@@ -1,10 +1,13 @@
+
 <div class="container">
-    <div class="row"  *ngFor="let item of items;let i=index">
-        <div class="col-8">
-            <app-order-product-details [item]="item"></app-order-product-details>
-        </div>
-        <div class="col-4" *ngIf="i==0">
-            <app-order-summery></app-order-summery>
+    <div class="bg-light ">
+        <div class="row m-2 ">
+            <div class=" col-md-8 ">
+                <app-order-product-details></app-order-product-details>
+            </div>
+            <div class="col-md-4">
+                <app-order-summery></app-order-summery>
+            </div>
         </div>
     </div>
 </div>

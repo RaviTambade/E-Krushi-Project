@@ -10,42 +10,42 @@ export class ProductComponent {
   price :number=100;
   constructor(private router:Router){}
   products:any =[{
-    imagepath:"/assets/mira.webp" , size :"250 gm" ,price : 100,name : "Admire"
+    imageUrl:"/assets/mira.webp" , size :"250 gm" ,price : 100,title : "Admire"
   },
   {
-    imagepath:"/assets/Rogor.jpeg" , size :"250 gm" ,price : 480,name : "ROGOR"
+    imageUrl:"/assets/Rogor.jpeg" , size :"250 gm" ,price : 480,title : "ROGOR"
   },{
-    imagepath:"/assets/UREA.png" , size :"250 gm" ,price : 45,name : "UREA"
+    imageUrl:"/assets/UREA.png" , size :"250 gm" ,price : 45,title : "UREA"
   },
   
   {
-    imagepath:"/assets/antracol.jpeg" , size :"250 gm" ,price : 145,name : "ANTARCOL"
+    imageUrl:"/assets/antracol.jpeg" , size :"250 gm" ,price : 145,title : "ANTARCOL"
   },  
   {
-    imagepath:"/assets/Avtar.jpeg" , size :"250 gm" ,price : 115, name : "AVTAR"
+    imageUrl:"/assets/Avtar.jpeg" , size :"250 gm" ,price : 115, title : "AVTAR"
   },  
   {
-    imagepath:"/assets/coragen.jpeg" , size :"250 gm" ,price : 110, name : "CORAGEN"
+    imageUrl:"/assets/coragen.jpeg" , size :"250 gm" ,price : 110, title : "CORAGEN"
   },  
   {
-    imagepath:"/assets/zyme.jpeg" , size :"250 gm" ,price : 450, name : "ZYME"
+    imageUrl:"/assets/zyme.jpeg" , size :"250 gm" ,price : 450, title : "ZYME"
   }, 
   {
-    imagepath:"/assets/Melody.jpeg" , size :"250 gm" ,price : 550 ,name : "MELODY"
+    imageUrl:"/assets/Melody.jpeg" , size :"250 gm" ,price : 550 ,title : "MELODY"
   }, 
   {
-    imagepath:"/assets/10-26-26.jpeg" , size :"250 gm" ,price : 400 ,name : "10-26-26"
+    imageUrl:"/assets/10-26-26.jpeg" , size :"250 gm" ,price : 400 ,title : "10-26-26"
   },  
   {
-    imagepath:"/assets/12-32-16.jpeg" , size :"250 gm" ,price : 600,name : "12-32-16"
+    imageUrl:"/assets/12-32-16.jpeg" , size :"250 gm" ,price : 600,title : "12-32-16"
   },  
    {
-    imagepath:"/assets/Goal.jpeg" , size :"250 gm" ,price : 200 ,name : "GOAL"
+    imageUrl:"/assets/Goal.jpeg" , size :"250 gm" ,price : 200 ,title : "GOAL"
   },   
 
 
   {
-    imagepath:"/assets/targa-super.png" , size :"250 gm" ,price : 500,name : "TARGA SUPER"
+    imageUrl:"/assets/targa-super.png" , size :"250 gm" ,price : 500,title : "TARGA SUPER"
   }]
 
   onClickDetails(){

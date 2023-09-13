@@ -4,7 +4,8 @@ export class OrderedItem{
         public orderid:number,
         public image:string,
         public title:string,
-        public amount:number,
+        public size:string,
+        public price:number,
         public quantity:number,
         public total:number,
     ){}

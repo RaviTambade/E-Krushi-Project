@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OrderedItem } from 'src/app/Models/orderdItem';
+import { OrderService } from 'src/app/Services/order-service.service';
 
 @Component({
   selector: 'app-order-product-details',
@@ -7,18 +9,18 @@ import { OrderedItem } from 'src/app/Models/orderdItem';
   styleUrls: ['./order-product-details.component.css']
 })
 export class OrderProductDetailsComponent {
- @Input() item!:OrderedItem; 
+  items: OrderedItem[] = [];
+  orderId: number = 0;
 
-
-//  products:any =[{
-//   imagepath:"/assets/mira.webp" , size :"250 gm" ,price : 100,name : "Admire",quantity:2
-// },
-// {
-//   imagepath:"/assets/Rogor.jpeg" , size :"250 gm" ,price : 480,name : "ROGOR",quantity:4
-// },{
-//   imagepath:"/assets/UREA.png" , size :"250 gm" ,price : 45,name : "UREA",quantity:3
-// },  
-//  {
-//   imagepath:"/assets/targa-super.png" , size :"250 gm" ,price : 500,name : "TARGA SUPER",quantity:5
-// }]
+  constructor(
+    private ordersvc: OrderService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      this.orderId = Number(params.get('orderid'));
+      this.items = this.ordersvc.getOrderdItems(this.orderId);
+    });
+  }
 }
