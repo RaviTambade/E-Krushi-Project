@@ -82,3 +82,8 @@ body, html {
 }
 
   
+.blink {
+  animation: blinker 1.5s linear infinite;
+  color: red;
+  font-family: sans-serif;
+}
