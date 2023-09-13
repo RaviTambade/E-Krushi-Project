@@ -2,7 +2,7 @@
 export class OrderedItem{
     constructor(
         public orderid:number,
-        public image:string,
+        public imageUrl:string,
         public title:string,
         public size:string,
         public price:number,
