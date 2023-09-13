@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
 })
 export class ProductComponent {
   price :number=100;
+
+
+
   constructor(private router:Router){}
   products:any =[{
     imageUrl:"/assets/mira.webp" , size :"250 gm" ,price : 100,title : "Admire"

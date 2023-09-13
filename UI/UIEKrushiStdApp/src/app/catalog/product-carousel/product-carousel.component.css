@@ -1,0 +1,35 @@
+
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .carousel-slide {
+    display: none;
+    transition: transform 1s ease-in-out; 
+  }
+  
+  .carousel-slide.active {
+    display: block;
+  }
+
+  .carousel-indicators {
+    text-align: center;
+  }
+  
+  .indicator {
+    display: inline-block;
+    width: 15px;
+    height: 10px;
+    margin: 0 5px; 
+    background-color: green;
+    border: 2px solid #000; 
+    border-radius: 50%; 
+    cursor: pointer;
+  }
+  
+  .indicator.active {
+    background-color:red;
+  }
+  
