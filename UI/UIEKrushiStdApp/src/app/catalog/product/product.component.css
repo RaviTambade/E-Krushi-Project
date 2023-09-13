@@ -43,4 +43,34 @@
     max-height: 20vh;
     height: auto;
     max-width: 20vw;
-  } 
+  }  */
+
+ .carousel-inner img {
+    width: 10%;
+    height: 10%;
+  }
+
+/* Reset some default styles */
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the image gallery container */
+.image-gallery {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling for overflowed content */
+}
+
+/* Style individual images */
+.image {
+  flex: 0 0 auto; /* Prevent images from growing to fill the container */
+  margin-right: 10px; /* Add some spacing between images */
+}
+
+/* Style images to fit within the container */
+.image img {
+  max-width: 100%;
+  height: auto;
+}
+

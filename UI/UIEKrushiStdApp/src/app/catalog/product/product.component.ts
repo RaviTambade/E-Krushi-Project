@@ -51,4 +51,32 @@ export class ProductComponent {
   onClickDetails(){
     this.router.navigate(['/catalog/productdetail']);
   }
+
+
+
+
+  categories:any =[{
+    imageUrl:"/assets/Agri Equipments.jpeg" ,title: "Agri implements"
+  },
+  {
+    imageUrl:"/assets/fertilizer.jpeg" ,title : "Fertilizer"
+  },{
+    imageUrl:"/assets/pestisides.jpeg" ,title : "Pestisides"
+  },
+  
+  {
+    imageUrl:"/assets/seed.jpeg" ,title : "Seeds"
+  },  
+  {
+    imageUrl:"/assets/cattle feed.jpeg", title : "Cattle Feed"
+  },  
+  {
+    imageUrl:"/assets/organic.jpeg" , title : "Organic Product"
+  },  
+  {
+    imageUrl:"/assets/kisan mitra.jpeg" ,title : "Kisan Mitra"
+  }, 
+]
+
+
 }

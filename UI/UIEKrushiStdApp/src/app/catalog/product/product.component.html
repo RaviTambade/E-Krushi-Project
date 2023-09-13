@@ -1,3 +1,20 @@
+
+<header>
+  <nav
+    class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
+  >
+  <div *ngFor="let category of categories">
+<ul class="navbar-nav ">
+  <li >
+    <img src="{{category.imageUrl}}" alt=""  height="40%" width="40%">
+    <p>{{category.title}}</p>
+  </li>&nbsp;&nbsp;&nbsp;
+</ul>
+</div>
+</nav>
+</header>
+
+
 <div class="w3-row" *ngFor="let product of products">
   <div class="column">
     <div class="card" (click)="onClickDetails()">
