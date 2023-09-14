@@ -6,6 +6,7 @@ import { Route, RouterModule, Routes } from '@angular/router';
 import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 import { ProductSimilarItemsComponent } from './product-details/product-similar-items/product-similar-items.component';
 import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
+import { ProductDefaultIconsComponent } from './product-details/product-default-icons/product-default-icons.component';
 
 export const catlogRoutes:Routes=[
   {
@@ -14,7 +15,7 @@ export const catlogRoutes:Routes=[
   },
 ]
 @NgModule({
-  declarations: [ProductComponent, ProductDetailsComponent,ShoppingcartComponent, ProductSimilarItemsComponent, ProductCarouselComponent],
+  declarations: [ProductComponent, ProductDetailsComponent,ShoppingcartComponent, ProductSimilarItemsComponent, ProductCarouselComponent, ProductDefaultIconsComponent],
 
   imports: [
     CommonModule,

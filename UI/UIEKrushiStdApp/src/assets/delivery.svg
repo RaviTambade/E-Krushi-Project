@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20">
+  <g id="truck" transform="translate(0 -2)">
+    <rect id="Rectangle_4669" data-name="Rectangle 4669" width="15" height="13" transform="translate(1 3)" fill="none" stroke="#525252" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <path id="Path_12850" data-name="Path 12850" d="M16,8h4l3,3v5H16Z" fill="none" stroke="#525252" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <circle id="Ellipse_1470" data-name="Ellipse 1470" cx="2.5" cy="2.5" r="2.5" transform="translate(3 16)" fill="none" stroke="#525252" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+    <circle id="Ellipse_1471" data-name="Ellipse 1471" cx="2.5" cy="2.5" r="2.5" transform="translate(16 16)" fill="none" stroke="#525252" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/>
+  </g>
+</svg>
