@@ -23,4 +23,6 @@ export class OrderProductDetailsComponent {
       this.items = this.ordersvc.getOrderdItems(this.orderId);
     });
   }
+
+  
 }

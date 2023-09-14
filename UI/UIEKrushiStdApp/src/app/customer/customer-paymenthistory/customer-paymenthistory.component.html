@@ -1,31 +1,60 @@
-<div class="card border shadow-none m-2">
-    <div class="card-header bg-transparent border-bottom py-3 px-4">
-        <h5 class="font-size-16 mb-0">Payment History <span class="float-end"> PaymentId : 12</span></h5>
-    </div>
-    <div class="card-body p-4 pt-2">
+<!-- <div > -->
+<!-- <tr>
+    <th>OrderId</th>
+    <th>OrderDate</th>
+    <th>status</th>
+</tr>
 
-        <div class="table-responsive">
-            <table class="table mb-0">
-                <tbody>
-                    <tr>
-                        <td>Date :</td>
-                        <td class="text-end">15 september 2023</td>
-                    </tr>
-                    <tr>
-                        <td>Amount : </td>
-                        <td class="text-end">{{745|currency:"INR"}}</td>
-                    </tr>
-                    <tr>
-                        <td>Status :</td>
-                        <td class="text-end">Paid</td>
-                    </tr>
-                    <tr>
-                        <td>Payment Mode : </td>
-                        <td class="text-end">Online</td>
-                    </tr>
-                </tbody>
-            </table>
+    <tr>
+        <td>{{payment.orderId}}</td>
+        <td>{{payment.orderdate}}</td>
+        <td>{{payment.status}}</td>
+    </tr> -->
+
+<!-- <table id="customers" >
+        <tr>
+            <th>OrderId</th>
+            <th>OrderDate</th>
+            <th>status</th>
+            <th></th>
+        </tr>
+        <tr *ngFor=" let payment of paymentHistory">
+            <td>{{payment.orderId}}</td>
+            <td>{{payment.orderdate}}</td>
+            <td>{{payment.status}}</td>
+            <td><button>PaymentDetails</button></td>
+        </tr>
+</table> -->
+
+
+<div class="container">
+    <div class="active-filter-line">
+        <div class="row">
+            <div class="col-md-8">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>PaymentId</th>
+                            <th>OrderId</th>
+                            <th>Date</th>
+                            <th>Orderstatus</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor=" let payment of paymentHistory">
+                            <td>{{payment.paymentId}}</td>
+                            <td>{{payment.orderId}}</td>
+                            <td>{{payment.orderdate}}</td>
+                            <td>{{payment.status}}</td>
+                            <td>
+                                <button class="btn btn-primary">
+                                    Details
+                                </button>
+                            </td>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <!-- end table-responsive -->
     </div>
 </div>

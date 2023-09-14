@@ -7,16 +7,22 @@ import { OrderedItem } from '../Models/orderdItem';
 })
 export class OrderService {
   constructor() {}
+   orders: Order[] = [
+    { id: 1, date: '2023-09-10', amount: 4000, status: 'pending' },
+    { id: 2, date: '2023-09-11', amount: 4200, status: 'deliverd' },
+    { id: 3, date: '2023-09-08', amount: 900, status: 'cancelled' },
+    { id: 4, date: '2023-09-11', amount: 12000, status: 'pending' },
+  ];
 
-  getOrders(customerId: number):Order[] {
-    var orders: Order[] = [
-      { id: 1, date: '2023-09-11', amount: 4000, status: 'pending' },
-      { id: 2, date: '2023-09-11', amount: 4200, status: 'deliverd' },
-      { id: 3, date: '2023-09-11', amount: 900, status: 'cancelled' },
-      { id: 4, date: '2023-09-11', amount: 12000, status: 'pending' },
-    ];
-    return orders;
+  getOrders():Order[] {
+    return this.orders;
   }
+
+  getOrderByStatus(status :string):Order[] {
+    var filterdOrders=this.orders.filter(order=> order.status ==status);
+    return filterdOrders;
+  }
+  
   
 
   getOrderdItems(orderId:number):OrderedItem[]{

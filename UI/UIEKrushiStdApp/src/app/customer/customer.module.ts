@@ -9,6 +9,7 @@ import { OrderProductDetailsComponent } from './customer-orders/order-product-de
 import { OrderDetailsComponent } from './customer-orders/order-details/order-details.component';
 import { OrderSummeryComponent } from './customer-orders/order-summery/order-summery.component';
 import { ShoppingcartComponent } from '../catalog/shoppingcart/shoppingcart.component';
+import { PaymentsummeryComponent } from './customer-paymenthistory/paymentsummery/paymentsummery.component';
 
 export const customerRoutes: Routes = [
   { path: 'dashboard', component: CustomerDashboardComponent },
@@ -33,6 +34,7 @@ export const customerRoutes: Routes = [
     OrderProductDetailsComponent,
     OrderDetailsComponent,
     OrderSummeryComponent,
+    PaymentsummeryComponent,
   ],
   imports: [CommonModule,RouterModule],
 })
