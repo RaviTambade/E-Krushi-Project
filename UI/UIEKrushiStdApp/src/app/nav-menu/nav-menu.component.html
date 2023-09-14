@@ -30,7 +30,10 @@
           <li class="nav-item" *ngIf="isLoggedIn()">
             <a class="nav-link text-dark"> Hello,{{name}}</a>
           </li>
-        <li class="nav-item" *ngIf="isLoggedIn()">
+          <li class="nav-item" *ngIf="isLoggedIn()">
+            <a class="nav-link text-dark"  > <i class="fa-solid fa-cart-shopping"   [routerLink]="['/shoppingcart']"></i></a>
+          </li>
+          <li class="nav-item" *ngIf="isLoggedIn()">
           <a class="nav-link text-dark" (click)="logOut()">LogOut</a>
         </li>
           <li class="nav-item" *ngIf="!isLoggedIn()">
