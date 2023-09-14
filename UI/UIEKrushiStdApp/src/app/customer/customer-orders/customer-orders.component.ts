@@ -10,13 +10,14 @@ import { OrderService } from 'src/app/Services/order-service.service';
 })
 export class CustomerOrdersComponent implements OnInit {
   orders: Order[] = [];
-
+   showSummery:boolean=false;
   constructor(private ordersvc: OrderService,private router:Router) {}
   ngOnInit(): void {
     this.orders = this.ordersvc.getOrders(1);
   }
 
  viewDetails(id: number) {
+  this.showSummery=true;
     this.router.navigate(['customer/orders/details',id]);
   } 
 

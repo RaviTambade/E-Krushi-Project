@@ -15,7 +15,7 @@
           <tbody>
             <tr *ngFor="let order of orders">
               <td>{{ order.date | date }}</td>
-              <td>{{ order.amount }}</td>
+              <td>{{ order.amount|currency:"INR" }}</td>
               <td>{{ order.status }}</td>
               <td>
                 <button class="btn btn-primary" (click)="viewDetails(order.id)">Details</button>
@@ -24,7 +24,7 @@
           </tbody>
         </table>
       </div>
-      <div class="col-md-4 ">
+      <div class="col-md-4 " *ngIf="showSummery">
         <app-order-summery></app-order-summery>
       </div>
     </div>

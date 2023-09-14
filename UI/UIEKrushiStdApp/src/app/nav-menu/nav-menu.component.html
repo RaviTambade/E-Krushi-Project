@@ -3,7 +3,7 @@
     class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
   >
     <div class="container">
-      <a class="navbar-brand"><b>EKrushi Seva</b></a>
+      <a class="navbar-brand" [routerLink]="['/home']"><b>EKrushi Seva</b></a>
       <button class="navbar-toggler" type="button"
         data-toggle="collapse"
         data-target=".navbar-collapse"
@@ -17,18 +17,18 @@
         class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
       >
         <ul class="navbar-nav flex-grow">
-          <li
+          <!-- <li
             class="nav-item">
             <a class="nav-link text-dark"  [routerLink]="['/home']">Home</a>
-          </li>
-          <li class="nav-item">
+          </li> -->
+          <!-- <li class="nav-item">
             <a class="nav-link text-dark" [routerLink]="['/AboutUs']">AboutUs</a>
           </li>
           <li class="nav-item">
             <a class="nav-link text-dark" [routerLink]="['/ContactUs']">ContactUs</a>
-          </li>
-          <li class="nav-item" *ngIf="isLoggedIn()">
-            <a class="nav-link text-dark"> Hello,{{name}}</a>
+          </li> -->
+          <li class="nav-item" *ngIf="isLoggedIn()" style="text-align: center; font-size: 12px;">
+            <a class="nav-link text-dark"> Welcome<P>{{name}}</P></a>
           </li>
           <li class="nav-item" *ngIf="isLoggedIn()">
             <a class="nav-link text-dark"  > <i class="fa-solid fa-cart-shopping"   [routerLink]="['/shoppingcart']"></i></a>

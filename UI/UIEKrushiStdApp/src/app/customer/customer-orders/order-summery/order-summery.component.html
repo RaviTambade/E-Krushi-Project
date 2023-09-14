@@ -1,6 +1,6 @@
 <div class="card border shadow-none m-2">
     <div class="card-header bg-transparent border-bottom py-3 px-4">
-        <h5 class="font-size-16 mb-0">Order Summary <span class="float-end">#MN0124</span></h5>
+        <h5 class="font-size-16 mb-0">Order Summary <span class="float-end">OrderId :15</span></h5>
     </div>
     <div class="card-body p-4 pt-2">
 
@@ -9,15 +9,15 @@
                 <tbody>
                     <tr>
                         <td>Sub Total :</td>
-                        <td class="text-end">$ 780</td>
+                        <td class="text-end"> {{780|currency:"INR"}}</td>
                     </tr>
                     <tr>
                         <td>Discount : </td>
-                        <td class="text-end">- $ 78</td>
+                        <td class="text-end">{{78|currency:"INR"}}</td>
                     </tr>
                     <tr>
                         <td>Shipping Charge :</td>
-                        <td class="text-end">$ 25</td>
+                        <td class="text-end">{{25|currency:"INR"}}</td>
                     </tr>
                     <!-- <tr>
                         <td>Estimated Tax : </td>
@@ -27,7 +27,7 @@
                         <th>Total :</th>
                         <td class="text-end">
                             <span class="fw-bold">
-                                $ 745.2
+                                {{745.2|currency:"INR"}}
                             </span>
                         </td>
                     </tr>
