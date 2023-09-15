@@ -1,23 +1,14 @@
 
-
-
   * {
     box-sizing: border-box;
   }
-  
-
   
   .column {
     float: left;
     width: 25%;
     padding: 0 25px;
   }
-  
-  .column2 {
-    float: left;
-    width: 14%;
-    padding: 0 5px;
-  }
+
   .row {margin: 0 -5px;}
   
   .row:after {
@@ -34,59 +25,18 @@
     }
   }
   
-  /* Style the counter cards */
   .card {
     padding: 4px;
     text-align: center;
     background-color:white;
   }
 
-  .categoryimg {
-    width: auto;
-    max-height: 10vh;
-    height: auto;
-    max-width: 15vw;
-  } 
-
   img {
     width: auto;
     max-height: 20vh;
     height: auto;
     max-width: 20vw;
-  }  */
-
-
-
-/* Reset some default styles */
-body, html {
-  margin: 0;
-  padding: 0;
-}
-
-/* Style the image gallery container */
-.image-gallery {
-  display: flex;
-  overflow-x: auto; /* Enable horizontal scrolling for overflowed content */
-}
-
-/* Style individual images */
-.image {
-  flex: 0 0 auto; /* Prevent images from growing to fill the container */
-  margin-right: 10px; /* Add some spacing between images */
-}
-
-/* Style images to fit within the container */
-.image img {
-  max-width: 100%;
-  height: auto;
-}
-
-  
-.blink {
-  animation: blinker 1.5s linear infinite;
-  color: red;
-  font-family: sans-serif;
-}
+  }  
 
  .card h3:hover{
   transform: scale(1.1);
