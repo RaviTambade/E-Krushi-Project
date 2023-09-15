@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body{
 
     background-color: #00838F;
@@ -36,3 +37,10 @@ body{
 
 
 }
+=======
+.blink {
+    animation: blinker 1.5s linear infinite;
+    color: red;
+    font-family: sans-serif;
+  }
+>>>>>>> 8ee2a9cbec5fa0f34d18db19e104dcc599c4d734
