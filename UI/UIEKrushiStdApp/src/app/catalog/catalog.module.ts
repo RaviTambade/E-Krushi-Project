@@ -9,6 +9,7 @@ import { ProductCarouselComponent } from './product-carousel/product-carousel.co
 import { ProductDefaultIconsComponent } from './product-details/product-default-icons/product-default-icons.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ProductHomeComponent } from './product-home/product-home.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
 
 export const catlogRoutes:Routes=[
   {
@@ -17,7 +18,7 @@ export const catlogRoutes:Routes=[
   },
 ]
 @NgModule({
-  declarations: [ProductComponent, ProductDetailsComponent,ShoppingcartComponent, ProductSimilarItemsComponent, ProductCarouselComponent, ProductDefaultIconsComponent, CategoriesComponent, ProductHomeComponent],
+  declarations: [ProductComponent, ProductDetailsComponent,ShoppingcartComponent, ProductSimilarItemsComponent, ProductCarouselComponent, ProductDefaultIconsComponent, CategoriesComponent, ProductHomeComponent, SearchbarComponent],
 
   imports: [
     CommonModule,
@@ -26,7 +27,8 @@ export const catlogRoutes:Routes=[
   ],
   exports: [
     ProductComponent,
-    ShoppingcartComponent,ProductHomeComponent
+    ShoppingcartComponent,ProductHomeComponent,
+    SearchbarComponent
   ]
 })
 export class CatalogModule {}
