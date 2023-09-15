@@ -16,10 +16,11 @@ export const customerRoutes: Routes = [
   {
     path: 'orders',
     component: CustomerOrdersComponent,
-    children: [
-      { path: 'details/:orderid', component: OrderDetailsComponent },
-    ],
+    // children: [
+    //   { path: 'details/:orderid', component: OrderDetailsComponent },
+    // ],
   },
+  { path: 'orders/details/:orderid', component: OrderDetailsComponent },
   { path: 'paymentlist', component: CustomerPaymenthistoryComponent },
   { path: 'wishlist', component: CustomerWishlistComponent },
  

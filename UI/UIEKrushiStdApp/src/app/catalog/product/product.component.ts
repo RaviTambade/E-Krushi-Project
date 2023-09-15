@@ -51,9 +51,9 @@ export class ProductComponent {
     imageUrl:"/assets/targa-super.png" , size :"250 gm" ,price : 500,title : "TARGA SUPER"
   }]
 
-  onClickDetails(){
-    this.router.navigate(['/catalog/productdetail']);
-  }
+  // onClickDetails(){
+  //   this.router.navigate(['/catalog/productdetail']);
+  // }
 
 
 

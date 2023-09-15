@@ -1,6 +1,6 @@
 
 
-<div class="w3-row" *ngFor="let category of categories">
+<div class="  w3-row" *ngFor="let category of categories">
   <div class="column2">
     <div class="card" >
       <img src="{{category.imageUrl}}" class="categoryimg">
@@ -9,7 +9,7 @@
     <br>
   </div>
 </div>
-<marquee width="100%" direction="left" height="100px"  class="blink">
+<marquee width="100%" direction="left" height="40px"  class="blink">
 Beware of fraudsters| Get discount on products | Cash On delivery available | 100% original products |Free home dilivery.
   </marquee>
 
@@ -18,9 +18,10 @@ Beware of fraudsters| Get discount on products | Cash On delivery available | 10
 
 <div class="w3-row" *ngFor="let product of products">
   <div class="column">
-    <div class="card" (click)="onClickDetails()">
+    <div class="card"
+     style="cursor: pointer;"
+     [routerLink]="['/catalog/productdetail']">
       <img src="{{product.imageUrl}}" alt="" height="60%" width="60%">
-    
       <h3>{{product.title}}</h3>
       <p class="price"><b>{{product.price |currency:"INR"}}</b></p>
     </div>

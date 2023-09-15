@@ -10,18 +10,16 @@ import { OrderService } from 'src/app/Services/order-service.service';
 })
 export class CustomerOrdersComponent implements OnInit {
   orders: Order[] = [];
-  showSummery: boolean = false;
+  activeFilter: string | null = null;
   constructor(private ordersvc: OrderService, private router: Router) {}
   ngOnInit(): void {
     this.orders = this.ordersvc.getOrders();
   }
 
-  viewDetails(id: number) {
-    this.showSummery = true;
-    this.router.navigate(['customer/orders/details', id]);
-  }
+
 
   filterOrders(status: string) {
+    this.activeFilter=status;
     if (status == 'all') {
       this.orders = this.ordersvc.getOrders();
     } else {

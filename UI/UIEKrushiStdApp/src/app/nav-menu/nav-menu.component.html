@@ -17,16 +17,6 @@
         class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
       >
         <ul class="navbar-nav flex-grow">
-          <!-- <li
-            class="nav-item">
-            <a class="nav-link text-dark"  [routerLink]="['/home']">Home</a>
-          </li> -->
-          <!-- <li class="nav-item">
-            <a class="nav-link text-dark" [routerLink]="['/AboutUs']">AboutUs</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" [routerLink]="['/ContactUs']">ContactUs</a>
-          </li> -->
           <li class="nav-item" *ngIf="isLoggedIn()" style="text-align: center; font-size: 12px;">
             <a class="nav-link text-dark"> Welcome<P>{{name}}</P></a>
           </li>

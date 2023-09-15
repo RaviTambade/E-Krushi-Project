@@ -18,7 +18,6 @@ import { supplierRoutes } from './supplier/supplier.module';
 import { SecondaryNavMenuComponent } from './secondary-nav-menu/secondary-nav-menu.component';
 import { AboutUsComponent } from './AboutUs/AboutUs.component';
 import { ContactUsComponent } from './ContactUs/ContactUs.component';
-import { ProductNavbarComponent } from './product-navbar/product-navbar.component';
 import { CatalogModule, catlogRoutes } from './catalog/catalog.module';
 import { ShoppingcartComponent } from './catalog/shoppingcart/shoppingcart.component';
 
@@ -30,7 +29,6 @@ import { ShoppingcartComponent } from './catalog/shoppingcart/shoppingcart.compo
     SecondaryNavMenuComponent,
     AboutUsComponent,
     ContactUsComponent,
-    ProductNavbarComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

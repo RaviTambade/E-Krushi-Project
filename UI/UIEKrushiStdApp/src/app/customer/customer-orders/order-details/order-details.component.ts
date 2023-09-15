@@ -8,6 +8,7 @@ import { OrderService } from 'src/app/Services/order-service.service';
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.css'],
 })
-export class OrderDetailsComponent  {
+export class OrderDetailsComponent {
+  constructor(private router: Router) {}
 
 }

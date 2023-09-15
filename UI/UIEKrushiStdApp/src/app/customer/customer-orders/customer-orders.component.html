@@ -4,16 +4,26 @@
   <div class="active-filter-line"></div>
   <div class="row">
     <div class="col-md-8">
-      <div class="navbar col-6">
-        <a class="btn btn-outline-success" (click)="filterOrders('all')">All </a>
-        <a class="btn btn-outline-success" (click)="filterOrders('pending')">
+      <div class="d-flex col-6 justify-content-around">
+        <a class="btn btn-outline-success" (click)="filterOrders('all')"
+          [ngClass]="{'btn-success active-button': activeFilter === 'all'}">All</a>
+        <a class="btn btn-outline-success" (click)="filterOrders('pending')"
+          [ngClass]="{'btn-success active-button': activeFilter === 'pending'}">
           <i class="fas fa-clock" style="color: #ffc107"></i>
-          &nbsp;Pending</a>
-        <a class="btn btn-outline-success" (click)="filterOrders('deliverd')">
+          &nbsp;Pending
+        </a>
+        <a class="btn btn-outline-success" (click)="filterOrders('deliverd')"
+          [ngClass]="{'btn-success active-button': activeFilter === 'deliverd'}">
           <i class="fas fa-check-circle" style="color: #28a745"></i>
-          &nbsp; Delivered</a>
-        <a class="btn btn-outline-success" (click)="filterOrders('cancelled')">&nbsp;Cancelled</a>
+          &nbsp;Delivered
+        </a>
+        <a class="btn btn-outline-success" (click)="filterOrders('cancelled')"
+          [ngClass]="{'btn-success active-button': activeFilter === 'cancelled'}">
+          <i class="fas fa-cancel" style="color: #c51616"></i>
+          &nbsp;Cancelled
+        </a>
       </div>
+
       <table class="table">
         <thead>
           <tr>
@@ -28,17 +38,15 @@
             <td>{{ order.amount | currency : "INR" }}</td>
             <td>{{ order.status }}</td>
             <td>
-              <button class="btn btn-primary" (click)="viewDetails(order.id)">
-                Details
-              </button>
+              <a [routerLink]="['/customer/orders/details', order.id]">
+                <button class="btn btn-primary">
+                  Details
+                </button>
+              </a>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
-    <div class="col-md-4" *ngIf="showSummery">
-      <app-order-summery></app-order-summery>
-    </div>
   </div>
 </div>
-<router-outlet></router-outlet>

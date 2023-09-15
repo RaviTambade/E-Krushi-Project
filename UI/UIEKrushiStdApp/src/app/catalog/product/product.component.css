@@ -87,3 +87,8 @@ body, html {
   color: red;
   font-family: sans-serif;
 }
+
+ .card h3:hover{
+  transform: scale(1.1);
+  color: #538eee;
+}

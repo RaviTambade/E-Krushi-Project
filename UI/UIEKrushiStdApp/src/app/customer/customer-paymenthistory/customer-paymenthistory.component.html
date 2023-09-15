@@ -1,59 +1,34 @@
-<!-- <div > -->
-<!-- <tr>
-    <th>OrderId</th>
-    <th>OrderDate</th>
-    <th>status</th>
-</tr>
-
-    <tr>
-        <td>{{payment.orderId}}</td>
-        <td>{{payment.orderdate}}</td>
-        <td>{{payment.status}}</td>
-    </tr> -->
-
-<!-- <table id="customers" >
-        <tr>
-            <th>OrderId</th>
-            <th>OrderDate</th>
-            <th>status</th>
-            <th></th>
-        </tr>
-        <tr *ngFor=" let payment of paymentHistory">
-            <td>{{payment.orderId}}</td>
-            <td>{{payment.orderdate}}</td>
-            <td>{{payment.status}}</td>
-            <td><button>PaymentDetails</button></td>
-        </tr>
-</table> -->
-
-
 <div class="container">
     <div class="active-filter-line">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-7">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>PaymentId</th>
                             <th>OrderId</th>
-                            <th>Date</th>
-                            <th>Orderstatus</th>
+                            <th>Order Date</th>
+                            <th>Payment status</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor=" let payment of paymentHistory">
-                            <td>{{payment.paymentId}}</td>
                             <td>{{payment.orderId}}</td>
                             <td>{{payment.orderdate}}</td>
                             <td>{{payment.status}}</td>
                             <td>
-                                <button class="btn btn-primary">
+                                <button class="btn btn-primary" (click)="viewPaymentDetails(payment.orderId)">
                                     Details
                                 </button>
                             </td>
                     </tbody>
                 </table>
+            </div>
+            <div class="col-1">
+            </div>
+            <div class="col-4" *ngIf="viewStaus">
+                <app-paymentsummery></app-paymentsummery>
+                <a class="m-2" [routerLink]="['/customer/orders/details',selectedOrderId]"> View Order Details</a>
             </div>
         </div>
     </div>
