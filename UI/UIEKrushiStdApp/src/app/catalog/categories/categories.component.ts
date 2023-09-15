@@ -14,7 +14,6 @@ export class CategoriesComponent {
   },{
     imageUrl:"/assets/pestisides.jpeg" ,title : "Pestisides"
   },
-  
   {
     imageUrl:"/assets/seed.jpeg" ,title : "Seeds"
   },  
