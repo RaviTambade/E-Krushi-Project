@@ -7,6 +7,8 @@ import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 import { ProductSimilarItemsComponent } from './product-details/product-similar-items/product-similar-items.component';
 import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
 import { ProductDefaultIconsComponent } from './product-details/product-default-icons/product-default-icons.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { ProductHomeComponent } from './product-home/product-home.component';
 
 export const catlogRoutes:Routes=[
   {
@@ -15,7 +17,7 @@ export const catlogRoutes:Routes=[
   },
 ]
 @NgModule({
-  declarations: [ProductComponent, ProductDetailsComponent,ShoppingcartComponent, ProductSimilarItemsComponent, ProductCarouselComponent, ProductDefaultIconsComponent],
+  declarations: [ProductComponent, ProductDetailsComponent,ShoppingcartComponent, ProductSimilarItemsComponent, ProductCarouselComponent, ProductDefaultIconsComponent, CategoriesComponent, ProductHomeComponent],
 
   imports: [
     CommonModule,
@@ -24,7 +26,7 @@ export const catlogRoutes:Routes=[
   ],
   exports: [
     ProductComponent,
-    ShoppingcartComponent
+    ShoppingcartComponent,ProductHomeComponent
   ]
 })
 export class CatalogModule {}

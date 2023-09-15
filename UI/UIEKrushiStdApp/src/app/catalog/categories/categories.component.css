@@ -1,0 +1,12 @@
+.categoryimg {
+    width: auto;
+    max-height: 10vh;
+    height: auto;
+    max-width: 15vw;
+  } 
+
+  .column2 {
+    float: left;
+    width: 14%;
+    padding: 0 5px;
+  }
