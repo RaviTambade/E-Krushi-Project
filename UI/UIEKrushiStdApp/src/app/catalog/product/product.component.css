@@ -27,7 +27,6 @@
   
   .card {
     padding: 4px;
-    text-align: center;
     background-color:white;
   }
 
@@ -38,7 +37,18 @@
     max-width: 20vw;
   }  
 
- .card h3:hover{
+ .card h5:hover{
   transform: scale(1.1);
   color: #538eee;
 }
+
+.product-title
+{
+  text-align: center;
+}
+.product-info
+{
+  float: left;
+  margin : 4px;
+}
+

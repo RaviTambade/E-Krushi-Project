@@ -10,3 +10,8 @@
     width: 14%;
     padding: 0 5px;
   }
+  .card {
+    padding: 4px;
+    text-align: center;
+    background-color:white;
+  }
