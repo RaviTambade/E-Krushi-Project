@@ -1,6 +1,11 @@
-<form class="d-flex">
-    <input class="form-control me-1" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-success" type="submit">
+<div class="d-flex">
+    <input class="form-control me-1" type="text" placeholder="Search"  [(ngModel)]="searchString">
+    <button class="btn btn-success" type="submit" (click)="onSearch()">
         <i class="fa-solid fa-magnifying-glass"></i>
     </button>
-</form>
+    <!-- <select (change)="onSelectedProduct()" name="product">
+        <option *ngFor="let product of products" [value]="product.title">
+            {{product.title}}
+        </option>
+    </select> -->
+</div>

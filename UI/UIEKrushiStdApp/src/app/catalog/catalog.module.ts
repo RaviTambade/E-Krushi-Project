@@ -10,11 +10,16 @@ import { ProductDefaultIconsComponent } from './product-details/product-default-
 import { CategoriesComponent } from './categories/categories.component';
 import { ProductHomeComponent } from './product-home/product-home.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
+import { FormsModule } from '@angular/forms';
 
 export const catlogRoutes:Routes=[
   {
     path: 'productdetail',
     component: ProductDetailsComponent,
+  },
+  {
+    path: 'products/:input',
+    component: ProductComponent,
   },
 ]
 @NgModule({
@@ -22,7 +27,8 @@ export const catlogRoutes:Routes=[
 
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
 
   ],
   exports: [
