@@ -116,54 +116,25 @@ select * from products
 
 
 
--- ORDERS DATA
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',1,500,'initiated');
+
+INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',2,500,'initiated');
 INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-11-01 12:12:12','2020-11-02 10:02:12',2,800,'delivered');
 INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-10-01 12:12:12','2020-10-02 10:22:12',3,700,'cancelled');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2021-12-01 12:10:12','2021-12-02 10:12:12',4,500,'initiated');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2022-11-01 12:11:00','2022-11-02 10:02:12',5,1800,'delivered');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2023-10-01 12:13:11','2023-10-02 10:22:12',6,7100,'cancelled');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-05-01 12:14:13','2020-05-02 10:12:12',7,5020,'initiated');
+INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2021-12-01 12:10:12','2021-12-02 10:12:12',3,500,'initiated');
+INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2022-11-01 12:11:00','2022-11-02 10:02:12',3,1800,'delivered');
+INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2023-10-01 12:13:11','2023-10-02 10:22:12',2,7100,'cancelled');
+INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-05-01 12:14:13','2020-05-02 10:12:12',2,5020,'initiated');
 
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-12-05 12:12:12','2020-12-02 10:12:12',1,500,'initiated');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-11-05 12:12:12','2020-11-02 10:02:12',2,800,'delivered');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-10-10 12:12:12','2020-10-02 10:22:12',3,700,'cancelled');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-09-01 12:10:12','2021-12-02 10:12:12',4,500,'initiated');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-08-01 12:11:00','2022-11-02 10:02:12',5,1800,'delivered');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-07-01 12:13:11','2023-10-02 10:22:12',6,7100,'cancelled');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-06-01 12:14:13','2020-05-02 10:12:12',7,5020,'initiated');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-05-01 12:12:12','2020-12-02 10:12:12',1,500,'initiated');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-04-01 12:12:12','2020-11-02 10:02:12',2,800,'delivered');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-03-01 12:12:12','2020-10-02 10:22:12',3,700,'cancelled');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-02-01 12:10:12','2020-02-02 10:12:12',4,500,'initiated');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-01-01 12:11:00','2020-11-02 10:02:12',5,1800,'delivered');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-01-01 12:13:11','2023-01-02 10:22:12',6,7100,'cancelled');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-05-02 12:14:13','2020-05-02 10:12:12',7,5020,'initiated');
-
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-02-05 12:12:12','2020-12-02 10:12:12',1,500,'initiated');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-02-05 12:12:12','2020-11-02 10:02:12',2,800,'delivered');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-02-10 12:12:12','2020-10-02 10:22:12',3,700,'cancelled');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-01-01 12:10:12','2021-12-02 10:12:12',4,500,'initiated');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-01-01 12:11:00','2022-11-02 10:02:12',5,1800,'delivered');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-01-01 12:13:11','2023-10-02 10:22:12',6,7100,'cancelled');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-01-01 12:14:13','2020-05-02 10:12:12',7,5020,'initiated');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-03-01 12:12:12','2020-12-02 10:12:12',1,500,'initiated');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-03-01 12:12:12','2020-11-02 10:02:12',2,800,'delivered');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-03-01 12:12:12','2020-10-02 10:22:12',3,700,'cancelled');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-04-01 12:10:12','2020-12-02 10:12:12',4,500,'initiated');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-04-01 12:11:00','2020-11-02 10:02:12',5,1800,'delivered');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-04-01 12:13:11','2023-10-02 10:22:12',6,7100,'cancelled');
-INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-06-02 12:14:13','2020-06-02 10:12:12',7,5020,'initiated');
 
 -- ORDER_DETAILS DATA
-INSERT INTO orderdetails(orderid,productid,quantity) VALUES (1,2,20);
-INSERT INTO orderdetails(orderid,productid,quantity) VALUES (2,2,25);
-INSERT INTO orderdetails(orderid,productid,quantity) VALUES (3,1,40);
-INSERT INTO orderdetails(orderid,productid,quantity) VALUES (4,3,15);
-INSERT INTO orderdetails(orderid,productid,quantity) VALUES (4,3,48);
-INSERT INTO orderdetails(orderid,productid,quantity) VALUES (5,5,41);
-INSERT INTO orderdetails(orderid,productid,quantity) VALUES (7,6,63);
-INSERT INTO orderdetails(orderid,productid,quantity) VALUES (6,2,63);
+INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (1,2,20);
+INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (2,2,25);
+INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (3,1,40);
+INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (4,3,15);
+INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (4,3,48);
+INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (5,5,41);
+INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (7,6,63);
+INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (6,2,63);
 
 
 -- CARTS DATA
@@ -177,59 +148,30 @@ INSERT INTO carts(custid) VALUES (5);
 
 
 -- CARTS ITEMS DATA
-INSERT INTO cartitems(cartid,productid ,quantity) VALUES(1,1,20);
-INSERT INTO cartitems(cartid,productid ,quantity) VALUES(2,2,40);
-INSERT INTO cartitems(cartid,productid ,quantity) VALUES(2,2,40);
-INSERT INTO cartitems(cartid,productid ,quantity) VALUES(3,4,10);
-INSERT INTO cartitems(cartid,productid ,quantity) VALUES(3,4,50);
-INSERT INTO cartitems(cartid,productid ,quantity) VALUES(3,2,260);
-INSERT INTO cartitems(cartid,productid ,quantity) VALUES(4,3,200);
-INSERT INTO cartitems(cartid,productid ,quantity) VALUES(4,3,201);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,1,20);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,2,40);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,2,40);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(3,4,10);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(3,4,50);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(3,2,260);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(4,3,200);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(4,3,201);
 
 
 -- PAYMENTS DATA
-INSERT INTO payments(date,mode,transactionid,userid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery',1,1,1);
-INSERT INTO payments(date,mode,transactionid,userid,orderid)  VALUES('2022-03-08 12:08:19','online payment',2,4,1);
-INSERT INTO payments(date,mode,transactionid,userid,orderid)  VALUES('2022-03-08 12:08:19','cash on delivery',2,4,2);
-INSERT INTO payments(date,mode,transactionid,userid,orderid)  VALUES('2022-03-08 12:08:19','online payment',2,4,3);
-INSERT INTO payments(date,mode,transactionid,userid,orderid)  VALUES('2022-03-08 12:08:19','cash on delivery',3,2,4);
-INSERT INTO payments(date,mode,transactionid,userid,orderid)  VALUES('2022-06-10 12:45:30','cash on delivery',3,2,2);
+INSERT INTO payments(date,mode,transactionid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery',1,1);
+INSERT INTO payments(date,mode,transactionid,orderid)  VALUES('2022-03-08 12:08:19','online payment',2,2);
+INSERT INTO payments(date,mode,transactionid,orderid)  VALUES('2022-03-08 12:08:19','cash on delivery',3,3);
+INSERT INTO payments(date,mode,transactionid,orderid)  VALUES('2022-03-08 12:08:19','online payment'4,4);
+INSERT INTO payments(date,mode,transactionid,orderid)  VALUES('2022-03-08 12:08:19','cash on delivery',5,5);
+INSERT INTO payments(date,mode,transactionid,orderid)  VALUES('2022-06-10 12:45:30','cash on delivery',6,6);
 
-
--- ADDRESS DATA
--- INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(1,'permanent','houseNo.32','akshara garden','pune','maharashtra','india','410503');
--- INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(1,'billing','houseNo.32','akshara dairy','pune','maharashtra','india','410502');
--- INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(2,'permanent','houseNo.32','season mall','pune','maharashtra','india','410504');
--- INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(3,'billing','houseNo.32','Peth-Kurwandi Road','Manchar','Maharashtra','India','410506');
--- INSERT INTO addresses(custid,addressmode,housenumber,landmark,city,state,country,pincode) VALUES(4,'permanent','houseNo.234','Pune-Nashik Highway','Rajgurunagar','Maharashtra','India','1213');
-
--- EMPLOYESS DATA
--- INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('akash','ajab','1999-09-15','2022-05-12','/image/akash.jpg',2,2);
--- INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('pragati','Bangar','2000-12-18','2022-05-12','/image/vedant.jpg',1,1);
--- INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('anil','hinge','2023-09-15','2022-06-14','/image/sahil.jpg',2,10);
--- INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('rohan','amate','2015-09-15','2022-07-13','/image/prakash.jpg',4,11);
--- INSERT INTO seller(firstname,lastname,birthdate,hiredate,photo,reportsto,userid) VALUES('ajay','lanke','1988-09-15','2022-08-11','/image/nilesh.jpg',1,12);
 
 
 -- SHIPPERS DATA
-INSERT INTO shippers(corporateid,userid) VALUES('agrotech pvt.ltd',13);
-INSERT INTO shippers(companyname,userid) VALUES('agrilens pvt.ltd',14);
-INSERT INTO shippers(companyname,userid) VALUES('croproot pvt.ltd',15);
-INSERT INTO shippers(companyname,userid) VALUES('greenery pvt.ltd',16);
+INSERT INTO shippers(corporateid,userid) VALUES(8,11);
+INSERT INTO shippers(corporateid,userid) VALUES(9,12);
 
---shipments 
- shipperordermapper -
- shipperid orderid 
-
-
-
--- SUPPLIERS DATA
--- INSERT INTO suppliers(companyname,suppliername,address,city,state,userid) VALUES('kaveri','abhishek bhor','pimpalgaon','pune','maharashtra',17);
--- INSERT INTO suppliers(companyname,suppliername,address,city,state,userid) VALUES('kalash seeds','pratik wagh','khadaki','pune','maharashtra',18);
--- INSERT INTO suppliers(companyname,suppliername,address,city,state,userid) VALUES('greenary','datta dhoble','manchar','pune','maharashtra',19);
--- INSERT INTO suppliers(companyname,suppliername,address,city,state,userid) VALUES('kavya','kavya bangar','chandoli','pune','maharashtra',20);
-
--- USER ROLES DATA
 
 -- FEEDBACKS DATA
 INSERT INTO feedbacks(description,custid) VALUES ('very good facilitities',1);
@@ -284,12 +226,11 @@ INSERT INTO answers(description,questionid) VALUES('Soil erosion prevention: Imp
 
 
 -- SME ANSWERS
-INSERT INTO smeanswers(answerid,questionid,answerdate,smeid) VALUES (1,1,'2023-04-05 12:08:06',1);
-INSERT INTO smeanswers(answerid,questionid,answerdate,smeid) VALUES (1,1,'2023-06-05 12:20:19',1);
-INSERT INTO smeanswers(answerid,questionid,answerdate,smeid) VALUES (2,1,'2023-07-10 12:23:08',2);
-INSERT INTO smeanswers(answerid,questionid,answerdate,smeid) VALUES (2,1,'2023-08-25 12:34:20',2);
-INSERT INTO smeanswers(answerid,questionid,answerdate,smeid) VALUES (3,1,'2023-09-15 12:40:30',3);
-
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (1,1,'2023-04-05 12:08:06',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (1,1,'2023-06-05 12:20:19',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (2,1,'2023-07-10 12:23:08',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (2,1,'2023-08-25 12:34:20',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (3,1,'2023-09-15 12:40:30',3);
 
 
 
