@@ -1,4 +1,4 @@
--- Active: 1694843913347@@127.0.0.1@3306@ekrushi
+-- Active: 1682349138553@@127.0.0.1@3306@ekrushi
 
 drop database ekrushi;
 
@@ -39,7 +39,7 @@ CREATE TABLE
     products(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         title varchar(255),
-        description VARCHAR(255),
+        description VARCHAR(2000),
         image varchar(255),
         categoryid INT NOT NULL,
         CONSTRAINT fkcategoryid FOREIGN KEY (categoryid) REFERENCES categories(id) ON UPDATE CASCADE ON DELETE CASCADE
@@ -58,16 +58,16 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    productsratings( 
+    productreview( 
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         productid INT,
         customerid INT ,
         rating DOUBLE,
+        review VARCHAR(500),
         CONSTRAINT fk_productid2 FOREIGN KEY (productid) REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE,
         CONSTRAINT fk_customeruser FOREIGN KEY(customerid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE,
         UNIQUE KEY (productid,customerid)
         );
-
 CREATE TABLE
     orders(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -119,13 +119,13 @@ CREATE TABLE
         date DATETIME NOT NULL,
         mode ENUM(
             'cash on delivery',
-            'online payment'
+            'card'
         ),
         transactionid INT NOT NULL,
         orderid INT NOT NULL,
-        Amount DOUBLE,
         CONSTRAINT fkorderid FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE
     );
+
 
 
 CREATE TABLE
