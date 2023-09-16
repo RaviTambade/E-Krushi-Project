@@ -1,7 +1,9 @@
 using Catalog.Models;
 using Catalog.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+
 namespace Catalog.Controllers;
+
 [ApiController]
 [Route("/api/[controller]")]
 public class ProductsController : ControllerBase
@@ -14,6 +16,18 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet]
+    public async Task<List<Product>> GetProducts()
+    {
+        return await _service.GetProducts();
+    }
+
+    [HttpGet("price/{productId}/{size}")]
+    public async Task<double> GetProductPricebySize(int productId,string size)
+    {
+        return await _service.GetProductPricebySize(productId,size);
+    }
+
+    [HttpGet("category/{categoryId}")]
     public async Task<List<Product>> GetProductsByCategory(int categoryId)
     {
         return await _service.GetProductsByCategory(categoryId);

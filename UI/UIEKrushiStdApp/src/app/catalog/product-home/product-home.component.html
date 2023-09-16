@@ -7,4 +7,6 @@
 
 <app-product-carousel></app-product-carousel>
 <hr>
-<app-product></app-product>
+<div *ngFor="let product of products">
+    <app-product [product]="product"></app-product>
+</div>
