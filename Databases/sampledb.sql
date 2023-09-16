@@ -23,18 +23,6 @@ INSERT INTO userroles(userid,roleid) VALUES (9,5);
 
 SELECT * FROM userroles;
 
--- CUSTOMERS DATA
--- INSERT INTO customers(firstname,lastname,userid) VALUES('pragati','bangar',1);  
--- INSERT INTO customers(firstname,lastname,userid) VALUES('akash','ajab',2);                       
--- INSERT INTO customers(firstname,lastname,userid) VALUES('sahil','mankar',2);
--- INSERT INTO customers(firstname,lastname,userid) VALUES('akshay','tanpure',3);             
--- INSERT INTO customers(firstname,lastname,userid) VALUES('vedant','yadav',4);     
--- INSERT INTO customers(firstname,lastname,userid) VALUES('rohit','gore',5);     
--- INSERT INTO customers(firstname,lastname,userid) VALUES('rushikesh','chikne',6);                       
--- INSERT INTO customers(firstname,lastname,userid) VALUES('shubham','teli',7);
-
-
--- CATEGORIES DATA
 INSERT INTO categories(title,description,image) VALUES('seeds','crops growth fastly','/image/seeds.jpg');
 INSERT INTO categories(title,description,image) VALUES('Agriculture equipments','crops growth fastly','/image/equipments.jpg');
 INSERT INTO categories(title,description,image) VALUES('fertilizers','crops growth fastly','/image/fertilizers.jpg');
@@ -244,6 +232,6 @@ INSERT INTO smeanswers(answerid,questionid,answerdate,smeid) VALUES (3,1,'2023-0
 
 -- BILING TABLE DATA
 
-INSERT INTO billing(custid,orderid,Total,date) VALUES (2,1,1000,'2022-02-12 00:00:00');
-INSERT INTO billing(custid,orderid,Total,date) VALUES (3,2,400,'2022-02-12 00:00:00');
-INSERT INTO billing(custid,orderid,Total,date) VALUES (1,3,1200,'2022-02-12 00:00:00');
+-- INSERT INTO billing(custid,orderid,Total,date) VALUES (2,1,1000,'2022-02-12 00:00:00');
+-- INSERT INTO billing(custid,orderid,Total,date) VALUES (3,2,400,'2022-02-12 00:00:00');
+-- INSERT INTO billing(custid,orderid,Total,date) VALUES (1,3,1200,'2022-02-12 00:00:00');
