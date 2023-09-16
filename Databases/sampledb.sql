@@ -11,46 +11,110 @@ INSERT INTO roles(name) VALUES ('SubjectMatterExpert');
 
 
 INSERT INTO userroles(userid,roleid) VALUES (1,1);
+
 INSERT INTO userroles(userid,roleid) VALUES (2,2);
+
 INSERT INTO userroles(userid,roleid) VALUES (3,2);
-INSERT INTO userroles(userid,roleid) VALUES (4,3);
-INSERT INTO userroles(userid,roleid) VALUES (5,3);
+
+INSERT INTO userroles(userid,roleid) VALUES (11,3);
+
+INSERT INTO userroles(userid,roleid) VALUES (12,3);
+
 INSERT INTO userroles(userid,roleid) VALUES (6,4);
+
 INSERT INTO userroles(userid,roleid) VALUES (7,4);
+
 INSERT INTO userroles(userid,roleid) VALUES (8,5);
+
 INSERT INTO userroles(userid,roleid) VALUES (9,5);
 
+ 
 
+ 
+
+INSERT INTO suppliers(corporateid,userid) VALUES(8,11);
+
+INSERT INTO suppliers(corporateid,userid) VALUES(9,12);
+
+ 
 SELECT * FROM userroles;
 
-INSERT INTO categories(title,description,image) VALUES('seeds','crops growth fastly','/image/seeds.jpg');
-INSERT INTO categories(title,description,image) VALUES('Agriculture equipments','crops growth fastly','/image/equipments.jpg');
-INSERT INTO categories(title,description,image) VALUES('fertilizers','crops growth fastly','/image/fertilizers.jpg');
-INSERT INTO categories(title,description,image) VALUES('pesticides','for spraying','/image/pesticide.jpg');
-INSERT INTO categories(title,description,image) VALUES('Agricultural sprayers','for spraying','/image/sprayers.jpg');
-INSERT INTO categories(title,description,image) VALUES('plants micronutrients','for spraying','/image/micronutrient.jpg');
+INSERT INTO categories(title,image) VALUES('seeds',"/assets/seed.jpeg");
+INSERT INTO categories(title,image) VALUES('Agriculture implements',"/assets/Agri Equipments.jpeg");
+INSERT INTO categories(title,image) VALUES('fertilizers',"/assets/fertilizer.jpeg");
+INSERT INTO categories(title,image) VALUES('pesticides',"/assets/pestisides.jpeg");
+INSERT INTO categories(title,image) VALUES('catel feed',"/assets/cattle feed.jpeg");
+INSERT INTO categories(title,image) VALUES('organic product',"/assets/organic.jpeg");
+INSERT INTO categories(title,image) VALUES('Kisan Mitra',"/assets/kisan mitra.jpeg");
 
--- PRODUCTS DATA
--- add supplier id in product 
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('oats',10,500,'/assets/image/oat.jfif',1);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('wheat',14,50,'/assets/image/wheat.jpg',1);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('corn',1000,50,'/assets/image/corn.jfif',1);
+--seeds
+INSERT INTO products(title,description,image,categoryid) VALUES('oats','
+For healthier and nutritiously growing food preferences, Oats are largely recommended by the topmost dieticians and nutritionists. Oats are the quintessential healthy food and make for an excellent and highly nutritious meal or even a snack. Being considered a superfood with an abundance of dietary fibres, beta-glucan, and several essential nutrients, Oats have become an everyday partner of every health-conscious individual. However, not everyone is familiar with the different kinds of Oats, having different generics, available in the market. Goodness and Wellness are the two common essences amongst all the different oats varieties. Let’s have a better understanding of the different types of oats, their key features, and nutrition components.
 
+','/assets/oat.jfif',1);
+INSERT INTO products(title,description,image,categoryid)VALUES('wheat','Wheat is the second most important staple food after rice consumed by 65% of the population in India and is likely to increase further due to changes in food habits. Wheat is mostly consumed in the form of ‘chapati’ in our country for which bread wheat is cultivated in nearly 95 per cent of the cropped area. ','/assets/wheat.jpg',1);
+INSERT INTO products(title,description,image,categoryid) VALUES('corn','Corn is one of the world’s most productive and dominant crops. It is grown extensively as food for both humans and livestock, as a biofuel, and as a crude material in industry. Corn is the third largest plant-based food source in the world.','/assets/corn.jfif',1);
 
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('tractor',1400,50,'/assets/image/tractor.jfif',2);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('harvesters',2200,50,'/assets/image/harvestor.jfif',2);
+--Agricultural Implements
+INSERT INTO products(title,description,image,categoryid) VALUES('tractor','tractor high-power, low-speed traction vehicle and power unit mechanically similar to an automobile or truck but designed for use off the road. The two main types are wheeled, which is the earliest form, and continuous track','/assets/tractor.jfif',2);
+INSERT INTO products(title,description,image,categoryid) VALUES('harvesters','harvester, in farming, any of several machines for harvesting; the design and function of harvesters varies widely according to crop. See binder; combine; corn harvester; cotton harvester; header; reaper; thresher; windrower. See also entries for particular crops (e.g., hay, for hay-cutting equipment).','/assets/harvestor.jfif',2);
+
 
  -- FERTILIZERS
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('wood ash',1200,500,'/image/woodash.jpg',3);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('bone meal',1500,500,'/image/bonemeal.jpg',3);
+INSERT INTO products(title,description,image,categoryid) VALUES('Urea','Urea is the chief nitrogenous end product of the metabolic breakdown of proteins in all mammals and some fishes. It occurs not only in the urine of mammals but also in their blood, bile, milk, and perspiration.','/assets/UREA.png',3);
+INSERT INTO products(title,description,image,categoryid) VALUES('12-32-16','This is one of the highest nutrients containing NPK complex fertiliser with total nutrients of 60%
+Nitrogen and Phosphate are available in the ratio 1:2.6 as in the case of DAP, but in Mahadhan 12:32:16 also contains 16% Potash additionally
+Mahadhan 12:32:16 helps the young plants to grow faster, even under adverse soil or climatic condition','/assets/12-32-16.jpeg',3);
+INSERT INTO products(title,description,image,categoryid) VALUES('10-26-26','Improves nutrient availability & reduce nutrient loss.
+It increases crop yield by 10% to 15%.
+Increases CEC and nutrient holding capacity of soil.
+Rich in organic carbon and mineral substances essential to plant growth
+Retains water soluble fertilisers and releases in root zones as needed
+Increases plant uptake of nutrients
+','/assets/10-26-26.jpeg',3);
 
 
--- PESTISIDES
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('karate',1100,500,'/assets/image/karate.jfif',4);
+--pestisides
+INSERT INTO products(title,description,image,categoryid) VALUES('Admire','Admire contains Imidacloprid, one of the world best selling insecticides. It is a systemic insecticide belonging to the chemical class of neonicotinoids and is very effective against various insect pests','/assets/mira.webp',4);
+INSERT INTO products(title,description,image,categoryid) VALUES('Rogor','It can be applied by mixing 1-2 ml with a liter of water and spraying over the concerned plants.
+Rogor Is 30% EC Formulation Of Dimethoate
+It Is Highly Effective In Controlling The Sucking And Caterpillar Pests
+It Is highly Compatible With Other Insecticides And Fungicides','/assets/Rogor.jpeg',4);
+INSERT INTO products(title,description,image,categoryid) VALUES('Antracol',
+'Antracol contains Propineb, a contact fungicide with broad spectrum activity against various diseases of rice, chilli, grapes, potato and other vegetables and fruits. Propineb is a polymeric zinc-containing dithiocarbamate. Due to the release of zinc, the application of Antracol results in greening effect on the crop and subsequent improvement in quality of produce.','/assets/antracol.jpeg',4);
+INSERT INTO products(title,description,image,categoryid) VALUES('Avatar','Avtar is a Broad-spectrum fungicide, which controls large number of diseases with its multisite and systemic action. Avatar is an effective fungicide that is useful for all crops and vegetables.','/assets/Avtar.jpeg',4);
+INSERT INTO products(title,description,image,categoryid) VALUES('coragen','ABOUT PRODUCT
+Coragen® insecticide is an anthranilic diamide Broad Spectrum insecticide in the form of a suspension concentrate.
+Coragen® insecticide is particularly active on Lepidopteran insect pests, primarily as a larvicide.
+Coragen® insecticide is powered by active ingredient Rynaxypyr® active which has a unique mode of action that controls pests resistant to other insecticides.
+Coragen® insecticide is selective & safe for non-target arthropods and conserves natural parasitoids, predators and pollinators.','/assets/coragen.jpeg',4);
+INSERT INTO products(title,description,image,categoryid) VALUES('Zyme','V-Zyme Sport is specially designed for turf , its a unique formulation of micronutrients with amino acid, growth-supporting co-factors and biostimulator, consisting of various minerals suspended in amino acids.
+The micronutrients are used in such a peculiar form that ensures the bioavailability of these micronutrients to the maximum extent. Such bioavailability of these micronutrients is rarely seen in any other products available in the market.','/assets/zyme.jpeg',4);
+INSERT INTO products(title,description,image,categoryid) VALUES('Melody','Melody Duo is a modern fungicide containing the two active ingredients Iprovalicarb and Propineb.','/assets/Melody.jpeg',4);
+INSERT INTO products(title,description,image,categoryid) VALUES('Goal','Goal® contains oxyfluorfen as active ingredient which belongs to diphenyl ether.
+As pre-emergence, Goal® forms a chemical barrier on the soil surface and affects weed plants through direct contact at emergence.
+Actively growing plants are very susceptible to Goal® as post-emergence action','/assets/Goal.jpeg',4);
+INSERT INTO products(title,description,image,categoryid) VALUES('Targa-super','Targa Super is selective, systemic herbicide of Aryloxyphenoxy-propionates group. It is used to control narrow leaf weeds in broad leaf crops.','/assets/targa-super.png',4);
 
--- -- Agricultural sprayers
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid) VALUES('Knapsack sprayer',200,500,'/image/woodash.jpg',5);
-INSERT INTO products(title,unitprice,stockavailable,image,categoryid)VALUES('portable power sprayer',500,500,'/image/manure.jpg',5);
+-- -- catelfeed
+INSERT INTO products(title,description,image,categoryid) VALUES('Sarki pend','Perfect mixture
+Quality examined
+Completely organic
+Lower price
+Free from damage by water','/assets/sarki pend.jpeg',3);
+
+INSERT INTO products(title,description,image,categoryid) VALUES('Kandi','This useful to cow, Goat, buffawlo. This is one of the most important feed for animal','/assets/kandi.jpeg',3);
+
+INSERT INTO products(title,description,image,categoryid) VALUES('Bhusa','This useful to cow, Goat, buffawlo. This is one of the most important feed for animal','/assets/bhusa.jpeg',3);
+
+
+
+--Organic product
+INSERT INTO products(title,description,image,categoryid) VALUES('bone meal','Bonemeal is a product created from the waste resulting from the slaughter of animals, especially beef cattle, by meat processors. It is a white powder made by grinding either raw or steamed animal bones','/image/bonemeal.jpg',3);
+
+select * from products
+
+
 
 -- ORDERS DATA
 INSERT INTO orders(orderdate,shippeddate,custid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',1,500,'initiated');
