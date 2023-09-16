@@ -22,7 +22,7 @@ public class CategoryRepository : ICategoryRepository
         connection.ConnectionString = _connectionString;
         try
         {
-            string query = "SELECT * FROM categories";
+            string query = "SELECT * FROM categories LIMIT 6";
             MySqlCommand command = new MySqlCommand(query, connection);
             await connection.OpenAsync();
             MySqlDataReader reader = command.ExecuteReader();

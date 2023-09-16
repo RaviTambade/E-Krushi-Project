@@ -11,6 +11,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ProductHomeComponent } from './product-home/product-home.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { FormsModule } from '@angular/forms';
+import { ProductCategoriesDetailsComponent } from './product-categories-details/product-categories-details.component';
 
 export const catlogRoutes:Routes=[
   {
@@ -18,12 +19,16 @@ export const catlogRoutes:Routes=[
     component: ProductDetailsComponent,
   },
   {
+    path: 'categoryproduct/:id',
+    component: ProductCategoriesDetailsComponent,
+  },
+  {
     path: 'products/:input',
     component: ProductComponent,
   },
 ]
 @NgModule({
-  declarations: [ProductComponent, ProductDetailsComponent,ShoppingcartComponent, ProductSimilarItemsComponent, ProductCarouselComponent, ProductDefaultIconsComponent, CategoriesComponent, ProductHomeComponent, SearchbarComponent],
+  declarations: [ProductComponent, ProductDetailsComponent,ShoppingcartComponent, ProductSimilarItemsComponent, ProductCarouselComponent, ProductDefaultIconsComponent, CategoriesComponent, ProductHomeComponent, SearchbarComponent, ProductCategoriesDetailsComponent],
 
   imports: [
     CommonModule,

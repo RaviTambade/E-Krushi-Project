@@ -52,3 +52,7 @@
   margin : 4px;
 }
 
+.select-style{
+  border: solid 2px; 
+  min-width: 50px;
+}

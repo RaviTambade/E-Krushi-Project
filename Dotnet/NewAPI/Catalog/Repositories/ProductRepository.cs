@@ -100,30 +100,29 @@ public class ProductRepository : IProductRepository
         try
         {
             string query =
-                @"SELECT products.id,products.title, products.image ,
-                productdetails.unitprice ,productdetails.stockavailable ,
-                GROUP_CONCAT( DISTINCT productdetails.size) AS size_list,
-                AVG(productreview.rating) AS ratings FROM products
+                @"SELECT products.id,products.title, products.image,productdetails.unitprice ,
+                (SELECT GROUP_CONCAT(size) FROM productdetails  WHERE productdetails.productid = products.id) AS size_list,
+                AVG(productreview.rating) AS rating FROM products
                 INNER JOIN productdetails ON products.id = productdetails.productid
                 INNER JOIN productreview ON products.id = productreview.productid
+                WHERE products.categoryid=@categoryid
                 GROUP BY products.id";
 
             MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@categoryid", categoryId);
+
             await connection.OpenAsync();
             MySqlDataReader reader = command.ExecuteReader();
             while (await reader.ReadAsync())
             {
-                int id = int.Parse(reader["id"].ToString());
-                string? productTitle = reader["title"].ToString();
-                string? image = reader["image"].ToString();
-                double unitPrice = double.Parse(reader["unitprice"].ToString());
-
                 Product product = new Product()
                 {
-                    Id = id,
-                    Title = productTitle,
-                    UnitPrice = unitPrice,
-                    Image = image,
+                    Id = reader.GetInt32("id"),
+                    Title = reader.GetString("title"),
+                    UnitPrice = reader.GetDouble("unitprice"),
+                    Image = reader.GetString("image"),
+                    Rating = reader.GetDouble("rating"),
+                    size = reader.GetString("size_list").Split(",").ToList()
                 };
                 products.Add(product);
             }

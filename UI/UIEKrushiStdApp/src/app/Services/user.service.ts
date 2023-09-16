@@ -17,7 +17,7 @@ export class UserService {
   }
 
   getUserRole(userId:number):Observable<string[]>{
-    let url="http://localhost:5031/api/userroles/roles/" + userId;
+    let url="http://localhost:6031/api/userroles/roles/" + userId;
     return this.httpClient.get<string[]>(url);
   }
 }
