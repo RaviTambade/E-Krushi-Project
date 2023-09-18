@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { Order } from 'src/app/Models/Order';
 import { OrderedItem } from 'src/app/Models/orderdItem';
 import { OrderService } from 'src/app/Services/order-service.service';
 
@@ -10,5 +11,11 @@ import { OrderService } from 'src/app/Services/order-service.service';
 })
 export class OrderDetailsComponent {
   constructor(private router: Router) {}
+  
+
+
+
+
+
 
 }

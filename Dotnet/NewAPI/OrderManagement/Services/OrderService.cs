@@ -34,7 +34,7 @@ public class OrderService : IOrderService{
 
     public async Task<List<OrderHistory>> GetOrderHistory(int custId) => await _repo.GetOrderHistory(custId);
 
-    public async Task<List<CustomerOrder>> GetOrderDetails() => await _repo.GetOrderDetails();
+    public async Task<List<CustomerOrder>> GetOrderDetails(int customerid) => await _repo.GetOrderDetails(customerid);
 
     public async Task<List<Order>> FilterDate(DateTime fromDate,DateTime toDate) => await _repo.FilterDate(fromDate,toDate);
 

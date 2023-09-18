@@ -429,32 +429,32 @@ public class OrderRepository : IOrderRepository
         return orders;
     }
 
-    public async Task<List<CustomerOrder>> GetOrderDetails()
+    public async Task<List<CustomerOrder>> GetOrderDetails(int customerid)
     {
         List<CustomerOrder> customerOrders = new List<CustomerOrder>();
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionString = _connectionString;
         try
         {
-            string query = " SELECT orders.id,customers.firstname,customers.lastname,orders.orderdate from orders inner join customers on customers.id=orders.custid";
+            string query = "select id as orderid,status,orderdate,total from orders where customerid=@customerid";
 
             await connection.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@customerid",customerid);
             MySqlDataReader reader = command.ExecuteReader();
             while (await reader.ReadAsync())
             {
-                int id = int.Parse(reader["id"].ToString());
+                int id = int.Parse(reader["orderid"].ToString());
                 DateTime orderDate = DateTime.Parse(reader["orderdate"].ToString());
-                string firstName = reader["firstname"].ToString();
-                string lastName = reader["lastname"].ToString();
+                string status = reader["status"].ToString();
+                string total = reader["total"].ToString();
 
                 CustomerOrder customerOrder = new CustomerOrder()
                 {
                     Id = id,
                     OrderDate = orderDate,
-                    FirstName = firstName,
-                    LastName = lastName
-
+                    Status = status,
+                    Total = total
                 };
 
                 customerOrders.Add(customerOrder);

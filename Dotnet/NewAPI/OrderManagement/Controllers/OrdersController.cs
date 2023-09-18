@@ -98,10 +98,10 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
         }
 
         //http://localhost:5057/api/orders/customerorders
-        [HttpGet("customerorders")]          
-        public async Task<IEnumerable<CustomerOrder>> GetOrderDetails()
+        [HttpGet("customerorders/{customerid}")]          
+        public async Task<List<CustomerOrder>> GetOrderDetails(int customerid)
         {
-            List<CustomerOrder> customerOrders= await _orderService.GetOrderDetails();
+            List<CustomerOrder> customerOrders= await _orderService.GetOrderDetails(customerid);
             return customerOrders;
         }
 

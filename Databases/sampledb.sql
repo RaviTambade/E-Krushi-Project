@@ -186,6 +186,8 @@ INSERT INTO productreview(productid,customerid,rating,review) VALUES (21,2,4.5,'
 INSERT INTO productreview(productid,customerid,rating,review) VALUES (21,3,4.5,'Nice Product');
 
 INSERT INTO orders(orderdate,shippeddate,customerid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',2,500,'initiated');
+INSERT INTO orders(orderdate,shippeddate,customerid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',2,500,'cancelled');
+
 INSERT INTO orders(orderdate,shippeddate,customerid,total,status) VALUES ('2020-11-01 12:12:12','2020-11-02 10:02:12',2,800,'delivered');
 INSERT INTO orders(orderdate,shippeddate,customerid,total,status) VALUES ('2020-10-01 12:12:12','2020-10-02 10:22:12',3,700,'cancelled');
 INSERT INTO orders(orderdate,shippeddate,customerid,total,status) VALUES ('2021-12-01 12:10:12','2021-12-02 10:12:12',3,500,'initiated');

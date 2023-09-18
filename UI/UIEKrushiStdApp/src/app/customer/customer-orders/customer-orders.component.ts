@@ -10,20 +10,27 @@ import { OrderService } from 'src/app/Services/order-service.service';
 })
 export class CustomerOrdersComponent implements OnInit {
   orders: Order[] = [];
+  customerid: number = 2;
+  filteredOrders: Order[] = [];
   activeFilter: string | null = null;
   constructor(private ordersvc: OrderService, private router: Router) {}
+
   ngOnInit(): void {
-    this.orders = this.ordersvc.getOrders();
+    this.ordersvc.getOrdersOfCustomer(this.customerid).subscribe((res) => {
+      this.orders = res;
+      this.filteredOrders = res;
+      console.log(res);
+    });
   }
 
-
-
   filterOrders(status: string) {
-    this.activeFilter=status;
+    this.activeFilter = status;
     if (status == 'all') {
-      this.orders = this.ordersvc.getOrders();
+      this.filteredOrders = this.orders;
     } else {
-      this.orders = this.ordersvc.getOrderByStatus(status);
+      this.filteredOrders = this.orders.filter(
+        (order) => order.status == status
+      );
     }
   }
 }
