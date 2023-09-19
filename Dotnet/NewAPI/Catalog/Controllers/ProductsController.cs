@@ -20,6 +20,11 @@ public class ProductsController : ControllerBase
     {
         return await _service.GetProducts();
     }
+    [HttpGet("search/{productName}")]
+      public async Task<List<Product>> GetSearchedProducts(string productName)
+    {
+        return await _service.GetSearchedProducts(productName);
+    }
 
     [HttpGet("price/{productId}/{size}")]
     public async Task<double> GetProductPricebySize(int productId,string size)

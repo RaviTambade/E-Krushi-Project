@@ -27,4 +27,9 @@ public class ProductService : IProductService
     {
         return await _repository.GetProductsByCategory(categoryId);
     }
+
+    public async Task<List<Product>> GetSearchedProducts(string productName)
+    {
+        return await _repository.GetSearchedProducts(productName);
+    }
 }
