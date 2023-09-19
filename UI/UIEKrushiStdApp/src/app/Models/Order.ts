@@ -2,8 +2,8 @@
 export class Order {
     constructor(
         public id:number,
-        public date:string,
-        public amount:number, 
+        public orderDate:string,
+        public total:number, 
         public status:string, 
     ){}
 }

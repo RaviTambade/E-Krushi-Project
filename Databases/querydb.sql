@@ -1,4 +1,16 @@
+-- Active: 1694968636816@@127.0.0.1@3306@ekrushi
+SELECT * from orderdetails;
 select * from orders;
+select * from products;
+SELECT * from productdetails;
+
+-- customer orderdetails query
+select productdetails.size,productdetails.unitprice,products.image,orderdetails.quantity,orders.total from products 
+Inner JOIN productdetails on products.id=productdetails.productid
+INNER join  orderdetails on productdetails.id=orderdetails.productdetailsid
+INNER join orders on  orders.id=orderdetails.orderid where orders.id=1;
+show TABLES;
+
 
 select count(orderdate),monthname(orderdate) from orders order by orderdate;
 

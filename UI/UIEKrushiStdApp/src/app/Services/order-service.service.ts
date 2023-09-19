@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
 import { Order } from '../Models/Order';
 import { OrderedItem } from '../Models/orderdItem';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrderService {
-  constructor() {}
-   orders: Order[] = [
-    { id: 1, date: '2023-09-10', amount: 4000, status: 'pending' },
-    { id: 2, date: '2023-09-11', amount: 4200, status: 'deliverd' },
-    { id: 3, date: '2023-09-08', amount: 900, status: 'cancelled' },
-    { id: 4, date: '2023-09-11', amount: 12000, status: 'pending' },
-  ];
+  constructor(private httpClient: HttpClient) {}
+  //  orders: Order[] = [
+  //   { id: 1, date: '2023-09-10', amount: 4000, status: 'pending' },
+  //   { id: 2, date: '2023-09-11', amount: 4200, status: 'deliverd' },
+  //   { id: 3, date: '2023-09-08', amount: 900, status: 'cancelled' },
+  //   { id: 4, date: '2023-09-11', amount: 12000, status: 'pending' },
+  // ];
 
-  getOrders():Order[] {
-    return this.orders;
-  }
+  // getOrders():Order[] {
+  //   return this.orders;
+  // }
 
-  getOrderByStatus(status :string):Order[] {
-    var filterdOrders=this.orders.filter(order=> order.status ==status);
-    return filterdOrders;
-  }
+  // getOrderByStatus(status :string):Order[] {
+  //   var filterdOrders=this.orders.filter(order=> order.status ==status);
+  //   return filterdOrders;
+  // }
   
   
 
@@ -37,5 +39,11 @@ export class OrderService {
     ];
     var filterdData=items.filter(item=> item.orderid ==orderId);
     return filterdData;
+  }
+
+
+  getOrdersOfCustomer(customerid:number):Observable<Order[]>{
+    let url = 'http://localhost:5057/api/orders/customerorders/'+customerid;
+    return this.httpClient.get<Order[]>(url);
   }
 }
