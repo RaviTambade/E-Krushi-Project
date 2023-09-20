@@ -11,7 +11,7 @@ import { OrderService } from 'src/app/Services/order-service.service';
 })
 export class OrderProductDetailsComponent {
   items: OrderedItem[] = [];
- 
+ subtotal:any;
   orderDetails:OrderDetails[]=[];
   @Input() orderId!:number;
   constructor(
@@ -24,14 +24,16 @@ export class OrderProductDetailsComponent {
     this.ordersvc.getOrdersDetails(this.orderId).subscribe((res) => {
       this.orderDetails = res;
       console.log(res);
+
+     
   }
     );
   }
 
 
 
-  orderdetails(orderid:number){
-    
+  getTotal(){
+   
   
   }
 }

@@ -13,15 +13,22 @@ export class CustomerOrdersComponent implements OnInit {
   customerid: number = 3;
   filteredOrders: Order[] = [];
   activeFilter: string | null = null;
-  
+  subtotal!:number;
+  data:any;
   constructor(private ordersvc: OrderService, private router: Router) {}
 
   ngOnInit(): void {
     this.ordersvc.getOrdersOfCustomer(this.customerid).subscribe((res) => {
       this.orders = res;
+      // this.data=res.total;
 
       this.filteredOrders = res;
       console.log(res);
+
+
+
+      
+
     });
   }
 
@@ -35,6 +42,9 @@ export class CustomerOrdersComponent implements OnInit {
       );
     }
   }
+
+
+
 
   
 }
