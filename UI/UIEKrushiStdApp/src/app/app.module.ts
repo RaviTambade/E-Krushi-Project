@@ -20,6 +20,7 @@ import { AboutUsComponent } from './AboutUs/AboutUs.component';
 import { ContactUsComponent } from './ContactUs/ContactUs.component';
 import { CatalogModule, catlogRoutes } from './catalog/catalog.module';
 import { ShoppingcartComponent } from './catalog/shoppingcart/shoppingcart.component';
+import { OrderService } from './Services/order-service.service';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { ShoppingcartComponent } from './catalog/shoppingcart/shoppingcart.compo
       },
     },
     JwtHelperService,
+    OrderService
   ],
   bootstrap: [AppComponent]
 })

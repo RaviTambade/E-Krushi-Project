@@ -28,15 +28,11 @@ public class CategoryRepository : ICategoryRepository
             MySqlDataReader reader = command.ExecuteReader();
             while (await reader.ReadAsync())
             {
-                int categoryId = Int32.Parse(reader["id"].ToString());
-                string? categoryTitle = reader["title"].ToString();
-                string? image = reader["image"].ToString();
-
                 Category category = new Category()
                 {
-                    Id = categoryId,
-                    Title = categoryTitle,
-                    Image = image
+                    Id = reader.GetInt32("id"),
+                    Title = reader.GetString("title"),
+                    Image = reader.GetString("image")
                 };
                 categories.Add(category);
             }

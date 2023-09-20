@@ -12,10 +12,11 @@ import { ProductHomeComponent } from './product-home/product-home.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { FormsModule } from '@angular/forms';
 import { ProductCategoriesDetailsComponent } from './product-categories-details/product-categories-details.component';
+import { SearchProductResultComponent } from './search-product-result/search-product-result.component';
 
-export const catlogRoutes:Routes=[
+export const catlogRoutes: Routes = [
   {
-    path: 'productdetail',
+    path: 'productdetail/:id',
     component: ProductDetailsComponent,
   },
   {
@@ -24,22 +25,30 @@ export const catlogRoutes:Routes=[
   },
   {
     path: 'products/:input',
-    component: ProductComponent,
+    component: SearchProductResultComponent,
   },
-]
+];
 @NgModule({
-  declarations: [ProductComponent, ProductDetailsComponent,ShoppingcartComponent, ProductSimilarItemsComponent, ProductCarouselComponent, ProductDefaultIconsComponent, CategoriesComponent, ProductHomeComponent, SearchbarComponent, ProductCategoriesDetailsComponent],
-
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule
-
+  declarations: [
+    ProductComponent,
+    ProductDetailsComponent,
+    ShoppingcartComponent,
+    ProductSimilarItemsComponent,
+    ProductCarouselComponent,
+    ProductDefaultIconsComponent,
+    CategoriesComponent,
+    ProductHomeComponent,
+    SearchbarComponent,
+    ProductCategoriesDetailsComponent,
+    SearchProductResultComponent,
   ],
+
+  imports: [CommonModule, RouterModule, FormsModule],
   exports: [
     ProductComponent,
-    ShoppingcartComponent,ProductHomeComponent,
-    SearchbarComponent
-  ]
+    ShoppingcartComponent,
+    ProductHomeComponent,
+    SearchbarComponent,
+  ],
 })
 export class CatalogModule {}
