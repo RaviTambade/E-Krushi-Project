@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { CartItem } from 'src/app/Models/cart-item';
 import { CartService } from 'src/app/Services/cart.service';
 
@@ -9,17 +10,20 @@ import { CartService } from 'src/app/Services/cart.service';
 })
 export class ShoppingcartComponent implements OnInit {
   items: CartItem[] = [];
-  constructor(private cartsvc: CartService) {}
+  constructor(private cartsvc: CartService, private snackBar: MatSnackBar) {}
   ngOnInit(): void {
     this.cartsvc.getCartItems().subscribe((res) => {
       this.items = res;
     });
   }
 
-  private showNotification(message: string) {
-    // snackBar.open(message, 'Close', {
-    //   duration: 3000, // Duration in milliseconds
-    // });
+  showNotification(message: string) {
+    this.snackBar.open(message, '', {
+      duration: 30000,
+      verticalPosition:'top',
+      horizontalPosition:'right',
+      
+    });
   }
 
   onClickDecrement(item: CartItem) {
@@ -46,14 +50,18 @@ export class ShoppingcartComponent implements OnInit {
     if (newQuantity < 1) {
       newQuantity = 1;
     }
+
     this.updateDatabaseQuantity(item, newQuantity);
   }
 
   updateDatabaseQuantity(item: CartItem, quantity: number) {
     this.cartsvc.updateQuantity(item.cartItemId, quantity).subscribe((res) => {
       if (res) {
+        this.showNotification(`You  Changed  ${item.title}  Quantity  To  ${quantity}`);
         item.quantity = quantity;
       }
     });
   }
 }
+
+
