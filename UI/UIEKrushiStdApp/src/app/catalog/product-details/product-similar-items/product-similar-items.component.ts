@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/Models/product';
 import { CatalogService } from 'src/app/Services/catalog.service';
@@ -8,13 +8,14 @@ import { CatalogService } from 'src/app/Services/catalog.service';
   templateUrl: './product-similar-items.component.html',
   styleUrls: ['./product-similar-items.component.css'],
 })
-export class ProductSimilarItemsComponent {
+export class ProductSimilarItemsComponent implements OnChanges {
   @Input() productId: number | undefined;
   products: Product[] = [];
   constructor(private catlogsvc: CatalogService) {}
 
   ngOnInit() {
-    console.log(this.productId)
+    console.log(this.productId);
+
     if (this.productId == undefined) {
       return;
     }
@@ -24,5 +25,12 @@ export class ProductSimilarItemsComponent {
     });
   }
 
-  
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['productId']
+     ) {
+      this.catlogsvc.getSimilarProducts(changes['productId'].currentValue).subscribe((res) => {
+        this.products = res;
+      });
+    }
+  }
 }
