@@ -1,13 +1,13 @@
 
 
-<div *ngFor="let item of items">
+<div *ngFor="let order of orderDetails">
 <div class="card mb-3">
   <div class="card-body">
     <div class="d-flex justify-content-between">
       <div class="d-flex flex-row align-items-center">
         <div class="col-md-4">
-          <img src="{{item.imageUrl}}" alt="" class="avatar-lg rounded" height="100" width="100">
-          <h5 class="mx-4">{{item.title}}</h5>
+          <img src="{{order.image}}" alt="" class="avatar-lg rounded" height="100" width="100">
+          <h5 class="mx-4">{{order.title}}</h5>
 
         </div>
 
@@ -15,7 +15,7 @@
           <div class="col-md-5">
             <div class="m-3">
               <p class="text-muted m-2">Size </p>
-              <div class="d-inline-flex"> <b>{{item.size}}</b>
+              <div class="d-inline-flex"> <b>{{order.size}}</b>
 
               </div>
             </div>
@@ -23,7 +23,7 @@
           <div class="col-md-5">
             <div class="m-3">
               <p class="text-muted m-2">Price </p>
-              <div class="d-inline-flex"> <b>{{item.price |currency:"INR"}}</b>
+              <div class="d-inline-flex"> <b>{{order.unitPrice |currency:"INR"}}</b>
 
               </div>
             </div>
@@ -31,7 +31,7 @@
           <div class="col-md-5">
             <div class="m-3">
               <p class="text-muted m-2">Quantity </p>
-              <div class="d-inline-flex"> <b>{{item.quantity}}</b>
+              <div class="d-inline-flex"> <b>{{order.quantity}}</b>
 
               </div>
             </div>
@@ -39,8 +39,9 @@
           <div class="col-md-5">
             <div class="m-3">
               <p class="text-muted m-2">Total</p>
-              <h5>{{item.total |currency:"INR"}}</h5>
+              <h5>{{order.total |currency:"INR"}}</h5>
             </div>
           </div>
         </div>
       </div>
+    </div>

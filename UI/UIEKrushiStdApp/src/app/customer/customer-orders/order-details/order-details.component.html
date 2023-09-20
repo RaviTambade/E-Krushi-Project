@@ -5,10 +5,10 @@
         
          <div class="row m-2 ">
             <div class=" col-md-8 ">
-                <app-order-product-details></app-order-product-details>
+                <app-order-product-details [orderId]="orderId"></app-order-product-details>
                 </div>
                 <div class=" col-md-4 ">
-                    <app-order-summery></app-order-summery>
+                    <app-order-summery [orderId]="orderId"></app-order-summery>
                     <app-paymentsummery></app-paymentsummery>
                     <a class="m-2" [routerLink]="['/customer/paymentlist']">View Other Payments</a>
                 </div>
