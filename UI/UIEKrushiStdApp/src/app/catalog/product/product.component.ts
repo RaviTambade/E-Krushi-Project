@@ -11,14 +11,14 @@ import { CatalogService } from 'src/app/Services/catalog.service';
 export class ProductComponent implements OnInit {
   @Input() product!: Product;
   selectedSize: string | undefined;
-  constructor(private catalogsvc: CatalogService) {}
+  constructor(private catlogsvc: CatalogService) {}
 
   updatePrice(productId: number) {
     if (this.selectedSize == undefined) {
       return;
     }
     console.log(this.selectedSize);
-    this.catalogsvc
+    this.catlogsvc
       .getProductPriceBySize(productId, this.selectedSize)
       .subscribe((unitprice) => {
         this.product.unitPrice = unitprice;

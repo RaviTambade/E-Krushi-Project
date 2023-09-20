@@ -1,10 +1,10 @@
 .custom-btn-group .btn {
-    background-color: transparent;
+    /* background-color: transparent; */
     color: #007bff;
     border: 2px solid #007bff;
-    width: 60px;
     margin-right: 10px;
   }
+
 
   .custom-btn-group .btn:last-child {
     margin-right: 0;
@@ -21,4 +21,8 @@
   }
 
  
- 
+
+  .selected {
+    border: 2px solid rgb(255, 208, 121);
+    background-color: rgb(255, 208, 121);
+  }
