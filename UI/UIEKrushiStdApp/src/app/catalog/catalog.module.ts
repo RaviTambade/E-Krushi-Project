@@ -43,7 +43,8 @@ export const catlogRoutes: Routes = [
     SearchProductResultComponent,
   ],
 
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule,
+    ],
   exports: [
     ProductComponent,
     ShoppingcartComponent,

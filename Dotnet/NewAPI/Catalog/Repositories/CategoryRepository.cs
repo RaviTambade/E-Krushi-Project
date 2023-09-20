@@ -1,8 +1,8 @@
-using Catalog.Models;
-using Catalog.Repositories.Interfaces;
+using Transflower.EKrushi.Catalog.Models;
+using Transflower.EKrushi.Catalog.Repositories.Interfaces;
 using MySql.Data.MySqlClient;
 
-namespace Catalog.Repositories;
+namespace Transflower.EKrushi.Catalog.Repositories;
 
 public class CategoryRepository : ICategoryRepository
 {

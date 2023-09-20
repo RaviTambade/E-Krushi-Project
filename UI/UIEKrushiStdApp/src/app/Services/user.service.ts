@@ -10,7 +10,6 @@ export class UserService {
 
   constructor(private httpClient:HttpClient) { }
 
-  
   getUserByContact(contactNumber: string): Observable<User> {
     let url = "http://localhost:5102/api/users/username/" + contactNumber;
     return this.httpClient.get<User>(url);
