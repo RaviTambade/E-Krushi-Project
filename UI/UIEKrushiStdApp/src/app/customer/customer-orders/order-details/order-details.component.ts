@@ -9,8 +9,16 @@ import { OrderService } from 'src/app/Services/order-service.service';
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.css'],
 })
-export class OrderDetailsComponent {
-  constructor(private router: Router) {}
+export class OrderDetailsComponent implements OnInit {
+  constructor(private router: Router,private route: ActivatedRoute) {}
+  orderId!:number;
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      this.orderId = Number(params.get('orderid'));
+      console.log(this.orderId);
+      // this.items = this.ordersvc.getOrderdItems(this.orderId);
+    });
+  }
   
 
 

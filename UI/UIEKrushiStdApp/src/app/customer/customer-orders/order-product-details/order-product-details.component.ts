@@ -11,19 +11,17 @@ import { OrderService } from 'src/app/Services/order-service.service';
 })
 export class OrderProductDetailsComponent {
   items: OrderedItem[] = [];
-  orderid: number = 1;
+ 
   orderDetails:OrderDetails[]=[];
+  @Input() orderId!:number;
   constructor(
     private ordersvc: OrderService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
-    // this.route.paramMap.subscribe((params) => {
-    //   this.orderId = Number(params.get('orderid'));
-    //   this.items = this.ordersvc.getOrderdItems(this.orderId);
-    // });
-    this.ordersvc.getOrdersDetails(this.orderid).subscribe((res) => {
+   
+    this.ordersvc.getOrdersDetails(this.orderId).subscribe((res) => {
       this.orderDetails = res;
       console.log(res);
   }
