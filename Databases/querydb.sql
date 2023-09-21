@@ -5,7 +5,7 @@ select * from products;
 SELECT * from productdetails;
 
 -- customer orderdetails query
-select productdetails.size,productdetails.unitprice,products.image,products.title,orderdetails.quantity,orders.total from products 
+select productdetails.size,productdetails.unitprice,products.image,products.title,orderdetails.quantity,(productdetails.unitprice * orderdetails.quantity) as total from products 
 Inner JOIN productdetails on products.id=productdetails.productid
 INNER join  orderdetails on productdetails.id=orderdetails.productdetailsid
 INNER join orders on  orders.id=orderdetails.orderid where orders.id=4;

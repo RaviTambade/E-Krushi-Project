@@ -14,10 +14,7 @@ public class OrderDetailsService : IOrderDetailsService{
 
   
     
-    public async Task<OrderDetails> GetOrderDetail(int id) => await _repo.GetOrderDetail(id);
-
    
-    public async Task<bool> Delete(int id)=> await _repo.Delete(id);
 
      public async Task<List<OrderDetails>> GetDetails(int orderId) => await _repo.GetDetails(orderId);
 

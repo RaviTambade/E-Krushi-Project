@@ -13,29 +13,11 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
         private readonly IOrderDetailsService _orderService;
         public OrderDetailsController(IOrderDetailsService orderService)
         {
-           _orderService = orderService;
+            _orderService = orderService;
         }
 
-       
 
-        //http://localhost:5057/api/orderdetails/{id} 
-        [HttpGet("{id}")]
-        public async Task<OrderDetails> GetOrderDetail(int id)
-        {
-            OrderDetails orderDetail = await _orderService.GetOrderDetail(id);
-            return orderDetail;
-        }
-
-       
-        //http://localhost:5057/api/orderdetails/{id} 
-        [HttpDelete("{id}")]
-        public async Task<bool> DeleteOrderDetail(int id)
-        {
-            bool status = await _orderService.Delete(id);
-            return status;
-        }
-
-        //http://localhost:5057/api/orderdetails/order/{orderId} 
+     //http://localhost:5057/api/orderdetails/order/{orderId} 
         [HttpGet("order/{orderId}")]
         public async Task<List<OrderDetails>> GetDetails(int orderId)
         {
