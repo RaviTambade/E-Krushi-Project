@@ -10,6 +10,7 @@ import { OrderDetailsComponent } from './customer-orders/order-details/order-det
 import { OrderSummeryComponent } from './customer-orders/order-summery/order-summery.component';
 import { ShoppingcartComponent } from '../catalog/shoppingcart/shoppingcart.component';
 import { PaymentsummeryComponent } from './customer-paymenthistory/paymentsummery/paymentsummery.component';
+import { FormsModule } from '@angular/forms';
 
 export const customerRoutes: Routes = [
   { path: 'dashboard', component: CustomerDashboardComponent },
@@ -36,6 +37,7 @@ export const customerRoutes: Routes = [
     OrderSummeryComponent,
     PaymentsummeryComponent,
   ],
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule,RouterModule,FormsModule],
+  
 })
 export class CustomerModule {}

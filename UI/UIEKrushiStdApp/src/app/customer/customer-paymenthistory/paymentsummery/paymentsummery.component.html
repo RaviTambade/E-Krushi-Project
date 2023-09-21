@@ -4,24 +4,24 @@
     </div>
     <div class="card-body p-4 pt-2">
 
-        <div class="table-responsive">
+        <div class="table-responsive" *ngIf="paymentDetails">
             <table class="table mb-0">
                 <tbody>
                     <tr>
                         <td>Date :</td>
-                        <td class="text-end">15 september 2023</td>
+                        <td class="text-end">{{paymentDetails.date}}</td>
                     </tr>
-                    <tr>
+                    <tr>    
                         <td>Amount : </td>
-                        <td class="text-end">{{745|currency:"INR"}}</td>
+                        <td class="text-end">{{paymentDetails.total|currency:"INR"}}</td>
                     </tr>
                     <tr>
                         <td>Status :</td>
-                        <td class="text-end">Paid</td>
+                        <td class="text-end">{{paymentDetails.status}}</td>
                     </tr>
                     <tr>
                         <td>Payment Mode : </td>
-                        <td class="text-end">Online</td>
+                        <td class="text-end">{{paymentDetails.paymentMode}}</td>
                     </tr>
                 </tbody>
             </table>
