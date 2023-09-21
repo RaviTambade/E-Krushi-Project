@@ -215,13 +215,13 @@ INSERT INTO carts(customerid) VALUES (3);
 
 
 -- CARTS ITEMS DATA
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,1,20);
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,2,40);
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,2,40);
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,4,10);
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,4,50);
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,2,260);
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,3,200);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,1,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,3,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,5,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,11,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,9,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,17,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,19,2);
 
 
 -- PAYMENTS DATA

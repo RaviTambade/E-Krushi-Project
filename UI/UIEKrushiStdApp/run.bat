@@ -1,6 +1,7 @@
 @REM REMOVE /B if you want to run  api in different console window 
 start  /B cmd.exe /C "cd E:\E-Krushi-Project\Dotnet\NewAPI\UserRolesManagement & title UserRolesManagement & dotnet run"
 start  /B cmd.exe /C "cd E:\E-Krushi-Project\Dotnet\NewAPI\Catalog & title Catalog & dotnet run"
+@REM start  /B cmd.exe /C "cd E:\E-Krushi-Project\Dotnet\NewAPI\ShoppingCart & title \ShoppingCart & dotnet run"
 
 
 @REM commomservices     

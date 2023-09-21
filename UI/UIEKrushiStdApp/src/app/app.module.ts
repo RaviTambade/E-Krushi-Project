@@ -21,6 +21,7 @@ import { ContactUsComponent } from './ContactUs/ContactUs.component';
 import { CatalogModule, catlogRoutes } from './catalog/catalog.module';
 import { ShoppingcartComponent } from './catalog/shoppingcart/shoppingcart.component';
 import { OrderService } from './Services/order-service.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { OrderService } from './Services/order-service.service';
       {path:'sme',children:subjetcMatterExpertRoutes},
       {path:'supplier',children:supplierRoutes},
 
-    ])
+    ]),
+      BrowserAnimationsModule
   ],
   providers: [
     {

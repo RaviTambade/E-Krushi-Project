@@ -1,26 +1,67 @@
-import { Component } from '@angular/core';
-import { ProductComponent } from '../product/product.component';
+import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { CartItem } from 'src/app/Models/cart-item';
+import { CartService } from 'src/app/Services/cart.service';
 
 @Component({
   selector: 'app-shoppingcart',
   templateUrl: './shoppingcart.component.html',
-  styleUrls: ['./shoppingcart.component.css']
+  styleUrls: ['./shoppingcart.component.css'],
 })
-export class ShoppingcartComponent{
+export class ShoppingcartComponent implements OnInit {
+  items: CartItem[] = [];
+  constructor(private cartsvc: CartService, private snackBar: MatSnackBar) {}
+  ngOnInit(): void {
+    this.cartsvc.getCartItems().subscribe((res) => {
+      this.items = res;
+    });
+  }
 
-  price :number=100;
+  showNotification(message: string) {
+    this.snackBar.open(message, '', {
+      duration: 30000,
+      verticalPosition:'top',
+      horizontalPosition:'right',
+      
+    });
+  }
 
-  products:any =[{
-    imagepath:"/assets/mira.webp" , size :"250 gm" ,price : 100,name : "Admire",quantity:2
-  },
-  {
-    imagepath:"/assets/Rogor.jpeg" , size :"250 gm" ,price : 480,name : "ROGOR",quantity:4
-  },{
-    imagepath:"/assets/UREA.png" , size :"250 gm" ,price : 45,name : "UREA",quantity:3
-  },  
-   {
-    imagepath:"/assets/targa-super.png" , size :"250 gm" ,price : 500,name : "TARGA SUPER",quantity:5
-  }]
+  onClickDecrement(item: CartItem) {
+    let newQuantity = item.quantity - 1;
+    if (newQuantity < 1) {
+      newQuantity = 1;
+    }
+    this.updateDatabaseQuantity(item, newQuantity);
+  }
+  onClickIncrement(item: CartItem) {
+    let newQuantity = item.quantity + 1;
 
+    if (newQuantity > 10) {
+      newQuantity = 10;
+    }
+    this.updateDatabaseQuantity(item, newQuantity);
+  }
 
+  updateQuantity(item: CartItem, event: any) {
+    let newQuantity = event.target.value;
+    if (newQuantity > 10) {
+      newQuantity = 10;
+    }
+    if (newQuantity < 1) {
+      newQuantity = 1;
+    }
+
+    this.updateDatabaseQuantity(item, newQuantity);
+  }
+
+  updateDatabaseQuantity(item: CartItem, quantity: number) {
+    this.cartsvc.updateQuantity(item.cartItemId, quantity).subscribe((res) => {
+      if (res) {
+        this.showNotification(`You  Changed  ${item.title}  Quantity  To  ${quantity}`);
+        item.quantity = quantity;
+      }
+    });
+  }
 }
+
+

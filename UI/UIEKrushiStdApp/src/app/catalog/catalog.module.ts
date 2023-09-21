@@ -11,6 +11,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ProductHomeComponent } from './product-home/product-home.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { FormsModule } from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ProductCategoriesDetailsComponent } from './product-categories-details/product-categories-details.component';
 import { SearchProductResultComponent } from './search-product-result/search-product-result.component';
 
@@ -43,7 +44,8 @@ export const catlogRoutes: Routes = [
     SearchProductResultComponent,
   ],
 
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule,MatSnackBarModule
+    ],
   exports: [
     ProductComponent,
     ShoppingcartComponent,

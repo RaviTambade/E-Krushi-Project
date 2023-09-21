@@ -1,161 +1,101 @@
-<section class="h-100 h-custom" style="background-color: #eeeeee;">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col">
-        <div class="card">
-          <div class="card-body p-4">
-
-            <div class="row">
-
-              <div class="col-lg-7">
-                <h5 class="mb-3"><a href="#!" class="text-body"><i class="fas fa-long-arrow-alt-left me-2"></i>Continue
-                    shopping</a></h5>
-                <hr>
-
-                <div class="d-flex justify-content-between align-items-center mb-4">
-                  <div>
-                    <p class="mb-1">Shopping cart</p>
-                    <p class="mb-0">You have 4 items in your cart</p>
-                  </div>
-                  <div>
-                    <p class="mb-0"><span class="text-muted">Sort by:</span> <a href="#!" class="text-body">price <i
-                          class="fas fa-angle-down mt-1"></i></a></p>
-                  </div>
-                </div>
-
-                <div class="card mb-3" *ngFor="let product of products">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                      <div class="d-flex flex-row align-items-center">
-                        <div>
-                          <img src="{{product.imagepath}}" class="img-fluid rounded-3" alt="Shopping item"
-                            style="width: 110px;">
-                        </div>
-
-                        <div class="ms-6">
-                          <a href="">
-                            <h5>{{product.name}}</h5>
-                          </a>
-                          <p class="small mb-2"><b>Size :{{product.size}}</b></p>
-                          <p class="small mb-2"><b>{{product.price |currency:"INR"}}</b></p>
-                          <div class="d-flex flex-row">
-                            <button class="btn  btn-link   px-1"
-                              onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                              <i class="fas fa-minus"></i>
-                            </button>
-
-                            <input id="form1" min="0" name="quantity" value="0" type="number"
-                              class="form-control form-control-sm" style="width: 50px; height: 10px;" />
-
-                            <button class="btn btn-link px-1"
-                              onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                              <i class="fas fa-plus"></i>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-
-
-
-                      <div class="d-flex flex-row align-items-center">
-                        <h5 class="fw-normal mb-0">{{product.price * product.quantity |currency:"INR" }}</h5>
-                        &nbsp;&nbsp;&nbsp;
-                      </div>
-
-                      <a href="#!" class="d-flex flex-row align-items-center" style="color: #f62929;"> <i
-                          class="fas fa-trash-alt"></i></a>
-                      <!-- </div> -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-lg-5">
-
-                <div class="card  text-white rounded-3" style="background-color: rgb(45, 39, 39)">
-                  <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                      <h5 class="mb-0">Card details</h5>
-                      <img src="/assets/akash.jpg" class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
-                    </div>
-
-                    <p class="small mb-2">Card type</p>
-                    <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-mastercard fa-2x me-2"></i></a>
-                    <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-visa fa-2x me-2"></i></a>
-                    <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-amex fa-2x me-2"></i></a>
-                    <a href="#!" type="submit" class="text-white"><i class="fab fa-cc-paypal fa-2x"></i></a>
-
-                    <form class="mt-4">
-                      <div class="form-outline form-white mb-4">
-                        <input type="text" id="typeName" class="form-control form-control-lg" siez="17"
-                          placeholder="Cardholder's Name" />
-                        <label class="form-label" for="typeName">Cardholder's Name</label>
-                      </div>
-
-                      <div class="form-outline form-white mb-4">
-                        <input type="text" id="typeText" class="form-control form-control-lg" siez="17"
-                          placeholder="1234 5678 9012 3457" minlength="19" maxlength="19" />
-                        <label class="form-label" for="typeText">Card Number</label>
-                      </div>
-
-                      <div class="row mb-4">
-                        <div class="col-md-6">
-                          <div class="form-outline form-white">
-                            <input type="text" id="typeExp" class="form-control form-control-lg" placeholder="MM/YYYY"
-                              size="7" id="exp" minlength="7" maxlength="7" />
-                            <label class="form-label" for="typeExp">Expiration</label>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
-                          <div class="form-outline form-white">
-                            <input type="password" id="typeText" class="form-control form-control-lg"
-                              placeholder="&#9679;&#9679;&#9679;" size="1" minlength="3" maxlength="3" />
-                            <label class="form-label" for="typeText">Cvv</label>
-                          </div>
-                        </div>
-                      </div>
-
-                    </form>
-
-                    <hr class="my-4">
-
-                    <div class="d-flex justify-content-between">
-                      <p class="mb-2">Subtotal</p>
-                      <p class="mb-2">4798.00</p>
-                    </div>
-
-                    <div class="d-flex justify-content-between">
-                      <p class="mb-2">Shipping</p>
-                      <p class="mb-2">20.00</p>
-                    </div>
-
-                    <div class="d-flex justify-content-between mb-4">
-                      <p class="mb-2">Total(Incl. taxes)</p>
-                      <p class="mb-2">4818.00</p>
-                    </div>
-
-                    <button type="button" class="btn btn-info btn-block btn-lg"
-                      style="background-color: rgb(233, 180, 47);">
-                      <div class="d-flex justify-content-between">
-                        <span>4818.00</span>
-                        <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
-                      </div>
-                    </button>
-
-                  </div>
-                </div>
-
-              </div>
-
+<h4 class="m-4">My Cart</h4>
+<div class="row">
+  <div class="col-lg-7" style="max-height:450px;overflow: auto;">
+    <div class="card mb-3" *ngFor="let item of items">
+      <div class="card-body">
+        <div class="d-flex justify-content-between">
+          <div class="d-flex flex-row align-items-center">
+            <div>
+              <img src="{{item.image}}" class="img-fluid rounded-3" alt="Shopping item"
+                style="width: 110px; cursor: pointer;" [routerLink]="['/catalog/productdetail',item.productId]">
             </div>
 
+            <div class="ms-6">
+              <a [routerLink]="['/catalog/productdetail',item.productId]">
+                <h5>{{item.title}}</h5>
+              </a>
+              <p class="small mb-2"><b>Size :{{item.size}}</b></p>
+              <p class="small mb-2"><b>{{item.unitPrice |currency:"INR"}}</b></p>
+              <div class="d-flex flex-row">
+                <button class="btn  btn-link   px-2" (click)="onClickDecrement(item)">
+                  <i class="fas fa-minus"></i>
+                </button>
+
+                <input id="form1" min=1 max=10 name="quantity" type="text" [value]="item.quantity" pattern="[0-9]+"
+                  class="form-control form-control-sm" style="width: 60px; height: 10px;"
+                  (input)="updateQuantity(item,$event)" />
+
+                <button class="btn btn-link px-1" (click)="onClickIncrement(item)">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+            </div>
           </div>
+
+          <div class="d-flex flex-row align-items-center">
+            <h5 class="fw-normal mb-0">{{item.unitPrice *item.quantity |currency:"INR" }}</h5>
+            &nbsp;&nbsp;&nbsp;
+          </div>
+
+          <a href="#!" class="d-flex flex-row align-items-center" style="color: #f62929;"> <i
+              class="fas fa-trash-alt"></i></a>
+          <!-- </div> -->
         </div>
       </div>
     </div>
   </div>
-</section>
+  <div class="col-4">
+    <div class="card border shadow-none m-2">
+      <div class="card-header bg-transparent border-bottom py-3 px-4">
+        <h5 class="font-size-16 mb-0">PRICE DETAILS <span class="float-end">OrderId :15</span></h5>
+      </div>
+      <div class="card-body p-4 pt-2">
 
-<div class="row">
+        <div class="table-responsive">
+          <table class="table mb-0">
+            <tbody>
+              <tr>
+                <td>Items</td>
+                <td class="text-end"> {{7}}</td>
+              </tr>
+              <tr>
+                <td>Sub Total :</td>
+                <td class="text-end"> {{780|currency:"INR"}}</td>
+              </tr>
+              <tr>
+                <td>Discount : </td>
+                <td class="text-end">{{78|currency:"INR"}}</td>
+              </tr>
+              <tr>
+                <td>Shipping Charge :</td>
+                <td class="text-end">{{25|currency:"INR"}}</td>
+              </tr>
+
+              <tr class="bg-light">
+                <th>Total :</th>
+                <td class="text-end">
+                  <span class="fw-bold">
+                    {{745.2|currency:"INR"}}
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- end table-responsive -->
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<div class="d-flex justify-content-center ">
+  <button class="custom-button">Place Order</button>
+</div>
+
+
+<!-- 
+ <div class="row">
   <div class="col-md-8 mb-4">
     <div class="card mb-4">
       <div class="card-header py-3">
@@ -176,37 +116,32 @@
             </div>
           </div>
 
-          <!-- Text input -->
+        
           <div class="form-outline mb-4">
             <input type="text" id="form7Example3" class="form-control" />
             <label class="form-label" for="form7Example3">Company name</label>
           </div>
 
-          <!-- Text input -->
+
           <div class="form-outline mb-4">
             <input type="text" id="form7Example4" class="form-control" />
             <label class="form-label" for="form7Example4">Address</label>
           </div>
 
-          <!-- Email input -->
+  
           <div class="form-outline mb-4">
             <input type="email" id="form7Example5" class="form-control" />
             <label class="form-label" for="form7Example5">Email</label>
           </div>
 
-          <!-- Number input -->
-          <!-- <div class="form-outline mb-4">
-              <input type="number" id="form7Example6" class="form-control" />
-              <label class="form-label" for="form7Example6">Phone</label>
-            </div> -->
+        
 
-          <!-- Message input -->
+
           <div class="form-outline mb-4">
             <textarea class="form-control" id="form7Example7" rows="4"></textarea>
             <label class="form-label" for="form7Example7">Additional information</label>
           </div>
 
-          <!-- Checkbox -->
           <div class="form-check d-flex justify-content-center mb-2">
             <input class="form-check-input me-2" type="checkbox" value="" id="form7Example8" checked />
             <label class="form-check-label" for="form7Example8">
@@ -250,5 +185,4 @@
       </div>
     </div>
   </div>
-</div>
-
+</div> -->

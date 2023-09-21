@@ -1,8 +1,8 @@
-using Catalog.Models;
-using Catalog.Services.Interfaces;
+using Transflower.EKrushi.Catalog.Models;
+using Transflower.EKrushi.Catalog.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Catalog.Controllers;
+namespace Transflower.EKrushi.Catalog.Controllers;
 
 [ApiController]
 [Route("/api/[controller]")]

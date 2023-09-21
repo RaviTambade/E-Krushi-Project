@@ -1,7 +1,7 @@
-using Catalog.Repositories.Interfaces;
-using Catalog.Repositories;
-using Catalog.Services.Interfaces;
-using Catalog.Services;
+using Transflower.EKrushi.Catalog.Repositories.Interfaces;
+using Transflower.EKrushi.Catalog.Repositories;
+using Transflower.EKrushi.Catalog.Services.Interfaces;
+using Transflower.EKrushi.Catalog.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 

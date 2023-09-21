@@ -1,7 +1,7 @@
 
-using Catalog.Models;
+using Transflower.EKrushi.Catalog.Models;
 
-namespace Catalog.Repositories.Interfaces;
+namespace Transflower.EKrushi.Catalog.Repositories.Interfaces;
 public interface ICategoryRepository
 {
     Task<List<Category>> GetCategories();

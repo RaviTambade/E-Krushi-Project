@@ -1,4 +1,4 @@
-namespace Catalog.Models;
+namespace Transflower.EKrushi.Catalog.Models;
 
 public class ProductDetail : Product
 {
