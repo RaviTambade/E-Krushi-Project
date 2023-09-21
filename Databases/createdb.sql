@@ -121,6 +121,7 @@ CREATE TABLE
             'cash on delivery',
             'card'
         ),
+        paymentstatus  ENUM('paid','cancelled'),
         transactionid INT NOT NULL,
         orderid INT NOT NULL,
         CONSTRAINT fkorderid FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE

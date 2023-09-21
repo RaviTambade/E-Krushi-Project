@@ -376,58 +376,58 @@ public class OrderRepository : IOrderRepository
         return (int)count;
     }
 
-    public async Task<List<OrderHistory>> GetOrderHistory(int custId)
-    {
-        List<OrderHistory> orders = new List<OrderHistory>();
-        MySqlConnection connection = new MySqlConnection();
-        connection.ConnectionString = _connectionString;
-        try
-        {
-            string query = "select orders.id,customers.firstname,customers.lastname,orders.orderdate,orders.shippeddate, products.title,products.unitprice,(products.unitprice*cartitems.quantity)as total,orders.status ,products.image,cartitems.quantity from customers,orderdetails,orders,cartitems inner join products on products.id = cartitems.productid where orders.id = orderdetails.orderid and orderdetails.productid =cartitems.productid and customers.id=orders.custid and orders.custid=@custId";
-            await connection.OpenAsync();
-            MySqlCommand command = new MySqlCommand(query, connection);
-            command.Parameters.AddWithValue("@custId", custId);
-            MySqlDataReader reader = command.ExecuteReader();
-            while (await reader.ReadAsync())
-            {
-                int orderId = int.Parse(reader["id"].ToString());
-                DateTime orderDate = DateTime.Parse(reader["orderdate"].ToString());
-                DateTime shippedDate = DateTime.Parse(reader["shippeddate"].ToString());
-                double total = double.Parse(reader["total"].ToString());
-                string? status = reader["status"].ToString();
-                string? title = reader["title"].ToString();
-                string? image = reader["image"].ToString();
-                int unitPrice = int.Parse(reader["unitprice"].ToString());
-                int quantity = int.Parse(reader["quantity"].ToString());
-                string? firstName = reader["firstname"].ToString();
-                string? lastName = reader["lastname"].ToString();
-                OrderHistory orderHistory = new OrderHistory()
-                {
-                    OrderId = orderId,
-                    OrderDate = orderDate,
-                    ShippedDate = shippedDate,
-                    Total = total,
-                    Status = status,
-                    Title = title,
-                    Image = image,
-                    UnitPrice = unitPrice,
-                    Quantity = quantity
+    // public async Task<List<OrderHistory>> GetOrderHistory(int custId)
+    // {
+    //     List<OrderHistory> orders = new List<OrderHistory>();
+    //     MySqlConnection connection = new MySqlConnection();
+    //     connection.ConnectionString = _connectionString;
+    //     try
+    //     {
+    //         string query = "select orders.id,customers.firstname,customers.lastname,orders.orderdate,orders.shippeddate, products.title,products.unitprice,(products.unitprice*cartitems.quantity)as total,orders.status ,products.image,cartitems.quantity from customers,orderdetails,orders,cartitems inner join products on products.id = cartitems.productid where orders.id = orderdetails.orderid and orderdetails.productid =cartitems.productid and customers.id=orders.custid and orders.custid=@custId";
+    //         await connection.OpenAsync();
+    //         MySqlCommand command = new MySqlCommand(query, connection);
+    //         command.Parameters.AddWithValue("@custId", custId);
+    //         MySqlDataReader reader = command.ExecuteReader();
+    //         while (await reader.ReadAsync())
+    //         {
+    //             int orderId = int.Parse(reader["id"].ToString());
+    //             DateTime orderDate = DateTime.Parse(reader["orderdate"].ToString());
+    //             DateTime shippedDate = DateTime.Parse(reader["shippeddate"].ToString());
+    //             double total = double.Parse(reader["total"].ToString());
+    //             string? status = reader["status"].ToString();
+    //             string? title = reader["title"].ToString();
+    //             string? image = reader["image"].ToString();
+    //             int unitPrice = int.Parse(reader["unitprice"].ToString());
+    //             int quantity = int.Parse(reader["quantity"].ToString());
+    //             string? firstName = reader["firstname"].ToString();
+    //             string? lastName = reader["lastname"].ToString();
+    //             OrderHistory orderHistory = new OrderHistory()
+    //             {
+    //                 OrderId = orderId,
+    //                 OrderDate = orderDate,
+    //                 ShippedDate = shippedDate,
+    //                 Total = total,
+    //                 Status = status,
+    //                 Title = title,
+    //                 Image = image,
+    //                 UnitPrice = unitPrice,
+    //                 Quantity = quantity
 
 
-                };
-                orders.Add(orderHistory);
-            }
-        }
-        catch (Exception )
-        {
-            throw ;
-        }
-        finally
-        {
-            await connection.CloseAsync();
-        }
-        return orders;
-    }
+    //             };
+    //             orders.Add(orderHistory);
+    //         }
+    //     }
+    //     catch (Exception )
+    //     {
+    //         throw ;
+    //     }
+    //     finally
+    //     {
+    //         await connection.CloseAsync();
+    //     }
+    //     return orders;
+    // }
 
     public async Task<List<CustomerOrder>> GetOrderDetails(int customerid)
     {

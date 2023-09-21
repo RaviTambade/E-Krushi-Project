@@ -89,13 +89,13 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
             return orders;
         }
 
-        //http://localhost:5057/api/orders/orderhistory/{custId}
-        [HttpGet("orderhistory/{custId}")]          
-        public async Task<List<OrderHistory>> GetOrderHistory(int custId)
-        {
-            List<OrderHistory> orders = await _orderService.GetOrderHistory(custId);
-            return orders;
-        }
+        // //http://localhost:5057/api/orders/orderhistory/{custId}
+        // [HttpGet("orderhistory/{custId}")]          
+        // public async Task<List<OrderHistory>> GetOrderHistory(int custId)
+        // {
+        //     List<OrderHistory> orders = await _orderService.GetOrderHistory(custId);
+        //     return orders;
+        // }
 
         //http://localhost:5057/api/orders/customerorders
         [HttpGet("customerorders/{customerid}")]          

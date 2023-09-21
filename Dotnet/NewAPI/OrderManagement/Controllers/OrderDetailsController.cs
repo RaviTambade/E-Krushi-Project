@@ -16,12 +16,7 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
            _orderService = orderService;
         }
 
-        //http://localhost:5057/api/orderdetails 
-        public async Task<IEnumerable<OrderDetails>> GetAllOrderDetails()
-        {
-            List<OrderDetails> orderDetails = await _orderService.GetAllOrderDetails();
-            return orderDetails;
-        }
+       
 
         //http://localhost:5057/api/orderdetails/{id} 
         [HttpGet("{id}")]
@@ -31,27 +26,7 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
             return orderDetail;
         }
 
-        //http://localhost:5057/api/orderdetails 
-        public async Task<bool> Insert([FromBody] OrderDetails orderDetail)
-        {
-            bool status = await _orderService.Insert(orderDetail);
-            return status;
-        }
-
-        //http://localhost:5057/api/orderdetails/{id}
-        [HttpPut("{id}")]
-        public async Task<bool> Update(int id, [FromBody] OrderDetails orderDetail)
-        {
-            OrderDetails oldOrderDetail = await _orderService.GetOrderDetail(id);
-            if (oldOrderDetail.Id == 0)
-            {
-                return false;
-            }
-            orderDetail.Id = id;
-            bool status = await _orderService.Update(orderDetail);
-            return status;
-        }
-
+       
         //http://localhost:5057/api/orderdetails/{id} 
         [HttpDelete("{id}")]
         public async Task<bool> DeleteOrderDetail(int id)
@@ -62,9 +37,9 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
 
         //http://localhost:5057/api/orderdetails/order/{orderId} 
         [HttpGet("order/{orderId}")]
-        public async Task<List<OrderHistory>> GetDetails(int orderId)
+        public async Task<List<OrderDetails>> GetDetails(int orderId)
         {
-            List<OrderHistory> orders = await _orderService.GetDetails(orderId);
+            List<OrderDetails> orders = await _orderService.GetDetails(orderId);
             return orders;
         }
     }

@@ -225,12 +225,9 @@ INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,3,200);
 
 
 -- PAYMENTS DATA
-INSERT INTO payments(date,mode,transactionid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery',1,1);
-INSERT INTO payments(date,mode,transactionid,orderid)  VALUES('2022-03-08 12:08:19','card',2,2);
-INSERT INTO payments(date,mode,transactionid,orderid)  VALUES('2022-03-08 12:08:19','cash on delivery',3,3);
-INSERT INTO payments(date,mode,transactionid,orderid)  VALUES('2022-03-08 12:08:19','card',4,4);
-INSERT INTO payments(date,mode,transactionid,orderid)  VALUES('2022-03-08 12:08:19','cash on delivery',5,5);
-INSERT INTO payments(date,mode,transactionid,orderid)  VALUES('2022-06-10 12:45:30','cash on delivery',6,6);
+INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery','paid',1,1);
+INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid)  VALUES('2022-03-08 12:08:19','paid','card',2,2);
+INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid)  VALUES('2022-03-08 12:08:19','cancelled','cash on delivery',3,3);
 
 SELECT * FROM payments;
 

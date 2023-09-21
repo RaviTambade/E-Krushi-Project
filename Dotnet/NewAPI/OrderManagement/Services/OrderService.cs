@@ -32,7 +32,7 @@ public class OrderService : IOrderService{
 
     public async Task<int> TotalCount() => await _repo.TotalCount();
 
-    public async Task<List<OrderHistory>> GetOrderHistory(int custId) => await _repo.GetOrderHistory(custId);
+    // public async Task<List<OrderHistory>> GetOrderHistory(int custId) => await _repo.GetOrderHistory(custId);
 
     public async Task<List<CustomerOrder>> GetOrderDetails(int customerid) => await _repo.GetOrderDetails(customerid);
 
