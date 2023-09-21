@@ -50,9 +50,14 @@ export class OrderService {
 
   
 
-  getOrdersDetails(orderid:number):Observable<OrderDetails[]>{
-    let url = 'http://localhost:5057/api/orderdetails/order/'+orderid;
+  getOrdersDetails(orderId:number):Observable<OrderDetails[]>{
+    let url = 'http://localhost:5057/api/orderdetails/order/'+orderId;
     return this.httpClient.get<OrderDetails[]>(url);
   }
 
+
+  getOrder(orderId:number):Observable<Order>{
+    let url = 'http://localhost:5057/api/orders/customerorders/orderId/'+orderId;
+    return this.httpClient.get<Order>(url);
+  }
 }

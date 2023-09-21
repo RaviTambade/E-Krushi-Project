@@ -3,7 +3,7 @@ export class PaymentDetails {
     public date: Date,
 
     public status: string,
-
+    public total :number,
     public paymentMode: string
   ) {}
 }

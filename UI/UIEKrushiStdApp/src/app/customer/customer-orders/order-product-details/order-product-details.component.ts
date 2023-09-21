@@ -32,8 +32,5 @@ export class OrderProductDetailsComponent {
 
 
 
-  getTotal(){
-   
   
-  }
 }

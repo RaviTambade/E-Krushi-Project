@@ -11,22 +11,28 @@ export class OrderSummeryComponent implements OnInit{
 
   constructor(private ordersvc: OrderService){}
   subtotal:any;
-  orderDetails:OrderDetails[]=[];
+  order:any;
   @Input() orderId!:number;
   ngOnInit(): void {
-    this.ordersvc.getOrdersDetails(this.orderId).subscribe((res) => {
-      this.orderDetails = res;
+    // this.ordersvc.getOrdersDetails(this.orderId).subscribe((res) => {
+    //   this.orderDetails = res;
+    //   console.log(res);
+
+
+    //   this.subtotal = 0;
+    //   for (let i = 0; i < this.orderDetails.length; i++) {
+    //     // Assuming data is an array of numbers, modify this as needed for your data structure
+    //     this.subtotal += this.orderDetails[i].total;
+    //     console.log(this.subtotal);
+    //   }
+
+    // });
+
+     this.ordersvc.getOrder(this.orderId).subscribe((res) => {
+      this.order = res;
       console.log(res);
-
-
-      this.subtotal = 0;
-      for (let i = 0; i < this.orderDetails.length; i++) {
-        // Assuming data is an array of numbers, modify this as needed for your data structure
-        this.subtotal += this.orderDetails[i].total;
-        console.log(this.subtotal);
-      }
-
-    });
+      this.subtotal=res.total;
+     });
   }
 }
 
