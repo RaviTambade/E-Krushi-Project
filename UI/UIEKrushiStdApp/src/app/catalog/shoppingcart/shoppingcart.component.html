@@ -7,7 +7,8 @@
           <div class="d-flex flex-row align-items-center">
             <div>
               <img src="{{item.image}}" class="img-fluid rounded-3" alt="Shopping item"
-                style="width: 110px; cursor: pointer; margin: 4px;" [routerLink]="['/catalog/productdetail',item.productId]">
+                style="width: 110px; cursor: pointer; margin: 4px;"
+                [routerLink]="['/catalog/productdetail',item.productId]">
             </div>
 
             <div class="ms-6">
@@ -37,53 +38,15 @@
             &nbsp;&nbsp;&nbsp;
           </div>
 
-          <a class="d-flex flex-row align-items-center" style="color: #f62929 ;cursor: pointer;" (click)="openDeleteConfirmationDialog(item.cartItemId)"
-          > <i class="fas fa-trash-alt"></i></a>
+          <a class="d-flex flex-row align-items-center" style="color: #f62929 ;cursor: pointer;"
+            (click)="openDeleteConfirmationDialog(item.cartItemId)"> <i class="fas fa-trash-alt"></i></a>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-4">
-    <div class="card border shadow-none m-2">
-      <div class="card-header bg-transparent border-bottom py-3 px-4">
-        <h5 class="font-size-16 mb-0">PRICE DETAILS <span class="float-end">OrderId :15</span></h5>
-      </div>
-      <div class="card-body p-4 pt-2">
-
-        <div class="table-responsive">
-          <table class="table mb-0">
-            <tbody>
-              <tr>
-                <td>Items</td>
-                <td class="text-end"> {{7}}</td>
-              </tr>
-              <tr>
-                <td>Sub Total :</td>
-                <td class="text-end"> {{780|currency:"INR"}}</td>
-              </tr>
-              <tr>
-                <td>Discount : </td>
-                <td class="text-end">{{78|currency:"INR"}}</td>
-              </tr>
-              <tr>
-                <td>Shipping Charge :</td>
-                <td class="text-end">{{25|currency:"INR"}}</td>
-              </tr>
-
-              <tr class="bg-light">
-                <th>Total :</th>
-                <td class="text-end">
-                  <span class="fw-bold">
-                    {{745.2|currency:"INR"}}
-                  </span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <!-- end table-responsive -->
-      </div>
-    </div>
+  <div class="col-4 " style="margin-left: 3rem;" *ngIf="items.length>0">
+    <app-cart-summary 
+     [total]="total" [totalItems]="totalItems" [discount]="discount" [subTotal]="subTotal" ></app-cart-summary>
   </div>
 
 
