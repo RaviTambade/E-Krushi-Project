@@ -10,7 +10,7 @@ import { OrderService } from 'src/app/Services/order-service.service';
 })
 export class CustomerOrdersComponent implements OnInit {
   orders: Order[] = [];
-  customerid: number = 3;
+  customerid: number = 2;
   filteredOrders: Order[] = [];
   activeFilter: string | null = null;
   subtotal!:number;

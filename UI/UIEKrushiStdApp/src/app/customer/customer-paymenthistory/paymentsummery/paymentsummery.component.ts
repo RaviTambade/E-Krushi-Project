@@ -15,7 +15,7 @@ paymentDetails:any;
     this.paymentsvc.getPaymentDetails(this.orderId).subscribe((res)=>{
       
 
-      this.paymentDetails=res;
+    this.paymentDetails=res;
      console.log(this.orderId);
      console.log(res);
     })

@@ -33,7 +33,7 @@ public class OrderRepository : IOrderRepository
                 int id = int.Parse(reader["orderid"].ToString());
                 DateTime orderDate = DateTime.Parse(reader["orderdate"].ToString());
                 string status = reader["status"].ToString();
-                string total = reader["total"].ToString();
+                double total = double.Parse(reader["total"].ToString());
 
                 CustomerOrder customerOrder = new CustomerOrder()
                 {
@@ -58,7 +58,50 @@ public class OrderRepository : IOrderRepository
         return customerOrders;
     }
 
-   
+   public CustomerOrder GetOrderDetailsByOrderId(int orderid)
+    {
+        CustomerOrder customerOrder = new CustomerOrder();
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _connectionString;
+        try
+        {
+            string query = "SELECT  shippeddate,total from orders where id=@orderid";
+
+             connection.Open();
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@orderid",orderid);
+            MySqlDataReader reader = command.ExecuteReader();
+            if( reader.Read())
+            {
+               
+                
+                DateTime shippedDate = DateTime.Parse(reader["shippeddate"].ToString());
+                
+                double total =double.Parse(reader["total"].ToString());
+
+                 customerOrder = new CustomerOrder()
+                {
+                   
+                    ShippedDate=shippedDate,
+                   
+                    Total = total
+                };
+
+                
+            }
+            reader.Close();
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+        finally
+        {
+            connection.Close();
+        }
+        return customerOrder;
+    }
+
 
 
 

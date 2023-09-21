@@ -20,5 +20,6 @@ public class OrderService : IOrderService
 
     public async Task<List<CustomerOrder>> GetOrderDetails(int customerid) => await _repo.GetOrderDetails(customerid);
 
+ public CustomerOrder GetOrderDetailsByOrderId(int orderid) =>  _repo.GetOrderDetailsByOrderId(orderid);
 
 }

@@ -34,7 +34,12 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
             return customerOrders;
         }
 
-        
+        [HttpGet("customerorders/orderid/{orderid}")]          
+        public CustomerOrder GetOrderDetailsByOrderId(int orderid)
+        {
+            CustomerOrder customerOrder=  _orderService.GetOrderDetailsByOrderId(orderid);
+            return customerOrder;
+        }
 
 
          

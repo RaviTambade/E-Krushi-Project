@@ -1,7 +1,9 @@
 -- Active: 1694968636816@@127.0.0.1@3306@ekrushi
-SELECT date,paymentstatus,mode from payments where orderid=1;
+SELECT orders.total,payments.date,payments.paymentstatus,payments.mode from payments  INNER JOIN orders ON
+orders.id=payments.orderid where orderid=1;
+SELECT shippeddate,total from orders where id=1;
 select * from orders;
-select * from products;
+select * from payments;
 SELECT * from productdetails;
 
 -- customer orderdetails query
