@@ -20,7 +20,9 @@ export const customerRoutes: Routes = [
   { path: 'orders/details/:orderid', component: OrderDetailsComponent },
   { path: 'paymentlist', component: CustomerPaymenthistoryComponent },
   { path: 'wishlist', component: CustomerWishlistComponent },
- 
+  { path: 'shoppingcart', component: ShoppingcartComponent },
+
+
 ];
 
 @NgModule({

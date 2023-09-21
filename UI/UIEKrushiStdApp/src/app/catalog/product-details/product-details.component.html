@@ -9,7 +9,16 @@
         </div>
         <div style="display: flex; justify-content: space-around;">
           <a href="#" class="btn btn-warning shadow-0"> Buy now </a>
-          <a href="#" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-cart"></i> Add to cart </a>
+          <div *ngIf="!isProductAlreadyInCart ">
+            <a class="btn btn-primary shadow-0" (click)="onAddToCart(product)"> <i
+                class="me-1 fa fa-shopping-cart"></i>ADD TO CART</a>
+          </div>
+          <div *ngIf="isProductAlreadyInCart ">
+            <a class="btn btn-primary shadow-0" (click)="goToCart()"> <i class="me-1 fa fa-shopping-cart"></i>
+              GO TO CART</a>
+
+          </div>
+
         </div>
         <div class="m-4">
           <app-product-default-icons></app-product-default-icons>
@@ -86,7 +95,7 @@
                   {{product.description}}
                 </p>
 
-         
+
               </div>
             </div>
           </div>

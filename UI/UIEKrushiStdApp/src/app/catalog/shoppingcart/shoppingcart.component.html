@@ -7,7 +7,7 @@
           <div class="d-flex flex-row align-items-center">
             <div>
               <img src="{{item.image}}" class="img-fluid rounded-3" alt="Shopping item"
-                style="width: 110px; cursor: pointer;" [routerLink]="['/catalog/productdetail',item.productId]">
+                style="width: 110px; cursor: pointer; margin: 4px;" [routerLink]="['/catalog/productdetail',item.productId]">
             </div>
 
             <div class="ms-6">
@@ -22,7 +22,7 @@
                 </button>
 
                 <input id="form1" min=1 max=10 name="quantity" type="text" [value]="item.quantity" pattern="[0-9]+"
-                  class="form-control form-control-sm" style="width: 60px; height: 10px;"
+                  class="form-control form-control-sm" style="width: 40px; height: 10px;"
                   (input)="updateQuantity(item,$event)" />
 
                 <button class="btn btn-link px-1" (click)="onClickIncrement(item)">
@@ -37,9 +37,8 @@
             &nbsp;&nbsp;&nbsp;
           </div>
 
-          <a href="#!" class="d-flex flex-row align-items-center" style="color: #f62929;"> <i
-              class="fas fa-trash-alt"></i></a>
-          <!-- </div> -->
+          <a class="d-flex flex-row align-items-center" style="color: #f62929 ;cursor: pointer;" (click)="openDeleteConfirmationDialog(item.cartItemId)"
+          > <i class="fas fa-trash-alt"></i></a>
         </div>
       </div>
     </div>
@@ -89,7 +88,8 @@
 
 
 </div>
-<div class="d-flex justify-content-center ">
+
+<div class="fixed-button-container">
   <button class="custom-button">Place Order</button>
 </div>
 

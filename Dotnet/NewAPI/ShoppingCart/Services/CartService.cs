@@ -6,16 +6,16 @@ namespace ShoppingCartService.Services;
 
 public class CartService : ICartService
 {
-    private readonly ICartRepository _repo;
+    private readonly ICartRepository _repository;
 
-    public CartService(ICartRepository repo)
+    public CartService(ICartRepository repository)
     {
-        this._repo = repo;
+        _repository = repository;
     }
 
     public async Task<List<Item>> GetCartItems(int customerId)
     {
-        return await _repo.GetCartItems(customerId);
+        return await _repository.GetCartItems(customerId);
     }
 
     public async Task<bool> UpdateItemQuantity(int cartItemId, int quantity)
@@ -24,43 +24,47 @@ public class CartService : ICartService
         {
             return false;
         }
-        return await _repo.UpdateItemQuantity(cartItemId, quantity);
+        return await _repository.UpdateItemQuantity(cartItemId, quantity);
     }
 
-    // public async Task<Cart> GetAll(int id)
-    // {
-    //     return await _repo.GetAll(id);
-    // }
+    public async Task<bool> RemoveItem(int cartItemId)
+    {
+        return await _repository.RemoveItem(cartItemId);
+    }
 
-    // public async Task<bool> AddItem( Item item)
-    // {
-    //     return await _repo.AddItem( item);
-    // }
+    public async Task<bool> AddItem(CartItem item)
+    {
+        return await _repository.AddItem(item);
+    }
+       public async Task<bool> IsProductInCart (CartItem item)
+        {
+            return await _repository.IsProductInCart(item);
+        }
+
+  
+
 
 
 
     // public async Task<int> GetCartId(int custId)
     // {
-    //     return await _repo.GetCartId(custId);
+    //     return await _repository.GetCartId(custId);
     // }
 
     // public async Task<List<Item>> GetCartDetails(int custId)
     // {
-    //     return await _repo.GetCartDetails(custId);
+    //     return await _repository.GetCartDetails(custId);
     // }
 
-    // public async Task<bool> RemoveItem(int cartItemId)
-    // {
-    //     return await _repo.RemoveItem(cartItemId);
-    // }
+
 
     // public async Task<bool> Update(Item item)
     // {
-    //     return await _repo.Update(item);
+    //     return await _repository.Update(item);
     // }
 
     // public async Task<bool> CreateOrder(int CartId)
     // {
-    //     return await _repo.CreateOrder(CartId);
+    //     return await _repository.CreateOrder(CartId);
     // }
 }

@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Caching.Distributed;
 using Transflower.EKrushi.ShoppingCartService.Models;
 using Transflower.EKrushi.ShoppingCartService.Interfaces;
 
@@ -9,29 +8,49 @@ namespace Transflower.EKrushi.ShoppingCartService.Controllers
     [Route("/api/cart")]
     public class CartController : ControllerBase
     {
-        private readonly ICartService _cartService;
+        private readonly ICartService _service;
 
-        public CartController(ICartService cartService)
+        public CartController(ICartService service)
         {
-            _cartService = cartService;
+            _service = service;
         }
 
         [HttpGet("customer/{id}")]
         public async Task<List<Item>> GetCartItems(int id)
         {
-            return await _cartService.GetCartItems(id);
+            return await _service.GetCartItems(id);
         }
 
-         [HttpPut("item/{cartItemId}/quantity/{quantity}")]
-        public async Task<bool> UpdateItemQuantity(int cartItemId,int quantity)
+        [HttpPost]
+        public async Task<bool> AddItem([FromBody] CartItem item)
         {
-            return await _cartService.UpdateItemQuantity(cartItemId,quantity);
+            return await _service.AddItem(item);
+        }
+
+        [HttpPut("item/{cartItemId}/quantity/{quantity}")]
+        public async Task<bool> UpdateItemQuantity(int cartItemId, int quantity)
+        {
+            return await _service.UpdateItemQuantity(cartItemId, quantity);
+        }
+
+        [HttpDelete]
+        [Route("remove/{cartItemId}")]
+        public async Task<bool> RemoveItem(int cartItemId)
+        {
+            return await _service.RemoveItem(cartItemId);
+        }
+
+        [HttpPost]
+        [Route("product/present")]
+        public async Task<bool> IsProductInCart (CartItem item)
+        {
+            return await _service.IsProductInCart(item);
         }
 
         // [HttpGet("getall/{custId}")]
         // public async Task<Cart> GetAll(int custId)
         // {
-        //    Cart items = await _cartService.GetAll(custId);
+        //    Cart items = await _service.GetAll(custId);
         //     Console.WriteLine(custId);
         //     return items;
         // }
@@ -45,18 +64,13 @@ namespace Transflower.EKrushi.ShoppingCartService.Controllers
         // [HttpPost]
         // [Route("addtocart")]
 
-        // public async Task<bool> AddItem([FromBody] Item item)
-        // {
-        //     bool status = await _cartService.AddItem( item);
 
-        //     return status;
-        // }
 
 
         // [HttpGet("getcartId/{custId}")]
         // public async Task<int> GetCartId(int custId)
         // {
-        //     int cartId = await _cartService.GetCartId(custId);
+        //     int cartId = await _service.GetCartId(custId);
         //     return cartId;
         // }
 
@@ -64,27 +78,19 @@ namespace Transflower.EKrushi.ShoppingCartService.Controllers
         // public async Task<List<Item>> GetCartDetails(int custId)
         // {
         //     Console.WriteLine(custId);
-        //     List<Item> items = await _cartService.GetCartDetails(custId);
+        //     List<Item> items = await _service.GetCartDetails(custId);
         //     return items;
         // }
 
-        // [HttpDelete]
-        // [Route("remove/{cartItemId}")]
 
-        // public async Task<bool> RemoveItem(int cartItemId)
-        // {
-        //     bool status = await _cartService.RemoveItem(cartItemId);
 
-        //     return status;
-        // }
 
-       
 
 
         // [HttpGet("createorder/{CartId}")]
         // public async Task<bool> CreateOrder( int CartId)
         // {
-        //     return await _cartService.CreateOrder(CartId);
+        //     return await _service.CreateOrder(CartId);
         // }
     }
 }

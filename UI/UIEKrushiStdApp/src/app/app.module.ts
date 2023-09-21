@@ -22,6 +22,8 @@ import { CatalogModule, catlogRoutes } from './catalog/catalog.module';
 import { ShoppingcartComponent } from './catalog/shoppingcart/shoppingcart.component';
 import { OrderService } from './Services/order-service.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SecondaryNavMenuComponent,
     AboutUsComponent,
     ContactUsComponent,
+    DeleteConfirmationComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,12 +41,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     AuthenticationModule,
     CatalogModule,
+    MatDialogModule,
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'aboutus', component: AboutUsComponent },
       { path: 'home', component: HomeComponent },
-      { path: 'shoppingcart', component: ShoppingcartComponent },
       { path: 'login', component: LoginComponent },
       {path:'customer',children:customerRoutes},
       {path:'catalog',children:catlogRoutes},

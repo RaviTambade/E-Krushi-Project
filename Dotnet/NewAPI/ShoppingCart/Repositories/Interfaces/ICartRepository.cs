@@ -5,12 +5,15 @@ namespace Transflower.EKrushi.ShoppingCartService.Repositories.Interfaces
     public interface ICartRepository
     {
         Task<List<Item>> GetCartItems(int customerId);
+        Task<bool> RemoveItem(int cartItemId);
         Task<bool> UpdateItemQuantity(int cartItemId, int quantity);
+        Task<bool> AddItem(CartItem item);
+        Task<bool> IsProductInCart(CartItem item);
+
         // Task<Cart> GetAll(int custid);
         // Task<bool> AddItem(Item item);
 
         // Task<bool> Update(Item item);
-        // Task<bool> RemoveItem(int cartItemId);
         // Task<int> GetCartId(int custId);
 
 

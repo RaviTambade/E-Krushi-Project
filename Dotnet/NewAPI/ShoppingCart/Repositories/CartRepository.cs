@@ -79,13 +79,113 @@ public class CartRepository : ICartRepository
         try
         {
             string query =
-            "UPDATE cartitems SET quantity=@quantity where cartitems.id = @cartItemId";
+                "UPDATE cartitems SET quantity=@quantity where cartitems.id = @cartItemId";
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@cartItemId", cartItemId);
             command.Parameters.AddWithValue("@quantity", quantity);
             await connection.OpenAsync();
             int rowsAffected = command.ExecuteNonQuery();
             if (rowsAffected > 0)
+            {
+                status = true;
+            }
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+        return status;
+    }
+
+    public async Task<bool> RemoveItem(int cartItemId)
+    {
+        bool status = false;
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _conString;
+        try
+        {
+            string query = "DELETE FROM cartitems WHERE id = @cartItemId";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@cartItemId", cartItemId);
+            await connection.OpenAsync();
+            int rowsAffected = await command.ExecuteNonQueryAsync();
+            if (rowsAffected > 0)
+            {
+                status = true;
+            }
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+        return status;
+    }
+
+
+
+    public async Task<bool> AddItem(CartItem item)
+    {
+        bool status = false;
+
+        MySqlConnection connection = new MySqlConnection();
+        try
+        {
+            connection.ConnectionString = _conString;
+            await connection.OpenAsync();
+            string query =
+                @"INSERT INTO cartitems (cartid, productdetailsid, quantity) VALUES ( 
+                (SELECT id FROM carts WHERE customerid = @customerid),
+                (SELECT id FROM productdetails WHERE productid = @productid AND size = @size), 1)";
+
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@productid", item.ProductId);
+            command.Parameters.AddWithValue("@customerid", item.CustomerId);
+            command.Parameters.AddWithValue("@size", item.Size);
+            int rowsAffected = await command.ExecuteNonQueryAsync();
+            if (rowsAffected >= 1)
+            {
+                status = true;
+            }
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+        return status;
+    }
+
+    public async Task<bool> IsProductInCart(CartItem item)
+    {
+       bool status = false;
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _conString;
+        try
+        {
+            string query =
+            @"SELECT EXISTS (SELECT  cartitems.id from  cartitems   
+            INNER JOIN carts on carts.id = cartitems.cartid
+            WHERE carts.customerid=@customerid  AND cartitems.productdetailsid = 
+            (SELECT id FROM productdetails WHERE productid=@productid and size=@size ))";
+
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@productid", item.ProductId);
+            command.Parameters.AddWithValue("@customerid", item.CustomerId);
+            command.Parameters.AddWithValue("@size", item.Size);
+            await connection.OpenAsync();
+            var isExists =  await command.ExecuteScalarAsync();
+            if ( isExists != null && (long) isExists ==1 ) 
             {
                 status = true;
             }
@@ -298,41 +398,7 @@ public class CartRepository : ICartRepository
             }
             return items;
         }
-        public async Task<bool> RemoveItem(int cartItemId)
-        {
-            bool status = false;
-            MySqlConnection connection = new MySqlConnection();
-            connection.ConnectionString = _conString;
-            try
-            {
-                string query = "Delete from cartitems where id = @cartItemId";
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("@cartItemId", cartItemId);
-                await connection.OpenAsync();
-                int rowsAffected = command.ExecuteNonQuery();
-                if (rowsAffected > 0)
-                {
-                    status = true;
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                await connection.CloseAsync();
-            }
-            return status;
-        }
-    
-    
-        public async Task<bool> Update(Item item)
-        {
-           
-            return true;
-        }
-    
+       
     
     
     
