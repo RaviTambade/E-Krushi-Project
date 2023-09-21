@@ -7,6 +7,5 @@ public interface IOrderRepository{
     
     
     Task<List<CustomerOrder>> GetOrderDetails(int customerid);
-    
-
+    CustomerOrder GetOrderDetailsByOrderId(int orderid);
 }
