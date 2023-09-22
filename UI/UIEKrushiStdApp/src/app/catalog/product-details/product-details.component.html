@@ -1,9 +1,9 @@
 <section class="py-5">
   <div class="container">
     <div class="row gx-5">
-      <aside class="col-lg-6">
-        <div class="border rounded-4 mb-3 d-flex justify-content-center">
-          <a data-fslightbox="mygalley" class="rounded-4" target="_blank" data-type="image" href="{{product.image}}">
+      <aside class="col-lg-5">
+        <div class="border rounded-4 p-2 mb-3 d-flex justify-content-center">
+          <a class="rounded-4" target="_blank" data-type="image" href="{{product.image}}">
             <img height="400px" width="450px" class="rounded-4 fit" src="{{product.image}}" />
           </a>
         </div>
@@ -25,18 +25,14 @@
         </div>
       </aside>
 
-      <main class="col-lg-6">
+      <main class="col-lg-6 m-4 p-4">
         <div class="ps-lg-3">
           <h4 class="title text-dark">
-            {{product.title}}
+            {{product.title |titlecase}}
           </h4>
           <div class="d-flex flex-row my-3">
             <div class="text-warning mb-1 me-2">
-              <!-- <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fa fa-star"></i>
-              <i class="fas fa-star-half-alt"></i> -->
+             
               <span class="ms-1">
                 {{product.rating}}
                 <i class="fa fa-star"></i>

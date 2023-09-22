@@ -19,7 +19,6 @@ import { SecondaryNavMenuComponent } from './secondary-nav-menu/secondary-nav-me
 import { AboutUsComponent } from './AboutUs/AboutUs.component';
 import { ContactUsComponent } from './ContactUs/ContactUs.component';
 import { CatalogModule, catlogRoutes } from './catalog/catalog.module';
-import { ShoppingcartComponent } from './catalog/shoppingcart/shoppingcart.component';
 import { OrderService } from './Services/order-service.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
