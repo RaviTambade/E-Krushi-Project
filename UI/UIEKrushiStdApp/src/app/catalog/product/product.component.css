@@ -49,6 +49,6 @@
 
 
 .select-style{
-  border: solid 2px; 
   min-width: 50px;
+  padding: 2px;
 }
