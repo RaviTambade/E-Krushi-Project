@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ProductComponent } from './product/product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { Route, RouterModule, Routes } from '@angular/router';
-import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 import { ProductSimilarItemsComponent } from './product-details/product-similar-items/product-similar-items.component';
 import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
 import { ProductDefaultIconsComponent } from './product-details/product-default-icons/product-default-icons.component';
@@ -11,10 +10,8 @@ import { CategoriesComponent } from './categories/categories.component';
 import { ProductHomeComponent } from './product-home/product-home.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { FormsModule } from '@angular/forms';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ProductCategoriesDetailsComponent } from './product-categories-details/product-categories-details.component';
 import { SearchProductResultComponent } from './search-product-result/search-product-result.component';
-import { CartSummaryComponent } from './shoppingcart/cart-summary/cart-summary.component';
 
 export const catlogRoutes: Routes = [
   {
@@ -34,7 +31,6 @@ export const catlogRoutes: Routes = [
   declarations: [
     ProductComponent,
     ProductDetailsComponent,
-    ShoppingcartComponent,
     ProductSimilarItemsComponent,
     ProductCarouselComponent,
     ProductDefaultIconsComponent,
@@ -43,16 +39,9 @@ export const catlogRoutes: Routes = [
     SearchbarComponent,
     ProductCategoriesDetailsComponent,
     SearchProductResultComponent,
-    CartSummaryComponent,
   ],
 
-  imports: [CommonModule, RouterModule, FormsModule,MatSnackBarModule
-    ],
-  exports: [
-    ProductComponent,
-    ShoppingcartComponent,
-    ProductHomeComponent,
-    SearchbarComponent,
-  ],
+  imports: [CommonModule, RouterModule, FormsModule],
+  exports: [ ProductHomeComponent, SearchbarComponent],
 })
 export class CatalogModule {}

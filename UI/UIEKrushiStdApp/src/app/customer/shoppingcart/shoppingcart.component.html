@@ -13,16 +13,16 @@
 
             <div class="ms-6">
               <a [routerLink]="['/catalog/productdetail',item.productId]">
-                <h5>{{item.title}}</h5>
+                <h5>{{item.title |titlecase}}</h5>
               </a>
-              <p class="small mb-2"><b>Size :{{item.size}}</b></p>
-              <p class="small mb-2"><b>{{item.unitPrice |currency:"INR"}}</b></p>
+              <p class=" mb-2">Size :{{item.size}}</p>
+              <p class="mb-2">{{item.unitPrice |currency:"INR"}}</p>
               <div class="d-flex flex-row">
                 <button class="btn  btn-link   px-2" (click)="onClickDecrement(item)">
                   <i class="fas fa-minus"></i>
                 </button>
 
-                <input id="form1" min=1 max=10 name="quantity" type="text" [value]="item.quantity" pattern="[0-9]+"
+                <input id="form1"  name="quantity" type="text" [value]="item.quantity" pattern="[0-9]+"
                   class="form-control form-control-sm" style="width: 40px; height: 10px;"
                   (input)="updateQuantity(item,$event)" />
 
@@ -34,7 +34,7 @@
           </div>
 
           <div class="d-flex flex-row align-items-center">
-            <h5 class="fw-normal mb-0">{{item.unitPrice *item.quantity |currency:"INR" }}</h5>
+            <h5 class="fw-normal mb-0"> {{item.unitPrice *item.quantity |currency:"INR" }}</h5>
             &nbsp;&nbsp;&nbsp;
           </div>
 
@@ -57,8 +57,7 @@
 </div>
 
 
-<!-- 
- <div class="row">
+ <!-- <div class="row">
   <div class="col-md-8 mb-4">
     <div class="card mb-4">
       <div class="card-header py-3">
@@ -148,4 +147,4 @@
       </div>
     </div>
   </div>
-</div> -->
+</div>  -->

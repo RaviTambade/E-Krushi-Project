@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component,  OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CartItem } from 'src/app/Models/cart-item';
@@ -48,8 +48,7 @@ export class ShoppingcartComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
         this.deleteItem(cartItemId);
-      } else {
-      }
+      } 
     });
   }
 
