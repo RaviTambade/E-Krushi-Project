@@ -6,16 +6,16 @@
                     <thead>
                         <tr>
                             <th>OrderId</th>
-                            <th>Order Date</th>
-                            <th>Payment status</th>
+                            <th>PaymentDate</th>
+                            <th>PaymentStatus</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor=" let payment of paymentHistory">
+                        <tr *ngFor=" let payment of payments">
                             <td>{{payment.orderId}}</td>
-                            <td>{{payment.orderdate}}</td>
-                            <td>{{payment.status}}</td>
+                            <td>{{payment.paymentDate}}</td>
+                            <td>{{payment.paymentStatus}}</td>
                             <td>
                                 <button class="btn btn-primary" (click)="viewPaymentDetails(payment.orderId)">
                                     Details
