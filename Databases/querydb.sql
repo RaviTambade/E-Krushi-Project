@@ -4,6 +4,8 @@ orders.id=payments.orderid where orderid=1;
 SELECT shippeddate,total from orders where id=1;
 select * from orders;
 select * from payments;
+-- customer payments
+select (date)as paymentdate,paymentstatus,orderid FROM payments where orderid in (SELECT id from orders where customerid =2);
 SELECT * from productdetails;
 
 -- customer orderdetails query
@@ -13,7 +15,9 @@ INNER join  orderdetails on productdetails.id=orderdetails.productdetailsid
 INNER join orders on  orders.id=orderdetails.orderid where orders.id=4;
 show TABLES;
 
-select * from payments;
+select orders.orderdate from orders LEFT join payments on orders.id=payments.orderid ;
+
+select * from roles;
 
 select count(orderdate),monthname(orderdate) from orders order by orderdate;
 
