@@ -4,6 +4,8 @@ orders.id=payments.orderid where orderid=1;
 SELECT shippeddate,total from orders where id=1;
 select * from orders;
 select * from payments;
+
+SELECT (payments.id)as paymentid,  (orders.total) as total,(payments.date)as date,(payments.paymentstatus) as paymentstatus,(payments.mode)as mode from payments  INNER JOIN orders ON orders.id=payments.orderid where payments.orderid=1;
 -- customer payments
 select (date)as paymentdate,paymentstatus,orderid FROM payments where orderid in (SELECT id from orders where customerid =2);
 SELECT * from productdetails;

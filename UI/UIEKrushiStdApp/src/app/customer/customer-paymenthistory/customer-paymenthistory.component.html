@@ -5,7 +5,7 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>OrderId</th>
+
                             <th>PaymentDate</th>
                             <th>PaymentStatus</th>
                             <th></th>
@@ -13,8 +13,8 @@
                     </thead>
                     <tbody>
                         <tr *ngFor=" let payment of payments">
-                            <td>{{payment.orderId}}</td>
-                            <td>{{payment.paymentDate}}</td>
+
+                            <td>{{payment.paymentDate|date}}</td>
                             <td>{{payment.paymentStatus}}</td>
                             <td>
                                 <button class="btn btn-primary" (click)="viewPaymentDetails(payment.orderId)">

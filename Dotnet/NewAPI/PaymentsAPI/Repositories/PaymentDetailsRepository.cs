@@ -28,13 +28,14 @@ public class PaymentDetailsRepository : IPaymentDetailsRepository
         connection.ConnectionString = _connectionString;
         try
         {
-            string query = "SELECT (orders.total) as total,(payments.date)as date,(payments.paymentstatus) as paymentstatus,(payments.mode)as mode from payments  INNER JOIN orders ON orders.id=payments.orderid=@orderId";
+            string query = "SELECT (payments.id)as paymentid,  (orders.total) as total,(payments.date)as date,(payments.paymentstatus) as paymentstatus,(payments.mode)as mode from payments  INNER JOIN orders ON orders.id=payments.orderid where payments.orderid=@orderId";
              connection.Open();
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@orderId", orderid);
             MySqlDataReader reader = command.ExecuteReader();
             if(reader.Read())
             {
+                int paymentid = int.Parse(reader["paymentid"].ToString());
                 DateTime date = DateTime.Parse(reader["date"].ToString());
                 double total = double.Parse(reader["total"].ToString());
                 string paymentmode =reader["mode"].ToString();
@@ -43,6 +44,7 @@ public class PaymentDetailsRepository : IPaymentDetailsRepository
 
                  order = new PaymentDetails()
                 {
+                    PaymentId=paymentid,
                     Date = date,
                     Total=total,
                     PaymentMode = paymentmode,

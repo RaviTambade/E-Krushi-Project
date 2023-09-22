@@ -8,7 +8,7 @@ import { PaymentService } from 'src/app/Services/payment.service';
 })
 export class PaymentsummeryComponent implements OnInit {
   @Input() orderId!:number;
-  
+  PaymentId!:number;
 paymentDetails:any;
  constructor(private paymentsvc: PaymentService){}
   ngOnInit(): void {
@@ -16,6 +16,7 @@ paymentDetails:any;
       
 
     this.paymentDetails=res;
+    this.PaymentId=res.paymentId;
      console.log(this.orderId);
      console.log(res);
     })

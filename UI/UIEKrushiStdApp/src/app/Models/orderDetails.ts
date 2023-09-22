@@ -7,8 +7,7 @@ export class OrderDetails {
         public quantity:number, 
         public unitPrice:number,
         public status:string,
-        
-        
+       
         
     ){}
 }
