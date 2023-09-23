@@ -4,6 +4,8 @@ export class PaymentDetails {
 
     public status: string,
     public total :number,
-    public paymentMode: string
+    public paymentMode: string,
+    public paymentId:number
+        
   ) {}
 }

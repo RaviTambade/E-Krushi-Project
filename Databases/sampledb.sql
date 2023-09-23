@@ -186,26 +186,14 @@ INSERT INTO productreview(productid,customerid,rating,review) VALUES (20,3,3.5,'
 INSERT INTO productreview(productid,customerid,rating,review) VALUES (21,2,4.5,'Nice Product');
 INSERT INTO productreview(productid,customerid,rating,review) VALUES (21,3,4.5,'Nice Product');
 
-INSERT INTO orders(orderdate,shippeddate,customerid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',2,500,'initiated');
-INSERT INTO orders(orderdate,shippeddate,customerid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',2,500,'cancelled');
+INSERT INTO orders(orderdate,shippeddate,customerid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',2,120,'initiated');
+INSERT INTO orders(orderdate,shippeddate,customerid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',2,480,'cancelled');
 
-INSERT INTO orders(orderdate,shippeddate,customerid,total,status) VALUES ('2020-11-01 12:12:12','2020-11-02 10:02:12',2,800,'delivered');
-INSERT INTO orders(orderdate,shippeddate,customerid,total,status) VALUES ('2020-10-01 12:12:12','2020-10-02 10:22:12',3,700,'cancelled');
-INSERT INTO orders(orderdate,shippeddate,customerid,total,status) VALUES ('2021-12-01 12:10:12','2021-12-02 10:12:12',3,500,'initiated');
-INSERT INTO orders(orderdate,shippeddate,customerid,total,status) VALUES ('2022-11-01 12:11:00','2022-11-02 10:02:12',3,1800,'delivered');
-INSERT INTO orders(orderdate,shippeddate,customerid,total,status) VALUES ('2023-10-01 12:13:11','2023-10-02 10:22:12',2,7100,'cancelled');
-INSERT INTO orders(orderdate,shippeddate,customerid,total,status) VALUES ('2020-05-01 12:14:13','2020-05-02 10:12:12',2,5020,'initiated');
 
 
 -- ORDER_DETAILS DATA
-INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (1,2,20);
-INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (2,2,25);
-INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (3,1,40);
-INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (4,3,15);
-INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (4,3,48);
-INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (5,5,41);
-INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (7,6,63);
-INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (6,2,63);
+INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (1,1,1);
+INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (2,2,2);
 
 
 -- CARTS DATA
@@ -225,9 +213,11 @@ INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,19,2);
 
 
 -- PAYMENTS DATA
-INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery','paid',1,6);
+INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery','paid',1,1);
 
-INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid)  VALUES('2022-03-08 12:08:19','cancelled','cash on delivery',3,3);
+INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery','paid',1,2);
+INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery','paid',1,5);
+INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery','paid',1,5);
 
 SELECT * FROM payments;
 

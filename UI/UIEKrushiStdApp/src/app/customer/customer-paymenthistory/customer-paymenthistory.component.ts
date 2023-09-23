@@ -21,6 +21,7 @@ export class CustomerPaymenthistoryComponent implements OnInit {
   }
   viewStaus: boolean = false;
   selectedOrderId: number | null = null;
+ 
   paymentHistory: any = [
     { paymentId: 1, orderId: 1, orderdate: '10-02-2022', status: 'Paid' },
     { paymentId: 4, orderId: 2, orderdate: '12-06-2020', status: 'UnPaid' },
