@@ -13,8 +13,6 @@ paymentDetails:any;
  constructor(private paymentsvc: PaymentService){}
   ngOnInit(): void {
     this.paymentsvc.getPaymentDetails(this.orderId).subscribe((res)=>{
-      
-
     this.paymentDetails=res;
     this.PaymentId=res.paymentId;
      console.log(this.orderId);

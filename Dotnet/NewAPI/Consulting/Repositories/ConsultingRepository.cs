@@ -562,7 +562,7 @@ public class ConsultingRepository : IConsultingRepository
         connection.ConnectionString = _connectionString;
         try
         {
-            string query = "select customerquestions.id, questions.description,customerquestions.questiondate,(select count(*) from answers where questionid=customerquestions.questionid)as answers  from questions inner join customerquestions on customerquestions.questionid=questions.id where customerquestions.custid=@custId";
+            string query = "select customerquestions.id, questions.description,customerquestions.questiondate,(select count(*) from answers where questionid=customerquestions.questionid)as answers  from questions inner join customerquestions on customerquestions.questionid=questions.id where customerquestions.customerid=@custId";
             await connection.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@custId", custId);

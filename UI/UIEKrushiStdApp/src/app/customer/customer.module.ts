@@ -13,6 +13,9 @@ import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 import { CartSummaryComponent } from './shoppingcart/cart-summary/cart-summary.component';
+import { CustomerQuestionsComponent } from './customer-questions/customer-questions.component';
+import { QuestionsComponent } from './customer-questions/questions/questions.component';
+import { AddquestionComponent } from './customer-questions/addquestion/addquestion.component';
 
 export const customerRoutes: Routes = [
   { path: 'dashboard', component: CustomerDashboardComponent },
@@ -21,6 +24,13 @@ export const customerRoutes: Routes = [
   { path: 'paymentlist', component: CustomerPaymenthistoryComponent },
   { path: 'wishlist', component: CustomerWishlistComponent },
   { path: 'shoppingcart', component: ShoppingcartComponent },
+  {path:'question' , component:CustomerQuestionsComponent,
+children:[
+  {path:'addquestion' , component:AddquestionComponent},
+
+]},
+  {path:'questionHistory' , component:QuestionsComponent},
+ 
 ];
 
 @NgModule({
@@ -35,6 +45,9 @@ export const customerRoutes: Routes = [
     ShoppingcartComponent,
     CartSummaryComponent,
     PaymentsummeryComponent,
+    CustomerQuestionsComponent,
+    QuestionsComponent,
+    AddquestionComponent,
   ],
   imports: [CommonModule, RouterModule, FormsModule, MatSnackBarModule],
 })
