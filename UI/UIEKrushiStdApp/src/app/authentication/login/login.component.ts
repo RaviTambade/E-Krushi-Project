@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Route, Router } from '@angular/router';
+import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
 import { Credential } from 'src/app/Models/credential';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { UserService } from 'src/app/Services/user.service';
@@ -26,13 +27,13 @@ export class LoginComponent {
     console.log('Validating user');
     this.authService.validate(this.credential).subscribe((response) => {
       if (response != null) {
-        localStorage.setItem('JWT', response.token);
+        localStorage.setItem(LocalStorageKeys.jwt, response.token);
         this.userService
           .getUserByContact(this.credential.contactNumber)
           .subscribe((response) => {
             this.userId = response.id;
             console.log(this.userId);
-            localStorage.setItem('userId', this.userId.toString());
+            localStorage.setItem(LocalStorageKeys.userId, this.userId.toString());
             this.userService.getUserRole(this.userId).subscribe((response) => {
               this.roles = response;
               console.log(this.roles);

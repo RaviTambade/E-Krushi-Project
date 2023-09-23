@@ -1,5 +1,6 @@
 import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
+import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
 import { AddItem } from 'src/app/Models/addItem';
 import { ProductDetail } from 'src/app/Models/productDetail';
 import { CartService } from 'src/app/Services/cart.service';
@@ -64,7 +65,7 @@ export class ProductDetailsComponent  {
   }
 
   isProductInCart(product: ProductDetail) {
-    let customerId = Number(localStorage.getItem('userId'));
+    let customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
     if (this.selectedSize != undefined) {
       let item: AddItem = {
         productId: product.id,
@@ -86,7 +87,7 @@ export class ProductDetailsComponent  {
   }
 
   onAddToCart(product: ProductDetail) {
-    let customerId = Number(localStorage.getItem('userId'));
+    let customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
     console.log('🚀 ~ onAddToCart ~ selectedSize:', this.selectedSize);
     if (this.selectedSize != undefined) {
       let item: AddItem = {

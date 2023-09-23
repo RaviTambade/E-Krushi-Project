@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Credential } from '../Models/credential';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { LocalStorageKeys } from '../Models/Enums/local-storage-keys';
 
 
 @Injectable({
@@ -19,7 +20,7 @@ export class AuthenticationService {
   }
 
   getContactNumberFromToken(): string | null {
-    const token = localStorage.getItem("JWT");
+    const token = localStorage.getItem(LocalStorageKeys.jwt)
     if (token) {
       const decodedToken = this.jwtHelper.decodeToken(token);
       return decodedToken.contactNumber;

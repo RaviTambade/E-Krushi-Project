@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../Services/user.service';
 import { AuthenticationService } from '../Services/authentication.service';
+import { LocalStorageKeys } from '../Models/Enums/local-storage-keys';
 
 @Component({
   selector: 'app-nav-menu',
@@ -30,7 +31,7 @@ export class NavMenuComponent implements OnInit {
     this.isExpanded = !this.isExpanded;
   }
   isLoggedIn(): boolean {
-    let jwt = localStorage.getItem("JWT")
+    let jwt = localStorage.getItem(LocalStorageKeys.jwt)
     return jwt != null;
   }
 

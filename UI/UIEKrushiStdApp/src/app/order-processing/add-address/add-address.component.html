@@ -1,0 +1,134 @@
+<div class="row">
+    <div class="col-md-8 mb-4">
+        <div class="card mb-4">
+            <!-- <div class="card-header py-3">
+                <h5 class="mb-0">Address Details</h5>
+            </div> -->
+            <div class="card-body " style="margin-left: 2rem;margin-right: 6rem;">
+                <div class="row mb-4">
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" [value]="user.name" disabled />
+                            <label>Name</label>
+                        </div>
+
+                    </div>
+                    <div class="col">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" pattern="[0-9]+" [value]="contactNumber"
+                                placeholder="Mobile Number" disabled />
+                            <label for="sm">Mobile Number</label>
+                        </div>
+                    </div>
+                </div>
+                <form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
+
+                    <div class="form-floating mb-4">
+                        <textarea class="form-control" placeholder="Address(Area and Street)" rows="3"
+                            formControlName="area"></textarea>
+                        <label>Address(Area and Street) <span class="text-danger">&ast;</span></label>
+                        <span *ngIf="addressForm.get('area')?.hasError('minlength')" class="text-danger"
+                            style="font-size: 14px;">required field</span>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="Landmark(optional)"
+                                    formControlName="landmark" />
+                                <label>Landmark(optional)</label>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-floating ">
+                                <input type="text" class="form-control" placeholder="" pattern="[0-9]+"
+                                    formControlName="pincode" />
+                                <label>Pincode <span class="text-danger">&ast;</span> </label>
+                                <span *ngIf="addressForm.get('pincode')?.hasError('pattern')" class="text-danger"
+                                    style="font-size: 14px;">Invalid pincode format.</span>
+                                <span *ngIf="addressForm.get('pincode')?.hasError('minlength')" class="text-danger"
+                                    style="font-size: 14px;">pincode must be 6 characters.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" placeholder="City/District/Town"
+                                    formControlName="city" />
+                                <label>City/District/Town <span class="text-danger">&ast;</span></label>
+                                <span *ngIf="addressForm.get('city')?.hasError('minlength')" class="text-danger"
+                                    style="font-size: 14px;">required field</span>
+
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-floating ">
+                                <select type="text" class="form-control" placeholder="State" formControlName="state">
+                                    <option value=""> -- Select State --</option>
+                                    <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                    <option value="Assam">Assam</option>
+                                    <option value="Bihar">Bihar</option>
+                                    <option value="Chandigarh">Chandigarh</option>
+                                    <option value="Chhattisgarh">Chhattisgarh</option>
+                                    <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+                                    <option value="Daman and Diu">Daman and Diu</option>
+                                    <option value="Delhi">Delhi</option>
+                                    <option value="Lakshadweep">Lakshadweep</option>
+                                    <option value="Puducherry">Puducherry</option>
+                                    <option value="Goa">Goa</option>
+                                    <option value="Gujarat">Gujarat</option>
+                                    <option value="Haryana">Haryana</option>
+                                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                    <option value="Jharkhand">Jharkhand</option>
+                                    <option value="Karnataka">Karnataka</option>
+                                    <option value="Kerala">Kerala</option>
+                                    <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                    <option value="Maharashtra">Maharashtra</option>
+                                    <option value="Manipur">Manipur</option>
+                                    <option value="Meghalaya">Meghalaya</option>
+                                    <option value="Mizoram">Mizoram</option>
+                                    <option value="Nagaland">Nagaland</option>
+                                    <option value="Odisha">Odisha</option>
+                                    <option value="Punjab">Punjab</option>
+                                    <option value="Rajasthan">Rajasthan</option>
+                                    <option value="Sikkim">Sikkim</option>
+                                    <option value="Tamil Nadu">Tamil Nadu</option>
+                                    <option value="Telangana">Telangana</option>
+                                    <option value="Tripura">Tripura</option>
+                                    <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                    <option value="Uttarakhand">Uttarakhand</option>
+                                    <option value="West Bengal">West Bengal</option>
+                                </select>
+                                <label>State <span class="text-danger">&ast;</span></label>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col " style="margin-left: 10rem; margin-right: 10rem;">
+                            <div class="form-floating ">
+                                <input type="text" class="form-control" placeholder="Altenate Phone (Optional)"
+                                    pattern="[0-9]+" formControlName="alternateContactNumber" />
+                                <span *ngIf="addressForm.get('alternateContactNumber')?.hasError('pattern')"
+                                    class="text-danger" style="font-size: 14px;">Invalid mobile number.</span>
+                                <label>Altenate Phone (Optional)</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col d-flex justify-content-around">
+                            <button type="submit" [disabled]="!addressForm.valid" class="btn btn-primary">Save And
+                                Deliver</button>
+                            <button type="reset" class="btn btn-secondary">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

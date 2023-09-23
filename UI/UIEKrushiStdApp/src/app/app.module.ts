@@ -23,6 +23,8 @@ import { OrderService } from './Services/order-service.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { orderProcessingRoutes } from './order-processing/order-processing.module';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -41,21 +43,22 @@ import { MatDialogModule } from '@angular/material/dialog';
     AuthenticationModule,
     CatalogModule,
     MatDialogModule,
+    MatSnackBarModule,
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'aboutus', component: AboutUsComponent },
       { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
-      {path:'customer',children:customerRoutes},
-      {path:'catalog',children:catlogRoutes},
-      {path:'shipper',children:shipperRoutes},
-      {path:'shop',children:shopRoutes},
-      {path:'sme',children:subjetcMatterExpertRoutes},
-      {path:'supplier',children:supplierRoutes},
-
+      { path: 'customer', children: customerRoutes },
+      { path: 'catalog', children: catlogRoutes },
+      { path: 'shipper', children: shipperRoutes },
+      { path: 'shop', children: shopRoutes },
+      { path: 'sme', children: subjetcMatterExpertRoutes },
+      { path: 'supplier', children: supplierRoutes },
+      { path: 'orderprocessing', children: orderProcessingRoutes },
     ]),
-      BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     {
@@ -68,8 +71,8 @@ import { MatDialogModule } from '@angular/material/dialog';
       },
     },
     JwtHelperService,
-    OrderService
+    OrderService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

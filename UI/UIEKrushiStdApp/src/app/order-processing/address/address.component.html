@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-md-8 mb-4">
+        <div class="card mb-4">
+            <div class="card-header py-3">
+                <h5 class="mb-0">Address Details</h5>
+            </div>
+            <div *ngFor="let address of addresses" class="card mb-3">
+                <div class="card-body">
+                    <label class="form-check">
+                        <input type="radio" class="form-check-input" name="selectedAddress" [value]="address.id"
+                            [(ngModel)]="selectedAddressId">
+                        {{ user.name }} - {{ contactNumber }}
+                    </label>
+                    <div class="text-muted">
+                        {{ address.area }}, {{ address.landMark }}, {{ address.city }}, {{ address.state }}, {{
+                        address.pinCode }}
+                    </div>
+                </div>
+            </div>
