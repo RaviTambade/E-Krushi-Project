@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="card">
+      <div class="card-body">
+        <h2 class="card-title">Payment Options</h2>
+        <form>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="paymentOption" id="codOption" value="COD" [(ngModel)]="selectedOption" />
+            <label class="form-check-label" for="codOption">Cash on Delivery (COD)</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="paymentOption" id="netBankingOption" value="Net Banking" [(ngModel)]="selectedOption" (change)="onPaymentOptionChange()" />
+            <label class="form-check-label" for="netBankingOption">Net Banking</label>
+          </div>
+          <div *ngIf="selectedOption === 'Net Banking'" class="form-group">
+            <div class="row">
+              <div class="col">
+                <input type="text" class="form-control" id="accountNumber" placeholder="Enter your account number" [(ngModel)]="accountNumber" name="accountNumber" required />
+                <label for="accountNumber">Account Number</label>
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" id="ifscCode" placeholder="Enter IFSC code" [(ngModel)]="ifscCode" name="ifscCode" required />
+                <label for="ifscCode">IFSC Code</label>
+              </div>
+              <div class="col">
+                <button class="btn btn-primary" (click)="checkAccount()">Check</button>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="showPasswordInput" class="form-group" style="width: 150px;">
+            <input type="password" class="form-control" id="password" placeholder="Enter your password" [(ngModel)]="password" name="password" required />
+            <label for="password">Password</label>
+          </div>
+          <div *ngIf="customerName" class="mt-3">
+            <p>Customer Name: {{ customerName }}</p>
+          </div>
+          <button class="btn btn-primary" (click)="makePayment()">Make Payment</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
