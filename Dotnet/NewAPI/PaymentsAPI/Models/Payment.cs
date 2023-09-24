@@ -8,5 +8,4 @@ public class Payment{
     public int OrderId{get;set;}
     public  string PaymentStatus{get;set;}
 
-   // public string PaymentMode{get;set;}
 }

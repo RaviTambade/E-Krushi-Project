@@ -4,5 +4,6 @@ namespace Transflower.EKrushi.PaymentsAPI.Repositories.InterFaces;
 
 public interface IPaymentRepository{
 
-    public List<Payment> GetPayments(int customerid);
+    List<Payment> GetPayments(int customerid);
+    Task<bool> AddPayment(PaymentAddModel payment);
 }

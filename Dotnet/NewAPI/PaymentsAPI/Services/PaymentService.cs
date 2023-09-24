@@ -3,16 +3,18 @@ using Transflower.EKrushi.PaymentsAPI.Models;
 using Transflower.EKrushi.PaymentsAPI.Repositories.InterFaces;
 
 namespace Transflower.EKrushi.PaymentsAPI.PaymentDetailsRepository;
+
 public class PaymentService : IPaymentService
 {
+    private readonly IPaymentRepository _repository;
 
-
- private readonly IPaymentRepository _repo;
-    public PaymentService(IPaymentRepository repo)
+    public PaymentService(IPaymentRepository repository)
     {
-        this._repo = repo;
+        _repository = repository;
     }
-    public List<Payment> GetPayments(int customerid) => _repo.GetPayments(customerid);
 
-    
+    public async Task<bool> AddPayment(PaymentAddModel payment) =>
+        await _repository.AddPayment(payment);
+
+    public List<Payment> GetPayments(int customerid) => _repository.GetPayments(customerid);
 }
