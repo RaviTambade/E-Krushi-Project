@@ -50,5 +50,5 @@ children:[
     QuestionanswerComponent,
   ],
   imports: [CommonModule, RouterModule, FormsModule, MatSnackBarModule],
-})
+exports:[ShoppingcartComponent]})
 export class CustomerModule {}

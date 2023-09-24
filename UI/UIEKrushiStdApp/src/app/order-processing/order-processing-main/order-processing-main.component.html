@@ -1,0 +1,36 @@
+<div class=" row">
+    <div class="col-8">
+        <div class="mb-2">
+            <label (click)="toggleOrderDetails()" class=" mb-1  btn btn-primary btn-block col-12">ORDER SUMMARY</label>
+            <app-order-details *ngIf="showOrderDetails"></app-order-details>
+        </div>
+        <div class="mb-2">
+            <label (click)="toggleAddress()" class="  mb-1 btn btn-primary btn-block col-12">DELIVERY ADDRESS   
+                <div class="text-muted mx-4" *ngIf="address">
+                    {{ address.area |titlecase}}, {{ address.landMark |titlecase }}, {{ address.city |titlecase }},
+                    {{ address.state |titlecase}}- {{
+                    address.pinCode }}
+                </div>     
+            </label>
+            <div *ngIf="showAddress" class="m-2">
+                <div class="card  px-3 m-2">
+                    <app-address class="m-2" (hideComponent)="onSelectedAddress($event)"></app-address>
+                    <div class="card col-12 mb-2">
+                        <a class="m-4" (click)="onClickNewAddress()">Add New Address</a>
+                    </div>
+                    <div *ngIf="showAddAddress">
+                        <app-add-address (hideComponent)="hideAddressAddComponent()"></app-add-address>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label (click)="togglePayment()" class="  mb-1  col-12 btn btn-primary btn-block">PAYMENT OPTIONS</label>
+            <app-payment *ngIf="showPayment"></app-payment>
+        </div>
+    </div>
+    <div class="col-4">
+        <app-order-summery></app-order-summery>
+    </div>
+</div>

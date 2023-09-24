@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="col-md-8 mb-4">
+    <div class="col-md-12 mb-4">
         <div class="card mb-4">
 
-            <div class="card-body">
+            <div class="card-body" *ngIf="addresses.length>0">
                 <div *ngFor="let address of addresses" class="card mb-3">
                     <label class="form-check m-2">
                         <input type="radio" class="form-check-input" name="selectedAddress" [value]="address.id"
@@ -10,12 +10,12 @@
                         {{ user.name |titlecase }} - {{ contactNumber }}, {{address.alternateContactNumber}}
                     </label>
                     <div class="text-muted mx-4">
-                        {{ address.area |titlecase}}, {{ address.landMark |titlecase }}, {{ address.city |titlecase }}, {{ address.state |titlecase}}- {{
+                        {{ address.area |titlecase}}, {{ address.landMark |titlecase }}, {{ address.city |titlecase }},
+                        {{ address.state |titlecase}}- {{
                         address.pinCode }}
                     </div>
                 </div>
-                <button class="custom-button">Deliver Here</button>
-                <!-- <button>Deliver Here</button> -->
+                <button class="custom-button" (click)="setAddressId()">Deliver Here</button>
             </div>
         </div>
     </div>
