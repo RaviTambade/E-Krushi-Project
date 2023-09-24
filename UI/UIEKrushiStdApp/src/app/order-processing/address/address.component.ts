@@ -23,6 +23,14 @@ export class AddressComponent implements OnInit {
     private authsvc: AuthenticationService
   ) {}
   ngOnInit(): void {
+    this.usersvc.newaddressSubject.subscribe(() => {
+      this.fetchData();
+    });
+    
+    this.fetchData();
+  }
+
+  fetchData() {
     this.contactNumber = this.authsvc.getContactNumberFromToken();
     if (this.contactNumber === null) {
       return;
@@ -35,7 +43,8 @@ export class AddressComponent implements OnInit {
     let userId: number = Number(localStorage.getItem(LocalStorageKeys.userId));
     this.usersvc.getAddress(userId).subscribe((res) => {
       this.addresses = res;
-      console.log("🚀 ~ this.usersvc.getAddress ~ res:", res);
+      this.selectedAddressId = this.addresses[0].id;
+      console.log('🚀 ~ this.usersvc.getAddress ~ res:', res);
     });
   }
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { NameId } from '../Models/nameId';
 import { Address } from '../Models/address';
 
@@ -8,6 +8,9 @@ import { Address } from '../Models/address';
   providedIn: 'root',
 })
 export class UserService {
+
+  public newaddressSubject = new Subject<void>();
+
   constructor(private httpClient: HttpClient) {}
 
   getUserByContact(contactNumber: string): Observable<NameId> {

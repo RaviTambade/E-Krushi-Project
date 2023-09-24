@@ -1,4 +1,4 @@
--- Active: 1694968636816@@127.0.0.1@3306@ekrushi
+-- Active: 1682349138553@@127.0.0.1@3306@ekrushi
 
 INSERT INTO roles(name) VALUES ('Shop owner');
 INSERT INTO roles(name) VALUES ('Customer');
@@ -215,7 +215,7 @@ INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,19,2);
 -- PAYMENTS DATA
 INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery','paid',1,1);
 
-INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery','paid',1,2);
+INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery','paid',2,2);
 
 
 SELECT * FROM payments;
