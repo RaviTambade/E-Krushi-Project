@@ -27,7 +27,6 @@ public class PaymentRepository : IPaymentRepository
             await con.OpenAsync();
             MySqlCommand cmd = new MySqlCommand("insertpayment", con);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@date", payment.Date);
             cmd.Parameters.AddWithValue("@mode", payment.Mode);
             cmd.Parameters.AddWithValue("@paymentstatus", payment.PaymentStatus);
             cmd.Parameters.AddWithValue("@orderid", payment.OrderId);

@@ -218,7 +218,7 @@ INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid) VALUES('2022
 INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery','paid',2,2);
 
 
-SELECT * FROM payments;
+
 
 
 
