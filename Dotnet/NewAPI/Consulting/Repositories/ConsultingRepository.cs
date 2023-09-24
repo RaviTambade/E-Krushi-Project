@@ -203,9 +203,9 @@ public class ConsultingRepository : IConsultingRepository
                 int questionId = int.Parse(reader["questionid"].ToString());
                 Answer answer = new Answer()
                 {
-                    Id = Id,
-                    Description = description,
-                    QuestionId = questionId
+                    // Id = Id,
+                    // Description = description,
+                    // QuestionId = questionId
                 };
                 answers.Add(answer);
             }
@@ -314,21 +314,21 @@ public class ConsultingRepository : IConsultingRepository
         connection.ConnectionString = _connectionString;
         try
         {
-            string query = "select * from answers where questionid =@questionId";
+            string query = "select (questions.description)as question,(questioncategories.category)as category,(answers.description)as answer from questions INNER join answers  on questions.id = answers.questionid INNER join questioncategories on questions.categoryid=questioncategories.id where questions.id =@questionId";
             await connection.OpenAsync();
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@questionId", id);
             MySqlDataReader reader = command.ExecuteReader();
             while (await reader.ReadAsync())
             {
-                int answerid = int.Parse(reader["id"].ToString());
-                string description = reader["description"].ToString();
-                int questionId = int.Parse(reader["questionid"].ToString());
+                string question =reader["question"].ToString();
+                string category = reader["category"].ToString();
+                string answer =reader["answer"].ToString();
                 Answer ans = new Answer
                 {
-                    Id = answerid,
-                    Description = description,
-                    QuestionId = questionId
+                    Question = question,
+                    Answers = answer,
+                    Category = category
 
                 };
                 answers.Add(ans);

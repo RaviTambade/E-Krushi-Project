@@ -2,7 +2,11 @@
 SELECT orders.total,payments.date,payments.paymentstatus,payments.mode from payments  INNER JOIN orders ON
 orders.id=payments.orderid where orderid=1;
 SELECT shippeddate,total from orders where id=1;
-select * from questions;
+select (questions.description)as question,(questioncategories.category)as category,(answers.description)as answer from questions 
+INNER join answers  on questions.id = answers.questionid
+INNER join questioncategories on questions.categoryid=questioncategories.id where questions.id=1;
+SELECT * from questions;
+select * from questioncategories;
 select * from payments;
 select customerquestions.id, questions.description,customerquestions.questiondate,(select count(*) from answers where questionid=customerquestions.questionid)as answers  from questions inner join customerquestions on customerquestions.questionid=questions.id where customerquestions.customerid=1;
 SELECT (payments.id)as paymentid,  (orders.total) as total,(payments.date)as date,(payments.paymentstatus) as paymentstatus,(payments.mode)as mode from payments  INNER JOIN orders ON orders.id=payments.orderid where payments.orderid=1;

@@ -1,1 +1,8 @@
-<p>questionanswer works!</p>
+
+<p class="card-text">{{question}}</p>
+<div class="card  mb-2" *ngFor="let ques of questionsAnswers">
+    
+    <div class="card-body">
+      <p class="card-text">{{ques.answers}}</p>
+    </div>
+  </div>

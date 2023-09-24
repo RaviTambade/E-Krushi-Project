@@ -79,7 +79,7 @@ public class ConsultingController : ControllerBase
     }
 
     //This method gives answers  of particular provided question id.
-    //http://localhost:5279/consulting/answers/{id}
+    //http://localhost:5279/api/consulting/answers/{id}
     [HttpGet("answers/{id}")]
     public async Task<List<Answer>> getAnswers(int id)
     {
