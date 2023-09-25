@@ -74,15 +74,15 @@ CREATE TABLE
         orderdate DATETIME NOT NULL,
         shippeddate DATETIME NOT NULL,
         customerid INT NOT NULL,
+        addressid INT NOT NULL,
         CONSTRAINT fk_cust_id_11 FOREIGN KEY (customerid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE,
         total DOUBLE,
         status ENUM(
-            'approved',
             'initiated',
             'cancelled',
             'delivered',
             'inprogress'
-        ) NOT NULL
+        )  DEFAULT 'initiated' NOT NULL
     );
 
 CREATE TABLE
@@ -116,17 +116,16 @@ CREATE TABLE
 CREATE TABLE
     payments(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        date DATETIME NOT NULL,
+        date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
         mode ENUM(
             'cash on delivery',
-            'card'
+            'net banking'
         ),
-        paymentstatus  ENUM('paid','cancelled'),
-        transactionid INT NOT NULL,
+        paymentstatus  ENUM('paid', 'unpaid,''cancelled'),
+        transactionid INT ,
         orderid INT NOT NULL,
         CONSTRAINT fkorderid FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE
     );
-
 
 
 CREATE TABLE

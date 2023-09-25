@@ -1,7 +1,9 @@
 import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
+import { SessionStorageKeys } from 'src/app/Models/Enums/session-storage-keys';
 import { AddItem } from 'src/app/Models/addItem';
+import { CartItem } from 'src/app/Models/cart-item';
 import { ProductDetail } from 'src/app/Models/productDetail';
 import { CartService } from 'src/app/Services/cart.service';
 import { CatalogService } from 'src/app/Services/catalog.service';
@@ -11,7 +13,7 @@ import { CatalogService } from 'src/app/Services/catalog.service';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css'],
 })
-export class ProductDetailsComponent  {
+export class ProductDetailsComponent {
   product: ProductDetail = {
     description: '',
     id: 0,
@@ -47,8 +49,6 @@ export class ProductDetailsComponent  {
     });
   }
 
-
-
   updatePrice(productId: number, size: string) {
     this.selectedSize = size;
     if (this.selectedSize == undefined) {
@@ -60,8 +60,7 @@ export class ProductDetailsComponent  {
       .subscribe((unitprice) => {
         this.product.unitPrice = unitprice;
       });
-      this.isProductInCart(this.product);
-
+    this.isProductInCart(this.product);
   }
 
   isProductInCart(product: ProductDetail) {
@@ -77,10 +76,8 @@ export class ProductDetailsComponent  {
         console.log(res);
         if (res) {
           this.isProductAlreadyInCart = true;
-        }
-        else{
+        } else {
           this.isProductAlreadyInCart = false;
-          
         }
       });
     }
@@ -106,5 +103,26 @@ export class ProductDetailsComponent  {
 
   goToCart() {
     this.router.navigate(['/customer/shoppingcart']);
+  }
+
+  onClickBuyNow(product: ProductDetail) {
+    if (this.selectedSize == undefined) {
+      return;
+    }
+    let item: CartItem = {
+      cartItemId: 0,
+      productId: product.id,
+      title: product.title,
+      size: this.selectedSize,
+      image: product.image,
+      quantity: 1,
+      unitPrice: product.unitPrice,
+    };
+
+    sessionStorage.setItem(
+      SessionStorageKeys.items,
+      JSON.stringify([item])
+    );
+    this.router.navigate(['/orderprocessing']);
   }
 }

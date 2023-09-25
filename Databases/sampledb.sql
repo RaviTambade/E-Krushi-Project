@@ -186,8 +186,8 @@ INSERT INTO productreview(productid,customerid,rating,review) VALUES (20,3,3.5,'
 INSERT INTO productreview(productid,customerid,rating,review) VALUES (21,2,4.5,'Nice Product');
 INSERT INTO productreview(productid,customerid,rating,review) VALUES (21,3,4.5,'Nice Product');
 
-INSERT INTO orders(orderdate,shippeddate,customerid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',2,120,'initiated');
-INSERT INTO orders(orderdate,shippeddate,customerid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',2,480,'cancelled');
+INSERT INTO orders(orderdate,shippeddate,customerid,addressid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',2,1,120,'initiated');
+INSERT INTO orders(orderdate,shippeddate,customerid,addressid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',2,1,480,'cancelled');
 
 
 
@@ -218,7 +218,7 @@ INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid) VALUES('2022
 INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery','paid',2,2);
 
 
-SELECT * FROM payments;
+
 
 
 

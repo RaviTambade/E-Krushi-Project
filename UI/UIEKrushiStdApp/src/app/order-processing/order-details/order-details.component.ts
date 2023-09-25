@@ -1,18 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Router } from '@angular/router';
 import { SessionStorageKeys } from 'src/app/Models/Enums/session-storage-keys';
 import { CartItem } from 'src/app/Models/cart-item';
 import { CartService } from 'src/app/Services/cart.service';
+import { OrderService } from 'src/app/Services/order-service.service';
 import { DeleteConfirmationComponent } from 'src/app/delete-confirmation/delete-confirmation.component';
 
 @Component({
-  selector: 'app-shoppingcart',
-  templateUrl: './shoppingcart.component.html',
-  styleUrls: ['./shoppingcart.component.css'],
+  selector: 'app-order-details',
+  templateUrl: './order-details.component.html',
+  styleUrls: ['./order-details.component.css'],
 })
-export class ShoppingcartComponent implements OnInit {
+export class OrderDetailsComponent implements OnDestroy {
   items: CartItem[] = [];
   totalItems: string = '';
   subTotal: number = 0;
@@ -23,17 +23,19 @@ export class ShoppingcartComponent implements OnInit {
   maxAllowedQuantity: number = 10;
   minAllowedQuantity: number = 1;
   constructor(
+    private ordersvc: OrderService,
     private cartsvc: CartService,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog,
-    private router:Router
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-    this.cartsvc.getCartItems().subscribe((res) => {
-      this.items = res;
-      this.calculateSummary();
-    });
+    let items = sessionStorage.getItem(SessionStorageKeys.items);
+    if (items == null) {
+      return;
+    }
+    this.items = JSON.parse(items);
+    this.calculateSummary();
   }
 
   private calculateSummary() {
@@ -43,6 +45,12 @@ export class ShoppingcartComponent implements OnInit {
       .map((item) => item.quantity * item.unitPrice)
       .forEach((i) => (this.subTotal += i));
     this.total = this.subTotal - this.discount;
+
+    this.ordersvc.sendOrderData.next({
+      totalItems: this.totalItems,
+      subTotal: this.subTotal,
+      total: this.total,
+    });
   }
 
   openDeleteConfirmationDialog(cartItemId: number) {
@@ -56,12 +64,8 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   deleteItem(cartItemId: number) {
-    this.cartsvc.RemoveItem(cartItemId).subscribe((res) => {
-      if (res) {
-        this.items = this.items.filter((item) => item.cartItemId != cartItemId);
-        this.calculateSummary();
-      }
-    });
+    this.items = this.items.filter((item) => item.cartItemId != cartItemId);
+    this.calculateSummary();
   }
 
   showNotification(message: string) {
@@ -113,23 +117,20 @@ export class ShoppingcartComponent implements OnInit {
       );
       return;
     }
-    this.cartsvc.updateQuantity(item.cartItemId, quantity).subscribe((res) => {
-      if (res) {
-        this.showNotification(
-          `You  Changed  ${item.title}  Quantity  To  ${quantity}`
-        );
-      }
-      item.quantity = quantity;
-      console.log(this.items);
-      this.calculateSummary();
-    });
+
+    this.showNotification(
+      `You  Changed  ${item.title}  Quantity  To  ${quantity}`
+    );
+    item.quantity = quantity;
+    console.log(this.items);
+    this.calculateSummary();
   }
 
-  onClickPlaceOrder() {
+  ngOnDestroy(): void {
     sessionStorage.setItem(
       SessionStorageKeys.items,
       JSON.stringify(this.items)
     );
-    this.router.navigate(['/orderprocessing']);
+
   }
 }

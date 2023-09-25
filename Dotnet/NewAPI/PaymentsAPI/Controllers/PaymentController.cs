@@ -2,26 +2,29 @@ using Microsoft.AspNetCore.Mvc;
 using Transflower.EKrushi.PaymentsAPI.InterFaces;
 
 using Transflower.EKrushi.PaymentsAPI.Models;
+
 namespace Transflower.EKrushi.PaymentsAPI.Controllers;
 
 [ApiController]
 [Route("[controller]")]
 public class PaymentController : ControllerBase
 {
-    
-    private readonly IPaymentService _paymentservice;
+    private readonly IPaymentService _service;
 
-    public PaymentController(IPaymentService paymentservice)
+    public PaymentController(IPaymentService service)
     {
-        _paymentservice = paymentservice;
+        _service = service;
     }
 
-
-     [HttpGet("{customerid}")]
-     public  List<Payment> GetPayments(int customerid)
-        {
-            List<Payment> payments = _paymentservice.GetPayments(customerid);
-            return payments;
-        }
-
+    [HttpGet("{customerid}")]
+    public List<Payment> GetPayments(int customerid)
+    {
+        List<Payment> payments = _service.GetPayments(customerid);
+        return payments;
+    }
+    [HttpPost]
+    public async Task<bool> AddPayment(PaymentAddModel payment)
+    {
+        return await _service.AddPayment(payment);
+    }
 }

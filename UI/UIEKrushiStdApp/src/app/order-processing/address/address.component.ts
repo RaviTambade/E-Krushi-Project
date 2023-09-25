@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
+import { SessionStorageKeys } from 'src/app/Models/Enums/session-storage-keys';
 import { Address } from 'src/app/Models/address';
 import { NameId } from 'src/app/Models/nameId';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
@@ -16,8 +17,9 @@ export class AddressComponent implements OnInit {
     id: 0,
     name: '',
   };
+  @Output() hideComponent = new EventEmitter();
   contactNumber: string | null = null;
-  selectedAddressId: number | undefined;
+  selectedAddressId: number | null = null;
   constructor(
     private usersvc: UserService,
     private authsvc: AuthenticationService
@@ -26,7 +28,7 @@ export class AddressComponent implements OnInit {
     this.usersvc.newaddressSubject.subscribe(() => {
       this.fetchData();
     });
-    
+
     this.fetchData();
   }
 
@@ -43,8 +45,32 @@ export class AddressComponent implements OnInit {
     let userId: number = Number(localStorage.getItem(LocalStorageKeys.userId));
     this.usersvc.getAddress(userId).subscribe((res) => {
       this.addresses = res;
-      this.selectedAddressId = this.addresses[0].id;
-      console.log('🚀 ~ this.usersvc.getAddress ~ res:', res);
+      this.selectedAddressId = Number(
+        sessionStorage.getItem(SessionStorageKeys.addressId)
+      );
+
+      if (
+        this.selectedAddressId == null ||
+        Number.isNaN(this.selectedAddressId)
+      )
+        this.selectedAddressId = this.addresses[0].id;
     });
+  }
+
+  setAddressId() {
+    if (this.selectedAddressId != undefined) {
+      sessionStorage.setItem(
+        SessionStorageKeys.addressId,
+        this.selectedAddressId.toString()
+      );
+
+      this.hideComponent.emit({
+        address: this.addresses
+          .filter((a) => (a.id == Number(this.selectedAddressId)))
+          .at(0),
+        userName: this.user.name,
+        contactNumber: this.contactNumber,
+      });
+    }
   }
 }

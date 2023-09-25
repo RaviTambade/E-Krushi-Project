@@ -1,0 +1,39 @@
+<div class="card border shadow-none">
+    <div class="card-header bg-transparent border-bottom py-3 px-4">
+      <h5 class="font-size-16 mb-0">PRICE DETAILS</h5>
+    </div>
+    <div class="card-body p-4 pt-2">
+
+      <div class="table-responsive">
+        <table class="table mb-0">
+          <tbody>
+            <tr>
+              <td>Items</td>
+              <td class="text-end"> {{totalItems}}</td>
+            </tr>
+            <tr>
+              <td>Sub Total :</td>
+              <td class="text-end"> {{subTotal|currency:"INR"}}</td>
+            </tr>
+            <tr>
+              <td>Discount : </td>
+              <td class="text-end">{{discount|currency:"INR"}}</td>
+            </tr>
+            <tr>
+              <td>Shipping Charge :</td>
+              <td class="text-end">{{shippingCharges}}</td>
+            </tr>
+
+            <tr class="bg-light">
+              <th>Total :</th>
+              <td class="text-end">
+                <span class="fw-bold">
+                  {{total|currency:"INR"}}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
