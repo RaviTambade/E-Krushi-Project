@@ -38,7 +38,7 @@
             &nbsp;&nbsp;&nbsp;
           </div>
 
-          <a class="d-flex flex-row align-items-center" style="color: #f62929 ;cursor: pointer;"
+          <a *ngIf="items.length>1" class="d-flex flex-row align-items-center" style="color: #f62929 ;cursor: pointer;"
             (click)="openDeleteConfirmationDialog(item.cartItemId)"> <i class="fas fa-trash-alt"></i></a>
         </div>
       </div>
@@ -46,4 +46,4 @@
   </div>
 </div>
 
-
+    

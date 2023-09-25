@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SessionStorageKeys } from 'src/app/Models/Enums/session-storage-keys';
 import { CartItem } from 'src/app/Models/cart-item';
 import { CartService } from 'src/app/Services/cart.service';
 import { OrderService } from 'src/app/Services/order-service.service';
@@ -11,7 +12,7 @@ import { DeleteConfirmationComponent } from 'src/app/delete-confirmation/delete-
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.css'],
 })
-export class OrderDetailsComponent {
+export class OrderDetailsComponent implements OnDestroy {
   items: CartItem[] = [];
   totalItems: string = '';
   subTotal: number = 0;
@@ -29,10 +30,12 @@ export class OrderDetailsComponent {
   ) {}
 
   ngOnInit(): void {
-    this.cartsvc.getCartItems().subscribe((res) => {
-      this.items = res;
-      this.calculateSummary();
-    });
+    let items = sessionStorage.getItem(SessionStorageKeys.items);
+    if (items == null) {
+      return;
+    }
+    this.items = JSON.parse(items);
+    this.calculateSummary();
   }
 
   private calculateSummary() {
@@ -61,12 +64,8 @@ export class OrderDetailsComponent {
   }
 
   deleteItem(cartItemId: number) {
-    this.cartsvc.RemoveItem(cartItemId).subscribe((res) => {
-      if (res) {
-        this.items = this.items.filter((item) => item.cartItemId != cartItemId);
-        this.calculateSummary();
-      }
-    });
+    this.items = this.items.filter((item) => item.cartItemId != cartItemId);
+    this.calculateSummary();
   }
 
   showNotification(message: string) {
@@ -118,15 +117,20 @@ export class OrderDetailsComponent {
       );
       return;
     }
-    this.cartsvc.updateQuantity(item.cartItemId, quantity).subscribe((res) => {
-      if (res) {
-        this.showNotification(
-          `You  Changed  ${item.title}  Quantity  To  ${quantity}`
-        );
-      }
-      item.quantity = quantity;
-      console.log(this.items);
-      this.calculateSummary();
-    });
+
+    this.showNotification(
+      `You  Changed  ${item.title}  Quantity  To  ${quantity}`
+    );
+    item.quantity = quantity;
+    console.log(this.items);
+    this.calculateSummary();
+  }
+
+  ngOnDestroy(): void {
+    sessionStorage.setItem(
+      SessionStorageKeys.items,
+      JSON.stringify(this.items)
+    );
+
   }
 }

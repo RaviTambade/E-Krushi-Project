@@ -48,7 +48,11 @@ export class AddressComponent implements OnInit {
       this.selectedAddressId = Number(
         sessionStorage.getItem(SessionStorageKeys.addressId)
       );
-      if (this.selectedAddressId == null)
+
+      if (
+        this.selectedAddressId == null ||
+        Number.isNaN(this.selectedAddressId)
+      )
         this.selectedAddressId = this.addresses[0].id;
     });
   }
@@ -59,8 +63,14 @@ export class AddressComponent implements OnInit {
         SessionStorageKeys.addressId,
         this.selectedAddressId.toString()
       );
-      
-      this.hideComponent.emit();
+
+      this.hideComponent.emit({
+        address: this.addresses
+          .filter((a) => (a.id == Number(this.selectedAddressId)))
+          .at(0),
+        userName: this.user.name,
+        contactNumber: this.contactNumber,
+      });
     }
   }
 }

@@ -74,15 +74,15 @@ CREATE TABLE
         orderdate DATETIME NOT NULL,
         shippeddate DATETIME NOT NULL,
         customerid INT NOT NULL,
+        addressid INT NOT NULL,
         CONSTRAINT fk_cust_id_11 FOREIGN KEY (customerid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE,
         total DOUBLE,
         status ENUM(
-            'approved',
             'initiated',
             'cancelled',
             'delivered',
             'inprogress'
-        ) NOT NULL
+        )  DEFAULT 'initiated' NOT NULL
     );
 
 CREATE TABLE

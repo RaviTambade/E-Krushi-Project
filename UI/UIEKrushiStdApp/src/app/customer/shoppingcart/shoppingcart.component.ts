@@ -1,6 +1,8 @@
-import { Component,  OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { SessionStorageKeys } from 'src/app/Models/Enums/session-storage-keys';
 import { CartItem } from 'src/app/Models/cart-item';
 import { CartService } from 'src/app/Services/cart.service';
 import { DeleteConfirmationComponent } from 'src/app/delete-confirmation/delete-confirmation.component';
@@ -23,7 +25,8 @@ export class ShoppingcartComponent implements OnInit {
   constructor(
     private cartsvc: CartService,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -48,7 +51,7 @@ export class ShoppingcartComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
         this.deleteItem(cartItemId);
-      } 
+      }
     });
   }
 
@@ -98,12 +101,16 @@ export class ShoppingcartComponent implements OnInit {
   }
 
   updateDatabaseQuantity(item: CartItem, quantity: number) {
-    if ( quantity == item.quantity &&  quantity == this.maxAllowedQuantity) {
-      this.showNotification(`Maximum ${this.maxAllowedQuantity} Quantity Per Order is allowed`);
+    if (quantity == item.quantity && quantity == this.maxAllowedQuantity) {
+      this.showNotification(
+        `Maximum ${this.maxAllowedQuantity} Quantity Per Order is allowed`
+      );
       return;
     }
-    if ( quantity == item.quantity &&  quantity == this.minAllowedQuantity) {
-      this.showNotification(`Minimum ${this.minAllowedQuantity} Quantity Per Order is allowed`);
+    if (quantity == item.quantity && quantity == this.minAllowedQuantity) {
+      this.showNotification(
+        `Minimum ${this.minAllowedQuantity} Quantity Per Order is allowed`
+      );
       return;
     }
     this.cartsvc.updateQuantity(item.cartItemId, quantity).subscribe((res) => {
@@ -116,5 +123,13 @@ export class ShoppingcartComponent implements OnInit {
       console.log(this.items);
       this.calculateSummary();
     });
+  }
+
+  onClickPlaceOrder() {
+    sessionStorage.setItem(
+      SessionStorageKeys.items,
+      JSON.stringify(this.items)
+    );
+    this.router.navigate(['/orderprocessing']);
   }
 }

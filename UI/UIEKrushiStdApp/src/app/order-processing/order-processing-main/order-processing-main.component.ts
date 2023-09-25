@@ -10,7 +10,7 @@ export class OrderProcessingMainComponent {
   showAddress = false;
   showPayment = false;
 
-  address:any;
+  address: any;
 
   toggleAddress() {
     this.showAddress = !this.showAddress;
@@ -39,7 +39,10 @@ export class OrderProcessingMainComponent {
     this.showAddAddress = false;
   }
 
-  onSelectedAddress(event:any){
-    this.showAddress=false
+  onSelectedAddress(event: any) {
+    this.showAddress = false;
+    this.address = event.address;
+    this.address.userName = event.userName;
+    this.address.contactNumber = event.contactNumber;
   }
 }

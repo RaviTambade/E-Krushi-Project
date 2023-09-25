@@ -5,12 +5,13 @@
             <app-order-details *ngIf="showOrderDetails"></app-order-details>
         </div>
         <div class="mb-2">
-            <label (click)="toggleAddress()" class="  mb-1 btn btn-primary btn-block col-12">DELIVERY ADDRESS   
+            <label (click)="toggleAddress()" class="  mb-1 btn btn-primary btn-block col-12">DELIVERY ADDRESS
                 <div class="text-muted mx-4" *ngIf="address">
-                    {{ address.area |titlecase}}, {{ address.landMark |titlecase }}, {{ address.city |titlecase }},
+                    {{address.userName |titlecase}} - {{address.contactNumber}} , {{address.alternateContactNumber}}
+                    <br> {{ address.area |titlecase}}, {{ address.landMark |titlecase }}, {{ address.city |titlecase }},
                     {{ address.state |titlecase}}- {{
                     address.pinCode }}
-                </div>     
+                </div>
             </label>
             <div *ngIf="showAddress" class="m-2">
                 <div class="card  px-3 m-2">
@@ -26,7 +27,7 @@
         </div>
 
         <div class="mb-2">
-            <label (click)="togglePayment()" class="  mb-1  col-12 btn btn-primary btn-block">PAYMENT OPTIONS</label>
+            <button [disabled]="!address" (click)="togglePayment()" class="  mb-1  col-12 btn btn-primary btn-block">PAYMENT OPTIONS</button>
             <app-payment *ngIf="showPayment"></app-payment>
         </div>
     </div>

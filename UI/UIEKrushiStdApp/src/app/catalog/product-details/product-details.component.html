@@ -8,7 +8,7 @@
           </a>
         </div>
         <div style="display: flex; justify-content: space-around;">
-          <a href="#" class="btn btn-warning shadow-0"> Buy now </a>
+          <a  class="btn btn-warning shadow-0" (click)="onClickBuyNow(product)"> Buy now </a>
           <div *ngIf="!isProductAlreadyInCart ">
             <a class="btn btn-primary shadow-0" (click)="onAddToCart(product)"> <i
                 class="me-1 fa fa-shopping-cart"></i>ADD TO CART</a>

@@ -50,6 +50,7 @@ export class PaymentComponent {
       this.paymentsvc.addPayment(payment).subscribe((res) => {
         console.log('payment sone successfully and order placed');
       });
+      
     } else if (this.selectedMode === 'net banking') {
       let paymentDetails: PaymentTransferDetails = {
         fromAcct: this.accountNumber,
