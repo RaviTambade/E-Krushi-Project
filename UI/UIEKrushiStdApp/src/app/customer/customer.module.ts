@@ -29,7 +29,8 @@ children:[
 
 ]},
   {path:'questionHistory' , component:QuestionsComponent},
-  {path:'questionAnswer' , component:QuestionanswerComponent},
+  // {path:'questionAnswer' , component:QuestionanswerComponent},
+  {path:'question/:id' , component:QuestionanswerComponent},
  
 ];
 
