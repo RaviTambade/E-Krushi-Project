@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
 import { SessionStorageKeys } from 'src/app/Models/Enums/session-storage-keys';
 import { PaymentAddModel } from 'src/app/Models/PaymentAddModel';
@@ -24,8 +25,10 @@ export class PaymentComponent {
   constructor(
     private banksvc: BankingService,
     private paymentsvc: PaymentService,
-    private ordersvc: OrderService
+    private ordersvc: OrderService,
+    private router: Router
   ) {}
+
   onPaymentOptionChange() {
     this.accountNumber = '';
     this.showPayButton = false;
@@ -33,13 +36,17 @@ export class PaymentComponent {
   }
 
   checkAccount() {
-    this.banksvc.getAccount(this.accountNumber).subscribe((res) => {
+    let customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
+    if (Number.isNaN(customerId)) {
+      return;
+    }
+    
+    this.banksvc.checkAccount(customerId).subscribe((res) => {
       let bankAccount = res;
-      let customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
+
       if (
-        bankAccount.ifscCode == this.ifscCode 
-        // &&
-        // bankAccount.customerId == customerId
+        bankAccount.ifscCode == this.ifscCode &&
+        bankAccount.accountNumber == this.accountNumber
       ) {
         this.showPayButton = true;
       }
@@ -85,7 +92,8 @@ export class PaymentComponent {
           transactionId: 0,
         };
         this.paymentsvc.addPayment(payment).subscribe((res) => {
-          console.log('payment sone successfully and order placed');
+          console.log('payment done successfully and order placed');
+          this.router.navigate(['/']);
         });
       } else if (this.selectedMode === 'net banking') {
         let paymentDetails: PaymentTransferDetails = {
@@ -106,7 +114,8 @@ export class PaymentComponent {
             };
 
             this.paymentsvc.addPayment(payment).subscribe((res) => {
-              console.log('payment sone successfully and order placed');
+              console.log('payment done successfully and order placed');
+              this.router.navigate(['/']);
             });
           }
         });

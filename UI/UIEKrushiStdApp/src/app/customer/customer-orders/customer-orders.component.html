@@ -4,9 +4,15 @@
   <div class="active-filter-line"></div>
   <div class="row">
     <div class="col-md-8">
-      <div class="d-flex col-6 justify-content-around">
+      <div class="d-flex col-8 justify-content-between">
+        
         <a class="btn btn-outline-success" (click)="filterOrders('all')"
           [ngClass]="{'btn-success active-button': activeFilter === 'all'}">All</a>
+          <a class="btn btn-outline-success" (click)="filterOrders('initiated')"
+          [ngClass]="{'btn-success active-button': activeFilter === 'initiated'}">
+          <i class="fas fa-clock" style="color: #c51616"></i>
+          &nbsp;Initiated
+        </a>  
         <a class="btn btn-outline-success" (click)="filterOrders('pending')"
           [ngClass]="{'btn-success active-button': activeFilter === 'pending'}">
           <i class="fas fa-clock" style="color: #ffc107"></i>
@@ -22,11 +28,7 @@
           <i class="fas fa-cancel" style="color: #c51616"></i>
           &nbsp;Cancelled
         </a>
-        <a class="btn btn-outline-success" (click)="filterOrders('initiated')"
-          [ngClass]="{'btn-success active-button': activeFilter === 'initiated'}">
-          <i class="fas fa-clock" style="color: #c51616"></i>
-          &nbsp;Initiated
-        </a>
+       
       </div>
 
       <table class="table">

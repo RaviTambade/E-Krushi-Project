@@ -16,8 +16,6 @@ export class OrderProductDetailsComponent {
   @Input() orderId!:number;
   constructor(
     private ordersvc: OrderService,
-    private router: Router,
-    private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
    

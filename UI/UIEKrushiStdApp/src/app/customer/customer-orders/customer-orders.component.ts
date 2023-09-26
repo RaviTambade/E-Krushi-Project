@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
 import { Order } from 'src/app/Models/Order';
 import { OrderService } from 'src/app/Services/order-service.service';
 
@@ -10,25 +10,18 @@ import { OrderService } from 'src/app/Services/order-service.service';
 })
 export class CustomerOrdersComponent implements OnInit {
   orders: Order[] = [];
-  customerid: number = 2;
   filteredOrders: Order[] = [];
-  activeFilter: string | null = null;
-  subtotal!:number;
-  data:any;
-  constructor(private ordersvc: OrderService, private router: Router) {}
+  activeFilter: string = 'all';
+ 
+  constructor(private ordersvc: OrderService) {}
 
   ngOnInit(): void {
-    this.ordersvc.getOrdersOfCustomer(this.customerid).subscribe((res) => {
-      this.orders = res;
-      // this.data=res.total;
+    const customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
 
+    this.ordersvc.getOrdersOfCustomer(customerId).subscribe((res) => {
+      this.orders = res;
       this.filteredOrders = res;
       console.log(res);
-
-
-
-      
-
     });
   }
 
@@ -42,9 +35,4 @@ export class CustomerOrdersComponent implements OnInit {
       );
     }
   }
-
-
-
-
-  
 }

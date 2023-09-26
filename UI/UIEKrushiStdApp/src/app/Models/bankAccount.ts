@@ -1,7 +1,6 @@
 export class BankAccount {
   constructor(
-    public customerId: number,
-    public acctNumber: string,
+    public accountNumber: string,
     public ifscCode: string
   ) {}
 }
