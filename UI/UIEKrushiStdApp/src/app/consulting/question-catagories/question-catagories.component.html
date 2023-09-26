@@ -1,5 +1,10 @@
-<div class="card ">
-<div *ngFor=" let category of categories">
-  <a href="">  <p class="mx-4">{{category.category}}</p></a>
-</div>
+
+<div class="container">
+
+<div >
+  
+<div >
+  <a href=""   *ngFor=" let category of categories ;let index = index"><i class="fa fa-arrow-right"></i>  {{ index + 1 }}.{{category. category}} <br></a>
+   </div>
+ </div>
 </div>

@@ -4,5 +4,6 @@ export class Question {
       public description: string,
       public categoryId: number,
       public date:Date,
+      public customerId: number,
     ) {}
   }
