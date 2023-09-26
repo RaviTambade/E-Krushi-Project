@@ -1,36 +1,42 @@
 <!-- <div class="container"> -->
-    <div class="card">
-      <div class="card-body">
-        <h2 class="card-title">Payment Options</h2>
-        <form>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="paymentOption" id="codOption" value="cash on delivery" [(ngModel)]="selectedMode"  (change)="onPaymentOptionChange()"  />
-            <label class="form-check-label" for="codOption">Cash on Delivery (COD)</label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="paymentOption" id="netBankingOption" value="net banking" [(ngModel)]="selectedMode" (change)="onPaymentOptionChange()" />
-            <label class="form-check-label" for="netBankingOption">Net Banking</label>
-          </div>
-          <div *ngIf="selectedMode === 'net banking'" class="form-group">
-            <div class="row">
-              <div class="col">
-                <input type="text" class="form-control" id="accountNumber" placeholder="Enter your account number" [(ngModel)]="accountNumber" name="accountNumber" required />
-                <label for="accountNumber">Account Number</label>
-              </div>
-              <div class="col">
-                <input type="text" class="form-control" id="ifscCode" placeholder="Enter IFSC code" [(ngModel)]="ifscCode" name="ifscCode" required />
-                <label for="ifscCode">IFSC Code</label>
-              </div>
-              <div class="col">
-                <button class="btn btn-primary" (click)="checkAccount()">Check</button>
-              </div>
-            </div>
-          </div>
-          <div *ngIf="showPayButton" class="form-group" style="width: 150px;">
-            <button class="btn btn-primary" (click)="makePayment()">Make Payment</button>
-          </div>
-        </form>
+<div class="card">
+  <div class="card-body">
+    <h2 class="card-title">Payment Options</h2>
+    <form>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="paymentOption" id="codOption" value="cash on delivery"
+          [(ngModel)]="selectedMode" (change)="onPaymentOptionChange()" />
+        <label class="form-check-label" for="codOption">Cash on Delivery (COD)</label>
       </div>
-    </div>
-  <!-- </div> -->
-  
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="paymentOption" id="netBankingOption" value="net banking"
+          [(ngModel)]="selectedMode" (change)="onPaymentOptionChange()" />
+        <label class="form-check-label" for="netBankingOption">Net Banking</label>
+      </div>
+      <div *ngIf="selectedMode === 'net banking'" class="form-group">
+        <div class="row">
+          <div class="col">
+            <input type="text" class="form-control" id="accountNumber" placeholder="Enter your account number"
+              [(ngModel)]="accountNumber" name="accountNumber" required />
+            <label for="accountNumber">Account Number</label>
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" id="ifscCode" placeholder="Enter IFSC code" [(ngModel)]="ifscCode"
+              name="ifscCode" required />
+            <label for="ifscCode">IFSC Code</label>
+          </div>
+          <div class="col">
+            <button class="btn btn-primary" (click)="checkAccount()">Check</button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="showPayButton" class="form-group" style="width: 150px;">
+        <button class="btn btn-primary" (click)="makePayment()">Pay & Place Order </button>
+      </div>
+      <div *ngIf="selectedMode === 'cash on delivery'" class="form-group" style="width: 150px;">
+        <button class="btn btn-primary" (click)="makePayment()">Pay & Place Order</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- </div> -->

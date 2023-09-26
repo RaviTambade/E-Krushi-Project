@@ -1,32 +1,21 @@
-
-using OrderProcessing.Models;
+using OrderProcessing.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 
 namespace OrderProcessing.Repositories.Contexts;
+
 public class OrderContext : DbContext
 {
-    private readonly IConfiguration _configuration;
-    private readonly string? _conString;
+    public DbSet<Order> Orders { get; set; }
+    public DbSet<OrderDetail> OrderDetails { get; set; }
+    public DbSet<Product> Products { get; set; }
+    public DbSet<ProductDetail> ProductDetails { get; set; }
 
-    public OrderContext(IConfiguration configuration)
+    public OrderContext(DbContextOptions options)
+        : base(options)
     {
-        _configuration = configuration;
-        _conString =
-            this._configuration.GetConnectionString("DefaultConnection")
-            ?? throw new ArgumentNullException(nameof(configuration));
-    }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseMySQL(
-            _conString ?? throw new InvalidOperationException("Connection string is null.")
-        );
-        optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
-    }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        base.OnModelCreating(modelBuilder);
+        Orders = Set<Order>();
+        OrderDetails = Set<OrderDetail>();
+        Products = Set<Product>();
+        ProductDetails = Set<ProductDetail>();
     }
 }
