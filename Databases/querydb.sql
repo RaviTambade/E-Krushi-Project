@@ -5,7 +5,9 @@ SELECT shippeddate,total from orders where id=1;
 select (questions.description)as question,(questioncategories.category)as category,(answers.description)as answer from questions 
 INNER join answers  on questions.id = answers.questionid
 INNER join questioncategories on questions.categoryid=questioncategories.id where questions.id=1;
-SELECT * from questions;
+
+SELECT customerquestions.customerid,customerquestions.questionid,customerquestions.questiondate,questions.description from questions INNER JOIN customerquestions on questions.id =customerquestions.questionid ;
+SELECT * from customerquestions;
 select * from questioncategories;
 select * from payments;
 select customerquestions.id, questions.description,customerquestions.questiondate,(select count(*) from answers where questionid=customerquestions.questionid)as answers  from questions inner join customerquestions on customerquestions.questionid=questions.id where customerquestions.customerid=1;

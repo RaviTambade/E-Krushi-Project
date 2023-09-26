@@ -24,21 +24,22 @@ public class ConsultingRepository : IConsultingRepository
         connection.ConnectionString = _connectionString;
         try
         {
-            string query = "select * from questions";
+            string query = "SELECT (customerquestions.customerid) as customerid,(customerquestions.questionid)as id,(customerquestions.questiondate) as date,(questions.description)as question from questions INNER JOIN customerquestions on questions.id =customerquestions.questionid ;";
             MySqlCommand command = new MySqlCommand(query, connection);
             await connection.OpenAsync();
             MySqlDataReader reader = command.ExecuteReader();
             while (await reader.ReadAsync())
             {
-                int Id = int.Parse(reader["id"].ToString());
-                string description = reader["description"].ToString();
-                int categoryId = int.Parse(reader["categoryid"].ToString());
-
+                int customerid = int.Parse(reader["customerid"].ToString());
+                string description = reader["question"].ToString();
+                int questionid = int.Parse(reader["id"].ToString());
+                DateTime date =DateTime.Parse(reader["date"].ToString());
                 Question question = new Question()
                 {
-                    Id = Id,
+                CustomerId = customerid,
                     Description = description,
-                    CategoryId = categoryId
+                    Id = questionid,
+                    Date=date
                 };
                 questions.Add(question);
             }
