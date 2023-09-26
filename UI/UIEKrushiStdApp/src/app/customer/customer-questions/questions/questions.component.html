@@ -15,7 +15,8 @@
     
     <div class="card-body">
       
-     <a  (click)="navigateQuestionAnswers(question.id)" > <p class="card-text" >{{question.description}}</p></a>
+     <a (click)="navigateQuestionAnswers(question.id)" > <p class="card-text" style="color: blue;text-decoration: underline"  >{{question.description}}</p></a>
+     <p  style="font-size: 12px;">{{question.date|date}}</p>
     </div>
   </div>
  
