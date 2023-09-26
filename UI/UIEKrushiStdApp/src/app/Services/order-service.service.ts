@@ -15,24 +15,25 @@ export class OrderService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getOrdersOfCustomer(customerid: number): Observable<Order[]> {
-    let url = 'http://localhost:5057/api/orders/customerorders/' + customerid;
+  getOrdersOfCustomer(customerId: number): Observable<Order[]> {
+    let url = 'http://localhost:5059/api/orders/customer/' + customerId;
     return this.httpClient.get<Order[]>(url);
   }
 
   getOrdersDetails(orderId: number): Observable<OrderDetails[]> {
-    let url = 'http://localhost:5057/api/orderdetails/order/' + orderId;
+    let url = 'http://localhost:5059/api/orders/details/' + orderId;
     return this.httpClient.get<OrderDetails[]>(url);
   }
 
-  getOrder(orderId: number): Observable<Order> {
+  getOrderAmount(orderId: number): Observable<number> {
     let url =
-      'http://localhost:5057/api/orders/customerorders/orderId/' + orderId;
-    return this.httpClient.get<Order>(url);
+      'http://localhost:5059/api/orders/amount/' + orderId;
+    return this.httpClient.get<number>(url);
   }
 
   processOrder(order: OrderAddModel): Observable<OrderAmount> {
     let url = 'http://localhost:5059/api/orders/';
     return this.httpClient.post<OrderAmount>(url, order);
   }
+  
 }

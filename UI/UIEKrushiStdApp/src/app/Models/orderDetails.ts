@@ -1,6 +1,7 @@
 export class OrderDetails {
     constructor(
-        public title:number,
+        public productId:number,
+        public title:string,
         public image:string,
         public size:string,
         public total:number, 

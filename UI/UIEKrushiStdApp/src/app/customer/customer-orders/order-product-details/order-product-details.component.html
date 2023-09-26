@@ -5,9 +5,9 @@
   <div class="card-body">
     <div class="d-flex justify-content-between">
       <div class="d-flex flex-row align-items-center">
-        <div class="col-md-4">
+        <div class="col-md-4" style="cursor: pointer;" [routerLink]="['/catalog/productdetail',order.productId]">
           <img src="{{order.image}}" alt="" class="avatar-lg rounded" height="100" width="100">
-          <h5 class="mx-4">{{order.title}}</h5>
+         <a  [routerLink]="['/catalog/productdetail',order.productId]"> <h5 class="m-2" >{{order.title}}</h5></a>
 
         </div>
 

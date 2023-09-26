@@ -26,7 +26,7 @@
             </div>
             <div class="col-1">
             </div>
-            <div class="col-4" *ngIf="viewStaus && selectedOrderId!= null">
+            <div class="col-4" *ngIf="viewStatus && selectedOrderId!= null ">
                 <app-paymentsummery [orderId]="selectedOrderId"></app-paymentsummery>
                 <a class="m-2" [routerLink]="['/customer/orders/details',selectedOrderId]"> View Order Details</a>
             </div>
