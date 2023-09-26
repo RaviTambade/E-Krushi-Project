@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Question } from '../Models/question';
 import { Observable } from 'rxjs';
 import { QuestionAnswer } from '../Models/questionanswer';
+import { Questioncategory } from '../Models/Questioncategory';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,11 @@ export class ConsultingService {
   getQuestions(): Observable<Question[]> {
     let url = 'http://localhost:5279/api/consulting';
     return this.httpClient.get<Question[]>(url);
+  }
+
+  getAllCategories(): Observable<Questioncategory[]> {
+    let url = 'http://localhost:5279/api/consulting/questioncatagories';
+    return this.httpClient.get<Questioncategory[]>(url);
   }
 
 
