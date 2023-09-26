@@ -1,8 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
 import { SessionStorageKeys } from 'src/app/Models/Enums/session-storage-keys';
-import { Address } from 'src/app/Models/address';
-import { NameId } from 'src/app/Models/nameId';
+import { AddressInfo } from 'src/app/Models/addressinfo';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { UserService } from 'src/app/Services/user.service';
 
@@ -12,13 +11,8 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./address.component.css'],
 })
 export class AddressComponent implements OnInit {
-  addresses: Address[] = [];
-  user: NameId = {
-    id: 0,
-    name: '',
-  };
+  addresses: AddressInfo[] = [];
   @Output() hideComponent = new EventEmitter();
-  contactNumber: string | null = null;
   selectedAddressId: number | null = null;
   constructor(
     private usersvc: UserService,
@@ -33,15 +27,6 @@ export class AddressComponent implements OnInit {
   }
 
   fetchData() {
-    this.contactNumber = this.authsvc.getContactNumberFromToken();
-    if (this.contactNumber === null) {
-      return;
-    }
-
-    this.usersvc.getUserByContact(this.contactNumber).subscribe((res) => {
-      this.user = res;
-    });
-
     let userId: number = Number(localStorage.getItem(LocalStorageKeys.userId));
     this.usersvc.getAddress(userId).subscribe((res) => {
       this.addresses = res;
@@ -66,10 +51,8 @@ export class AddressComponent implements OnInit {
 
       this.hideComponent.emit({
         address: this.addresses
-          .filter((a) => (a.id == Number(this.selectedAddressId)))
+          .filter((a) => a.id == Number(this.selectedAddressId))
           .at(0),
-        userName: this.user.name,
-        contactNumber: this.contactNumber,
       });
     }
   }

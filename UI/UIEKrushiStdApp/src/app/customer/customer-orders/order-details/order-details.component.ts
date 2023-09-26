@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { Order } from 'src/app/Models/Order';
-import { OrderedItem } from 'src/app/Models/orderdItem';
+import { AddressInfo } from 'src/app/Models/addressinfo';
 import { OrderService } from 'src/app/Services/order-service.service';
+import { UserService } from 'src/app/Services/user.service';
 
 @Component({
   selector: 'app-order-details',
@@ -10,20 +10,22 @@ import { OrderService } from 'src/app/Services/order-service.service';
   styleUrls: ['./order-details.component.css'],
 })
 export class OrderDetailsComponent implements OnInit {
-  constructor(private router: Router,private route: ActivatedRoute) {}
-  orderId!:number;
+  orderId!: number;
+  address: AddressInfo | undefined;
+  constructor(
+    private ordersvc: OrderService,
+    private usersvc: UserService,
+    private route: ActivatedRoute
+  ) {}
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.orderId = Number(params.get('orderid'));
       console.log(this.orderId);
-      // this.items = this.ordersvc.getOrderdItems(this.orderId);
+      this.ordersvc.getAddressIdOfOrder(this.orderId).subscribe((addressId) => {
+        this.usersvc.getAddressById(addressId).subscribe((address) => {
+          this.address = address;
+        });
+      });
     });
   }
-  
-
-
-
-
-
-
 }

@@ -7,7 +7,7 @@
         <div class="mb-2">
             <label (click)="toggleAddress()" class="  mb-1 btn btn-primary btn-block col-12">DELIVERY ADDRESS
                 <div class="text-muted mx-4" *ngIf="address">
-                    {{address.userName |titlecase}} - {{address.contactNumber}} , {{address.alternateContactNumber}}
+                    {{address.name |titlecase}} - {{address.contactNumber}} , {{address.alternateContactNumber}}
                     <br> {{ address.area |titlecase}}, {{ address.landMark |titlecase }}, {{ address.city |titlecase }},
                     {{ address.state |titlecase}}- {{
                     address.pinCode }}

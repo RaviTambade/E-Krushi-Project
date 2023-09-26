@@ -33,6 +33,12 @@ public class OrdersController : ControllerBase
         return await _service.GetOrderAmount(orderId);
     }
 
+    [HttpGet("address/{orderId}")]
+    public async Task<int> GetAddressIdOfOrder(int orderId)
+    {
+        return await _service.GetAddressIdOfOrder(orderId);
+    }
+
     [HttpPost]
     public async Task<OrderAmount> CreateOrder(OrderAddModel order)
     {
