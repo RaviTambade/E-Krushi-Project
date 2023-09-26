@@ -37,4 +37,9 @@ public class OrderService : IOrderService
     {
         return await _repository.GetOrderDetails(orderId);
     }
+
+    public async Task<int> GetAddressIdOfOrder(int orderId)
+    {
+        return await _repository.GetAddressIdOfOrder(orderId);
+    }
 }

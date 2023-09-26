@@ -26,8 +26,7 @@ export class OrderService {
   }
 
   getOrderAmount(orderId: number): Observable<number> {
-    let url =
-      'http://localhost:5059/api/orders/amount/' + orderId;
+    let url = 'http://localhost:5059/api/orders/amount/' + orderId;
     return this.httpClient.get<number>(url);
   }
 
@@ -35,5 +34,9 @@ export class OrderService {
     let url = 'http://localhost:5059/api/orders/';
     return this.httpClient.post<OrderAmount>(url, order);
   }
-  
+
+  getAddressIdOfOrder(orderId: number): Observable<number> {
+    let url = 'http://localhost:5059/api/orders/address/' + orderId;
+    return this.httpClient.get<number>(url);
+  }
 }

@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { NameId } from '../Models/nameId';
 import { Address } from '../Models/address';
+import { AddressInfo } from '../Models/addressinfo';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-
   public newaddressSubject = new Subject<void>();
 
   constructor(private httpClient: HttpClient) {}
@@ -28,8 +28,13 @@ export class UserService {
     return this.httpClient.post<boolean>(url, address);
   }
 
-  getAddress(userId: number): Observable<Address[]> {
+  getAddress(userId: number): Observable<AddressInfo[]> {
     let url = 'http://localhost:5102/api/addresses/' + userId;
-    return this.httpClient.get<Address[]>(url);
+    return this.httpClient.get<AddressInfo[]>(url);
+  }
+
+  getAddressById(addressId: number): Observable<AddressInfo> {
+    let url = 'http://localhost:5102/api/addresses/details/' + addressId;
+    return this.httpClient.get<AddressInfo>(url);
   }
 }

@@ -11,10 +11,7 @@
                         <td>Date :</td>
                         <td class="text-end">{{paymentDetails.date |date}}</td>
                     </tr>
-                    <tr>    
-                        <td>Amount : </td>
-                        <td class="text-end">{{paymentDetails.total|currency:"INR"}}</td>
-                    </tr>
+                   
                     <tr>
                         <td>Status :</td>
                         <td class="text-end">{{paymentDetails.status}}</td>
@@ -23,10 +20,13 @@
                         <td>Payment Mode : </td>
                         <td class="text-end">{{paymentDetails.paymentMode}}</td>
                     </tr>
+                    <tr>    
+                        <td>Amount : </td>
+                        <td class="text-end"><strong>{{paymentDetails.total|currency:"INR"}}</strong></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-        <!-- end table-responsive -->
     </div>
 </div>
 

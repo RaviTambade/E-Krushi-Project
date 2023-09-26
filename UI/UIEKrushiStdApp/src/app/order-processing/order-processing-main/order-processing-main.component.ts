@@ -42,7 +42,5 @@ export class OrderProcessingMainComponent {
   onSelectedAddress(event: any) {
     this.showAddress = false;
     this.address = event.address;
-    this.address.userName = event.userName;
-    this.address.contactNumber = event.contactNumber;
   }
 }

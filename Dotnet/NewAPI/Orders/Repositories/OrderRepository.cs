@@ -82,7 +82,7 @@ public class OrderRepository : IOrderRepository
             var amount = await _context.Orders
                 .Where(o => o.Id == orderId)
                 .Select(o => o.Total)
-                .FirstOrDefaultAsync();
+                .FirstAsync();
             return amount;
         }
         catch (Exception)
@@ -156,7 +156,7 @@ public class OrderRepository : IOrderRepository
                 where order.Id == orderId
                 select new OrderDetailModel()
                 {
-                    ProductId=product.Id,
+                    ProductId = product.Id,
                     Size = productDetail.Size,
                     UnitPrice = productDetail.UnitPrice,
                     Image = product.Image,
@@ -167,6 +167,22 @@ public class OrderRepository : IOrderRepository
             ).ToListAsync();
 
             return orderDetails;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    public async Task<int> GetAddressIdOfOrder(int orderId)
+    {
+        try
+        {
+            var addressId = await _context.Orders
+                .Where(o => o.Id == orderId)
+                .Select(o => o.AddressId)
+                .FirstAsync();
+            return addressId;
         }
         catch (Exception)
         {
