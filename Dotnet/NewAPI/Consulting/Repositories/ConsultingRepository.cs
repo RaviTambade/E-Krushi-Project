@@ -264,6 +264,48 @@ public class ConsultingRepository : IConsultingRepository
 
 
 
+    public async Task<List<Question>> listOfReletedQuestions(int id)
+    {
+        List<Question> questions = new List<Question>();
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _connectionString;
+        try
+        {
+            string query = "SELECT id,description FROM questions where id!= @id AND categoryid  IN (select categoryid from questions WHERE id=@id)";
+            await connection.OpenAsync();
+            Console.Write(query);
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@id", id);
+            MySqlDataReader reader = command.ExecuteReader();
+            while (await reader.ReadAsync())
+            {
+                int Id = int.Parse(reader["id"].ToString());
+                string description = reader["description"].ToString();
+                //int categoryId = int.Parse(reader["category_id"].ToString());
+                Question question = new Question
+                {
+                    Id = Id,
+                    Description = description,
+                    // CategoryId = id
+                };
+                questions.Add(question);
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception )
+        {
+            throw ;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+        return questions;
+    }
+
+
+
+
 
     public async Task<List<QuestionAnswer>> getQuestionAnswers(int id)
     {
