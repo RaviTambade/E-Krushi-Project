@@ -1,4 +1,3 @@
-using System.Data;
 using MySql.Data.MySqlClient;
 using Transflower.EKrushi.ShoppingCartService.Models;
 using Transflower.EKrushi.ShoppingCartService.Repositories.Interfaces;
@@ -7,15 +6,15 @@ namespace Transflower.EKrushi.ShoppingCartService.Repositories;
 
 public class CartRepository : ICartRepository
 {
-    private IConfiguration _configuration;
-    private string _conString;
+    private readonly IConfiguration _configuration;
+    private readonly string _conString;
 
     public CartRepository(IConfiguration configuration)
     {
         _configuration = configuration;
         _conString =
             _configuration.GetConnectionString("DefaultConnection")
-            ?? throw new ArgumentNullException(nameof(configuration));
+            ?? throw new ArgumentNullException(nameof(_conString));
     }
 
     public async Task<List<Item>> GetCartItems(int customerId)
@@ -129,8 +128,6 @@ public class CartRepository : ICartRepository
         return status;
     }
 
-
-
     public async Task<bool> AddItem(CartItem item)
     {
         bool status = false;
@@ -168,13 +165,13 @@ public class CartRepository : ICartRepository
 
     public async Task<bool> IsProductInCart(CartItem item)
     {
-       bool status = false;
+        bool status = false;
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionString = _conString;
         try
         {
             string query =
-            @"SELECT EXISTS (SELECT  cartitems.id from  cartitems   
+                @"SELECT EXISTS (SELECT  cartitems.id from  cartitems   
             INNER JOIN carts on carts.id = cartitems.cartid
             WHERE carts.customerid=@customerid  AND cartitems.productdetailsid = 
             (SELECT id FROM productdetails WHERE productid=@productid and size=@size ))";
@@ -184,8 +181,8 @@ public class CartRepository : ICartRepository
             command.Parameters.AddWithValue("@customerid", item.CustomerId);
             command.Parameters.AddWithValue("@size", item.Size);
             await connection.OpenAsync();
-            var isExists =  await command.ExecuteScalarAsync();
-            if ( isExists != null && (long) isExists ==1 ) 
+            var isExists = await command.ExecuteScalarAsync();
+            if (isExists != null && (long)isExists == 1)
             {
                 status = true;
             }
@@ -201,232 +198,32 @@ public class CartRepository : ICartRepository
         return status;
     }
 
-    /*
-        public async Task<Cart> GetCart(int id)
+    public async Task<bool> RemoveAllCartItems(int customerId)
+    {
+        bool status = false;
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _conString;
+        try
         {
-            Cart cart = new Cart();
-            MySqlConnection connection = new MySqlConnection();
-            connection.ConnectionString = _conString;
-            try
+            string query = @"DELETE FROM cartitems WHERE 
+            cartid = (SELECT id FROM carts where carts.customerid=@customerid)";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@customerid", customerId);
+            await connection.OpenAsync();
+            int rowsAffected = await command.ExecuteNonQueryAsync();
+            if (rowsAffected > 0)
             {
-                string query = "SELECT products.title,products.image,products.unitprice,cartitems.quantity,cartitems.productid,cartitems.cartid FROM products INNER JOIN cartitems ON products.id=cartitems.productid where cartitems.cartid=@cartId";
-    
-                await connection.OpenAsync();
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("@cartId", id);
-                MySqlDataReader reader = command.ExecuteReader();
-                while (await reader.ReadAsync())
-                {
-                    int productId = int.Parse(reader["productid"].ToString());
-                    int cartId = int.Parse(reader["cartid"].ToString());
-                    string productTitle = reader["title"].ToString();
-                    string imageURL = reader["image"].ToString();
-                    int quantity = int.Parse(reader["quantity"].ToString());
-                    double unitPrice = double.Parse(reader["unitprice"].ToString());
-                    Item item = new Item()
-                    {
-                        ProductId = productId,
-                        Title = productTitle,
-                        Image = imageURL,
-                        Quantity = quantity,
-                        UnitPrice = unitPrice
-                    };
-                    cart.Items.Add(item);
-                    cart.CartId = id;
-                }
-                await reader.CloseAsync();
+                status = true;
             }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                await connection.CloseAsync();
-            }
-            return cart;
         }
-    
-    
-    
-        public async Task<bool> AddItem(Item item)
+        catch (Exception)
         {
-            bool status = false;
-        
-            MySqlConnection connection = new MySqlConnection();
-            try
-            {
-                connection.ConnectionString = _conString;
-                await connection.OpenAsync();
-                string query = "INSERT into cartitems(cartid,productid,quantity) VALUES (@cartid,@productId,@quantity)";
-                MySqlCommand command = new MySqlCommand(query, connection);
-                // command.Parameters.AddWithValue("@cartid", item.CartId);
-                command.Parameters.AddWithValue("@productId", item.ProductId);
-                command.Parameters.AddWithValue("@quantity", item.Quantity);
-                int rowsAffected = await command.ExecuteNonQueryAsync();
-                if (rowsAffected >= 1)
-                {
-                    status = true;
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                await connection.CloseAsync();
-            }
-            return status;
+            throw;
         }
-    
-        public async Task<Cart> GetAll(int custId)
+        finally
         {
-            Cart cart = new Cart();
-            MySqlConnection connection = new MySqlConnection(_conString);
-            try
-            {
-                string query = "SELECT carts.custid,cartitems.cartid, products.title,products.image,products.unitprice,cartitems.quantity,cartitems.productid,carts.custid FROM products INNER JOIN " +
-                               "cartitems ON products.id=cartitems.productid INNER JOIN carts ON carts.id=cartitems.cartid where carts.custid=@custId";
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("@custId", custId);
-                await connection.OpenAsync();
-                MySqlDataReader reader = command.ExecuteReader();
-                while (await reader.ReadAsync())
-                {
-                    int productId = int.Parse(reader["productid"].ToString());
-                    int cartId = int.Parse(reader["cartid"].ToString());
-                    string productTitle = reader["title"].ToString();
-                    string imageURL = reader["image"].ToString();
-                    int quantity = int.Parse(reader["quantity"].ToString());
-                    double unitPrice = double.Parse(reader["unitprice"].ToString());
-    
-                    Item item = new Item()
-                    {
-                        ProductId = productId,
-                        Title = productTitle,
-                        Image = imageURL,
-                        Quantity = quantity,
-                        UnitPrice = unitPrice,
-                    };
-                    cart.Items.Add(item);
-                    // cart.CustomerId = custId;
-                }
-                await reader.CloseAsync();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                await connection.CloseAsync();
-            }
-            return cart;
+            await connection.CloseAsync();
         }
-    
-        public async Task<int> GetCartId(int custId)
-        {
-            int cartId = 0;
-            MySqlConnection connection = new MySqlConnection();
-            connection.ConnectionString = _conString;
-            try
-            {
-                string query = "select id from carts where custid =@custId";
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("@custId", custId);
-                await connection.OpenAsync();
-                MySqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
-                {
-                    cartId = int.Parse(reader["id"].ToString());
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                await connection.CloseAsync();
-            }
-            return (int)cartId;
-        }
-    
-        public async Task<List<Item>> GetCartDetails(int custId)
-        {
-            List<Item> items = new List<Item>();
-            MySqlConnection connection = new MySqlConnection();
-            connection.ConnectionString = _conString;
-            try
-            {
-                string query = "select cartitems.id,cartitems.cartid,products.title,products.image,products.unitprice,cartitems.productid,cartitems.quantity from carts INNER JOIN cartitems ON carts.id =cartitems.cartid INNER JOIN products ON products.id=cartitems.productid where custid=@custId";
-    
-                await connection.OpenAsync();
-                MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.AddWithValue("@custId", custId);
-                MySqlDataReader reader = command.ExecuteReader();
-                while (await reader.ReadAsync())
-                {
-                    int cartItemId = int.Parse(reader["id"].ToString());
-                    int productId = int.Parse(reader["productid"].ToString());
-                    string productTitle = reader["title"].ToString();
-                    string imageURL = reader["image"].ToString();
-                    int quantity = int.Parse(reader["quantity"].ToString());
-                    double unitPrice = double.Parse(reader["unitprice"].ToString());
-    
-                    Item item = new Item()
-                    {
-                        CartItemId = cartItemId,
-                        ProductId = productId,
-                        Title = productTitle,
-                        Image = imageURL,
-                        Quantity = quantity,
-                        UnitPrice = unitPrice
-                    };
-                    items.Add(item);
-                }
-                await reader.CloseAsync();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                await connection.CloseAsync();
-            }
-            return items;
-        }
-       
-    
-    
-    
-        public async Task<bool> CreateOrder(int CartId)
-        {
-            bool status = false;
-            MySqlConnection connection = new MySqlConnection();
-            connection.ConnectionString = _conString;
-            try
-            {
-                MySqlCommand command = new MySqlCommand("CreateOrder", connection);
-                command.CommandType = CommandType.StoredProcedure;
-                command.Parameters.AddWithValue("@cartId", CartId);
-                await connection.OpenAsync();
-                int rowsAffected = await command.ExecuteNonQueryAsync();
-                if (rowsAffected > 0)
-                {
-                    status = true;
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            finally
-            {
-                await connection.CloseAsync();
-            }
-            return status;
-        }*/
+        return status;
+    }
 }

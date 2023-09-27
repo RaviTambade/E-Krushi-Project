@@ -123,6 +123,7 @@ export class ProductDetailsComponent {
       SessionStorageKeys.items,
       JSON.stringify([item])
     );
+    sessionStorage.setItem(SessionStorageKeys.isFromCart, 'false');
     this.router.navigate(['/orderprocessing']);
   }
 }

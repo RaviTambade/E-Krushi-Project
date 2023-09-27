@@ -36,35 +36,16 @@ public class CartService : ICartService
     {
         return await _repository.AddItem(item);
     }
-       public async Task<bool> IsProductInCart (CartItem item)
-        {
-            return await _repository.IsProductInCart(item);
-        }
 
-  
+    public async Task<bool> IsProductInCart(CartItem item)
+    {
+        return await _repository.IsProductInCart(item);
+    }
 
+    public async Task<bool> RemoveAllCartItems(int customerId)
+    {
+        return await _repository.RemoveAllCartItems(customerId);
+    }
 
-
-
-    // public async Task<int> GetCartId(int custId)
-    // {
-    //     return await _repository.GetCartId(custId);
-    // }
-
-    // public async Task<List<Item>> GetCartDetails(int custId)
-    // {
-    //     return await _repository.GetCartDetails(custId);
-    // }
-
-
-
-    // public async Task<bool> Update(Item item)
-    // {
-    //     return await _repository.Update(item);
-    // }
-
-    // public async Task<bool> CreateOrder(int CartId)
-    // {
-    //     return await _repository.CreateOrder(CartId);
-    // }
+ 
 }

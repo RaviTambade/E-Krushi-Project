@@ -1,5 +1,6 @@
 export enum SessionStorageKeys {
     addressId = 'addressId',
-    items='items'
+    items='items',
+    isFromCart='isFromCart',
   }
   

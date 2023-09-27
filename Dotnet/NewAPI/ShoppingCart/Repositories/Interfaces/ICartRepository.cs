@@ -9,6 +9,7 @@ namespace Transflower.EKrushi.ShoppingCartService.Repositories.Interfaces
         Task<bool> UpdateItemQuantity(int cartItemId, int quantity);
         Task<bool> AddItem(CartItem item);
         Task<bool> IsProductInCart(CartItem item);
+        Task<bool> RemoveAllCartItems(int cartId);
 
         // Task<Cart> GetAll(int custid);
         // Task<bool> AddItem(Item item);

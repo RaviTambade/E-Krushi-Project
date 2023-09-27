@@ -26,7 +26,7 @@ export class ShoppingcartComponent implements OnInit {
     private cartsvc: CartService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
-    private router:Router
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -103,13 +103,13 @@ export class ShoppingcartComponent implements OnInit {
   updateDatabaseQuantity(item: CartItem, quantity: number) {
     if (quantity == item.quantity && quantity == this.maxAllowedQuantity) {
       this.showNotification(
-        `Maximum ${this.maxAllowedQuantity} Quantity Per Order is allowed`
+        `Maximum ${this.maxAllowedQuantity} Quantity Per Item is allowed`
       );
       return;
     }
     if (quantity == item.quantity && quantity == this.minAllowedQuantity) {
       this.showNotification(
-        `Minimum ${this.minAllowedQuantity} Quantity Per Order is allowed`
+        `Minimum ${this.minAllowedQuantity} Quantity Per Item is allowed`
       );
       return;
     }
@@ -130,6 +130,7 @@ export class ShoppingcartComponent implements OnInit {
       SessionStorageKeys.items,
       JSON.stringify(this.items)
     );
+    sessionStorage.setItem(SessionStorageKeys.isFromCart, 'true');
     this.router.navigate(['/orderprocessing']);
   }
 }

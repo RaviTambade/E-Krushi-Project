@@ -19,9 +19,19 @@
         class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
       >
         <ul class="navbar-nav flex-grow">
-          <li class="nav-item" *ngIf="isLoggedIn()" style="text-align: center; font-size: 12px;">
+          <!-- <li class="nav-item" *ngIf="isLoggedIn()" style="text-align: center; font-size: 12px;">
             <a class="nav-link text-dark"> Welcome<P>{{name}}</P></a>
+          </li> -->
+          <li class="nav-item" style="text-align: center; font-size: 12px;">
+            <div class="nav-link text-dark" (mouseenter)="showLinks = true" (mouseleave)="showLinks = false">
+              Welcome,<P>{{name}}</P>
+              <!-- <ul class="additional-links card" style="position: absolute;" *ngIf="showLinks">
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+              </ul> -->
+            </div>
           </li>
+          
           <li class="nav-item" *ngIf="isLoggedIn()">
             <a class="nav-link text-dark"  > <i class="fa-solid fa-cart-shopping"   [routerLink]="['customer/shoppingcart']"></i></a>
           </li>
