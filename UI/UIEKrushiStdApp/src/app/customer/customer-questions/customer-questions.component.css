@@ -1,0 +1,28 @@
+.question-card {
+    border: 2px dashed #333; /* Dotted border with a dark color */
+    padding: 20px;
+    margin: 20px;
+}
+
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Style the card content */
+.card-content {
+    flex-grow: 1; /* Allows the content to grow to fill available space */
+}
+
+/* Style the plus icon */
+.plus-icon {
+    font-size: 25px;
+    color: #007BFF;
+    cursor:zoom-in;
+}
