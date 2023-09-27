@@ -1,0 +1,11 @@
+/* styles.css or your component's CSS file */
+.container {
+    display: flex;
+    justify-content: flex-end; /* Center the card on the right */
+    align-items: center;
+    /* align-items: flex-start;  */
+    
+    height: 50vh; /* This sets the container to take the full viewport height */
+  }
+  
+ 

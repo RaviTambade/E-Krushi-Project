@@ -16,6 +16,7 @@ import { CustomerQuestionsComponent } from './customer-questions/customer-questi
 import { QuestionsComponent } from './customer-questions/questions/questions.component';
 import { AddquestionComponent } from './customer-questions/addquestion/addquestion.component';
 import { QuestionanswerComponent } from './customer-questions/questionanswer/questionanswer.component';
+import { ConsultingModule } from '../consulting/consulting.module';
 
 export const customerRoutes: Routes = [
   { path: 'dashboard', component: CustomerDashboardComponent },
@@ -50,6 +51,6 @@ children:[
     AddquestionComponent,
     QuestionanswerComponent,
   ],
-  imports: [CommonModule, RouterModule, FormsModule, MatSnackBarModule],
+  imports: [CommonModule, RouterModule, FormsModule, MatSnackBarModule,ConsultingModule],
 exports:[ShoppingcartComponent]})
 export class CustomerModule {}

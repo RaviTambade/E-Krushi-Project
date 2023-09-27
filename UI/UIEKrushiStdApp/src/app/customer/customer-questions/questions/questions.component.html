@@ -9,14 +9,16 @@
     
   </div> -->
 
-  <h5 class="card-title">Questions :</h5>
 
-  <div class="card  mb-2" *ngFor="let question of questions">
+
+  <div class="card  mb-2"  style="background-color: #f3eded;" *ngFor="let question of questions">
     
     <div class="card-body">
       
-     <a (click)="navigateQuestionAnswers(question.id)" > <p class="card-text" style="color: blue;text-decoration: underline"  >{{question.description}}</p></a>
-     <p  style="font-size: 12px;">{{question.date|date}}</p>
+     <a (click)="navigateQuestionAnswers(question.id)" > <p class="card-text" style="color: blue;text-decoration: underline; cursor: pointer;"  >{{question.description}}   <i class="fa fa-arrow-right"></i></p></a>
+     <label> sahil mankar   <p  style="font-size: 12px;"> {{question.date|date}}</p></label>
+    
     </div>
   </div>
- 
+
+  
