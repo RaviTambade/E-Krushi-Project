@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-order-processing-main',
   templateUrl: './order-processing-main.component.html',
   styleUrls: ['./order-processing-main.component.css'],
 })
-export class OrderProcessingMainComponent {
+export class OrderProcessingMainComponent implements OnDestroy {
   showOrderDetails = true;
   showAddress = false;
   showPayment = false;
@@ -31,6 +31,7 @@ export class OrderProcessingMainComponent {
   }
 
   showAddAddress: boolean = false;
+
   onClickNewAddress() {
     this.showAddAddress = true;
   }
@@ -42,5 +43,9 @@ export class OrderProcessingMainComponent {
   onSelectedAddress(event: any) {
     this.showAddress = false;
     this.address = event.address;
+  }
+
+  ngOnDestroy(): void {
+    sessionStorage.clear();
   }
 }

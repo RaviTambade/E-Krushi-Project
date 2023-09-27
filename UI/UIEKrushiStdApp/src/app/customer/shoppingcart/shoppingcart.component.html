@@ -1,4 +1,8 @@
 <h4 class="m-4">My Cart</h4>
+<div *ngIf="items.length < 1;else placeOrderTemplate" class="alert alert-warning mt-3">
+  <strong>Cart is empty!</strong> Your shopping cart is currently empty.
+</div>
+
 <div class="row">
   <div class="col-lg-7" style="max-height:450px;overflow: auto;">
     <div class="card mb-3" *ngFor="let item of items">
@@ -22,7 +26,7 @@
                   <i class="fas fa-minus"></i>
                 </button>
 
-                <input id="form1"  name="quantity" type="text" [value]="item.quantity" pattern="[0-9]+"
+                <input id="form1" name="quantity" type="text" [value]="item.quantity" pattern="[0-9]+"
                   class="form-control form-control-sm" style="width: 40px; height: 10px;"
                   (input)="updateQuantity(item,$event)" />
 
@@ -45,14 +49,15 @@
     </div>
   </div>
   <div class="col-4 " style="margin-left: 3rem;" *ngIf="items.length>0">
-    <app-cart-summary 
-     [total]="total" [totalItems]="totalItems" [discount]="discount" [subTotal]="subTotal" ></app-cart-summary>
+    <app-cart-summary [total]="total" [totalItems]="totalItems" [discount]="discount"
+      [subTotal]="subTotal"></app-cart-summary>
   </div>
 
 
 </div>
 
-<div class="fixed-button-container">
-  <button class="custom-button" (click)="onClickPlaceOrder()">Place Order</button>
-</div>
-
+<ng-template #placeOrderTemplate>
+  <div class="fixed-button-container">
+    <button class="custom-button" (click)="onClickPlaceOrder()">Place Order</button>
+  </div>
+</ng-template>

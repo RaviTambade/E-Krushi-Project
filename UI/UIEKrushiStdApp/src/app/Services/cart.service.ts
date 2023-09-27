@@ -31,6 +31,11 @@ export class CartService {
     let url = 'http://localhost:5282/api/cart/remove/' + cartItemId;
     return this.httpClient.delete<boolean>(url);
   }
+  
+  RemoveAllCartItems(customerId: number): Observable<boolean> {
+    let url = 'http://localhost:5282/api/cart/removeall/' + customerId;
+    return this.httpClient.delete<boolean>(url);
+  }
 
   addItem(item: AddItem): Observable<boolean> {
     let url = 'http://localhost:5282/api/cart/';
@@ -41,4 +46,5 @@ export class CartService {
     let url = 'http://localhost:5282/api/cart/product/present';
     return this.httpClient.post<boolean>(url, item);
   }
+
 }

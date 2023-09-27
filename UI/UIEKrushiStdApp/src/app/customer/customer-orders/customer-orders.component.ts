@@ -12,17 +12,26 @@ export class CustomerOrdersComponent implements OnInit {
   orders: Order[] = [];
   filteredOrders: Order[] = [];
   activeFilter: string = 'all';
- 
+  isLoading: boolean = true;
   constructor(private ordersvc: OrderService) {}
 
   ngOnInit(): void {
     const customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
-
-    this.ordersvc.getOrdersOfCustomer(customerId).subscribe((res) => {
-      this.orders = res;
-      this.filteredOrders = res;
-      console.log(res);
-    });
+    setTimeout(() => {
+      this.ordersvc.getOrdersOfCustomer(customerId).subscribe({
+        next: (res) => {
+          this.orders = res;
+          this.filteredOrders = res;
+          console.log(res);
+        },
+        error: (error) => {
+          console.error(error);
+        },
+        complete: () => {
+          this.isLoading = false;
+        },
+      });
+    }, 4000);
   }
 
   filterOrders(status: string) {

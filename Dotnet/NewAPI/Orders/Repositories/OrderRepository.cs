@@ -19,6 +19,7 @@ public class OrderRepository : IOrderRepository
     {
         try
         {
+            var transaction = await _context.Database.BeginTransactionAsync();
             Order order1 = new Order()
             {
                 Id = 0,
@@ -49,7 +50,17 @@ public class OrderRepository : IOrderRepository
                         ProductDetailsId = productDetailsId,
                         Quantity = item.Quantity,
                     };
+
                     await _context.AddAsync(orderDetail);
+                    ProductDetail? productDetails = await _context.ProductDetails.FindAsync(
+                        productDetailsId
+                    );
+                    if (productDetails != null)
+                    {
+                        productDetails.StockAvailable =
+                            productDetails.StockAvailable - item.Quantity;
+                        _context.Entry(productDetails).State = EntityState.Modified;
+                    }
                 }
             await _context.SaveChangesAsync();
 
@@ -67,6 +78,7 @@ public class OrderRepository : IOrderRepository
                 await _context.SaveChangesAsync();
             }
 
+            await transaction.CommitAsync();
             return new OrderAmount { OrderId = orderId, Amount = total };
         }
         catch (Exception)
@@ -74,6 +86,7 @@ public class OrderRepository : IOrderRepository
             throw;
         }
     }
+    
 
     public async Task<double> GetOrderAmount(int orderId)
     {

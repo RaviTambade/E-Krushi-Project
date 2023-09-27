@@ -11,6 +11,7 @@ import { LocalStorageKeys } from '../Models/Enums/local-storage-keys';
 })
 export class NavMenuComponent implements OnInit {
   isExpanded = false;
+  showLinks=false;
   name: string | undefined
   constructor(private router: Router, private userService: UserService,private authService:AuthenticationService) { }
   ngOnInit(): void {

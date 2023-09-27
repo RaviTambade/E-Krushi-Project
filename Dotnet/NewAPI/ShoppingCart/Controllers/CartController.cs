@@ -40,57 +40,18 @@ namespace Transflower.EKrushi.ShoppingCartService.Controllers
             return await _service.RemoveItem(cartItemId);
         }
 
+        [HttpDelete]
+        [Route("removeall/{customerId}")]
+        public async Task<bool> RemoveAllCartItems(int customerId)
+        {
+            return await _service.RemoveAllCartItems(customerId);
+        }
+
         [HttpPost]
         [Route("product/present")]
-        public async Task<bool> IsProductInCart (CartItem item)
+        public async Task<bool> IsProductInCart(CartItem item)
         {
             return await _service.IsProductInCart(item);
         }
-
-        // [HttpGet("getall/{custId}")]
-        // public async Task<Cart> GetAll(int custId)
-        // {
-        //    Cart items = await _service.GetAll(custId);
-        //     Console.WriteLine(custId);
-        //     return items;
-        // }
-
-
-        //these method is used for get cart details by id.
-
-
-
-        //  //this method is used for add item into cart
-        // [HttpPost]
-        // [Route("addtocart")]
-
-
-
-
-        // [HttpGet("getcartId/{custId}")]
-        // public async Task<int> GetCartId(int custId)
-        // {
-        //     int cartId = await _service.GetCartId(custId);
-        //     return cartId;
-        // }
-
-        // [HttpGet("getcart/{custId}")]
-        // public async Task<List<Item>> GetCartDetails(int custId)
-        // {
-        //     Console.WriteLine(custId);
-        //     List<Item> items = await _service.GetCartDetails(custId);
-        //     return items;
-        // }
-
-
-
-
-
-
-        // [HttpGet("createorder/{CartId}")]
-        // public async Task<bool> CreateOrder( int CartId)
-        // {
-        //     return await _service.CreateOrder(CartId);
-        // }
     }
 }
