@@ -37,5 +37,10 @@ export class ConsultingService {
     let url = 'http://localhost:5102/api/users/name/'+userid;
     return this.httpClient.get<any>(url);
   }
+
+  getCategorywiseQuestions(category:string): Observable<Question[]> {
+    let url = 'http://localhost:5279/api/consulting/categoryid/'+category;
+    return this.httpClient.get<Question[]>(url);
+  }
 }
 

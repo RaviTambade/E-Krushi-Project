@@ -13,7 +13,7 @@ export class QuestionanswerComponent implements OnInit {
   constructor(private svc: ConsultingService,private route: ActivatedRoute) {}
   questionsAnswers : QuestionAnswer[]=[];
   question:string='';
-  id:number=1;
+  id!:number;
   ngOnInit(): void {
     this.route.paramMap.subscribe((res)=>{
       this.id= Number(res.get('id'));

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Category } from '../Models/category';
 import { Product } from '../Models/product';
 import { ProductDetail } from '../Models/productDetail';
+import { Question } from '../Models/question';
 
 @Injectable({
   providedIn: 'root',
@@ -40,4 +41,8 @@ export class CatalogService {
       'http://localhost:5288/api/Products/price/' + productId + '/' + size;
     return this.httpClient.get<number>(url);
   }
+
+ 
+
+
 }
