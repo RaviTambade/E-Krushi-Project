@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Transflower.EKrushi.Orders.Entities;
-
+[Table("orderdetails")]
 public class OrderDetail
 {
     [Key]

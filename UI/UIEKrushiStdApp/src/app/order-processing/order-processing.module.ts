@@ -12,17 +12,30 @@ import { OrderSummeryComponent } from './order-summery/order-summery.component';
 
 export const orderProcessingRoutes: Routes = [
   {
-    path:'payment',
-    component:PaymentComponent
+    path: 'payment',
+    component: PaymentComponent,
   },
   {
-    path:'**',
-    component:OrderProcessingMainComponent
-  }
+    path: '**',
+    component: OrderProcessingMainComponent,
+  },
 ];
 
 @NgModule({
-  declarations: [AddressComponent, AddAddressComponent, PaymentComponent, OrderProcessingMainComponent, OrderDetailsComponent, OrderSummeryComponent],
-  imports: [CommonModule, ReactiveFormsModule, FormsModule, RouterModule,CustomerModule],
+  declarations: [
+    AddressComponent,
+    AddAddressComponent,
+    PaymentComponent,
+    OrderProcessingMainComponent,
+    OrderDetailsComponent,
+    OrderSummeryComponent,
+  ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    RouterModule,
+    CustomerModule,
+  ],
 })
 export class OrderProcessingModule {}
