@@ -5,5 +5,6 @@ export class Question {
       public categoryId: number,
       public date:Date,
       public customerId: number,
+      public name:string,
     ) {}
   }

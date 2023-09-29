@@ -221,10 +221,19 @@ INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid) VALUES('2022
 
 
 
-INSERT INTO questioncategories(category) VALUES('crop related questions');
-INSERT INTO questioncategories(category) VALUES('soil related questions');
-INSERT INTO questioncategories(category) VALUES('weather releted questions');
 
+
+INSERT INTO questioncategories(category) VALUES('Crop Cultivation');
+INSERT INTO questioncategories(category) VALUES('Livestock Farming');
+INSERT INTO questioncategories(category) VALUES('Farm Equipment and Technology');
+INSERT INTO questioncategories(category) VALUES('Organic and Sustainable Farming');
+INSERT INTO questioncategories(category) VALUES('Farm Business and Economics');
+INSERT INTO questioncategories(category) VALUES('Farming in Different Climates and Regions');
+INSERT INTO questioncategories(category) VALUES('Farm Safety and Regulations');
+INSERT INTO questioncategories(category) VALUES('Farm Education and Training');
+
+INSERT INTO questioncategories(category) VALUES('Specialty Farming');
+INSERT INTO questioncategories(category) VALUES('Farm Challenges and Solutions');
 
 -- QUESTION TABLE DATA
 

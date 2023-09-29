@@ -9,6 +9,7 @@ public interface IConsultingRepository
     Task<List<SubjectMatterExpert>> getAllExperts();
     Task<SubjectMatterExpert> getExpert(int id);
     Task<List<Question>> listOfCategoryQuestions(int id);
+    Task<List<Question>> listOfReletedQuestions(int id);
     Task<List<QuestionAnswer>> getQuestionAnswers(int id);
     Task<List<Answer>> getAnswers(int id);
     Task<List<SmeQuestion>> getQuestionsRespondedBySME(int id);

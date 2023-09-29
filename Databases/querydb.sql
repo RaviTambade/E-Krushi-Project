@@ -23,6 +23,9 @@ INNER join  orderdetails on productdetails.id=orderdetails.productdetailsid
 INNER join orders on  orders.id=orderdetails.orderid where orders.id=4;
 show TABLES;
 
+-- query for find questionid releted questions
+SELECT id,description FROM questions where id!=6 AND categoryid  IN (select categoryid from questions WHERE id=6);
+SELECT * FROM questions;
 select orders.orderdate from orders LEFT join payments on orders.id=payments.orderid ;
 
 select * from roles;

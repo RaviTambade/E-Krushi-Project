@@ -16,6 +16,7 @@ public class ConsultingService : IConsultingService
     public async Task<List<Answer>> getAllAnswers() => await _repository.getAllAnswers();
     public async Task<List<SubjectMatterExpert>> getAllExperts() => await _repository.getAllExperts();
     public async Task<List<Question>> listOfCategoryQuestions(int id) => await _repository.listOfCategoryQuestions(id);
+    public async Task<List<Question>> listOfReletedQuestions(int id) => await _repository.listOfReletedQuestions(id);
     public async Task<SubjectMatterExpert> getExpert(int id) => await _repository.getExpert(id);
     public async Task<List<QuestionAnswer>> getQuestionAnswers(int id) => await _repository.getQuestionAnswers(id);
     public async Task<List<Answer>> getAnswers(int id) => await _repository.getAnswers(id);

@@ -60,6 +60,16 @@ public class ConsultingController : ControllerBase
         return category;
     }
 
+
+     //releted questions
+    //http://localhost:5279/consulting/reletedquestions/{id}
+    [HttpGet("reletedquestions/{id}")]
+    public async Task<List<Question>> listOfReletedQuestions(int id)
+    {
+        List<Question> questions = await _service.listOfReletedQuestions(id);
+        return questions;
+    }
+
     //This method gives agri doctor details by id.
     //http://localhost:5279/consulting/Expert/{id}
     [HttpGet("Expert/{id}")]
