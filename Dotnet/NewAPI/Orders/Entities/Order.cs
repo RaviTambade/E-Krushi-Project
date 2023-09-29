@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Transflower.EKrushi.Orders.Entities;
 
+[Table("orders")]
 public class Order
 {
     [Key]
@@ -21,11 +22,14 @@ public class Order
     [Column("addressid")]
     public int AddressId { get; set; }
 
+    [Column("storeid")]
+    public int StoreId { get; set; }
+
     [Column("total")]
     public double Total { get; set; }
 
     [Column("status")]
-    public  string? Status { get; set; }
+    public string? Status { get; set; }
 
     public Order()
     {

@@ -13,6 +13,7 @@ export class OrderProductDetailsComponent {
   items: OrderedItem[] = [];
   orderDetails: OrderDetails[] = [];
   @Input() orderId!: number;
+  
   constructor(private ordersvc: OrderService) {}
   ngOnInit(): void {
     this.ordersvc.getOrdersDetails(this.orderId).subscribe((res) => {

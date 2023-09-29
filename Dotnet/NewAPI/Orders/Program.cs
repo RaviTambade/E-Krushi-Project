@@ -20,9 +20,11 @@ builder.Services.AddDbContext<OrderContext>(
             .LogTo(Console.WriteLine, LogLevel.Information)
 );
 
+
+
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IOrderService, OrderService>();
-
+builder.Services.AddHttpClient();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

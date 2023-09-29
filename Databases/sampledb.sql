@@ -1,4 +1,4 @@
--- Active: 1694968636816@@127.0.0.1@3306@ekrushi
+-- Active: 1682349138553@@127.0.0.1@3306@ekrushi
 
 INSERT INTO roles(name) VALUES ('Shop owner');
 INSERT INTO roles(name) VALUES ('Customer');
@@ -8,6 +8,7 @@ INSERT INTO roles(name) VALUES ('SubjectMatterExpert');
 
 
 INSERT INTO userroles(userid,roleid) VALUES (1,1);
+INSERT INTO userroles(userid,roleid) VALUES (4,1);
 INSERT INTO userroles(userid,roleid) VALUES (2,2);
 INSERT INTO userroles(userid,roleid) VALUES (3,2);
 INSERT INTO userroles(userid,roleid) VALUES (11,3);
@@ -17,9 +18,8 @@ INSERT INTO userroles(userid,roleid) VALUES (7,4);
 INSERT INTO userroles(userid,roleid) VALUES (8,5);
 INSERT INTO userroles(userid,roleid) VALUES (9,5);
 
- 
-
- 
+INSERT INTO stores(name,userid,addressid) VALUES  ("store 1",1,1);
+INSERT INTO stores(name,userid,addressid) VALUES  ("store 2",4,5);
 
 INSERT INTO suppliers(corporateid,userid) VALUES(8,11);
 INSERT INTO suppliers(corporateid,userid) VALUES(9,12);
@@ -186,8 +186,8 @@ INSERT INTO productreview(productid,customerid,rating,review) VALUES (20,3,3.5,'
 INSERT INTO productreview(productid,customerid,rating,review) VALUES (21,2,4.5,'Nice Product');
 INSERT INTO productreview(productid,customerid,rating,review) VALUES (21,3,4.5,'Nice Product');
 
-INSERT INTO orders(orderdate,shippeddate,customerid,addressid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',2,1,120,'initiated');
-INSERT INTO orders(orderdate,shippeddate,customerid,addressid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',2,1,480,'cancelled');
+INSERT INTO orders(orderdate,shippeddate,customerid,storeid,addressid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',2,1,1,120,'initiated');
+INSERT INTO orders(orderdate,shippeddate,customerid,storeid,addressid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',2,1,1,480,'cancelled');
 
 
 
@@ -220,11 +220,6 @@ INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid) VALUES('2022
 
 
 
-
-
--- FEEDBACKS DATA
-INSERT INTO feedbacks(description,customerid) VALUES ('very good facilitities',2);
-INSERT INTO feedbacks(description,customerid) VALUES ('good quality of products',3);
 
 INSERT INTO questioncategories(category) VALUES('crop related questions');
 INSERT INTO questioncategories(category) VALUES('soil related questions');
@@ -277,7 +272,3 @@ INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (1,'2023-06-05 12:20:19
 INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (2,'2023-07-10 12:23:08',2);
 INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (2,'2023-08-25 12:34:20',2);
 INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (3,'2023-09-15 12:40:30',2);
-
-
-
-

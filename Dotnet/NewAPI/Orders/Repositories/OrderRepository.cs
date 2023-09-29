@@ -1,6 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using System.Text.Json;
+using System.Text;
 using Transflower.EKrushi.Orders.Repositories.Interfaces;
 using Transflower.EKrushi.Orders.Repositories.Contexts;
-using Microsoft.EntityFrameworkCore;
 using Transflower.EKrushi.Orders.Models;
 using Transflower.EKrushi.Orders.Entities;
 
@@ -9,29 +11,34 @@ namespace Transflower.EKrushi.Orders.Repositories;
 public class OrderRepository : IOrderRepository
 {
     private readonly OrderContext _context;
+    private readonly IHttpClientFactory _httpClientFactory;
 
-    public OrderRepository(OrderContext context)
+    public OrderRepository(OrderContext context, IHttpClientFactory httpClientFactory)
     {
         _context = context;
+        _httpClientFactory = httpClientFactory;
     }
 
     public async Task<OrderAmount> CreateOrder(OrderAddModel orderAddModel)
     {
+        int fetchStoreId = await GetNearestStoreId(orderAddModel.AddressId);
+        Console.WriteLine($" --> {fetchStoreId}");
+
+        Order order = new Order()
+        {
+            Id = 0,
+            CustomerId = orderAddModel.CustomerId,
+            AddressId = orderAddModel.AddressId,
+            Status = "initiated",
+            Total = 0,
+            StoreId = fetchStoreId != default ? fetchStoreId : 1
+        };
+        var transaction = await _context.Database.BeginTransactionAsync();
         try
         {
-            var transaction = await _context.Database.BeginTransactionAsync();
-            Order order1 = new Order()
-            {
-                Id = 0,
-                CustomerId = orderAddModel.CustomerId,
-                AddressId = orderAddModel.AddressId,
-                Status = "initiated",
-                Total = 0
-            };
-            await _context.AddAsync(order1);
+            await _context.AddAsync(order);
             await _context.SaveChangesAsync();
-
-            int orderId = order1.Id;
+            int orderId = order.Id;
             if (orderAddModel.OrderDetails != null)
                 foreach (var item in orderAddModel.OrderDetails)
                 {
@@ -63,6 +70,7 @@ public class OrderRepository : IOrderRepository
                     }
                 }
             await _context.SaveChangesAsync();
+            await transaction.CommitAsync();
 
             var total = await (
                 from od in _context.OrderDetails
@@ -70,23 +78,21 @@ public class OrderRepository : IOrderRepository
                 join pd in _context.ProductDetails on od.ProductDetailsId equals pd.Id
                 select pd.UnitPrice * od.Quantity
             ).SumAsync();
-
-            var order = await _context.Orders.FindAsync(orderId);
-            if (order != null)
+            var order1 = await _context.Orders.FindAsync(orderId);
+            if (order1 != null)
             {
-                order.Total = total;
+                order1.Total = total;
                 await _context.SaveChangesAsync();
             }
 
-            await transaction.CommitAsync();
             return new OrderAmount { OrderId = orderId, Amount = total };
         }
         catch (Exception)
         {
+            await transaction.RollbackAsync();
             throw;
         }
     }
-    
 
     public async Task<double> GetOrderAmount(int orderId)
     {
@@ -196,6 +202,71 @@ public class OrderRepository : IOrderRepository
                 .Select(o => o.AddressId)
                 .FirstAsync();
             return addressId;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    private async Task<int> GetNearestStoreId(int customerAddressId)
+    {
+        try
+        {
+            int addressId = await GetNearestStoreAddressId(customerAddressId);
+            if (addressId == default)
+            {
+                return default;
+            }
+            var storeId = await _context.Stores
+                .Where(store => store.AddressId == addressId)
+                .Select(store => store.Id)
+                .FirstOrDefaultAsync();
+            return storeId;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    private async Task<int> GetNearestStoreAddressId(int customerAddressId)
+    {
+        try
+        {
+            string addressIdsAsString = await GetAddressIdOfStores();
+            var body = new
+            {
+                addressId = customerAddressId,
+                storeAddressIdString = addressIdsAsString
+            };
+            string jsonBody = JsonSerializer.Serialize(body);
+            var requestContent = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+            string requestUrl = "http://localhost:5102/api/addresses/nearest";
+
+            HttpClient httpClient = _httpClientFactory.CreateClient();
+            var response = await httpClient.PostAsync(requestUrl, requestContent);
+            if (response.IsSuccessStatusCode)
+            {
+                var apiResponse = await response.Content.ReadAsStringAsync();
+                int addressId = JsonSerializer.Deserialize<int>(apiResponse);
+                return addressId;
+            }
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+        return default;
+    }
+
+    private async Task<string> GetAddressIdOfStores()
+    {
+        try
+        {
+            var addressIds = await _context.Stores.Select(store => store.AddressId).ToListAsync();
+            var addressIdsAsString = string.Join(",", addressIds.Select(id => id.ToString()));
+            return addressIdsAsString;
         }
         catch (Exception)
         {

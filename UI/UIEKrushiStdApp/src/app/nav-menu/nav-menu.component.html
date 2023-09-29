@@ -19,21 +19,26 @@
         class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
       >
         <ul class="navbar-nav flex-grow">
-          <!-- <li class="nav-item" *ngIf="isLoggedIn()" style="text-align: center; font-size: 12px;">
-            <a class="nav-link text-dark"> Welcome<P>{{name}}</P></a>
-          </li> -->
-          <li class="nav-item" style="text-align: center; font-size: 12px;">
+          <li class="nav-item">
+            <a class="nav-link text-dark"  [routerLink]="['/customer/question']" ><img src="assets/Inquiry.png" alt="" width="25" height="25">Queries</a>
+          </li>
+          <li class="nav-item" style="text-align: center; font-size: 12px; position: relative;" *ngIf="isLoggedIn()">
             <div class="nav-link text-dark" (mouseenter)="showLinks = true" (mouseleave)="showLinks = false">
-              Welcome,<P>{{name}}</P>
-              <!-- <ul class="additional-links card" style="position: absolute;" *ngIf="showLinks">
-                <li><a href="#">Link 1</a></li>
-                <li><a href="#">Link 2</a></li>
-              </ul> -->
+              Welcome, <p>{{name}}</p>
+              <ul class="card" style="position: absolute; top: 100%; left: 0; z-index: 1000;" *ngIf="showLinks">
+                <li class="nav-item">
+                  <a class="nav-link text-dark" [routerLink]="['/customer/orders']">Orders</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-dark" [routerLink]="['/customer/paymentlist']">Payment History</a>
+                </li>
+              </ul>
             </div>
           </li>
           
+          
           <li class="nav-item" *ngIf="isLoggedIn()">
-            <a class="nav-link text-dark"  > <i class="fa-solid fa-cart-shopping"   [routerLink]="['customer/shoppingcart']"></i></a>
+            <a class ="nav-link text-dark"  > <i class="fa-solid fa-cart-shopping"   [routerLink]="['customer/shoppingcart']"></i></a>
           </li>
           <li class="nav-item" *ngIf="isLoggedIn()">
           <a class="nav-link text-dark" (click)="logOut()">LogOut</a>

@@ -1,4 +1,4 @@
--- Active: 1694968636816@@127.0.0.1@3306@ekrushi
+-- Active: 1682349138553@@127.0.0.1@3306@ekrushi
 
 drop database ekrushi;
 
@@ -33,6 +33,15 @@ CREATE TABLE
         corporateid INT NOT NULL UNIQUE,
         userid INT NOT NULL,
         CONSTRAINT fk_supplieruser FOREIGN KEY(userid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE
+    );
+
+CREATE TABLE
+    stores(
+        id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY,
+        name VARCHAR(100) NOT NULL,
+        userid INT NOT NULL,
+        addressid INT,
+        CONSTRAINT fk_storeuser FOREIGN KEY(userid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE
     );
 
 CREATE TABLE
@@ -75,15 +84,19 @@ CREATE TABLE
         shippeddate DATETIME NOT NULL,
         customerid INT NOT NULL,
         addressid INT NOT NULL,
+        storeid INT,
+        CONSTRAINT fk_storeid FOREIGN KEY (storeid) REFERENCES stores(id),
         CONSTRAINT fk_cust_id_11 FOREIGN KEY (customerid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE,
         total DOUBLE,
         status ENUM(
             'initiated',
+            'approved',
+            'inprogress',
             'cancelled',
-            'delivered',
-            'inprogress'
+            'delivered'
         )  DEFAULT 'initiated' NOT NULL
     );
+    
 
 CREATE TABLE
     orderdetails(
@@ -136,13 +149,7 @@ CREATE TABLE
         CONSTRAINT fk_shipperuser FOREIGN KEY(userid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE
     );
 
-CREATE TABLE
-    feedbacks(
-        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        description VARCHAR(255),
-        customerid INT NOT NULL,
-        CONSTRAINT fk_022 FOREIGN KEY (customerid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE
-    );
+
 
 CREATE TABLE
     questioncategories(

@@ -23,8 +23,8 @@ import { OrderService } from './Services/order-service.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { orderProcessingRoutes } from './order-processing/order-processing.module';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { orderProcessingRoutes } from './order-processing/order-processing.module';
 
 @NgModule({
   declarations: [
