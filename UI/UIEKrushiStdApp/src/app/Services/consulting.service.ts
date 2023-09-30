@@ -38,8 +38,8 @@ export class ConsultingService {
     return this.httpClient.get<any>(url);
   }
 
-  getCategorywiseQuestions(category:string): Observable<Question[]> {
-    let url = 'http://localhost:5279/api/consulting/categoryid/'+category;
+  getCategorywiseQuestions(categoryid:number): Observable<Question[]> {
+    let url = 'http://localhost:5279/api/consulting/Questions/Catagory/'+categoryid;
     return this.httpClient.get<Question[]>(url);
   }
 }

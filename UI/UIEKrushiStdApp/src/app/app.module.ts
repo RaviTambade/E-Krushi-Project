@@ -25,6 +25,8 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { orderProcessingRoutes } from './order-processing/order-processing.module';
+import { ConsultingModule, consultingRoutes } from './consulting/consulting.module';
+// import { consultingRoutes } from './consulting/consulting.module';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { orderProcessingRoutes } from './order-processing/order-processing.modul
     CatalogModule,
     MatDialogModule,
     MatSnackBarModule,
+    ConsultingModule,
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -57,6 +60,7 @@ import { orderProcessingRoutes } from './order-processing/order-processing.modul
       { path: 'sme', children: subjetcMatterExpertRoutes },
       { path: 'supplier', children: supplierRoutes },
       { path: 'orderprocessing', children: orderProcessingRoutes },
+      { path: 'consulting', children: consultingRoutes },
     ]),
     BrowserAnimationsModule,
   ],

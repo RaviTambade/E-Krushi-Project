@@ -17,6 +17,7 @@ import { QuestionsComponent } from './customer-questions/questions/questions.com
 import { AddquestionComponent } from './customer-questions/addquestion/addquestion.component';
 import { QuestionanswerComponent } from './customer-questions/questionanswer/questionanswer.component';
 import { ConsultingModule } from '../consulting/consulting.module';
+import { CategorywisequestionsComponent } from '../consulting/categorywisequestions/categorywisequestions.component';
 
 export const customerRoutes: Routes = [
   { path: 'dashboard', component: CustomerDashboardComponent },

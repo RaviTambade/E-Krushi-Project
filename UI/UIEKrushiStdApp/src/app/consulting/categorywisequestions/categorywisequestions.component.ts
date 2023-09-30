@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Question } from 'src/app/Models/question';
 import { ConsultingService } from 'src/app/Services/consulting.service';
 
@@ -9,11 +10,15 @@ import { ConsultingService } from 'src/app/Services/consulting.service';
 })
 export class CategorywisequestionsComponent implements OnInit {
 
-  constructor(private svc:ConsultingService){}
+  constructor(private svc:ConsultingService,private route:ActivatedRoute){}
   questions:Question[]=[]
-  category!:string
+  categoryId!:number
+  category:string=''
   ngOnInit(): void {
-    this.svc.getCategorywiseQuestions(this.category).subscribe((res)=>{
+    this.route.params.subscribe(params=>{
+      this.categoryId=params["categoryId"]
+    })
+    this.svc.getCategorywiseQuestions(this.categoryId).subscribe((res)=>{
       this.questions=res;
       console.log(res);
     })

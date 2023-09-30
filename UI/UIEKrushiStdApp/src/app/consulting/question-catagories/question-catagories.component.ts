@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Questioncategory } from 'src/app/Models/Questioncategory';
 import { ConsultingService } from 'src/app/Services/consulting.service';
 
@@ -10,12 +11,19 @@ import { ConsultingService } from 'src/app/Services/consulting.service';
 export class QuestionCatagoriesComponent implements OnInit {
 
   categories:Questioncategory[]=[]
-constructor(private svc:ConsultingService){}
+  category:Questioncategory ={
+    id: 0,
+    category: ''
+  }
+constructor(private svc:ConsultingService,private router: Router){}
   ngOnInit(): void {
    this.svc.getAllCategories().subscribe((response)=>{
-    this.categories=response;
+    this.categories=response; 
+    console.log(response);
    })
   }
 
-
+  onClickCategory(id:number){
+    this.router.navigate(['consulting/categorywisequestions',id]);
+  }
 }
