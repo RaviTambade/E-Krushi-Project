@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Question } from 'src/app/Models/question';
 import { ConsultingService } from 'src/app/Services/consulting.service';
 
@@ -10,7 +10,7 @@ import { ConsultingService } from 'src/app/Services/consulting.service';
 })
 export class CategorywisequestionsComponent implements OnInit {
 
-  constructor(private svc:ConsultingService,private route:ActivatedRoute){}
+  constructor(private svc:ConsultingService,private route:ActivatedRoute,private router:Router){}
   questions:Question[]=[]
   categoryId!:number
   category:string=''
@@ -22,6 +22,13 @@ export class CategorywisequestionsComponent implements OnInit {
       this.questions=res;
       console.log(res);
     })
+  }
+
+  navigateQuestionAnswers(id:number) {
+    console.log(id);
+    this.router.navigate(['/customer/question/',id],{relativeTo:this.route});
+  
+    
   }
 
 }

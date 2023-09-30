@@ -3,7 +3,7 @@
 <div class="container">
     <div >
       <P style="font-size: x-large;">Releted Questions</P>
-      <a    href="#"  class="hover-text"   *ngFor=" let question of questions ;let index = index"><i class="fa fa-arrow-right"></i>  {{ index + 1 }}.{{question.description}} <br></a>
+      <a   (click)="navigateQuestionAnswers(question.id)"  class="hover-text"   *ngFor=" let question of questions ;let index = index"><i class="fa fa-arrow-right"></i>  {{ index + 1 }}.{{question.description}} <br></a>
        </div>
      </div>
     
