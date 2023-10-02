@@ -1,15 +1,19 @@
+<div class="row">
+  <div class="col-8">
+    <div class="qa-section"><strong>{{question}}</strong>
+      <div *ngFor="let ques of questionsAnswers">
 
-<div class="qa-section"><strong>{{question}}</strong>
-<div  *ngFor="let ques of questionsAnswers">
-    
-    <div class="card-body">
-      <p class="answer">{{ques.answers}}</p>
+        <div class="card-body">
+          <p class="answer">{{ques.answers}}</p>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="col-4">
+    <app-question-catagories></app-question-catagories>
+
+  </div>
 </div>
-<app-reletedquestions [questionId]="id"></app-reletedquestions>
-
-
-
-
-  
+<div class="col-8">
+  <app-reletedquestions [questionId]="id"></app-reletedquestions>
+</div>

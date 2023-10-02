@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Question } from 'src/app/Models/question';
 import { ConsultingService } from 'src/app/Services/consulting.service';
@@ -19,6 +19,16 @@ export class ReletedquestionsComponent implements OnInit{
       console.log(this.questionId)
       console.log(response);
     })
+  }
+
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['questionId']
+     ) {
+      this.svc.getReletedQuestions(changes['questionId'].currentValue).subscribe((res) => {
+        this.reletedQuestions = res;
+      });
+    }
   }
 
 

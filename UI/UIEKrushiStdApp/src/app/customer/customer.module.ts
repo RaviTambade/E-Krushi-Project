@@ -25,11 +25,9 @@ export const customerRoutes: Routes = [
   { path: 'orders/details/:orderid', component: OrderDetailsComponent },
   { path: 'paymentlist', component: CustomerPaymenthistoryComponent },
   { path: 'shoppingcart', component: ShoppingcartComponent },
-  {path:'question' , component:CustomerQuestionsComponent,
-children:[
+  {path:'question' , component:CustomerQuestionsComponent},
   {path:'addquestion' , component:AddquestionComponent},
 
-]},
   {path:'questionHistory' , component:QuestionsComponent},
   // {path:'questionAnswer' , component:QuestionanswerComponent},
   {path:'question/:id' , component:QuestionanswerComponent},

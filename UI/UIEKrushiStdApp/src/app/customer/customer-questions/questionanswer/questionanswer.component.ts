@@ -25,8 +25,6 @@ export class QuestionanswerComponent implements OnInit {
       this.question=this.questionsAnswers[0].question;
       console.log(res);
     });
-    });
-
-    
+    });   
   }
 }
