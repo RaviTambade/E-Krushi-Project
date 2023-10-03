@@ -213,64 +213,65 @@ public class OrderRepository : IOrderRepository
     {
         try
         {
-            int addressId = await GetNearestStoreAddressId(customerAddressId);
-            if (addressId == default)
-            {
-                return default;
-            }
-            var storeId = await _context.Stores
-                .Where(store => store.AddressId == addressId)
-                .Select(store => store.Id)
-                .FirstOrDefaultAsync();
-            return storeId;
-        }
-        catch (Exception)
-        {
-            throw;
-        }
-    }
-
-    private async Task<int> GetNearestStoreAddressId(int customerAddressId)
-    {
-        try
-        {
-            string addressIdsAsString = await GetAddressIdOfStores();
-            var body = new
-            {
-                addressId = customerAddressId,
-                storeAddressIdString = addressIdsAsString
-            };
-            string jsonBody = JsonSerializer.Serialize(body);
-            var requestContent = new StringContent(jsonBody, Encoding.UTF8, "application/json");
-            string requestUrl = "http://localhost:5102/api/addresses/nearest";
+            string requestUrl = "http://localhost:5102/api/stores/nearby/" + customerAddressId;
 
             HttpClient httpClient = _httpClientFactory.CreateClient();
-            var response = await httpClient.PostAsync(requestUrl, requestContent);
+            var response = await httpClient.GetAsync(requestUrl);
             if (response.IsSuccessStatusCode)
             {
                 var apiResponse = await response.Content.ReadAsStringAsync();
                 int addressId = JsonSerializer.Deserialize<int>(apiResponse);
                 return addressId;
             }
+            return default;
         }
         catch (Exception)
         {
             throw;
         }
-        return default;
     }
 
-    private async Task<string> GetAddressIdOfStores()
-    {
-        try
-        {
-            var addressIds = await _context.Stores.Select(store => store.AddressId).ToListAsync();
-            var addressIdsAsString = string.Join(",", addressIds.Select(id => id.ToString()));
-            return addressIdsAsString;
-        }
-        catch (Exception)
-        {
-            throw;
-        }
-    }
+    // private async Task<int> GetNearestStoreAddressId(int customerAddressId)
+    // {
+    //     try
+    //     {
+    //         string addressIdsAsString = await GetAddressIdOfStores();
+    //         var body = new
+    //         {
+    //             addressId = customerAddressId,
+    //             storeAddressIdString = addressIdsAsString
+    //         };
+    //         string jsonBody = JsonSerializer.Serialize(body);
+    //         var requestContent = new StringContent(jsonBody, Encoding.UTF8, "application/json");
+    //         string requestUrl = "http://localhost:5102/api/addresses/nearest";
+
+    //         HttpClient httpClient = _httpClientFactory.CreateClient();
+    //         var response = await httpClient.PostAsync(requestUrl, requestContent);
+    //         if (response.IsSuccessStatusCode)
+    //         {
+    //             var apiResponse = await response.Content.ReadAsStringAsync();
+    //             int addressId = JsonSerializer.Deserialize<int>(apiResponse);
+    //             return addressId;
+    //         }
+    //     }
+    //     catch (Exception)
+    //     {
+    //         throw;
+    //     }
+    //     return default;
+    // }
+
+    // private async Task<string> GetAddressIdOfStores()
+    // {
+    //     try
+    //     {
+    //         var addressIds = await _context.Stores.Select(store => store.AddressId).ToListAsync();
+    //         var addressIdsAsString = string.Join(",", addressIds.Select(id => id.ToString()));
+    //         return addressIdsAsString;
+    //     }
+    //     catch (Exception)
+    //     {
+    //         throw;
+    //     }
+    // }
 }
