@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/Models/product';
 import { CatalogService } from 'src/app/Services/catalog.service';
@@ -11,7 +11,7 @@ import { CatalogService } from 'src/app/Services/catalog.service';
 export class ProductSimilarItemsComponent implements OnChanges {
   @Input() productId: number | undefined;
   products: Product[] = [];
-  constructor(private catlogsvc: CatalogService) {}
+  constructor(private catlogsvc: CatalogService,private el: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit() {
     console.log(this.productId);
@@ -25,11 +25,16 @@ export class ProductSimilarItemsComponent implements OnChanges {
     });
   }
 
+  scrollToTop() {
+    window.scrollTo(0, 0);
+  }
+
   ngOnChanges(changes: SimpleChanges) {
     if (changes['productId']
      ) {
       this.catlogsvc.getSimilarProducts(changes['productId'].currentValue).subscribe((res) => {
         this.products = res;
+        this.scrollToTop()
       });
     }
   }

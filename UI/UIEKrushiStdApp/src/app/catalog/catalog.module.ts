@@ -45,3 +45,4 @@ export const catlogRoutes: Routes = [
   exports: [ ProductHomeComponent, SearchbarComponent],
 })
 export class CatalogModule {}
+
