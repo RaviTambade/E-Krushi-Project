@@ -34,7 +34,7 @@ public class ProductRepository : IProductRepository
             await connection.OpenAsync();
             MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync();
             while (await reader.ReadAsync())
-            {
+            { 
                 Product product = new Product()
                 {
                     Id = reader.GetInt32("id"),

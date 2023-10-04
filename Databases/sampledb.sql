@@ -201,7 +201,7 @@ INSERT INTO productdetails(productid,unitprice,stockavailable,size,supplierid) V
 INSERT INTO productdetails(productid,unitprice,stockavailable,size,supplierid) VALUES(32,120,1000,'100ml',1);
 INSERT INTO productdetails(productid,unitprice,stockavailable,size,supplierid) VALUES(32,220,1000,'220ml',1);
 INSERT INTO productdetails(productid,unitprice,stockavailable,size,supplierid) VALUES(33,250,1000,'100gm',1);
-INSERT INTO productdetails(productid,unitprice,stockavailable,size,supplierid) VALUES(33,325,1000,'250kg',1);
+INSERT INTO productdetails(productid,unitprice,stockavailable,size,supplierid) VALUES(33,325,1000,'250gm',1);
 INSERT INTO productdetails(productid,unitprice,stockavailable,size,supplierid) VALUES(34,120,1000,'100gm',1);
 INSERT INTO productdetails(productid,unitprice,stockavailable,size,supplierid) VALUES(34,240,1000,'200gm',1);
 INSERT INTO productdetails(productid,unitprice,stockavailable,size,supplierid) VALUES(35,1050,1000,'25ml',1);
