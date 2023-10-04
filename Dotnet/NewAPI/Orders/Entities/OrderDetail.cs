@@ -18,6 +18,4 @@ public class OrderDetail
     [Column("quantity")]
     public int Quantity { get; set; }
 
-    [Column("discount")]
-    public double Discount { get; set; }
 }

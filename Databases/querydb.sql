@@ -9,12 +9,13 @@ INNER join questioncategories on questions.categoryid=questioncategories.id wher
 SELECT customerquestions.customerid,customerquestions.questionid,customerquestions.questiondate,questions.description from questions INNER JOIN customerquestions on questions.id =customerquestions.questionid ;
 SELECT * from customerquestions;
 select * from questioncategories;
-select * from payments;
+select * from ordershistory;
 select customerquestions.id, questions.description,customerquestions.questiondate,(select count(*) from answers where questionid=customerquestions.questionid)as answers  from questions inner join customerquestions on customerquestions.questionid=questions.id where customerquestions.customerid=1;
 SELECT (payments.id)as paymentid,  (orders.total) as total,(payments.date)as date,(payments.paymentstatus) as paymentstatus,(payments.mode)as mode from payments  INNER JOIN orders ON orders.id=payments.orderid where payments.orderid=1;
 -- customer payments
+
 select (date)as paymentdate,paymentstatus,orderid FROM payments where orderid in (SELECT id from orders where customerid =2);
-SELECT * from productdetails;
+SELECT * from orders;
 
 -- customer orderdetails query
 select productdetails.size,productdetails.unitprice,products.image,products.title,orderdetails.quantity,(productdetails.unitprice * orderdetails.quantity) as total from products 
