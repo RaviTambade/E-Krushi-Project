@@ -1,4 +1,4 @@
--- Active: 1694968636816@@127.0.0.1@3306@ekrushi
+-- Active: 1682349138553@@127.0.0.1@3306@ekrushi
 SELECT orders.total,payments.date,payments.paymentstatus,payments.mode from payments  INNER JOIN orders ON
 orders.id=payments.orderid where orderid=1;
 SELECT shippeddate,total from orders where id=1;
@@ -273,3 +273,4 @@ select * from userroles where userid=1;
 select id from users where contactnumber ='9881571268';
 select roles.role from roles inner join userroles on roles.id = userroles.roleid where userroles.userid=2;
                  
+SELECT * FROM orders;
