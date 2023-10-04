@@ -1,4 +1,4 @@
--- Active: 1682349138553@@127.0.0.1@3306@ekrushi
+-- Active: 1694968636816@@127.0.0.1@3306@ekrushi
 
 drop database ekrushi;
 
@@ -200,5 +200,4 @@ CREATE TABLE
         CONSTRAINT fkques FOREIGN KEY(questionid) REFERENCES questions(id) ON UPDATE CASCADE ON DELETE CASCADE,
         customerid INT NOT NULL,
         CONSTRAINT fk_cust_11 FOREIGN KEY (customerid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE,
-        questiondate datetime not null
-    );
+        questiondate DATETIME );
