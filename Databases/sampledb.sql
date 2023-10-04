@@ -420,17 +420,133 @@ INSERT INTO productreview(productid, customerid, rating, review) VALUES (50, 3, 
 -- CARTS DATA
 INSERT INTO carts(customerid) VALUES (2);
 INSERT INTO carts(customerid) VALUES (3);
+INSERT INTO carts(customerid) VALUES (15);
+INSERT INTO carts(customerid) VALUES (16);
+INSERT INTO carts(customerid) VALUES (17);
+INSERT INTO carts(customerid) VALUES (18);
+INSERT INTO carts(customerid) VALUES (19);
+INSERT INTO carts(customerid) VALUES (20);
+INSERT INTO carts(customerid) VALUES (21);
+INSERT INTO carts(customerid) VALUES (22);
+INSERT INTO carts(customerid) VALUES (23);
+INSERT INTO carts(customerid) VALUES (24);
+INSERT INTO carts(customerid) VALUES (25);
+INSERT INTO carts(customerid) VALUES (26);
+INSERT INTO carts(customerid) VALUES (27);
 
 
 
 -- CARTS ITEMS DATA
 INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,1,5);
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,3,4);
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,5,4);
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,11,1);
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,9,5);
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,17,2);
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,19,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,2,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(3,3,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(4,4,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(5,5,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(6,6,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(7,7,2);
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(8,8,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(9,9,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(10,10,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(11,11,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(12,12,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(13,13,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(14,14,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(15,15,5);
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,16,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,17,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(3,18,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(4,19,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(5,20,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(6,21,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(7,22,2);
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(8,23,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(9,24,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(10,25,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(11,26,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(12,27,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(13,28,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(14,29,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(15,30,5);
+
+
+
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,31,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,32,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(3,33,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(4,34,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(5,35,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(6,36,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(7,37,2);
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(8,38,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(9,39,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(10,40,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(11,41,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(12,42,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(13,43,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(14,44,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(15,45,5);
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,46,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,47,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(3,48,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(4,49,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(5,50,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(6,51,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(7,52,2);
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(8,53,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(9,54,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(10,55,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(11,56,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(12,57,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(13,58,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(14,59,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(15,60,5);
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,61,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,62,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(3,63,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(4,64,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(5,65,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(6,66,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(7,67,2);
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(8,68,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(9,69,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(10,70,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(11,71,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(12,72,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(13,73,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(14,74,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(15,75,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,76,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,77,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(3,78,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(4,78,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(5,79,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(6,80,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(7,81,2);
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(8,82,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(9,83,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(10,84,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(11,85,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(12,86,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(13,87,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(14,88,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(15,89,5);
+
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(12,90,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(13,91,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(14,92,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(15,93,5);
+
 
 
 -- PAYMENTS DATA
