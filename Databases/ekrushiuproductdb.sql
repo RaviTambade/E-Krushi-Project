@@ -34,7 +34,7 @@ CREATE TABLE `cartitems` (
   KEY `fkproduct2` (`productdetailsid`),
   CONSTRAINT `fk02` FOREIGN KEY (`cartid`) REFERENCES `carts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fkproduct2` FOREIGN KEY (`productdetailsid`) REFERENCES `productdetails` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,7 +110,6 @@ CREATE TABLE `orderdetails` (
   `orderid` int NOT NULL,
   `productdetailsid` int NOT NULL,
   `quantity` int NOT NULL,
-  `discount` double DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `fkorder` (`orderid`),
   KEY `fkproduct` (`productdetailsid`),
@@ -125,7 +124,7 @@ CREATE TABLE `orderdetails` (
 
 LOCK TABLES `orderdetails` WRITE;
 /*!40000 ALTER TABLE `orderdetails` DISABLE KEYS */;
-INSERT INTO `orderdetails` VALUES (2,3,50,1,0),(3,4,3,3,0),(5,6,3,1,0),(6,7,5,1,0),(7,8,29,4,0),(8,9,62,1,0),(9,10,42,1,0),(10,11,87,5,0),(11,12,74,3,0),(12,13,6,1,0),(13,14,47,1,0),(14,15,3,1,0),(15,16,27,3,0),(16,17,6,2,0),(17,18,36,1,0),(18,19,33,4,0),(19,20,40,10,0),(20,21,51,10,0),(21,22,66,4,0),(22,23,58,1,0);
+INSERT INTO `orderdetails` VALUES (2,3,50,1),(3,4,3,3),(5,6,3,1),(6,7,5,1),(7,8,29,4),(8,9,62,1),(9,10,42,1),(10,11,87,5),(11,12,74,3),(12,13,6,1),(13,14,47,1),(14,15,3,1),(15,16,27,3),(16,17,6,2),(17,18,36,1),(18,19,33,4),(19,20,40,10),(20,21,51,10),(21,22,66,4),(22,23,58,1);
 /*!40000 ALTER TABLE `orderdetails` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -490,4 +489,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-04  8:53:42
+-- Dump completed on 2023-10-04  9:13:02

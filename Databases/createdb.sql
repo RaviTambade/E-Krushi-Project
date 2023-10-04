@@ -105,8 +105,7 @@ CREATE TABLE
         CONSTRAINT fkorder FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE,
         productdetailsid INT NOT NULL,
         CONSTRAINT fkproduct FOREIGN KEY (productdetailsid) REFERENCES productdetails(id) ON UPDATE CASCADE ON DELETE CASCADE,
-        quantity INT NOT NULL,
-        discount DOUBLE DEFAULT 0
+        quantity INT NOT NULL
     );
 
 CREATE TABLE
