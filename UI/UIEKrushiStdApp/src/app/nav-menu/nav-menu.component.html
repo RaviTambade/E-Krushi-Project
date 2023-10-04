@@ -25,7 +25,7 @@
           <li class="nav-item" style="text-align: center; font-size: 12px; position: relative;" *ngIf="isLoggedIn()">
             <div class="nav-link text-dark" (mouseenter)="showLinks = true" (mouseleave)="showLinks = false">
               Welcome, <p>{{name}}</p>
-              <ul class="card" style="position: absolute; top: 100%; left: 0; z-index: 1000; background-color: #fff; border: 1px solid #ccc;" *ngIf="showLinks">
+              <ul *ngIf="isUserHaveRequiredRole(Role.Customer) && showLinks" class="card" style="position: absolute; top: 100%; left: 0; z-index: 1000; background-color: #fff; border: 1px solid #ccc;" >
                 <li class="nav-item">
                   <a class="nav-link text-dark" [routerLink]="['/customer/orders']">Orders</a>
                 </li>

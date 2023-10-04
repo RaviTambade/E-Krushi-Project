@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
+import { Role } from 'src/app/Models/Enums/role';
 import { Credential } from 'src/app/Models/credential';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { UserService } from 'src/app/Services/user.service';
@@ -33,12 +34,17 @@ export class LoginComponent {
           .subscribe((response) => {
             this.userId = response.id;
             console.log(this.userId);
-            localStorage.setItem(LocalStorageKeys.userId, this.userId.toString());
+            localStorage.setItem(
+              LocalStorageKeys.userId,
+              this.userId.toString()
+            );
             this.userService.getUserRole(this.userId).subscribe((response) => {
               this.roles = response;
               console.log(this.roles);
-              const role = this.roles[0];
-              this.navigateByRole(role);
+              if (this.roles?.length == 1) {
+                const role = this.roles[0];
+                this.navigateByRole(role);
+              }
             });
           });
       }
@@ -46,22 +52,26 @@ export class LoginComponent {
   }
 
   navigateByRole(role: string) {
+    this.userService.reloadnavbar.next();
     switch (role) {
-      case 'Customer':
+      case Role.Customer:
         this.router.navigate(['customer/dashboard']);
         break;
-      case 'Shop owner':
+      case Role.ShopOwner:
         this.router.navigate(['shop/dashboard']);
         break;
-      case 'Supplier':
+      case Role.Supplier:
         this.router.navigate(['supplier/dashboard']);
         break;
-      case 'Shipper':
+      case Role.Shipper:
         this.router.navigate(['shipper/dashboard']);
         break;
-      case 'SubjectMatterExpert':
+      case Role.SubjectMatterExpert:
         this.router.navigate(['sme/dashboard']);
         break;
     }
+  }
+  showLoginPage() {
+    return this.roles.length < 1;
   }
 }

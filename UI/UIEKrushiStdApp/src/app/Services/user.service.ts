@@ -10,6 +10,7 @@ import { AddressInfo } from '../Models/addressinfo';
 })
 export class UserService {
   public newaddressSubject = new Subject<void>();
+  public reloadnavbar = new Subject<void>();
 
   constructor(private httpClient: HttpClient) {}
 

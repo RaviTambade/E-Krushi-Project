@@ -1,11 +1,10 @@
 -- Active: 1682349138553@@127.0.0.1@3306@ekrushi
 
-INSERT INTO roles(name) VALUES ('Shop owner');
+INSERT INTO roles(name) VALUES ('Shop Owner');
 INSERT INTO roles(name) VALUES ('Customer');
 INSERT INTO roles(name) VALUES ('Supplier');
 INSERT INTO roles(name) VALUES ('Shipper');
 INSERT INTO roles(name) VALUES ('SubjectMatterExpert');
-
 
 INSERT INTO userroles(userid,roleid) VALUES (1,1);
 INSERT INTO userroles(userid,roleid) VALUES (4,1);
@@ -410,12 +409,9 @@ INSERT INTO productreview(productid, customerid, rating, review) VALUES (50, 3, 
 -- INSERT INTO orders(orderdate,shippeddate,customerid,storeid,addressid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',2,1,1,120,'initiated');
 -- INSERT INTO orders(orderdate,shippeddate,customerid,storeid,addressid,total,status) VALUES ('2020-12-01 12:12:12','2020-12-02 10:12:12',2,1,1,480,'cancelled');
 
-
-
 -- ORDER_DETAILS DATA
 -- INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (1,1,1);
 -- INSERT INTO orderdetails(orderid,productdetailsid,quantity) VALUES (2,2,2);
-
 
 -- CARTS DATA
 INSERT INTO carts(customerid) VALUES (2);
@@ -435,7 +431,6 @@ INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,19,2);
 
 -- PAYMENTS DATA
 -- INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery','paid',1,1);
-
 -- INSERT INTO payments(date,mode,paymentstatus,transactionid,orderid) VALUES('2022-03-08 12:08:19','cash on delivery','paid',2,2);
 
 INSERT INTO questioncategories(category) VALUES('Crop Cultivation');
@@ -497,7 +492,7 @@ INSERT INTO questions(description,categoryid) VALUES('What are the benefits of s
 INSERT INTO questions(description,categoryid) VALUES('How can I reduce water usage in my farming operation while maintaining crop productivity?',4);
 INSERT INTO questions(description,categoryid) VALUES('Are there organic alternatives for fertilizing my crops?',4);
 INSERT INTO questions(description,categoryid) VALUES('What are some tips for managing livestock sustainably?',4);
-INSERT INTO questions(description,categoryid) VALUES(' How can I market my organic and sustainably grown products effectively?',4);
+INSERT INTO questions(description,categoryid) VALUES('How can I market my organic and sustainably grown products effectively?',4);
 
 
 INSERT INTO questions(description,categoryid) VALUES('How can I create a budget for my farm that accounts for all expenses and income?',5);

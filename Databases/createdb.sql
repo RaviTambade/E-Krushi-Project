@@ -80,8 +80,8 @@ CREATE TABLE
 CREATE TABLE
     orders(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        orderdate DATETIME NOT NULL,
-        shippeddate DATETIME NOT NULL,
+        orderdate DATETIME DEFAULT CURRENT_TIMESTAMP,
+        shippeddate DATETIME DEFAULT (CURRENT_DATE + INTERVAL 7 DAY) ,
         customerid INT NOT NULL,
         addressid INT NOT NULL,
         storeid INT,
@@ -97,6 +97,7 @@ CREATE TABLE
         )  DEFAULT 'initiated' NOT NULL
     );
     
+
 
 CREATE TABLE
     orderdetails(
@@ -148,13 +149,28 @@ CREATE TABLE
         CONSTRAINT fk_shipperuser FOREIGN KEY(userid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE
     );
 
-CREATE table shipperorders(
+CREATE TABLE shipperorders(
     id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY,
     orderid INT NOT NULL,
     shipperid INT NOT NULL,
     CONSTRAINT fkshipperorderid FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE,
     CONSTRAINT fk_shipperid FOREIGN KEY(shipperid) REFERENCES shippers(id) ON UPDATE CASCADE ON DELETE CASCADE
 );
+
+CREATE TABLE ordershistory(
+    id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY,
+    orderid INT NOT NULL,
+    status ENUM(
+            'initiated',
+            'approved',
+            'inprogress',
+            'cancelled',
+            'delivered'
+        ) NOT NULL,
+    date  DATETIME  DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fkorderid3 FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE
+    );
+
 
 
 CREATE TABLE
