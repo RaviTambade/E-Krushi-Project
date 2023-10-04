@@ -7,12 +7,12 @@ namespace Transflower.EKrushi.Catalog.Repositories;
 public class ProductRepository : IProductRepository
 {
     private readonly IConfiguration _configuration;
-    private string? _connectionString;
+    private  readonly string _connectionString;
 
     public ProductRepository(IConfiguration configuration)
     {
         _configuration = configuration;
-        _connectionString = this._configuration.GetConnectionString("DefaultConnection");
+        _connectionString = this._configuration.GetConnectionString("DefaultConnection") ?? throw new ArgumentNullException("connection Sting Not Found");
     }
 
     public async Task<List<Product>> GetProducts()
@@ -34,7 +34,7 @@ public class ProductRepository : IProductRepository
             await connection.OpenAsync();
             MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync();
             while (await reader.ReadAsync())
-            {
+            { 
                 Product product = new Product()
                 {
                     Id = reader.GetInt32("id"),
