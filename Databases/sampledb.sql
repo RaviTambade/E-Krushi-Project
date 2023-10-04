@@ -9,24 +9,63 @@ INSERT INTO roles(name) VALUES ('SubjectMatterExpert');
 
 INSERT INTO userroles(userid,roleid) VALUES (1,1);
 INSERT INTO userroles(userid,roleid) VALUES (4,1);
+INSERT INTO userroles(userid,roleid) VALUES (28,1);
+INSERT INTO userroles(userid,roleid) VALUES (29,1);
+INSERT INTO userroles(userid,roleid) VALUES (30,1);
+
 INSERT INTO userroles(userid,roleid) VALUES (2,2);
 INSERT INTO userroles(userid,roleid) VALUES (3,2);
+INSERT INTO userroles(userid,roleid) VALUES (15,2);
+INSERT INTO userroles(userid,roleid) VALUES (16,2);
+INSERT INTO userroles(userid,roleid) VALUES (17,2);
+INSERT INTO userroles(userid,roleid) VALUES (18,2);
+INSERT INTO userroles(userid,roleid) VALUES (19,2);
+INSERT INTO userroles(userid,roleid) VALUES (20,2);
+INSERT INTO userroles(userid,roleid) VALUES (21,2);
+INSERT INTO userroles(userid,roleid) VALUES (22,2);
+INSERT INTO userroles(userid,roleid) VALUES (23,2);
+INSERT INTO userroles(userid,roleid) VALUES (24,2);
+INSERT INTO userroles(userid,roleid) VALUES (25,2);
+INSERT INTO userroles(userid,roleid) VALUES (26,2);
+INSERT INTO userroles(userid,roleid) VALUES (27,2);
+
 INSERT INTO userroles(userid,roleid) VALUES (11,3);
 INSERT INTO userroles(userid,roleid) VALUES (12,3);
-INSERT INTO userroles(userid,roleid) VALUES (6,4);
-INSERT INTO userroles(userid,roleid) VALUES (7,4);
+
+INSERT INTO userroles(userid,roleid) VALUES (31,4);
+INSERT INTO userroles(userid,roleid) VALUES (32,4);
+INSERT INTO userroles(userid,roleid) VALUES (33,4);
+INSERT INTO userroles(userid,roleid) VALUES (34,4);
+INSERT INTO userroles(userid,roleid) VALUES (35,4);
+
+
+
 INSERT INTO userroles(userid,roleid) VALUES (8,5);
 INSERT INTO userroles(userid,roleid) VALUES (9,5);
+INSERT INTO userroles(userid,roleid) VALUES (36,5);
+INSERT INTO userroles(userid,roleid) VALUES (37,5);
+INSERT INTO userroles(userid,roleid) VALUES (38,5);
+INSERT INTO userroles(userid,roleid) VALUES (39,5);
+INSERT INTO userroles(userid,roleid) VALUES (40,5);
 
-INSERT INTO stores(name,userid,addressid) VALUES  ("store 1",1,1);
-INSERT INTO stores(name,userid,addressid) VALUES  ("store 2",4,5);
+
+
+
+INSERT INTO stores(name,userid,addressid) VALUES  ("Manchar Store",1,1);
+INSERT INTO stores(name,userid,addressid) VALUES  ("Rajgurunagar Store ",4,4);
+INSERT INTO stores(name,userid,addressid) VALUES  ("Narayangaon Store ",28,20);
+INSERT INTO stores(name,userid,addressid) VALUES  ("Karegaon Store ",29,21);
+INSERT INTO stores(name,userid,addressid) VALUES  ("Junner Store",30,22);
 
 INSERT INTO suppliers(corporateid,userid) VALUES(8,11);
 INSERT INTO suppliers(corporateid,userid) VALUES(9,12);
 
--- SHIPPERS DATA
--- INSERT INTO shippers(corporateid,userid) VALUES(4,6);
--- INSERT INTO shippers(corporateid,userid) VALUES(5,7);
+
+INSERT INTO shippers(userid,addressid) VALUES(31,23);
+INSERT INTO shippers(userid,addressid) VALUES(32,24);
+INSERT INTO shippers(userid,addressid) VALUES(33,25);
+INSERT INTO shippers(userid,addressid) VALUES(34,26);
+INSERT INTO shippers(userid,addressid) VALUES(35,27);
 
 
 INSERT INTO categories(title,image) VALUES('seeds',"/assets/seed.jpeg");
@@ -538,16 +577,21 @@ INSERT INTO questions(description,categoryid) VALUES(' What are the best practic
 INSERT INTO questions(description,categoryid) VALUES('How can I manage the challenges of transitioning from conventional to organic farming practices?',10);
 INSERT INTO questions(description,categoryid) VALUES(' What steps should I take to ensure the long-term sustainability and profitability of my farm?',10);
 
--- CUSTOMERQUESTIONS TABLE DATA
-INSERT INTO customerquestions(customerid,questionid) VALUES (2,1);
-INSERT INTO customerquestions(customerid,questionid) VALUES (2,2);
-INSERT INTO customerquestions(customerid,questionid) VALUES (2,4);
-INSERT INTO customerquestions(customerid,questionid) VALUES (3,3);
-INSERT INTO customerquestions(customerid,questionid) VALUES (3,2);
+-- -- CUSTOMERQUESTIONS TABLE DATA
+-- INSERT INTO customerquestions(customerid,questionid) VALUES (2,1);
+-- INSERT INTO customerquestions(customerid,questionid) VALUES (2,2);
+-- INSERT INTO customerquestions(customerid,questionid) VALUES (2,4);
+-- INSERT INTO customerquestions(customerid,questionid) VALUES (3,3);
+-- INSERT INTO customerquestions(customerid,questionid) VALUES (3,2);
 
 -- SME TABLE DATA
 INSERT INTO subjectmatterexperts(expertise,userid) VALUES('crop related information',8);
 INSERT INTO subjectmatterexperts(expertise,userid) VALUES('soil related information',9);
+INSERT INTO subjectmatterexperts(expertise,userid) VALUES('soil related information',36);
+INSERT INTO subjectmatterexperts(expertise,userid) VALUES('soil related information',37);
+INSERT INTO subjectmatterexperts(expertise,userid) VALUES('soil related information',38);
+INSERT INTO subjectmatterexperts(expertise,userid) VALUES('soil related information',39);
+INSERT INTO subjectmatterexperts(expertise,userid) VALUES('soil related information',40);
 
 
 
@@ -679,8 +723,8 @@ INSERT INTO answers(description,questionid) VALUES('Gradually transition by impl
 INSERT INTO answers(description,questionid) VALUES('Create a comprehensive farm business plan, monitor key performance indicators, and continually seek opportunities for improvement and innovation.',100);
 
 -- SME ANSWERS
-INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (1,'2023-04-05 12:08:06',1);
-INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (1,'2023-06-05 12:20:19',1);
-INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (2,'2023-07-10 12:23:08',2);
-INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (2,'2023-08-25 12:34:20',2);
-INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (3,'2023-09-15 12:40:30',2);
+-- INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (1,'2023-04-05 12:08:06',1);
+-- INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (1,'2023-06-05 12:20:19',1);
+-- INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (2,'2023-07-10 12:23:08',2);
+-- INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (2,'2023-08-25 12:34:20',2);
+-- INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (3,'2023-09-15 12:40:30',2);

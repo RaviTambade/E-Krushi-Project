@@ -143,11 +143,18 @@ CREATE TABLE
 CREATE TABLE
     shippers(
         id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY,
-        corporateid INT NOT NULL UNIQUE,
         userid INT NOT NULL,
+        addressid INT,
         CONSTRAINT fk_shipperuser FOREIGN KEY(userid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE
     );
 
+CREATE table shipperorders(
+    id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY,
+    orderid INT NOT NULL,
+    shipperid INT NOT NULL,
+    CONSTRAINT fkshipperorderid FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE,
+    CONSTRAINT fk_shipperid FOREIGN KEY(shipperid) REFERENCES shippers(id) ON UPDATE CASCADE ON DELETE CASCADE
+);
 
 
 CREATE TABLE
