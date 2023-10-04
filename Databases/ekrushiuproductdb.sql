@@ -158,7 +158,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (3,'2023-10-04 08:00:44','2023-10-11 08:00:44',3,3,1,650,'initiated'),(4,'2023-10-04 08:02:03','2023-10-11 08:02:03',3,4,1,900,'initiated'),(6,'2023-10-04 08:30:19','2023-10-11 08:30:19',3,9,2,300,'initiated'),(7,'2023-10-04 08:30:56','2023-10-11 08:30:56',3,4,1,2500,'initiated'),(8,'2023-10-04 08:31:17','2023-10-11 08:31:17',3,4,1,1280,'initiated'),(9,'2023-10-04 08:31:33','2023-10-11 08:31:33',3,3,1,1050,'initiated'),(10,'2023-10-04 08:31:47','2023-10-11 08:31:47',3,4,1,600,'initiated'),(11,'2023-10-04 08:32:30','2023-10-11 08:32:30',3,3,1,8000,'initiated'),(12,'2023-10-04 08:34:47','2023-10-11 08:34:47',3,4,1,2100,'initiated'),(13,'2023-10-04 08:35:06','2023-10-11 08:35:06',3,4,1,250,'initiated'),(14,'2023-10-04 08:40:18','2023-10-11 08:40:18',3,4,1,300,'initiated'),(15,'2023-10-04 08:42:29','2023-10-11 08:42:29',2,2,2,300,'initiated'),(16,'2023-10-04 08:44:17','2023-10-11 08:44:17',2,10,2,7500,'initiated'),(17,'2023-10-04 08:44:37','2023-10-11 08:44:37',2,10,2,500,'initiated'),(18,'2023-10-04 08:44:56','2023-10-11 08:44:56',2,10,2,150,'initiated'),(19,'2023-10-04 08:45:17','2023-10-11 08:45:17',2,10,2,1400,'initiated'),(20,'2023-10-04 08:45:38','2023-10-11 08:45:38',2,10,2,7000,'initiated'),(21,'2023-10-04 08:46:06','2023-10-11 08:46:06',2,10,2,65000,'initiated'),(22,'2023-10-04 08:46:28','2023-10-11 08:46:28',2,10,2,1000,'initiated'),(23,'2023-10-04 08:47:41','2023-10-11 08:47:41',2,10,2,250,'initiated');
+INSERT INTO `orders` VALUES (3,'2023-09-04 08:00:44','2023-09-11 08:00:44',3,3,1,650,'initiated'),(4,'2023-09-04 08:02:03','2023-09-11 08:02:03',3,4,1,900,'initiated'),(6,'2023-09-04 08:30:19','2023-09-11 08:30:19',3,9,2,300,'initiated'),(7,'2023-09-04 08:30:56','2023-09-11 08:30:56',3,4,1,2500,'initiated'),(8,'2023-09-04 08:31:17','2023-09-11 08:31:17',3,4,1,1280,'initiated'),(9,'2023-09-04 08:31:33','2023-09-11 08:31:33',3,3,1,1050,'initiated'),(10,'2023-09-04 08:31:47','2023-09-11 08:31:47',3,4,1,600,'initiated'),(11,'2023-09-04 08:32:30','2023-09-11 08:32:30',3,3,1,8000,'initiated'),(12,'2023-09-04 08:34:47','2023-09-11 08:34:47',3,4,1,2100,'initiated'),(13,'2023-09-04 08:35:06','2023-09-11 08:35:06',3,4,1,250,'initiated'),(14,'2023-09-04 08:40:18','2023-09-11 08:40:18',3,4,1,300,'initiated'),(15,'2023-09-04 08:42:29','2023-09-11 08:42:29',2,2,2,300,'initiated'),(16,'2023-09-04 08:44:17','2023-09-11 08:44:17',2,10,2,7500,'initiated'),(17,'2023-09-04 08:44:37','2023-09-11 08:44:37',2,10,2,500,'initiated'),(18,'2023-09-04 08:44:56','2023-09-11 08:44:56',2,10,2,150,'initiated'),(19,'2023-09-04 08:45:17','2023-09-11 08:45:17',2,10,2,1400,'initiated'),(20,'2023-09-04 08:45:38','2023-09-11 08:45:38',2,10,2,7000,'initiated'),(21,'2023-09-04 08:46:06','2023-09-11 08:46:06',2,10,2,65000,'initiated'),(22,'2023-09-04 08:46:28','2023-09-11 08:46:28',2,10,2,1000,'initiated'),(23,'2023-09-04 08:47:41','2023-09-11 08:47:41',2,10,2,250,'initiated');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -188,7 +188,7 @@ CREATE TABLE `payments` (
 
 LOCK TABLES `payments` WRITE;
 /*!40000 ALTER TABLE `payments` DISABLE KEYS */;
-INSERT INTO `payments` VALUES (1,'2023-10-04 08:00:44','cash on delivery','unpaid',NULL,3),(2,'2023-10-04 08:02:04','net banking','paid',5,4),(4,'2023-10-04 08:30:21','cash on delivery','unpaid',NULL,6),(5,'2023-10-04 08:30:56','cash on delivery','unpaid',NULL,7),(6,'2023-10-04 08:31:16','cash on delivery','unpaid',NULL,8),(7,'2023-10-04 08:31:33','cash on delivery','unpaid',NULL,9),(8,'2023-10-04 08:31:47','cash on delivery','unpaid',NULL,10),(9,'2023-10-04 08:32:30','cash on delivery','unpaid',NULL,11),(10,'2023-10-04 08:34:46','cash on delivery','unpaid',NULL,12),(11,'2023-10-04 08:35:06','cash on delivery','unpaid',NULL,13),(12,'2023-10-04 08:40:18','cash on delivery','unpaid',NULL,14),(13,'2023-10-04 08:42:29','cash on delivery','unpaid',NULL,15),(14,'2023-10-04 08:44:17','cash on delivery','unpaid',NULL,16),(15,'2023-10-04 08:44:36','cash on delivery','unpaid',NULL,17),(16,'2023-10-04 08:44:56','cash on delivery','unpaid',NULL,18),(17,'2023-10-04 08:45:17','cash on delivery','unpaid',NULL,19),(18,'2023-10-04 08:45:37','cash on delivery','unpaid',NULL,20),(19,'2023-10-04 08:46:06','cash on delivery','unpaid',NULL,21),(20,'2023-10-04 08:46:28','cash on delivery','unpaid',NULL,22),(21,'2023-10-04 08:47:40','cash on delivery','unpaid',NULL,23);
+INSERT INTO `payments` VALUES (1,'2023-09-04 08:00:44','cash on delivery','unpaid',NULL,3),(2,'2023-09-04 08:02:04','net banking','paid',5,4),(4,'2023-09-04 08:30:21','cash on delivery','unpaid',NULL,6),(5,'2023-09-04 08:30:56','cash on delivery','unpaid',NULL,7),(6,'2023-09-04 08:31:16','cash on delivery','unpaid',NULL,8),(7,'2023-09-04 08:31:33','cash on delivery','unpaid',NULL,9),(8,'2023-09-04 08:31:47','cash on delivery','unpaid',NULL,10),(9,'2023-09-04 08:32:30','cash on delivery','unpaid',NULL,11),(10,'2023-09-04 08:34:46','cash on delivery','unpaid',NULL,12),(11,'2023-09-04 08:35:06','cash on delivery','unpaid',NULL,13),(12,'2023-09-04 08:40:18','cash on delivery','unpaid',NULL,14),(13,'2023-09-04 08:42:29','cash on delivery','unpaid',NULL,15),(14,'2023-09-04 08:44:17','cash on delivery','unpaid',NULL,16),(15,'2023-09-04 08:44:36','cash on delivery','unpaid',NULL,17),(16,'2023-09-04 08:44:56','cash on delivery','unpaid',NULL,18),(17,'2023-09-04 08:45:17','cash on delivery','unpaid',NULL,19),(18,'2023-09-04 08:45:37','cash on delivery','unpaid',NULL,20),(19,'2023-09-04 08:46:06','cash on delivery','unpaid',NULL,21),(20,'2023-09-04 08:46:28','cash on delivery','unpaid',NULL,22),(21,'2023-09-04 08:47:40','cash on delivery','unpaid',NULL,23);
 /*!40000 ALTER TABLE `payments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -459,18 +459,28 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'IGNORE_SPACE,STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `insertpayment`(
-    IN mode VARCHAR(255),
-    IN paymentstatus VARCHAR(255),
-    IN transactionid INT,
-    IN orderid INT
+CREATE DEFINER=`root`@`localhost` PROCEDURE `insertpayment`(
+
+    IN mode VARCHAR(255),
+
+    IN paymentstatus VARCHAR(255),
+
+    IN transactionid INT,
+
+    IN orderid INT
+
 )
-BEGIN
-    IF mode = 'cash on delivery' THEN
-        INSERT INTO payments ( mode, paymentstatus, orderid)
+BEGIN
+
+    IF mode = 'cash on delivery' THEN
+
+        INSERT INTO payments ( mode, paymentstatus, orderid)
+
         VALUES ( mode, paymentstatus, orderid);
-    ELSEIF mode = 'net banking' THEN
-        INSERT INTO payments ( mode, paymentstatus, transactionid, orderid)
+    ELSEIF mode = 'net banking' THEN
+
+        INSERT INTO payments ( mode, paymentstatus, transactionid, orderid)
+
         VALUES ( mode,paymentstatus,transactionid,orderid);
     END IF;
 END ;;
@@ -479,7 +489,7 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+/*!40103 SET TIME_ZON2023-09TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

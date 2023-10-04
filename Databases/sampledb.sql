@@ -416,17 +416,133 @@ INSERT INTO productreview(productid, customerid, rating, review) VALUES (50, 3, 
 -- CARTS DATA
 INSERT INTO carts(customerid) VALUES (2);
 INSERT INTO carts(customerid) VALUES (3);
+INSERT INTO carts(customerid) VALUES (15);
+INSERT INTO carts(customerid) VALUES (16);
+INSERT INTO carts(customerid) VALUES (17);
+INSERT INTO carts(customerid) VALUES (18);
+INSERT INTO carts(customerid) VALUES (19);
+INSERT INTO carts(customerid) VALUES (20);
+INSERT INTO carts(customerid) VALUES (21);
+INSERT INTO carts(customerid) VALUES (22);
+INSERT INTO carts(customerid) VALUES (23);
+INSERT INTO carts(customerid) VALUES (24);
+INSERT INTO carts(customerid) VALUES (25);
+INSERT INTO carts(customerid) VALUES (26);
+INSERT INTO carts(customerid) VALUES (27);
 
 
 
 -- CARTS ITEMS DATA
 INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,1,5);
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,3,4);
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,5,4);
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,11,1);
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,9,5);
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,17,2);
-INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,19,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,2,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(3,3,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(4,4,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(5,5,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(6,6,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(7,7,2);
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(8,8,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(9,9,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(10,10,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(11,11,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(12,12,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(13,13,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(14,14,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(15,15,5);
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,16,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,17,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(3,18,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(4,19,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(5,20,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(6,21,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(7,22,2);
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(8,23,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(9,24,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(10,25,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(11,26,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(12,27,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(13,28,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(14,29,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(15,30,5);
+
+
+
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,31,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,32,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(3,33,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(4,34,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(5,35,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(6,36,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(7,37,2);
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(8,38,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(9,39,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(10,40,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(11,41,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(12,42,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(13,43,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(14,44,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(15,45,5);
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,46,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,47,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(3,48,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(4,49,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(5,50,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(6,51,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(7,52,2);
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(8,53,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(9,54,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(10,55,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(11,56,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(12,57,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(13,58,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(14,59,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(15,60,5);
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,61,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,62,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(3,63,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(4,64,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(5,65,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(6,66,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(7,67,2);
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(8,68,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(9,69,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(10,70,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(11,71,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(12,72,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(13,73,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(14,74,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(15,75,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(1,76,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(2,77,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(3,78,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(4,78,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(5,79,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(6,80,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(7,81,2);
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(8,82,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(9,83,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(10,84,4);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(11,85,1);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(12,86,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(13,87,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(14,88,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(15,89,5);
+
+
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(12,90,5);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(13,91,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(14,92,2);
+INSERT INTO cartitems(cartid,productdetailsid ,quantity) VALUES(15,93,5);
+
 
 
 -- PAYMENTS DATA
@@ -574,132 +690,132 @@ INSERT INTO questions(description,categoryid) VALUES(' What steps should I take 
 
 
 -- CUSTOMERQUESTIONS TABLE DATA
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,1,'2023-10-01');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (3,2,'2023-10-01');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (15,3,'2023-10-01');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (16,4,'2023-10-01');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (17,5,'2023-10-02');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (18,6,'2023-10-02');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (19,7,'2023-10-02');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (20,8,'2023-10-03');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (21,9,'2023-10-03');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (22,10,'2023-10-03');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (23,11,'2023-10-03');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (24,12,'2023-10-03');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (25,13,'2023-10-03');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,1,'2023-09-01');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (3,2,'2023-09-01');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (15,3,'2023-09-01');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (16,4,'2023-09-01');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (17,5,'2023-09-02');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (18,6,'2023-09-02');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (19,7,'2023-09-02');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (20,8,'2023-09-03');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (21,9,'2023-09-03');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (22,10,'2023-09-03');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (23,11,'2023-09-03');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (24,12,'2023-09-03');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (25,13,'2023-09-03');
 
 
 
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (3,14,'2023-10-03');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,15,'2023-10-04');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (3,16,'2023-10-04');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (15,17,'2023-10-04');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (16,18,'2023-10-05');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (17,19,'2023-10-05');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (18,20,'2023-10-06');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (19,21,'2023-10-07');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (20,22,'2023-10-08');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (21,13,'2023-10-09');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (3,14,'2023-09-03');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,15,'2023-09-04');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (3,16,'2023-09-04');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (15,17,'2023-09-04');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (16,18,'2023-09-05');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (17,19,'2023-09-05');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (18,20,'2023-09-06');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (19,21,'2023-09-07');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (20,22,'2023-09-08');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (21,13,'2023-09-09');
 
 
 
 
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (22,23,'2023-10-010');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (23,24,'2023-10-010');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (24,25,'2023-10-11');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (25,26,'2023-10-12');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,27,'2023-10-12');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (3,28,'2023-10-13');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (15,29,'2023-10-13');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (16,30,'2023-10-13');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (17,31,'2023-10-14');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (18,32,'2023-10-14');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (19,33,'2023-10-14');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (22,23,'2023-09-010');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (23,24,'2023-09-010');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (24,25,'2023-09-11');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (25,26,'2023-09-12');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,27,'2023-09-12');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (3,28,'2023-09-13');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (15,29,'2023-09-13');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (16,30,'2023-09-13');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (17,31,'2023-09-14');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (18,32,'2023-09-14');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (19,33,'2023-09-14');
 
 
 
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (20,34,'2023-10-15');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (21,35,'2023-10-16');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (22,36,'2023-10-17');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (23,37,'2023-10-17');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (24,38,'2023-10-17');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (25,39,'2023-10-17');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,40,'2023-10-18');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (20,34,'2023-09-15');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (21,35,'2023-09-16');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (22,36,'2023-09-17');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (23,37,'2023-09-17');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (24,38,'2023-09-17');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (25,39,'2023-09-17');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,40,'2023-09-18');
 
 
 
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (3,41,'2023-10-18');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,42,'2023-10-19');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (15,43,'2023-10-19');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (16,44,'2023-10-20');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (17,45,'2023-10-20');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (18,46,'2023-10-20');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (19,47,'2023-10-20');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (20,48,'2023-10-21');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (21,49,'2023-10-21');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (22,50,'2023-10-21');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (3,41,'2023-09-18');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,42,'2023-09-19');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (15,43,'2023-09-19');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (16,44,'2023-09-20');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (17,45,'2023-09-20');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (18,46,'2023-09-20');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (19,47,'2023-09-20');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (20,48,'2023-09-21');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (21,49,'2023-09-21');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (22,50,'2023-09-21');
 
 
 
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (23,51,'2023-10-21');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (24,52,'2023-10-22');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (25,53,'2023-10-22');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (3,54,'2023-10-23');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,55,'2023-10-23');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (15,56,'2023-10-23');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (16,57,'2023-10-23');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (17,58,'2023-10-23');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (18,59,'2023-10-24');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (19,60,'2023-10-24');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (23,51,'2023-09-21');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (24,52,'2023-09-22');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (25,53,'2023-09-22');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (3,54,'2023-09-23');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,55,'2023-09-23');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (15,56,'2023-09-23');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (16,57,'2023-09-23');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (17,58,'2023-09-23');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (18,59,'2023-09-24');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (19,60,'2023-09-24');
 
 
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (20,61,'2023-10-24');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (21,62,'2023-10-24');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (22,63,'2023-10-24');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (23,64,'2023-10-24');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (24,65,'2023-10-25');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (25,66,'2023-10-25');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,67,'2023-10-25');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (3,68,'2023-10-25');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (15,69,'2023-10-26');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (16,70,'2023-10-26');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (20,61,'2023-09-24');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (21,62,'2023-09-24');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (22,63,'2023-09-24');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (23,64,'2023-09-24');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (24,65,'2023-09-25');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (25,66,'2023-09-25');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,67,'2023-09-25');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (3,68,'2023-09-25');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (15,69,'2023-09-26');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (16,70,'2023-09-26');
 
 
 
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (17,71,'2023-10-26');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (18,72,'2023-10-26');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (19,73,'2023-10-26');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (20,74,'2023-10-26');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (21,75,'2023-10-26');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (22,76,'2023-10-26');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (23,77,'2023-10-26');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (24,78,'2023-10-26');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (25,79,'2023-10-27');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,80,'2023-10-27');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (17,71,'2023-09-26');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (18,72,'2023-09-26');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (19,73,'2023-09-26');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (20,74,'2023-09-26');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (21,75,'2023-09-26');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (22,76,'2023-09-26');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (23,77,'2023-09-26');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (24,78,'2023-09-26');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (25,79,'2023-09-27');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,80,'2023-09-27');
 
 
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (3,81,'2023-10-27');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (15,82,'2023-10-27');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (16,83,'2023-10-27');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (17,84,'2023-10-28');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (18,85,'2023-10-28');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (19,86,'2023-10-29');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (20,87,'2023-10-29');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (21,88,'2023-10-29');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (22,89,'2023-10-29');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (23,90,'2023-10-29');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (3,81,'2023-09-27');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (15,82,'2023-09-27');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (16,83,'2023-09-27');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (17,84,'2023-09-28');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (18,85,'2023-09-28');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (19,86,'2023-09-29');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (20,87,'2023-09-29');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (21,88,'2023-09-29');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (22,89,'2023-09-29');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (23,90,'2023-09-29');
 
 
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (24,91,'2023-10-29');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (25,92,'2023-10-29');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,93,'2023-10-30');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (3,94,'2023-10-30');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (15,95,'2023-10-30');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (16,96,'2023-10-30');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (17,97,'2023-10-31');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (18,98,'2023-10-31');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (19,99,'2023-10-31');
-INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (20,100,'2023-10-31');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (24,91,'2023-09-29');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (25,92,'2023-09-29');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,93,'2023-09-30');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (3,94,'2023-09-30');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (15,95,'2023-09-30');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (16,96,'2023-09-30');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (17,97,'2023-09-30');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (18,98,'2023-09-30');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (26,99,'2023-09-30');
+INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (27,100,'2023-09-30');
 
 -- SME TABLE DATA
 INSERT INTO subjectmatterexperts(expertise,userid) VALUES('crop related information',8);
@@ -840,8 +956,110 @@ INSERT INTO answers(description,questionid) VALUES('Gradually transition by impl
 INSERT INTO answers(description,questionid) VALUES('Create a comprehensive farm business plan, monitor key performance indicators, and continually seek opportunities for improvement and innovation.',100);
 
 -- SME ANSWERS
--- INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (1,'2023-04-05 12:08:06',1);
--- INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (1,'2023-06-05 12:20:19',1);
--- INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (2,'2023-07-10 12:23:08',2);
--- INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (2,'2023-08-25 12:34:20',2);
--- INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (3,'2023-09-15 12:40:30',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (1,'2023-09-02',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (2,'2023-09-02',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (3,'2023-09-02',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (4,'2023-09-02',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (5,'2023-09-03',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (6,'2023-09-03',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (7,'2023-09-03',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (8,'2023-09-04',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (9,'2023-09-04',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (10,'2023-09-05',1);
+
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (11,'2023-09-05',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (12,'2023-09-05',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (13,'2023-09-06',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (14,'2023-09-06',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (15,'2023-09-07',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (16,'2023-09-07',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (17,'2023-09-09',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (18,'2023-09-10',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (19,'2023-09-10',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (20,'2023-09-11',2);
+
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (21,'2023-09-11',3);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (22,'2023-09-11',3);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (23,'2023-09-12',3);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (24,'2023-09-12',3);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (25,'2023-09-13',3);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (26,'2023-09-13',3);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (27,'2023-09-14',3);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (28,'2023-09-14',3);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (29,'2023-09-15',3);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (30,'2023-09-15',3);
+
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (31,'2023-09-16',4);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (32,'2023-09-16',4);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (33,'2023-09-17',4);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (34,'2023-09-17',4);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (35,'2023-09-18',4);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (36,'2023-09-19',4);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (37,'2023-09-19',4);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (38,'2023-09-20',4);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (39,'2023-09-20',4);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (40,'2023-09-20',4);
+
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (41,'2023-09-21',5);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (42,'2023-09-21',5);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (43,'2023-09-22',5);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (44,'2023-09-22',5);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (45,'2023-09-23',5);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (46,'2023-09-23',5);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (47,'2023-09-24',5);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (48,'2023-09-24',5);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (49,'2023-09-25',5);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (50,'2023-09-25',5);
+
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (51,'2023-09-26',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (52,'2023-09-26',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (53,'2023-09-26',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (54,'2023-09-27',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (55,'2023-09-27',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (56,'2023-09-28',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (57,'2023-09-28',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (58,'2023-09-29',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (59,'2023-09-29',1);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (60,'2023-09-29',1);
+
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (61,'2023-09-30',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (62,'2023-09-30',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (63,'2023-09-30',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (64,'2023-09-30',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (65,'2023-09-30',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (66,'2023-09-30',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (67,'2023-09-30',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (68,'2023-10-01',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (69,'2023-10-01',2);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (70,'2023-10-01',2);
+
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (71,'2023-10-01',3);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (72,'2023-10-01',3);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (73,'2023-10-02',3);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (74,'2023-10-02',3);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (75,'2023-10-02',3);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (77,'2023-10-02',3);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (79,'2023-10-03',3);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (80,'2023-10-03',3);
+
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (81,'2023-10-03',6);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (82,'2023-10-03',6);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (83,'2023-10-03',6);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (84,'2023-10-03',6);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (85,'2023-10-03',6);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (86,'2023-10-03',6);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (87,'2023-10-03',6);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (88,'2023-10-03',6);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (89,'2023-10-04',6);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (90,'2023-10-04',6);
+
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (91,'2023-10-04',7);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (92,'2023-10-04',7);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (93,'2023-10-04',7);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (94,'2023-10-04',7);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (95,'2023-10-04',7);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (96,'2023-10-04',7);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (97,'2023-10-05',7);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (98,'2023-10-05',7);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (99,'2023-10-05',7);
+INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (100,'2023-10-05',7);
