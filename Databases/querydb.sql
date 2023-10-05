@@ -1,4 +1,4 @@
--- Active: 1682349138553@@127.0.0.1@3306@ekrushi
+-- Active: 1694968636816@@127.0.0.1@3306@ekrushi
 SELECT orders.total,payments.date,payments.paymentstatus,payments.mode from payments  INNER JOIN orders ON
 orders.id=payments.orderid where orderid=1;
 SELECT shippeddate,total from orders where id=1;
@@ -15,7 +15,7 @@ SELECT (payments.id)as paymentid,  (orders.total) as total,(payments.date)as dat
 -- customer payments
 
 select (date)as paymentdate,paymentstatus,orderid FROM payments where orderid in (SELECT id from orders where customerid =2);
-SELECT * from orders;
+SELECT * from answers;
 
 -- customer orderdetails query
 select productdetails.size,productdetails.unitprice,products.image,products.title,orderdetails.quantity,(productdetails.unitprice * orderdetails.quantity) as total from products 

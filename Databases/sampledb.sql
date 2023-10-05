@@ -1,4 +1,4 @@
--- Active: 1682349138553@@127.0.0.1@3306@ekrushi
+-- Active: 1694968636816@@127.0.0.1@3306@ekrushi
 
 INSERT INTO roles(name) VALUES ('Shop Owner');
 INSERT INTO roles(name) VALUES ('Customer');
@@ -440,7 +440,7 @@ INSERT INTO orders VALUES (2,'2023-07-01 16:57:20','  2023-07-05 16:57:20',3,3,4
                                                                     (32,'2023-08-01 17:19:32','  2023-08-03 17:19:32',19,11,2,12000,'initiated'),
                                                                     (33,'2023-08-02 17:20:28','  2023-08-04 17:20:28',19,11,2,720,'initiated'),
                                                                     (34,'2023-08-03 17:21:13','  2023-08-05 17:21:13',20,12,2,19000,'initiated'),
-                                                                    (35'2023-08-04 17:21:42','  2023-08-06 17:21:42',20,12,2,25000,'initiated'),
+                                                                    (35,'2023-08-04 17:21:42','  2023-08-06 17:21:42',20,12,2,25000,'initiated'),
                                                                     (36,'2023-08-05 17:22:06','  2023-08-07 17:22:06',20,12,2,1800,'initiated'),
                                                                     (37,'2023-08-06 17:22:24','  2023-08-08 17:22:24',20,12,2,150,'initiated'),
                                                                     (38,'2023-08-07 17:22:48','  2023-08-09 17:22:48',20,12,2,1750,'initiated'),
@@ -484,7 +484,7 @@ INSERT INTO orders VALUES (2,'2023-07-01 16:57:20','  2023-07-05 16:57:20',3,3,4
                                                                     (76,'2023-09-14 17:40:52','  2023-09-17 17:40:52',26,18,5,10510,'initiated'),
                                                                     (77,'2023-09-15 17:41:19','  2023-09-18 17:41:19',26,18,5,250,'initiated'),
                                                                     (78,'2023-09-16 17:41:52','  2023-09-19 17:41:52',26,18,5,220,'initiated'),
-                                                                    (79'2023-09-17 17:42:28','  2023-09-20 17:42:28',26,18,5,360,'initiated'),
+                                                                    (79,'2023-09-17 17:42:28','  2023-09-20 17:42:28',26,18,5,360,'initiated'),
                                                                     (80,'2023-09-18 17:42:51','  2023-09-21 17:42:51',26,18,5,1050,'initiated'),
                                                                     (81,'2023-09-19 17:43:41','  2023-09-22 17:43:41',27,19,5,31850,'initiated'),
                                                                     (82,'2023-09-20 17:44:07','  2023-09-23 17:44:07',27,19,5,1300,'initiated'),
@@ -1195,131 +1195,131 @@ INSERT INTO subjectmatterexperts(expertise,userid) VALUES('soil related informat
 
 -- ANSWERS TABLE DATA
 
-INSERT INTO answers(description,questionid) VALUES('You can enhance soil fertility through practices like adding organic matter (compost or manure),
-                                                                     conducting soil tests to determine nutrient needs, and practicing crop rotation.',1);
-INSERT INTO answers(description,questionid) VALUES('In organic farming, you can use methods like companion planting, beneficial insects, and organic pesticides to control pests and weeds without synthetic chemicals.',2);
-INSERT INTO answers(description,questionid)VALUES(' Implement water-efficient irrigation methods such as drip irrigation or sprinkler systems, and schedule irrigation based on the specific water needs of your crops.',3);
-INSERT INTO answers(description,questionid) VALUES('Choose crop varieties that are well-suited to your local climate, soil type, and disease resistance to optimize yield and reduce risks.',4);
-INSERT INTO answers(description,questionid) VALUES('You can minimize post-harvest losses by using proper storage facilities, maintaining the right temperature and humidity levels, and adopting good handling practices.',5);
-INSERT INTO answers(description,questionid) VALUES(' Many governments offer programs, grants, and subsidies to encourage sustainable and environmentally friendly farming practices. Its worth exploring these opportunities.',6);
-INSERT INTO answers(description,questionid) VALUES(' Transitioning to organic farming may involve gradually reducing chemical inputs, adopting organic certification standards, and learning about organic pest and weed management techniques.',7);
-INSERT INTO answers(description,questionid) VALUES(' Strategies to improve profitability may include diversifying crops, exploring niche markets, reducing production costs, and optimizing resource use.',8);
-INSERT INTO answers(description,questionid) VALUES('Signs of nutrient deficiencies can include yellowing leaves, stunted growth, and poor fruiting. Address them by applying the appropriate nutrients through fertilization.',9);
-INSERT INTO answers(description,questionid) VALUES('Climate change can affect growing seasons and precipitation patterns. To adapt, consider adjusting planting dates, selecting climate-resilient crops, and implementing efficient water management.',10);
+INSERT INTO answers(description,questionid,likes) VALUES('You can enhance soil fertility through practices like adding organic matter (compost or manure),
+                                                                     conducting soil tests to determine nutrient needs, and practicing crop rotation.',1,7);
+INSERT INTO answers(description,questionid,likes) VALUES('In organic farming, you can use methods like companion planting, beneficial insects, and organic pesticides to control pests and weeds without synthetic chemicals.',2,6);
+INSERT INTO answers(description,questionid,likes)VALUES(' Implement water-efficient irrigation methods such as drip irrigation or sprinkler systems, and schedule irrigation based on the specific water needs of your crops.',3,5);
+INSERT INTO answers(description,questionid,likes) VALUES('Choose crop varieties that are well-suited to your local climate, soil type, and disease resistance to optimize yield and reduce risks.',4,13);
+INSERT INTO answers(description,questionid,likes) VALUES('You can minimize post-harvest losses by using proper storage facilities, maintaining the right temperature and humidity levels, and adopting good handling practices.',5,7);
+INSERT INTO answers(description,questionid,likes) VALUES(' Many governments offer programs, grants, and subsidies to encourage sustainable and environmentally friendly farming practices. Its worth exploring these opportunities.',6,6);
+INSERT INTO answers(description,questionid,likes) VALUES(' Transitioning to organic farming may involve gradually reducing chemical inputs, adopting organic certification standards, and learning about organic pest and weed management techniques.',7,8);
+INSERT INTO answers(description,questionid,likes) VALUES(' Strategies to improve profitability may include diversifying crops, exploring niche markets, reducing production costs, and optimizing resource use.',8,7);
+INSERT INTO answers(description,questionid,likes) VALUES('Signs of nutrient deficiencies can include yellowing leaves, stunted growth, and poor fruiting. Address them by applying the appropriate nutrients through fertilization.',9,6);
+INSERT INTO answers(description,questionid,likes) VALUES('Climate change can affect growing seasons and precipitation patterns. To adapt, consider adjusting planting dates, selecting climate-resilient crops, and implementing efficient water management.',10,9);
 
 
-INSERT INTO answers(description,questionid) VALUES('Improving livestock health involves providing proper nutrition, clean water, shelter, and regular veterinary care. Its also important to manage stress factors and ensure good sanitation practices.',11);
-INSERT INTO answers(description,questionid) VALUES('Effective grazing management includes rotational grazing, maintaining pasture health, and ensuring access to fresh forage to optimize your livestocks nutrition.',12);
-INSERT INTO answers(description,questionid)VALUES('Look for signs like changes in behavior, weight loss, or abnormal physical symptoms. Consult with a veterinarian for a proper diagnosis and treatment plan.',13);
-INSERT INTO answers(description,questionid) VALUES('To improve livestock genetics, consider selective breeding, artificial insemination, or using high-quality breeding stock to enhance desirable traits in your herd or flock.',14);
-INSERT INTO answers(description,questionid) VALUES('Proper handling and transportation techniques help reduce stress and ensure the safety of both animals and handlers. Learn about low-stress handling methods and comply with transportation regulations.',15);
-INSERT INTO answers(description,questionid) VALUES('Effective marketing strategies may include identifying target markets, establishing relationships with buyers, and utilizing online platforms or local markets to sell your livestock and products.',16);
-INSERT INTO answers(description,questionid) VALUES('Consider factors like animal comfort, ventilation, waste management, and biosecurity when designing or updating your livestock facilities.',17);
-INSERT INTO answers(description,questionid) VALUES('Technology can improve livestock farming through tools like automated feeding systems, health monitoring devices, and data analytics to enhance productivity and animal welfare.',18);
-INSERT INTO answers(description,questionid) VALUES('Sustainable livestock farming practices may involve conserving water, reducing waste, using renewable energy sources, and adopting rotational grazing to preserve soil health.',19);
-INSERT INTO answers(description,questionid) VALUES('Explore government grants, subsidies, and agricultural extension services that may offer financial support and guidance to improve your livestock farming operation.',20);
+INSERT INTO answers(description,questionid,likes) VALUES('Improving livestock health involves providing proper nutrition, clean water, shelter, and regular veterinary care. Its also important to manage stress factors and ensure good sanitation practices.',11,9);
+INSERT INTO answers(description,questionid,likes) VALUES('Effective grazing management includes rotational grazing, maintaining pasture health, and ensuring access to fresh forage to optimize your livestocks nutrition.',12,7);
+INSERT INTO answers(description,questionid,likes)VALUES('Look for signs like changes in behavior, weight loss, or abnormal physical symptoms. Consult with a veterinarian for a proper diagnosis and treatment plan.',13,9);
+INSERT INTO answers(description,questionid,likes) VALUES('To improve livestock genetics, consider selective breeding, artificial insemination, or using high-quality breeding stock to enhance desirable traits in your herd or flock.',14,6);
+INSERT INTO answers(description,questionid,likes) VALUES('Proper handling and transportation techniques help reduce stress and ensure the safety of both animals and handlers. Learn about low-stress handling methods and comply with transportation regulations.',15,8);
+INSERT INTO answers(description,questionid,likes) VALUES('Effective marketing strategies may include identifying target markets, establishing relationships with buyers, and utilizing online platforms or local markets to sell your livestock and products.',16,10);
+INSERT INTO answers(description,questionid,likes) VALUES('Consider factors like animal comfort, ventilation, waste management, and biosecurity when designing or updating your livestock facilities.',17,8);
+INSERT INTO answers(description,questionid,likes) VALUES('Technology can improve livestock farming through tools like automated feeding systems, health monitoring devices, and data analytics to enhance productivity and animal welfare.',18,8);
+INSERT INTO answers(description,questionid,likes) VALUES('Sustainable livestock farming practices may involve conserving water, reducing waste, using renewable energy sources, and adopting rotational grazing to preserve soil health.',19,5);
+INSERT INTO answers(description,questionid,likes) VALUES('Explore government grants, subsidies, and agricultural extension services that may offer financial support and guidance to improve your livestock farming operation.',20,13);
 
 
-INSERT INTO answers(description,questionid) VALUES('Stay updated on innovations like autonomous tractors, precision planting systems, and remote monitoring technology to see how they can improve your farms efficiency.',21);
-INSERT INTO answers(description,questionid) VALUES('Regular maintenance, proper calibration, and following manufacturer guidelines for equipment use are essential to keep your farm machinery in top working condition.',22);
-INSERT INTO answers(description,questionid)VALUES('Explore financing options, including loans, leasing, or government programs, that can help you acquire the necessary equipment and technology for your farm.',23);
-INSERT INTO answers(description,questionid) VALUES('Seek advice from equipment dealers or agricultural experts who can assess your farms requirements and recommend suitable machinery.',24);
-INSERT INTO answers(description,questionid) VALUES('You can use farm management software to collect and analyze data from sensors and machinery, enabling you to make informed decisions about planting, irrigation, and more.',25);
-INSERT INTO answers(description,questionid) VALUES(' Proper storage includes cleaning, covering, and securing machinery to protect it from the elements and potential theft.',26);
-INSERT INTO answers(description,questionid) VALUES(' Learn about basic troubleshooting techniques for common machinery problems, such as engine issues or hydraulic system malfunctions, to minimize downtime.',27);
-INSERT INTO answers(description,questionid) VALUES('Look for equipment rental services in your area, which can be cost-effective for occasional or specialized tasks.',28);
-INSERT INTO answers(description,questionid) VALUES('Ensure all operators receive proper training and follow safety protocols, including wearing appropriate protective gear and conducting pre-operation checks.',29);
-INSERT INTO answers(description,questionid) VALUES('Explore the benefits of technology like automated feeders, which can improve feed efficiency and reduce labor while ensuring proper nutrition for your livestock.',30);
+INSERT INTO answers(description,questionid,likes) VALUES('Stay updated on innovations like autonomous tractors, precision planting systems, and remote monitoring technology to see how they can improve your farms efficiency.',21,4);
+INSERT INTO answers(description,questionid,likes) VALUES('Regular maintenance, proper calibration, and following manufacturer guidelines for equipment use are essential to keep your farm machinery in top working condition.',22,8);
+INSERT INTO answers(description,questionid,likes)VALUES('Explore financing options, including loans, leasing, or government programs, that can help you acquire the necessary equipment and technology for your farm.',23,2);
+INSERT INTO answers(description,questionid,likes) VALUES('Seek advice from equipment dealers or agricultural experts who can assess your farms requirements and recommend suitable machinery.',24,9);
+INSERT INTO answers(description,questionid,likes) VALUES('You can use farm management software to collect and analyze data from sensors and machinery, enabling you to make informed decisions about planting, irrigation, and more.',25,7);
+INSERT INTO answers(description,questionid,likes) VALUES(' Proper storage includes cleaning, covering, and securing machinery to protect it from the elements and potential theft.',26,9);
+INSERT INTO answers(description,questionid,likes) VALUES(' Learn about basic troubleshooting techniques for common machinery problems, such as engine issues or hydraulic system malfunctions, to minimize downtime.',27,8);
+INSERT INTO answers(description,questionid,likes) VALUES('Look for equipment rental services in your area, which can be cost-effective for occasional or specialized tasks.',28,7);
+INSERT INTO answers(description,questionid,likes) VALUES('Ensure all operators receive proper training and follow safety protocols, including wearing appropriate protective gear and conducting pre-operation checks.',29,7);
+INSERT INTO answers(description,questionid,likes) VALUES('Explore the benefits of technology like automated feeders, which can improve feed efficiency and reduce labor while ensuring proper nutrition for your livestock.',30,4);
 
 
-INSERT INTO answers(description,questionid) VALUES('Organic farming avoids synthetic chemicals and genetically modified organisms (GMOs) and focuses on soil health, crop rotation, and organic fertilizers to promote sustainability.',31);
-INSERT INTO answers(description,questionid) VALUES('The transition typically involves ceasing the use of synthetic pesticides and fertilizers, adopting organic practices, and undergoing a certification process. Consult with organic farming experts for guidance.',32);
-INSERT INTO answers(description,questionid)VALUES('Organic pest control methods include beneficial insects, companion planting, neem oil, and organic pesticides that are approved for organic farming.',33);
-INSERT INTO answers(description,questionid) VALUES('Practices such as cover cropping, composting, reduced tillage, and crop rotation can enhance soil health and fertility in organic farming.',34);
-INSERT INTO answers(description,questionid) VALUES(' Strategies include mulching, mechanical cultivation, flame weeding, and using cover crops that suppress weeds.',35);
-INSERT INTO answers(description,questionid) VALUES('  Sustainable farming practices promote long-term environmental stewardship, conserve natural resources, reduce chemical inputs, and improve soil and water quality.',36);
-INSERT INTO answers(description,questionid) VALUES(' Implement water-efficient irrigation methods, such as drip or pivot irrigation, and use soil moisture monitoring systems to optimize water use.',37);
-INSERT INTO answers(description,questionid) VALUES(' Organic fertilizers like compost, manure, bone meal, and fish emulsion can provide essential nutrients to crops without synthetic chemicals.',38);
-INSERT INTO answers(description,questionid) VALUES('Sustainable livestock management involves rotational grazing, proper animal welfare practices, and using organic feed and forage whenever possible.',39);
-INSERT INTO answers(description,questionid) VALUES('Utilize organic certification labels, participate in local farmers markets, and establish partnerships with restaurants and retailers that support sustainable and organic products.',40);
+INSERT INTO answers(description,questionid,likes) VALUES('Organic farming avoids synthetic chemicals and genetically modified organisms (GMOs) and focuses on soil health, crop rotation, and organic fertilizers to promote sustainability.',31,7);
+INSERT INTO answers(description,questionid,likes) VALUES('The transition typically involves ceasing the use of synthetic pesticides and fertilizers, adopting organic practices, and undergoing a certification process. Consult with organic farming experts for guidance.',32,2);
+INSERT INTO answers(description,questionid,likes)VALUES('Organic pest control methods include beneficial insects, companion planting, neem oil, and organic pesticides that are approved for organic farming.',33,12);
+INSERT INTO answers(description,questionid,likes) VALUES('Practices such as cover cropping, composting, reduced tillage, and crop rotation can enhance soil health and fertility in organic farming.',34,9);
+INSERT INTO answers(description,questionid,likes) VALUES(' Strategies include mulching, mechanical cultivation, flame weeding, and using cover crops that suppress weeds.',35,8);
+INSERT INTO answers(description,questionid,likes) VALUES('  Sustainable farming practices promote long-term environmental stewardship, conserve natural resources, reduce chemical inputs, and improve soil and water quality.',36,7);
+INSERT INTO answers(description,questionid,likes) VALUES(' Implement water-efficient irrigation methods, such as drip or pivot irrigation, and use soil moisture monitoring systems to optimize water use.',37,6);
+INSERT INTO answers(description,questionid,likes) VALUES(' Organic fertilizers like compost, manure, bone meal, and fish emulsion can provide essential nutrients to crops without synthetic chemicals.',38,5);
+INSERT INTO answers(description,questionid,likes) VALUES('Sustainable livestock management involves rotational grazing, proper animal welfare practices, and using organic feed and forage whenever possible.',39,4);
+INSERT INTO answers(description,questionid,likes) VALUES('Utilize organic certification labels, participate in local farmers markets, and establish partnerships with restaurants and retailers that support sustainable and organic products.',40,12);
 
 
-INSERT INTO answers(description,questionid) VALUES('Creating a comprehensive budget involves listing all expenses (such as seeds, labor, and equipment maintenance) and estimating income from crop sales, livestock, and other sources.',41);
-INSERT INTO answers(description,questionid) VALUES('Key financial ratios include the debt-to-equity ratio, the current ratio, and the return on assets. These ratios can provide insights into your farms financial stability and efficiency.',42);
-INSERT INTO answers(description,questionid)VALUES(' Assess your resources, market demand, and production capabilities to determine the right size and scope for your farm. Consider factors like available land and labor, as well as your financial goals.',43);
-INSERT INTO answers(description,questionid) VALUES(' Effective marketing strategies may include developing a strong online presence, participating in farmers markets, establishing relationships with restaurants and retailers, and utilizing social media.',44);
-INSERT INTO answers(description,questionid) VALUES('  Negotiating fair contracts involves understanding market prices, product quality standards, and the terms and conditions of agreements. Seek legal advice if necessary.',45);
-INSERT INTO answers(description,questionid) VALUES(' Strategies include maintaining a cash reserve, securing lines of credit, and aligning expenses with revenue to avoid cash flow shortages.',46);
-INSERT INTO answers(description,questionid) VALUES(' Consult with a tax advisor to understand the tax advantages and disadvantages of different business structures and choose the one that suits your farms needs.',47);
-INSERT INTO answers(description,questionid) VALUES('Diversification can include adding new crops or livestock, offering agritourism activities, or producing value-added products like jams or cheeses.',48);
-INSERT INTO answers(description,questionid) VALUES('Transitioning may involve initial investment in soil health and organic certification. Assess the long-term economic benefits and consider grants or subsidies available for sustainable practices.',49);
-INSERT INTO answers(description,questionid) VALUES('Look for agricultural extension services, farm management courses, and government agencies that offer guidance and resources to help farmers manage their farm businesses effectively.',50);
+INSERT INTO answers(description,questionid,likes) VALUES('Creating a comprehensive budget involves listing all expenses (such as seeds, labor, and equipment maintenance) and estimating income from crop sales, livestock, and other sources.',41,12);
+INSERT INTO answers(description,questionid,likes) VALUES('Key financial ratios include the debt-to-equity ratio, the current ratio, and the return on assets. These ratios can provide insights into your farms financial stability and efficiency.',42,11);
+INSERT INTO answers(description,questionid,likes)VALUES(' Assess your resources, market demand, and production capabilities to determine the right size and scope for your farm. Consider factors like available land and labor, as well as your financial goals.',43,10);
+INSERT INTO answers(description,questionid,likes) VALUES(' Effective marketing strategies may include developing a strong online presence, participating in farmers markets, establishing relationships with restaurants and retailers, and utilizing social media.',44,9);
+INSERT INTO answers(description,questionid,likes) VALUES('  Negotiating fair contracts involves understanding market prices, product quality standards, and the terms and conditions of agreements. Seek legal advice if necessary.',45,8);
+INSERT INTO answers(description,questionid,likes) VALUES(' Strategies include maintaining a cash reserve, securing lines of credit, and aligning expenses with revenue to avoid cash flow shortages.',46,5);
+INSERT INTO answers(description,questionid,likes) VALUES(' Consult with a tax advisor to understand the tax advantages and disadvantages of different business structures and choose the one that suits your farms needs.',47,7);
+INSERT INTO answers(description,questionid,likes) VALUES('Diversification can include adding new crops or livestock, offering agritourism activities, or producing value-added products like jams or cheeses.',48,4);
+INSERT INTO answers(description,questionid,likes) VALUES('Transitioning may involve initial investment in soil health and organic certification. Assess the long-term economic benefits and consider grants or subsidies available for sustainable practices.',49,8);
+INSERT INTO answers(description,questionid,likes) VALUES('Look for agricultural extension services, farm management courses, and government agencies that offer guidance and resources to help farmers manage their farm businesses effectively.',50,7);
 
 
-INSERT INTO answers(description,questionid) VALUES(' Consider factors like temperature, precipitation, soil type, and local market demand when selecting crops or livestock breeds that are well-suited to your region.',51);
-INSERT INTO answers(description,questionid) VALUES('Solutions may include rainwater harvesting, efficient irrigation systems, and drought-resistant crop varieties to optimize water use during dry spells.',52);
-INSERT INTO answers(description,questionid)VALUES(' Frost protection methods include using frost blankets, wind machines, and selecting frost-tolerant crop varieties.',53);
-INSERT INTO answers(description,questionid) VALUES('Practices like contour farming, terracing, and cover cropping can help prevent soil erosion on slopes.',54);
-INSERT INTO answers(description,questionid) VALUES(' Timing your planting and harvesting to align with the rainy season can optimize crop growth and yield.',55);
-INSERT INTO answers(description,questionid) VALUES(' Factors to consider include greenhouse design, heating options, and insulation to create a suitable microclimate for your crops.',56);
-INSERT INTO answers(description,questionid) VALUES(' Soil amendments like gypsum, proper drainage systems, and salt-tolerant crop varieties can help address salt-affected soils.',57);
-INSERT INTO answers(description,questionid) VALUES(' Humid regions may have issues with fungal diseases and insect pests. Integrated pest management (IPM) practices, proper sanitation, and disease-resistant crop varieties can help manage these challenges.',58);
-INSERT INTO answers(description,questionid) VALUES(' Crop rotation and diversification can help spread risk and reduce the impact of adverse weather conditions on the farm.',59);
-INSERT INTO answers(description,questionid) VALUES(' Local farmer networks, agricultural cooperatives, and extension services can provide opportunities to connect with other farmers and share insights about regional farming challenges and solutions.',60);
-
-
-
-
-INSERT INTO answers(description,questionid) VALUES(' Key safety measures include providing training, using protective equipment, maintaining machinery, and establishing safety protocols for tasks like handling chemicals or working with livestock.',61);
-INSERT INTO answers(description,questionid) VALUES('Regulations may vary by location, but they often cover areas like worker safety, chemical handling, and food safety. Consult with local agricultural agencies or authorities to understand and adhere to relevant regulations.',62);
-INSERT INTO answers(description,questionid)VALUES(' Implement safety practices like equipment inspections, proper machine guarding, and safe operating procedures. Provide training to all personnel operating machinery.',63);
-INSERT INTO answers(description,questionid) VALUES(' Establish child safety guidelines, including restricted access to hazardous areas, supervision, and age-appropriate tasks for children.',64);
-INSERT INTO answers(description,questionid) VALUES('Practices like maintaining firebreaks, proper storage of flammable materials, and having firefighting equipment on hand can help reduce fire risks.',65);
-INSERT INTO answers(description,questionid) VALUES('  Biosecurity measures may include quarantine for new animals, proper sanitation, and limiting visitor access to prevent the spread of diseases.',66);
-INSERT INTO answers(description,questionid) VALUES('  Implement food safety practices such as proper handling, storage, and labeling of farm products, and consider obtaining any necessary food safety certifications.',67);
-INSERT INTO answers(description,questionid) VALUES('  Yes, safety precautions include proper storage, labeling, and handling procedures for chemicals. Follow the manufacturers instructions and local regulations.',68);
-INSERT INTO answers(description,questionid) VALUES('Properly store and dispose of hazardous materials like pesticides, chemicals, and used oil according to local regulations and guidelines.',69);
-INSERT INTO answers(description,questionid) VALUES('Look for local agricultural extension services, farm safety organizations, and training programs that offer guidance and support for farm safety and regulatory compliance.',70);
+INSERT INTO answers(description,questionid,likes) VALUES(' Consider factors like temperature, precipitation, soil type, and local market demand when selecting crops or livestock breeds that are well-suited to your region.',51,8);
+INSERT INTO answers(description,questionid,likes) VALUES('Solutions may include rainwater harvesting, efficient irrigation systems, and drought-resistant crop varieties to optimize water use during dry spells.',52,6);
+INSERT INTO answers(description,questionid,likes)VALUES(' Frost protection methods include using frost blankets, wind machines, and selecting frost-tolerant crop varieties.',53,3);
+INSERT INTO answers(description,questionid,likes) VALUES('Practices like contour farming, terracing, and cover cropping can help prevent soil erosion on slopes.',54,2);
+INSERT INTO answers(description,questionid,likes) VALUES(' Timing your planting and harvesting to align with the rainy season can optimize crop growth and yield.',55,4);
+INSERT INTO answers(description,questionid,likes) VALUES(' Factors to consider include greenhouse design, heating options, and insulation to create a suitable microclimate for your crops.',56,8);
+INSERT INTO answers(description,questionid,likes) VALUES(' Soil amendments like gypsum, proper drainage systems, and salt-tolerant crop varieties can help address salt-affected soils.',57,7);
+INSERT INTO answers(description,questionid,likes) VALUES(' Humid regions may have issues with fungal diseases and insect pests. Integrated pest management (IPM) practices, proper sanitation, and disease-resistant crop varieties can help manage these challenges.',58,8);
+INSERT INTO answers(description,questionid,likes) VALUES(' Crop rotation and diversification can help spread risk and reduce the impact of adverse weather conditions on the farm.',59,6);
+INSERT INTO answers(description,questionid,likes) VALUES(' Local farmer networks, agricultural cooperatives, and extension services can provide opportunities to connect with other farmers and share insights about regional farming challenges and solutions.',60,5);
 
 
 
 
-INSERT INTO answers(description,questionid) VALUES('Look for agricultural extension programs, research institutions, and industry publications that offer information on cutting-edge farming practices.',71);
-INSERT INTO answers(description,questionid) VALUES(' Many agricultural colleges and organizations offer courses and programs tailored to farmers interested in transitioning to organic farming.',72);
-INSERT INTO answers(description,questionid)VALUES('Explore local workshops, online courses, and resources provided by sustainable agriculture organizations to learn about these practices.',73);
-INSERT INTO answers(description,questionid) VALUES(' Some training programs may offer financial incentives or scholarships. Additionally, check with agricultural agencies and organizations for funding opportunities.',74);
-INSERT INTO answers(description,questionid) VALUES(' Look for local mentorship programs or agricultural associations that facilitate connections between experienced and aspiring farmers.',75);
-INSERT INTO answers(description,questionid) VALUES('Farm business management courses typically cover topics such as budgeting, marketing, record-keeping, and risk management.',76);
-INSERT INTO answers(description,questionid) VALUES(' Reach out to local farms, agricultural colleges, and organizations that offer apprenticeship programs to gain practical experience.',77);
-INSERT INTO answers(description,questionid) VALUES(' Farming cooperatives and associations can provide networking, support, and educational opportunities. Search online or ask fellow farmers for recommendations.',78);
-INSERT INTO answers(description,questionid) VALUES(' Some government programs may provide grants or tax incentives to support farmers education and training efforts.',79);
-INSERT INTO answers(description,questionid) VALUES('Time management and prioritization are key. Allocate dedicated time for learning, and consider online or flexible training options to fit your schedule.',80);
+INSERT INTO answers(description,questionid,likes) VALUES(' Key safety measures include providing training, using protective equipment, maintaining machinery, and establishing safety protocols for tasks like handling chemicals or working with livestock.',61,9);
+INSERT INTO answers(description,questionid,likes) VALUES('Regulations may vary by location, but they often cover areas like worker safety, chemical handling, and food safety. Consult with local agricultural agencies or authorities to understand and adhere to relevant regulations.',62,18);
+INSERT INTO answers(description,questionid,likes)VALUES(' Implement safety practices like equipment inspections, proper machine guarding, and safe operating procedures. Provide training to all personnel operating machinery.',63,16);
+INSERT INTO answers(description,questionid,likes) VALUES(' Establish child safety guidelines, including restricted access to hazardous areas, supervision, and age-appropriate tasks for children.',64,15);
+INSERT INTO answers(description,questionid,likes) VALUES('Practices like maintaining firebreaks, proper storage of flammable materials, and having firefighting equipment on hand can help reduce fire risks.',65,13);
+INSERT INTO answers(description,questionid,likes) VALUES('  Biosecurity measures may include quarantine for new animals, proper sanitation, and limiting visitor access to prevent the spread of diseases.',66,12);
+INSERT INTO answers(description,questionid,likes) VALUES('  Implement food safety practices such as proper handling, storage, and labeling of farm products, and consider obtaining any necessary food safety certifications.',67,11);
+INSERT INTO answers(description,questionid,likes) VALUES('  Yes, safety precautions include proper storage, labeling, and handling procedures for chemicals. Follow the manufacturers instructions and local regulations.',68,14);
+INSERT INTO answers(description,questionid,likes) VALUES('Properly store and dispose of hazardous materials like pesticides, chemicals, and used oil according to local regulations and guidelines.',69,12);
+INSERT INTO answers(description,questionid,likes) VALUES('Look for local agricultural extension services, farm safety organizations, and training programs that offer guidance and support for farm safety and regulatory compliance.',70,23);
 
 
 
-INSERT INTO answers(description,questionid) VALUES(' Specialty farming focuses on the production of unique or niche crops, products, or livestock that cater to specific markets or consumer preferences, often deviating from traditional mainstream agriculture.',81);
-INSERT INTO answers(description,questionid) VALUES(' Research local market demands, consumer trends, and potential niche products to identify profitable opportunities for your farm.',82);
-INSERT INTO answers(description,questionid)VALUES('Specialty crop success involves understanding specific growing conditions, disease management, and finding the right market outlets for your products.',83);
-INSERT INTO answers(description,questionid) VALUES(' Yes, there are often certification processes and quality standards for specialty and organic products. Consult with certifying bodies and follow their guidelines for compliance.',84);
-INSERT INTO answers(description,questionid) VALUES(' Effective marketing strategies include branding, participating in farmers markets, building relationships with local chefs and restaurants, and utilizing social media and online platforms.',85);
-INSERT INTO answers(description,questionid) VALUES(' Challenges may include smaller market sizes, while benefits may include higher prices per unit and the preservation of rare or endangered breeds.',86);
-INSERT INTO answers(description,questionid) VALUES('  Explore agricultural extension services, specialty crop grants, and local agricultural organizations that offer resources and support for specialty farmers.',87);
-INSERT INTO answers(description,questionid) VALUES(' Diversification involves careful market research, risk assessment, and a well-thought-out business plan that includes both mainstream and specialty products.',88);
-INSERT INTO answers(description,questionid) VALUES('Specialty farming practices should align with sustainable and environmentally responsible methods, which may include organic or regenerative farming techniques.',89);
-INSERT INTO answers(description,questionid) VALUES(' Attend specialty crop conferences, subscribe to niche farming publications, and network with other specialty farmers to stay informed about trends and opportunities.',90);
+
+INSERT INTO answers(description,questionid,likes) VALUES('Look for agricultural extension programs, research institutions, and industry publications that offer information on cutting-edge farming practices.',71,8);
+INSERT INTO answers(description,questionid,likes) VALUES(' Many agricultural colleges and organizations offer courses and programs tailored to farmers interested in transitioning to organic farming.',72,7);
+INSERT INTO answers(description,questionid,likes)VALUES('Explore local workshops, online courses, and resources provided by sustainable agriculture organizations to learn about these practices.',73,8);
+INSERT INTO answers(description,questionid,likes) VALUES(' Some training programs may offer financial incentives or scholarships. Additionally, check with agricultural agencies and organizations for funding opportunities.',74,7);
+INSERT INTO answers(description,questionid,likes) VALUES(' Look for local mentorship programs or agricultural associations that facilitate connections between experienced and aspiring farmers.',75,6);
+INSERT INTO answers(description,questionid,likes) VALUES('Farm business management courses typically cover topics such as budgeting, marketing, record-keeping, and risk management.',76,5);
+INSERT INTO answers(description,questionid,likes) VALUES(' Reach out to local farms, agricultural colleges, and organizations that offer apprenticeship programs to gain practical experience.',77,4);
+INSERT INTO answers(description,questionid,likes) VALUES(' Farming cooperatives and associations can provide networking, support, and educational opportunities. Search online or ask fellow farmers for recommendations.',78,17);
+INSERT INTO answers(description,questionid,likes) VALUES(' Some government programs may provide grants or tax incentives to support farmers education and training efforts.',79,15);
+INSERT INTO answers(description,questionid,likes) VALUES('Time management and prioritization are key. Allocate dedicated time for learning, and consider online or flexible training options to fit your schedule.',80,14);
 
 
 
-INSERT INTO answers(description,questionid) VALUES(' Consider implementing practices like crop rotation, cover cropping, and organic matter additions to enhance soil health and fertility.',91);
-INSERT INTO answers(description,questionid) VALUES('Implement best management practices (BMPs) like controlled drainage, nutrient management plans, and riparian buffer zones to reduce runoff and protect water quality.',92);
-INSERT INTO answers(description,questionid)VALUES(' Explore labor-saving technologies such as automated machinery and consider hiring seasonal or temporary workers to meet labor demands.',93);
-INSERT INTO answers(description,questionid) VALUES(' Focus on proper nutrition, housing, and disease prevention through vaccination and biosecurity measures to promote animal welfare and productivity.',94);
-INSERT INTO answers(description,questionid) VALUES(' Implement energy-efficient practices such as upgrading equipment, using renewable energy sources, and optimizing building insulation.',95);
-INSERT INTO answers(description,questionid) VALUES('Consider diversifying your income sources, exploring contract farming agreements, and using risk management tools like futures contracts to hedge against price fluctuations.',96);
-INSERT INTO answers(description,questionid) VALUES('  Develop resilient farming practices like drought-tolerant crops, efficient irrigation, and improved drainage systems to adapt to climate variability.',97);
-INSERT INTO answers(description,questionid) VALUES(' Build a strong online presence, participate in farmers  markets, offer farm-to-table experiences, and engage with community-supported agriculture (CSA) programs.',98);
-INSERT INTO answers(description,questionid) VALUES('Gradually transition by implementing organic practices, improving soil health, and seeking organic certification when ready.',99);
-INSERT INTO answers(description,questionid) VALUES('Create a comprehensive farm business plan, monitor key performance indicators, and continually seek opportunities for improvement and innovation.',100);
+INSERT INTO answers(description,questionid,likes) VALUES(' Specialty farming focuses on the production of unique or niche crops, products, or livestock that cater to specific markets or consumer preferences, often deviating from traditional mainstream agriculture.',81,5);
+INSERT INTO answers(description,questionid,likes) VALUES(' Research local market demands, consumer trends, and potential niche products to identify profitable opportunities for your farm.',82,7);
+INSERT INTO answers(description,questionid,likes)VALUES('Specialty crop success involves understanding specific growing conditions, disease management, and finding the right market outlets for your products.',83,9);
+INSERT INTO answers(description,questionid,likes) VALUES(' Yes, there are often certification processes and quality standards for specialty and organic products. Consult with certifying bodies and follow their guidelines for compliance.',84,7);
+INSERT INTO answers(description,questionid,likes) VALUES(' Effective marketing strategies include branding, participating in farmers markets, building relationships with local chefs and restaurants, and utilizing social media and online platforms.',85,7);
+INSERT INTO answers(description,questionid,likes) VALUES(' Challenges may include smaller market sizes, while benefits may include higher prices per unit and the preservation of rare or endangered breeds.',86,4);
+INSERT INTO answers(description,questionid,likes) VALUES('  Explore agricultural extension services, specialty crop grants, and local agricultural organizations that offer resources and support for specialty farmers.',87,8);
+INSERT INTO answers(description,questionid,likes) VALUES(' Diversification involves careful market research, risk assessment, and a well-thought-out business plan that includes both mainstream and specialty products.',88,13);
+INSERT INTO answers(description,questionid,likes) VALUES('Specialty farming practices should align with sustainable and environmentally responsible methods, which may include organic or regenerative farming techniques.',89,12);
+INSERT INTO answers(description,questionid,likes) VALUES(' Attend specialty crop conferences, subscribe to niche farming publications, and network with other specialty farmers to stay informed about trends and opportunities.',90,12);
+
+
+
+INSERT INTO answers(description,questionid,likes) VALUES(' Consider implementing practices like crop rotation, cover cropping, and organic matter additions to enhance soil health and fertility.',91,2);
+INSERT INTO answers(description,questionid,likes) VALUES('Implement best management practices (BMPs) like controlled drainage, nutrient management plans, and riparian buffer zones to reduce runoff and protect water quality.',92,3);
+INSERT INTO answers(description,questionid,likes)VALUES(' Explore labor-saving technologies such as automated machinery and consider hiring seasonal or temporary workers to meet labor demands.',93,2);
+INSERT INTO answers(description,questionid,likes) VALUES(' Focus on proper nutrition, housing, and disease prevention through vaccination and biosecurity measures to promote animal welfare and productivity.',94,5);
+INSERT INTO answers(description,questionid,likes) VALUES(' Implement energy-efficient practices such as upgrading equipment, using renewable energy sources, and optimizing building insulation.',95,4);
+INSERT INTO answers(description,questionid,likes) VALUES('Consider diversifying your income sources, exploring contract farming agreements, and using risk management tools like futures contracts to hedge against price fluctuations.',96,8);
+INSERT INTO answers(description,questionid,likes) VALUES('  Develop resilient farming practices like drought-tolerant crops, efficient irrigation, and improved drainage systems to adapt to climate variability.',97,4);
+INSERT INTO answers(description,questionid,likes) VALUES(' Build a strong online presence, participate in farmers  markets, offer farm-to-table experiences, and engage with community-supported agriculture (CSA) programs.',98,4);
+INSERT INTO answers(description,questionid,likes) VALUES('Gradually transition by implementing organic practices, improving soil health, and seeking organic certification when ready.',99,12);
+INSERT INTO answers(description,questionid,likes) VALUES('Create a comprehensive farm business plan, monitor key performance indicators, and continually seek opportunities for improvement and innovation.',100,10);
 
 -- SME ANSWERS
 INSERT INTO smeanswers(answerid,answerdate,smeid) VALUES (1,'2023-09-02',1);

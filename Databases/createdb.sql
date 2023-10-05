@@ -1,4 +1,4 @@
--- Active: 1682349138553@@127.0.0.1@3306@ekrushi
+-- Active: 1694968636816@@127.0.0.1@3306@ekrushi
 
 drop database ekrushi;
 
@@ -134,7 +134,7 @@ CREATE TABLE
             'cash on delivery',
             'net banking'
         ),
-        paymentstatus  ENUM('paid', 'paid','cancelled'),
+        paymentstatus  ENUM('paid', 'unpaid','cancelled'),
         transactionid INT ,
         orderid INT NOT NULL,
         CONSTRAINT fkorderid FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE
@@ -193,6 +193,7 @@ CREATE TABLE
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         description VARCHAR(255),
         questionid INT NOT NULL,
+        likes INT NOT NULL,
         CONSTRAINT fkcategory12 FOREIGN KEY (questionid) REFERENCES questions(id) ON DELETE CASCADE ON UPDATE CASCADE
     );
 
