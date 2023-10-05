@@ -173,7 +173,7 @@ CREATE TABLE `payments` (
   `id` int NOT NULL AUTO_INCREMENT,
   `date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `mode` enum('cash on delivery','net banking') DEFAULT NULL,
-  `paymentstatus` enum('paid','unpaid','cancelled') DEFAULT NULL,
+  `paymentstatus` enum('paid','paid','cancelled') DEFAULT NULL,
   `transactionid` int DEFAULT NULL,
   `orderid` int NOT NULL,
   PRIMARY KEY (`id`),
@@ -188,7 +188,7 @@ CREATE TABLE `payments` (
 
 LOCK TABLES `payments` WRITE;
 /*!40000 ALTER TABLE `payments` DISABLE KEYS */;
-INSERT INTO `payments` VALUES (1,' 2023-08-04 08:00:44','cash on delivery','unpaid',NULL,3),(2,' 2023-08-04 08:02:04','net banking','paid',5,4),(4,' 2023-08-04 08:30:21','cash on delivery','unpaid',NULL,6),(5,' 2023-08-04 08:30:56','cash on delivery','unpaid',NULL,7),(6,' 2023-08-04 08:31:16','cash on delivery','unpaid',NULL,8),(7,' 2023-08-04 08:31:33','cash on delivery','unpaid',NULL,9),(8,' 2023-08-04 08:31:47','cash on delivery','unpaid',NULL,10),(9,' 2023-08-04 08:32:30','cash on delivery','unpaid',NULL,11),(10,' 2023-08-04 08:34:46','cash on delivery','unpaid',NULL,12),(11,' 2023-08-04 08:35:06','cash on delivery','unpaid',NULL,13),(12,' 2023-08-04 08:40:18','cash on delivery','unpaid',NULL,14),(13,' 2023-08-04 08:42:29','cash on delivery','unpaid',NULL,15),(14,' 2023-08-04 08:44:17','cash on delivery','unpaid',NULL,16),(15,' 2023-08-04 08:44:36','cash on delivery','unpaid',NULL,17),(16,' 2023-08-04 08:44:56','cash on delivery','unpaid',NULL,18),(17,' 2023-08-04 08:45:17','cash on delivery','unpaid',NULL,19),(18,' 2023-08-04 08:45:37','cash on delivery','unpaid',NULL,20),(19,' 2023-08-04 08:46:06','cash on delivery','unpaid',NULL,21),(20,' 2023-08-04 08:46:28','cash on delivery','unpaid',NULL,22),(21,' 2023-08-04 08:47:40','cash on delivery','unpaid',NULL,23);
+INSERT INTO `payments` VALUES (1,' 2023-08-04 08:00:44','cash on delivery','paid',NULL,3),(2,' 2023-08-04 08:02:04','net banking','paid',5,4),(4,' 2023-08-04 08:30:21','cash on delivery','paid',NULL,6),(5,' 2023-08-04 08:30:56','cash on delivery','paid',NULL,7),(6,' 2023-08-04 08:31:16','cash on delivery','paid',NULL,8),(7,' 2023-08-04 08:31:33','cash on delivery','paid',NULL,9),(8,' 2023-08-04 08:31:47','cash on delivery','paid',NULL,10),(9,' 2023-08-04 08:32:30','cash on delivery','paid',NULL,11),(10,' 2023-08-04 08:34:46','cash on delivery','paid',NULL,12),(11,' 2023-08-04 08:35:06','cash on delivery','paid',NULL,13),(12,' 2023-08-04 08:40:18','cash on delivery','paid',NULL,14),(13,' 2023-08-04 08:42:29','cash on delivery','paid',NULL,15),(14,' 2023-08-04 08:44:17','cash on delivery','paid',NULL,16),(15,' 2023-08-04 08:44:36','cash on delivery','paid',NULL,17),(16,' 2023-08-04 08:44:56','cash on delivery','paid',NULL,18),(17,' 2023-08-04 08:45:17','cash on delivery','paid',NULL,19),(18,' 2023-08-04 08:45:37','cash on delivery','paid',NULL,20),(19,' 2023-08-04 08:46:06','cash on delivery','paid',NULL,21),(20,' 2023-08-04 08:46:28','cash on delivery','paid',NULL,22),(21,' 2023-08-04 08:47:40','cash on delivery','paid',NULL,23);
 /*!40000 ALTER TABLE `payments` ENABLE KEYS */;
 UNLOCK TABLES;
 

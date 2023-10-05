@@ -134,7 +134,7 @@ CREATE TABLE
             'cash on delivery',
             'net banking'
         ),
-        paymentstatus  ENUM('paid', 'unpaid','cancelled'),
+        paymentstatus  ENUM('paid', 'paid','cancelled'),
         transactionid INT ,
         orderid INT NOT NULL,
         CONSTRAINT fkorderid FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE
