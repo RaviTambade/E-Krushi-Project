@@ -1,4 +1,4 @@
--- Active: 1694968636816@@127.0.0.1@3306@ekrushi
+-- Active: 1678359546568@@127.0.0.1@3306@ekrushi
 
 
 CREATE PROCEDURE insertpayment(
@@ -62,9 +62,8 @@ BEGIN
  
     SELECT count(*) INTO weekOrders
     FROM Orders
-    WHERE DATE(orderdate) BETWEEN DATE_SUB(given_date, INTERVAL (DAYOFWEEK(given_date) - 1) DAY) //2023-09-08
-    AND DATE_ADD(given_date, INTERVAL (7 - DAYOFWEEK(given_date)) DAY); //2023-09-14
-
+    WHERE DATE(orderdate) BETWEEN DATE_SUB(given_date, INTERVAL (DAYOFWEEK(given_date) - 1) DAY) 
+    AND DATE_ADD(given_date, INTERVAL (7 - DAYOFWEEK(given_date)) DAY); 
   
      SELECT count(*) INTO monthOrders
     FROM Orders

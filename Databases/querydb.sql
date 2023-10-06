@@ -257,13 +257,7 @@ SELECT CONCAT('week', ROW_NUMBER() OVER (ORDER BY WEEK(answerdate))) AS week_num
 --weekly orders
 SELECT CONCAT('week', ROW_NUMBER() OVER (ORDER BY WEEK(orderdate))) AS week_number, COUNT(*) AS count  FROM orders WHERE orderdate >= '2023-02-05' AND orderdate <= '2023-12-15'  GROUP BY YEAR(orderdate), WEEK(orderdate);
 
--- yearly order data
-SELECT  year(orderdate) AS year, count(*) AS total
-FROM orders
-GROUP BY  year(orderdate) ORDER BY year(orderdate) ASC ;
 
-
-select * from seller;
 --this query gives data where userid=1
 SELECT * FROM customers where userid=2;
 

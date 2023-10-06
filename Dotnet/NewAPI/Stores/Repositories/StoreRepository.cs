@@ -77,6 +77,34 @@ public class StoreRepository : IStoreRepository
         }
     }
 
+    public async Task<int> GetStoreUserId(int  storeId)
+    {
+        MySqlConnection connection = new MySqlConnection(_connectionString);
+        try
+        {
+
+            var query = "SELECT userid FROM stores WHERE id = @StoreId";
+            connection.Open();
+
+            var userId = await connection.ExecuteScalarAsync<int>(
+                query,
+                new { StoreId = storeId }
+            );
+
+            return userId;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+    }
+
+
+
     private async Task<int> GetNearestStoreAddressId(int customerAddressId)
     {
         try

@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllers();
+builder.Services.AddCors();
 builder.Services.AddScoped<IStoreRepository,StoreRepository>();
 builder.Services.AddScoped<IStoreService,StoreService>();
 builder.Services.AddHttpClient();
@@ -23,6 +24,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors(x => x.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader());
 
 app.UseAuthorization();
 

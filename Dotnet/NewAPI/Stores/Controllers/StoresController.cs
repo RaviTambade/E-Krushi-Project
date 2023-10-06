@@ -31,5 +31,11 @@ public class StoresController : ControllerBase
     public OrderSp OrdersStoredProcedure(DateTime todaysDate)
     {
         return  _service.OrdersStoredProcedure(todaysDate);
+    [HttpGet("user/{storeId}")]
+    
+    
+    public async Task<int> GetStoreUserId(int storeId)
+    {
+        return await _service.GetStoreUserId(storeId);
     }
 }

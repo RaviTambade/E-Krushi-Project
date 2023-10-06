@@ -24,7 +24,7 @@ export class BankingService {
   checkAccount(customerId:number): Observable<BankAccount> {
     var body = {
       usertype: 'person',
-      DependancyId: customerId,
+      DependencyId: customerId,
     };
     let url = 'http://localhost:5053/api/accounts/details/';
     return this.httpClient.post<BankAccount>(url, body);
