@@ -23,4 +23,8 @@ public class StoreService : IStoreService
        return await  _repository.GetNearestStoreId(customerAddressId);
         
     }
+
+    public OrderSp OrdersStoredProcedure(DateTime todaysDate){
+        return _repository.OrdersStoredProcedure(todaysDate);
+     }
 }
