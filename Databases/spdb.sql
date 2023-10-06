@@ -40,34 +40,39 @@ BEGIN
 END;
 
 
-CREATE PROCEDURE OrdersByDate
+CREATE PROCEDURE GetOrdersByDate
 (
-    IN given_date DATE
+    IN given_date DATE,
+    OUT todaysOrders INT,
+    OUT yesterdaysOrders INT,
+    OUT weekOrders INT,
+    OUT monthOrders INT
 )
 BEGIN
-  --todays orders query
-    SELECT *
+  
+    SELECT count(*) INTO todaysOrders
     FROM Orders
     WHERE DATE(orderdate) = given_date;
 
 
---yesterdays order query
-    SELECT *
+    SELECT count(*) INTO yesterdaysOrders
     FROM Orders
     WHERE DATE(orderdate) = DATE_SUB(given_date, INTERVAL 1 DAY);
 
- --weekly orders
-    SELECT *
+ 
+    SELECT count(*) INTO weekOrders
     FROM Orders
-    WHERE DATE(orderdate) BETWEEN DATE_SUB(given_date, INTERVAL (DAYOFWEEK(given_date) - 1) DAY) 
-    AND DATE_ADD(given_date, INTERVAL (7 - DAYOFWEEK(given_date)) DAY);
+    WHERE DATE(orderdate) BETWEEN DATE_SUB(given_date, INTERVAL (DAYOFWEEK(given_date) - 1) DAY) //2023-09-08
+    AND DATE_ADD(given_date, INTERVAL (7 - DAYOFWEEK(given_date)) DAY); //2023-09-14
 
-    --monthly orders
-     SELECT *
+  
+     SELECT count(*) INTO monthOrders
     FROM Orders
-    WHERE DATE(orderdate) BETWEEN DATE_SUB('2023-09-06', INTERVAL DAY('2023-09-06') - 1 DAY)
-    AND LAST_DAY('2023-09-06');
+    WHERE DATE(orderdate) BETWEEN DATE_SUB(given_date, INTERVAL DAY(given_date) - 1 DAY)
+    AND LAST_DAY(given_date);
 END;
 
 
-CALL OrdersByDate('2023-09-06');
+CALL GetOrdersByDate('2023-09-10',@todaysOrders,@yesterdaysOrders,@weekOrders,@monthOrders);
+
+SELECT @todaysOrders,@yesterdaysOrders,@weekOrders,@monthOrders ;
