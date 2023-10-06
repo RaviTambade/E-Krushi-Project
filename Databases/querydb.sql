@@ -15,7 +15,7 @@ SELECT (payments.id)as paymentid,  (orders.total) as total,(payments.date)as dat
 -- customer payments
 
 select (date)as paymentdate,paymentstatus,orderid FROM payments where orderid in (SELECT id from orders where customerid =2);
-SELECT * from answers;
+SELECT * from orders;
 
 -- customer orderdetails query
 select productdetails.size,productdetails.unitprice,products.image,products.title,orderdetails.quantity,(productdetails.unitprice * orderdetails.quantity) as total from products 
