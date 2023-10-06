@@ -26,4 +26,10 @@ public class StoresController : ControllerBase
     {
         return await _service.GetNearestStoreId(customerAddressId);
     }
+
+    [HttpGet("user/{storeId}")]
+    public async Task<int> GetStoreUserId(int storeId)
+    {
+        return await _service.GetStoreUserId(storeId);
+    }
 }

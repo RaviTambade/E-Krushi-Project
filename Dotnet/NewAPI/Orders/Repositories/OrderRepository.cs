@@ -85,7 +85,12 @@ public class OrderRepository : IOrderRepository
                 await _context.SaveChangesAsync();
             }
 
-            return new OrderAmount { OrderId = orderId, Amount = total };
+            return new OrderAmount
+            {
+                OrderId = orderId,
+                Amount = total,
+                StoreId = order.StoreId
+            };
         }
         catch (Exception)
         {
@@ -230,48 +235,4 @@ public class OrderRepository : IOrderRepository
             throw;
         }
     }
-
-    // private async Task<int> GetNearestStoreAddressId(int customerAddressId)
-    // {
-    //     try
-    //     {
-    //         string addressIdsAsString = await GetAddressIdOfStores();
-    //         var body = new
-    //         {
-    //             addressId = customerAddressId,
-    //             storeAddressIdString = addressIdsAsString
-    //         };
-    //         string jsonBody = JsonSerializer.Serialize(body);
-    //         var requestContent = new StringContent(jsonBody, Encoding.UTF8, "application/json");
-    //         string requestUrl = "http://localhost:5102/api/addresses/nearest";
-
-    //         HttpClient httpClient = _httpClientFactory.CreateClient();
-    //         var response = await httpClient.PostAsync(requestUrl, requestContent);
-    //         if (response.IsSuccessStatusCode)
-    //         {
-    //             var apiResponse = await response.Content.ReadAsStringAsync();
-    //             int addressId = JsonSerializer.Deserialize<int>(apiResponse);
-    //             return addressId;
-    //         }
-    //     }
-    //     catch (Exception)
-    //     {
-    //         throw;
-    //     }
-    //     return default;
-    // }
-
-    // private async Task<string> GetAddressIdOfStores()
-    // {
-    //     try
-    //     {
-    //         var addressIds = await _context.Stores.Select(store => store.AddressId).ToListAsync();
-    //         var addressIdsAsString = string.Join(",", addressIds.Select(id => id.ToString()));
-    //         return addressIdsAsString;
-    //     }
-    //     catch (Exception)
-    //     {
-    //         throw;
-    //     }
-    // }
 }

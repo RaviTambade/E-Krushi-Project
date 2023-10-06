@@ -23,4 +23,9 @@ public class StoreService : IStoreService
        return await  _repository.GetNearestStoreId(customerAddressId);
         
     }
+
+    public async Task<int> GetStoreUserId(int storeId)
+    {
+       return await  _repository.GetStoreUserId(storeId);
+    }
 }

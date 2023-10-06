@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, firstValueFrom, lastValueFrom, switchMap } from 'rxjs';
 import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
 import { SessionStorageKeys } from 'src/app/Models/Enums/session-storage-keys';
 import { PaymentAddModel } from 'src/app/Models/PaymentAddModel';
 import { PaymentTransferDetails } from 'src/app/Models/PaymentTransferDetails';
+import { BankAccount } from 'src/app/Models/bankAccount';
 import { CartItem } from 'src/app/Models/cart-item';
 import { OrderAddModel } from 'src/app/Models/order-add-model';
 import { OrderAmount } from 'src/app/Models/order-amount';
@@ -12,6 +14,7 @@ import { BankingService } from 'src/app/Services/banking.service';
 import { CartService } from 'src/app/Services/cart.service';
 import { OrderService } from 'src/app/Services/order-service.service';
 import { PaymentService } from 'src/app/Services/payment.service';
+import { StoreService } from 'src/app/Services/store.service';
 
 @Component({
   selector: 'app-payment',
@@ -29,6 +32,7 @@ export class PaymentComponent {
     private paymentsvc: PaymentService,
     private ordersvc: OrderService,
     private cartsvc: CartService,
+    private storesvc: StoreService,
     private router: Router
   ) {}
 
@@ -55,77 +59,6 @@ export class PaymentComponent {
       }
     });
   }
-
-  // makePayment() {
-  //   const customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
-  //   const addressId = Number(
-  //     sessionStorage.getItem(SessionStorageKeys.addressId)
-  //   );
-
-  //   if (Number.isNaN(customerId) || Number.isNaN(addressId)) {
-  //     return;
-  //   }
-
-  //   let items = sessionStorage.getItem(SessionStorageKeys.items);
-  //   if (items == null) {
-  //     return;
-  //   }
-  //   const cartItems: CartItem[] = JSON.parse(items);
-
-  //   const orderdetails: OrderDetailsAddModel[] = cartItems.map(
-  //     (item) =>
-  //       new OrderDetailsAddModel(item.productId, item.quantity, item.size)
-  //   );
-
-  //   const order: OrderAddModel = {
-  //     customerId: customerId,
-  //     addressId: addressId,
-  //     orderDetails: orderdetails,
-  //   };
-
-  //   this.ordersvc.processOrder(order).subscribe((res) => {
-  //     console.log(res);
-  //     const orderAmount = res;
-
-  //     if (this.selectedMode === 'cash on delivery') {
-  //       let payment: PaymentAddModel = {
-  //         paymentStatus: 'unpaid',
-  //         mode: 'cash on delivery',
-  //         orderId: orderAmount.orderId,
-  //         transactionId: 0,
-  //       };
-  //       this.paymentsvc.addPayment(payment).subscribe((res) => {
-  //         console.log('payment done successfully and order placed');
-  //         this.router.navigate(['/']);
-  //       });
-
-  //     } else if (this.selectedMode === 'net banking') {
-  //       let paymentDetails: PaymentTransferDetails = {
-  //         fromAcct: this.accountNumber,
-  //         toAcct: '5642999999',
-  //         fromIfsc: this.ifscCode,
-  //         toIfsc: 'AXIS0000296',
-  //         amount: orderAmount.amount,
-  //       };
-
-  //       this.banksvc.fundTransfer(paymentDetails).subscribe((res) => {
-  //         if (res != 0) {
-  //           let payment: PaymentAddModel = {
-  //             paymentStatus: 'paid',
-  //             mode: 'net banking',
-  //             orderId: orderAmount.orderId,
-  //             transactionId: res,
-  //           };
-
-  //           this.paymentsvc.addPayment(payment).subscribe((res) => {
-  //             console.log('payment done successfully and order placed');
-  //             this.router.navigate(['/']);
-  //           });
-  //         }
-  //       });
-  //     }
-  //   });
-  // }
 
   makePayment() {
     const customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
@@ -196,17 +129,56 @@ export class PaymentComponent {
     });
   }
 
-  processNetBankingPayment(orderAmount: OrderAmount) {
-    const paymentDetails: PaymentTransferDetails = {
-      fromAcct: this.accountNumber,
-      toAcct: '5642999999',
-      fromIfsc: this.ifscCode,
-      toIfsc: 'AXIS0000296',
-      amount: orderAmount.amount,
-    };
+  // processNetBankingPayment(orderAmount: OrderAmount) {
 
-    this.banksvc.fundTransfer(paymentDetails).subscribe((res) => {
-      if (res != 0) {
+  //   const paymentDetails: PaymentTransferDetails = {
+  //     fromAcct: this.accountNumber,
+  //     toAcct: '5642999999',
+  //     fromIfsc: this.ifscCode,
+  //     toIfsc: 'AXIS0000296',
+  //     amount: orderAmount.amount,
+  //   };
+
+  //   this.banksvc.fundTransfer(paymentDetails).subscribe((res) => {
+  //     if (res != 0) {
+  //       const payment: PaymentAddModel = {
+  //         paymentStatus: 'paid',
+  //         mode: 'net banking',
+  //         orderId: orderAmount.orderId,
+  //         transactionId: res,
+  //       };
+
+  //       this.paymentsvc.addPayment(payment).subscribe((res) => {
+  //         if (res) {
+  //           this.emptyCart();
+  //           alert('Order Placed');
+  //           console.log('payment done successfully and order placed');
+  //           this.router.navigate(['/']);
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
+
+  async processNetBankingPayment(orderAmount: OrderAmount) {
+    try {
+      const storeBankDetails = await lastValueFrom(
+        this.fetchStoreAccountInfo(orderAmount.storeId)
+      );
+
+      const paymentDetails: PaymentTransferDetails = {
+        fromAcct: this.accountNumber,
+        toAcct: storeBankDetails.accountNumber,
+        fromIfsc: this.ifscCode,
+        toIfsc: storeBankDetails.ifscCode,
+        amount: orderAmount.amount,
+      };
+
+      const res = await lastValueFrom(
+        this.banksvc.fundTransfer(paymentDetails)
+      );
+
+      if (res !== 0) {
         const payment: PaymentAddModel = {
           paymentStatus: 'paid',
           mode: 'net banking',
@@ -214,16 +186,30 @@ export class PaymentComponent {
           transactionId: res,
         };
 
-        this.paymentsvc.addPayment(payment).subscribe((res) => {
-          if (res) {
-            this.emptyCart();
-            alert('Order Placed');
-            console.log('payment done successfully and order placed');
-            this.router.navigate(['/']);
-          }
-        });
+        const paymentResult = await lastValueFrom(
+          this.paymentsvc.addPayment(payment)
+        );
+
+        if (paymentResult) {
+          this.emptyCart();
+          alert('Order Placed');
+          console.log('Payment done successfully, and order placed');
+          this.router.navigate(['/']);
+        }
+      } else {
+        console.error('Fund transfer failed');
       }
-    });
+    } catch (error) {
+      console.error('An error occurred during the payment process:', error);
+    }
+  }
+
+  fetchStoreAccountInfo(storeId: number): Observable<BankAccount> {
+    return this.storesvc.getStoreUserId(storeId).pipe(
+      switchMap((storeUserId) => {
+        return this.banksvc.checkAccount(storeUserId);
+      })
+    );
   }
 
   emptyCart() {

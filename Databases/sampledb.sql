@@ -1,4 +1,4 @@
--- Active: 1694968636816@@127.0.0.1@3306@ekrushi
+-- Active: 1678359546568@@127.0.0.1@3306@ekrushi
 
 INSERT INTO roles(name) VALUES ('Shop Owner');
 INSERT INTO roles(name) VALUES ('Customer');
@@ -223,7 +223,7 @@ INSERT INTO productdetails(productid,unitprice,stockavailable,size,supplierid) V
 INSERT INTO productdetails(productid,unitprice,stockavailable,size,supplierid) VALUES(22,250,1000,'25kg',2);
 INSERT INTO productdetails(productid,unitprice,stockavailable,size,supplierid) VALUES(22,500,1000,'50kg',2);
 INSERT INTO productdetails(productid,unitprice,stockavailable,size,supplierid) VALUES(23,700,1000,'25kg',2);
-INSERT INTO productdetails(productid,unitprice,stockavailable,size,supplierid) VALUES(23,1400,1000,'25kg',2);
+INSERT INTO productdetails(productid,unitprice,stockavailable,size,supplierid) VALUES(23,1400,1000,'50kg',2);
 INSERT INTO productdetails(productid,unitprice,stockavailable,size,supplierid) VALUES(24,600,1000,'25kg',2);
 INSERT INTO productdetails(productid,unitprice,stockavailable,size,supplierid) VALUES(24,1200,1000,'50kg',2);
 INSERT INTO productdetails(productid,unitprice,stockavailable,size,supplierid) VALUES(25,550,1000,'25kg',2);
