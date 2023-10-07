@@ -27,13 +27,13 @@ public class StoresController : ControllerBase
         return await _service.GetNearestStoreId(customerAddressId);
     }
 
-     [HttpGet("storedprocedure/{todaysDate}")]
+    [HttpGet("storedprocedure/{todaysDate}")]
     public OrderSp OrdersStoredProcedure(DateTime todaysDate)
     {
-        return  _service.OrdersStoredProcedure(todaysDate);
+        return _service.OrdersStoredProcedure(todaysDate);
+    }
+
     [HttpGet("user/{storeId}")]
-    
-    
     public async Task<int> GetStoreUserId(int storeId)
     {
         return await _service.GetStoreUserId(storeId);
