@@ -1,4 +1,4 @@
--- Active: 1678359546568@@127.0.0.1@3306@ekrushi
+-- Active: 1694968636816@@127.0.0.1@3306@ekrushi
 
 
 CREATE PROCEDURE insertpayment(
@@ -96,3 +96,34 @@ WHERE id IN (
 );
 
 
+CREATE PROCEDURE GetTopProducts
+(
+    IN given_date DATE
+)
+BEGIN
+  
+   SELECT
+    products.id as productId,
+    SUM(orderdetails.quantity) as TotalQuantity,
+    products.title as title
+    FROM
+    orderdetails
+INNER JOIN
+    productdetails ON productdetails.id = orderdetails.productdetailsid
+INNER JOIN
+    orders ON orders.id = orderdetails.orderid
+INNER JOIN
+    products ON productdetails.productid = products.id
+WHERE
+ DATE(orders.orderdate) = given_date
+GROUP BY
+    productid
+ORDER BY
+    TotalQuantity DESC
+LIMIT
+    5; 
+END;
+
+
+
+CALL  GetTopProducts('2023-08-10');

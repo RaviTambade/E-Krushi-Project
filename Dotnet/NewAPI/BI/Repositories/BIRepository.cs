@@ -79,4 +79,69 @@ public class BIRepository : IBIRepository
 
     }
 
+
+     public List<TopProducts> GetTopProducts(DateTime todaysDate)
+
+    {
+        List<TopProducts>  products= new List<TopProducts>();
+        
+
+        MySqlConnection con = new MySqlConnection(_connectionString);
+
+        //Create Command Object
+
+        try{
+
+            con.Open();
+
+            MySqlCommand cmd = new MySqlCommand("GetTopProducts", con as MySqlConnection);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@given_date",todaysDate);
+            MySqlDataReader reader=cmd.ExecuteReader();
+            while(reader.Read()){
+
+               TopProducts product = new TopProducts(){
+               ProductId = reader.GetInt32("productId"),
+               TotalQuantity= reader.GetInt32("TotalQuantity"),
+               Title=reader.GetString("title")
+              };
+
+              products.Add(product);
+
+
+            }
+             
+            // int rowsAffected = cmd.ExecuteNonQuery();
+            
+
+            //  orders.ProductId =(int)cmd.Parameters["productId"].Value;
+            //  orders.TotalQuantity =(int)cmd.Parameters["TotalQuantity"].Value;
+            // //  orders.Title =cmd.Parameters["title"].Value;
+            
+
+           
+        }
+
+        catch (Exception e)
+
+        {
+
+            throw e;
+
+        }
+
+        finally
+
+        {
+
+            con.Close();
+
+        }
+
+        return products;
+
+    }
+
 }

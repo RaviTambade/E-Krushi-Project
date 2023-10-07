@@ -22,5 +22,13 @@ namespace BIService.Controllers
     {
         return _service.OrdersStoredProcedure(todaysDate,storeId);
     }
+
+
+
+     [HttpGet("storedprocedure/{todaysDate}")]
+    public List<TopProducts> GetTopProducts(DateTime todaysDate)
+    {
+        return _service.GetTopProducts(todaysDate);
+    }
     }
 }
