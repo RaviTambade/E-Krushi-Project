@@ -23,11 +23,6 @@ public class StoreService : IStoreService
         return await _repository.GetNearestStoreId(customerAddressId);
     }
 
-    public OrderSp OrdersStoredProcedure(DateTime todaysDate, int storeId)
-    {
-        return _repository.OrdersStoredProcedure(todaysDate, storeId);
-    }
-
     public async Task<int> GetStoreUserId(int storeId)
     {
         return await _repository.GetStoreUserId(storeId);

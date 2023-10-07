@@ -79,5 +79,20 @@ SELECT @todaysOrders,@yesterdaysOrders,@weekOrders,@monthOrders ;
 
 
 
+SELECT * FROM products
+WHERE id IN (
+    SELECT productid
+    FROM productdetails
+    WHERE id IN (
+        SELECT productdetailsid
+        FROM (
+            SELECT productdetailsid, SUM(quantity) AS TotalQuantity
+            FROM orderdetails
+            GROUP BY productdetailsid
+            ORDER BY TotalQuantity DESC
+            LIMIT 5
+        ) AS TopProducts
+    )
+);
 
-select * from orders where orderdate BETWEEN '2023-07-01' AND  '2023-07-31' and storeid=1;
+
