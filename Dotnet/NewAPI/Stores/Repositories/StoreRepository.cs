@@ -152,7 +152,7 @@ public class StoreRepository : IStoreRepository
     }
 
 
-  public OrderSp OrdersStoredProcedure(DateTime todaysDate)
+  public OrderSp OrdersStoredProcedure(DateTime todaysDate,int storeId)
 
     {
         OrderSp  orders= new OrderSp();
@@ -171,6 +171,7 @@ public class StoreRepository : IStoreRepository
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@given_date",todaysDate);
+             cmd.Parameters.AddWithValue("@givenStoreId",storeId);
 
             
 

@@ -24,8 +24,8 @@ public class StoreService : IStoreService
         
     }
 
-    public OrderSp OrdersStoredProcedure(DateTime todaysDate){
-        return _repository.OrdersStoredProcedure(todaysDate);
+    public OrderSp OrdersStoredProcedure(DateTime todaysDate,int storeId){
+        return _repository.OrdersStoredProcedure(todaysDate,storeId);
      }
     public async Task<int> GetStoreUserId(int storeId)
     {

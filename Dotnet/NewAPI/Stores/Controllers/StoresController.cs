@@ -27,10 +27,10 @@ public class StoresController : ControllerBase
         return await _service.GetNearestStoreId(customerAddressId);
     }
 
-    [HttpGet("storedprocedure/{todaysDate}")]
-    public OrderSp OrdersStoredProcedure(DateTime todaysDate)
+    [HttpGet("storedprocedure/{todaysDate}/{storeId}")]
+    public OrderSp OrdersStoredProcedure(DateTime todaysDate,int storeId)
     {
-        return _service.OrdersStoredProcedure(todaysDate);
+        return _service.OrdersStoredProcedure(todaysDate,storeId);
     }
 
     [HttpGet("user/{storeId}")]
