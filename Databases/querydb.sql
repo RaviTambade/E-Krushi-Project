@@ -269,3 +269,113 @@ select id from users where contactnumber ='9881571268';
 select roles.role from roles inner join userroles on roles.id = userroles.roleid where userroles.userid=2;
                  
 SELECT * FROM orders;
+
+SELECT products.id as productid, SUM(orderdetails.quantity) AS TotalQuantity,products.title
+            FROM orderdetails 
+            INNER join productdetails ON productdetails.id=orderdetails.productdetailsid
+            INNER JOIN products ON productdetails.productid=products.id
+            GROUP BY productid
+            ORDER BY TotalQuantity DESC
+            LIMIT 5;
+
+
+
+SELECT
+    products.id AS productid,
+    SUM(orderdetails.quantity) AS TotalQuantity,
+    products.title,
+    orders.orderdate
+FROM
+    orderdetails
+INNER JOIN
+    productdetails ON productdetails.id = orderdetails.productdetailsid
+INNER JOIN
+    orders ON orders.id = orderdetails.orderid
+INNER JOIN
+    products ON productdetails.productid = products.id
+WHERE
+    DATE(orders.orderdate) BETWEEN DATE_SUB('2023-08-10', INTERVAL DAY('2023-08-10') - 1 DAY)
+    AND LAST_DAY('2023-08-10')
+GROUP BY
+    productid
+ORDER BY
+    TotalQuantity DESC
+LIMIT
+    5;
+
+
+ SELECT
+    products.id AS productid,
+    SUM(orderdetails.quantity) AS TotalQuantity,
+    products.title,
+    orders.orderdate
+FROM
+    orderdetails
+INNER JOIN
+    productdetails ON productdetails.id = orderdetails.productdetailsid
+INNER JOIN
+    orders ON orders.id = orderdetails.orderid
+INNER JOIN
+    products ON productdetails.productid = products.id
+WHERE
+ DATE(orders.orderdate) BETWEEN DATE_SUB('2023-08-10', INTERVAL (DAYOFWEEK('2023-08-10') - 1) DAY) 
+    AND DATE_ADD('2023-08-10', INTERVAL (7 - DAYOFWEEK('2023-08-10')) DAY)
+GROUP BY
+    productid
+ORDER BY
+    TotalQuantity DESC
+LIMIT
+    5;  
+
+
+
+ SELECT
+    products.id AS productid,
+    SUM(orderdetails.quantity) AS TotalQuantity,
+    products.title,
+    orders.orderdate
+FROM
+    orderdetails
+INNER JOIN
+    productdetails ON productdetails.id = orderdetails.productdetailsid
+INNER JOIN
+    orders ON orders.id = orderdetails.orderid
+INNER JOIN
+    products ON productdetails.productid = products.id
+WHERE
+  DATE(orderdate) = DATE_SUB('2023-08-10', INTERVAL 1 DAY)
+GROUP BY
+    productid
+ORDER BY
+    TotalQuantity DESC
+LIMIT
+    5;  
+
+SELECT
+    products.id AS productid,
+    SUM(orderdetails.quantity) AS TotalQuantity,
+    products.title,
+    orders.orderdate
+FROM
+    orderdetails
+INNER JOIN
+    productdetails ON productdetails.id = orderdetails.productdetailsid
+INNER JOIN
+    orders ON orders.id = orderdetails.orderid
+INNER JOIN
+    products ON productdetails.productid = products.id
+WHERE
+ DATE(orders.orderdate) = '2023-08-10'
+GROUP BY
+    productid
+ORDER BY
+    TotalQuantity DESC
+LIMIT
+    5;  
+
+
+
+
+
+
+
