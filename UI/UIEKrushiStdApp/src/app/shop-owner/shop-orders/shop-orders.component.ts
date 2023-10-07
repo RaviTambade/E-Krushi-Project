@@ -19,7 +19,6 @@ export class ShopOrdersComponent implements OnInit {
 
   ngOnInit(): void {
     this.filterOrders(this.activeFilter);
-    console.log("c r")
   }
 
   filterOrders(status: string) {
