@@ -50,4 +50,10 @@ public class OrdersController : ControllerBase
     {
         return await _service.RemoveOrder(orderId);
     }
+
+    [HttpPut("{orderId}/status/{newStatus}")]
+    public async Task<bool> UpdateOrderStatus(int orderId, string newStatus)
+    {
+        return await _service.UpdateOrderStatus(orderId, newStatus);
+    }
 }

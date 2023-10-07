@@ -42,4 +42,9 @@ public class OrderService : IOrderService
     {
         return await _repository.GetAddressIdOfOrder(orderId);
     }
+
+    public async Task<bool> UpdateOrderStatus(int orderId, string newStatus)
+    {
+        return await _repository.UpdateOrderStatus(orderId, newStatus);
+    }
 }

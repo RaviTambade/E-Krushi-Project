@@ -10,4 +10,7 @@ public interface IOrderRepository
     Task<List<CustomerOrder>> GetCustomerOrderDetails(int customerId);
     Task<double> GetOrderAmount(int orderId);
     Task<int> GetAddressIdOfOrder(int orderId);
+    
+     Task<bool> UpdateOrderStatus(int orderId, string newStatus);
+   
 }

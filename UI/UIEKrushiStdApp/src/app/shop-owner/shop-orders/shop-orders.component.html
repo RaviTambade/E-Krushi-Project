@@ -1,0 +1,60 @@
+<div class="container">
+    <h2>My Orders</h2>
+  
+    <div class="row">
+      <div class="col-md-9">
+        <div class="d-flex col-9 justify-content-between">
+          <a class="btn btn-outline-success" (click)="filterOrders(orderStatus.pending)"
+            [ngClass]="{'btn-success active-button': activeFilter === orderStatus.pending}">
+            <i class="fas fa-clock" style="color: #c51616"></i>
+            &nbsp;Pending
+          </a>
+          <a class="btn btn-outline-success" (click)="filterOrders(orderStatus.approved)"
+            [ngClass]="{'btn-success active-button': activeFilter === orderStatus.approved}">
+            <i class="fas fa-clock" style="color: #ffc107"></i>
+            &nbsp;Approved
+          </a>
+          <a class="btn btn-outline-success" (click)="filterOrders(orderStatus.inprogress)"
+          [ngClass]="{'btn-success active-button': activeFilter === orderStatus.inprogress}">
+          <i class="fas fa-check-circle" style="color: #28a745"></i>
+          &nbsp;Inprogress
+        </a>
+          <a class="btn btn-outline-success" (click)="filterOrders(orderStatus.delivered)"
+            [ngClass]="{'btn-success active-button': activeFilter === orderStatus.delivered}">
+            <i class="fas fa-check-circle" style="color: #28a745"></i>
+            &nbsp;Delivered
+          </a>
+          <a class="btn btn-outline-success" (click)="filterOrders(orderStatus.cancelled)"
+            [ngClass]="{'btn-success active-button': activeFilter === orderStatus.cancelled}">
+            <i class="fas fa-cancel" style="color: #c51616"></i>
+            &nbsp;Cancelled
+          </a>
+        </div>
+  
+            <div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>OrderId</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let order of orders">
+                            <td>{{ order.orderDate | date }}</td>
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.total | currency : "INR" }}</td>
+                            <td>{{ order.status }}</td>
+                            <td>
+                                <a [routerLink]="['/shop/orders/details', order.id]">
+                                <button class="btn btn-primary">
+                                    Details
+                                </button>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>

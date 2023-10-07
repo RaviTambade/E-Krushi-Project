@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OrderStatus } from 'src/app/Models/Enums/Order-Status';
 import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
 import { Order } from 'src/app/Models/Order';
 import { OrderService } from 'src/app/Services/order-service.service';
@@ -10,8 +11,9 @@ import { OrderService } from 'src/app/Services/order-service.service';
 })
 export class CustomerOrdersComponent implements OnInit {
   orders: Order[] = [];
+  orderStatus=OrderStatus;
   filteredOrders: Order[] = [];
-  activeFilter: string = 'all';
+  activeFilter: string = this.orderStatus.pending;
   isLoading: boolean = true;
   constructor(private ordersvc: OrderService) {}
 
@@ -21,7 +23,7 @@ export class CustomerOrdersComponent implements OnInit {
       this.ordersvc.getOrdersOfCustomer(customerId).subscribe({
         next: (res) => {
           this.orders = res;
-          this.filteredOrders = res;
+          this.filterOrders(this.activeFilter);
           console.log(res);
         },
         error: (error) => {

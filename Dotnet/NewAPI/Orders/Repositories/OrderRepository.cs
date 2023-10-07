@@ -5,6 +5,7 @@ using Transflower.EKrushi.Orders.Repositories.Interfaces;
 using Transflower.EKrushi.Orders.Repositories.Contexts;
 using Transflower.EKrushi.Orders.Models;
 using Transflower.EKrushi.Orders.Entities;
+using System.Linq.Expressions;
 
 namespace Transflower.EKrushi.Orders.Repositories;
 
@@ -234,5 +235,15 @@ public class OrderRepository : IOrderRepository
         {
             throw;
         }
+    }
+
+    public async Task<bool> UpdateOrderStatus(int orderId, string newStatus)
+    {
+        Order? order = await _context.Orders.FindAsync(orderId);
+        if (order is not null) { 
+             
+
+        }
+        return true;
     }
 }

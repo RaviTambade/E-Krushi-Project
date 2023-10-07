@@ -1,4 +1,4 @@
--- Active: 1694968636816@@127.0.0.1@3306@ekrushi
+-- Active: 1678359546568@@127.0.0.1@3306@ekrushi
 
 drop database ekrushi;
 
@@ -89,12 +89,14 @@ CREATE TABLE
         CONSTRAINT fk_cust_id_11 FOREIGN KEY (customerid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE,
         total DOUBLE,
         status ENUM(
-            'initiated',
+            'pending',
             'approved',
+            'ready to dispatch',
+            'picked',
             'inprogress',
             'cancelled',
             'delivered'
-        )  DEFAULT 'initiated' NOT NULL
+        )  DEFAULT 'pending' NOT NULL
     );
     
 

@@ -12,7 +12,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { customerRoutes } from './customer/customer.module';
 import { shipperRoutes } from './shipper/shipper.module';
-import { shopRoutes } from './shop-owner/shop-owner.module';
+import { shopRoutes } from './shop-owner/shop-orders/shop-owner.module';
 import { subjetcMatterExpertRoutes } from './subject-matter-expert/subject-matter-expert.module';
 import { supplierRoutes } from './supplier/supplier.module';
 import { SecondaryNavMenuComponent } from './secondary-nav-menu/secondary-nav-menu.component';

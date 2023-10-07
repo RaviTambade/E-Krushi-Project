@@ -4,6 +4,7 @@ import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
 import { Role } from 'src/app/Models/Enums/role';
 import { Credential } from 'src/app/Models/credential';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
+import { StoreService } from 'src/app/Services/store.service';
 import { UserService } from 'src/app/Services/user.service';
 @Component({
   selector: 'app-login-component',
@@ -21,7 +22,8 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authService: AuthenticationService,
-    private userService: UserService
+    private userService: UserService,
+    private storesvc: StoreService
   ) {}
 
   public onSignIn() {
@@ -58,6 +60,10 @@ export class LoginComponent {
         this.router.navigate(['customer/dashboard']);
         break;
       case Role.ShopOwner:
+        if (this.userId != undefined)
+          this.storesvc.getStoreId(this.userId).subscribe((res) => {
+            localStorage.setItem(LocalStorageKeys.storeId, res.toString());
+          });
         this.router.navigate(['shop/dashboard']);
         break;
       case Role.Supplier:
