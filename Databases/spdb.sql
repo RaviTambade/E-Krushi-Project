@@ -96,10 +96,11 @@ WHERE id IN (
 );
 
 
-CREATE PROCEDURE Products
+CREATE PROCEDURE GetTopProducts
 (
     IN given_date DATE,
-     IN MODE VARCHAR(255)
+    IN MODE VARCHAR(255),
+    IN givenStoreId INT
 )
 BEGIN
   IF MODE= 'daily' THEN
@@ -116,7 +117,7 @@ INNER JOIN
 INNER JOIN
     products ON productdetails.productid = products.id
 WHERE
- DATE(orders.orderdate) = given_date
+ DATE(orders.orderdate) = given_date  AND storeid=givenStoreId
 GROUP BY
     productid
 ORDER BY
@@ -138,7 +139,7 @@ INNER JOIN
 INNER JOIN
     products ON productdetails.productid = products.id
 WHERE
-  DATE(orderdate) = DATE_SUB(given_date, INTERVAL 1 DAY)
+  DATE(orderdate) = DATE_SUB(given_date, INTERVAL 1 DAY)   AND storeid=givenStoreId
 GROUP BY
     productid
 ORDER BY
@@ -161,7 +162,7 @@ INNER JOIN
     products ON productdetails.productid = products.id
 WHERE
  DATE(orders.orderdate) BETWEEN DATE_SUB(given_date, INTERVAL (DAYOFWEEK(given_date) - 1) DAY) 
-    AND DATE_ADD(given_date, INTERVAL (7 - DAYOFWEEK(given_date)) DAY)
+    AND DATE_ADD(given_date, INTERVAL (7 - DAYOFWEEK(given_date)) DAY)  AND storeid=givenStoreId
 GROUP BY
     productid
 ORDER BY
@@ -184,7 +185,7 @@ INNER JOIN
     products ON productdetails.productid = products.id
 WHERE
     DATE(orders.orderdate) BETWEEN DATE_SUB(given_date, INTERVAL DAY(given_date) - 1 DAY)
-    AND LAST_DAY(given_date)
+    AND LAST_DAY(given_date)  AND storeid=givenStoreId
 GROUP BY
     productid
 ORDER BY
