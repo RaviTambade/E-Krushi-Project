@@ -33,10 +33,10 @@ export class AddressComponent implements OnInit {
       this.selectedAddressId = Number(
         sessionStorage.getItem(SessionStorageKeys.addressId)
       );
+    
 
       if (
-        this.selectedAddressId == null ||
-        Number.isNaN(this.selectedAddressId)
+        Number.isNaN(this.selectedAddressId) || this.selectedAddressId==0
       )
         this.selectedAddressId = this.addresses[0].id;
     });

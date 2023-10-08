@@ -10,7 +10,7 @@ import { UserService } from 'src/app/Services/user.service';
   styleUrls: ['./order-details.component.css'],
 })
 export class OrderDetailsComponent implements OnInit {
-  orderId!: number;
+  orderId!: number ;
   address: AddressInfo | undefined;
   constructor(
     private ordersvc: OrderService,

@@ -44,7 +44,7 @@ export class PaymentComponent {
 
   checkAccount() {
     let customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
-    if (Number.isNaN(customerId)) {
+    if (Number.isNaN(customerId) || customerId==0) {
       return;
     }
 
@@ -66,7 +66,8 @@ export class PaymentComponent {
       sessionStorage.getItem(SessionStorageKeys.addressId)
     );
 
-    if (Number.isNaN(customerId) || Number.isNaN(addressId)) {
+    if (Number.isNaN(customerId) || Number.isNaN(addressId)
+    || customerId==0 ||addressId == 0) {
       return;
     }
 

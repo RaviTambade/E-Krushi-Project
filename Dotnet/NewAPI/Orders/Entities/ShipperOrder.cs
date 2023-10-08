@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Transflower.EKrushi.Orders.Entities;
 
-[Table("orders")]
+[Table("shipperorders")]
 public class ShipperOrder
 {
     [Key]

@@ -13,9 +13,9 @@ public class StoreService : IStoreService
         _repository = repository;
     }
 
-    public async Task<IEnumerable<StoreOrder>> GetAllStoreOrders(int storeId , string orderStatus)
+    public async Task<IEnumerable<StoreOrder>> GetStoreOrders(int storeId , string orderStatus)
     {
-        return await _repository.GetAllStoreOrders(storeId,orderStatus);
+        return await _repository.GetStoreOrders(storeId,orderStatus);
     }
 
     public async Task<int> GetNearestStoreId(int customerAddressId)
@@ -31,5 +31,10 @@ public class StoreService : IStoreService
     public async Task<int> GetStoreIdByUserId(int userId)
     {
         return await _repository.GetStoreIdByUserId(userId);
+    }
+
+    public async Task<OrderStatusCount> GetStoreOrdersCount(int storeId)
+    {
+        return await _repository.GetStoreOrdersCount(storeId);
     }
 }

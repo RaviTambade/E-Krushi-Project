@@ -35,7 +35,7 @@ export const orderProcessingRoutes: Routes = [
     ReactiveFormsModule,
     FormsModule,
     RouterModule,
-    CustomerModule,
+   
   ],
 })
 export class OrderProcessingModule {}
