@@ -1,4 +1,4 @@
--- Active: 1678359546568@@127.0.0.1@3306@ekrushi
+-- Active: 1694968636816@@127.0.0.1@3306@ekrushi
 
 
 CREATE PROCEDURE insertpayment(
@@ -96,3 +96,106 @@ WHERE id IN (
 );
 
 
+CREATE PROCEDURE Products
+(
+    IN given_date DATE,
+     IN MODE VARCHAR(255)
+)
+BEGIN
+  IF MODE= 'daily' THEN
+   SELECT
+    products.id as productId,
+    SUM(orderdetails.quantity) as TotalQuantity,
+    products.title as title
+    FROM
+    orderdetails
+INNER JOIN
+    productdetails ON productdetails.id = orderdetails.productdetailsid
+INNER JOIN
+    orders ON orders.id = orderdetails.orderid
+INNER JOIN
+    products ON productdetails.productid = products.id
+WHERE
+ DATE(orders.orderdate) = given_date
+GROUP BY
+    productid
+ORDER BY
+    TotalQuantity DESC
+LIMIT
+    5; 
+ELSEIF MODE='yesterday' THEN
+SELECT
+    products.id AS productid,
+    SUM(orderdetails.quantity) AS TotalQuantity,
+    products.title,
+    orders.orderdate
+FROM
+    orderdetails
+INNER JOIN
+    productdetails ON productdetails.id = orderdetails.productdetailsid
+INNER JOIN
+    orders ON orders.id = orderdetails.orderid
+INNER JOIN
+    products ON productdetails.productid = products.id
+WHERE
+  DATE(orderdate) = DATE_SUB(given_date, INTERVAL 1 DAY)
+GROUP BY
+    productid
+ORDER BY
+    TotalQuantity DESC
+LIMIT
+    5;
+ELSEIF MODE='weekly' THEN
+ SELECT
+    products.id AS productid,
+    SUM(orderdetails.quantity) AS TotalQuantity,
+    products.title,
+    orders.orderdate
+FROM
+    orderdetails
+INNER JOIN
+    productdetails ON productdetails.id = orderdetails.productdetailsid
+INNER JOIN
+    orders ON orders.id = orderdetails.orderid
+INNER JOIN
+    products ON productdetails.productid = products.id
+WHERE
+ DATE(orders.orderdate) BETWEEN DATE_SUB(given_date, INTERVAL (DAYOFWEEK(given_date) - 1) DAY) 
+    AND DATE_ADD(given_date, INTERVAL (7 - DAYOFWEEK(given_date)) DAY)
+GROUP BY
+    productid
+ORDER BY
+    TotalQuantity DESC
+LIMIT
+    5;
+ELSEIF MODE='monthly' THEN
+SELECT
+    products.id AS productid,
+    SUM(orderdetails.quantity) AS TotalQuantity,
+    products.title,
+    orders.orderdate
+FROM
+    orderdetails
+INNER JOIN
+    productdetails ON productdetails.id = orderdetails.productdetailsid
+INNER JOIN
+    orders ON orders.id = orderdetails.orderid
+INNER JOIN
+    products ON productdetails.productid = products.id
+WHERE
+    DATE(orders.orderdate) BETWEEN DATE_SUB(given_date, INTERVAL DAY(given_date) - 1 DAY)
+    AND LAST_DAY(given_date)
+GROUP BY
+    productid
+ORDER BY
+    TotalQuantity DESC
+LIMIT
+    5;
+END IF;
+
+END;
+
+
+
+
+CALL Products('2023-08-10','yesterday');
