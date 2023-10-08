@@ -11,7 +11,7 @@ export class ShopDashboardComponent {
 
   constructor(private svc:StoreownerService){}
 
-   todaysDate:='2023-07-08';
+   todaysDate:Date=new  Date('2023-07-08');
    storeId:number=1;
   
   orders!:orderSp;
