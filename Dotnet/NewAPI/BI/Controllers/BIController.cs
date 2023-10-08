@@ -25,10 +25,10 @@ namespace BIService.Controllers
 
 
 
-     [HttpGet("storedprocedure/{todaysDate}")]
-    public List<TopProducts> GetTopProducts(DateTime todaysDate)
+     [HttpGet("TopProducts/{todaysDate}/{mode}")]
+    public List<TopProducts> GetTopProducts(DateTime todaysDate,string mode)
     {
-        return _service.GetTopProducts(todaysDate);
+        return _service.GetTopProducts(todaysDate,mode);
     }
     }
 }

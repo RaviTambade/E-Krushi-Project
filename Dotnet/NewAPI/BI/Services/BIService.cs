@@ -15,7 +15,7 @@ public class BIServices : IBIService{
     public OrderSp OrdersStoredProcedure(DateTime todaysDate,int storeId){
         return _repo.OrdersStoredProcedure(todaysDate,storeId);
      }
-     public List<TopProducts> GetTopProducts(DateTime todaysDate){
-        return _repo.GetTopProducts(todaysDate);
+     public List<TopProducts> GetTopProducts(DateTime todaysDate,string mode){
+        return _repo.GetTopProducts(todaysDate,mode);
      }
 }

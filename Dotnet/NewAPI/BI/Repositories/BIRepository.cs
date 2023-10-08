@@ -80,7 +80,7 @@ public class BIRepository : IBIRepository
     }
 
 
-     public List<TopProducts> GetTopProducts(DateTime todaysDate)
+     public List<TopProducts> GetTopProducts(DateTime todaysDate,string mode)
 
     {
         List<TopProducts>  products= new List<TopProducts>();
@@ -99,6 +99,7 @@ public class BIRepository : IBIRepository
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@given_date",todaysDate);
+             cmd.Parameters.AddWithValue("@MODE",mode);
             MySqlDataReader reader=cmd.ExecuteReader();
             while(reader.Read()){
 

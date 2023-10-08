@@ -5,5 +5,5 @@ namespace Transflower.EKrushi.BIService.Repositories.Interfaces;
 
 public interface IBIRepository{
    OrderSp OrdersStoredProcedure(DateTime todaysDate,int storeId);
-   List<TopProducts> GetTopProducts(DateTime todaysDate);
+   List<TopProducts> GetTopProducts(DateTime todaysDate,string mode);
 }
