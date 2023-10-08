@@ -151,7 +151,7 @@ public class OrderRepository : IOrderRepository
             if (order is not null)
             {
                 _context.Orders.Remove(order);
-                status = await SaveChanges(_context);
+                status = await SaveChanges();
             }
         }
         catch (Exception)
@@ -161,9 +161,9 @@ public class OrderRepository : IOrderRepository
         return status;
     }
 
-    private async Task<bool> SaveChanges(OrderContext context)
+    private async Task<bool> SaveChanges()
     {
-        int rowsAffected = await context.SaveChangesAsync();
+        int rowsAffected = await _context.SaveChangesAsync();
         return rowsAffected > 0;
     }
 
@@ -239,11 +239,155 @@ public class OrderRepository : IOrderRepository
 
     public async Task<bool> UpdateOrderStatus(int orderId, string newStatus)
     {
-        Order? order = await _context.Orders.FindAsync(orderId);
-        if (order is not null) { 
-             
-
+        try
+        {
+            Order? order = await _context.Orders.FindAsync(orderId);
+            if (order is not null)
+            {
+                switch (newStatus)
+                {
+                    case OrderStatus.Approved:
+                        return await OnOrderApproved(order);
+                    case OrderStatus.Cancelled:
+                        return await OnOrderCancelled(order);
+                    case OrderStatus.ReadyToDispatch:
+                        return await OnOrderReadyToDispatch(order);
+                    case OrderStatus.Picked:
+                        return await OnOrderPicked(order);
+                    case OrderStatus.InProgress:
+                        return await OnOrderInProgress(order);
+                    case OrderStatus.Delivered:
+                        return await OnOrderDelivered(order);
+                    default:
+                        throw new Exception($"Invalid status {newStatus}");
+                }
+            }
+            return false;
         }
-        return true;
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    private async Task<bool> OnOrderReadyToDispatch(Order order)
+    {
+        try
+        {
+            order.Status = OrderStatus.ReadyToDispatch;
+            return await SaveChanges();
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    private async Task<bool> OnOrderPicked(Order order)
+    {
+        try
+        {
+            order.Status = OrderStatus.Picked;
+            return await SaveChanges();
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    private async Task<bool> OnOrderInProgress(Order order)
+    {
+        try
+        {
+            order.Status = OrderStatus.InProgress;
+            return await SaveChanges();
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    private async Task<bool> OnOrderDelivered(Order order)
+    {
+        try
+        {
+            order.Status = OrderStatus.Delivered;
+            return await SaveChanges();
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    private async Task<bool> OnOrderCancelled(Order order)
+    {
+        try
+        {
+            var orderDetails = await _context.OrderDetails
+                .Where(od => od.OrderId == order.Id)
+                .ToListAsync();
+            foreach (var item in orderDetails)
+            {
+                ProductDetail? productDetails = await _context.ProductDetails.FindAsync(
+                    item.ProductDetailsId
+                );
+                if (productDetails != null)
+                {
+                    productDetails.StockAvailable = productDetails.StockAvailable + item.Quantity;
+                    _context.Entry(productDetails).State = EntityState.Modified;
+                }
+            }
+            order.Status = OrderStatus.Cancelled;
+            return await SaveChanges();
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    private async Task<bool> OnOrderApproved(Order order)
+    {
+        try
+        {
+            var shipperId = await GetNearestShipperId(order.StoreId);
+            ShipperOrder shipperOrder = new ShipperOrder()
+            {
+                OrderId = order.Id,
+                ShipperId = shipperId != default ? shipperId : 1
+            };
+            await _context.ShipperOrders.AddAsync(shipperOrder);
+            order.Status = OrderStatus.Approved;
+            return await SaveChanges();
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+    }
+
+    private async Task<int> GetNearestShipperId(int storeId)
+    {
+        try
+        {
+            string requestUrl = "http://localhost:5226/api/shipper/nearby/" + storeId;
+
+            HttpClient httpClient = _httpClientFactory.CreateClient();
+            var response = await httpClient.GetAsync(requestUrl);
+            if (response.IsSuccessStatusCode)
+            {
+                var apiResponse = await response.Content.ReadAsStringAsync();
+                int shipperId = JsonSerializer.Deserialize<int>(apiResponse);
+                return shipperId;
+            }
+            return default;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
     }
 }

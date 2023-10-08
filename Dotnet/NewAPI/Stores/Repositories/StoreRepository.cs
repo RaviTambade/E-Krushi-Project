@@ -109,7 +109,7 @@ public class StoreRepository : IStoreRepository
             var body = new
             {
                 addressId = customerAddressId,
-                storeAddressIdString = addressIdsAsString
+                addressIdString = addressIdsAsString
             };
             string jsonBody = JsonSerializer.Serialize(body);
             var requestContent = new StringContent(jsonBody, Encoding.UTF8, "application/json");
