@@ -40,6 +40,8 @@ BEGIN
 END;
 
 
+-- orders by date
+
 CREATE PROCEDURE GetOrdersByDate
 (
     IN given_date DATE,
@@ -96,6 +98,9 @@ WHERE id IN (
 );
 
 
+
+
+-- top 5 products orders
 CREATE PROCEDURE GetTopProducts
 (
     IN given_date DATE,
@@ -200,3 +205,59 @@ END;
 
 
 CALL Products('2023-08-10','yesterday');
+
+
+
+
+-- categoriwise orders
+
+CREATE PROCEDURE GetCategoriwiseOrders
+(
+    IN given_date DATE,
+    IN givenStoreId INT,
+    IN category varchar(250),
+    OUT todaysOrders INT,
+    OUT yesterdaysOrders INT,
+    OUT weekOrders INT,
+    OUT monthOrders INT
+)
+BEGIN
+  
+    select COUNT(*) INTO todaysOrders from orders
+    INNER JOIN orderdetails on orders.id=orderdetails.orderid
+    INNER JOIN productdetails on productdetails.id=orderdetails.productdetailsid
+    INNER JOIN products on productdetails.productid=products.id
+    INNER JOIN categories ON products.categoryid=categories.id
+    WHERE categories.title=category AND DATE(orders.orderdate) = given_date AND storeid=4; 
+  
+  
+  select COUNT(*) INTO yesterdaysOrders from orders
+    INNER JOIN orderdetails on orders.id=orderdetails.orderid
+    INNER JOIN productdetails on productdetails.id=orderdetails.productdetailsid
+    INNER JOIN products on productdetails.productid=products.id
+    INNER JOIN categories ON products.categoryid=categories.id
+    WHERE categories.title=category AND DATE(orders.orderdate)=DATE_SUB(given_date, INTERVAL 1 DAY)AND storeid=givenStoreId;
+  
+    select COUNT(*) INTO weekOrders from orders
+    INNER JOIN orderdetails on orders.id=orderdetails.orderid
+    INNER JOIN productdetails on productdetails.id=orderdetails.productdetailsid
+    INNER JOIN products on productdetails.productid=products.id
+    INNER JOIN categories ON products.categoryid=categories.id
+    WHERE categories.title=category AND DATE(orders.orderdate) BETWEEN DATE_SUB(given_date, INTERVAL (DAYOFWEEK(given_date) - 1) DAY) 
+    AND DATE_ADD(given_date, INTERVAL (7 - DAYOFWEEK(given_date)) DAY) AND storeid=4; 
+  
+                            
+     select COUNT(*) INTO monthOrders from orders
+    INNER JOIN orderdetails on orders.id=orderdetails.orderid
+    INNER JOIN productdetails on productdetails.id=orderdetails.productdetailsid
+    INNER JOIN products on productdetails.productid=products.id
+    INNER JOIN categories ON products.categoryid=categories.id
+    WHERE categories.title=category AND DATE(orders.orderdate) BETWEEN DATE_SUB(given_date, INTERVAL DAY(given_date) - 1 DAY)
+    AND LAST_DAY(given_date) AND storeid=givenStoreId;
+END;
+
+
+CALL GetCategoriwiseOrders('2023-07-02',4,'seeds',@todaysOrders,@yesterdaysOrders,@weekOrders,@monthOrders);
+
+SELECT @todaysOrders,@yesterdaysOrders,@weekOrders,@monthOrders ;
+

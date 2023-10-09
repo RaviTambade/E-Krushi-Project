@@ -9,7 +9,7 @@ INNER join questioncategories on questions.categoryid=questioncategories.id wher
 SELECT customerquestions.customerid,customerquestions.questionid,customerquestions.questiondate,questions.description from questions INNER JOIN customerquestions on questions.id =customerquestions.questionid ;
 SELECT * from customerquestions;
 select * from questioncategories;
-select * from ordershistory;
+select * from orders;
 select customerquestions.id, questions.description,customerquestions.questiondate,(select count(*) from answers where questionid=customerquestions.questionid)as answers  from questions inner join customerquestions on customerquestions.questionid=questions.id where customerquestions.customerid=1;
 SELECT (payments.id)as paymentid,  (orders.total) as total,(payments.date)as date,(payments.paymentstatus) as paymentstatus,(payments.mode)as mode from payments  INNER JOIN orders ON orders.id=payments.orderid where payments.orderid=1;
 -- customer payments
@@ -375,6 +375,22 @@ LIMIT
 
 
 
+
+select * from orders ;
+
+select * from productdetails;
+ select * from categories;
+
+--  categoriwise product orders sell
+ select COUNT(*) from orders
+    INNER JOIN orderdetails on orders.id=orderdetails.orderid
+    INNER JOIN productdetails on productdetails.id=orderdetails.productdetailsid
+    INNER JOIN products on productdetails.productid=products.id
+    INNER JOIN categories ON products.categoryid=categories.id
+    WHERE categories.title="seeds" AND DATE(orders.orderdate) BETWEEN DATE_SUB('2023-07-01', INTERVAL (DAYOFWEEK('2023-07-11') - 1) DAY) 
+    AND DATE_ADD('2023-07-11', INTERVAL (7 - DAYOFWEEK('2023-07-11')) DAY) AND storeid=4; 
+  
+                            
 
 
 
