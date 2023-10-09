@@ -24,17 +24,49 @@ public class StoreRepository : IStoreRepository
             ?? throw new ArgumentNullException("connection Sting Not Found");
     }
 
-    public async Task<IEnumerable<StoreOrder>> GetAllStoreOrders(int storeId, string orderStatus)
+    public async Task<IEnumerable<StoreOrder>> GetStoreOrders(int storeId, string orderStatus)
     {
         MySqlConnection connection = new MySqlConnection(_connectionString);
         try
         {
             await connection.OpenAsync();
-            string query= "SELECT id, orderdate, shippeddate,total, status FROM orders where storeid=@StoreId and status=@OrderStatus";
+            string query =
+                "SELECT id, orderdate, shippeddate,total, status FROM orders where storeid=@StoreId and status=@OrderStatus";
 
-            return await connection.QueryAsync<StoreOrder>(query,
-                new { StoreId = storeId , OrderStatus=orderStatus
-                }
+            return await connection.QueryAsync<StoreOrder>(
+                query,
+                new { StoreId = storeId, OrderStatus = orderStatus }
+            );
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+    }
+
+    public async Task<OrderStatusCount> GetStoreOrdersCount(int storeId)
+    {
+        MySqlConnection connection = new MySqlConnection(_connectionString);
+        try
+        {
+            await connection.OpenAsync();
+            string query =
+                @"SELECT
+        SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) AS pending,
+        SUM(CASE WHEN status = 'approved' THEN 1 ELSE 0 END) AS approved,
+        SUM(CASE WHEN status = 'ready to dispatch' THEN 1 ELSE 0 END) AS readytodispatch,
+        SUM(CASE WHEN status = 'picked' THEN 1 ELSE 0 END) AS picked,
+        SUM(CASE WHEN status = 'in progress' THEN 1 ELSE 0 END) AS inprogress,
+        SUM(CASE WHEN status = 'delivered' THEN 1 ELSE 0 END) AS delivered,
+        SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS cancelled
+    FROM orders WHERE storeid = @StoreId";
+            return await connection.QueryFirstAsync<OrderStatusCount>(
+                query,
+                new { StoreId = storeId }
             );
         }
         catch (Exception)
@@ -52,6 +84,7 @@ public class StoreRepository : IStoreRepository
         MySqlConnection connection = new MySqlConnection(_connectionString);
         try
         {
+
             int addressId = await GetNearestStoreAddressId(customerAddressId);
 
             if (addressId == default)
@@ -106,11 +139,7 @@ public class StoreRepository : IStoreRepository
         try
         {
             string addressIdsAsString = await GetAddressIdOfStores();
-            var body = new
-            {
-                addressId = customerAddressId,
-                addressIdString = addressIdsAsString
-            };
+            var body = new { addressId = customerAddressId, addressIdString = addressIdsAsString };
             string jsonBody = JsonSerializer.Serialize(body);
             var requestContent = new StringContent(jsonBody, Encoding.UTF8, "application/json");
             string requestUrl = "http://localhost:5102/api/addresses/nearest";
@@ -146,9 +175,6 @@ public class StoreRepository : IStoreRepository
             throw;
         }
     }
-
-
-  
 
     public async Task<int> GetStoreIdByUserId(int userId)
     {

@@ -1,3 +1,35 @@
 .active-button {
     color: #fff;
   }
+
+  .btn-custom-small {
+    font-size: 14px;
+    margin: 2px;
+    padding: 5px 10px;
+    width: 80px;
+   height: 30px;
+  }
+
+  table, th, td {
+    border: 1px solid black;
+    border-collapse:collapse;
+    text-align: center;  
+  }
+  
+
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 15px;
+  }
+  
+  
+
+  .active-id{
+      color: blue;
+      background-color: aquamarine;
+  }

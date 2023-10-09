@@ -6,6 +6,7 @@ import { Observable, Subject } from 'rxjs';
 import { OrderDetails } from '../Models/orderDetails';
 import { OrderAddModel } from '../Models/order-add-model';
 import { OrderAmount } from '../Models/order-amount';
+import { OrdereUpdate } from '../Models/orderupdate';
 
 @Injectable({
   providedIn: 'root',
@@ -38,5 +39,14 @@ export class OrderService {
   getAddressIdOfOrder(orderId: number): Observable<number> {
     let url = 'http://localhost:5059/api/orders/address/' + orderId;
     return this.httpClient.get<number>(url);
+  }
+
+  updateOrderStatus(orderId:number,status:string): Observable<boolean> {
+   let order: OrdereUpdate={
+      orderId:orderId,
+      status:status
+    };
+    let url = 'http://localhost:5059/api/orders/status';
+    return this.httpClient.patch<boolean>(url,order);
   }
 }

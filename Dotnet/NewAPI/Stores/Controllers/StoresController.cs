@@ -16,9 +16,15 @@ public class StoresController : ControllerBase
     }
 
     [HttpGet("{storeId}/{orderStatus}")]
-    public async Task<IEnumerable<StoreOrder>> GetAllStoreOrders(int storeId,string orderStatus)
+    public async Task<IEnumerable<StoreOrder>> GetStoreOrders(int storeId,string orderStatus)
     {
-        return await _service.GetAllStoreOrders(storeId,orderStatus);
+        return await _service.GetStoreOrders(storeId,orderStatus);
+    }
+    [HttpGet("orderscount/{storeId}")]
+
+     public async Task<OrderStatusCount> GetStoreOrdersCount(int storeId)
+    {
+        return await _service.GetStoreOrdersCount(storeId);
     }
 
     [HttpGet("nearby/{customerAddressId}")]

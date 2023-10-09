@@ -8,7 +8,7 @@ import { OrderService } from 'src/app/Services/order-service.service';
 import { DeleteConfirmationComponent } from 'src/app/delete-confirmation/delete-confirmation.component';
 
 @Component({
-  selector: 'app-order-details',
+  selector: 'orderprocessing-order-details',
   templateUrl: './order-details.component.html',
   styleUrls: ['./order-details.component.css'],
 })

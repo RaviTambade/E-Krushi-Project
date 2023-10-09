@@ -51,5 +51,5 @@ export const customerRoutes: Routes = [
     QuestionanswerComponent,
   ],
   imports: [CommonModule, RouterModule, FormsModule, MatSnackBarModule,ConsultingModule],
-exports:[ShoppingcartComponent,OrderDetailsComponent]})
+exports:[ShoppingcartComponent,OrderDetailsComponent,OrderProductDetailsComponent]})
 export class CustomerModule {}

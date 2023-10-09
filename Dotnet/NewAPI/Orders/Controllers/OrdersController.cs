@@ -51,9 +51,9 @@ public class OrdersController : ControllerBase
         return await _service.RemoveOrder(orderId);
     }
 
-    [HttpPut("{orderId}/status/{newStatus}")]
-    public async Task<bool> UpdateOrderStatus(int orderId, string newStatus)
+    [HttpPatch("status")]
+    public async Task<bool> UpdateOrderStatus(OrderUpdateModel order)
     {
-        return await _service.UpdateOrderStatus(orderId, newStatus);
+        return await _service.UpdateOrderStatus(order);
     }
 }

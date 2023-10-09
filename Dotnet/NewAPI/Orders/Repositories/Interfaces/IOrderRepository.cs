@@ -11,6 +11,6 @@ public interface IOrderRepository
     Task<double> GetOrderAmount(int orderId);
     Task<int> GetAddressIdOfOrder(int orderId);
     
-     Task<bool> UpdateOrderStatus(int orderId, string newStatus);
+     Task<bool> UpdateOrderStatus(OrderUpdateModel order);
    
 }

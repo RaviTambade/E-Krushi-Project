@@ -30,10 +30,11 @@ public class OrderRepository : IOrderRepository
             Id = 0,
             CustomerId = orderAddModel.CustomerId,
             AddressId = orderAddModel.AddressId,
-            Status = "initiated",
+            Status = OrderStatus.Pending,
             Total = 0,
             StoreId = fetchStoreId != default ? fetchStoreId : 1
         };
+        
         var transaction = await _context.Database.BeginTransactionAsync();
         try
         {
@@ -237,14 +238,14 @@ public class OrderRepository : IOrderRepository
         }
     }
 
-    public async Task<bool> UpdateOrderStatus(int orderId, string newStatus)
+    public async Task<bool> UpdateOrderStatus(OrderUpdateModel orderUpdate)
     {
         try
         {
-            Order? order = await _context.Orders.FindAsync(orderId);
+            Order? order = await _context.Orders.FindAsync(orderUpdate.OrderId);
             if (order is not null)
             {
-                switch (newStatus)
+                switch (orderUpdate.Status)
                 {
                     case OrderStatus.Approved:
                         return await OnOrderApproved(order);
@@ -259,7 +260,7 @@ public class OrderRepository : IOrderRepository
                     case OrderStatus.Delivered:
                         return await OnOrderDelivered(order);
                     default:
-                        throw new Exception($"Invalid status {newStatus}");
+                        throw new Exception($"Invalid status {orderUpdate.Status}");
                 }
             }
             return false;
@@ -273,7 +274,14 @@ public class OrderRepository : IOrderRepository
     private async Task<bool> OnOrderReadyToDispatch(Order order)
     {
         try
-        {
+        {  var shipperId = await GetNearestShipperId(order.StoreId);
+            Console.WriteLine("--->>>"+shipperId);
+            ShipperOrder shipperOrder = new ShipperOrder()
+            {
+                OrderId = order.Id,
+                ShipperId = shipperId != default ? shipperId : 1
+            };
+            await _context.ShipperOrders.AddAsync(shipperOrder);
             order.Status = OrderStatus.ReadyToDispatch;
             return await SaveChanges();
         }
@@ -353,13 +361,6 @@ public class OrderRepository : IOrderRepository
     {
         try
         {
-            var shipperId = await GetNearestShipperId(order.StoreId);
-            ShipperOrder shipperOrder = new ShipperOrder()
-            {
-                OrderId = order.Id,
-                ShipperId = shipperId != default ? shipperId : 1
-            };
-            await _context.ShipperOrders.AddAsync(shipperOrder);
             order.Status = OrderStatus.Approved;
             return await SaveChanges();
         }
@@ -373,7 +374,7 @@ public class OrderRepository : IOrderRepository
     {
         try
         {
-            string requestUrl = "http://localhost:5226/api/shipper/nearby/" + storeId;
+            string requestUrl = "http://localhost:5298/api/shippers/nearby/" + storeId;
 
             HttpClient httpClient = _httpClientFactory.CreateClient();
             var response = await httpClient.GetAsync(requestUrl);
@@ -390,4 +391,6 @@ public class OrderRepository : IOrderRepository
             throw;
         }
     }
+
+
 }

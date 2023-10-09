@@ -1,4 +1,4 @@
--- Active: 1694968636816@@127.0.0.1@3306@ekrushi
+-- Active: 1678359546568@@127.0.0.1@3306@ekrushi
 
 drop database ekrushi;
 
@@ -162,17 +162,10 @@ CREATE TABLE shipperorders(
 CREATE TABLE ordershistory(
     id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY,
     orderid INT NOT NULL,
-    status ENUM(
-            'initiated',
-            'approved',
-            'inprogress',
-            'cancelled',
-            'delivered'
-        ) NOT NULL,
+    status VARCHAR(30),
     date  DATETIME  DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fkorderid3 FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE
     );
-
 
 
 CREATE TABLE
