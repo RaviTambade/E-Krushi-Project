@@ -5,8 +5,8 @@ start  /B cmd.exe /C "cd G:\E-Krushi-Project\Dotnet\NewAPI\ShoppingCart & title 
 @REM start  /B cmd.exe /C "cd G:\E-Krushi-Project\Dotnet\NewAPI\Orders & title Orders & dotnet run"
 start  /B cmd.exe /C "cd G:\E-Krushi-Project\Dotnet\NewAPI\PaymentsAPI & title PaymentsAPI & dotnet run"
 @REM start  /B cmd.exe /C "cd G:\E-Krushi-Project\Dotnet\NewAPI\Consulting & title Consulting & dotnet run"
-start  /B cmd.exe /C "cd G:\E-Krushi-Project\Dotnet\NewAPI\Stores & title Stores & dotnet run"
-start  /B cmd.exe /C "cd G:\E-Krushi-Project\Dotnet\NewAPI\shippers & title Stores & dotnet run"
+@REM start  /B cmd.exe /C "cd G:\E-Krushi-Project\Dotnet\NewAPI\Stores & title Stores & dotnet run"
+start  /B cmd.exe /C "cd G:\E-Krushi-Project\Dotnet\NewAPI\shippers & title shippers & dotnet run"
 
 
 @REM commomservices     

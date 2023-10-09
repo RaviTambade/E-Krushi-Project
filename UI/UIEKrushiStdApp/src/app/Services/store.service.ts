@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Order } from '../Models/Order';
 import { OrderStatusCount } from '../Models/order-status-count';
+import { StoreName } from '../Models/store-name';
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,11 @@ export class StoreService {
   getOrderCountByStatusAndStore(storeId: number): Observable<OrderStatusCount> {
     let url = 'http://localhost:5226/api/stores/orderscount/' + storeId ;
     return this.httpClient.get<OrderStatusCount>(url);
+  }
+
+  getStoreName(storeId: number): Observable<StoreName> {
+    let url = 'http://localhost:5226/api/stores/name/' + storeId ;
+    return this.httpClient.get<StoreName>(url);
   }
 
   getStoreId(userId: number): Observable<number> {

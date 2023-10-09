@@ -79,14 +79,19 @@
                   (click)="openApprovalConfirmationBox(order.id)">Approve</button>
                 <button *ngIf="order.status === orderStatus.pending" class="btn btn-danger btn-custom-small"
                   (click)="openCancellationConfirmationBox(order.id)">Cancel</button>
+                  <button *ngIf="order.status === orderStatus.approved" class="btn btn-success btn-custom-small"
+                  (click)="openreadyToDispatchConfirmationBox(order.id)"
+                  >RTD</button>
               </td>
             </tr>
           </tbody>
         </table>
-        <div class="text-center" *ngIf="isLoading">
+       
+        <div class="spinner-overlay" *ngIf="isLoading"></div>
+        <div class="spinner-text" *ngIf="isLoading">
           <i class="fa fa-spinner fa-spin fa-2x"></i>
         </div>
-  
+        
         <div *ngIf="!isLoading && !orders.length" class="text-center mt-3">
           <p class="text-muted font-weight-bold">No Orders</p>
         </div>

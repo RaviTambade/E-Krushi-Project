@@ -5,6 +5,7 @@ import { AuthenticationService } from '../Services/authentication.service';
 import { LocalStorageKeys } from '../Models/Enums/local-storage-keys';
 import { Role } from '../Models/Enums/role';
 import { Subscription } from 'rxjs';
+import { StoreService } from '../Services/store.service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -17,11 +18,13 @@ export class NavMenuComponent implements OnInit, OnDestroy {
   name: string | undefined;
   Role = Role;
   roles: string[] = [];
+  storeName: string | undefined;
   reloadNavSubscription: Subscription | undefined;
 
   constructor(
     private router: Router,
     private userService: UserService,
+    private storesvc:StoreService,
     private authService: AuthenticationService
   ) {}
 
@@ -68,6 +71,20 @@ export class NavMenuComponent implements OnInit, OnDestroy {
         this.roles = res;
       });
     }
+
+    this.fetchStoreName();
+  }
+
+  fetchStoreName(){
+    const storeId = Number(localStorage.getItem(LocalStorageKeys.storeId));
+    if (Number.isNaN(storeId) || storeId == 0) {
+      return;
+    }
+    console.log("hii");
+    this.storesvc.getStoreName(storeId).subscribe((res)=>{
+      this.storeName=res.name;
+      console.log("🚀 ~ this.storesvc.getStoreName ~ res:", res);
+    })
   }
 
   logOut() {
@@ -78,4 +95,6 @@ export class NavMenuComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.reloadNavSubscription?.unsubscribe();
   }
+
+
 }

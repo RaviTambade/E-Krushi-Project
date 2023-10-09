@@ -1,7 +1,7 @@
 
 namespace Stores.Models;
 
-public class Store
+public class StoreName
 {
     public string? Name {get;set;}
 }

@@ -37,4 +37,9 @@ public class StoreService : IStoreService
     {
         return await _repository.GetStoreOrdersCount(storeId);
     }
+
+    public async Task<StoreName> GetStoreNameByStoreId(int storeId)
+    {
+        return await _repository.GetStoreNameByStoreId(storeId);
+    }
 }

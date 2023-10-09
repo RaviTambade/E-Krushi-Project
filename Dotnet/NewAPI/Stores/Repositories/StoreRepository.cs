@@ -84,7 +84,6 @@ public class StoreRepository : IStoreRepository
         MySqlConnection connection = new MySqlConnection(_connectionString);
         try
         {
-
             int addressId = await GetNearestStoreAddressId(customerAddressId);
 
             if (addressId == default)
@@ -186,6 +185,30 @@ public class StoreRepository : IStoreRepository
 
             var storeId = await connection.ExecuteScalarAsync<int>(query, new { UserId = userId });
             return storeId;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+    }
+
+    public async Task<StoreName> GetStoreNameByStoreId(int storeId)
+    {
+        MySqlConnection connection = new MySqlConnection(_connectionString);
+        try
+        {
+            var query = "SELECT name FROM stores WHERE id = @StoreId";
+            connection.Open();
+
+            var storeName = await connection.QueryFirstOrDefaultAsync<StoreName>(
+                query,
+                new { StoreId = storeId }
+            );
+            return storeName;
         }
         catch (Exception)
         {

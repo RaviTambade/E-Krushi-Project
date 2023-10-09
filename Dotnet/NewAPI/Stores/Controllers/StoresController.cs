@@ -16,13 +16,13 @@ public class StoresController : ControllerBase
     }
 
     [HttpGet("{storeId}/{orderStatus}")]
-    public async Task<IEnumerable<StoreOrder>> GetStoreOrders(int storeId,string orderStatus)
+    public async Task<IEnumerable<StoreOrder>> GetStoreOrders(int storeId, string orderStatus)
     {
-        return await _service.GetStoreOrders(storeId,orderStatus);
+        return await _service.GetStoreOrders(storeId, orderStatus);
     }
-    [HttpGet("orderscount/{storeId}")]
 
-     public async Task<OrderStatusCount> GetStoreOrdersCount(int storeId)
+    [HttpGet("orderscount/{storeId}")]
+    public async Task<OrderStatusCount> GetStoreOrdersCount(int storeId)
     {
         return await _service.GetStoreOrdersCount(storeId);
     }
@@ -32,8 +32,6 @@ public class StoresController : ControllerBase
     {
         return await _service.GetNearestStoreId(customerAddressId);
     }
-
-    
 
     [HttpGet("user/{storeId}")]
     public async Task<int> GetStoreUserId(int storeId)
@@ -47,4 +45,9 @@ public class StoresController : ControllerBase
         return await _service.GetStoreIdByUserId(userId);
     }
 
+    [HttpGet("name/{storeId}")]
+    public async Task<StoreName> GetStoreNameByStoreId(int storeId)
+    {
+        return await _service.GetStoreNameByStoreId(storeId);
+    }
 }

@@ -48,6 +48,7 @@ export class ShopOrdersComponent implements OnInit {
     if (Number.isNaN(storeId) || storeId == 0) {
       return;
     }
+
     this.storesvc.getStoreOrders(storeId, status).subscribe({
       next: (res) => {
         this.orders = res;
@@ -90,6 +91,18 @@ export class ShopOrdersComponent implements OnInit {
       }
     });
   }
+  openreadyToDispatchConfirmationBox(orderId: number) {
+    const message = 'Are you sure you want to make Order Ready To Dispatch ?';
+    const dialogRef = this.dialog.open(ConfirmationBoxComponent, {
+      data: { message: message, status: 'Ready To Dispatch' },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === true) {
+        this.onOrderReadyToDispatch(orderId);
+      }
+    });
+  }
 
   onOrderApproved(orderId: number) {
     this.ordersvc
@@ -98,19 +111,59 @@ export class ShopOrdersComponent implements OnInit {
         if (res) {
           console.log('order approved');
           this.removeOrderFromCurrentOrders(orderId);
-          if (this.orderCount != undefined) this.orderCount.approved += 1;
+          if (this.orderCount != undefined) {
+            this.orderCount.approved += 1;
+            this.orderCount.pending -= 1;
+          }
         }
       });
   }
   onOrderCancelled(orderId: number) {
+    this.isLoading = true;
     this.ordersvc
       .updateOrderStatus(orderId, OrderStatus.cancelled)
-      .subscribe((res) => {
+      .subscribe({ next:(res) => {
         if (res) {
           console.log('order cancelled');
           this.removeOrderFromCurrentOrders(orderId);
-          if (this.orderCount != undefined) this.orderCount.cancelled += 1;
-        }
+          if (this.orderCount != undefined) {
+            this.orderCount.cancelled += 1;
+            this.orderCount.pending -= 1;
+          }
+        } 
+      },
+        error: (error) => {
+          console.error(error);
+        },
+        complete: () => {
+          this.isLoading = false;
+        },
+      });
+    
+  }
+
+
+  onOrderReadyToDispatch(orderId: number) {
+    this.isLoading = true;
+    this.ordersvc
+      .updateOrderStatus(orderId, OrderStatus.readyToDispatch)
+      .subscribe({
+        next: (res) => {
+          if (res) {
+            console.log('order ready for dispatch');
+            this.removeOrderFromCurrentOrders(orderId);
+            if (this.orderCount != undefined) {
+              this.orderCount.approved -= 1;
+              this.orderCount.readyToDispatch += 1;
+            }
+          }
+        },
+        error: (error) => {
+          console.error(error);
+        },
+        complete: () => {
+          this.isLoading = false;
+        },
       });
   }
   removeOrderFromCurrentOrders(orderId: number) {

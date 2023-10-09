@@ -10,4 +10,6 @@ public interface IStoreRepository
     Task<int> GetNearestStoreId(int customerAddressId);
     Task<int> GetStoreUserId(int storeId);
     Task<int> GetStoreIdByUserId(int userId);
+    Task<StoreName> GetStoreNameByStoreId(int storeId);
 }
+
