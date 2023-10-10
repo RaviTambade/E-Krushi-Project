@@ -13,17 +13,29 @@ export class OrderProductDetailsComponent {
   items: OrderedItem[] = [];
   orderDetails: OrderDetails[] = [];
   @Input() orderId!: number;
+  isLoading: boolean = true;
 
   constructor(private ordersvc: OrderService) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['orderId']) {
+      this.isLoading = true;
+      setTimeout(()=>{
       this.ordersvc
         .getOrdersDetails(changes['orderId'].currentValue)
-        .subscribe((res) => {
-          this.orderDetails = res;
-          console.log(res);
+        .subscribe({
+          next: (res) => {
+            this.orderDetails = res;
+            console.log(res);
+          },
+          error: (error) => {
+            console.error(error);
+          },
+          complete: () => {
+            this.isLoading = false;
+          }
         });
+      },2000)
     }
   }
 }

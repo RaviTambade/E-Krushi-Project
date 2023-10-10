@@ -1,9 +1,10 @@
 using System.Data;
 using Transflower.EKrushi.BIService.Repositories.Interfaces;
 using MySql.Data.MySqlClient;
-using Stores.Models;
+using Transflower.EKrushi.BIService.Models;
 
 namespace Transflower.EKrushi.BIService.Repositories;
+
 public class BIRepository : IBIRepository
 {
     private readonly IConfiguration _configuration;
@@ -12,137 +13,85 @@ public class BIRepository : IBIRepository
     public BIRepository(IConfiguration configuration)
     {
         _configuration = configuration;
-        _connectionString = this._configuration.GetConnectionString("DefaultConnection");
+        _connectionString =
+            _configuration.GetConnectionString("DefaultConnection")
+            ?? throw new ArgumentException("ConnectionString is null");
     }
 
-    public OrderSp OrdersStoredProcedure(DateTime todaysDate,int storeId)
-
+    public async Task<OrderCount> OrdersCountByStore(DateTime todaysDate, int storeId)
     {
-        OrderSp  orders= new OrderSp();
-        
-
-        MySqlConnection con = new MySqlConnection(_connectionString);
-
-        //Create Command Object
-
-        try{
-
-            con.Open();
-
-            MySqlCommand cmd = new MySqlCommand("GetOrdersByDate", con as MySqlConnection);
-
+        OrderCount orders = new OrderCount();
+        MySqlConnection connection = new MySqlConnection(_connectionString);
+        try
+        {
+            MySqlCommand cmd = new MySqlCommand("GetOrdersByDate", connection);
             cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.AddWithValue("@given_date",todaysDate);
-             cmd.Parameters.AddWithValue("@givenStoreId",storeId);
-
-            
-
+            cmd.Parameters.AddWithValue("@given_date", todaysDate);
+            cmd.Parameters.AddWithValue("@givenStoreId", storeId);
             cmd.Parameters.AddWithValue("@todaysOrders", MySqlDbType.Int32);
             cmd.Parameters.AddWithValue("@yesterdaysOrders", MySqlDbType.Int32);
             cmd.Parameters.AddWithValue("@weekOrders", MySqlDbType.Int32);
             cmd.Parameters.AddWithValue("@monthOrders", MySqlDbType.Int32);
 
-            cmd.Parameters["@todaysOrders"].Direction=ParameterDirection.Output;
-            cmd.Parameters["@yesterdaysOrders"].Direction=ParameterDirection.Output;
-            cmd.Parameters["@weekOrders"].Direction=ParameterDirection.Output;
-            cmd.Parameters["@monthOrders"].Direction=ParameterDirection.Output;
-
-            int rowsAffected = cmd.ExecuteNonQuery();
-            
-
-             orders.TodaysOrders =(int)cmd.Parameters["@todaysOrders"].Value;
-             orders.YesterdaysOrders =(int)cmd.Parameters["@yesterdaysOrders"].Value;
-             orders.WeekOrders =(int)cmd.Parameters["@weekOrders"].Value;
-             orders.MonthOrders =(int)cmd.Parameters["@monthOrders"].Value;
-
-           
+            cmd.Parameters["@todaysOrders"].Direction = ParameterDirection.Output;
+            cmd.Parameters["@yesterdaysOrders"].Direction = ParameterDirection.Output;
+            cmd.Parameters["@weekOrders"].Direction = ParameterDirection.Output;
+            cmd.Parameters["@monthOrders"].Direction = ParameterDirection.Output;
+            await connection.OpenAsync();
+            int rowsAffected = await cmd.ExecuteNonQueryAsync();
+            orders.TodaysOrders = (int)cmd.Parameters["@todaysOrders"].Value;
+            orders.YesterdaysOrders = (int)cmd.Parameters["@yesterdaysOrders"].Value;
+            orders.WeekOrders = (int)cmd.Parameters["@weekOrders"].Value;
+            orders.MonthOrders = (int)cmd.Parameters["@monthOrders"].Value;
         }
-
-        catch (Exception e)
-
+        catch (Exception)
         {
-
-            throw e;
-
+            throw;
         }
-
         finally
-
         {
-
-            con.Close();
-
+            await connection.CloseAsync();
         }
-
         return orders;
-
     }
 
-
-     public List<TopProducts> GetTopProducts(DateTime todaysDate,string mode)
-
+    public async Task<List<TopProducts>> GetTopFiveSellingProducts(DateTime todaysDate, string mode,int storeId)
     {
-        List<TopProducts>  products= new List<TopProducts>();
-        
+        List<TopProducts> products = new List<TopProducts>();
+        MySqlConnection connection = new MySqlConnection(_connectionString);
 
-        MySqlConnection con = new MySqlConnection(_connectionString);
-
-        //Create Command Object
-
-        try{
-
-            con.Open();
-
-            MySqlCommand cmd = new MySqlCommand("GetTopProducts", con as MySqlConnection);
+        try
+        {
+            MySqlCommand cmd = new MySqlCommand("GetTopProducts", connection);
 
             cmd.CommandType = CommandType.StoredProcedure;
-
-            cmd.Parameters.AddWithValue("@given_date",todaysDate);
-             cmd.Parameters.AddWithValue("@MODE",mode);
-            MySqlDataReader reader=cmd.ExecuteReader();
-            while(reader.Read()){
-
-               TopProducts product = new TopProducts(){
-               ProductId = reader.GetInt32("productId"),
-               TotalQuantity= reader.GetInt32("TotalQuantity"),
-               Title=reader.GetString("title")
-              };
-
-              products.Add(product);
-
-
+            cmd.Parameters.AddWithValue("@todays_date", todaysDate);
+            cmd.Parameters.AddWithValue("@mode", mode);
+            cmd.Parameters.AddWithValue("@store_id", storeId);
+            await connection.OpenAsync();
+            MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
+            {
+                TopProducts product = new TopProducts()
+                {
+                    ProductId = reader.GetInt32("productid"),
+                    Quantity = reader.GetInt32("quantity"),
+                    Title = reader.GetString("title"),
+                    Percentage=reader.GetDouble("percentage"),
+                    ImageURL=reader.GetString("imageurl"),
+                };
+                products.Add(product);
             }
-             
-            // int rowsAffected = cmd.ExecuteNonQuery();
-            
-
-            //  orders.ProductId =(int)cmd.Parameters["productId"].Value;
-            //  orders.TotalQuantity =(int)cmd.Parameters["TotalQuantity"].Value;
-            // //  orders.Title =cmd.Parameters["title"].Value;
-            
-
-           
+            await reader.CloseAsync();
         }
-
-        catch (Exception e)
-
+        catch (Exception)
         {
-
-            throw e;
-
+            throw;
         }
-
         finally
-
         {
-
-            con.Close();
-
+            await connection.CloseAsync();
         }
-
         return products;
-
     }
-
 }

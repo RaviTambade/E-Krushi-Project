@@ -33,3 +33,9 @@
     </div>
   </div>
 </div>
+<div class="spinner-text" *ngIf="isLoading">
+  <i class="fa fa-spinner fa-spin fa-2x"></i>
+</div>
+<div *ngIf="!isLoading && !orderDetails.length" class="text-center mt-3">
+  <p class="text-muted font-weight-bold">No Items </p>
+</div>
