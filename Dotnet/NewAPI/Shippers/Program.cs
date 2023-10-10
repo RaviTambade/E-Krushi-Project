@@ -1,7 +1,7 @@
-using Shippers.Repositories;
-using Shippers.Repositories.Interfaces;
-using Shippers.Services;
-using Shippers.Services.Interfaces;
+using TransFlower.EKrushi.Shippers.Repositories;
+using TransFlower.EKrushi.Shippers.Repositories.Interfaces;
+using TransFlower.EKrushi.Shippers.Services;
+using TransFlower.EKrushi.Shippers.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

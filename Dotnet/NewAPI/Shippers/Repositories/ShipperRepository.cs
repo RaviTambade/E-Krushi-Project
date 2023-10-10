@@ -2,10 +2,10 @@ using System.Text;
 using System.Text.Json;
 using Dapper;
 using MySql.Data.MySqlClient;
-using Shippers.Models;
-using Shippers.Repositories.Interfaces;
+using TransFlower.EKrushi.Shippers.Models;
+using TransFlower.EKrushi.Shippers.Repositories.Interfaces;
 
-namespace Shippers.Repositories;
+namespace TransFlower.EKrushi.Shippers.Repositories;
 
 public class ShipperRepository : IShipperRepository
 {
@@ -113,6 +113,35 @@ public class ShipperRepository : IShipperRepository
             return await connection.QueryFirstAsync<int>(
                 @"SELECT addressid  FROM stores WHERE id=@StoreId",
                 new { StoreId = storeId }
+            );
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+    }
+
+    public async Task<IEnumerable<ShipperOrder>> GetShipperOrdersByStatus(
+        int shipperId,
+        string status
+    )
+    {
+        MySqlConnection connection = new MySqlConnection(_connectionString);
+        try
+        {
+            await connection.OpenAsync();
+            return await connection.QueryAsync<ShipperOrder>(
+                @"SELECT orders.id as orderid,orders.orderdate,orders.shippeddate,
+            stores.addressid as fromaddressId ,
+            orders.addressid as toaddressid,orders.status from orders
+            INNER JOIN stores on orders.storeid = stores.id
+            INNER JOIN shipperorders on orders.id=shipperorders.orderid 
+            WHERE orders.status=@Status AND shipperorders.shipperid=@ShipperId",
+                new { ShipperId = shipperId, Status = status }
             );
         }
         catch (Exception)

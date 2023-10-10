@@ -1,9 +1,10 @@
 
-using Shippers.Models;
+using TransFlower.EKrushi.Shippers.Models;
 
-namespace Shippers.Repositories.Interfaces;
+namespace TransFlower.EKrushi.Shippers.Repositories.Interfaces;
 public interface IShipperRepository
 {
     Task<int> GetNearestShipperId(int storeId);
+    Task<IEnumerable<ShipperOrder>> GetShipperOrdersByStatus(int shipperId,string status);
 
 }
