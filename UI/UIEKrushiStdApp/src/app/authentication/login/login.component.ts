@@ -31,6 +31,7 @@ export class LoginComponent {
   public onSignIn() {
     console.log('Validating user');
     this.authService.validate(this.credential).subscribe((response) => {
+      console.log(response);
       if (response != null) {
         localStorage.setItem(LocalStorageKeys.jwt, response.token);
         this.userService

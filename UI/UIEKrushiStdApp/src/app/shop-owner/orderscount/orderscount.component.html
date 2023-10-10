@@ -1,0 +1,41 @@
+
+
+ 
+ <div class="container mt-3">
+    <div class="row"  *ngIf="order">
+      <div class="col-md-3">
+        <div class="alert alert-info" role="alert">
+          {{order.todaysOrders}}
+          <br>
+          Todays Orders
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="alert alert-success" role="alert">
+           {{order.yesterdaysOrders}}
+           <br>
+           Yesterdays Orders
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="alert alert-warning" role="alert">
+           {{order.weekOrders}}
+           <br>
+           Orders Of Week
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="alert alert-danger" role="alert">
+           {{order.monthOrders}}
+           <br>
+           Orders Of Month
+        </div>
+      </div>
+    </div> 
+</div> 
+
+
+
+
+
+  

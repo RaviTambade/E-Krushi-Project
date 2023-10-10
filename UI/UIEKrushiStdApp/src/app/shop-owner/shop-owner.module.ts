@@ -5,6 +5,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { ShopOrdersComponent } from './shop-orders/shop-orders.component';
 import { CustomerModule } from 'src/app/customer/customer.module';
 
+import { OrderscountComponent } from './orderscount/orderscount.component';
+import { FormGroup, FormsModule } from '@angular/forms';
+
 export const shopRoutes: Routes = [
   { path: 'dashboard', component: ShopDashboardComponent },
   { path: 'orders', component: ShopOrdersComponent },
@@ -12,7 +15,8 @@ export const shopRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ShopDashboardComponent, ShopOrdersComponent],
+  declarations: [ShopDashboardComponent, ShopOrdersComponent, OrderscountComponent],
   imports: [CommonModule,CustomerModule,RouterModule],
+  
 })
 export class ShopOwnerModule {}

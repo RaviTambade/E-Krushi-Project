@@ -17,7 +17,7 @@ namespace BIService.Controllers
 
       
 
-      [HttpGet("storedprocedure/{todaysDate}/{storeId}")]
+      [HttpGet("orderscount/{todaysDate}/{storeId}")]
     public OrderSp OrdersStoredProcedure(DateTime todaysDate,int storeId)
     {
         return _service.OrdersStoredProcedure(todaysDate,storeId);

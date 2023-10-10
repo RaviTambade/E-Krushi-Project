@@ -1,0 +1,36 @@
+/* order.component.css */
+
+/* Style the row containing order count alerts */
+.order-count-row {
+    margin-top: 15px;
+  }
+  
+  /* Style the order count alerts */
+  .alert {
+    padding: 55px;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 5px;
+  }
+  
+  .alert-info {
+    background-color: #17a2b8; /* Customize the background color */
+    color: white;
+  }
+  
+  .alert-success {
+    background-color: #28a745; /* Customize the background color */
+    color: white;
+  }
+  
+  .alert-warning {
+    background-color: #ffc107; /* Customize the background color */
+    color: #333;
+  }
+  
+  .alert-danger {
+    background-color: #7337ec; /* Customize the background color */
+    color: white;
+  }
+  
+  
