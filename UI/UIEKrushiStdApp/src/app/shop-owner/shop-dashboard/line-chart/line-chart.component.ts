@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { ChartType } from 'chart.js';
 
 @Component({
-  selector: 'app-line-chart',
+  selector: 'shop-line-chart',
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.css']
 })
@@ -15,5 +16,5 @@ export class LineChartComponent {
     responsive: true
   };
   public lineChartLegend: boolean = true;
-  public lineChartType: string = 'line';
+  public lineChartType: ChartType = 'line';
 }

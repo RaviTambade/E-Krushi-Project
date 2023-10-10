@@ -20,7 +20,6 @@ export class OrderProductDetailsComponent {
   ngOnChanges(changes: SimpleChanges) {
     if (changes['orderId']) {
       this.isLoading = true;
-      setTimeout(()=>{
       this.ordersvc
         .getOrdersDetails(changes['orderId'].currentValue)
         .subscribe({
@@ -34,8 +33,7 @@ export class OrderProductDetailsComponent {
           complete: () => {
             this.isLoading = false;
           }
-        });
-      },2000)
+        });  
     }
   }
 }

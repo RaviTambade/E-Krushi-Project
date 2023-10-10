@@ -4,7 +4,7 @@ import { OrderCount } from 'src/app/Models/orderCount';
 import { BIService } from 'src/app/Services/bi.service';
 
 @Component({
-  selector: 'app-orderscount',
+  selector: 'shop-orderscount',
   templateUrl: './orderscount.component.html',
   styleUrls: ['./orderscount.component.css']
 })

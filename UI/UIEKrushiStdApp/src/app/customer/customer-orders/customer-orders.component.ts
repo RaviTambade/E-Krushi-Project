@@ -19,7 +19,6 @@ export class CustomerOrdersComponent implements OnInit {
 
   ngOnInit(): void {
     const customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
-    setTimeout(() => {
       this.ordersvc.getOrdersOfCustomer(customerId).subscribe({
         next: (res) => {
           this.orders = res;
@@ -33,7 +32,6 @@ export class CustomerOrdersComponent implements OnInit {
           this.isLoading = false;
         },
       });
-    }, 4000);
   }
 
   filterOrders(status: string) {
