@@ -17,18 +17,18 @@ public class ConsultingController : ControllerBase
 
     //This method gives question List.
     //http://localhost:5279/api/consulting
-    public async Task<List<Question>> getAllQuestions()
+    public async Task<List<Question>> GetAllQuestions()
     {
-        List<Question> questions = await _service.getAllQuestions();
+        List<Question> questions = await _service.GetAllQuestions();
         return questions;
     }
 
     //This method gives question details by id.
     //http://localhost:5279/api/consulting/questions/{id}
     [HttpGet("questions/{id}")]
-    public async Task<Question> getQuestion(int id)
+    public async Task<Question> GetQuestion(int id)
     {
-        Question question = await _service.getQuestion(id);
+        Question question = await _service.GetQuestion(id);
         return question;
     }
 
@@ -36,27 +36,27 @@ public class ConsultingController : ControllerBase
     //http://localhost:5279/consulting/experts
     [Authorize]
     [HttpGet("experts")]
-    public async Task<List<SubjectMatterExpert>> getAllExperts()
+    public async Task<List<SubjectMatterExpert>> GetAllExperts()
     {
-        List<SubjectMatterExpert> experts = await _service.getAllExperts();
+        List<SubjectMatterExpert> experts = await _service.GetAllExperts();
         return experts;
     }
 
     //This method gives list of answers.
     //http://localhost:5279/consulting/answers
     [HttpGet("answers")]
-    public async Task<List<Answer>> getAllAnswers()
+    public async Task<List<Answer>> GetAllAnswers()
     {
-        List<Answer> answers = await _service.getAllAnswers();
+        List<Answer> answers = await _service.GetAllAnswers();
         return answers;
     }
 
     //This method gives all Question list of particular catagoryid.
     //http://localhost:5279/consulting/Questions/Catagory/{id}
     [HttpGet("Questions/Catagory/{id}")]
-    public async Task<List<Question>> listOfCategoryQuestions(int id)
+    public async Task<List<Question>> ListOfCategoryQuestions(int id)
     {
-        List<Question> category = await _service.listOfCategoryQuestions(id);
+        List<Question> category = await _service.ListOfCategoryQuestions(id);
         return category;
     }
 
@@ -64,54 +64,54 @@ public class ConsultingController : ControllerBase
      //releted questions
     //http://localhost:5279/consulting/reletedquestions/{id}
     [HttpGet("reletedquestions/{id}")]
-    public async Task<List<Question>> listOfReletedQuestions(int id)
+    public async Task<List<Question>> ListOfReletedQuestions(int id)
     {
-        List<Question> questions = await _service.listOfReletedQuestions(id);
+        List<Question> questions = await _service.ListOfReletedQuestions(id);
         return questions;
     }
 
     //This method gives agri doctor details by id.
     //http://localhost:5279/consulting/Expert/{id}
     [HttpGet("Expert/{id}")]
-    public async Task<SubjectMatterExpert> getExpert(int id)
+    public async Task<SubjectMatterExpert> GetExpert(int id)
     {
-        SubjectMatterExpert expert = await _service.getExpert(id);
+        SubjectMatterExpert expert = await _service.GetExpert(id);
         return expert;
     }
 
     //this method gives question answers particular agri doctor  id. 
     //http://localhost:5279/consulting/questionsanswers/sme/{id}
     [HttpGet("questionsanswers/sme/{id}")]
-    public async Task<List<QuestionAnswer>> getQuestionAnswers(int id)
+    public async Task<List<QuestionAnswer>> GetQuestionAnswers(int id)
     {
-        List<QuestionAnswer> questionAnswers = await _service.getQuestionAnswers(id);
+        List<QuestionAnswer> questionAnswers = await _service.GetQuestionAnswers(id);
         return questionAnswers;
     }
 
     //This method gives answers  of particular provided question id.
     //http://localhost:5279/api/consulting/answers/{id}
     [HttpGet("answers/{id}")]
-    public async Task<List<Answer>> getAnswers(int id)
+    public async Task<List<Answer>> GetAnswers(int id)
     {
-        List<Answer> answers = await _service.getAnswers(id);
+        List<Answer> answers = await _service.GetAnswers(id);
         return answers;
     }
 
     //questions solved by particular sme
     //http://localhost:5279/consulting/smequestions/{id}
     [HttpGet("smequestions/{id}")]
-    public async Task<List<SmeQuestion>> getQuestionsRespondedBySME(int id)
+    public async Task<List<SmeQuestion>> GetQuestionsRespondedBySME(int id)
     {
-        List<SmeQuestion> questions = await _service.getQuestionsRespondedBySME(id);
+        List<SmeQuestion> questions = await _service.GetQuestionsRespondedBySME(id);
         return questions;
     }
 
     // this method gives all questioncategories.
     //http://localhost:5279/consulting/questioncatagories
     [HttpGet("questioncatagories")]
-    public async Task<List<QuestionCategory>> getAllCategories()
+    public async Task<List<QuestionCategory>> GetAllCategories()
     {
-        List<QuestionCategory> categories = await _service.getAllCategories();
+        List<QuestionCategory> categories = await _service.GetAllCategories();
         return categories;
 
     }
@@ -119,9 +119,9 @@ public class ConsultingController : ControllerBase
     //  this method gives catagory of question.
     //http://localhost:5279/consulting/catagory/question/{id}
     [HttpGet("catagory/question/{id}")]
-    public async Task<QuestionCategory> getQuestionCategory(int id)
+    public async Task<QuestionCategory> GetQuestionCategory(int id)
     {
-        QuestionCategory category = await _service.getQuestionCategory(id);
+        QuestionCategory category = await _service.GetQuestionCategory(id);
         return category;
     }
 
@@ -139,9 +139,9 @@ public class ConsultingController : ControllerBase
     //http://localhost:5279/consulting/getallcustomerquestions
 
     [HttpGet("getallcustomerquestions")]
-    public async Task<List<CustomerQuestion>> getAllCustomerQuestion()
+    public async Task<List<CustomerQuestion>> GetAllCustomerQuestion()
     {
-        List<CustomerQuestion> questions = await _service.getAllCustomerQuestion();
+        List<CustomerQuestion> questions = await _service.GetAllCustomerQuestion();
         return questions;
     }
 

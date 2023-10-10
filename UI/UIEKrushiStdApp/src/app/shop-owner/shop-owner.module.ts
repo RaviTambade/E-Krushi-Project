@@ -7,6 +7,7 @@ import { CustomerModule } from 'src/app/customer/customer.module';
 
 import { OrderscountComponent } from './orderscount/orderscount.component';
 import { FormGroup, FormsModule } from '@angular/forms';
+import { LineChartComponent } from './shop-dashboard/line-chart/line-chart.component';
 
 export const shopRoutes: Routes = [
   { path: 'dashboard', component: ShopDashboardComponent },
@@ -15,7 +16,7 @@ export const shopRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ShopDashboardComponent, ShopOrdersComponent, OrderscountComponent],
+  declarations: [ShopDashboardComponent, ShopOrdersComponent, OrderscountComponent, LineChartComponent],
   imports: [CommonModule,CustomerModule,RouterModule],
   
 })
