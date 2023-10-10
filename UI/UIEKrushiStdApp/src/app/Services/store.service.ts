@@ -31,7 +31,7 @@ export class StoreService {
   }
 
   getStoreId(userId: number): Observable<number> {
-    let url = ' http://localhost:5226/api/stores/storeId/' + userId;
+    let url = ' http://localhost:5226/api/stores/storeid/' + userId;
     return this.httpClient.get<number>(url);
   }
 }

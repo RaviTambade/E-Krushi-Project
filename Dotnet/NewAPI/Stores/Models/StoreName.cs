@@ -1,5 +1,5 @@
 
-namespace Stores.Models;
+namespace TransFlower.EKrushi.Stores.Models;
 
 public class StoreName
 {

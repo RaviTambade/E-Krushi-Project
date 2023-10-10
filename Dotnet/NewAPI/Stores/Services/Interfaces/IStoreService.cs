@@ -1,7 +1,7 @@
 
-using Stores.Repositories.Interfaces;
+using TransFlower.EKrushi.Stores.Repositories.Interfaces;
 
-namespace Stores.Services.Interfaces;
+namespace TransFlower.EKrushi.Stores.Services.Interfaces;
 public interface IStoreService:IStoreRepository
 {
 

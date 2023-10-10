@@ -1,8 +1,8 @@
-using Stores.Services.Interfaces;
-using Stores.Repositories.Interfaces;
-using Stores.Models;
+using TransFlower.EKrushi.Stores.Services.Interfaces;
+using TransFlower.EKrushi.Stores.Repositories.Interfaces;
+using TransFlower.EKrushi.Stores.Models;
 
-namespace Stores.Services;
+namespace TransFlower.EKrushi.Stores.Services;
 
 public class StoreService : IStoreService
 {

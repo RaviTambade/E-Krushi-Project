@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { orderSp } from 'src/app/Models/orderSp';
-import { StoreownerService } from 'src/app/Services/storeowner.service';
 
 @Component({
   selector: 'app-shop-dashboard',
@@ -9,19 +8,19 @@ import { StoreownerService } from 'src/app/Services/storeowner.service';
 })
 export class ShopDashboardComponent {
 
-  constructor(private svc:StoreownerService){}
+  // constructor(private svc:StoreownerService){}
 
-   todaysDate:Date=new  Date('2023-07-08');
-   storeId:number=1;
+  //  todaysDate:Date=new  Date('2023-07-08');
+  //  storeId:number=1;
   
-  orders!:orderSp;
+  // orders!:orderSp;
 
-  GetOrders(todaysDate:string,storeId :number){
-      this.svc.getOrdersFromStoreProcedure(this.todaysDate,storeId).subscribe((res)=>{
-    this.orders=res;
-    console.log(this.orders);
-    })
-  }
+  // GetOrders(todaysDate:string,storeId :number){
+  //     this.svc.getOrdersFromStoreProcedure(this.todaysDate,storeId).subscribe((res)=>{
+  //   this.orders=res;
+  //   console.log(this.orders);
+  //   })
+  // }
 
 
 }

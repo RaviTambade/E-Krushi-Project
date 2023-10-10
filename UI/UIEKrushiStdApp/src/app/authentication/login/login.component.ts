@@ -4,6 +4,7 @@ import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
 import { Role } from 'src/app/Models/Enums/role';
 import { Credential } from 'src/app/Models/credential';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
+import { ShipperService } from 'src/app/Services/shipper.service';
 import { StoreService } from 'src/app/Services/store.service';
 import { UserService } from 'src/app/Services/user.service';
 @Component({
@@ -23,7 +24,8 @@ export class LoginComponent {
     private router: Router,
     private authService: AuthenticationService,
     private userService: UserService,
-    private storesvc: StoreService
+    private storesvc: StoreService,
+    private shippersvc: ShipperService
   ) {}
 
   public onSignIn() {
@@ -64,13 +66,17 @@ export class LoginComponent {
           this.storesvc.getStoreId(this.userId).subscribe((res) => {
             localStorage.setItem(LocalStorageKeys.storeId, res.toString());
           });
-        this.router.navigate(['shop/dashboard']);
+          this.router.navigate(['shop/dashboard']);
         break;
       case Role.Supplier:
         this.router.navigate(['supplier/dashboard']);
         break;
       case Role.Shipper:
-        this.router.navigate(['shipper/dashboard']);
+        if (this.userId != undefined)
+          this.shippersvc.getShipperId(this.userId).subscribe((res) => {
+            localStorage.setItem(LocalStorageKeys.shipperId, res.toString());
+          });
+          this.router.navigate(['shipper/dashboard']);
         break;
       case Role.SubjectMatterExpert:
         this.router.navigate(['sme/dashboard']);

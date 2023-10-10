@@ -18,7 +18,18 @@ public class ShipperService : IShipperService
         return await _repository.GetNearestShipperId(storeId);
     }
 
-    public async Task<IEnumerable<ShipperOrder>> GetShipperOrdersByStatus(int shipperId, string status)
+    public async Task<int> GetShipperIdByUserId(int userId)
+    {
+        return await _repository.GetShipperIdByUserId(userId);
+    }
+ public async Task<OrderStatusCount> GetShipperOrdersCount(int shipperId)
+    {
+        return await _repository.GetShipperOrdersCount(shipperId);
+    }
+    public async Task<IEnumerable<ShipperOrder>> GetShipperOrdersByStatus(
+        int shipperId,
+        string status
+    )
     {
         return await _repository.GetShipperOrdersByStatus(shipperId, status);
     }

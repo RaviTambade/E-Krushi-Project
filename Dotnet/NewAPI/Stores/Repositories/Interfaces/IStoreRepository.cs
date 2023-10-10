@@ -1,6 +1,6 @@
-using Stores.Models;
+using TransFlower.EKrushi.Stores.Models;
 
-namespace Stores.Repositories.Interfaces;
+namespace TransFlower.EKrushi.Stores.Repositories.Interfaces;
 
 public interface IStoreRepository
 {

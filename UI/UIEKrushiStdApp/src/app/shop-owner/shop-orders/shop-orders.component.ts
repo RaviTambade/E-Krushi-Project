@@ -26,8 +26,6 @@ export class ShopOrdersComponent implements OnInit {
   constructor(
     private storesvc: StoreService,
     private ordersvc: OrderService,
-    private route: ActivatedRoute,
-    private router: Router,
     private dialog: MatDialog
   ) {}
 

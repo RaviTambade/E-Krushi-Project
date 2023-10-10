@@ -1,7 +1,7 @@
-using Stores.Repositories;
-using Stores.Repositories.Interfaces;
-using Stores.Services;
-using Stores.Services.Interfaces;
+using TransFlower.EKrushi.Stores.Repositories;
+using TransFlower.EKrushi.Stores.Repositories.Interfaces;
+using TransFlower.EKrushi.Stores.Services;
+using TransFlower.EKrushi.Stores.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 

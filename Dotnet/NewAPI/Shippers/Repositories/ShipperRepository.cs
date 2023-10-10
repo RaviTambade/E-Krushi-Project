@@ -153,4 +153,59 @@ public class ShipperRepository : IShipperRepository
             await connection.CloseAsync();
         }
     }
+
+    public async Task<int> GetShipperIdByUserId(int userId)
+    {
+        MySqlConnection connection = new MySqlConnection(_connectionString);
+        try
+        {
+            string query = "SELECT id FROM shippers WHERE userid = @UserId";
+            connection.Open();
+
+            int shipperId = await connection.ExecuteScalarAsync<int>(
+                query,
+                new { UserId = userId }
+            );
+
+            return shipperId;
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+    }
+
+    public async Task<OrderStatusCount> GetShipperOrdersCount(int shipperId)
+    {
+        MySqlConnection connection = new MySqlConnection(_connectionString);
+        try
+        {
+            await connection.OpenAsync();
+            string query =
+                @"SELECT
+        SUM(CASE WHEN status = 'ready to dispatch' THEN 1 ELSE 0 END) AS readytodispatch,
+        SUM(CASE WHEN status = 'picked' THEN 1 ELSE 0 END) AS picked,
+        SUM(CASE WHEN status = 'in progress' THEN 1 ELSE 0 END) AS inprogress,
+        SUM(CASE WHEN status = 'delivered' THEN 1 ELSE 0 END) AS delivered,
+        SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS cancelled
+        FROM orders   INNER JOIN shipperorders on orders.id=shipperorders.orderid 
+        WHERE shipperorders.shipperid=@ShipperId";
+            return await connection.QueryFirstAsync<OrderStatusCount>(
+                query,
+                new { ShipperId = shipperId }
+            );
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+    }
 }

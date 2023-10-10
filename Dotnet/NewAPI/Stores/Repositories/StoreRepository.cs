@@ -3,10 +3,10 @@ using System.Text;
 using System.Text.Json;
 using Dapper;
 using MySql.Data.MySqlClient;
-using Stores.Models;
-using Stores.Repositories.Interfaces;
+using TransFlower.EKrushi.Stores.Models;
+using TransFlower.EKrushi.Stores.Repositories.Interfaces;
 
-namespace Stores.Repositories;
+namespace TransFlower.EKrushi.Stores.Repositories;
 
 public class StoreRepository : IStoreRepository
 {

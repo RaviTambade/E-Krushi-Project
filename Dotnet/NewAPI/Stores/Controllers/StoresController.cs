@@ -1,8 +1,8 @@
-using Stores.Models;
-using Stores.Services.Interfaces;
+using TransFlower.EKrushi.Stores.Models;
+using TransFlower.EKrushi.Stores.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Stores.Controllers;
+namespace TransFlower.EKrushi.Stores.Controllers;
 
 [ApiController]
 [Route("/api/stores")]
@@ -39,7 +39,7 @@ public class StoresController : ControllerBase
         return await _service.GetStoreUserId(storeId);
     }
 
-    [HttpGet("storeId/{userId}")]
+    [HttpGet("storeid/{userId}")]
     public async Task<int> GetStoreIdByUserId(int userId)
     {
         return await _service.GetStoreIdByUserId(userId);

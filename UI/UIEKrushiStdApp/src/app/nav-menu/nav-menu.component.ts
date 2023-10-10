@@ -80,10 +80,8 @@ export class NavMenuComponent implements OnInit, OnDestroy {
     if (Number.isNaN(storeId) || storeId == 0) {
       return;
     }
-    console.log("hii");
     this.storesvc.getStoreName(storeId).subscribe((res)=>{
       this.storeName=res.name;
-      console.log("🚀 ~ this.storesvc.getStoreName ~ res:", res);
     })
   }
 

@@ -10,4 +10,8 @@ export class AddressInfo {
       public alternateContactNumber: string,
       public pinCode: string
     ) {}
+
+    toString(): string {
+      return `${this.name}, ${this.landMark}, ${this.area},${this.city}, ${this.state},${this.pinCode} ,${this.contactNumber}, ${this.alternateContactNumber}`;
+  }
   }

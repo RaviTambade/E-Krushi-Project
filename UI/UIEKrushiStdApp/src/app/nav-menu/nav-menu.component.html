@@ -3,6 +3,7 @@
     <div class="container">
       <a class="navbar-brand" *ngIf="isUserHaveRequiredRole(Role.Customer)" [routerLink]="['/home']"><b>EKrushi Seva</b></a>
       <a class="navbar-brand" *ngIf="isUserHaveRequiredRole(Role.ShopOwner)" [routerLink]="['/shop/dashboard']"><b>EKrushi Seva</b></a>
+      <a class="navbar-brand" *ngIf="isUserHaveRequiredRole(Role.Shipper)" [routerLink]="['/shipper/dashboard']"><b>EKrushi Seva</b></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
         aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
         <span class="navbar-toggler-icon"></span>
@@ -46,6 +47,16 @@
                   <a class="nav-link text-dark" [routerLink]="['/shop/orders']">Orders</a>
                 </li>
               </ul>
+
+              <ul *ngIf="isUserHaveRequiredRole(Role.Shipper) && showLinks" class="card"
+              style="position: absolute; top: 100%; left: 0; z-index: 1000; background-color: #fff; border: 1px solid #ccc;">
+              <li class="nav-item">
+                <a class="nav-link text-dark" [routerLink]="['/shipper/dashboard']">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" [routerLink]="['/shipper/orders']">Orders</a>
+              </li>
+            </ul>
             </div>
           </li>
 

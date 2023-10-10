@@ -38,4 +38,10 @@ export class UserService {
     let url = 'http://localhost:5102/api/addresses/details/' + addressId;
     return this.httpClient.get<AddressInfo>(url);
   }
+
+  getaddressInfoByIdString(addressIdString:string): Observable<AddressInfo[]> {
+    let url = 'http://localhost:5102/api/addresses/info/' + addressIdString;
+    return this.httpClient.get<AddressInfo[]>(url);
+  }
+
 }
