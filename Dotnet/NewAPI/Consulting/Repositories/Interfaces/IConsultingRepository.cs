@@ -3,20 +3,20 @@ namespace Transflower.EKrushi.Consulting.Repositories.Interfaces;
 public interface IConsultingRepository
 {
 
-    Task<List<Question>> getAllQuestions();
-    Task<Question> getQuestion(int id);
-    Task<List<Answer>> getAllAnswers();
-    Task<List<SubjectMatterExpert>> getAllExperts();
-    Task<SubjectMatterExpert> getExpert(int id);
-    Task<List<Question>> listOfCategoryQuestions(int id);
-    Task<List<Question>> listOfReletedQuestions(int id);
-    Task<List<QuestionAnswer>> getQuestionAnswers(int id);
-    Task<List<Answer>> getAnswers(int id);
-    Task<List<SmeQuestion>> getQuestionsRespondedBySME(int id);
-    Task<List<QuestionCategory>> getAllCategories();
-    Task<QuestionCategory> getQuestionCategory(int id);
+    Task<List<Question>> GetAllQuestions();
+    Task<Question> GetQuestion(int id);
+    Task<List<Answer>> GetAllAnswers();
+    Task<List<SubjectMatterExpert>> GetAllExperts();
+    Task<SubjectMatterExpert> GetExpert(int id);
+    Task<List<Question>> ListOfCategoryQuestions(int id);
+    Task<List<Question>> ListOfReletedQuestions(int id);
+    Task<List<QuestionAnswer>> GetQuestionAnswers(int id);
+    Task<List<Answer>> GetAnswers(int id);
+    Task<List<SmeQuestion>> GetQuestionsRespondedBySME(int id);
+    Task<List<QuestionCategory>> GetAllCategories();
+    Task<QuestionCategory> GetQuestionCategory(int id);
     Task<bool> AddCustomerQuestion(CustomerQuestion question);
-    Task<List<CustomerQuestion>> getAllCustomerQuestion();
+    Task<List<CustomerQuestion>> GetAllCustomerQuestion();
     Task<List<NewQuestion>> QuestionDetailsByCustomer(int custId);
     Task<bool> InsertQuestion(Question question);
     Task<bool> DeleteQuestion(int id);

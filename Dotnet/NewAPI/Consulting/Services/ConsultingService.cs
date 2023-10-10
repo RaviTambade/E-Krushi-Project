@@ -11,20 +11,20 @@ public class ConsultingService : IConsultingService
         _repository = repo;
     }
 
-    public async Task<List<Question>> getAllQuestions() => await _repository.getAllQuestions();
-    public async Task<Question> getQuestion(int id) => await _repository.getQuestion(id);
-    public async Task<List<Answer>> getAllAnswers() => await _repository.getAllAnswers();
-    public async Task<List<SubjectMatterExpert>> getAllExperts() => await _repository.getAllExperts();
-    public async Task<List<Question>> listOfCategoryQuestions(int id) => await _repository.listOfCategoryQuestions(id);
-    public async Task<List<Question>> listOfReletedQuestions(int id) => await _repository.listOfReletedQuestions(id);
-    public async Task<SubjectMatterExpert> getExpert(int id) => await _repository.getExpert(id);
-    public async Task<List<QuestionAnswer>> getQuestionAnswers(int id) => await _repository.getQuestionAnswers(id);
-    public async Task<List<Answer>> getAnswers(int id) => await _repository.getAnswers(id);
-    public async Task<List<SmeQuestion>> getQuestionsRespondedBySME(int id) => await _repository.getQuestionsRespondedBySME(id);
-    public async Task<List<QuestionCategory>> getAllCategories() => await _repository.getAllCategories();
-    public async Task<QuestionCategory> getQuestionCategory(int id) => await _repository.getQuestionCategory(id);
+    public async Task<List<Question>> GetAllQuestions() => await _repository.GetAllQuestions();
+    public async Task<Question> GetQuestion(int id) => await _repository.GetQuestion(id);
+    public async Task<List<Answer>> GetAllAnswers() => await _repository.GetAllAnswers();
+    public async Task<List<SubjectMatterExpert>> GetAllExperts() => await _repository.GetAllExperts();
+    public async Task<List<Question>> ListOfCategoryQuestions(int id) => await _repository.ListOfCategoryQuestions(id);
+    public async Task<List<Question>> ListOfReletedQuestions(int id) => await _repository.ListOfReletedQuestions(id);
+    public async Task<SubjectMatterExpert> GetExpert(int id) => await _repository.GetExpert(id);
+    public async Task<List<QuestionAnswer>> GetQuestionAnswers(int id) => await _repository.GetQuestionAnswers(id);
+    public async Task<List<Answer>> GetAnswers(int id) => await _repository.GetAnswers(id);
+    public async Task<List<SmeQuestion>> GetQuestionsRespondedBySME(int id) => await _repository.GetQuestionsRespondedBySME(id);
+    public async Task<List<QuestionCategory>> GetAllCategories() => await _repository.GetAllCategories();
+    public async Task<QuestionCategory> GetQuestionCategory(int id) => await _repository.GetQuestionCategory(id);
     public async Task<bool> AddCustomerQuestion(CustomerQuestion question) => await _repository.AddCustomerQuestion(question);
-    public async Task<List<CustomerQuestion>> getAllCustomerQuestion() => await _repository.getAllCustomerQuestion();
+    public async Task<List<CustomerQuestion>> GetAllCustomerQuestion() => await _repository.GetAllCustomerQuestion();
     public async Task<List<NewQuestion>> QuestionDetailsByCustomer(int custId) => await _repository.QuestionDetailsByCustomer(custId);
     public async Task<bool> InsertQuestion(Question question) => await _repository.InsertQuestion(question);
     public async Task<bool> DeleteQuestion(int id) => await _repository.DeleteQuestion(id);

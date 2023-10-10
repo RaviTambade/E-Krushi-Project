@@ -17,7 +17,7 @@ public class ConsultingRepository : IConsultingRepository
     }
 
 
-    public async Task<List<Question>> getAllQuestions()
+    public async Task<List<Question>> GetAllQuestions()
     {
         List<Question> questions = new List<Question>();
         MySqlConnection connection = new MySqlConnection();
@@ -56,7 +56,7 @@ public class ConsultingRepository : IConsultingRepository
         return questions;
     }
 
-    public async Task<Question> getQuestion(int id)
+    public async Task<Question> GetQuestion(int id)
     {
 
         Question question = new Question();
@@ -96,7 +96,7 @@ public class ConsultingRepository : IConsultingRepository
     }
 
 
-    public async Task<List<SubjectMatterExpert>> getAllExperts()
+    public async Task<List<SubjectMatterExpert>> GetAllExperts()
     {
         List<SubjectMatterExpert> experts = new List<SubjectMatterExpert>();
         MySqlConnection connection = new MySqlConnection();
@@ -137,7 +137,7 @@ public class ConsultingRepository : IConsultingRepository
         }
         return experts;
     }
-    public async Task<SubjectMatterExpert> getExpert(int id)
+    public async Task<SubjectMatterExpert> GetExpert(int id)
     {
         SubjectMatterExpert doctor = new SubjectMatterExpert();
         MySqlConnection connection = new MySqlConnection();
@@ -186,7 +186,7 @@ public class ConsultingRepository : IConsultingRepository
         return doctor;
     }
 
-    public async Task<List<Answer>> getAllAnswers()
+    public async Task<List<Answer>> GetAllAnswers()
     {
         List<Answer> answers = new List<Answer>();
         MySqlConnection connection = new MySqlConnection();
@@ -224,7 +224,7 @@ public class ConsultingRepository : IConsultingRepository
         return answers;
     }
 
-    public async Task<List<Question>> listOfCategoryQuestions(int id)
+    public async Task<List<Question>> ListOfCategoryQuestions(int id)
     {
         List<Question> questions = new List<Question>();
         MySqlConnection connection = new MySqlConnection();
@@ -264,7 +264,7 @@ public class ConsultingRepository : IConsultingRepository
 
 
 
-    public async Task<List<Question>> listOfReletedQuestions(int id)
+    public async Task<List<Question>> ListOfReletedQuestions(int id)
     {
         List<Question> questions = new List<Question>();
         MySqlConnection connection = new MySqlConnection();
@@ -307,7 +307,7 @@ public class ConsultingRepository : IConsultingRepository
 
 
 
-    public async Task<List<QuestionAnswer>> getQuestionAnswers(int id)
+    public async Task<List<QuestionAnswer>> GetQuestionAnswers(int id)
     {
         List<QuestionAnswer> questionAnswers = new List<QuestionAnswer>();
         MySqlConnection connection = new MySqlConnection();
@@ -350,7 +350,7 @@ public class ConsultingRepository : IConsultingRepository
     }
 
 
-    public async Task<List<Answer>> getAnswers(int id)
+    public async Task<List<Answer>> GetAnswers(int id)
     {
         List<Answer> answers = new List<Answer>();
         MySqlConnection connection = new MySqlConnection();
@@ -391,7 +391,7 @@ public class ConsultingRepository : IConsultingRepository
 
 
 
-    public async Task<List<SmeQuestion>> getQuestionsRespondedBySME(int id)
+    public async Task<List<SmeQuestion>> GetQuestionsRespondedBySME(int id)
     {
 
         List<SmeQuestion> questions = new List<SmeQuestion>();
@@ -432,7 +432,7 @@ public class ConsultingRepository : IConsultingRepository
     }
 
 
-    public async Task<List<QuestionCategory>> getAllCategories()
+    public async Task<List<QuestionCategory>> GetAllCategories()
     {
 
         List<QuestionCategory> categories = new List<QuestionCategory>();
@@ -488,7 +488,7 @@ public class ConsultingRepository : IConsultingRepository
 
 
 
-    public async Task<QuestionCategory> getQuestionCategory(int id)
+    public async Task<QuestionCategory> GetQuestionCategory(int id)
     {
         QuestionCategory Category = new QuestionCategory();
         MySqlConnection connection = new MySqlConnection();
@@ -556,7 +556,7 @@ public class ConsultingRepository : IConsultingRepository
     }
 
 
-    public async Task<List<CustomerQuestion>> getAllCustomerQuestion()
+    public async Task<List<CustomerQuestion>> GetAllCustomerQuestion()
     {
         List<CustomerQuestion> customerQuestions = new List<CustomerQuestion>();
         MySqlConnection connection = new MySqlConnection();
