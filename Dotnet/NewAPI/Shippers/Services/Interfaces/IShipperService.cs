@@ -1,7 +1,7 @@
 
-using Shippers.Repositories.Interfaces;
+using TransFlower.EKrushi.Shippers.Repositories.Interfaces;
 
-namespace Shippers.Services.Interfaces;
+namespace TransFlower.EKrushi.Shippers.Services.Interfaces;
 public interface IShipperService:IShipperRepository
 {
 

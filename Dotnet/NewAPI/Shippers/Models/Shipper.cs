@@ -1,5 +1,5 @@
 
-namespace Shippers.Models;
+namespace TransFlower.EKrushi.Shippers.Models;
 
 public class Shipper
 {

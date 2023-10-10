@@ -1,9 +1,9 @@
+using TransFlower.EKrushi.Shippers.Services.Interfaces;
+using TransFlower.EKrushi.Shippers.Repositories.Interfaces;
+using TransFlower.EKrushi.Shippers.Models;
 
-using Shippers.Services.Interfaces;
-using Shippers.Repositories.Interfaces;
-using Shippers.Models;
+namespace TransFlower.EKrushi.Shippers.Services;
 
-namespace Shippers.Services;
 public class ShipperService : IShipperService
 {
     private readonly IShipperRepository _repository;
@@ -15,6 +15,11 @@ public class ShipperService : IShipperService
 
     public async Task<int> GetNearestShipperId(int storeId)
     {
-      return await _repository.GetNearestShipperId(storeId);
+        return await _repository.GetNearestShipperId(storeId);
+    }
+
+    public async Task<IEnumerable<ShipperOrder>> GetShipperOrdersByStatus(int shipperId, string status)
+    {
+        return await _repository.GetShipperOrdersByStatus(shipperId, status);
     }
 }
