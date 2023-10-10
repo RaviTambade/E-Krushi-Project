@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { orderSp } from '../Models/orderSp';
 import { Observable } from 'rxjs';
+import { OrderCount } from '../Models/orderCount';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +12,8 @@ export class BIService {
 
 
 
-  getOrdersFromStoreProcedure(todaysDate :string,storeId: number): Observable<orderSp> {
+  getOrderCountByStore(todaysDate :string,storeId: number): Observable<OrderCount> {
     let url = ' http://localhost:5161/api/bi/orderscount/' + todaysDate+"/" + storeId;
-    return this.httpClient.get<orderSp>(url);
+    return this.httpClient.get<OrderCount>(url);
   }
 }

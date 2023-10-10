@@ -1,41 +1,39 @@
-
-
- 
- <div class="container mt-3">
-    <div class="row"  *ngIf="order">
-      <div class="col-md-3">
-        <div class="alert alert-info" role="alert">
-          {{order.todaysOrders}}
-          <br>
-          Todays Orders
-        </div>
+<div class="container">
+  <div class="row" *ngIf="orderCount">
+      <div class="col-md-4 col-xl-3">
+          <div class="card bg-c-blue order-card">
+              <div class="card-block">
+                  <h5 class="m-b-20">Today Orders</h5>
+                  <h2 class="text-right "><i class="fas fa-shopping-cart f-left"></i><span class="f-right">{{orderCount.todaysOrders}}</span></h2>
+              </div>
+          </div>
       </div>
-      <div class="col-md-3">
-        <div class="alert alert-success" role="alert">
-           {{order.yesterdaysOrders}}
-           <br>
-           Yesterdays Orders
-        </div>
+      
+      <div class="col-md-4 col-xl-3">
+          <div class="card bg-c-green order-card">
+              <div class="card-block">
+                  <h6 class="m-b-20">Yesterday Orders</h6>
+                  <h2 class="text-right"><i class="fa fa-shopping-cart f-left"></i><span class="f-right">{{orderCount.yesterdaysOrders}}</span></h2>
+              </div>
+          </div>
       </div>
-      <div class="col-md-3">
-        <div class="alert alert-warning" role="alert">
-           {{order.weekOrders}}
-           <br>
-           Orders Of Week
-        </div>
+      
+      <div class="col-md-4 col-xl-3">
+          <div class="card bg-c-yellow order-card">
+              <div class="card-block">
+                  <h6 class="m-b-20"> Week Orders </h6>
+                  <h2 class="text-right"><i class="fa fa-shopping-cart f-left"></i><span class="f-right">{{orderCount.weekOrders}}</span></h2>
+              </div>
+          </div>
       </div>
-      <div class="col-md-3">
-        <div class="alert alert-danger" role="alert">
-           {{order.monthOrders}}
-           <br>
-           Orders Of Month
-        </div>
+      
+      <div class="col-md-4 col-xl-3">
+          <div class="card bg-c-pink order-card">
+              <div class="card-block">
+                  <h6 class="m-b-20">Month Orders</h6>
+                  <h2 class="text-right"><i class="fa fa-shopping-cart f-left"></i><span class="f-right">{{orderCount.monthOrders}}</span></h2>
+              </div>
+          </div>
       </div>
-    </div> 
-</div> 
-
-
-
-
-
-  
+</div>
+</div>

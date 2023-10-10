@@ -5,7 +5,7 @@
 /tmp
 /out-tsc
 /bazel-out
-
+run.bat
 # Node
 /node_modules
 npm-debug.log

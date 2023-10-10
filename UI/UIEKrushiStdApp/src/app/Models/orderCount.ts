@@ -1,4 +1,4 @@
-export class orderSp{
+export class OrderCount{
     constructor(
         public todaysOrders:number,
         public yesterdaysOrders:number,

@@ -1,7 +1,6 @@
-import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { orderSp } from 'src/app/Models/orderSp';
+import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
+import { OrderCount } from 'src/app/Models/orderCount';
 import { BIService } from 'src/app/Services/bi.service';
 
 @Component({
@@ -11,17 +10,20 @@ import { BIService } from 'src/app/Services/bi.service';
 })
 export class OrderscountComponent implements OnInit{
   currentDate: string = new Date().toISOString().slice(0,10);
-  storeid:number=1;
 
-  order:orderSp|undefined;
-  constructor(private svc:BIService){ 
+  orderCount:OrderCount|undefined;
+  constructor(private bisvc:BIService){ 
   }
   ngOnInit(): void {
-    console.log(this.currentDate);
-    this.svc.getOrdersFromStoreProcedure(this.currentDate,this.storeid).subscribe((res)=>{
+    const storeId = Number(localStorage.getItem(LocalStorageKeys.storeId));
+    if (Number.isNaN(storeId) || storeId == 0) {
+      return;
+    }
+
+    this.bisvc.getOrderCountByStore
+    (this.currentDate,storeId).subscribe((res)=>{
       console.log(res);
-     
-        this.order=res;      
+        this.orderCount=res;      
     })
   }
 
