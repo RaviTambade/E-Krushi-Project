@@ -3,15 +3,15 @@ using Transflower.EKrushi.BIService.Repositories.Interfaces;
 using Transflower.EKrushi.BIService.Services;
 using Transflower.EKrushi.BIService.Services.Interfaces;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddCors();
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddTransient<IBIRepository,BIRepository>();
-builder.Services.AddTransient<IBIService,BIServices>();
+builder.Services.AddTransient<IBIRepository, BIRepository>();
+builder.Services.AddTransient<IBIService, BIServices>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -25,9 +25,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors(x => x.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader());
+app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 app.UseAuthorization();
 

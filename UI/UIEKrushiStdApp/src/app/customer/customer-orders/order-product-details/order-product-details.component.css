@@ -1,5 +1,9 @@
-/* @media (min-width: 1025px) {
-    .h-custom {
-    height: 100vh !important;
-    }
-    } */
+.spinner-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999; 
+    padding: 20px; 
+    border-radius: 10px; 
+  }

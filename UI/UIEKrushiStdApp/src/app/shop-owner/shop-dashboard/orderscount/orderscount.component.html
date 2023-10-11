@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="row" *ngIf="orderCount">
+<!-- <div class="container"> -->
+  <div class="row">
       <div class="col-md-4 col-xl-3">
           <div class="card bg-c-blue order-card">
               <div class="card-block">
@@ -12,7 +12,7 @@
       <div class="col-md-4 col-xl-3">
           <div class="card bg-c-green order-card">
               <div class="card-block">
-                  <h6 class="m-b-20">Yesterday Orders</h6>
+                  <h5 class="m-b-20">Yesterday Orders</h5>
                   <h2 class="text-right"><i class="fa fa-shopping-cart f-left"></i><span class="f-right">{{orderCount.yesterdaysOrders}}</span></h2>
               </div>
           </div>
@@ -21,7 +21,7 @@
       <div class="col-md-4 col-xl-3">
           <div class="card bg-c-yellow order-card">
               <div class="card-block">
-                  <h6 class="m-b-20"> Week Orders </h6>
+                  <h5 class="m-b-20"> Week Orders </h5>
                   <h2 class="text-right"><i class="fa fa-shopping-cart f-left"></i><span class="f-right">{{orderCount.weekOrders}}</span></h2>
               </div>
           </div>
@@ -30,10 +30,10 @@
       <div class="col-md-4 col-xl-3">
           <div class="card bg-c-pink order-card">
               <div class="card-block">
-                  <h6 class="m-b-20">Month Orders</h6>
+                  <h5 class="m-b-20">Month Orders</h5>
                   <h2 class="text-right"><i class="fa fa-shopping-cart f-left"></i><span class="f-right">{{orderCount.monthOrders}}</span></h2>
               </div>
           </div>
       </div>
 </div>
-</div>
+<!-- </div> -->
