@@ -1,0 +1,18 @@
+<div class="card" style="max-height: 65vh; overflow-y: auto; ">
+    <h5 class="card-header  text-white text-center py-3" style="background-color: #6986a8;">
+        Top 5 Selling Products By Quantity
+      </h5>
+          <div class="d-flex justify-content-between align-items-center m-2">
+        <div class="form-group mb-0">
+            <select class="form-control" style="width: 150px;" [(ngModel)]='selectedMode' (ngModelChange)="fetchData()">
+                <option *ngFor="let mode of modes" [ngValue]="mode">{{mode |titlecase}}</option>
+            </select>
+        </div>
+        <button class="btn text-white bg-c-blue "> <h6 class="text-center mx-2"> Total - {{products[0].totalQuantity}}</h6>
+        </button>
+    </div>
+
+    <ul class="list-unstyled card-body mb-0 pb-0" *ngFor="let product of products" >
+        <shop-top-selling-product [product]="product"></shop-top-selling-product>
+    </ul>
+ 

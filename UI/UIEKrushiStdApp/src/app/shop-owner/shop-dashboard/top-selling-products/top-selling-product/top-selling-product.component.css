@@ -1,0 +1,15 @@
+
+.bg-c-blue {
+    background: linear-gradient(45deg,#4099ff,#73b4ff);
+  }
+
+  .btn-custom-small {
+    font-size: 14px;
+    margin: 2px;
+    padding: 5px 10px;
+   height: 30px;
+  }
+
+  .bg-c-green {
+    background: linear-gradient(45deg,#2ed8b6,#59e0c5);
+  }

@@ -8,6 +8,9 @@ import { CustomerModule } from 'src/app/customer/customer.module';
 import { OrderscountComponent } from './shop-dashboard/orderscount/orderscount.component';
 import { LineChartComponent } from './shop-dashboard/line-chart/line-chart.component';
 import { NgChartsModule } from 'ng2-charts';
+import { TopSellingProductsComponent } from './shop-dashboard/top-selling-products/top-selling-products.component';
+import { TopSellingProductComponent } from './shop-dashboard/top-selling-products/top-selling-product/top-selling-product.component';
+import { FormsModule } from '@angular/forms';
 
 export const shopRoutes: Routes = [
   { path: 'dashboard', component: ShopDashboardComponent },
@@ -16,8 +19,8 @@ export const shopRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ShopDashboardComponent, ShopOrdersComponent, OrderscountComponent, LineChartComponent],
-  imports: [CommonModule,CustomerModule,RouterModule,NgChartsModule],
+  declarations: [ShopDashboardComponent, ShopOrdersComponent, OrderscountComponent, LineChartComponent, TopSellingProductsComponent, TopSellingProductComponent],
+  imports: [CommonModule,CustomerModule,RouterModule,NgChartsModule,FormsModule],
   
 })
 export class ShopOwnerModule {}

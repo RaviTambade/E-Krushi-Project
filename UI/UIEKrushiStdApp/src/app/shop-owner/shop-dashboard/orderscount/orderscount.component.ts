@@ -11,7 +11,12 @@ import { BIService } from 'src/app/Services/bi.service';
 export class OrderscountComponent implements OnInit{
   currentDate: string = new Date().toISOString().slice(0,10);
 
-  orderCount:OrderCount|undefined;
+  orderCount:OrderCount={
+    todaysOrders: 0,
+    yesterdaysOrders: 0,
+    weekOrders: 0,
+    monthOrders: 0
+  };
   constructor(private bisvc:BIService){ 
   }
   ngOnInit(): void {
@@ -20,8 +25,7 @@ export class OrderscountComponent implements OnInit{
       return;
     }
 
-    this.bisvc.getOrderCountByStore
-    (this.currentDate,storeId).subscribe((res)=>{
+    this.bisvc.getOrderCountByStore(this.currentDate,storeId).subscribe((res)=>{
       console.log(res);
         this.orderCount=res;      
     })

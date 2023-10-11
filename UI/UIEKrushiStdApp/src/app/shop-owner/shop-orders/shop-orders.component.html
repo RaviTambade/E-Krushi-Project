@@ -1,5 +1,5 @@
 <h2>Manage Orders</h2>
-<div class=" col-9 d-flex justify-content-between m-2 p-2" >
+<div class=" col-8 d-flex justify-content-between m-2 p-2" >
 
   
   <a class="btn btn-outline-success  position-relative" (click)="filterOrders(orderStatus.pending)"
@@ -58,7 +58,7 @@
 
   <div class="col-5">
     <div class="card" style=" width: fit-content;">
-      <div class="card-body" style="max-height: calc(100vh - 150px); overflow-y: auto;">
+      <div class="card-body" style="max-height: calc(90vh - 150px); overflow-y: auto;">
         <table class="table">
           <thead>
             <tr>
@@ -100,7 +100,7 @@
   </div>
    <div class="col-7">
       <div   *ngIf="selectedOrderId"class="card" >
-        <div class="card-body" style="max-height: calc(100vh - 150px); overflow-y: auto;">
+        <div class="card-body" style="max-height: 70vh; overflow-y: auto;">
       
       <app-order-product-details [orderId]="selectedOrderId"></app-order-product-details>
     </div>
