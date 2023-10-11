@@ -392,23 +392,7 @@ select * from productdetails;
   
                             
 
-CREATE PROCEDURE GetMonthNameWithOrders(
-   IN given_year INT
-)
-SELECT
-    DATE_FORMAT(orderdate, '%M') AS month,
-    COUNT(*) AS order_count
-FROM
-    orders
-WHERE
-    YEAR(orderdate) = given_year
-GROUP BY
-    DATE_FORMAT(orderdate, '%M')
-ORDER BY
-    month;
 
-
-CALL GetMonthNameWithOrders(2023);
 
 
 

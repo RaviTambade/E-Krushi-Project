@@ -1,4 +1,4 @@
--- Active: 1678359546568@@127.0.0.1@3306@ekrushi
+-- Active: 1694968636816@@127.0.0.1@3306@ekrushi
 
 
 CREATE PROCEDURE insertpayment(
@@ -250,3 +250,27 @@ CALL GetCategoriwiseOrders('2023-07-02',4,'seeds',@todaysOrders,@yesterdaysOrder
 
 SELECT @todaysOrders,@yesterdaysOrders,@weekOrders,@monthOrders ;
 
+
+
+
+
+CREATE PROCEDURE GetMonthNameWithOrders(
+   IN given_year INT,
+   IN given_storeid INT
+)
+SELECT
+    DATE_FORMAT(orderdate, '%M') AS month,
+    COUNT(*) AS order_count
+FROM
+    orders
+WHERE
+    YEAR(orderdate) = given_year  AND storeid=given_storeid
+GROUP BY
+    DATE_FORMAT(orderdate, '%M')
+ORDER BY
+    month;
+
+
+CALL GetMonthNameWithOrders(2023,2);
+
+drop Procedure GetMonthNameWithOrders;

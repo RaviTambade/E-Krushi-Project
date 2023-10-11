@@ -31,6 +31,11 @@ public class BIServices : IBIService
         return await _repository.OrdersCountByStore(todaysDate, storeId);
     }
 
+
+ public async Task<List<MonthOrders>> GetMonthOrders(int year, int storeId)
+    {
+        return await _repository.GetMonthOrders(year, storeId);
+    }
     bool isModeInvalid(string mode)
     {
         return mode != OrderMode.Month
