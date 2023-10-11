@@ -76,6 +76,7 @@ public class BIRepository : IBIRepository
                 {
                     ProductId = reader.GetInt32("productid"),
                     Quantity = reader.GetInt32("quantity"),
+                    TotalQuantity=reader.GetInt32("totalquantity"),
                     Title = reader.GetString("title"),
                     Percentage=reader.GetDouble("percentage"),
                     ImageURL=reader.GetString("imageurl"),

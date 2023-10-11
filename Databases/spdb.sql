@@ -99,7 +99,6 @@ WHERE id IN (
 
 
 
-drop PROCEDURE GetTopProducts;
 -- top 5 products orders
 CREATE PROCEDURE GetTopProducts
 (
@@ -118,7 +117,7 @@ BEGIN
     WHERE DATE(orders.orderdate) = todays_date  AND storeid=store_id;
 
 
-    SELECT  products.id as productid,SUM(orderdetails.quantity) as quantity,
+    SELECT totalquantity, products.id as productid,SUM(orderdetails.quantity) as quantity,
     ((SUM(orderdetails.quantity)/totalquantity)*100) as percentage,
     products.title as title,products.image as imageurl FROM orderdetails
     INNER JOIN productdetails ON productdetails.id = orderdetails.productdetailsid
@@ -136,7 +135,7 @@ BEGIN
     INNER JOIN products ON productdetails.productid = products.id
     WHERE DATE(orderdate) = DATE_SUB(todays_date, INTERVAL 1 DAY) AND storeid=store_id;
  
-    SELECT products.id AS productid, SUM(orderdetails.quantity) AS quantity,
+    SELECT totalquantity, products.id AS productid, SUM(orderdetails.quantity) AS quantity,
     ((SUM(orderdetails.quantity)/totalquantity)*100) as percentage,
     products.title as title ,products.image as imageurl FROM orderdetails
     INNER JOIN productdetails ON productdetails.id = orderdetails.productdetailsid
@@ -157,7 +156,7 @@ BEGIN
     AND DATE_ADD(todays_date, INTERVAL (7 - DAYOFWEEK(todays_date)) DAY)  AND storeid=store_id;
     
 
-    SELECT products.id AS productid, SUM(orderdetails.quantity) AS quantity,
+    SELECT totalquantity, products.id AS productid, SUM(orderdetails.quantity) AS quantity,
     ((SUM(orderdetails.quantity)/totalquantity)*100) as percentage,
     products.title as title ,products.image as imageurl FROM orderdetails
     INNER JOIN productdetails ON productdetails.id = orderdetails.productdetailsid
@@ -177,7 +176,7 @@ BEGIN
     WHERE DATE(orders.orderdate) BETWEEN DATE_SUB(todays_date, INTERVAL DAY(todays_date) - 1 DAY)
     AND LAST_DAY(todays_date)  AND storeid=store_id;
     
-    SELECT products.id AS productid,SUM(orderdetails.quantity) AS quantity,
+    SELECT totalquantity, products.id AS productid,SUM(orderdetails.quantity) AS quantity,
     ((SUM(orderdetails.quantity)/totalquantity)*100) as percentage,
     products.title as title ,products.image as imageurl FROM orderdetails
     INNER JOIN productdetails ON productdetails.id = orderdetails.productdetailsid
@@ -192,7 +191,7 @@ BEGIN
  END IF;
 END;
 
-CALL `GetTopProducts`('2023-10-09','today',2);
+CALL `GetTopProducts`('2023-10-09','today',1);
 
 
 

@@ -12,12 +12,14 @@
         <input type="password" class="form-control" id="pwd" [(ngModel)]="credential.password"
           placeholder="Enter password" name="pswd">
       </div>
-      <div class="form-check mb-3">
+      <div>
+      <span *ngIf="isCredentialInvalid" class="text-danger"> Invalid credential please check again</span>
+    </div><!-- <div class="form-check mb-3">
         <label class="form-check-label">
           <input class="form-check-input" type="checkbox" name="remember"> Remember me
         </label>
-      </div>
-      <button type="submit" class="btn btn-primary">Login</button>
+      </div> -->
+      <button type="submit" class="btn btn-primary"  [disabled]="isLoginButtonDisabled">Login</button>
     </form>
   </div>
 

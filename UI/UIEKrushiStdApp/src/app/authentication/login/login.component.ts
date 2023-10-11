@@ -12,11 +12,12 @@ import { UserService } from 'src/app/Services/user.service';
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
-  public currentCount = 0;
   credential: Credential = {
     contactNumber: '',
     password: '',
   };
+  isLoginButtonDisabled: boolean = false;
+  isCredentialInvalid: boolean = false;
   userId: number | undefined;
   roles: string[] = [];
 
@@ -28,31 +29,48 @@ export class LoginComponent {
     private shippersvc: ShipperService
   ) {}
 
-  public onSignIn() {
+  onSignIn() {
+    this.isLoginButtonDisabled = true;
     console.log('Validating user');
-    this.authService.validate(this.credential).subscribe((response) => {
-      console.log(response);
-      if (response != null) {
-        localStorage.setItem(LocalStorageKeys.jwt, response.token);
-        this.userService
-          .getUserByContact(this.credential.contactNumber)
-          .subscribe((response) => {
-            this.userId = response.id;
-            console.log(this.userId);
-            localStorage.setItem(
-              LocalStorageKeys.userId,
-              this.userId.toString()
-            );
-            this.userService.getUserRole(this.userId).subscribe((response) => {
-              this.roles = response;
-              console.log(this.roles);
-              if (this.roles?.length == 1) {
-                const role = this.roles[0];
-                this.navigateByRole(role);
-              }
+    this.authService.validate(this.credential).subscribe({
+      next: (response) => {
+        if (response == null || !response) {
+          this.isCredentialInvalid = true;
+          setTimeout(() => {
+            this.isCredentialInvalid = false;
+          }, 3000);
+        }
+        console.log(response);
+        if (response != null) {
+          localStorage.setItem(LocalStorageKeys.jwt, response.token);
+          this.userService
+            .getUserByContact(this.credential.contactNumber)
+            .subscribe((response) => {
+              this.userId = response.id;
+              console.log(this.userId);
+              localStorage.setItem(
+                LocalStorageKeys.userId,
+                this.userId.toString()
+              );
+              this.userService
+                .getUserRole(this.userId)
+                .subscribe((response) => {
+                  this.roles = response;
+                  console.log(this.roles);
+                  if (this.roles?.length == 1) {
+                    const role = this.roles[0];
+                    this.navigateByRole(role);
+                  }
+                });
             });
-          });
-      }
+        }
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        this.isLoginButtonDisabled = false;
+      },
     });
   }
 
@@ -67,7 +85,7 @@ export class LoginComponent {
           this.storesvc.getStoreId(this.userId).subscribe((res) => {
             localStorage.setItem(LocalStorageKeys.storeId, res.toString());
           });
-          this.router.navigate(['shop/dashboard']);
+        this.router.navigate(['shop/dashboard']);
         break;
       case Role.Supplier:
         this.router.navigate(['supplier/dashboard']);
@@ -77,7 +95,7 @@ export class LoginComponent {
           this.shippersvc.getShipperId(this.userId).subscribe((res) => {
             localStorage.setItem(LocalStorageKeys.shipperId, res.toString());
           });
-          this.router.navigate(['shipper/dashboard']);
+        this.router.navigate(['shipper/dashboard']);
         break;
       case Role.SubjectMatterExpert:
         this.router.navigate(['sme/dashboard']);
