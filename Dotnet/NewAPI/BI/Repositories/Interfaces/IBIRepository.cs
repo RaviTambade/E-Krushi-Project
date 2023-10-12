@@ -8,4 +8,7 @@ public interface IBIRepository
     Task<List<TopProducts>> GetTopFiveSellingProducts(DateTime todaysDate, string mode,int storeId);
 
     Task<List<MonthOrders>> GetMonthOrders(int year, int storeId);
+
+    Task<List<CategorywiseProduct>> GetCategorywiseProductsCount(DateTime todaysDate, string mode,int storeId);
+
 }

@@ -33,6 +33,20 @@ public class BIServices : IBIService
 
 
  public async Task<List<MonthOrders>> GetMonthOrders(int year, int storeId)=>await _repository.GetMonthOrders(year, storeId);
+
+
+  public async Task<List<CategorywiseProduct>> GetCategorywiseProductsCount(
+        DateTime todaysDate,
+        string mode,
+        int storeId
+    )
+    {
+        if (isModeInvalid(mode))
+        {
+            throw new Exception($"Argument Mode={mode} is Invalid");
+        }
+        return await _repository.GetCategorywiseProductsCount(todaysDate, mode, storeId);
+    }
    
     bool isModeInvalid(string mode)
     {

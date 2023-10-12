@@ -136,4 +136,45 @@ public class BIRepository : IBIRepository
         return products;    
     }
 
+
+
+    public async Task<List<CategorywiseProduct>> GetCategorywiseProductsCount(DateTime todaysDate, string mode,int storeId)
+    {
+        List<CategorywiseProduct> products = new List<CategorywiseProduct>();
+        MySqlConnection connection = new MySqlConnection(_connectionString);
+
+        try
+        {
+            MySqlCommand cmd = new MySqlCommand("GetCategorywiseProductCountByStore", connection);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@given_date", todaysDate);
+            cmd.Parameters.AddWithValue("@mode", mode);
+            cmd.Parameters.AddWithValue("@store_id", storeId);
+            await connection.OpenAsync();
+            MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
+            {
+                CategorywiseProduct product = new CategorywiseProduct()
+                {
+                    Title= reader.GetString("title"),
+                    Quantity = reader.GetInt32("quantity"),
+                    
+                };
+                products.Add(product);
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+        return products;
+    }
+
+
 }

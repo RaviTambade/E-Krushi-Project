@@ -36,5 +36,14 @@ namespace Transflower.EKrushi.BIService.Controllers
             return orders; 
         }
 
+
+
+         [HttpGet("categorywiseproducts/{todaysDate}/{mode}/{storeId}")]
+        public async Task<List<CategorywiseProduct>> GetCategorywiseProductsCount(DateTime todaysDate, string mode,int storeId)
+        {
+            return await _service.GetCategorywiseProductsCount(todaysDate, mode,storeId);
+        }
+
+
     }
 }
