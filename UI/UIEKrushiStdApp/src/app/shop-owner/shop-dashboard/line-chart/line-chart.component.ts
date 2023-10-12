@@ -14,9 +14,9 @@ export class LineChartComponent implements OnInit{
     responsive: true
   };
   public lineChartLabels: string[] = [];
-  public lineChartType :ChartType= 'line';
+  public lineChartType:ChartType= 'bar';
   public lineChartLegend = true;
-  public lineChartData: any[] = [];
+  public lineChartData: any = {datasets:[{data:[]}]};
 
   constructor(private service:BIService){
 
@@ -25,12 +25,12 @@ export class LineChartComponent implements OnInit{
   storeid:number=1;
   
   ngOnInit(): void {
-    
+      console.log("api called");
     this.service.getMonthsWithOrders(this.year,this.storeid).subscribe((response)=>{
-
+      
         console.log(response);
          this.lineChartLabels=response.map(r=>r.month);
-         this.lineChartData=response.map(r=>r.orders);
+         this.lineChartData.datasets[0].data=response.map(r=>r.orders);
     })
   }
   
