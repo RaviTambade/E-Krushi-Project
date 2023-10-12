@@ -35,9 +35,9 @@ namespace Transflower.EKrushi.BIService.Controllers
              List<MonthOrders> orders=await _service.GetMonthOrders(year,storeId);
              foreach(MonthOrders i in orders){
                
-                Console.WriteLine( i.Month);
+                Console.WriteLine( i.Month+" "+i.Orders);
              }
-            return orders;
+            return orders; 
         }
 
     }

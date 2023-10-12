@@ -22,4 +22,10 @@ export class BIService {
     let url = ' http://localhost:5161/api/bi/topproducts/' + todaysDate+"/"+mode +"/" + storeId;
     return this.httpClient.get<TopProduct[]>(url);
   }
+
+
+  getMonthsWithOrders(year :number,storeId: number): Observable<any[]> {
+    let url = ' http://localhost:5161/api/bi/MonthOrders/' + year+"/" + storeId;
+    return this.httpClient.get<any[]>(url);
+  }
 }
