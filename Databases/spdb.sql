@@ -1,4 +1,4 @@
--- Active: 1678359546568@@127.0.0.1@3306@ekrushi
+-- Active: 1694968636816@@127.0.0.1@3306@ekrushi
 
 
 CREATE PROCEDURE insertpayment(
@@ -247,7 +247,7 @@ END;
 
 CALL GetCategoriwiseOrders('2023-07-02',4,'seeds',@todaysOrders,@yesterdaysOrders,@weekOrders,@monthOrders);
 
-SELECT @todaysOrders,@yesterdaysOrders,@weekOrders,@monthOrders ;
+
 
 
 
@@ -257,36 +257,6 @@ CREATE PROCEDURE GetMonthNameWithOrders(
    IN given_year INT,
    IN given_storeid INT
 )
-SELECT
-    DATE_FORMAT(orderdate, '%M') AS month,
-    COUNT(*) AS order_count
-FROM
-    orders
-WHERE
-    YEAR(orderdate) = given_year  AND storeid=given_storeid
-GROUP BY
-    DATE_FORMAT(orderdate, '%M')
-ORDER BY
-    month;
-
-
-CALL GetMonthNameWithOrders(2023,2);
-
-SELECT
-    MONTHNAME(orderdate) AS month,
-    COUNT(*) AS order_count
-FROM
-    orders
-WHERE
-    YEAR(orderdate) = 2023 AND storeid=1
-GROUP BY
-    MONTH(orderdate)
-ORDER BY
-    month;
-
-
-
-
 
 WITH MonthNumbers AS (
     SELECT 1 AS month_number
@@ -308,9 +278,16 @@ SELECT
 FROM
     MonthNumbers
 LEFT JOIN
-    orders ON MonthNumbers.month_number = MONTH(orders.orderdate) AND YEAR(orders.orderdate) = 2023 AND storeid = 1
+    orders ON MonthNumbers.month_number = MONTH(orders.orderdate) AND YEAR(orders.orderdate) = given_year AND storeid = given_storeid
 GROUP BY
     MonthNumbers.month_number
 ORDER BY
     MonthNumbers.month_number;
+
+
+CALL GetMonthNameWithOrders(2023,2);
+
+
+
+
 
