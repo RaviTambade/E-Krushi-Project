@@ -1,4 +1,4 @@
--- Active: 1694968636816@@127.0.0.1@3306@ekrushi
+-- Active: 1678359546568@@127.0.0.1@3306@ekrushi
 
 
 CREATE PROCEDURE insertpayment(
@@ -272,4 +272,45 @@ ORDER BY
 
 CALL GetMonthNameWithOrders(2023,2);
 
-drop Procedure GetMonthNameWithOrders;
+SELECT
+    MONTHNAME(orderdate) AS month,
+    COUNT(*) AS order_count
+FROM
+    orders
+WHERE
+    YEAR(orderdate) = 2023 AND storeid=1
+GROUP BY
+    MONTH(orderdate)
+ORDER BY
+    month;
+
+
+
+
+
+WITH MonthNumbers AS (
+    SELECT 1 AS month_number
+    UNION ALL SELECT 2
+    UNION ALL SELECT 3
+    UNION ALL SELECT 4
+    UNION ALL SELECT 5
+    UNION ALL SELECT 6
+    UNION ALL SELECT 7
+    UNION ALL SELECT 8
+    UNION ALL SELECT 9
+    UNION ALL SELECT 10
+    UNION ALL SELECT 11
+    UNION ALL SELECT 12
+)
+SELECT
+ MONTHNAME(CONCAT('2023-', MonthNumbers.month_number,'-01')) AS month,
+     COUNT(orders.orderdate) AS order_count
+FROM
+    MonthNumbers
+LEFT JOIN
+    orders ON MonthNumbers.month_number = MONTH(orders.orderdate) AND YEAR(orders.orderdate) = 2023 AND storeid = 1
+GROUP BY
+    MonthNumbers.month_number
+ORDER BY
+    MonthNumbers.month_number;
+
