@@ -11,6 +11,7 @@ import { NgChartsModule } from 'ng2-charts';
 import { TopSellingProductsComponent } from './shop-dashboard/top-selling-products/top-selling-products.component';
 import { TopSellingProductComponent } from './shop-dashboard/top-selling-products/top-selling-product/top-selling-product.component';
 import { FormsModule } from '@angular/forms';
+import { DognutChartComponent } from './shop-dashboard/dognut-chart/dognut-chart.component';
 
 export const shopRoutes: Routes = [
   { path: 'dashboard', component: ShopDashboardComponent },
@@ -19,7 +20,7 @@ export const shopRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [ShopDashboardComponent, ShopOrdersComponent, OrderscountComponent, LineChartComponent, TopSellingProductsComponent, TopSellingProductComponent],
+  declarations: [ShopDashboardComponent, ShopOrdersComponent, OrderscountComponent, LineChartComponent, TopSellingProductsComponent, TopSellingProductComponent, DognutChartComponent],
   imports: [CommonModule,CustomerModule,RouterModule,NgChartsModule,FormsModule],
   
 })

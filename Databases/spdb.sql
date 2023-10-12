@@ -1,6 +1,5 @@
 -- Active: 1678359546568@@127.0.0.1@3306@ekrushi
 
-
 CREATE PROCEDURE insertpayment(
     IN mode VARCHAR(255),
     IN paymentstatus VARCHAR(255),
@@ -74,7 +73,8 @@ BEGIN
 END;
 
 
-
+  
+  
 CREATE PROCEDURE GetTopFiveSellingProductQuantityByStore
 (
     IN todays_date DATE,
@@ -171,53 +171,59 @@ END;
 
 
 
--- categoriwise orders
+-- categoriwise product count
 
-CREATE PROCEDURE GetCategoriwiseOrderCountByStore
+CREATE PROCEDURE GetCategorywiseProductCountByStore
 (
     IN given_date DATE,
-    IN givenStoreId INT,
-    IN category varchar(250),
-    OUT todaysOrders INT,
-    OUT yesterdaysOrders INT,
-    OUT weekOrders INT,
-    OUT monthOrders INT
+    IN mode VARCHAR(255),
+    IN store_id INT
 )
 BEGIN
-  
-    select COUNT(*) INTO todaysOrders from orders
-    INNER JOIN orderdetails on orders.id=orderdetails.orderid
-    INNER JOIN productdetails on productdetails.id=orderdetails.productdetailsid
-    INNER JOIN products on productdetails.productid=products.id
-    INNER JOIN categories ON products.categoryid=categories.id
-    WHERE categories.title=category AND DATE(orders.orderdate) = given_date AND storeid=4; 
-  
-  
-  select COUNT(*) INTO yesterdaysOrders from orders
-    INNER JOIN orderdetails on orders.id=orderdetails.orderid
-    INNER JOIN productdetails on productdetails.id=orderdetails.productdetailsid
-    INNER JOIN products on productdetails.productid=products.id
-    INNER JOIN categories ON products.categoryid=categories.id
-    WHERE categories.title=category AND DATE(orders.orderdate)=DATE_SUB(given_date, INTERVAL 1 DAY)AND storeid=givenStoreId;
-  
-    select COUNT(*) INTO weekOrders from orders
-    INNER JOIN orderdetails on orders.id=orderdetails.orderid
-    INNER JOIN productdetails on productdetails.id=orderdetails.productdetailsid
-    INNER JOIN products on productdetails.productid=products.id
-    INNER JOIN categories ON products.categoryid=categories.id
-    WHERE categories.title=category AND DATE(orders.orderdate) BETWEEN DATE_SUB(given_date, INTERVAL (DAYOFWEEK(given_date) - 1) DAY) 
-    AND DATE_ADD(given_date, INTERVAL (7 - DAYOFWEEK(given_date)) DAY) AND storeid=4; 
-  
-                            
-     select COUNT(*) INTO monthOrders from orders
-    INNER JOIN orderdetails on orders.id=orderdetails.orderid
-    INNER JOIN productdetails on productdetails.id=orderdetails.productdetailsid
-    INNER JOIN products on productdetails.productid=products.id
-    INNER JOIN categories ON products.categoryid=categories.id
-    WHERE categories.title=category AND DATE(orders.orderdate) BETWEEN DATE_SUB(given_date, INTERVAL DAY(given_date) - 1 DAY)
-    AND LAST_DAY(given_date) AND storeid=givenStoreId;
-END;
+   IF mode= 'today' THEN
+    SELECT categories.title, sum(orderdetails.quantity) as quantity
+    FROM categories
+    INNER JOIN products on categories.id=products.categoryid
+    INNER JOIN productdetails on products.id=productdetails.productid
+    INNER JOIN orderdetails on productdetails.id=orderdetails.productdetailsid
+    INNER JOIN orders on orderdetails.orderid=orders.id
+    WHERE DATE(orders.orderdate) = given_date AND storeid=store_id
+    GROUP BY categories.id  ; 
 
+  ELSEIF mode='yesterday' THEN
+    SELECT categories.title, sum(orderdetails.quantity) as quantity
+    FROM categories
+    INNER JOIN products on categories.id=products.categoryid
+    INNER JOIN productdetails on products.id=productdetails.productid
+    INNER JOIN orderdetails on productdetails.id=orderdetails.productdetailsid
+    INNER JOIN orders on orderdetails.orderid=orders.id
+    WHERE DATE(orders.orderdate)=DATE_SUB(given_date, INTERVAL 1 DAY)AND storeid=store_id
+    GROUP BY categories.id  ; 
+
+ ELSEIF mode='week' THEN
+    SELECT categories.title, sum(orderdetails.quantity) as quantity
+    FROM categories
+    INNER JOIN products on categories.id=products.categoryid
+    INNER JOIN productdetails on products.id=productdetails.productid
+    INNER JOIN orderdetails on productdetails.id=orderdetails.productdetailsid
+    INNER JOIN orders on orderdetails.orderid=orders.id
+    WHERE  DATE(orders.orderdate) BETWEEN DATE_SUB(given_date, INTERVAL (DAYOFWEEK(given_date) - 1) DAY) 
+    AND DATE_ADD(given_date, INTERVAL (7 - DAYOFWEEK(given_date)) DAY) AND storeid=store_id
+    GROUP BY categories.id  ; 
+
+  
+ ELSEIF mode='month' THEN
+    SELECT categories.title, sum(orderdetails.quantity) as quantity
+    FROM categories
+    INNER JOIN products on categories.id=products.categoryid
+    INNER JOIN productdetails on products.id=productdetails.productid
+    INNER JOIN orderdetails on productdetails.id=orderdetails.productdetailsid
+    INNER JOIN orders on orderdetails.orderid=orders.id
+    WHERE  DATE(orders.orderdate) BETWEEN DATE_SUB(given_date, INTERVAL DAY(given_date) - 1 DAY)
+    AND LAST_DAY(given_date) AND storeid=store_id
+    GROUP BY categories.id  ; 
+    END IF;
+END;
 
 CREATE PROCEDURE GetStoreOrderCountByMonth(
    IN given_year INT,
