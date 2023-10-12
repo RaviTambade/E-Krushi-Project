@@ -33,10 +33,6 @@ namespace Transflower.EKrushi.BIService.Controllers
         public async Task<List<MonthOrders>> GetMonthOrders(int year,int storeId)
         {
              List<MonthOrders> orders=await _service.GetMonthOrders(year,storeId);
-             foreach(MonthOrders i in orders){
-               
-                Console.WriteLine( i.Month+" "+i.Orders);
-             }
             return orders; 
         }
 

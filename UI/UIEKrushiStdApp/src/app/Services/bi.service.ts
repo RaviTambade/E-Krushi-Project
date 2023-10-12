@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { OrderCount } from '../Models/orderCount';
 import { TopProduct } from '../Models/top-product';
+import { MonthOrderCount } from '../Models/month-order-count';
 
 @Injectable({
   providedIn: 'root'
@@ -24,8 +25,8 @@ export class BIService {
   }
 
 
-  getMonthsWithOrders(year :number,storeId: number): Observable<any[]> {
+  getMonthsWithOrders(year :number,storeId: number): Observable<MonthOrderCount[]> {
     let url = ' http://localhost:5161/api/bi/MonthOrders/' + year+"/" + storeId;
-    return this.httpClient.get<any[]>(url);
+    return this.httpClient.get<MonthOrderCount[]>(url);
   }
 }

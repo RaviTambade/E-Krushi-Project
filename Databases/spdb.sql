@@ -1,4 +1,4 @@
--- Active: 1694968636816@@127.0.0.1@3306@ekrushi
+-- Active: 1678359546568@@127.0.0.1@3306@ekrushi
 
 
 CREATE PROCEDURE insertpayment(
@@ -40,9 +40,8 @@ BEGIN
 END;
 
 
--- orders by date
 
-CREATE PROCEDURE GetOrdersByDate
+CREATE PROCEDURE GetStoreOrderCountForMonth
 (
     IN given_date DATE,
     IN givenStoreId INT,
@@ -75,32 +74,8 @@ BEGIN
 END;
 
 
-CALL GetOrdersByDate('2023-07-26',1,@todaysOrders,@yesterdaysOrders,@weekOrders,@monthOrders);
 
-SELECT @todaysOrders,@yesterdaysOrders,@weekOrders,@monthOrders ;
-
-
-
-SELECT * FROM products
-WHERE id IN (
-    SELECT productid
-    FROM productdetails
-    WHERE id IN (
-        SELECT productdetailsid
-        FROM (
-            SELECT productdetailsid, SUM(quantity) AS TotalQuantity
-            FROM orderdetails
-            GROUP BY productdetailsid
-            ORDER BY TotalQuantity DESC
-            LIMIT 5
-        ) AS TopProducts
-    )
-);
-
-
-
--- top 5 products orders
-CREATE PROCEDURE GetTopProducts
+CREATE PROCEDURE GetTopFiveSellingProductQuantityByStore
 (
     IN todays_date DATE,
     IN mode VARCHAR(255),
@@ -191,7 +166,6 @@ BEGIN
  END IF;
 END;
 
-CALL `GetTopProducts`('2023-10-09','today',1);
 
 
 
@@ -199,7 +173,7 @@ CALL `GetTopProducts`('2023-10-09','today',1);
 
 -- categoriwise orders
 
-CREATE PROCEDURE GetCategoriwiseOrders
+CREATE PROCEDURE GetCategoriwiseOrderCountByStore
 (
     IN given_date DATE,
     IN givenStoreId INT,
@@ -245,19 +219,11 @@ BEGIN
 END;
 
 
-CALL GetCategoriwiseOrders('2023-07-02',4,'seeds',@todaysOrders,@yesterdaysOrders,@weekOrders,@monthOrders);
-
-
-
-
-
-
-
-CREATE PROCEDURE GetMonthNameWithOrders(
+CREATE PROCEDURE GetStoreOrderCountByMonth(
    IN given_year INT,
    IN given_storeid INT
 )
-
+BEGIN
 WITH MonthNumbers AS (
     SELECT 1 AS month_number
     UNION ALL SELECT 2
@@ -283,11 +249,4 @@ GROUP BY
     MonthNumbers.month_number
 ORDER BY
     MonthNumbers.month_number;
-
-
-CALL GetMonthNameWithOrders(2023,2);
-
-
-
-
-
+END;

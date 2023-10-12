@@ -24,7 +24,7 @@ public class BIRepository : IBIRepository
         MySqlConnection connection = new MySqlConnection(_connectionString);
         try
         {
-            MySqlCommand cmd = new MySqlCommand("GetOrdersByDate", connection);
+            MySqlCommand cmd = new MySqlCommand("GetStoreOrderCountForMonth", connection);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@given_date", todaysDate);
             cmd.Parameters.AddWithValue("@givenStoreId", storeId);
@@ -62,7 +62,7 @@ public class BIRepository : IBIRepository
 
         try
         {
-            MySqlCommand cmd = new MySqlCommand("GetTopProducts", connection);
+            MySqlCommand cmd = new MySqlCommand("GetTopFiveSellingProductQuantityByStore", connection);
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@todays_date", todaysDate);
@@ -105,7 +105,7 @@ public class BIRepository : IBIRepository
 
         try
         {
-            MySqlCommand cmd = new MySqlCommand("GetMonthNameWithOrders", connection);
+            MySqlCommand cmd = new MySqlCommand("GetStoreOrderCountByMonth", connection);
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@given_year",year);
@@ -117,11 +117,9 @@ public class BIRepository : IBIRepository
                 MonthOrders product = new MonthOrders()
                 {
                     Month = reader.GetString("month"),
-                    Orders = reader.GetInt32("order_count"),
+                    OrderCount = reader.GetInt32("order_count"),
                   
                 };
-                Console.WriteLine(product.Month);
-                Console.WriteLine(product.Orders);
                 products.Add(product);
             }
             await reader.CloseAsync();
@@ -135,10 +133,7 @@ public class BIRepository : IBIRepository
             await connection.CloseAsync();
         }
         
-        Console.WriteLine(products);
-        return products;
-         
-        
+        return products;    
     }
 
 }
