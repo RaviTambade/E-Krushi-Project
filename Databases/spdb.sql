@@ -1,4 +1,4 @@
--- Active: 1678359546568@@127.0.0.1@3306@ekrushi
+-- Active: 1694968636816@@127.0.0.1@3306@ekrushi
 
 CREATE PROCEDURE insertpayment(
     IN mode VARCHAR(255),
@@ -224,6 +224,9 @@ BEGIN
     END IF;
 END;
 
+
+CALL  GetCategorywiseProductCountByStore('2023-10-10','month',1);
+
 CREATE PROCEDURE GetStoreOrderCountByMonth(
    IN given_year INT,
    IN given_storeid INT
@@ -283,3 +286,4 @@ BEGIN
         FROM orders   INNER JOIN shipperorders on orders.id=shipperorders.orderid 
         WHERE shipperorders.shipperid=shipper_id;
 END;
+

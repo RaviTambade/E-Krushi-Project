@@ -1,12 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChartData, ChartType, ChartEvent } from 'chart.js';
+import { BIService } from 'src/app/Services/bi.service';
 
 @Component({
   selector: 'shop-dognut-chart',
   templateUrl: './dognut-chart.component.html',
   styleUrls: ['./dognut-chart.component.css']
 })
-export class DognutChartComponent {
+export class DognutChartComponent implements OnInit {
+  constructor(private service:BIService){}
+  todaysdate:string=new Date().toISOString().slice(0,10);
+  mode:string='month';
+  storeid:number=1;
   public doughnutChartLabels: string[] = [];
   public doughnutChartData: ChartData<'doughnut'> = {
     labels: this.doughnutChartLabels,
@@ -22,9 +27,16 @@ export class DognutChartComponent {
   public doughnutChartType: ChartType = 'doughnut';
 ngOnInit(): void {
   
-   
-    this.doughnutChartData.labels=['a','b','c','d']
-    this.doughnutChartData.datasets[0].data=[20,40,30,40]
+   this.service.getCategorywiseProductsCount(this.todaysdate,this.mode,this.storeid).subscribe((response)=>{
+     console.log(response);
+      
 
+     this.doughnutChartData.labels=response.map(r=>r.title);
+
+    this.doughnutChartData.datasets[0].data=response.map(r=>r.quantity);
+
+     
+   })
+    
 }
 }
