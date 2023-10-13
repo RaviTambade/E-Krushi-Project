@@ -53,28 +53,27 @@ BEGIN
   
     SELECT count(*) INTO todaysOrders
     FROM Orders
-    WHERE DATE(orderdate) = given_date  AND storeid=givenStoreId;
+    WHERE DATE(orderdate) = given_date AND orders.status <> 'cancelled' AND  storeid=givenStoreId;
 
 
     SELECT count(*) INTO yesterdaysOrders
     FROM Orders
-    WHERE DATE(orderdate) = DATE_SUB(given_date, INTERVAL 1 DAY)AND storeid=givenStoreId;
+    WHERE DATE(orderdate) = DATE_SUB(given_date, INTERVAL 1 DAY) AND orders.status <> 'cancelled' AND storeid=givenStoreId;
 
  
     SELECT count(*) INTO weekOrders
     FROM Orders
     WHERE DATE(orderdate) BETWEEN DATE_SUB(given_date, INTERVAL (DAYOFWEEK(given_date) - 1) DAY) 
-    AND DATE_ADD(given_date, INTERVAL (7 - DAYOFWEEK(given_date)) DAY) AND storeid=givenStoreId; 
+    AND DATE_ADD(given_date, INTERVAL (7 - DAYOFWEEK(given_date)) DAY) AND orders.status <> 'cancelled' AND storeid=givenStoreId; 
   
      SELECT count(*) INTO monthOrders
     FROM Orders
     WHERE DATE(orderdate) BETWEEN DATE_SUB(given_date, INTERVAL DAY(given_date) - 1 DAY)
-    AND LAST_DAY(given_date) AND storeid=givenStoreId;
+    AND LAST_DAY(given_date) AND orders.status <> 'cancelled' AND storeid=givenStoreId;
 END;
 
 
-  
-  
+
 CREATE PROCEDURE GetTopFiveSellingProductQuantityByStore
 (
     IN todays_date DATE,
@@ -89,7 +88,7 @@ BEGIN
     INNER JOIN productdetails ON productdetails.id = orderdetails.productdetailsid
     INNER JOIN orders ON orders.id = orderdetails.orderid
     INNER JOIN products ON productdetails.productid = products.id
-    WHERE DATE(orders.orderdate) = todays_date  AND storeid=store_id;
+    WHERE DATE(orders.orderdate) = todays_date AND orders.status <> 'cancelled'  AND storeid=store_id;
 
 
     SELECT totalquantity, products.id as productid,SUM(orderdetails.quantity) as quantity,
@@ -98,7 +97,7 @@ BEGIN
     INNER JOIN productdetails ON productdetails.id = orderdetails.productdetailsid
     INNER JOIN orders ON orders.id = orderdetails.orderid
     INNER JOIN products ON productdetails.productid = products.id
-    WHERE DATE(orders.orderdate) = todays_date  AND storeid=store_id
+    WHERE DATE(orders.orderdate) = todays_date AND orders.status <> 'cancelled'  AND storeid=store_id
     GROUP BY productid
     ORDER BY quantity DESC
     LIMIT 5; 
@@ -108,7 +107,7 @@ BEGIN
     INNER JOIN productdetails ON productdetails.id = orderdetails.productdetailsid
     INNER JOIN orders ON orders.id = orderdetails.orderid
     INNER JOIN products ON productdetails.productid = products.id
-    WHERE DATE(orderdate) = DATE_SUB(todays_date, INTERVAL 1 DAY) AND storeid=store_id;
+    WHERE DATE(orderdate) = DATE_SUB(todays_date, INTERVAL 1 DAY) AND orders.status <> 'cancelled' AND storeid=store_id;
  
     SELECT totalquantity, products.id AS productid, SUM(orderdetails.quantity) AS quantity,
     ((SUM(orderdetails.quantity)/totalquantity)*100) as percentage,
@@ -116,7 +115,7 @@ BEGIN
     INNER JOIN productdetails ON productdetails.id = orderdetails.productdetailsid
     INNER JOIN orders ON orders.id = orderdetails.orderid
     INNER JOIN products ON productdetails.productid = products.id
-    WHERE DATE(orderdate) = DATE_SUB(todays_date, INTERVAL 1 DAY)   AND storeid=store_id
+    WHERE DATE(orderdate) = DATE_SUB(todays_date, INTERVAL 1 DAY) AND orders.status <> 'cancelled'  AND storeid=store_id
     GROUP BY productid
     ORDER BY quantity DESC
     LIMIT 5;
@@ -128,7 +127,7 @@ BEGIN
     INNER JOIN orders ON orders.id = orderdetails.orderid
     INNER JOIN products ON productdetails.productid = products.id
     WHERE DATE(orders.orderdate) BETWEEN DATE_SUB(todays_date, INTERVAL (DAYOFWEEK(todays_date) - 1) DAY) 
-    AND DATE_ADD(todays_date, INTERVAL (7 - DAYOFWEEK(todays_date)) DAY)  AND storeid=store_id;
+    AND DATE_ADD(todays_date, INTERVAL (7 - DAYOFWEEK(todays_date)) DAY) AND orders.status <> 'cancelled'  AND storeid=store_id;
     
 
     SELECT totalquantity, products.id AS productid, SUM(orderdetails.quantity) AS quantity,
@@ -138,7 +137,7 @@ BEGIN
     INNER JOIN orders ON orders.id = orderdetails.orderid
     INNER JOIN products ON productdetails.productid = products.id
     WHERE DATE(orders.orderdate) BETWEEN DATE_SUB(todays_date, INTERVAL (DAYOFWEEK(todays_date) - 1) DAY) 
-    AND DATE_ADD(todays_date, INTERVAL (7 - DAYOFWEEK(todays_date)) DAY)  AND storeid=store_id
+    AND DATE_ADD(todays_date, INTERVAL (7 - DAYOFWEEK(todays_date)) DAY) AND orders.status <> 'cancelled'  AND storeid=store_id
     GROUP BY productid
     ORDER BY quantity DESC
     LIMIT 5;
@@ -149,7 +148,7 @@ BEGIN
     INNER JOIN orders ON orders.id = orderdetails.orderid
     INNER JOIN products ON productdetails.productid = products.id
     WHERE DATE(orders.orderdate) BETWEEN DATE_SUB(todays_date, INTERVAL DAY(todays_date) - 1 DAY)
-    AND LAST_DAY(todays_date)  AND storeid=store_id;
+    AND LAST_DAY(todays_date) AND orders.status <> 'cancelled'  AND storeid=store_id;
     
     SELECT totalquantity, products.id AS productid,SUM(orderdetails.quantity) AS quantity,
     ((SUM(orderdetails.quantity)/totalquantity)*100) as percentage,
@@ -158,7 +157,7 @@ BEGIN
     INNER JOIN orders ON orders.id = orderdetails.orderid
     INNER JOIN products ON productdetails.productid = products.id
     WHERE DATE(orders.orderdate) BETWEEN DATE_SUB(todays_date, INTERVAL DAY(todays_date) - 1 DAY)
-    AND LAST_DAY(todays_date)  AND storeid=store_id
+    AND LAST_DAY(todays_date) AND orders.status <> 'cancelled'  AND storeid=store_id
     GROUP BY productid
     ORDER BY quantity DESC
     LIMIT 5;
@@ -187,7 +186,7 @@ BEGIN
     INNER JOIN productdetails on products.id=productdetails.productid
     INNER JOIN orderdetails on productdetails.id=orderdetails.productdetailsid
     INNER JOIN orders on orderdetails.orderid=orders.id
-    WHERE DATE(orders.orderdate) = given_date AND storeid=store_id
+    WHERE DATE(orders.orderdate) = given_date AND orders.status <> 'cancelled' AND storeid=store_id
     GROUP BY categories.id  ; 
 
   ELSEIF mode='yesterday' THEN
@@ -197,7 +196,7 @@ BEGIN
     INNER JOIN productdetails on products.id=productdetails.productid
     INNER JOIN orderdetails on productdetails.id=orderdetails.productdetailsid
     INNER JOIN orders on orderdetails.orderid=orders.id
-    WHERE DATE(orders.orderdate)=DATE_SUB(given_date, INTERVAL 1 DAY)AND storeid=store_id
+    WHERE DATE(orders.orderdate)=DATE_SUB(given_date, INTERVAL 1 DAY)AND orders.status <> 'cancelled' AND storeid=store_id
     GROUP BY categories.id  ; 
 
  ELSEIF mode='week' THEN
@@ -208,7 +207,7 @@ BEGIN
     INNER JOIN orderdetails on productdetails.id=orderdetails.productdetailsid
     INNER JOIN orders on orderdetails.orderid=orders.id
     WHERE  DATE(orders.orderdate) BETWEEN DATE_SUB(given_date, INTERVAL (DAYOFWEEK(given_date) - 1) DAY) 
-    AND DATE_ADD(given_date, INTERVAL (7 - DAYOFWEEK(given_date)) DAY) AND storeid=store_id
+    AND DATE_ADD(given_date, INTERVAL (7 - DAYOFWEEK(given_date)) DAY) AND orders.status <> 'cancelled' AND storeid=store_id
     GROUP BY categories.id  ; 
 
   
@@ -220,7 +219,7 @@ BEGIN
     INNER JOIN orderdetails on productdetails.id=orderdetails.productdetailsid
     INNER JOIN orders on orderdetails.orderid=orders.id
     WHERE  DATE(orders.orderdate) BETWEEN DATE_SUB(given_date, INTERVAL DAY(given_date) - 1 DAY)
-    AND LAST_DAY(given_date) AND storeid=store_id
+    AND LAST_DAY(given_date) AND orders.status <> 'cancelled' AND storeid=store_id
     GROUP BY categories.id  ; 
     END IF;
 END;
@@ -253,7 +252,7 @@ SELECT
 FROM
     MonthNumbers
 LEFT JOIN
-    orders ON MonthNumbers.month_number = MONTH(orders.orderdate) AND YEAR(orders.orderdate) = given_year AND storeid = given_storeid
+    orders ON MonthNumbers.month_number = MONTH(orders.orderdate) AND YEAR(orders.orderdate) = given_year AND orders.status <> 'cancelled' AND storeid = given_storeid
 GROUP BY
     MonthNumbers.month_number
 ORDER BY
@@ -288,4 +287,3 @@ BEGIN
         WHERE shipperorders.shipperid=shipper_id;
 END;
 
- CALL GetShipperOrderCountByStatus(2)
