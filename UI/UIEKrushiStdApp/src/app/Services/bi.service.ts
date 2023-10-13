@@ -34,4 +34,10 @@ export class BIService {
     let url = ' http://localhost:5161/api/bi/categorywiseproducts/' + todaysDate+"/"+mode +"/" + storeId;
     return this.httpClient.get<any[]>(url);
   }
+
+  getDeliveredOrders(year :number,storeId: number): Observable<any[]> {
+    let url = ' http://localhost:5161/api/bi/deliveredorders/' + year+"/" + storeId;
+    return this.httpClient.get<any[]>(url);
+  }
+
 }

@@ -183,7 +183,7 @@ public class BIRepository : IBIRepository
 
         try
         {
-            MySqlCommand cmd = new MySqlCommand("diliverorderscountbymonth", connection);
+            MySqlCommand cmd = new MySqlCommand("deliverorderscountbymonth", connection);
 
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@given_year",year);

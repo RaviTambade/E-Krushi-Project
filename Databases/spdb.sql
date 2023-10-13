@@ -310,21 +310,21 @@ GROUP BY Month
 ORDER BY orders.shippeddate;
 
 
-CREATE PROCEDURE diliverorderscountbymonth(
+CREATE PROCEDURE deliverorderscountbymonth(
     IN given_shipperid INT,
     IN given_year INT
 )
 SELECT all_months.Month AS Month,
        IFNULL(delivered_orders.Count, 0) AS Count
 FROM (
-    SELECT DATE_FORMAT(DATE_ADD('2023-01-01', INTERVAL n MONTH), '%M %Y') AS Month
+    SELECT DATE_FORMAT(DATE_ADD('2023-01-01', INTERVAL n MONTH), '%M') AS Month
     FROM (
         SELECT 0 AS n UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL
         SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10 UNION ALL SELECT 11
     ) AS numbers
 ) AS all_months
 LEFT JOIN (
-    SELECT DATE_FORMAT(orders.shippeddate, '%M %Y') AS Month, COUNT(*) AS Count
+    SELECT DATE_FORMAT(orders.shippeddate, '%M ') AS Month, COUNT(*) AS Count
     FROM orders
     INNER JOIN shipperorders ON orders.id = shipperorders.orderid
     WHERE orders.status = 'delivered' AND shipperorders.shipperid = given_shipperid  AND YEAR(orders.orderdate)=given_year
@@ -333,4 +333,4 @@ LEFT JOIN (
 ORDER BY STR_TO_DATE(all_months.Month, '%M');
 
 
-CALL diliverorderscountbymonth(4,2023);
+CALL deliverorderscountbymonth(4,2023);
