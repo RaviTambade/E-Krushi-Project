@@ -15,11 +15,13 @@ body{
 }
 
 .bg-c-yellow {
-  background: linear-gradient(45deg,#FFB64D,#ffcb80);
+  /* background: linear-gradient(45deg,#FFB64D,#ffcb80); */
+  background: linear-gradient(45deg,#f4c4f3,#fc67fa);
+  /* background: linear-gradient(45deg,#FF512F,#DD2476) ; */
 }
 
 .bg-c-pink {
-  background: linear-gradient(45deg,#FF5370,#ff869a);
+  background: linear-gradient(45deg,rgb(255, 83, 112),#ff869a);
 }
 
 

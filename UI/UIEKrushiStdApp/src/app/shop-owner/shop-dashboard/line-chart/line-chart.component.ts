@@ -11,7 +11,6 @@ import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
   styleUrls: ['./line-chart.component.css'],
 })
 export class LineChartComponent implements OnInit {
-
   public lineChartLegend = true;
 
   public lineChartData: ChartConfiguration['data'] = {
@@ -20,36 +19,46 @@ export class LineChartComponent implements OnInit {
         data: [],
         // stepped:true,
         label: 'Order Count',
-        backgroundColor: 'lightblue',
-        borderColor: 'blue',
-        pointBackgroundColor: 'blue',
-        pointBorderColor: 'blue',
-        pointRadius: 5,
-        pointBorderWidth: 2,
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: 'rgba(148,159,177,0.8)',
+
         fill: 'origin',
+        backgroundColor:"rgb(252, 103, 250)",
+        borderColor: 'purple',
+        pointBackgroundColor: 'rgb(252, 80, 83)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgb(252, 80, 83) ',
       },
     ],
     labels: [],
+    
   };
 
   public lineChartOptions: ChartConfiguration['options'] = {
     elements: {
       line: {
-        tension: 0.7,
+        tension: 0.8,
       },
+  
     },
-    scales: {
-      // We use this empty structure as a placeholder for dynamic theming.
-      y: {
-        position: 'left',
 
+    scales: {
+      x: {
         grid: {
-          color: 'rgba(255,0,0,0.3)',
+          display: false,
+          // color:'white',
         },
         ticks: {
-          color: 'red',
+          color: 'white',
+        },
+      },
+      y: {
+        position: 'left',
+        grid: {
+          display: false,
+          // color:'white',
+        },
+        ticks: {
+          color: 'white',
         },
       },
     },
@@ -65,10 +74,10 @@ export class LineChartComponent implements OnInit {
             borderWidth: 2,
             label: {
               position: 'center',
-              color: 'black',
+              color: 'white',
               content: 'LineAnno',
               font: {
-                weight: 'bold',
+                // weight: 'bold',
               },
             },
           },
@@ -96,7 +105,7 @@ export class LineChartComponent implements OnInit {
       .getMonthsWithOrders(this.year, this.storeId)
       .subscribe((response) => {
         console.log(response);
-        this.lineChartData.labels = response.map((item) => item.month );
+        this.lineChartData.labels = response.map((item) => item.month.slice(0,3));
         this.lineChartData.datasets[0].data = response.map(
           (item) => item.orderCount + Math.random()
         );

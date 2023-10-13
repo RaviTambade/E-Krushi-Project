@@ -1,5 +1,12 @@
-<div class=card >
-    <canvas baseChart [datasets]="lineChartData.datasets" [labels]="lineChartData.labels" [options]="lineChartOptions" [legend]="lineChartLegend"
+<div class="card bg-c-gr p-4" >
+  <div class="d-flex justify-content-between" style="float:right ;">
+    <h4>Order Count By Month</h4>
+  <!-- <button> hii</button> -->
+</div>
+    <canvas
+     baseChart
+     [datasets]="lineChartData.datasets" [labels]="lineChartData.labels" [options]="lineChartOptions" [legend]="lineChartLegend"
       [type]="lineChartType"></canvas>
   </div>
+  <!-- <shop-orderscount></shop-orderscount> -->
   
