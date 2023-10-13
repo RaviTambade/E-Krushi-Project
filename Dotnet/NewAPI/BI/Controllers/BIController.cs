@@ -32,7 +32,7 @@ namespace Transflower.EKrushi.BIService.Controllers
          [HttpGet("MonthOrders/{year}/{storeId}")]
         public async Task<List<MonthOrders>> GetMonthOrders(int year,int storeId)
         {
-             List<MonthOrders> orders=await _service.GetMonthOrders(year,storeId);
+            List<MonthOrders> orders=await _service.GetMonthOrders(year,storeId);
             return orders; 
         }
 

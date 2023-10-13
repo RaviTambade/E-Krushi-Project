@@ -1,3 +1,4 @@
+using System.Data;
 using System.Text;
 using System.Text.Json;
 using Dapper;
@@ -185,18 +186,12 @@ public class ShipperRepository : IShipperRepository
         try
         {
             await connection.OpenAsync();
-            string query =
-                @"SELECT
-        SUM(CASE WHEN status = 'ready to dispatch' THEN 1 ELSE 0 END) AS readytodispatch,
-        SUM(CASE WHEN status = 'picked' THEN 1 ELSE 0 END) AS picked,
-        SUM(CASE WHEN status = 'in progress' THEN 1 ELSE 0 END) AS inprogress,
-        SUM(CASE WHEN status = 'delivered' THEN 1 ELSE 0 END) AS delivered,
-        SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS cancelled
-        FROM orders   INNER JOIN shipperorders on orders.id=shipperorders.orderid 
-        WHERE shipperorders.shipperid=@ShipperId";
+           
             return await connection.QueryFirstAsync<OrderStatusCount>(
-                query,
-                new { ShipperId = shipperId }
+                "GetShipperOrderCountByStatus",
+                new { shipper_id = shipperId },
+                commandType:CommandType.StoredProcedure
+
             );
         }
         catch (Exception)

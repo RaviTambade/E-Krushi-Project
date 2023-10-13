@@ -1,8 +1,8 @@
-using TransFlower.EKrushi.Stores.Models;
-using TransFlower.EKrushi.Stores.Services.Interfaces;
+using Transflower.EKrushi.Stores.Models;
+using Transflower.EKrushi.Stores.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace TransFlower.EKrushi.Stores.Controllers;
+namespace Transflower.EKrushi.Stores.Controllers;
 
 [ApiController]
 [Route("/api/stores")]

@@ -3,10 +3,10 @@ using System.Text;
 using System.Text.Json;
 using Dapper;
 using MySql.Data.MySqlClient;
-using TransFlower.EKrushi.Stores.Models;
-using TransFlower.EKrushi.Stores.Repositories.Interfaces;
+using Transflower.EKrushi.Stores.Models;
+using Transflower.EKrushi.Stores.Repositories.Interfaces;
 
-namespace TransFlower.EKrushi.Stores.Repositories;
+namespace Transflower.EKrushi.Stores.Repositories;
 
 public class StoreRepository : IStoreRepository
 {
@@ -54,19 +54,10 @@ public class StoreRepository : IStoreRepository
         try
         {
             await connection.OpenAsync();
-            string query =
-                @"SELECT
-        SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) AS pending,
-        SUM(CASE WHEN status = 'approved' THEN 1 ELSE 0 END) AS approved,
-        SUM(CASE WHEN status = 'ready to dispatch' THEN 1 ELSE 0 END) AS readytodispatch,
-        SUM(CASE WHEN status = 'picked' THEN 1 ELSE 0 END) AS picked,
-        SUM(CASE WHEN status = 'in progress' THEN 1 ELSE 0 END) AS inprogress,
-        SUM(CASE WHEN status = 'delivered' THEN 1 ELSE 0 END) AS delivered,
-        SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS cancelled
-    FROM orders WHERE storeid = @StoreId";
             return await connection.QueryFirstAsync<OrderStatusCount>(
-                query,
-                new { StoreId = storeId }
+                "GetStoreOrderCountByStatus",
+                new { store_id = storeId },
+                commandType:CommandType.StoredProcedure
             );
         }
         catch (Exception)
