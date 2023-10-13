@@ -310,8 +310,10 @@ GROUP BY Month
 ORDER BY orders.shippeddate;
 
 
-
-
+CREATE PROCEDURE diliverorderscountbymonth(
+    IN given_shipperid INT,
+    IN given_year INT
+)
 SELECT all_months.Month AS Month,
        IFNULL(delivered_orders.Count, 0) AS Count
 FROM (
@@ -325,9 +327,10 @@ LEFT JOIN (
     SELECT DATE_FORMAT(orders.shippeddate, '%M %Y') AS Month, COUNT(*) AS Count
     FROM orders
     INNER JOIN shipperorders ON orders.id = shipperorders.orderid
-    WHERE orders.status = 'delivered' AND shipperorders.shipperid = 2
+    WHERE orders.status = 'delivered' AND shipperorders.shipperid = given_shipperid  AND YEAR(orders.orderdate)=given_year
     GROUP BY Month
 ) AS delivered_orders ON all_months.Month = delivered_orders.Month
-ORDER BY STR_TO_DATE(all_months.Month, '%M %Y');
+ORDER BY STR_TO_DATE(all_months.Month, '%M');
 
 
+CALL diliverorderscountbymonth(4,2023);

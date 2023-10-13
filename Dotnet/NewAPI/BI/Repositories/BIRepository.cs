@@ -176,5 +176,43 @@ public class BIRepository : IBIRepository
         return products;
     }
 
+ public async Task<List<DeliveredOrders>> GetDeliveredOrdersbyMonth(int year, int shipperId)
+    {
+        List<DeliveredOrders> orders = new List<DeliveredOrders>();
+        MySqlConnection connection = new MySqlConnection(_connectionString);
+
+        try
+        {
+            MySqlCommand cmd = new MySqlCommand("diliverorderscountbymonth", connection);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@given_year",year);
+            cmd.Parameters.AddWithValue("@given_shipperid", shipperId);
+            await connection.OpenAsync();
+            MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
+            {
+                DeliveredOrders order = new DeliveredOrders()
+                {
+                    Month = reader.GetString("month"),
+                    OrdersCount = reader.GetInt32("count"),
+                  
+                };
+                orders.Add(order);
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+        
+        return orders;    
+    }
+
 
 }

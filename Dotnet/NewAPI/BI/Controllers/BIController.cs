@@ -45,5 +45,12 @@ namespace Transflower.EKrushi.BIService.Controllers
         }
 
 
+         [HttpGet("DeliveredOrders/{year}/{shipperId}")]
+        public async Task<List<DeliveredOrders>> GetDeliveredOrdersbyMonth(int year,int shipperId)
+        {
+            List<DeliveredOrders> orders=await _service.GetDeliveredOrdersbyMonth(year,shipperId);
+            return orders; 
+        }
+
     }
 }
