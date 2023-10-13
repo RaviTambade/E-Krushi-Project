@@ -84,8 +84,8 @@ export class LoginComponent {
         if (this.userId != undefined)
           this.storesvc.getStoreId(this.userId).subscribe((res) => {
             localStorage.setItem(LocalStorageKeys.storeId, res.toString());
+            this.router.navigate(['shop/dashboard']);
           });
-        this.router.navigate(['shop/dashboard']);
         break;
       case Role.Supplier:
         this.router.navigate(['supplier/dashboard']);
@@ -94,8 +94,8 @@ export class LoginComponent {
         if (this.userId != undefined)
           this.shippersvc.getShipperId(this.userId).subscribe((res) => {
             localStorage.setItem(LocalStorageKeys.shipperId, res.toString());
+            this.router.navigate(['shipper/dashboard']);
           });
-        this.router.navigate(['shipper/dashboard']);
         break;
       case Role.SubjectMatterExpert:
         this.router.navigate(['sme/dashboard']);
