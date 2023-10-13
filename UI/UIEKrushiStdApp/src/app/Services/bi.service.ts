@@ -29,4 +29,9 @@ export class BIService {
     let url = ' http://localhost:5161/api/bi/MonthOrders/' + year+"/" + storeId;
     return this.httpClient.get<MonthOrderCount[]>(url);
   }
+
+  getCategorywiseProductsCount(todaysDate :string,mode:string,storeId: number): Observable<any[]> {
+    let url = ' http://localhost:5161/api/bi/categorywiseproducts/' + todaysDate+"/"+mode +"/" + storeId;
+    return this.httpClient.get<any[]>(url);
+  }
 }
