@@ -1,4 +1,4 @@
-namespace TransFlower.EKrushi.Stores.Models;
+namespace Transflower.EKrushi.Stores.Models;
 
 public class OrderStatusCount
 {

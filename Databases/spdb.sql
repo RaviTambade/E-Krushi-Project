@@ -260,3 +260,32 @@ ORDER BY
     MonthNumbers.month_number;
 END;
 
+CREATE PROCEDURE GetStoreOrderCountByStatus(
+   IN store_id INT
+)
+BEGIN
+   SELECT SUM(CASE WHEN status = 'pending' THEN 1 ELSE 0 END) AS pending,
+        SUM(CASE WHEN status = 'approved' THEN 1 ELSE 0 END) AS approved,
+        SUM(CASE WHEN status = 'ready to dispatch' THEN 1 ELSE 0 END) AS readytodispatch,
+        SUM(CASE WHEN status = 'picked' THEN 1 ELSE 0 END) AS picked,
+        SUM(CASE WHEN status = 'in progress' THEN 1 ELSE 0 END) AS inprogress,
+        SUM(CASE WHEN status = 'delivered' THEN 1 ELSE 0 END) AS delivered,
+        SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS cancelled
+    FROM orders WHERE storeid = store_id;
+END;
+
+CREATE PROCEDURE GetShipperOrderCountByStatus(
+   IN shipper_id INT
+)
+BEGIN
+      SELECT
+        SUM(CASE WHEN status = 'ready to dispatch' THEN 1 ELSE 0 END) AS readytodispatch,
+        SUM(CASE WHEN status = 'picked' THEN 1 ELSE 0 END) AS picked,
+        SUM(CASE WHEN status = 'in progress' THEN 1 ELSE 0 END) AS inprogress,
+        SUM(CASE WHEN status = 'delivered' THEN 1 ELSE 0 END) AS delivered,
+        SUM(CASE WHEN status = 'cancelled' THEN 1 ELSE 0 END) AS cancelled
+        FROM orders   INNER JOIN shipperorders on orders.id=shipperorders.orderid 
+        WHERE shipperorders.shipperid=shipper_id;
+END;
+
+ CALL GetShipperOrderCountByStatus(2)
