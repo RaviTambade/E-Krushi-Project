@@ -28,6 +28,7 @@ END;
 
 
 
+
 CREATE TRIGGER after_order_update
 AFTER UPDATE ON orders
 FOR EACH ROW
@@ -37,6 +38,7 @@ BEGIN
         VALUES (OLD.id, NEW.status);
     END IF;
 END;
+
 
 
 
@@ -71,6 +73,7 @@ BEGIN
     WHERE DATE(orderdate) BETWEEN DATE_SUB(given_date, INTERVAL DAY(given_date) - 1 DAY)
     AND LAST_DAY(given_date) AND orders.status <> 'cancelled' AND storeid=givenStoreId;
 END;
+
 
 
 
@@ -227,6 +230,9 @@ END;
 
 CALL  GetCategorywiseProductCountByStore('2023-10-10','month',1);
 
+
+
+
 CREATE PROCEDURE GetStoreOrderCountByMonth(
    IN given_year INT,
    IN given_storeid INT
@@ -273,6 +279,9 @@ BEGIN
     FROM orders WHERE storeid = store_id;
 END;
 
+
+
+
 CREATE PROCEDURE GetShipperOrderCountByStatus(
    IN shipper_id INT
 )
@@ -286,4 +295,39 @@ BEGIN
         FROM orders   INNER JOIN shipperorders on orders.id=shipperorders.orderid 
         WHERE shipperorders.shipperid=shipper_id;
 END;
+
+
+
+SELECT Count(orders.shippeddate) FROM orders
+INNER JOIN shipperorders on orders.id= shipperorders.orderid WHERE orders.status='delivered' and shipperorders.shipperid=2;
+select * from orders;
+
+SELECT DATE_FORMAT(orders.shippeddate, '%M %Y') AS Month, COUNT(*) AS Count
+FROM orders
+INNER JOIN shipperorders ON orders.id = shipperorders.orderid
+WHERE orders.status = 'delivered' AND shipperorders.shipperid = 2
+GROUP BY Month
+ORDER BY orders.shippeddate;
+
+
+
+
+SELECT all_months.Month AS Month,
+       IFNULL(delivered_orders.Count, 0) AS Count
+FROM (
+    SELECT DATE_FORMAT(DATE_ADD('2023-01-01', INTERVAL n MONTH), '%M %Y') AS Month
+    FROM (
+        SELECT 0 AS n UNION ALL SELECT 1 UNION ALL SELECT 2 UNION ALL SELECT 3 UNION ALL SELECT 4 UNION ALL SELECT 5 UNION ALL
+        SELECT 6 UNION ALL SELECT 7 UNION ALL SELECT 8 UNION ALL SELECT 9 UNION ALL SELECT 10 UNION ALL SELECT 11
+    ) AS numbers
+) AS all_months
+LEFT JOIN (
+    SELECT DATE_FORMAT(orders.shippeddate, '%M %Y') AS Month, COUNT(*) AS Count
+    FROM orders
+    INNER JOIN shipperorders ON orders.id = shipperorders.orderid
+    WHERE orders.status = 'delivered' AND shipperorders.shipperid = 2
+    GROUP BY Month
+) AS delivered_orders ON all_months.Month = delivered_orders.Month
+ORDER BY STR_TO_DATE(all_months.Month, '%M %Y');
+
 

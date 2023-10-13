@@ -378,8 +378,13 @@ LIMIT
 
 select * from orders ;
 
+
 select * from productdetails;
- select * from categories;
+ 
+ 
+select * from categories;
+
+
 
 --  categoriwise product orders sell
  select COUNT(*) from orders
