@@ -39,6 +39,9 @@
 
               <ul *ngIf="isUserHaveRequiredRole(Role.ShopOwner) && showLinks" class="card">
                 <li class="nav-item">
+                  <a class="nav-link text-dark" [routerLink]="['/user/profile']">Profile</a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link text-dark" [routerLink]="['/shop/dashboard']">Dashboard</a>
                 </li>
                 <li class="nav-item">

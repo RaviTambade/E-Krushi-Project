@@ -4,6 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { NameId } from '../Models/nameId';
 import { Address } from '../Models/address';
 import { AddressInfo } from '../Models/addressinfo';
+import { User } from '../Models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -18,11 +19,28 @@ export class UserService {
     let url = 'http://localhost:5102/api/users/username/' + contactNumber;
     return this.httpClient.get<NameId>(url);
   }
-
-  getUserRole(userId: number): Observable<string[]> {
-    let url = 'http://localhost:6031/api/userroles/roles/' + userId;
-    return this.httpClient.get<string[]>(url);
+  getUserNamesWithId(userId: string): Observable<NameId[]> {
+    let url = "http://localhost:5102/api/users/name/" + userId;
+    return this.httpClient.get<NameId[]>(url)
   }
+
+
+  addUser(user: User): Observable<any> {
+    let url = "http://localhost:5102/api/users"
+    return this.httpClient.post<any>(url, user)
+  }
+
+  updateUser(id: number, user: User): Observable<any> {
+    let url = "http://localhost:5102/api/users/" + id
+    return this.httpClient.put<any>(url, user)
+  }
+
+  getUser(id: number): Observable<any> {
+    let url = "http://localhost:5102/api/users/" + id
+    return this.httpClient.get<any>(url)
+  }
+
+
 
   addAddress(address: Address): Observable<boolean> {
     let url = 'http://localhost:5102/api/addresses';
@@ -42,6 +60,11 @@ export class UserService {
   getaddressInfoByIdString(addressIdString:string): Observable<AddressInfo[]> {
     let url = 'http://localhost:5102/api/addresses/info/' + addressIdString;
     return this.httpClient.get<AddressInfo[]>(url);
+  }
+
+  getUserRole(userId: number): Observable<string[]> {
+    let url = 'http://localhost:6031/api/userroles/roles/' + userId;
+    return this.httpClient.get<string[]>(url);
   }
 
 }

@@ -12,7 +12,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { customerRoutes } from './customer/customer.module';
 import { shipperRoutes } from './shipper/shipper.module';
-import { ShopOwnerModule, shopRoutes } from './shop-owner/shop-owner.module';
+import { shopRoutes } from './shop-owner/shop-owner.module';
 import { subjetcMatterExpertRoutes } from './subject-matter-expert/subject-matter-expert.module';
 import { supplierRoutes } from './supplier/supplier.module';
 import { SecondaryNavMenuComponent } from './secondary-nav-menu/secondary-nav-menu.component';
@@ -23,11 +23,12 @@ import { OrderService } from './Services/order-service.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import {  MatSnackBarModule } from '@angular/material/snack-bar';
 import { orderProcessingRoutes } from './order-processing/order-processing.module';
 import { ConsultingModule, consultingRoutes } from './consulting/consulting.module';
 import { ConfirmationBoxComponent } from './confirmation-box/confirmation-box.component';
-// import { consultingRoutes } from './consulting/consulting.module';
+import { userRoutes } from './users/users.module';
+
 
 @NgModule({
   declarations: [
@@ -48,15 +49,14 @@ import { ConfirmationBoxComponent } from './confirmation-box/confirmation-box.co
     CatalogModule,
     MatDialogModule,
     MatSnackBarModule,
-    ConsultingModule,
-    
-    
+        
 
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'aboutus', component: AboutUsComponent },
       { path: 'home', component: HomeComponent },
       { path: 'login', component: LoginComponent },
+      { path: 'user', children: userRoutes },
       { path: 'customer', children: customerRoutes },
       { path: 'catalog', children: catlogRoutes },
       { path: 'shipper', children: shipperRoutes },
