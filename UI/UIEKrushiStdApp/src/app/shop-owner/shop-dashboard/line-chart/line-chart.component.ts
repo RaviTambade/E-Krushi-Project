@@ -107,7 +107,7 @@ export class LineChartComponent implements OnInit {
         console.log(response);
         this.lineChartData.labels = response.map((item) => item.month.slice(0,3));
         this.lineChartData.datasets[0].data = response.map(
-          (item) => item.orderCount + Math.random()
+          (item) => item.orderCount 
         );
       });
   }

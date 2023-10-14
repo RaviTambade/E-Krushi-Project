@@ -1,4 +1,26 @@
 
-a{
-    color: rgb(236, 110, 173);
+.custom-button {
+    margin-bottom: 4px;
+    background-color: #fff;
+    border: 2px solid #007991;
+    color: #007991;
+    border-radius: 0.8rem;
+    padding: 2px 4px;
+    text-transform: uppercase;
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s transform 0.3s;
+}
+
+.custom-button:hover {
+    transform: scale(1.1);
+    background: #007991;
+    background: linear-gradient(to right, #78ffd6, #007991);
+    border: none;
+    color: #fff;
+}
+
+.custom-button-active {
+    background: #007991;
+    background: linear-gradient(to right, #78ffd6, #007991);
+    border: none;
+    color: #fff;
 }

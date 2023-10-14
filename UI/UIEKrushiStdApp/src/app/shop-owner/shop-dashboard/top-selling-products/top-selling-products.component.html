@@ -8,7 +8,7 @@
                 <option *ngFor="let mode of modes" [ngValue]="mode">{{mode |titlecase}}</option>
             </select>
         </div>
-        <button class="btn text-white bg-c-blue "> <h6 class="text-center mx-2"> Total - {{products[0].totalQuantity}}</h6>
+        <button *ngIf="products.length>0" class="btn text-white bg-c-blue "> <h6 class="text-center mx-2"> Total - {{products[0].totalQuantity}}</h6>
         </button>
     </div>
 

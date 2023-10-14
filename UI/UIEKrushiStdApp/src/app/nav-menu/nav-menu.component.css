@@ -1,6 +1,5 @@
 a.navbar-brand {
   white-space: normal;
-  text-align: center;
   word-break: break-all;
 }
 
@@ -25,4 +24,35 @@ html {
   top: 0;
   left: 0;
   right: 0;
+}
+
+
+ul.card {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px; 
+  padding: 8px; 
+}
+
+ul.card li.nav-item {
+  list-style: none; 
+  margin: 4px 0; 
+}
+
+ul.card li.nav-item a.nav-link {
+  display: block;
+  padding: 6px 12px; 
+  text-decoration: none;
+  color: #333; 
+  transition: background-color 0.3s, color 0.3s; 
+}
+
+
+ul.card li.nav-item a.nav-link:hover {
+  background: linear-gradient(45deg,#4099ff,#73b4ff);
+  color: #fff; 
 }

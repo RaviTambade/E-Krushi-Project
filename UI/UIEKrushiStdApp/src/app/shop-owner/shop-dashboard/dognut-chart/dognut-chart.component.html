@@ -1,11 +1,12 @@
 <div class="card  p-3" >
   <div>
-    <h4>Order Count By Month</h4>
+    <h4>Product Category Sales</h4>
   </div>
-  <div class="d-flex" hidden>
-  <!-- <button> hii</button>
-  <button> hii</button>
-  <button> hii</button> -->
+  <div class=" d-flex flex-wrap flex  justify-content-between ">
+    <button class="custom-button" [ngClass]="{'custom-button-active':isModeActive(modes.today)}"  (click)="changeMode(modes.today)" >{{modes.today |titlecase}}</button>
+    <button class="custom-button" [ngClass]="{'custom-button-active':isModeActive(modes.yesterday)}" (click)="changeMode(modes.yesterday)">{{modes.yesterday |titlecase}}</button>
+    <button class="custom-button" [ngClass]="{'custom-button-active':isModeActive(modes.week)}" (click)="changeMode(modes.week)">{{modes.week |titlecase}}</button>
+    <button class="custom-button" [ngClass]="{'custom-button-active':isModeActive(modes.month)}" (click)="changeMode(modes.month)" >{{modes.month |titlecase}}</button>
 </div>
 <canvas
   baseChart
@@ -15,7 +16,5 @@
 >
 
 </canvas>
-<!-- <select>
-  <option></option>
-</select> -->
+
 </div>

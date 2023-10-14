@@ -6,6 +6,7 @@ export class TopProduct {
       public  percentage: number,
       public  title: number,
       public  imageURL: number,
-    ) {}
+    ) {
+    }
   }
   

@@ -1,9 +1,9 @@
 <header >
   <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 fixed-top">
-    <div class="container">
+    <div class="w-100 d-flex mx-4">
       <a class="navbar-brand" *ngIf="isUserHaveRequiredRole(Role.Customer) || !isLoggedIn()" [routerLink]="['/home']"><b>EKrushi Seva</b></a>
-      <a class="navbar-brand" *ngIf="isUserHaveRequiredRole(Role.ShopOwner) && isLoggedIn() " [routerLink]="['/shop/dashboard']"><b>EKrushi Seva</b></a>
-      <a class="navbar-brand" *ngIf="isUserHaveRequiredRole(Role.Shipper) && isLoggedIn()" [routerLink]="['/shipper/dashboard']"><b>EKrushi Seva</b></a>
+      <a class="navbar-brand " *ngIf="isUserHaveRequiredRole(Role.ShopOwner) && isLoggedIn() " [routerLink]="['/shop/dashboard']"><b>EKrushi Seva</b></a>
+      <a class="navbar-brand " *ngIf="isUserHaveRequiredRole(Role.Shipper) && isLoggedIn()" [routerLink]="['/shipper/dashboard']"><b>EKrushi Seva</b></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
         aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
         <span class="navbar-toggler-icon"></span>
@@ -28,8 +28,7 @@
             <div class="nav-link text-dark" (mouseenter)="showLinks = true" (mouseleave)="showLinks = false">
               Welcome, <p>{{name}}</p>
               
-              <ul *ngIf="isUserHaveRequiredRole(Role.Customer) && showLinks" class="card"
-                style="position: absolute; top: 100%; left: 0; z-index: 1000; background-color: #fff; border: 1px solid #ccc;">
+              <ul *ngIf="isUserHaveRequiredRole(Role.Customer) && showLinks" class="card">
                 <li class="nav-item">
                   <a class="nav-link text-dark" [routerLink]="['/customer/orders']">Orders</a>
                 </li>
@@ -38,8 +37,7 @@
                 </li>
               </ul>
 
-              <ul *ngIf="isUserHaveRequiredRole(Role.ShopOwner) && showLinks" class="card"
-                style="position: absolute; top: 100%; left: 0; z-index: 1000; background-color: #fff; border: 1px solid #ccc;">
+              <ul *ngIf="isUserHaveRequiredRole(Role.ShopOwner) && showLinks" class="card">
                 <li class="nav-item">
                   <a class="nav-link text-dark" [routerLink]="['/shop/dashboard']">Dashboard</a>
                 </li>
@@ -48,8 +46,7 @@
                 </li>
               </ul>
 
-              <ul *ngIf="isUserHaveRequiredRole(Role.Shipper) && showLinks" class="card"
-              style="position: absolute; top: 100%; left: 0; z-index: 1000; background-color: #fff; border: 1px solid #ccc;">
+              <ul *ngIf="isUserHaveRequiredRole(Role.Shipper) && showLinks" class="card" >
               <li class="nav-item">
                 <a class="nav-link text-dark" [routerLink]="['/shipper/dashboard']">Dashboard</a>
               </li>
@@ -65,10 +62,10 @@
             <a class="nav-link text-dark"> <i class="fa-solid fa-cart-shopping"
                 [routerLink]="['customer/shoppingcart']"></i></a>
           </li>
-          <li class="nav-item" *ngIf="isLoggedIn()">
+          <li class="nav-item " *ngIf="isLoggedIn()">
             <a class="nav-link text-dark" (click)="logOut()">LogOut</a>
           </li>
-          <li class="nav-item" *ngIf="!isLoggedIn()">
+          <li class="nav-item " *ngIf="!isLoggedIn()">
             <a class="nav-link text-dark" [routerLink]="['/login']">Login</a>
           </li>
         </ul>
