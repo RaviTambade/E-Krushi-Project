@@ -399,7 +399,7 @@ public class ConsultingRepository : IConsultingRepository
         connection.ConnectionString = _connectionString;
         try
         {
-            string query = "select questions.description from questions Inner join smeanswers on questions.id = smeanswers.questionid where smeanswers.smeid=@id;";
+            string query = " select questions.description from questions Inner join answers on questions.id = answers.questionid inner join smeanswers on answers.id=smeanswers.answerid where smeanswers.smeid=@id";
             MySqlCommand command = new MySqlCommand(query, connection);
             await connection.OpenAsync();
             command.Parameters.AddWithValue("@id", id);

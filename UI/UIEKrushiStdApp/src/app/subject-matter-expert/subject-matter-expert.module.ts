@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SubjetcMatterExpertDashboardComponent } from './subjetc-matter-expert-dashboard/subjetc-matter-expert-dashboard.component';
 import { Routes } from '@angular/router';
 import { BlogComponent } from './blog/blog.component';
+import { SmequestionsComponent } from './smequestions/smequestions.component';
 
 export const subjetcMatterExpertRoutes: Routes = [
   { path: 'dashboard', component: SubjetcMatterExpertDashboardComponent },
@@ -12,7 +13,8 @@ export const subjetcMatterExpertRoutes: Routes = [
 @NgModule({
   declarations: [
     SubjetcMatterExpertDashboardComponent,
-    BlogComponent
+    BlogComponent,
+    SmequestionsComponent
   ],
   imports: [
     CommonModule

@@ -5,7 +5,6 @@ import { ReletedquestionsComponent } from './reletedquestions/reletedquestions.c
 import { CategorywisequestionsComponent } from './categorywisequestions/categorywisequestions.component';
 import { RouterModule, Routes } from '@angular/router';
 
-
 export const consultingRoutes: Routes = [
   {path:'categorywisequestions/:categoryId',component:CategorywisequestionsComponent}
   
@@ -16,7 +15,7 @@ export const consultingRoutes: Routes = [
   declarations: [
     QuestionCatagoriesComponent,
     ReletedquestionsComponent,
-    CategorywisequestionsComponent
+    CategorywisequestionsComponent,
   ],
   imports: [
     CommonModule,

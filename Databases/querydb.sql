@@ -376,7 +376,7 @@ LIMIT
 
 
 
-select * from orders ;
+select * from smeanswers ;
 
 
 select * from productdetails;
@@ -384,7 +384,7 @@ select * from productdetails;
  
 select * from categories;
 
-
+show TABLES;
 
 --  categoriwise product orders sell
  select COUNT(*) from orders
@@ -395,7 +395,13 @@ select * from categories;
     WHERE categories.title="seeds" AND DATE(orders.orderdate) BETWEEN DATE_SUB('2023-07-01', INTERVAL (DAYOFWEEK('2023-07-11') - 1) DAY) 
     AND DATE_ADD('2023-07-11', INTERVAL (7 - DAYOFWEEK('2023-07-11')) DAY) AND storeid=4; 
   
-                            
+
+
+        select questions.description from questions
+         Inner join answers on questions.id = answers.questionid 
+         inner join smeanswers on answers.id=smeanswers.answerid
+         where smeanswers.smeid=5;
+                        
 
 
 
