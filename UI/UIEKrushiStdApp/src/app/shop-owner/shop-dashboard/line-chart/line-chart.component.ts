@@ -48,7 +48,7 @@ export class LineChartComponent implements OnInit {
           // color:'white',
         },
         ticks: {
-          color: 'white',
+          color: 'black',
         },
       },
       y: {
@@ -58,7 +58,7 @@ export class LineChartComponent implements OnInit {
           // color:'white',
         },
         ticks: {
-          color: 'white',
+          color: 'black',
         },
       },
     },

@@ -56,6 +56,8 @@ export class LoginComponent {
                 .getUserRole(this.userId)
                 .subscribe((response) => {
                   this.roles = response;
+                  console.log("🚀 ~ .subscribe ~ roles:", this.roles);
+                  localStorage.setItem(LocalStorageKeys.roles,JSON.stringify(this.roles));
                   console.log(this.roles);
                   if (this.roles?.length == 1) {
                     const role = this.roles[0];
@@ -75,7 +77,6 @@ export class LoginComponent {
   }
 
   navigateByRole(role: string) {
-    this.userService.reloadnavbar.next();
     switch (role) {
       case Role.Customer:
         this.router.navigate(['customer/dashboard']);
@@ -101,6 +102,7 @@ export class LoginComponent {
         this.router.navigate(['sme/dashboard']);
         break;
     }
+    this.userService.reloadnavbar.next();
   }
   showLoginPage() {
     return this.roles.length < 1;

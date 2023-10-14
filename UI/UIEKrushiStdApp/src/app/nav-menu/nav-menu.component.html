@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 fixed-top">
     <div class="container">
       <a class="navbar-brand" *ngIf="isUserHaveRequiredRole(Role.Customer) || !isLoggedIn()" [routerLink]="['/home']"><b>EKrushi Seva</b></a>
-      <a class="navbar-brand" *ngIf="isUserHaveRequiredRole(Role.ShopOwner) && isLoggedIn()" [routerLink]="['/shop/dashboard']"><b>EKrushi Seva</b></a>
+      <a class="navbar-brand" *ngIf="isUserHaveRequiredRole(Role.ShopOwner) && isLoggedIn() " [routerLink]="['/shop/dashboard']"><b>EKrushi Seva</b></a>
       <a class="navbar-brand" *ngIf="isUserHaveRequiredRole(Role.Shipper) && isLoggedIn()" [routerLink]="['/shipper/dashboard']"><b>EKrushi Seva</b></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
         aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
@@ -14,7 +14,7 @@
       <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
         <ul class="navbar-nav flex-grow">
           <li class="nav-item">
-            <a  *ngIf="isUserHaveRequiredRole(Role.ShopOwner)" class="nav-link text-dark "[routerLink]="['/shop/dashoard']"><b>{{storeName}}</b></a>
+            <a  *ngIf="isUserHaveRequiredRole(Role.ShopOwner) && isLoggedIn()" class="nav-link text-dark "[routerLink]="['/shop/dashoard']"><b>{{storeName}}</b></a>
           </li>
         </ul>
       </div>

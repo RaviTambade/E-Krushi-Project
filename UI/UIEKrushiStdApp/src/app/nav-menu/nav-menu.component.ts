@@ -18,25 +18,28 @@ export class NavMenuComponent implements OnInit, OnDestroy {
   name: string | undefined;
   Role = Role;
   roles: string[] = [];
-  storeName: string | undefined;
+  storeName: string = '';
   reloadNavSubscription: Subscription | undefined;
 
   constructor(
     private router: Router,
     private userService: UserService,
-    private storesvc:StoreService,
+    private storesvc: StoreService,
     private authService: AuthenticationService
   ) {}
 
   ngOnInit(): void {
     this.fetchNameAndRoles();
-    
+
     this.reloadNavSubscription = this.userService.reloadnavbar.subscribe(() => {
-      this.fetchNameAndRoles();
+      setTimeout(() => {
+        this.fetchNameAndRoles();
+      }, 1000);
     });
   }
 
   isUserHaveRequiredRole(role: string): boolean {
+   
     if (this.roles.includes(role)) {
       return true;
     } else {
@@ -57,6 +60,12 @@ export class NavMenuComponent implements OnInit, OnDestroy {
   }
 
   fetchNameAndRoles() {
+    const roles = localStorage.getItem(LocalStorageKeys.roles);
+    if (roles != null) {
+      this.roles = JSON.parse(roles);
+    }
+    this.fetchStoreName();
+
     let contactNumber = this.authService.getContactNumberFromToken();
     if (contactNumber != null) {
       this.userService.getUserByContact(contactNumber).subscribe((response) => {
@@ -64,37 +73,35 @@ export class NavMenuComponent implements OnInit, OnDestroy {
         this.name = response.name;
       });
     }
-
-    let userId = localStorage.getItem(LocalStorageKeys.userId);
-    if (userId !== null) {
-      this.userService.getUserRole(Number(userId)).subscribe((res) => {
-        this.roles = res;
-      });
-    }
-
-    this.fetchStoreName();
   }
 
-  fetchStoreName(){
+  fetchStoreName() {
     const storeId = Number(localStorage.getItem(LocalStorageKeys.storeId));
     if (Number.isNaN(storeId) || storeId == 0) {
       return;
     }
-    this.storesvc.getStoreName(storeId).subscribe((res)=>{
-      this.storeName=res.name;
-    })
+    this.storesvc.getStoreName(storeId).subscribe((res) => {
+      this.storeName = res.name;
+    });
   }
 
   logOut() {
+    this.storeName = '';
     localStorage.clear();
-    this.fetchNameAndRoles();
     this.router.navigate(['login']);
-
   }
 
   ngOnDestroy(): void {
     this.reloadNavSubscription?.unsubscribe();
   }
 
-
+  onClickProjectName() {
+    if (this.roles.includes(Role.Customer)) {
+      this.router.navigate(['/home']);
+    } else if (this.roles.includes(Role.Shipper)) {
+      this.router.navigate(['/shipper/dashboard']);
+    } else if (this.roles.includes(Role.ShopOwner)) {
+      this.router.navigate(['/shop/dashboard']);
+    } else this.router.navigate(['/home']);
+  }
 }
