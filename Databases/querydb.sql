@@ -397,13 +397,25 @@ show TABLES;
   
 
 
-        select questions.description from questions
+        select questions.description,question.id from questions
          Inner join answers on questions.id = answers.questionid 
          inner join smeanswers on answers.id=smeanswers.answerid
          where smeanswers.smeid=5;
-                        
+                    SELECT * from subjectmatterexperts;
 
+SHOW TABLES;
 
+CREATE PROCEDURE NotAnsweredQuestions(
+    IN given_userid INT
+)
+BEGIN
+SELECT questions.id, questions.description
+FROM questions
+LEFT JOIN answers ON questions.id = answers.questionid
+LEFT JOIN subjectmatterexperts ON subjectmatterexperts.categoryid = questions.categoryid
+WHERE answers.questionid IS NULL AND subjectmatterexperts.userid=given_userid ;
+END;
 
+CALL NotAnsweredQuestions();
 
 
