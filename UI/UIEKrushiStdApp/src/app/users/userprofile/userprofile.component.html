@@ -2,19 +2,19 @@
   <div class="profile-info">
 
     <div class="profile-image" *ngIf="!editingImage">
-      <img style="height:auto; border-radius: 250px;" [src]=imageurl width="260" height="260">
+      <img style=" border-radius: 250px;" [src]=imageurl width="260" height="260">
       <br>
-      <button (click)="editImage()">
+      <button class="btn btn-primary m-1" (click)="editImage()">
         <i class="fa fa-pencil"></i> Edit
       </button>
       <input type="file" #fileInput style="display: none" (change)="onFileSelected($event)">
     </div>
     <div class="image-preview" *ngIf="selectedImageUrl && editingImage">
-      <img style="height:auto; border-radius: 250px;" [src]="selectedImageUrl" alt="Preview Image" width="260"
+      <img style="border-radius: 250px;" [src]="selectedImageUrl" alt="Preview Image" width="260"
         height="260">
       <br>
-      <button (click)="confirmImage()">Confirm</button>
-      <button (click)="cancelImage()">Cancel</button>
+      <button class=" btn btn-primary mx-2" (click)="confirmImage()">Confirm</button>
+      <button class="btn btn-danger"(click)="cancelImage()">Cancel</button>
     </div>
 
     <div class="profile-details">
@@ -25,9 +25,16 @@
       <p><strong>Email:</strong> {{ user.email }}</p>
       <p><strong>Contact Number:</strong> {{ user.contactNumber }}</p>
       <div class="edit-link">
-        <li><a routerLink="/user/update/details" routerLinkActive="router-link-active">Update Profile</a></li>
-        <li><a routerLink="/auth/updatepassword" routerLinkActive="router-link-active">Update Your Password</a></li>
+        <li><a (click)="onClickUpdateProfile()" routerLinkActive="router-link-active">Update Profile</a></li>
+        <li><a (click)="onClickUpdatePassword()" routerLinkActive="router-link-active">Update Your Password</a></li>
       </div>
     </div>
   </div>
+</div>
+<div *ngIf="updateProfileStatus" class=" d-flex justify-content-center w-100">
+  <edituser (onUdateFinished)="closeEditUserComponent($event)"></edituser>
+</div>
+
+<div *ngIf="updatePasswordStatus" >
+  <update-password (onPasswordChange)="closePasswordChangeComponent()"></update-password>
 </div>

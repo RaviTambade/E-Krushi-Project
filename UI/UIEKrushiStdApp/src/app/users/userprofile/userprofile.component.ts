@@ -22,6 +22,9 @@ export class UserprofileComponent {
   defaultImage: string = 'AkshayTanpure.jpg';
   imageurl: string | undefined;
 
+  updateProfileStatus: boolean = false;
+  updatePasswordStatus: boolean = false;
+
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
   constructor(
     private usersvc: UserService,
@@ -42,18 +45,20 @@ export class UserprofileComponent {
   }
 
   ngOnInit(): void {
-    const userId = Number(localStorage.getItem(LocalStorageKeys.userId));   // this.authsvc.getUserIdFromToken();
+    const userId = Number(localStorage.getItem(LocalStorageKeys.userId)); // this.authsvc.getUserIdFromToken();
     if (Number.isNaN(userId) || userId == 0) {
       return;
     }
-   
+    this.getUser(userId);
+  }
+
+  getUser(userId: number) {
     this.usersvc.getUser(userId).subscribe((response) => {
       this.user = response;
       this.imageurl = this.url + this.user.imageUrl;
       console.log(response);
     });
   }
- 
 
   editImage() {
     if (this.fileInput) {
@@ -78,7 +83,7 @@ export class UserprofileComponent {
       formData.append('file', this.selectedFile, this.user.imageUrl);
       this.http
         .post(
-          'http://localhost:5102/api/fileupload/' + this.user.imageUrl,
+          'http://localhost:5102/api/users/fileupload/' + this.user.imageUrl,
           formData,
           {
             reportProgress: true,
@@ -93,6 +98,11 @@ export class UserprofileComponent {
             if (event.type === HttpEventType.Response) {
               this.message = 'Upload success.';
               this.imageurl = this.selectedImageUrl;
+              this.usersvc
+                .updateUser(this.user.id, this.user)
+                .subscribe((response) => {
+                  console.log(response);
+                });
             }
           },
         });
@@ -104,5 +114,28 @@ export class UserprofileComponent {
   cancelImage() {
     this.selectedFile = undefined;
     this.editingImage = false;
+  }
+
+  onClickUpdateProfile() {
+    this.updateProfileStatus = true;
+    this.updatePasswordStatus = false
+
+  }
+
+  closeEditUserComponent(event: any) {
+    this.updateProfileStatus = false;
+    if (event.isUpdated) {
+      this.getUser(this.user.id);
+    }
+  }
+
+  onClickUpdatePassword() {
+    this.updatePasswordStatus = true;
+    this.updateProfileStatus = false;
+
+  }
+
+  closePasswordChangeComponent(){
+    this.updatePasswordStatus = false
   }
 }

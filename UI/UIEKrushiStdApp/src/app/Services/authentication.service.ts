@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Credential } from '../Models/credential';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { LocalStorageKeys } from '../Models/Enums/local-storage-keys';
+import { UpdatePassword } from '../Models/update-password';
 
 
 @Injectable({
@@ -18,6 +19,16 @@ export class AuthenticationService {
     let url = 'http://localhost:5077/api/authentication/signin';
     return this.httpClient.post<any>(url, credential);
   }
+
+  updatePassword(credential: UpdatePassword): Observable<boolean> {
+    let url = 'http://localhost:5077/api/authentication/update/password';
+    return this.httpClient.put<any>(url, credential);
+  }
+
+  // updateContact(credential: UpdateContact): Observable<boolean> {
+  //   let url = 'http://localhost:5077/api/authentication/update/contactnumber';
+  //   return this.httpClient.put<any>(url, credential);
+  // }
 
   getContactNumberFromToken(): string | null {
     const token = localStorage.getItem(LocalStorageKeys.jwt)
