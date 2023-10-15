@@ -192,12 +192,14 @@ CREATE TABLE
         CONSTRAINT fkcategory12 FOREIGN KEY (questionid) REFERENCES questions(id) ON DELETE CASCADE ON UPDATE CASCADE
     );
 
+    SHOW TABLES;
+
 CREATE TABLE
     subjectmatterexperts(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        expertise VARCHAR(40),
-        userid INT NOT NULL UNIQUE,
-        CONSTRAINT fk_smeuser FOREIGN KEY (userid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE
+        categoryid INT, CONSTRAINT fk_smeuser FOREIGN KEY (categoryid) REFERENCES questioncategories(id) ON UPDATE CASCADE ON DELETE CASCADE,
+        userid INT NOT NULL,
+        CONSTRAINT fk_category FOREIGN KEY (userid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE
  );
 
 

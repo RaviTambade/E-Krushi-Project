@@ -1061,6 +1061,7 @@ INSERT INTO questions(description,categoryid) VALUES(' What are the best practic
 INSERT INTO questions(description,categoryid) VALUES('How can I manage the challenges of transitioning from conventional to organic farming practices?',10);
 INSERT INTO questions(description,categoryid) VALUES(' What steps should I take to ensure the long-term sustainability and profitability of my farm?',10);
 
+INSERT INTO questions(description,categoryid) VALUES(' What is your crop ',10);
 
 -- CUSTOMERQUESTIONS TABLE DATA
 INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (2,1,'2023-09-01');
@@ -1191,13 +1192,16 @@ INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (26,99,
 INSERT INTO customerquestions(customerid,questionid,questiondate) VALUES (27,100,'2023-09-30');
 
 -- SME TABLE DATA
-INSERT INTO subjectmatterexperts(expertise,userid) VALUES('crop related information',8);
-INSERT INTO subjectmatterexperts(expertise,userid) VALUES('soil related information',9);
-INSERT INTO subjectmatterexperts(expertise,userid) VALUES('soil related information',36);
-INSERT INTO subjectmatterexperts(expertise,userid) VALUES('soil related information',37);
-INSERT INTO subjectmatterexperts(expertise,userid) VALUES('soil related information',38);
-INSERT INTO subjectmatterexperts(expertise,userid) VALUES('soil related information',39);
-INSERT INTO subjectmatterexperts(expertise,userid) VALUES('soil related information',40);
+INSERT INTO subjectmatterexperts(categoryid,userid) VALUES(1,8);
+INSERT INTO subjectmatterexperts(categoryid,userid) VALUES(2,9);
+INSERT INTO subjectmatterexperts(categoryid,userid) VALUES(3,36);
+INSERT INTO subjectmatterexperts(categoryid,userid) VALUES(4,37);
+INSERT INTO subjectmatterexperts(categoryid,userid) VALUES(5,38);
+INSERT INTO subjectmatterexperts(categoryid,userid) VALUES(6,39);
+INSERT INTO subjectmatterexperts(categoryid,userid) VALUES(7,40);
+INSERT INTO subjectmatterexperts(categoryid,userid) VALUES(8,38);
+INSERT INTO subjectmatterexperts(categoryid,userid) VALUES(9,39);
+INSERT INTO subjectmatterexperts(categoryid,userid) VALUES(10,40);
 
 
 

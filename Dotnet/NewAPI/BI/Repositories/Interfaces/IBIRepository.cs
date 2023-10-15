@@ -11,5 +11,7 @@ public interface IBIRepository
 
     Task<List<CategorywiseProduct>> GetCategorywiseProductsCount(DateTime todaysDate, string mode,int storeId);
 
-      Task<List<DeliveredOrders>> GetDeliveredOrdersbyMonth(int year,int shipperId);
+    Task<List<DeliveredOrders>> GetDeliveredOrdersbyMonth(int year,int shipperId);
+
+    Task<List<NotAnsweredQuestions>> GetNotAnsweredQuestions(int userId);
 }

@@ -397,12 +397,13 @@ show TABLES;
   
 
 
-        select questions.description from questions
+        select questions.description,question.id from questions
          Inner join answers on questions.id = answers.questionid 
          inner join smeanswers on answers.id=smeanswers.answerid
          where smeanswers.smeid=5;
-                        
+                    SELECT * from subjectmatterexperts;
 
+SHOW TABLES;
 
 
 
