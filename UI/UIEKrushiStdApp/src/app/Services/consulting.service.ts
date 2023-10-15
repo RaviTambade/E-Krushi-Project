@@ -51,5 +51,11 @@ export class ConsultingService {
     let url ='http://localhost:5279/api/consulting/smequestions/'+smeid;
     return this.httpClient.get<any[]>(url);
   }
+
+
+  getUnSolvedQuestions( smeid:number):Observable<any[]>{
+    let url ='http://localhost:5161/api/bi/notansweredquestions/'+smeid;
+    return this.httpClient.get<any[]>(url);
+  }
 }
 

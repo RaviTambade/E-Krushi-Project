@@ -4,6 +4,7 @@ import { SubjetcMatterExpertDashboardComponent } from './subjetc-matter-expert-d
 import { Routes } from '@angular/router';
 import { BlogComponent } from './blog/blog.component';
 import { SmequestionsComponent } from './smequestions/smequestions.component';
+import { UnsolvedquestionsComponent } from './unsolvedquestions/unsolvedquestions.component';
 
 export const subjetcMatterExpertRoutes: Routes = [
   { path: 'dashboard', component: SubjetcMatterExpertDashboardComponent },
@@ -14,7 +15,8 @@ export const subjetcMatterExpertRoutes: Routes = [
   declarations: [
     SubjetcMatterExpertDashboardComponent,
     BlogComponent,
-    SmequestionsComponent
+    SmequestionsComponent,
+    UnsolvedquestionsComponent
   ],
   imports: [
     CommonModule
