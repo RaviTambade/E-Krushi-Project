@@ -1,6 +1,14 @@
-<div class="container">
-    <div >
-      <P style="font-size: x-large;">My Solved Questions</P>
-      <a class="hover-text"   *ngFor=" let question of questions ;let index = index"><i class="fa fa-arrow-right"></i>  {{ index + 1 }}.{{question.question}} <br></a>
-       </div>
+
+
+
+     <div class="card">
+      <div class="card-header">
+        List of  Solved Questions
+      </div>
+      <div class="card-body">
+        <ul>
+          <li *ngFor="let question of questions">{{ question.question }}</li>
+        </ul>
+      </div>
      </div>
+    
