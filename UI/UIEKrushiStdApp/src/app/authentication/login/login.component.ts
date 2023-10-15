@@ -6,7 +6,9 @@ import { Credential } from 'src/app/Models/credential';
 import { AuthenticationService } from 'src/app/Services/authentication.service';
 import { ShipperService } from 'src/app/Services/shipper.service';
 import { StoreService } from 'src/app/Services/store.service';
+import { SupplierService } from 'src/app/Services/supplier.service';
 import { UserService } from 'src/app/Services/user.service';
+import { UserRoleService } from 'src/app/Services/userrole.service';
 @Component({
   selector: 'app-login-component',
   templateUrl: './login.component.html',
@@ -25,7 +27,9 @@ export class LoginComponent {
     private router: Router,
     private authService: AuthenticationService,
     private userService: UserService,
+    private userRoleService: UserRoleService,
     private storesvc: StoreService,
+    private suppliersvc: SupplierService,
     private shippersvc: ShipperService
   ) {}
 
@@ -52,7 +56,7 @@ export class LoginComponent {
                 LocalStorageKeys.userId,
                 this.userId.toString()
               );
-              this.userService
+              this.userRoleService
                 .getUserRole(this.userId)
                 .subscribe((response) => {
                   this.roles = response;
@@ -89,7 +93,11 @@ export class LoginComponent {
           });
         break;
       case Role.Supplier:
-        this.router.navigate(['supplier/dashboard']);
+        if (this.userId != undefined)
+        this.suppliersvc.getSupplierId(this.userId).subscribe((res)=>{
+          localStorage.setItem(LocalStorageKeys.supplierId, res.toString());
+          this.router.navigate(['supplier/dashboard']);
+      })
         break;
       case Role.Shipper:
         if (this.userId != undefined)
@@ -99,6 +107,7 @@ export class LoginComponent {
           });
         break;
       case Role.SubjectMatterExpert:
+        
         this.router.navigate(['sme/dashboard']);
         break;
     }

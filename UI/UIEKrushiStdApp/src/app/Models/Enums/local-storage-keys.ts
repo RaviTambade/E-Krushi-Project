@@ -3,5 +3,6 @@ export enum LocalStorageKeys {
   userId = 'userId',
   storeId = 'storeId',
   shipperId='shipperId',
+  supplierId='supplierId',
   roles='roles'
 }

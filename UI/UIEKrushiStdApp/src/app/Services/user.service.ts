@@ -62,9 +62,6 @@ export class UserService {
     return this.httpClient.get<AddressInfo[]>(url);
   }
 
-  getUserRole(userId: number): Observable<string[]> {
-    let url = 'http://localhost:6031/api/userroles/roles/' + userId;
-    return this.httpClient.get<string[]>(url);
-  }
+ 
 
 }

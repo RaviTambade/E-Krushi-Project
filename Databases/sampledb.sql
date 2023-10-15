@@ -1,4 +1,5 @@
--- Active: 1694968636816@@127.0.0.1@3306@ekrushi
+-- Active: 1678359546568@@127.0.0.1@3306@ekrushi
+
 
 INSERT INTO roles(name) VALUES ('Shop Owner');
 INSERT INTO roles(name) VALUES ('Customer');
@@ -28,8 +29,8 @@ INSERT INTO userroles(userid,roleid) VALUES (25,2);
 INSERT INTO userroles(userid,roleid) VALUES (26,2);
 INSERT INTO userroles(userid,roleid) VALUES (27,2);
 
-INSERT INTO userroles(userid,roleid) VALUES (11,3);
 INSERT INTO userroles(userid,roleid) VALUES (12,3);
+INSERT INTO userroles(userid,roleid) VALUES (13,3);
 
 INSERT INTO userroles(userid,roleid) VALUES (31,4);
 INSERT INTO userroles(userid,roleid) VALUES (32,4);
@@ -56,8 +57,8 @@ INSERT INTO stores(name,userid,addressid) VALUES  ("Narayangaon Store ",28,20);
 INSERT INTO stores(name,userid,addressid) VALUES  ("Karegaon Store ",29,21);
 INSERT INTO stores(name,userid,addressid) VALUES  ("Junner Store",30,22);
 
-INSERT INTO suppliers(corporateid,userid) VALUES(8,11);
-INSERT INTO suppliers(corporateid,userid) VALUES(9,12);
+INSERT INTO suppliers(corporateid,userid) VALUES(12,12);
+INSERT INTO suppliers(corporateid,userid) VALUES(13,13);
 
 
 INSERT INTO shippers(userid,addressid) VALUES(31,23);

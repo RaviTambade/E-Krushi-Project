@@ -4,8 +4,10 @@ import { UserService } from '../Services/user.service';
 import { AuthenticationService } from '../Services/authentication.service';
 import { LocalStorageKeys } from '../Models/Enums/local-storage-keys';
 import { Role } from '../Models/Enums/role';
-import { Subscription } from 'rxjs';
+import { Subscription, switchMap } from 'rxjs';
 import { StoreService } from '../Services/store.service';
+import { SupplierService } from '../Services/supplier.service';
+import { CorporateService } from '../Services/corporate.service';
 
 @Component({
   selector: 'app-nav-menu',
@@ -19,19 +21,22 @@ export class NavMenuComponent implements OnInit, OnDestroy {
   Role = Role;
   roles: string[] = [];
   storeName: string = '';
+  corporateName: string = '';
   reloadNavSubscription: Subscription | undefined;
 
   constructor(
     private router: Router,
-    private userService: UserService,
+    private usersvc: UserService,
     private storesvc: StoreService,
-    private authService: AuthenticationService
+    private suppliersvc: SupplierService,
+    private authsvc: AuthenticationService,
+    private corporatesvc: CorporateService
   ) {}
 
   ngOnInit(): void {
     this.fetchNameAndRoles();
 
-    this.reloadNavSubscription = this.userService.reloadnavbar.subscribe(() => {
+    this.reloadNavSubscription = this.usersvc.reloadnavbar.subscribe(() => {
       setTimeout(() => {
         this.fetchNameAndRoles();
       }, 1000);
@@ -39,7 +44,6 @@ export class NavMenuComponent implements OnInit, OnDestroy {
   }
 
   isUserHaveRequiredRole(role: string): boolean {
-   
     if (this.roles.includes(role)) {
       return true;
     } else {
@@ -65,10 +69,11 @@ export class NavMenuComponent implements OnInit, OnDestroy {
       this.roles = JSON.parse(roles);
     }
     this.fetchStoreName();
+    this.fetchCorporateName();
 
-    let contactNumber = this.authService.getContactNumberFromToken();
+    let contactNumber = this.authsvc.getContactNumberFromToken();
     if (contactNumber != null) {
-      this.userService.getUserByContact(contactNumber).subscribe((response) => {
+      this.usersvc.getUserByContact(contactNumber).subscribe((response) => {
         console.log(response);
         this.name = response.name;
       });
@@ -85,23 +90,29 @@ export class NavMenuComponent implements OnInit, OnDestroy {
     });
   }
 
+  fetchCorporateName() {
+    const supplierId = Number(
+      localStorage.getItem(LocalStorageKeys.supplierId)
+    );
+    if (Number.isNaN(supplierId) || supplierId == 0) {
+      return;
+    }
+    this.suppliersvc.getCorporateIdOfSupplier(supplierId).pipe(
+      switchMap(corporateId => this.corporatesvc.getCorporateName(corporateId))
+    ).subscribe(res => {
+      this.corporateName = res[0].name;
+    });
+    
+  }
+
   logOut() {
     this.storeName = '';
+    this.corporateName = '';
     localStorage.clear();
     this.router.navigate(['login']);
   }
 
   ngOnDestroy(): void {
     this.reloadNavSubscription?.unsubscribe();
-  }
-
-  onClickProjectName() {
-    if (this.roles.includes(Role.Customer)) {
-      this.router.navigate(['/home']);
-    } else if (this.roles.includes(Role.Shipper)) {
-      this.router.navigate(['/shipper/dashboard']);
-    } else if (this.roles.includes(Role.ShopOwner)) {
-      this.router.navigate(['/shop/dashboard']);
-    } else this.router.navigate(['/home']);
   }
 }
