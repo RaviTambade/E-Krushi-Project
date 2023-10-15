@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdduserComponent } from './adduser/adduser.component';
 import { EdituserComponent } from './edituser/edituser.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserprofileComponent } from './userprofile/userprofile.component';
 import { Route, RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { UpdatePasswordComponent } from './update-password/update-password.component';
 
 
 export const userRoutes:Routes=[
@@ -18,12 +19,14 @@ export const userRoutes:Routes=[
     AdduserComponent,
     EdituserComponent,
     UserprofileComponent,
+    UpdatePasswordComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports:[
     AdduserComponent,
