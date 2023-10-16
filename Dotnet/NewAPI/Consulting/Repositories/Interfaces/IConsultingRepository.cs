@@ -1,3 +1,4 @@
+
 using Transflower.EKrushi.Consulting.Models;
 namespace Transflower.EKrushi.Consulting.Repositories.Interfaces;
 public interface IConsultingRepository
@@ -23,4 +24,6 @@ public interface IConsultingRepository
     Task<List<Question>> GetQuestions(string categoryName);
     Task<int> GetCategoryId(string categoryName);
     Task<List<QuestionAnswer>> CustomerQuestionAnswer(int questionId);
+
+    Task<List<NotAnsweredQuestions>> GetNotAnsweredQuestions(int userId);
 }

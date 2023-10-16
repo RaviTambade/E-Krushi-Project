@@ -205,4 +205,13 @@ public class ConsultingController : ControllerBase
         List<QuestionAnswer> answers = await _service.CustomerQuestionAnswer(questionId);
         return answers;
     }
+
+
+
+     [HttpGet("NotAnsweredQuestions/{userId}")]
+        public async Task<List<NotAnsweredQuestions>> GetNotAnsweredQuestions(int userId)
+        {
+            List<NotAnsweredQuestions> questions=await _service.GetNotAnsweredQuestions(userId);
+            return questions; 
+        }
 }

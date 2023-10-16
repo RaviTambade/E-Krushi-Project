@@ -31,4 +31,5 @@ public class ConsultingService : IConsultingService
     public async Task<List<Question>> GetQuestions(string categoryName) => await _repository.GetQuestions(categoryName);
     public async Task<int> GetCategoryId(string categoryName) => await _repository.GetCategoryId(categoryName);
     public async Task<List<QuestionAnswer>> CustomerQuestionAnswer(int questionId) => await _repository.CustomerQuestionAnswer(questionId);
+    public async Task<List<NotAnsweredQuestions>> GetNotAnsweredQuestions(int userId)=>await _repository.GetNotAnsweredQuestions(userId);
 }
