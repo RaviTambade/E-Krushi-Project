@@ -1,15 +1,17 @@
 
 
 
-     <div class="card">
-        <div class="card-header">
-          List of  UnSolved Questions
-        </div>
+<div class="card-header">
+    List of  UnSolved Questions
+  
+       <div class="card" *ngFor="let question of questions">
+        
         <div class="card-body">
           <ul>
-            <li *ngFor="let question of questions">{{ question.question }}</li>
+           <a href=""> <li >{{ question.question }}</li></a>
           </ul>
         </div>
+       </div>
       </div>
    
       
