@@ -16,10 +16,6 @@ export class BankingService {
     return this.httpClient.get<BankAccount>(url);
   }
 
-  fundTransfer(payment: PaymentTransferDetails): Observable<number> {
-    let url = 'http://localhost:5001/api/fundstransfer';
-    return this.httpClient.post<number>(url, payment);
-  }
 
   checkAccount(customerId:number): Observable<BankAccount> {
     var body = {

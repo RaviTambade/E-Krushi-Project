@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Transflower.EKrushi.Catalog.Controllers;
 
 [ApiController]
-[Route("/api/[controller]")]
+[Route("/api/products")]
 public class ProductsController : ControllerBase
 {
     private readonly IProductService _service;

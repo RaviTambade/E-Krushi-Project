@@ -35,9 +35,9 @@ export class UserService {
     return this.httpClient.put<any>(url, user)
   }
 
-  getUser(id: number): Observable<any> {
+  getUser(id: number): Observable<User> {
     let url = "http://localhost:5102/api/users/" + id
-    return this.httpClient.get<any>(url)
+    return this.httpClient.get<User>(url)
   }
 
 

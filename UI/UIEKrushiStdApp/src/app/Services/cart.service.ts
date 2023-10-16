@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CartItem } from '../Models/cart-item';
 import { Observable } from 'rxjs';
-import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
 import { AddItem } from '../Models/addItem';
 import { LocalStorageKeys } from '../Models/Enums/local-storage-keys';
 

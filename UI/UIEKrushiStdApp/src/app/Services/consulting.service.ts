@@ -37,10 +37,6 @@ export class ConsultingService {
     return this.httpClient.post<Question>(url,question);
   }
 
-  getUser(userid:string): Observable<any> {
-    let url = 'http://localhost:5102/api/users/name/'+userid;
-    return this.httpClient.get<any>(url);
-  }
 
   getCategorywiseQuestions(categoryid:number): Observable<Question[]> {
     let url = 'http://localhost:5279/api/consulting/Questions/Catagory/'+categoryid;
@@ -52,9 +48,8 @@ export class ConsultingService {
     return this.httpClient.get<any[]>(url);
   }
 
-
   getUnSolvedQuestions( smeid:number):Observable<any[]>{
-    let url ='http://localhost:5161/api/bi/notansweredquestions/'+smeid;
+    let url ='http://localhost:5161/api/consulting/notansweredquestions/'+smeid;
     return this.httpClient.get<any[]>(url);
   }
 }
