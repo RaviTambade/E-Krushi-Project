@@ -24,7 +24,7 @@ public class ShipperController : ControllerBase
         return await _service.GetShipperOrdersByStatus(shipperId, status);
     }
 
-      [HttpGet("orderscount/{shipperId}")]
+    [HttpGet("orderscount/{shipperId}")]
     public async Task<OrderStatusCount> GetShipperOrdersCount(int shipperId)
     {
         return await _service.GetShipperOrdersCount(shipperId);

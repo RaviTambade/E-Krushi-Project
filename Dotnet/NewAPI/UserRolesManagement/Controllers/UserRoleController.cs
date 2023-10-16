@@ -33,10 +33,4 @@ public class UserRoleController : ControllerBase
     {
         return await _service.GetUsersId(role);
     }
-
-    [HttpDelete("{userRoleId}")]
-    public async Task<bool> Delete(int userRoleId)
-    {
-        return await _service.Delete(userRoleId);
-    }
 }

@@ -15,10 +15,10 @@ namespace Transflower.EKrushi.ShoppingCartService.Controllers
             _service = service;
         }
 
-        [HttpGet("customer/{id}")]
-        public async Task<List<Item>> GetCartItems(int id)
+        [HttpGet("customer/{customerId}")]
+        public async Task<List<Item>> GetCartItems(int customerId)
         {
-            return await _service.GetCartItems(id);
+            return await _service.GetCartItems(customerId);
         }
 
         [HttpPost]

@@ -28,9 +28,4 @@ public class UserRoleService : IUserRoleService
     {
         return await _repository.Insert(userRole);
     }
-
-    public async Task<bool> Delete(int userRoleId)
-    {
-        return await _repository.Delete(userRoleId);
-    }
 }

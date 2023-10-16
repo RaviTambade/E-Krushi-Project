@@ -7,5 +7,4 @@ public interface IUserRoleRepository
     Task<List<string>> GetUsersId(string role);
     Task<List<string>> GetRolesByUserId(int userId);
     Task<bool> Insert(UserRole userRole);
-    Task<bool> Delete(int userRoleId);
 }

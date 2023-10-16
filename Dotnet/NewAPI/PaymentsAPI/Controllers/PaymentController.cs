@@ -16,7 +16,7 @@ public class PaymentController : ControllerBase
         _service = service;
     }
 
-    [HttpGet("{customerid}")]
+    [HttpGet("{customerId}")]
     public async Task<List<Payment>> GetPayments(int customerId)
     {
         return await _service.GetPayments(customerId);
@@ -28,7 +28,7 @@ public class PaymentController : ControllerBase
         return await _service.AddPayment(payment);
     }
 
-    [HttpGet("details/{orderid}")]
+    [HttpGet("details/{orderId}")]
     public async Task<PaymentDetail> GetPaymentDetails(int orderId)
     {
         return await _service.GetPaymentDetails(orderId);

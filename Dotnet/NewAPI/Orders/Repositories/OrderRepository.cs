@@ -1,11 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
-using System.Text;
 using Transflower.EKrushi.Orders.Repositories.Interfaces;
 using Transflower.EKrushi.Orders.Repositories.Contexts;
 using Transflower.EKrushi.Orders.Models;
 using Transflower.EKrushi.Orders.Entities;
-using System.Linq.Expressions;
 
 namespace Transflower.EKrushi.Orders.Repositories;
 
@@ -322,6 +320,7 @@ public class OrderRepository : IOrderRepository
         try
         {
             order.Status = OrderStatus.Delivered;
+            order.ShippedDate= DateTime.Now; 
             return await SaveChanges();
         }
         catch (Exception)

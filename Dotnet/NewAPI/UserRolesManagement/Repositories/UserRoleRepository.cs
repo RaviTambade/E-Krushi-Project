@@ -68,24 +68,6 @@ public class UserRoleRepository : IUserRoleRepository
         return status;
     }
  
-    public async Task<bool> Delete(int userRoleId)
-    {
-        bool status = false;
-        try
-        {
-            var userRole = await _context.UserRoles.FindAsync(userRoleId);
-            if (userRole is not null)
-            {
-                _context.UserRoles.Remove(userRole);
-                status = await SaveChanges();
-            }
-        }
-        catch (Exception)
-        {
-            throw;
-        }
-        return status;
-    }
 
     private async Task<bool> SaveChanges()
     {
