@@ -31,10 +31,10 @@
         </div>
       </div>
       <div *ngIf="showPayButton" class="form-group" style="width: 150px;">
-        <button class="btn btn-primary" (click)="makePayment()">Pay & Place Order </button>
+        <button class="btn btn-primary" [disabled]="isPaymentButtonDisabled" (click)="makePayment()">Pay & Place Order </button>
       </div>
       <div *ngIf="selectedMode === 'cash on delivery'" class="form-group" style="width: 150px;">
-        <button class="btn btn-primary" (click)="makePayment()">Pay & Place Order</button>
+        <button class="btn btn-primary" [disabled]="isPaymentButtonDisabled" (click)="makePayment()">Pay & Place Order</button>
       </div>
     </form>
   </div>

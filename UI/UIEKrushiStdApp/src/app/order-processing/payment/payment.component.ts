@@ -26,6 +26,7 @@ export class PaymentComponent {
   accountNumber: string = '';
   ifscCode: string = '';
   showPayButton: boolean = false;
+  isPaymentButtonDisabled: boolean = false;
 
   constructor(
     private banksvc: BankingService,
@@ -61,6 +62,7 @@ export class PaymentComponent {
   }
 
   makePayment() {
+    this.isPaymentButtonDisabled=true;
     const customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
     const addressId = Number(
       sessionStorage.getItem(SessionStorageKeys.addressId)
