@@ -25,7 +25,7 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
 import { MatDialogModule } from '@angular/material/dialog';
 import {  MatSnackBarModule } from '@angular/material/snack-bar';
 import { orderProcessingRoutes } from './order-processing/order-processing.module';
-import { ConsultingModule, consultingRoutes } from './consulting/consulting.module';
+import { consultingRoutes } from './consulting/consulting.module';
 import { ConfirmationBoxComponent } from './confirmation-box/confirmation-box.component';
 import { userRoutes } from './users/users.module';
 

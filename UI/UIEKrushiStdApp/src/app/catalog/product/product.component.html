@@ -12,7 +12,7 @@
       [routerLink]="['/catalog/productdetail',product.id]">{{product.title | titlecase}}</h5>
       <div class="d-flex justify-content-between">
       <div><b>{{product.unitPrice |currency:"INR"}}</b></div>  
-      <div  > <select  class="select-style"  [(ngModel)]="selectedSize" (ngModelChange)="updatePrice(product.id)">
+      <div > <select  class="select-style"  [(ngModel)]="selectedSize" (ngModelChange)="updatePrice(product.id)">
         <option *ngFor="let size of product.size " [ngValue]="size"> <b> {{size}} </b></option>
       </select></div>  
       </div>   

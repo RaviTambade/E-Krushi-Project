@@ -18,6 +18,5 @@ export class TopSellingProductComponent implements OnInit {
 };
 ngOnInit(): void {
   this.product.percentage=Math.round(this.product.percentage);
-
 }
 }

@@ -12,17 +12,17 @@ export class PaymentService {
   constructor(private httpClient: HttpClient) {}
 
   getPaymentDetails(orderId: number): Observable<PaymentDetails> {
-    let url = 'http://localhost:5015/paymentdetails/' + orderId;
+    let url = 'http://localhost:5015/api/payments/details/' + orderId;
     return this.httpClient.get<PaymentDetails>(url);
   }
 
   getPayments(customerId: number): Observable<Payment[]> {
-    let url = 'http://localhost:5015/payment/' + customerId;
+    let url = 'http://localhost:5015/api/payments/' + customerId;
     return this.httpClient.get<Payment[]>(url);
   }
 
   addPayment(payment: PaymentAddModel): Observable<boolean> {
-    let url = 'http://localhost:5015/payment/';
+    let url = 'http://localhost:5015/api/payments/';
     return this.httpClient.post<boolean>(url, payment);
   }
 }

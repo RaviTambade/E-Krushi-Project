@@ -1,8 +1,8 @@
-using Transflower.EAgroServices.UserRolesManagement.Services.Interfaces;
-using Transflower.EAgroServices.UserRolesManagement.Repositories.Interfaces;
-using Transflower.EAgroServices.UserRolesManagement.Entities;
+using Transflower.EKrushi.UserRolesManagement.Services.Interfaces;
+using Transflower.EKrushi.UserRolesManagement.Repositories.Interfaces;
+using Transflower.EKrushi.UserRolesManagement.Entities;
 
-namespace Transflower.EAgroServices.UserRolesManagement.Services;
+namespace Transflower.EKrushi.UserRolesManagement.Services;
 
 public class UserRoleService : IUserRoleService
 {
@@ -13,15 +13,6 @@ public class UserRoleService : IUserRoleService
         _repository = repository;
     }
 
-    public async Task<List<UserRole>> GetAll()
-    {
-        return await _repository.GetAll();
-    }
-
-    public async Task<UserRole?> GetById(int userRoleId)
-    {
-        return await _repository.GetById(userRoleId);
-    }
 
     public async Task<List<string>> GetRolesByUserId(int userId)
     {
@@ -36,11 +27,6 @@ public class UserRoleService : IUserRoleService
     public async Task<bool> Insert(UserRole userRole)
     {
         return await _repository.Insert(userRole);
-    }
-
-    public async Task<bool> Update(UserRole userRole)
-    {
-        return await _repository.Update(userRole);
     }
 
     public async Task<bool> Delete(int userRoleId)

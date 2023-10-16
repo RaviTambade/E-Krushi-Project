@@ -13,6 +13,7 @@ import { OrderDetailsAddModel } from 'src/app/Models/order-details-add-model';
 import { BankingService } from 'src/app/Services/banking.service';
 import { CartService } from 'src/app/Services/cart.service';
 import { OrderService } from 'src/app/Services/order-service.service';
+import { PaymentGatewayService } from 'src/app/Services/payment-gateway.service';
 import { PaymentService } from 'src/app/Services/payment.service';
 import { StoreService } from 'src/app/Services/store.service';
 
@@ -32,6 +33,7 @@ export class PaymentComponent {
     private banksvc: BankingService,
     private paymentsvc: PaymentService,
     private ordersvc: OrderService,
+    private paymentgatewaysvc:PaymentGatewayService,
     private cartsvc: CartService,
     private storesvc: StoreService,
     private router: Router
@@ -132,36 +134,6 @@ export class PaymentComponent {
     });
   }
 
-  // processNetBankingPayment(orderAmount: OrderAmount) {
-
-  //   const paymentDetails: PaymentTransferDetails = {
-  //     fromAcct: this.accountNumber,
-  //     toAcct: '5642999999',
-  //     fromIfsc: this.ifscCode,
-  //     toIfsc: 'AXIS0000296',
-  //     amount: orderAmount.amount,
-  //   };
-
-  //   this.banksvc.fundTransfer(paymentDetails).subscribe((res) => {
-  //     if (res != 0) {
-  //       const payment: PaymentAddModel = {
-  //         paymentStatus: 'paid',
-  //         mode: 'net banking',
-  //         orderId: orderAmount.orderId,
-  //         transactionId: res,
-  //       };
-
-  //       this.paymentsvc.addPayment(payment).subscribe((res) => {
-  //         if (res) {
-  //           this.emptyCart();
-  //           alert('Order Placed');
-  //           console.log('payment done successfully and order placed');
-  //           this.router.navigate(['/']);
-  //         }
-  //       });
-  //     }
-  //   });
-  // }
 
   async processNetBankingPayment(orderAmount: OrderAmount) {
     try {
@@ -178,7 +150,7 @@ export class PaymentComponent {
       };
 
       const res = await lastValueFrom(
-        this.banksvc.fundTransfer(paymentDetails)
+        this.paymentgatewaysvc.fundTransfer(paymentDetails)
       );
 
       if (res !== 0) {

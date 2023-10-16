@@ -13,7 +13,6 @@ export class ShipperService {
 
   getShipperOrders(shipperId: number,status:string): Observable<ShipperOrder[]> {
     let url = 'http://localhost:5298/api/shippers/' + shipperId+'/'+status;
-    console.log("req send")
     return this.httpClient.get<ShipperOrder[]>(url);
   }
 

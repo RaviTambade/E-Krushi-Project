@@ -83,7 +83,7 @@ export class LoginComponent {
   navigateByRole(role: string) {
     switch (role) {
       case Role.Customer:
-        this.router.navigate(['customer/dashboard']);
+        this.router.navigate(['/home']);
         break;
       case Role.ShopOwner:
         if (this.userId != undefined)

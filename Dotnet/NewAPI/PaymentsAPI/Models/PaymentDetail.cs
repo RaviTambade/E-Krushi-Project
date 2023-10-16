@@ -2,7 +2,7 @@
 
 namespace  Transflower.EKrushi.PaymentsAPI.Models;
 
-public class PaymentDetails{
+public class PaymentDetail{
 
 
     public int PaymentId{get;set;}

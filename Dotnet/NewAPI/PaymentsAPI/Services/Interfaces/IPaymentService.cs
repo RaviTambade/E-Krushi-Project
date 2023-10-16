@@ -1,6 +1,6 @@
 
-using Transflower.EKrushi.PaymentsAPI.Repositories.InterFaces;
-namespace Transflower.EKrushi.PaymentsAPI.InterFaces;
+using Transflower.EKrushi.PaymentsAPI.Repositories.Interfaces;
+namespace Transflower.EKrushi.PaymentsAPI.Interfaces;
 public interface IPaymentService:IPaymentRepository{
 
 }
