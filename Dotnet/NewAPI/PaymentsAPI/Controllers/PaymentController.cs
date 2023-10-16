@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
-using Transflower.EKrushi.PaymentsAPI.InterFaces;
+using Transflower.EKrushi.PaymentsAPI.Interfaces;
 
 using Transflower.EKrushi.PaymentsAPI.Models;
 
 namespace Transflower.EKrushi.PaymentsAPI.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("/api/payments")]
 public class PaymentController : ControllerBase
 {
     private readonly IPaymentService _service;
@@ -17,14 +17,20 @@ public class PaymentController : ControllerBase
     }
 
     [HttpGet("{customerid}")]
-    public List<Payment> GetPayments(int customerid)
+    public async Task<List<Payment>> GetPayments(int customerId)
     {
-        List<Payment> payments = _service.GetPayments(customerid);
-        return payments;
+        return await _service.GetPayments(customerId);
     }
+
     [HttpPost]
     public async Task<bool> AddPayment(PaymentAddModel payment)
     {
         return await _service.AddPayment(payment);
+    }
+
+    [HttpGet("details/{orderid}")]
+    public async Task<PaymentDetail> GetPaymentDetails(int orderId)
+    {
+        return await _service.GetPaymentDetails(orderId);
     }
 }

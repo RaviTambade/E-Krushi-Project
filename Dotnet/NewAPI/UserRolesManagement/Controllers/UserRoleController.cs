@@ -1,8 +1,8 @@
-using Transflower.EAgroServices.UserRolesManagement.Entities;
-using Transflower.EAgroServices.UserRolesManagement.Services.Interfaces;
+using Transflower.EKrushi.UserRolesManagement.Entities;
+using Transflower.EKrushi.UserRolesManagement.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Transflower.EAgroServices.UserRolesManagement.Controllers;
+namespace Transflower.EKrushi.UserRolesManagement.Controllers;
 
 [ApiController]
 [Route("/api/userroles/")]
@@ -15,18 +15,7 @@ public class UserRoleController : ControllerBase
         _service = service;
     }
 
-    [HttpGet]
-    public async Task<List<UserRole>> GetAll()
-    {
-        return await _service.GetAll();
-    }
-
-    [HttpGet("{userRoleId}")]
-    public async Task<UserRole?> GetById(int userRoleId)
-    {
-        return await _service.GetById(userRoleId);
-    }
-
+  
     [HttpGet("roles/{userId}")]
     public async Task<List<string>> GetRolesByUserId(int userId)
     {
@@ -43,12 +32,6 @@ public class UserRoleController : ControllerBase
     public async Task<List<string>> GetUsersId(string role)
     {
         return await _service.GetUsersId(role);
-    }
-
-    [HttpPut]
-    public async Task<bool> Update(UserRole userRole)
-    {
-        return await _service.Update(userRole);
     }
 
     [HttpDelete("{userRoleId}")]

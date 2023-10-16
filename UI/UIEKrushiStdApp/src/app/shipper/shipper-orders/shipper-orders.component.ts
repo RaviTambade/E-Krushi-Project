@@ -63,6 +63,7 @@ export class ShipperOrdersComponent {
           this.selectedOrderId = null;
         }
 
+        if(this.orders.length>0){
         let addressIds: number[] = this.orders.reduce<number[]>((acc, o) => {
           acc.push(o.fromAddressId, o.toAddressId);
           return acc;
@@ -92,7 +93,9 @@ export class ShipperOrdersComponent {
               }
             });
           });
+        }
       },
+    
       error: (error) => {
         console.error(error);
       },

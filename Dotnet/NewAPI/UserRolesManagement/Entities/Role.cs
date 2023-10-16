@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Transflower.EAgroServices.UserRolesManagement.Entities;
+namespace Transflower.EKrushi.UserRolesManagement.Entities;
 [Table("roles")]
 public class Role
 {

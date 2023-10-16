@@ -1,8 +1,8 @@
-using Transflower.EAgroServices.UserRolesManagement.Services.Interfaces;
-using Transflower.EAgroServices.UserRolesManagement.Repositories.Interfaces;
-using Transflower.EAgroServices.UserRolesManagement.Services;
-using Transflower.EAgroServices.UserRolesManagement.Repositories;
-using Transflower.EAgroServices.UserRolesManagement.Repositories.Contexts;
+using Transflower.EKrushi.UserRolesManagement.Services.Interfaces;
+using Transflower.EKrushi.UserRolesManagement.Repositories.Interfaces;
+using Transflower.EKrushi.UserRolesManagement.Services;
+using Transflower.EKrushi.UserRolesManagement.Repositories;
+using Transflower.EKrushi.UserRolesManagement.Repositories.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

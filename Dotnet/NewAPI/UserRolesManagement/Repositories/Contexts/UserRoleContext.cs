@@ -1,7 +1,7 @@
-using Transflower.EAgroServices.UserRolesManagement.Entities;
+using Transflower.EKrushi.UserRolesManagement.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Transflower.EAgroServices.UserRolesManagement.Repositories.Contexts;
+namespace Transflower.EKrushi.UserRolesManagement.Repositories.Contexts;
 
 public class UserRoleContext : DbContext
 {

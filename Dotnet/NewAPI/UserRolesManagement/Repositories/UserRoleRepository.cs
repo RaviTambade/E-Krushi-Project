@@ -1,9 +1,9 @@
-using Transflower.EAgroServices.UserRolesManagement.Entities;
-using Transflower.EAgroServices.UserRolesManagement.Repositories.Interfaces;
-using Transflower.EAgroServices.UserRolesManagement.Repositories.Contexts;
+using Transflower.EKrushi.UserRolesManagement.Entities;
+using Transflower.EKrushi.UserRolesManagement.Repositories.Interfaces;
+using Transflower.EKrushi.UserRolesManagement.Repositories.Contexts;
 using Microsoft.EntityFrameworkCore;
 
-namespace Transflower.EAgroServices.UserRolesManagement.Repositories;
+namespace Transflower.EKrushi.UserRolesManagement.Repositories;
 
 public class UserRoleRepository : IUserRoleRepository
 {
@@ -12,32 +12,6 @@ public class UserRoleRepository : IUserRoleRepository
     public UserRoleRepository(UserRoleContext context)
     {
         _context = context;
-    }
-
-    public async Task<List<UserRole>> GetAll()
-    {
-        try
-        {
-            var userRoles = await _context.UserRoles.ToListAsync();
-            return userRoles;
-        }
-        catch (Exception)
-        {
-            throw;
-        }
-    }
-
-    public async Task<UserRole?> GetById(int userRoleId)
-    {
-        try
-        {
-            var userRole = await _context.UserRoles.FindAsync(userRoleId);
-            return userRole;
-        }
-        catch (Exception)
-        {
-            throw;
-        }
     }
 
     public async Task<List<string>> GetRolesByUserId(int userId)
@@ -85,7 +59,7 @@ public class UserRoleRepository : IUserRoleRepository
         try
         {
             await _context.UserRoles.AddAsync(userRole);
-            status = await SaveChanges(_context);
+            status = await SaveChanges();
         }
         catch (Exception)
         {
@@ -93,27 +67,7 @@ public class UserRoleRepository : IUserRoleRepository
         }
         return status;
     }
-
-    public async Task<bool> Update(UserRole userRole)
-    {
-        bool status = false;
-        try
-        {
-            var oldMerchant = await _context.UserRoles.FindAsync(userRole.Id);
-            if (oldMerchant is not null)
-            {
-                oldMerchant.UserId = userRole.UserId;
-                oldMerchant.RoleId = userRole.RoleId;
-                status = await SaveChanges(_context);
-            }
-        }
-        catch (Exception)
-        {
-            throw;
-        }
-        return status;
-    }
-
+ 
     public async Task<bool> Delete(int userRoleId)
     {
         bool status = false;
@@ -123,7 +77,7 @@ public class UserRoleRepository : IUserRoleRepository
             if (userRole is not null)
             {
                 _context.UserRoles.Remove(userRole);
-                status = await SaveChanges(_context);
+                status = await SaveChanges();
             }
         }
         catch (Exception)
@@ -133,7 +87,7 @@ public class UserRoleRepository : IUserRoleRepository
         return status;
     }
 
-    private async Task<bool> SaveChanges(UserRoleContext _context)
+    private async Task<bool> SaveChanges()
     {
         int rowsAffected = await _context.SaveChangesAsync();
         return rowsAffected > 0;

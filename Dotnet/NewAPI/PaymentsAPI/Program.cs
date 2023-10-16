@@ -1,6 +1,7 @@
-using Transflower.EKrushi.PaymentsAPI.InterFaces;
+using Transflower.EKrushi.PaymentsAPI.Interfaces;
 using Transflower.EKrushi.PaymentsAPI.PaymentDetailsRepository;
-using Transflower.EKrushi.PaymentsAPI.Repositories.InterFaces;
+using Transflower.EKrushi.PaymentsAPI.Repositories;
+using Transflower.EKrushi.PaymentsAPI.Repositories.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,10 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCors();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddTransient<IPaymentDetailsRepository,PaymentDetailsRepository>();
-builder.Services.AddTransient<IPaymentRepository,PaymentRepository>();
-builder.Services.AddTransient<IPaymentDetailsService,PaymentDetailsService>();
-builder.Services.AddTransient<IPaymentService,PaymentService>();
+builder.Services.AddScoped<IPaymentRepository,PaymentRepository>();
+builder.Services.AddScoped<IPaymentService,PaymentService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

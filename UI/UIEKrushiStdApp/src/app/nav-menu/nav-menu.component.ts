@@ -108,6 +108,7 @@ export class NavMenuComponent implements OnInit, OnDestroy {
   logOut() {
     this.storeName = '';
     this.corporateName = '';
+    this.roles=[]
     localStorage.clear();
     this.router.navigate(['login']);
   }

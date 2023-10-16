@@ -1,9 +1,9 @@
 using System.Data;
 using MySql.Data.MySqlClient;
 using Transflower.EKrushi.PaymentsAPI.Models;
-using Transflower.EKrushi.PaymentsAPI.Repositories.InterFaces;
+using Transflower.EKrushi.PaymentsAPI.Repositories.Interfaces;
 
-namespace Transflower.EKrushi.PaymentsAPI.PaymentDetailsRepository;
+namespace Transflower.EKrushi.PaymentsAPI.Repositories;
 
 public class PaymentRepository : IPaymentRepository
 {
@@ -45,34 +45,35 @@ public class PaymentRepository : IPaymentRepository
         return status;
     }
 
-    public List<Payment> GetPayments(int customerid)
+    public async Task<List<Payment>> GetPayments(int customerId)
     {
-        List<Payment> orders = new List<Payment>();
+        List<Payment> payments = new List<Payment>();
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionString = _connectionString;
         try
         {
             string query =
                 "select (date)as paymentdate,paymentstatus,orderid FROM payments where orderid in (SELECT id from orders where customerid=@customerId)";
-            connection.Open();
             MySqlCommand command = new MySqlCommand(query, connection);
-            command.Parameters.AddWithValue("@customerId", customerid);
-            MySqlDataReader reader = command.ExecuteReader();
-            while (reader.Read())
+            command.Parameters.AddWithValue("@customerId", customerId);
+            await connection.OpenAsync();
+            MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
             {
-                DateTime date = DateTime.Parse(reader["paymentdate"].ToString());
-                int orderid = int.Parse(reader["orderid"].ToString());
-                string paymentstatus = reader["paymentstatus"].ToString();
+                DateTime date = reader.GetDateTime("paymentdate");
+                int orderid = reader.GetInt32("orderid");
+                string? paymentstatus = reader.GetString("paymentstatus");
 
-                Payment order = new Payment()
+                Payment payment = new Payment()
                 {
                     PaymentDate = date,
                     OrderId = orderid,
                     PaymentStatus = paymentstatus
                 };
 
-                orders.Add(order);
+                payments.Add(payment);
             }
+            await reader.CloseAsync();
         }
         catch (Exception)
         {
@@ -80,8 +81,51 @@ public class PaymentRepository : IPaymentRepository
         }
         finally
         {
-            connection.Close();
+            await connection.CloseAsync();
         }
-        return orders;
+        return payments;
+    }
+
+    public async Task<PaymentDetail> GetPaymentDetails(int orderId)
+    {
+        PaymentDetail payment = new PaymentDetail();
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _connectionString;
+        try
+        {
+            string query =
+                "SELECT (payments.id) as paymentid ,  (orders.total) as total,(payments.date)as date,(payments.paymentstatus) as paymentstatus,(payments.mode)as mode from payments  INNER JOIN orders ON orders.id=payments.orderid where payments.orderid=@orderId";
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@orderId", orderId);
+            await connection.OpenAsync();
+            MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync();
+            if (await reader.ReadAsync())
+            {
+                int paymentid = reader.GetInt32("paymentid");
+                DateTime date = reader.GetDateTime("date");
+                double total = reader.GetDouble("total");
+                string paymentmode = reader.GetString("mode");
+                string status = reader.GetString("paymentstatus");
+
+                payment = new PaymentDetail()
+                {
+                    PaymentId = paymentid,
+                    Date = date,
+                    Total = total,
+                    PaymentMode = paymentmode,
+                    Status = status
+                };
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+        return payment;
     }
 }

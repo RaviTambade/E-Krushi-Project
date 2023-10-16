@@ -1,5 +1,5 @@
-using Transflower.EAgroServices.UserRolesManagement.Repositories.Interfaces;
+using Transflower.EKrushi.UserRolesManagement.Repositories.Interfaces;
 
-namespace Transflower.EAgroServices.UserRolesManagement.Services.Interfaces;
+namespace Transflower.EKrushi.UserRolesManagement.Services.Interfaces;
 
 public interface IUserRoleService : IUserRoleRepository { }
