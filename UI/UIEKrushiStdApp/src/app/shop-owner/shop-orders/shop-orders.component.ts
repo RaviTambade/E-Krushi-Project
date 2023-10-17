@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
 import { OrderStatus } from 'src/app/Models/Enums/Order-Status';
 import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
 import { Order } from 'src/app/Models/Order';
@@ -47,7 +46,7 @@ export class ShopOrdersComponent implements OnInit {
       return;
     }
 
-    this.storesvc.getStoreOrders(storeId, status).subscribe({
+    this.storesvc.getStoreOrders(storeId,status).subscribe({
       next: (res) => {
         this.orders = res;
         if (this.orders.length) {
