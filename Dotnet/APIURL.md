@@ -336,3 +336,296 @@ Response        :
 Token required : Yes
 
 <hr>
+
+<h3 align="center">Consulting</h3>
+
+<h4>ConsultingController </h4>
+
+URL            
+```console
+/api/consulting
+```
+
+Method: ```GET```
+
+Description    : it is used for get all questions.
+
+Parameterss      : none.
+
+Body           : None
+              
+Response        :
+
+```console
+[
+    {
+        "id": 1,
+        "customerId": 2,
+        "date": "2023-09-01T00:00:00",
+        "description": " How can I improve soil fertility in my fields?",
+        "categoryId": 0
+    },
+    {
+        "id": 2,
+        "customerId": 3,
+        "date": "2023-09-01T00:00:00",
+        "description": "What are the best practices for pest and weed control in organic farming?",
+        "categoryId": 0
+    }
+]
+```
+
+Token required : No
+
+<hr>
+
+
+URL            
+```console
+/api/consulting/questioncatagories
+```
+
+Method: ```GET```
+
+Description    : it is used for get all question categories.
+Parameterss      : none.
+
+Body           : None
+              
+Response        :
+
+```console
+[
+    {
+        "id": 1,
+        "category": "Crop Cultivation"
+    },
+    {
+        "id": 2,
+        "category": "Livestock Farming"
+    },
+    {
+        "id": 3,
+        "category": "Farm Equipment and Technology"
+    }
+]
+```
+
+Token required : No
+
+<hr>
+
+
+URL            
+```console
+/api/consulting/answers/{id}
+```
+
+Method: ```GET```
+
+Description    : it is used for get answer of particular question.
+Parameterss      : id=2
+
+Body           : None
+              
+Response        :
+
+```console
+[
+    {
+        "question": "What are the best practices for pest and weed control in organic farming?",
+        "answers": "In organic farming, you can use methods like companion planting, beneficial insects, and organic pesticides to control pests and weeds without synthetic chemicals.",
+        "category": "Crop Cultivation"
+    }
+]
+```
+
+Token required : No
+
+<hr>
+
+
+URL            
+```console
+/api/consulting/reletedquestions/{id}
+```
+
+Method: ```GET```
+
+Description    : it used for get releted questions of given question.
+
+Parameterss      : id=2
+
+Body           : None
+              
+Response        :
+
+```console
+[
+    {
+        "id": 1,
+        "customerId": 0,
+        "date": "0001-01-01T00:00:00",
+        "description": " How can I improve soil fertility in my fields?",
+        "categoryId": 0
+    },
+    {
+        "id": 3,
+        "customerId": 0,
+        "date": "0001-01-01T00:00:00",
+        "description": "How can I conserve water in my irrigation practices?",
+        "categoryId": 0
+    },
+    {
+        "id": 4,
+        "customerId": 0,
+        "date": "0001-01-01T00:00:00",
+        "description": "What should I consider when selecting crop varieties for my region?",
+        "categoryId": 0
+    }
+]
+```
+
+Token required : No
+
+<hr>
+
+
+
+URL            
+```console
+/api/consulting/question
+```
+
+Method: ```Post```
+
+Description    : it is used for insert new question.
+
+Parameterss      : none
+
+Body           : [
+    {
+        
+        "description": " How can I improve soil fertility in my fields?",
+        "categoryId": 1
+    }
+]
+              
+Response        :
+
+```console
+true/false
+```
+
+Token required : No
+
+<hr>
+
+
+URL            
+```console
+/api/consulting/Questions/Catagory/{categoryid}
+```
+
+Method: ```Get```
+
+Description    : it is used for get categoriwise questions.
+
+
+Parameterss      :categoryid=1
+
+Body           : none
+              
+Response        :
+
+```console
+[
+    {
+        "id": 1,
+        "customerId": 0,
+        "date": "0001-01-01T00:00:00",
+        "description": " How can I improve soil fertility in my fields?",
+        "categoryId": 1
+    },
+    {
+        "id": 2,
+        "customerId": 0,
+        "date": "0001-01-01T00:00:00",
+        "description": "What are the best practices for pest and weed control in organic farming?",
+        "categoryId": 1
+    },
+    {
+        "id": 3,
+        "customerId": 0,
+        "date": "0001-01-01T00:00:00",
+        "description": "How can I conserve water in my irrigation practices?",
+        "categoryId": 1
+    }
+] 
+```
+
+Token required : No
+
+<hr>
+
+
+
+URL            
+```console
+/api/consulting/smequestions/{smeid}
+```
+
+Method: ```Get```
+
+Description    : it is used for get solved questions of subject matter expert.
+
+
+Parameterss      :smeid=7
+
+Body           : none
+              
+Response        :
+
+```console
+[
+    {
+        "question": "How can I improve soil fertility and structure on my farm over time?"
+    },
+    {
+        "question": " What are effective strategies for reducing the environmental impact of my farm, especially in terms of water and nutrient runoff?"
+    },
+    {
+        "question": " How can I address labor shortages on my farm, especially during peak seasons?"
+    }
+] 
+```
+
+Token required : No
+
+<hr>
+
+
+URL            
+```console
+/api/consulting/notansweredquestions/{smeid}
+```
+
+Method: ```Get```
+
+Description    : it is used for notansweredquestions list of sme.
+
+Parameterss      :smeid=7
+
+Body           : none
+              
+Response        :
+
+```console
+[]
+```
+
+Token required : No
+
+<hr>
+
+

@@ -53,12 +53,7 @@ namespace Transflower.EKrushi.BIService.Controllers
         }
 
 
-         [HttpGet("NotAnsweredQuestions/{userId}")]
-        public async Task<List<NotAnsweredQuestions>> GetNotAnsweredQuestions(int userId)
-        {
-            List<NotAnsweredQuestions> questions=await _service.GetNotAnsweredQuestions(userId);
-            return questions; 
-        }
+        
 
     }
 }

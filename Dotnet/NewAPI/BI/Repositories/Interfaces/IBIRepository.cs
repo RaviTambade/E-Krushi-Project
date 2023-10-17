@@ -13,5 +13,5 @@ public interface IBIRepository
 
     Task<List<DeliveredOrders>> GetDeliveredOrdersbyMonth(int year,int shipperId);
 
-    Task<List<NotAnsweredQuestions>> GetNotAnsweredQuestions(int userId);
+   
 }

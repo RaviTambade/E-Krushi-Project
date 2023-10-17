@@ -38,7 +38,7 @@ public class BIServices : IBIService
 public async Task<List<DeliveredOrders>> GetDeliveredOrdersbyMonth(int year, int shipperId)=>await _repository.GetDeliveredOrdersbyMonth(year, shipperId);
 
 
-public async Task<List<NotAnsweredQuestions>> GetNotAnsweredQuestions(int userId)=>await _repository.GetNotAnsweredQuestions(userId);
+
   public async Task<List<CategorywiseProduct>> GetCategorywiseProductsCount(
         DateTime todaysDate,
         string mode,

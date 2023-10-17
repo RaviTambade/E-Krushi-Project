@@ -217,41 +217,6 @@ public class BIRepository : IBIRepository
     
 
 
-    public async Task<List<NotAnsweredQuestions>> GetNotAnsweredQuestions(int userId)
-    {
-        List<NotAnsweredQuestions> questions = new List<NotAnsweredQuestions>();
-        MySqlConnection connection = new MySqlConnection(_connectionString);
-
-        try
-        {
-            MySqlCommand cmd = new MySqlCommand("NotAnsweredQuestions", connection);
-
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@given_userid",userId);
-            await connection.OpenAsync();
-            MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync();
-            while (await reader.ReadAsync())
-            {
-                NotAnsweredQuestions question = new NotAnsweredQuestions()
-                {
-                    QuestionId = reader.GetInt32("id"),
-                    Question = reader.GetString("description"),
-                  
-                };
-                questions.Add(question);
-            }
-            await reader.CloseAsync();
-        }
-        catch (Exception)
-        {
-            throw;
-        }
-        finally
-        {
-            await connection.CloseAsync();
-        }
-        
-        return questions;    
-    }
+    
 
 }
