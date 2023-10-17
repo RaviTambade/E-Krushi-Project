@@ -7,11 +7,11 @@ namespace Transflower.EKrushi.PaymentsAPI.Controllers;
 
 [ApiController]
 [Route("/api/payments")]
-public class PaymentController : ControllerBase
+public class PaymentsController : ControllerBase
 {
     private readonly IPaymentService _service;
 
-    public PaymentController(IPaymentService service)
+    public PaymentsController(IPaymentService service)
     {
         _service = service;
     }

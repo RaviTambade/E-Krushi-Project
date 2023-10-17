@@ -6,11 +6,11 @@ namespace TransFlower.EKrushi.Shippers.Controllers;
 
 [ApiController]
 [Route("/api/shippers")]
-public class ShipperController : ControllerBase
+public class ShippersController : ControllerBase
 {
     private readonly IShipperService _service;
 
-    public ShipperController(IShipperService service)
+    public ShippersController(IShipperService service)
     {
         _service = service;
     }

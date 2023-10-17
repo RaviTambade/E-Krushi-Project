@@ -172,7 +172,7 @@ Method: ```GET```
 
 Description    : Returns a list of orders based on  StoreId and Order status.
 
-Parameterss      : storeId  = 1, orderStatus="delivered"
+Parameters      : storeId  = 1, orderStatus="delivered"
 
 Body           : None
               
@@ -337,6 +337,644 @@ Token required : Yes
 
 <hr>
 
+
+<h3 align="center">Shopping Cart </h3>
+
+<h4>CartsController </h4>
+
+URL            
+```console
+ /api/carts/customer/{customerId}
+```
+
+Method: ```GET```
+
+Description    : Returns Cart of Customer by customerId.
+
+Parameters      : customerId  = 16
+
+Body           : None
+              
+Response        :
+
+```console
+[
+  {
+    "cartItemId": 96,
+    "productId": 2,
+    "title": "wheat seeds",
+    "size": "10kg",
+    "image": "/assets/wheat.jpg",
+    "quantity": 2,
+    "unitPrice": 300
+  },
+  {
+    "cartItemId": 97,
+    "productId": 3,
+    "title": "corn seeds",
+    "size": "1kg",
+    "image": "/assets/corn.jfif",
+    "quantity": 2,
+    "unitPrice": 2500
+  }
+]
+```
+
+Token required : Yes
+
+<hr>
+
+
+URL            
+```console
+ /api/carts
+```
+
+Method: ```POST```
+
+Description    : Add Item in Cart returns boolean.
+
+Parameters      : None
+
+Body           :
+```console
+{
+  "customerId": 16,
+  "productId": 12,
+  "size": "M"
+}
+```
+              
+Response        :
+
+```console
+true
+```
+
+Token required : Yes
+
+<hr>
+
+
+
+URL            
+```console
+ /api/carts/product/present
+```
+
+Method: ```POST```
+
+Description    : checks wheather product is already present in a cart returns boolean.
+
+Parameters      : None
+
+Body           :
+```console
+{
+  "customerId": 16,
+  "productId": 12,
+  "size": "M"
+}
+```
+              
+Response        :
+
+```console
+true
+```
+
+Token required : Yes
+
+<hr>
+
+
+URL            
+```console
+ /api/carts/cartitem/{cartItemId}/quantity/{quantity}
+
+```
+
+Method: ```PUT```
+
+Description    : Updates quantity of cartItem returns boolean.
+
+Parameters      : cartItemId=22 , quantity=4
+
+Body           : None
+              
+Response        :
+
+```console
+true
+```
+
+Token required : Yes
+
+<hr>
+
+
+URL            
+```console
+ /api/carts/remove/{cartItemId}
+
+```
+
+Method: ```DELETE```
+
+Description    : Remove specific item from cart by its cartItemId returns boolean.
+
+Parameters      : cartItemId=22 
+
+Body           : None
+              
+Response        :
+
+```console
+true
+```
+
+Token required : Yes
+
+<hr>
+
+URL            
+```console
+ /api/carts/removeall/{customerId}
+
+```
+
+Method: ```DELETE```
+
+Description    : Empty the cart of customer bt giving customerId returns boolean.
+
+Parameters      : customerId=16
+
+Body           : None
+              
+Response        :
+
+```console
+true
+```
+
+Token required : Yes
+
+<hr>
+
+
+<h3 align="center"> Shippers</h3>
+
+<h4>ShippersController </h4>
+
+URL            
+```console
+ /api/shippers/{shipperId}/{status}
+```
+
+Method: ```GET```
+
+Description    : Returns a list of orders of Shipper based by shipperId and Order status.
+
+Parameters      : shipperId  = 4 ,status="delivered
+
+Body           : None
+              
+Response        :
+
+```console
+[
+   {
+    "orderId": 16,
+    "fromAddressId": 1,
+    "toAddressId": 8,
+    "status": "delivered",
+    "orderDate": "2023-10-01T17:08:34",
+    "shippedDate": "2023-10-02T17:08:34"
+  },
+  {
+    "orderId": 17,
+    "fromAddressId": 1,
+    "toAddressId": 8,
+    "status": "delivered",
+    "orderDate": "2023-10-02T17:09:23",
+    "shippedDate": "2023-10-03T17:09:23"
+  }
+]
+```
+
+Token required : Yes
+
+<hr>
+
+
+
+URL            
+```console
+ /api/shippers/orderscount/{shipperId}
+```
+
+Method: ```GET```
+
+Description     : Returns a number of orders by its status of that Shipper.
+
+Parameters      : shipperId  = 4 
+
+Body           : None
+              
+Response        :
+
+```console
+{
+  "readyToDispatch": 0,
+  "picked": 0,
+  "inProgress": 0,
+  "delivered": 16,
+  "cancelled": 0
+}
+```
+
+Token required : Yes
+
+<hr>
+
+
+URL            
+```console
+ /api/shippers/nearby/{storeId}
+```
+
+Method: ```GET```
+
+Description     : Returns a nearest Shipper's Id to a store by giving storeId.
+
+Parameters      : storeId  = 1
+
+Body           : None
+              
+Response        :
+
+```console
+4
+```
+
+Token required : Yes
+
+<hr>
+
+URL            
+```console
+ /api/shippers/shipperid/{userId}
+```
+
+Method: ```GET```
+
+Description     : Returns a ShipperId by giving UserId.
+
+Parameters      : userId  = 32
+
+Body           : None
+              
+Response        :
+
+```console
+2
+```
+
+Token required : Yes
+
+<hr>
+
+
+<h3 align="center"> Payments</h3>
+
+<h4>PaymentsController </h4>
+
+URL            
+```console
+ /api/payments/{customerId}
+```
+
+Method: ```GET```
+
+Description    : Returns a list of payments of customer by  CustomerId.
+
+Parameters      : customerId  = 16
+
+Body           : None
+              
+Response        :
+
+```console
+[
+  {
+    "paymentDate": "2023-07-19T17:08:34",
+    "orderId": 16,
+    "paymentStatus": "paid"
+  },
+  {
+    "paymentDate": "2023-07-20T17:09:23",
+    "orderId": 17,
+    "paymentStatus": "paid"
+  }
+]
+```
+
+Token required : Yes
+
+<hr>
+
+URL            
+```console
+ /api/payments/details/{orderId}
+```
+
+Method: ```GET```
+
+Description    : Returns a  payments of a order by  orderId.
+
+Parameters      : orderId  = 90
+
+Body           : None
+              
+Response        :
+
+```console
+{
+  "paymentId": 89,
+  "date": "2023-10-01T17:47:24",
+  "total": 3400,
+  "status": "paid",
+  "paymentMode": "net banking"
+}
+```
+
+Token required : Yes
+
+<hr>
+
+
+URL            
+```console
+ /api/payments
+```
+
+Method: ```POST```
+
+Description    : Add a Payment returns boolean.
+
+Parameters      : None
+
+Body           : 
+```console
+{
+  "mode": "net banking",
+  "paymentStatus": "paid",
+  "transactionId": 23,
+  "orderId": 12
+}
+```
+              
+Response        :
+
+```console
+true
+```
+
+Token required : Yes
+
+<hr>
+
+
+<h3 align="center"> Orders</h3>
+
+<h4> OrdersController </h4>
+
+URL            
+```console
+ /api/orders/customer/{customerId}
+```
+
+Method: ```GET```
+
+Description    : Returns a list of Orders of customer by  CustomerId.
+
+Parameters      : customerId  = 16
+
+Body           : None
+              
+Response        :
+
+```console
+[
+  
+  {
+    "id": 16,
+    "orderDate": "2023-10-01T17:08:34",
+    "shippedDate": "2023-10-02T17:08:34",
+    "status": "delivered",
+    "total": 5000
+  },
+  {
+    "id": 17,
+    "orderDate": "2023-10-02T17:09:23",
+    "shippedDate": "2023-10-03T17:09:23",
+    "status": "delivered",
+    "total": 4000
+  },
+]
+```
+
+Token required : Yes
+
+<hr>
+
+
+URL            
+```console
+ /api/orders/details/{orderId}
+```
+
+Method: ```GET```
+
+Description    : Returns a list of Order Details of Order by  orderId.
+
+Parameters      : orderId  = 3
+
+Body           : None
+              
+Response        :
+
+```console
+[
+  {
+    "productId": 3,
+    "title": "corn seeds",
+    "image": "/assets/corn.jfif",
+    "unitPrice": 2500,
+    "size": "1kg",
+    "quantity": 1,
+    "total": 2500
+  },
+  {
+    "productId": 9,
+    "title": " Bajra Seeds",
+    "image": "/assets/bajra-seeds.webp",
+    "unitPrice": 120,
+    "size": "1kg",
+    "quantity": 1,
+    "total": 120
+  }
+]
+```
+
+Token required : Yes
+
+<hr>
+
+
+URL            
+```console
+ /api/orders/amount/{orderId}
+```
+
+Method: ```GET```
+
+Description    : Returns Amount of Order by  orderId.
+
+Parameters      : orderId  = 3
+
+Body           : None
+              
+Response        :
+
+```console
+2620
+```
+
+Token required : Yes
+
+<hr>
+
+URL            
+```console
+ /api/orders/address/{orderId}
+```
+
+Method: ```GET```
+
+Description    :  Returns a Delivery Address Id of Order by  orderId.
+
+Parameters      : orderId  = 3
+
+Body           : None
+              
+Response        :
+
+```console
+3
+```
+
+Token required : Yes
+
+<hr>
+
+
+URL            
+```console
+ /api/orders
+```
+
+Method: ```POST```
+
+Description    :  Creates an Order and return orderId,StoreId and Its Amount.
+
+Parameters      : None
+
+Body           : 
+```console
+{
+  "customerId": 16,
+  "addressId": 8,
+  "orderDetails": [
+    {
+      "productId": 9,
+      "quantity": 1,
+      "size": "1Kg"
+    }
+  ]
+}
+```
+              
+Response        :
+
+```console
+{
+  "orderId": 95,
+  "storeId": 1,
+  "amount": 120
+}
+```
+
+Token required : Yes
+
+<hr>
+
+
+URL            
+```console
+ /api/orders/{orderId}
+```
+
+Method: ```DELETE```
+
+Description    :  Remove an Order by  orderId return boolean.
+
+Parameters      : orderId  = 3
+
+Body           : None
+              
+Response        :
+
+```console
+true
+```
+
+Token required : Yes
+
+<hr>
+
+
+URL            
+```console
+ /api/orders/status
+```
+
+Method: ```PATCH```
+
+Description    :   Update an Order status return boolean.
+
+Parameters      : None
+
+Body           : 
+```console
+{
+  "orderId": 3,
+  "status": "delivered"
+}
+```
+              
+Response        :
+
+```console
+true
+```
+
+Token required : Yes
+
+<hr>
+
+
+
 <h3 align="center">Consulting</h3>
 
 <h4>ConsultingController </h4>
@@ -348,9 +986,9 @@ URL
 
 Method: ```GET```
 
-Description    : it is used for get all questions.
+Description    : It is used for get all questions.
 
-Parameterss      : none.
+Parameters      : None.
 
 Body           : None
               
@@ -388,7 +1026,7 @@ URL
 Method: ```GET```
 
 Description    : it is used for get all question categories.
-Parameterss      : none.
+Parameters      : None.
 
 Body           : None
               
@@ -424,7 +1062,7 @@ URL
 Method: ```GET```
 
 Description    : it is used for get answer of particular question.
-Parameterss      : id=2
+Parameters      : id=2
 
 Body           : None
               
@@ -454,7 +1092,7 @@ Method: ```GET```
 
 Description    : it used for get releted questions of given question.
 
-Parameterss      : id=2
+Parameters      : id=2
 
 Body           : None
               
@@ -501,7 +1139,7 @@ Method: ```Post```
 
 Description    : it is used for insert new question.
 
-Parameterss      : none
+Parameters      : None
 
 Body           : [
     {
@@ -532,9 +1170,9 @@ Method: ```Get```
 Description    : it is used for get categoriwise questions.
 
 
-Parameterss      :categoryid=1
+Parameters      :categoryid=1
 
-Body           : none
+Body           : None
               
 Response        :
 
@@ -580,9 +1218,9 @@ Method: ```Get```
 Description    : it is used for get solved questions of subject matter expert.
 
 
-Parameterss      :smeid=7
+Parameters      :smeid=7
 
-Body           : none
+Body           : None
               
 Response        :
 
@@ -614,9 +1252,9 @@ Method: ```Get```
 
 Description    : it is used for notansweredquestions list of sme.
 
-Parameterss      :smeid=7
+Parameters      :smeid=7
 
-Body           : none
+Body           : None
               
 Response        :
 

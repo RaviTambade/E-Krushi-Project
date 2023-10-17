@@ -22,12 +22,12 @@ List of REST API for EKrushi
 
 4] Shopping Cart
 
-1) GET     - http://localhost:5282/api/cart/customer/{customerId} => Returns Cart of Customer by customerId.
-2) POST    - http://localhost:5282/api/cart => Add Item in Cart returns boolean.
-3) POST    - http://localhost:5282/api/cart/product/present =>checks wheter product is already present in a cart returns boolean.
-4) PUT     - http://localhost:5282/api/cartitem/{cartItemId}/quantity/{quantity} =>Updates quantity of cartItem returns boolean.
-5) DELETE  - http://localhost:5282/api/remove/{cartItemId} =>remove specific item from cart by its cartItemId returns boolean.
-6) DELETE  - http://localhost:5282/api/removeall/{customerId} =>Empty the cart of customer bt giving customerId returns boolean.
+1) GET     - http://localhost:5282/api//customer/{customerId} => Returns Cart of Customer by customerId.
+2) POST    - http://localhost:5282/api/carts => Add Item in Cart returns boolean.
+3) POST    - http://localhost:5282/api/carts/product/present =>checks wheather product is already present in a cart returns boolean.
+4) PUT     - http://localhost:5282/api/carts/cartitem/{cartItemId}/quantity/{quantity} =>Updates quantity of cartItem returns boolean.
+5) DELETE  - http://localhost:5282/api/carts/remove/{cartItemId} =>remove specific item from cart by its cartItemId returns boolean.
+6) DELETE  - http://localhost:5282/api/carts/removeall/{customerId} =>Empty the cart of customer bt giving customerId returns boolean.
 
 5] Shippers
 
@@ -48,6 +48,6 @@ List of REST API for EKrushi
 2) GET     - http://localhost:5059/api/orders/details/{orderId} => Returns a list of Order Details of Order by  orderId.
 3) GET     - http://localhost:5059/api/orders/amount/{orderId}  => Returns a Amount of Order by  orderId.
 4) GET     - http://localhost:5059/api/orders/address/{orderId}  => Returns a Delivery Address Id of Order by  orderId.
-5) POST    - http://localhost:5059/api/orders  => Creates an Order and return orderId and Its Amount.
+5) POST    - http://localhost:5059/api/orders  => Creates an Order and return orderId,StoreId and Its Amount.
 6) DELETE  - http://localhost:5059/api/orders/{orderId} =>  Remove an Order by  orderId return boolean.
 7) Patch   - http://localhost:5059/api/orders/status =>  Update an Order status return boolean.

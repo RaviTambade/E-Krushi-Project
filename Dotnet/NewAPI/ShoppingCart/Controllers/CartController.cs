@@ -5,12 +5,12 @@ using Transflower.EKrushi.ShoppingCartService.Interfaces;
 namespace Transflower.EKrushi.ShoppingCartService.Controllers
 {
     [ApiController]
-    [Route("/api/cart")]
-    public class CartController : ControllerBase
+    [Route("/api/carts")]
+    public class CartsController : ControllerBase
     {
         private readonly ICartService _service;
 
-        public CartController(ICartService service)
+        public CartsController(ICartService service)
         {
             _service = service;
         }
