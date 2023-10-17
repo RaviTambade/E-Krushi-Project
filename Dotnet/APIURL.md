@@ -1,6 +1,17 @@
-<h3 align="center">UserRoleManagement </h3>
+## List of REST API for EKrushi 
 
-<h4>UserRoleController </h4>
+- [UserRoleManagement](#userrolemanagement) 
+- [Suppliers](#suppliers)
+- [Stores](#stores)
+- [Shopping Cart](#shopping-cart)
+- [Shippers](#shippers)
+- [Payments](#payments)
+- [Orders](#orders)
+- [Consulting](#consulting)
+
+# UserRoleManagement 
+
+### UserRoleController 
 
 URL            
 ```console
@@ -72,16 +83,16 @@ Body           :
 Response        :
 
 ```console
-true/false
+true
 ```
 
 Token required : Yes
 
 <hr>
 
-<h3 align="center">Suppliers </h3>
+# Suppliers 
 
-<h4>SuppliersController </h4>
+### SuppliersController 
 
 URL            
 ```console
@@ -131,37 +142,9 @@ Token required : Yes
 <hr>
 
 
-<h3 align="center">Suppliers </h3>
+# Stores 
 
-<h4>SuppliersController </h4>
-
-URL            
-```console
-/api/suppliers/corporate/{supplierId} 
-```
-
-Method: ```GET```
-
-Description    : Returns Corporate Id of Supplier .
-
-Parameters      : supplierId  =1
-
-Body           : None
-              
-Response        :
-
-```console
-13
-```
-
-Token required : Yes
-
-<hr>
-
-
-<h3 align="center">Stores </h3>
-
-<h4>StoresController </h4>
+### StoresController 
 
 URL            
 ```console
@@ -338,9 +321,9 @@ Token required : Yes
 <hr>
 
 
-<h3 align="center">Shopping Cart </h3>
+# Shopping Cart 
 
-<h4>CartsController </h4>
+### CartsController 
 
 URL            
 ```console
@@ -522,9 +505,9 @@ Token required : Yes
 <hr>
 
 
-<h3 align="center"> Shippers</h3>
+# Shippers
 
-<h4>ShippersController </h4>
+### ShippersController 
 
 URL            
 ```console
@@ -533,7 +516,7 @@ URL
 
 Method: ```GET```
 
-Description    : Returns a list of orders of Shipper based by shipperId and Order status.
+Description    : Returns a list of orders of Shipper  by shipperId and Order status.
 
 Parameters      : shipperId  = 4 ,status="delivered
 
@@ -645,9 +628,9 @@ Token required : Yes
 <hr>
 
 
-<h3 align="center"> Payments</h3>
+# Payments
 
-<h4>PaymentsController </h4>
+### PaymentsController 
 
 URL            
 ```console
@@ -690,7 +673,7 @@ URL
 
 Method: ```GET```
 
-Description    : Returns a  payments of a order by  orderId.
+Description    : Returns a  payment of a order by  orderId.
 
 Parameters      : orderId  = 90
 
@@ -745,9 +728,9 @@ Token required : Yes
 <hr>
 
 
-<h3 align="center"> Orders</h3>
+# Orders
 
-<h4> OrdersController </h4>
+### OrdersController 
 
 URL            
 ```console
@@ -780,7 +763,7 @@ Response        :
     "shippedDate": "2023-10-03T17:09:23",
     "status": "delivered",
     "total": 4000
-  },
+  }
 ]
 ```
 
@@ -975,9 +958,9 @@ Token required : Yes
 
 
 
-<h3 align="center">Consulting</h3>
+# Consulting
 
-<h4>ConsultingController </h4>
+### ConsultingController 
 
 URL            
 ```console
@@ -1135,7 +1118,7 @@ URL
 /api/consulting/question
 ```
 
-Method: ```Post```
+Method: ```POST```
 
 Description    : it is used for insert new question.
 
@@ -1165,7 +1148,7 @@ URL
 /api/consulting/Questions/Catagory/{categoryid}
 ```
 
-Method: ```Get```
+Method: ```GET```
 
 Description    : it is used for get categoriwise questions.
 
@@ -1213,7 +1196,7 @@ URL
 /api/consulting/smequestions/{smeid}
 ```
 
-Method: ```Get```
+Method: ```GET```
 
 Description    : it is used for get solved questions of subject matter expert.
 
@@ -1248,7 +1231,7 @@ URL
 /api/consulting/notansweredquestions/{smeid}
 ```
 
-Method: ```Get```
+Method: ```GET```
 
 Description    : it is used for notansweredquestions list of sme.
 
