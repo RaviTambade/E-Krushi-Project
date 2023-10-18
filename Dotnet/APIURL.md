@@ -294,6 +294,7 @@
 ### Shippers
 
 - <b>URL</b> :/api/shippers/{shipperId}/{status}
+- /api/shippers/{shipperId}/orders/{status}
 - <b>Method</b> : GET
 - <b>Description</b> : Returns a list of orders of Shipper  by shipperId and Order status.
 - <b>Parameters</b> : shipperId  = 4 ,status="delivered
@@ -321,6 +322,7 @@
   ]
   ```
 - <b>URL</b> : /api/shippers/orderscount/{shipperId}
+- /api/shippers/{shipperId}/orders/count
 - <b>Method</b> : GET
 - <b>Description</b>     : Returns a number of orders by its status of that Shipper.
 - <b>Parameters</b> : shipperId  = 4 
@@ -338,6 +340,7 @@
   ```
 
 - <b>URL</b> : /api/shippers/nearby/{storeId}
+- /api/shippers/nearby/stores/{storeId}
 - <b>Method</b> : GET
 - <b>Description</b>     : Returns a nearest Shipper's Id to a store by giving storeId.
 - <b>Parameters</b> : storeId  = 1
@@ -349,6 +352,7 @@
   ```
  
 - <b>URL</b> : /api/shippers/shipperid/{userId}
+- /api/shippers/id/users/{userId}
 - <b>Method</b> : GET
 - <b>Description</b>     : Returns a ShipperId by giving UserId.
 - <b>Parameters</b> : userId  = 32
@@ -362,6 +366,7 @@
 ### Payments
 
 - <b>URL</b> : /api/payments/{customerId}
+-/api/payments/customers/{customerId}
 - <b>Method</b> : GET
 - <b>Description</b> : Returns a list of payments of customer by  CustomerId.
 - <b>Parameters</b> : customerId  = 16
@@ -384,6 +389,7 @@
   ```
 
 - <b>URL</b> : /api/payments/details/{orderId}
+-  /api/payments/details/order/{orderId}
 - <b>Method</b> : GET
 - <b>Description</b> : Returns a  payment of a order by  orderId.
 - <b>Parameters</b> : orderId  = 90
@@ -422,6 +428,7 @@
 ### Orders
 
 - <b>URL</b> : /api/orders/customer/{customerId}
+-/api/orders/customers/{customerId}
 - <b>Method</b> : GET
 - <b>Description</b> : Returns a list of Orders of customer by  CustomerId.
 - <b>Parameters</b> : customerId  = 16
@@ -489,6 +496,7 @@
   ```
 
 - <b>URL</b> : /api/orders/address/{orderId}
+- /api/orders/delivery/address/{orderId}
 - <b>Method</b> : GET
 - <b>Description</b> : Returns a Delivery Address Id of Order by  orderId.
 - <b>Parameters</b> : orderId  = 3
@@ -539,6 +547,7 @@
   ```
 
 - <b>URL</b> : /api/orders/status
+-  /api/orders/update/status
 - <b>Method</b> : PATCH
 - <b>Description</b> : Update an Order status return boolean.
 - <b>Parameters</b> : Not requried
@@ -582,9 +591,10 @@
   ```
 
 - <b>URL</b> : /api/consulting/questioncatagories
+- /api/consulting/questions/categories
 - <b>Method</b>: GET
 - <b>Response</b>
-- <b>Description</b>: it is used for get all question categories.
+- <b>Description</b>:  It returns all question categories.
 - <b>Parameters</b>: Not requried.
 - <b>Body</b>: Not requried
 - <b>JWT Token Header</b> : Yes
@@ -607,6 +617,7 @@
   ```
 
 - <b>URL</b> : /api/consulting/answers/{id}
+-  /api/consulting/answers/questions/{questionId}
 - <b>Method</b>: GET
 - <b>Description</b>: it is used for get answers of particular question.
 - <b>Parameters</b>: id=2
@@ -623,6 +634,7 @@
   ]
   ```
 - <b>URL</b> : /api/consulting/reletedquestions/{id}
+-  /api/consulting/related/questions/{questionId}
 - <b>Method</b>: GET
 - <b>Description</b>: it used for get releted questions of given question.
 - <b>Parameters</b>: id=2
@@ -687,6 +699,7 @@
   ```
 
 - <b>URL</b> : /api/consulting/smequestions/{smeid}
+- /api/consulting/questions/sme/{smeId}
 - <b>Method</b>: GET
 - <b>Description</b>: it is used for get solved questions of subject matter expert.
 - <b>Parameters</b>:smeid=7
@@ -708,8 +721,9 @@
   ```
 
 - <b>URL</b> : /api/consulting/notansweredquestions/{smeid}
+-/api/consulting/questions/notanswered/sme/{smeId}
 - <b>Method</b>: GET
-- <b>Description</b>: it is used for notansweredquestions list of sme.
+- <b>Description</b>: Returns  not answered questions list for sme.
 - <b>Parameters</b>:smeid=7
 - <b>Body</b>: Not requried
 - <b>JWT Token Header</b> : Not required
