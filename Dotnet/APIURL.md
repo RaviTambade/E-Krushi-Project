@@ -1250,3 +1250,280 @@ Token required : No
 <hr>
 
 
+# BI Service
+
+### BI 
+
+URL            
+```console
+/api/bi/orderscount/{todaysDate}/{storeId}
+```
+
+Method: ```GET```
+
+Description    : it returns OrderCountByStore.
+
+
+Parameters      : todaysDate=2023-10-18,storeId  = 1.
+Body           : None
+              
+Response        :
+
+```console
+{
+    "todaysOrders": 1,
+    "yesterdaysOrders": 1,
+    "weekOrders": 7,
+    "monthOrders": 17
+}
+```
+
+Token required : Yes
+
+<hr>
+
+
+URL            
+```console
+/api/bi/topproducts/{todaysDate}/{mode}/{storeId}
+```
+
+Method: ```GET```
+
+Description    : it returns TopFiveSellingProducts
+
+
+Parameters      :todaysDate=2023-10-10 ,mode=week,storeId  = 1.
+Body           : None
+              
+Response        :
+
+```console
+[
+  {
+    "productId": 12,
+    "quantity": 5,
+    "totalQuantity": 26,
+    "percentage": 19.2308,
+    "title": "Garden Scissors",
+    "imageURL": "/assets/gardenscissors.webp"
+  },
+  {
+    "productId": 18,
+    "quantity": 2,
+    "totalQuantity": 26,
+    "percentage": 7.6923,
+    "title": "Weeding Hook ",
+    "imageURL": "/assets/weedinghook.jpg"
+  },
+  {
+    "productId": 17,
+    "quantity": 2,
+    "totalQuantity": 26,
+    "percentage": 7.6923,
+    "title": "Pickaxe ",
+    "imageURL": "/assets/pickaxe.jpg"
+  }
+]
+```
+
+Token required : Yes
+
+<hr>
+
+
+
+URL            
+```console
+/api/bi/MonthOrders/{year}/{storeId}
+```
+
+Method: ```GET```
+
+Description    : it returns MonthsWithOrders.
+
+
+Parameters      :year=2023,storeId  = 1.
+Body           : None
+              
+Response        :
+
+```console
+[
+  {
+    "month": "January",
+    "orderCount": 0
+  },
+  {
+    "month": "February",
+    "orderCount": 0
+  },
+  {
+    "month": "March",
+    "orderCount": 0
+  },
+  {
+    "month": "April",
+    "orderCount": 0
+  },
+  {
+    "month": "May",
+    "orderCount": 0
+  },
+  {
+    "month": "June",
+    "orderCount": 0
+  },
+  {
+    "month": "July",
+    "orderCount": 0
+  },
+  {
+    "month": "August",
+    "orderCount": 0
+  },
+  {
+    "month": "September",
+    "orderCount": 0
+  },
+  {
+    "month": "October",
+    "orderCount": 17
+  },
+  {
+    "month": "November",
+    "orderCount": 0
+  },
+  {
+    "month": "December",
+    "orderCount": 0
+  }
+]
+```
+
+Token required : Yes
+
+<hr>
+
+
+
+URL            
+```console
+/api/bi/categorywiseproducts/{todaysDate}/{mode}/{storeId}
+```
+
+Method: ```GET```
+
+Description    : it returns CategorywiseProductsCount
+
+
+
+Parameters      :todaysDate=2023-10-10 ,mode=week,storeId  = 1.
+Body           : None
+              
+Response        :
+
+```console
+[
+  {
+    "title": "seeds",
+    "quantity": 3
+  },
+  {
+    "title": "Agriculture implements",
+    "quantity": 12
+  },
+  {
+    "title": "fertilizers",
+    "quantity": 5
+  },
+  {
+    "title": "pesticides",
+    "quantity": 2
+  },
+  {
+    "title": "cattel feed",
+    "quantity": 4
+  }
+]
+```
+
+Token required : Yes
+
+<hr>
+
+
+
+URL            
+```console
+/api/bi/deliveredorders/{ year}/{shipperId};
+```
+
+Method: ```GET```
+
+Description    : it returns DeliveredOrders
+
+
+
+Parameters      :todaysDate=2023 ,shipperId  = 2.
+Body           : None
+              
+Response        :
+
+```console
+[
+  {
+    "month": "January",
+    "ordersCount": 0
+  },
+  {
+    "month": "February",
+    "ordersCount": 0
+  },
+  {
+    "month": "March",
+    "ordersCount": 0
+  },
+  {
+    "month": "April",
+    "ordersCount": 0
+  },
+  {
+    "month": "May",
+    "ordersCount": 0
+  },
+  {
+    "month": "June",
+    "ordersCount": 0
+  },
+  {
+    "month": "July",
+    "ordersCount": 14
+  },
+  {
+    "month": "August",
+    "ordersCount": 0
+  },
+  {
+    "month": "September",
+    "ordersCount": 0
+  },
+  {
+    "month": "October",
+    "ordersCount": 0
+  },
+  {
+    "month": "November",
+    "ordersCount": 0
+  },
+  {
+    "month": "December",
+    "ordersCount": 0
+  }
+]
+```
+
+Token required : Yes
+
+<hr>
+
