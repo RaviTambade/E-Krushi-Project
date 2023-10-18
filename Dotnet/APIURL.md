@@ -11,6 +11,7 @@
 ### UserRoleManagement 
 
 - <b>URL</b> : /api/userroles/roles/{userId}
+- /api/userroles/role/users/{userId}  ---------------suggested
 - <b>Method</b> : GET
 - <b>Description</b> : Returns Role of User by giving userId.
 - <b>Parameters</b> : userId = 3 
@@ -22,6 +23,7 @@
   ```
 
 - <b>URL</b> : /api/userroles/roles/userid/{role}
+- - /api/userroles/roles/users/{userId}  ---------------suggested
 - <b>Method</b> : GET
 - <b>Description</b> : Returns all user of given Role .
 - <b>Parameters</b> : role ="Customer"
@@ -34,7 +36,8 @@
   ]
   ```
 
-- <b>URL</b> : /api/userroles/roles 
+- <b>URL</b> : /api/userroles/roles
+- - - /api/userroles/roles/  ---------------suggested
 - <b>Method</b> : POST
 - <b>Description</b> : Add a user role .
 - <b>Parameters</b> :Not requried
@@ -53,7 +56,8 @@
 
 ### Suppliers 
 
-- <b>URL</b> : /api/suppliers/corporate/{supplierId} 
+- <b>URL</b> : /api/suppliers/corporate/{supplierId}
+-  /api/corporateid/suppliers/{supplierId} 
 - <b>Method</b> : GET
 - <b>Description</b> : Returns Corporate Id of Supplier .
 - <b>Parameters</b> : supplierId = 1
@@ -65,6 +69,7 @@
   ```
 
 - <b>URL</b> :/api/suppliers/id/{userId}
+-  :/api/supplierid/users/{userId}
 - <b>Method</b> : GET
 - <b>Description</b> : Returns Supplier Id by giving userId. 
 - <b>Parameters</b> : userId  = 13
@@ -78,6 +83,7 @@
 ### Stores 
 
 - <b>URL</b> : /api/stores/{storeId}/{orderStatus}
+- /api/orders/{orderStatus}/stores/{storeId}/
 - <b>Method</b> : GET
 - <b>Description</b> : Returns a list of orders based on  StoreId and Order status.
 - <b>Parameters</b> : storeId  = 1, orderStatus="delivered"
@@ -110,7 +116,8 @@
   ]
   ```
 
-- <b>URL</b> : /api/stores/orderscount/{storeId} 
+- <b>URL</b> : /api/stores/orderscount/{storeId}
+- /api/orders/count/stores/{storeId} 
 - <b>Method</b> : GET
 - <b>Description</b> : Returns a number of orders by its status 
 - <b>Parameters</b> : storeId = 1
@@ -130,6 +137,7 @@
   ```
 
 - <b>URL</b> : /api/stores/nearby/{customerAddressId}
+  /api/stores/id/nearby/{customerAddressId}
 - <b>Method</b> : GET
 - <b>Description</b> : Returns a nearby storeId  by giving customer's AddressId.
 - <b>Parameters</b> : customerAddressId=2
@@ -141,6 +149,7 @@
   ```
 
 - <b>URL</b> :/api/stores/user/{storeId}
+- /api/users/id/stores/{storeId}
 - <b>Method</b> : GET
 - <b>Description</b> : Returns a UserId of store by giving StoreId .
 - <b>Parameters</b> : storeId = 2
@@ -152,6 +161,7 @@
   ```
 
 - <b>URL</b> : /api/stores/storeid/{userId}
+- /api/stores/id/users/{userId}
 - <b>Method</b> : GET
 - <b>Description</b> : Returns a StoreId of store by giving UserId .
 - <b>Parameters</b> : userId = 22
@@ -162,6 +172,7 @@
   22
   ```
 - <b>URL</b> :/api/stores/name/{storeId}
+- /api/stores/name/{storeId}
 - <b>Method</b> : GET
 - <b>Description</b> : Returns a Name of store by giving StoreId .
 - <b>Parameters</b> : storeId = 2
@@ -177,6 +188,7 @@
 ### Shopping Cart 
 
 - <b>URL</b> : /api/carts/customer/{customerId}
+- /api/carts/customers/{customerId}
 - <b>Method</b> : GET
 - <b>Description</b> : Returns Cart of Customer by customerId.
 - <b>Parameters</b> : customerId  = 16
@@ -225,6 +237,7 @@
   ```
 
 - <b>URL</b> : /api/carts/product/present
+-  /api/carts/ispresent
 - <b>Method</b> : POST
 - <b>Description</b> : checks wheather product is already present in a cart returns boolean.
 - <b>Parameters</b> : Not requried
@@ -244,6 +257,7 @@
   ```
 
 - <b>URL</b> :/api/carts/cartitem/{cartItemId}/quantity/{quantity}
+- /api/carts/{cartId}
 - <b>Method</b> : PUT
 - <b>Description</b> : Updates quantity of cartItem returns boolean.
 - <b>Parameters</b> : cartItemId=22 , quantity=4
@@ -255,6 +269,7 @@
   ```
 
 - <b>URL</b> : /api/carts/remove/{cartItemId}
+- api/carts/{cartid}/items/{itemId}
 - <b>Method</b> : DELETE
 - <b>Description</b> : Remove specific item from cart by its cartItemId returns boolean.
 - <b>Parameters</b> : cartItemId=22 
@@ -265,6 +280,7 @@
   true
   ```
 - <b>URL</b> : /api/carts/removeall/{customerId}
+- /api/carts/removeall/{customerId}
 - <b>Method</b> : DELETE
 - <b>Description</b> : Empty the cart of customer bt giving customerId returns boolean.
 - <b>Parameters</b> : customerId=16
