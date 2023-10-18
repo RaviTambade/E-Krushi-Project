@@ -542,39 +542,37 @@
 ### Consulting
 
 - <b>URL</b> : /api/consulting
-- <b>Method</b> : GET
-- <b>Description</b> : It is used for get all questions.
-- <b>Parameters</b> : Not requried.
-- <b>Body</b> : Not requried
+- <b>Method</b>: GET
+- <b>Description</b>: It is used for get all questions.
+- <b>Parameters</b>: Not requried.
+- <b>Body</b>: Not requried
 - <b>JWT Token Header</b> : Yes
-- <b>Response</b> :
+- <b>Response</b>:
   ```console
   [
       {
           "id": 1,
           "customerId": 2,
           "date": "2023-09-01T00:00:00",
-          "description": " How can I improve soil fertility in my fields?",
-          "categoryId": 0
+          "description": " How can I improve soil fertility in my fields?"
       },
       {
           "id": 2,
           "customerId": 3,
           "date": "2023-09-01T00:00:00",
-          "description": "What are the best practices for pest and weed control in organic farming?",
-          "categoryId": 0
+          "description": "What are the best practices for pest and weed control in organic farming?"
       }
   ]
   ```
 
 - <b>URL</b> : /api/consulting/questioncatagories
-- <b>Method</b> : GET
+- <b>Method</b>: GET
 - <b>Response</b>
-- <b>Description</b> : it is used for get all question categories.
-- <b>Parameters</b> : Not requried.
-- <b>Body</b> : Not requried
+- <b>Description</b>: it is used for get all question categories.
+- <b>Parameters</b>: Not requried.
+- <b>Body</b>: Not requried
 - <b>JWT Token Header</b> : Yes
-- <b>Response</b> :
+- <b>Response</b>:
   ```console
   [
       {
@@ -593,12 +591,12 @@
   ```
 
 - <b>URL</b> : /api/consulting/answers/{id}
-- <b>Method</b> : GET
-- <b>Description</b> : it is used for get answers of particular question.
-- <b>Parameters</b> : id=2
-- <b>Body</b> : Not requried
+- <b>Method</b>: GET
+- <b>Description</b>: it is used for get answers of particular question.
+- <b>Parameters</b>: id=2
+- <b>Body</b>: Not requried
 - <b>JWT Token Header</b> : Yes
-- <b>Response</b> :
+- <b>Response</b>:
   ```console
   [
       {
@@ -609,43 +607,30 @@
   ]
   ```
 - <b>URL</b> : /api/consulting/reletedquestions/{id}
-- <b>Method</b> : GET
-- <b>Description</b> : it used for get releted questions of given question.
-- <b>Parameters</b> : id=2
-- <b>Body</b> : Not requried
+- <b>Method</b>: GET
+- <b>Description</b>: it used for get releted questions of given question.
+- <b>Parameters</b>: id=2
+- <b>Body</b>: Not requried
 - <b>JWT Token Header</b> : Yes
-- <b>Response</b> :
+- <b>Response</b>:
   ```console
   [
-      {
-          "id": 1,
-          "customerId": 0,
-          "date": "0001-01-01T00:00:00",
-          "description": " How can I improve soil fertility in my fields?",
-          "categoryId": 0
-      },
-      {
-          "id": 3,
-          "customerId": 0,
-          "date": "0001-01-01T00:00:00",
-          "description": "How can I conserve water in my irrigation practices?",
-          "categoryId": 0
-      },
-      {
-          "id": 4,
-          "customerId": 0,
-          "date": "0001-01-01T00:00:00",
-          "description": "What should I consider when selecting crop varieties for my region?",
-          "categoryId": 0
-      }
+    {
+        "id": 1,
+        "description": " How can I improve soil fertility in my fields?"
+    },
+    {
+        "id": 3,
+        "description": "How can I conserve water in my irrigation practices?"
+    }
   ]
   ```
 
 - <b>URL</b> : /api/consulting/question
-- <b>Method</b> : POST
-- <b>Description</b> : it is used to insert new question.
-- <b>Parameters</b> : Not requried
-- <b>Body</b> : 
+- <b>Method</b>: POST
+- <b>Description</b>: it is used to insert new question.
+- <b>Parameters</b>: Not requried
+- <b>Body</b>: 
   ```console
     {
         "description": " How can I improve soil fertility in my fields?",
@@ -653,51 +638,45 @@
     }
   ```
 - <b>JWT Token Header</b> : Yes
-- <b>Response</b> :
+- <b>Response</b>:
   ```console
   true
   ```
 
 - <b>URL</b> : /api/consulting/questions/catagory/{categoryId}
-- <b>Method</b> : GET
-- <b>Description</b> : it is used for get categoriwise questions.
-- <b>Parameters</b> :categoryId=1
-- <b>Body</b> : Not requried
+- <b>Method</b>: GET
+- <b>Description</b>: it is used for get categoriwise questions.
+- <b>Parameters</b>:categoryId=1
+- <b>Body</b>: Not requried
 - <b>JWT Token Header</b> : Yes
-- <b>Response</b> :
+- <b>Response</b>:
   ```console
   [
-      {
-          "id": 1,
-          "customerId": 0,
-          "date": "0001-01-01T00:00:00",
-          "description": " How can I improve soil fertility in my fields?",
-          "categoryId": 1
-      },
-      {
-          "id": 2,
-          "customerId": 0,
-          "date": "0001-01-01T00:00:00",
-          "description": "What are the best practices for pest and weed control in organic farming?",
-          "categoryId": 1
-      },
-      {
-          "id": 3,
-          "customerId": 0,
-          "date": "0001-01-01T00:00:00",
-          "description": "How can I conserve water in my irrigation practices?",
-          "categoryId": 1
-      }
+    {
+        "id": 1,
+        "description": " How can I improve soil fertility in my fields?",
+        "categoryId": 1
+    },
+    {
+        "id": 2,
+        "description": "What are the best practices for pest and weed control in organic farming?",
+        "categoryId": 1
+    },
+    {
+        "id": 3,
+        "description": "How can I conserve water in my irrigation practices?",
+        "categoryId": 1
+    }
   ] 
   ```
 
 - <b>URL</b> : /api/consulting/smequestions/{smeid}
-- <b>Method</b> : GET
-- <b>Description</b> : it is used for get solved questions of subject matter expert.
-- <b>Parameters</b> :smeid=7
-- <b>Body</b> : Not requried
+- <b>Method</b>: GET
+- <b>Description</b>: it is used for get solved questions of subject matter expert.
+- <b>Parameters</b>:smeid=7
+- <b>Body</b>: Not requried
 - <b>JWT Token Header</b> : Yes
-- <b>Response</b> :
+- <b>Response</b>:
   ```console
   [
       {
@@ -713,15 +692,21 @@
   ```
 
 - <b>URL</b> : /api/consulting/notansweredquestions/{smeid}
-- <b>Method</b> : GET
-- <b>Description</b> : it is used for notansweredquestions list of sme.
-- <b>Parameters</b> :smeid=7
-- <b>Body</b> : Not requried
+- <b>Method</b>: GET
+- <b>Description</b>: it is used for notansweredquestions list of sme.
+- <b>Parameters</b>:smeid=7
+- <b>Body</b>: Not requried
 - <b>JWT Token Header</b> : Not required
-- <b>Response</b> :
-  ```console
-  []  
-  ```
+- <b>Response</b>:
+
+```console
+{
+    "todaysOrders": 1,
+    "yesterdaysOrders": 1,
+    "weekOrders": 7,
+    "monthOrders": 17
+}
+```
 
 
 ### BIService
