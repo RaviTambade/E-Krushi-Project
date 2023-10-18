@@ -671,7 +671,7 @@
           "id": 1,
           "customerId": 0,
           "date": "0001-01-01T00:00:00",
-          "- <b>Description</b>": " How can I improve soil fertility in my fields?",
+          "description": " How can I improve soil fertility in my fields?",
           "categoryId": 1
       },
       {
