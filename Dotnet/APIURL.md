@@ -1143,26 +1143,19 @@ true/false
 - <b>JWT Token Header</b> : Not required
 
 
-
-
 # BI Service
-
 ### BI 
 
-URL            
+- <b>URL</b>            
 ```console
 /api/bi/orderscount/{todaysDate}/{storeId}
 ```
-
-Method: ```GET```
-
-Description    : it returns OrderCountByStore.
-
-
-Parameters      : todaysDate=2023-10-18,storeId  = 1.
-Body           : None
-              
-Response        :
+- <b>Method</b>: ```GET```
+- <b>Description</b>: it returns OrderCountByStore.
+- <b>Parameters</b>: todaysDate=2023-10-18,storeId  = 1.
+- <b>Body</b>: None
+- <b>JWT Token Header</b> : Yes            
+- <b>Response</b>:
 
 ```console
 {
@@ -1173,25 +1166,19 @@ Response        :
 }
 ```
 
-Token required : Yes
-
 <hr>
 
 
-URL            
+- <b>URL</b>           
 ```console
 /api/bi/topproducts/{todaysDate}/{mode}/{storeId}
 ```
-
-Method: ```GET```
-
-Description    : it returns TopFiveSellingProducts
-
-
-Parameters      :todaysDate=2023-10-10 ,mode=week,storeId  = 1.
-Body           : None
-              
-Response        :
+- <b>Method</b>: ```GET```
+- <b>Description</b>: it returns TopFiveSellingProducts
+- <b>Parameters </b>:todaysDate=2023-10-10 ,mode=week,storeId  = 1.
+- <b>Body</b>           : None
+- <b>JWT Token Header</b> : Yes            
+- <b>Response</b>        :
 
 ```console
 [
@@ -1222,26 +1209,20 @@ Response        :
 ]
 ```
 
-Token required : Yes
-
 <hr>
 
 
 
-URL            
+- <b>URL</b>            
 ```console
 /api/bi/MonthOrders/{year}/{storeId}
 ```
-
-Method: ```GET```
-
-Description    : it returns MonthsWithOrders.
-
-
-Parameters      :year=2023,storeId  = 1.
-Body           : None
-              
-Response        :
+- <b>Method</b>: ```GET```
+- <b>Description</b>    : it returns MonthsWithOrders.
+- <b>Parameters</b>      :year=2023,storeId  = 1.
+- <b>Body</b>           : None
+- <b>JWT Token Header</b> : Yes            
+- <b>Response</b>        :
 
 ```console
 [
@@ -1296,27 +1277,20 @@ Response        :
 ]
 ```
 
-Token required : Yes
-
 <hr>
 
 
 
-URL            
+- <b>URL</b>            
 ```console
 /api/bi/categorywiseproducts/{todaysDate}/{mode}/{storeId}
 ```
-
-Method: ```GET```
-
-Description    : it returns CategorywiseProductsCount
-
-
-
-Parameters      :todaysDate=2023-10-10 ,mode=week,storeId  = 1.
-Body           : None
-              
-Response        :
+- <b>Method</b>: ```GET```
+- <b>Description</b>    : it returns CategorywiseProductsCount
+- <b>Parameters</b>      :todaysDate=2023-10-10 ,mode=week,storeId  = 1.
+- <b>Body</b>           : None
+- <b>JWT Token Header</b> : Yes          
+- <b>Response</b>        :
 
 ```console
 [
@@ -1343,27 +1317,20 @@ Response        :
 ]
 ```
 
-Token required : Yes
-
 <hr>
 
 
 
-URL            
+- <b>URL</b>            
 ```console
 /api/bi/deliveredorders/{ year}/{shipperId};
 ```
-
-Method: ```GET```
-
-Description    : it returns DeliveredOrders
-
-
-
-Parameters      :todaysDate=2023 ,shipperId  = 2.
-Body           : None
-              
-Response        :
+- <b>Method</b>: ```GET```
+- <b>Description</b>    : it returns DeliveredOrders
+- <b>Parameters</b>      :todaysDate=2023 ,shipperId  = 2.
+- <b>Body</b>           : None
+- <b>JWT Token Header</b> : Yes                 
+- <b>Response</b>        :
 
 ```console
 [
@@ -1418,7 +1385,9 @@ Response        :
 ]
 ```
 
-Token required : Yes
-
 <hr>
+
+
+
+
 
