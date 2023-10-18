@@ -1,4 +1,5 @@
-## List of REST API for EKrushi 
+
+ ## REST API EndPoints for EKrushi 
 
 - [UserRoleManagement](#userrolemanagement) 
 - [Suppliers](#suppliers)
@@ -9,157 +10,89 @@
 - [Orders](#orders)
 - [Consulting](#consulting)
 
-# UserRoleManagement 
+### UserRoleManagement 
 
-### UserRoleController 
-
-URL            
-```console
-/api/userroles/roles/{userId}
-```
-Method: ```GET```
-
-Description    : Returns Role of User by giving userId.
-
-Parameters      : userId = 3 
-
-Body           : None
-              
-Response        :
-
-```console
-['Customer']
-```
-
-Token required : No
-
-<hr>
-
-
-URL 
+- <b>URL</b> : /api/userroles/roles/{userId}
+- <b>Method</b>: GET
+- <b>Description</b>: Returns Role of User by giving userId.
+- <b>Parameters</b>: userId = 3 
+- <b>Body</b>: Not requried
+- <b>JWT Token Header</b> : Not required
+- <b>Response</b>:
   ```console
- /api/userroles/roles/userid/{role}
-```         
- Method: ```GET```
+      ['Customer']
+  ```
 
-Description    : Returns all user of given Role .
-
-Parameters      : role ="Customer"
-
-Body           : None
-              
-Response        :
-
-```console
-[
-  "2,3,15,16,17,18,19,20,21,22,23,24,25,27"
-]
-```
-
-Token required : Yes
-
-<hr>
-
-
-URL 
+- <b>URL</b> : /api/userroles/roles/userid/{role}
+- <b>Method</b>: GET
+- <b>Description</b>: Returns all user of given Role .
+- <b>Parameters</b>: role ="Customer"
+- <b>Body</b>: Not requried
+- <b>JWT Token Header</b> : Yes
+- <b>Response</b>:
   ```console
- /api/userroles/roles 
-```         
+  [
+    "2,3,15,16,17,18,19,20,21,22,23,24,25,27"
+  ]
+  ```
 
-Method: ```POST```
+- <b>URL</b> : /api/userroles/roles 
+- <b>Method</b>: POST
+- <b>Description</b>:  Add a user role .
+- <b>Parameters</b>:Not requried
+- <b>Body</b>:
+  ```console
+  {
+    "userId": 1,
+    "roleId": 1
+  }
+  ```
 
-Description    :  Add a user role .
+- <b>JWT Token Header</b> : Yes
+- <b>Response</b>:
+  ```console
+    true
+  ```
 
-Parameters      :None
+### Suppliers 
 
-Body           :
-```console
-{
-  "userId": 1,
-  "roleId": 1
-}
-```
-              
-Response        :
+- <b>URL</b> : /api/suppliers/corporate/{supplierId} 
+- <b>Method</b>: GET
+- <b>Description</b>: Returns Corporate Id of Supplier .
+- <b>Parameters</b>: supplierId = 1
+- <b>Body</b>: Not requried
+- <b>JWT Token Header</b> : Yes
+- <b>Response</b>:
+  ```console
+  13
+  ```
 
-```console
-true
-```
-
-Token required : Yes
-
-<hr>
-
-# Suppliers 
-
-### SuppliersController 
-
-URL            
-```console
-/api/suppliers/corporate/{supplierId} 
-```
-
-Method: ```GET```
-
-Description    : Returns Corporate Id of Supplier .
-
-Parameters      : supplierId = 1
-
-Body           : None
-              
-Response       :
-
-```console
-13
-```
-
-Token required : Yes
-
-<hr>
+- <b>URL</b> :/api/suppliers/id/{userId}
+- <b>Method</b>: GET
+- <b>Description</b>: Returns Supplier Id by giving userId. 
+- <b>Parameters</b>: userId  = 13
+- <b>Body</b>: Not requried
+- <b>JWT Token Header</b> : Yes
+- <b>Response</b>:
+    ```console
+    1
+    ```
+### Stores 
 
 
-URL            
-```console
-/api/suppliers/id/{userId}
-```
-
-Method: ```GET```
-
-Description    : Returns Supplier Id by giving userId. 
-
-Parameters      : userId  = 13
-
-Body           : None
-              
-Response        :
-
-```console
-1
-```
-
-Token required : Yes
-
-<hr>
-
-
-# Stores 
-
-### StoresController 
-
-URL            
-```console
+- <b>URL</b> :
 /api/stores/{storeId}/{orderStatus}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    : Returns a list of orders based on  StoreId and Order status.
+- <b>Description</b>: Returns a list of orders based on  StoreId and Order status.
 
-Parameters      : storeId  = 1, orderStatus="delivered"
+- <b>Parameters</b>: storeId  = 1, orderStatus="delivered"
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 [
@@ -187,25 +120,24 @@ Response        :
 ]
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
 /api/stores/orderscount/{storeId} 
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    : Returns a number of orders by its status 
+- <b>Description</b>: Returns a number of orders by its status 
 
-Parameters      : storeId = 1
+- <b>Parameters</b>: storeId = 1
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 {
@@ -219,96 +151,92 @@ Response        :
 }
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
  /api/stores/nearby/{customerAddressId}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    :   Returns a nearby storeId  by giving customer's AddressId.
+- <b>Description</b>:   Returns a nearby storeId  by giving customer's AddressId.
 
-Parameters      : customerAddressId=2
+- <b>Parameters</b>: customerAddressId=2
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 2
 ```
 
-Token required : Yes
+- <b>JWT Token Header</b> : Yes
 
-<hr>
 
-URL            
-```console
+
+- <b>URL</b> :
 /api/stores/user/{storeId}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    :  Returns a UserId of store by giving StoreId .
+- <b>Description</b>:  Returns a UserId of store by giving StoreId .
 
-Parameters      : storeId = 2
+- <b>Parameters</b>: storeId = 2
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 22
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
 /api/stores/storeid/{userId}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    :  Returns a StoreId of store by giving UserId .
+- <b>Description</b>:  Returns a StoreId of store by giving UserId .
 
-Parameters      : userId = 22
+- <b>Parameters</b>: userId = 22
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 22
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
 /api/stores/name/{storeId}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    : Returns a Name of store by giving StoreId .
+- <b>Description</b>: Returns a Name of store by giving StoreId .
 
-Parameters      : storeId = 2
+- <b>Parameters</b>: storeId = 2
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 {
@@ -316,29 +244,27 @@ Response        :
 }
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
-# Shopping Cart 
 
-### CartsController 
 
-URL            
-```console
+### Shopping Cart 
+
+
+- <b>URL</b> :
  /api/carts/customer/{customerId}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    : Returns Cart of Customer by customerId.
+- <b>Description</b>: Returns Cart of Customer by customerId.
 
-Parameters      : customerId  = 16
+- <b>Parameters</b>: customerId  = 16
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 [
@@ -363,23 +289,22 @@ Response        :
 ]
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
  /api/carts
 ```
 
-Method: ```POST```
+- <b>Method</b>: POST
 
-Description    : Add Item in Cart returns boolean.
+- <b>Description</b>: Add Item in Cart returns boolean.
 
-Parameters      : None
+- <b>Parameters</b>: Not requried
 
-Body           :
+- <b>Body</b>:
 ```console
 {
   "customerId": 16,
@@ -387,31 +312,30 @@ Body           :
   "size": "M"
 }
 ```
-              
-Response        :
+
+- <b>Response</b>:
 
 ```console
 true
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
  /api/carts/product/present
 ```
 
-Method: ```POST```
+- <b>Method</b>: POST
 
-Description    : checks wheather product is already present in a cart returns boolean.
+- <b>Description</b>: checks wheather product is already present in a cart returns boolean.
 
-Parameters      : None
+- <b>Parameters</b>: Not requried
 
-Body           :
+- <b>Body</b>:
 ```console
 {
   "customerId": 16,
@@ -419,110 +343,105 @@ Body           :
   "size": "M"
 }
 ```
-              
-Response        :
+
+- <b>Response</b>:
 
 ```console
 true
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
  /api/carts/cartitem/{cartItemId}/quantity/{quantity}
 
 ```
 
-Method: ```PUT```
+- <b>Method</b>: PUT
 
-Description    : Updates quantity of cartItem returns boolean.
+- <b>Description</b>: Updates quantity of cartItem returns boolean.
 
-Parameters      : cartItemId=22 , quantity=4
+- <b>Parameters</b>: cartItemId=22 , quantity=4
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 true
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
  /api/carts/remove/{cartItemId}
 
 ```
 
-Method: ```DELETE```
+- <b>Method</b>: DELETE
 
-Description    : Remove specific item from cart by its cartItemId returns boolean.
+- <b>Description</b>: Remove specific item from cart by its cartItemId returns boolean.
 
-Parameters      : cartItemId=22 
+- <b>Parameters</b>: cartItemId=22 
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 true
 ```
 
-Token required : Yes
+- <b>JWT Token Header</b> : Yes
 
-<hr>
 
-URL            
-```console
+
+- <b>URL</b> :
  /api/carts/removeall/{customerId}
 
 ```
 
-Method: ```DELETE```
+- <b>Method</b>: DELETE
 
-Description    : Empty the cart of customer bt giving customerId returns boolean.
+- <b>Description</b>: Empty the cart of customer bt giving customerId returns boolean.
 
-Parameters      : customerId=16
+- <b>Parameters</b>: customerId=16
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 true
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
-# Shippers
 
-### ShippersController 
 
-URL            
-```console
+### Shippers
+
+
+- <b>URL</b> :
  /api/shippers/{shipperId}/{status}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    : Returns a list of orders of Shipper  by shipperId and Order status.
+- <b>Description</b>: Returns a list of orders of Shipper  by shipperId and Order status.
 
-Parameters      : shipperId  = 4 ,status="delivered
+- <b>Parameters</b>: shipperId  = 4 ,status="delivered
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 [
@@ -545,26 +464,25 @@ Response        :
 ]
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
  /api/shippers/orderscount/{shipperId}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description     : Returns a number of orders by its status of that Shipper.
+- <b>Description</b>     : Returns a number of orders by its status of that Shipper.
 
-Parameters      : shipperId  = 4 
+- <b>Parameters</b>: shipperId  = 4 
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 {
@@ -576,76 +494,72 @@ Response        :
 }
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
  /api/shippers/nearby/{storeId}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description     : Returns a nearest Shipper's Id to a store by giving storeId.
+- <b>Description</b>     : Returns a nearest Shipper's Id to a store by giving storeId.
 
-Parameters      : storeId  = 1
+- <b>Parameters</b>: storeId  = 1
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 4
 ```
 
-Token required : Yes
+- <b>JWT Token Header</b> : Yes
 
-<hr>
 
-URL            
-```console
+
+- <b>URL</b> :
  /api/shippers/shipperid/{userId}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description     : Returns a ShipperId by giving UserId.
+- <b>Description</b>     : Returns a ShipperId by giving UserId.
 
-Parameters      : userId  = 32
+- <b>Parameters</b>: userId  = 32
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 2
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
-# Payments
 
-### PaymentsController 
 
-URL            
-```console
+### Payments
+
+
+- <b>URL</b> :
  /api/payments/{customerId}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    : Returns a list of payments of customer by  CustomerId.
+- <b>Description</b>: Returns a list of payments of customer by  CustomerId.
 
-Parameters      : customerId  = 16
+- <b>Parameters</b>: customerId  = 16
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 [
@@ -662,24 +576,23 @@ Response        :
 ]
 ```
 
-Token required : Yes
+- <b>JWT Token Header</b> : Yes
 
-<hr>
 
-URL            
-```console
+
+- <b>URL</b> :
  /api/payments/details/{orderId}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    : Returns a  payment of a order by  orderId.
+- <b>Description</b>: Returns a  payment of a order by  orderId.
 
-Parameters      : orderId  = 90
+- <b>Parameters</b>: orderId  = 90
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 {
@@ -691,23 +604,22 @@ Response        :
 }
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
  /api/payments
 ```
 
-Method: ```POST```
+- <b>Method</b>: POST
 
-Description    : Add a Payment returns boolean.
+- <b>Description</b>: Add a Payment returns boolean.
 
-Parameters      : None
+- <b>Parameters</b>: Not requried
 
-Body           : 
+- <b>Body</b>: 
 ```console
 {
   "mode": "net banking",
@@ -716,40 +628,38 @@ Body           :
   "orderId": 12
 }
 ```
-              
-Response        :
+
+- <b>Response</b>:
 
 ```console
 true
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
-# Orders
 
-### OrdersController 
 
-URL            
-```console
+### Orders
+
+
+- <b>URL</b> :
  /api/orders/customer/{customerId}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    : Returns a list of Orders of customer by  CustomerId.
+- <b>Description</b>: Returns a list of Orders of customer by  CustomerId.
 
-Parameters      : customerId  = 16
+- <b>Parameters</b>: customerId  = 16
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 [
-  
+
   {
     "id": 16,
     "orderDate": "2023-10-01T17:08:34",
@@ -767,25 +677,24 @@ Response        :
 ]
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
  /api/orders/details/{orderId}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    : Returns a list of Order Details of Order by  orderId.
+- <b>Description</b>: Returns a list of Order Details of Order by  orderId.
 
-Parameters      : orderId  = 3
+- <b>Parameters</b>: orderId  = 3
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 [
@@ -810,70 +719,67 @@ Response        :
 ]
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
  /api/orders/amount/{orderId}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    : Returns Amount of Order by  orderId.
+- <b>Description</b>: Returns Amount of Order by  orderId.
 
-Parameters      : orderId  = 3
+- <b>Parameters</b>: orderId  = 3
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 2620
 ```
 
-Token required : Yes
+- <b>JWT Token Header</b> : Yes
 
-<hr>
 
-URL            
-```console
+
+- <b>URL</b> :
  /api/orders/address/{orderId}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    :  Returns a Delivery Address Id of Order by  orderId.
+- <b>Description</b>:  Returns a Delivery Address Id of Order by  orderId.
 
-Parameters      : orderId  = 3
+- <b>Parameters</b>: orderId  = 3
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 3
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
  /api/orders
 ```
 
-Method: ```POST```
+- <b>Method</b>: POST
 
-Description    :  Creates an Order and return orderId,StoreId and Its Amount.
+- <b>Description</b>:  Creates an Order and return orderId,StoreId and Its Amount.
 
-Parameters      : None
+- <b>Parameters</b>: Not requried
 
-Body           : 
+- <b>Body</b>: 
 ```console
 {
   "customerId": 16,
@@ -887,8 +793,8 @@ Body           :
   ]
 }
 ```
-              
-Response        :
+
+- <b>Response</b>:
 
 ```console
 {
@@ -898,84 +804,80 @@ Response        :
 }
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
  /api/orders/{orderId}
 ```
 
-Method: ```DELETE```
+- <b>Method</b>: DELETE
 
-Description    :  Remove an Order by  orderId return boolean.
+- <b>Description</b>:  Remove an Order by  orderId return boolean.
 
-Parameters      : orderId  = 3
+- <b>Parameters</b>: orderId  = 3
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 true
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
  /api/orders/status
 ```
 
-Method: ```PATCH```
+- <b>Method</b>: PATCH
 
-Description    :   Update an Order status return boolean.
+- <b>Description</b>:   Update an Order status return boolean.
 
-Parameters      : None
+- <b>Parameters</b>: Not requried
 
-Body           : 
+- <b>Body</b>: 
 ```console
 {
   "orderId": 3,
   "status": "delivered"
 }
 ```
-              
-Response        :
+
+- <b>Response</b>:
 
 ```console
 true
 ```
 
-Token required : Yes
-
-<hr>
+- <b>JWT Token Header</b> : Yes
 
 
 
-# Consulting
 
-### ConsultingController 
 
-URL            
-```console
+### Consulting
+
+
+- <b>URL</b> :
 /api/consulting
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    : It is used for get all questions.
+- <b>Description</b>: It is used for get all questions.
 
-Parameters      : None.
+- <b>Parameters</b>: Not requried.
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 [
@@ -983,37 +885,36 @@ Response        :
         "id": 1,
         "customerId": 2,
         "date": "2023-09-01T00:00:00",
-        "description": " How can I improve soil fertility in my fields?",
+        "- <b>Description</b>": " How can I improve soil fertility in my fields?",
         "categoryId": 0
     },
     {
         "id": 2,
         "customerId": 3,
         "date": "2023-09-01T00:00:00",
-        "description": "What are the best practices for pest and weed control in organic farming?",
+        "- <b>Description</b>": "What are the best practices for pest and weed control in organic farming?",
         "categoryId": 0
     }
 ]
 ```
 
-Token required : No
-
-<hr>
+- <b>JWT Token Header</b> : Not required
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
 /api/consulting/questioncatagories
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
+- <b>Response</b>
+- <b>Description</b>: it is used for get all question categories.
+- <b>Parameters</b>: Not requried.
 
-Description    : it is used for get all question categories.
-Parameters      : None.
+- <b>Body</b>: Not requried
 
-Body           : None
-              
-Response        :
+        :
 
 ```console
 [
@@ -1032,54 +933,52 @@ Response        :
 ]
 ```
 
-Token required : No
-
-<hr>
+- <b>JWT Token Header</b> : Not required
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
 /api/consulting/answers/{id}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    : it is used for get answer of particular question.
-Parameters      : id=2
+- <b>Description</b>: it is used for get answer of particular question.
+- <b>Parameters</b>: id=2
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 [
     {
         "question": "What are the best practices for pest and weed control in organic farming?",
-        "answers": "In organic farming, you can use methods like companion planting, beneficial insects, and organic pesticides to control pests and weeds without synthetic chemicals.",
+        "answers": "In organic farming, you can use - <b>Method</b>s like companion planting, beneficial insects, and organic pesticides to control pests and weeds without synthetic chemicals.",
         "category": "Crop Cultivation"
     }
 ]
 ```
 
-Token required : No
-
-<hr>
+- <b>JWT Token Header</b> : Not required
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
 /api/consulting/reletedquestions/{id}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    : it used for get releted questions of given question.
+- <b>Description</b>: it used for get releted questions of given question.
 
-Parameters      : id=2
+- <b>Parameters</b>: id=2
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 [
@@ -1087,77 +986,75 @@ Response        :
         "id": 1,
         "customerId": 0,
         "date": "0001-01-01T00:00:00",
-        "description": " How can I improve soil fertility in my fields?",
+        "- <b>Description</b>": " How can I improve soil fertility in my fields?",
         "categoryId": 0
     },
     {
         "id": 3,
         "customerId": 0,
         "date": "0001-01-01T00:00:00",
-        "description": "How can I conserve water in my irrigation practices?",
+        "- <b>Description</b>": "How can I conserve water in my irrigation practices?",
         "categoryId": 0
     },
     {
         "id": 4,
         "customerId": 0,
         "date": "0001-01-01T00:00:00",
-        "description": "What should I consider when selecting crop varieties for my region?",
+        "- <b>Description</b>": "What should I consider when selecting crop varieties for my region?",
         "categoryId": 0
     }
 ]
 ```
 
-Token required : No
-
-<hr>
+- <b>JWT Token Header</b> : Not required
 
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
 /api/consulting/question
 ```
 
-Method: ```POST```
+- <b>Method</b>: POST
 
-Description    : it is used for insert new question.
+- <b>Description</b>: it is used for insert new question.
 
-Parameters      : None
+- <b>Parameters</b>: Not requried
 
-Body           : [
+- <b>Body</b>: [
     {
-        
-        "description": " How can I improve soil fertility in my fields?",
+
+        "- <b>Description</b>": " How can I improve soil fertility in my fields?",
         "categoryId": 1
     }
 ]
-              
-Response        :
+
+- <b>Response</b>:
 
 ```console
 true/false
 ```
 
-Token required : No
-
-<hr>
+- <b>JWT Token Header</b> : Not required
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
 /api/consulting/Questions/Catagory/{categoryid}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    : it is used for get categoriwise questions.
+- <b>Description</b>: it is used for get categoriwise questions.
 
 
-Parameters      :categoryid=1
+- <b>Parameters</b>:categoryid=1
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 [
@@ -1165,47 +1062,46 @@ Response        :
         "id": 1,
         "customerId": 0,
         "date": "0001-01-01T00:00:00",
-        "description": " How can I improve soil fertility in my fields?",
+        "- <b>Description</b>": " How can I improve soil fertility in my fields?",
         "categoryId": 1
     },
     {
         "id": 2,
         "customerId": 0,
         "date": "0001-01-01T00:00:00",
-        "description": "What are the best practices for pest and weed control in organic farming?",
+        "- <b>Description</b>": "What are the best practices for pest and weed control in organic farming?",
         "categoryId": 1
     },
     {
         "id": 3,
         "customerId": 0,
         "date": "0001-01-01T00:00:00",
-        "description": "How can I conserve water in my irrigation practices?",
+        "- <b>Description</b>": "How can I conserve water in my irrigation practices?",
         "categoryId": 1
     }
 ] 
 ```
 
-Token required : No
-
-<hr>
+- <b>JWT Token Header</b> : Not required
 
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
 /api/consulting/smequestions/{smeid}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    : it is used for get solved questions of subject matter expert.
+- <b>Description</b>: it is used for get solved questions of subject matter expert.
 
 
-Parameters      :smeid=7
+- <b>Parameters</b>:smeid=7
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 [
@@ -1221,33 +1117,32 @@ Response        :
 ] 
 ```
 
-Token required : No
-
-<hr>
+- <b>JWT Token Header</b> : Not required
 
 
-URL            
-```console
+
+
+- <b>URL</b> :
 /api/consulting/notansweredquestions/{smeid}
 ```
 
-Method: ```GET```
+- <b>Method</b>: GET
 
-Description    : it is used for notansweredquestions list of sme.
+- <b>Description</b>: it is used for notansweredquestions list of sme.
 
-Parameters      :smeid=7
+- <b>Parameters</b>:smeid=7
 
-Body           : None
-              
-Response        :
+- <b>Body</b>: Not requried
+
+- <b>Response</b>:
 
 ```console
 []
 ```
 
-Token required : No
+- <b>JWT Token Header</b> : Not required
 
-<hr>
+
 
 
 # BI Service
