@@ -16,8 +16,6 @@ namespace Transflower.EKrushi.ShoppingCartService.Helpers
         {
             await session.LoadAsync();
             var value = session.GetString(key);
-            Console.WriteLine(key);
-            Console.WriteLine(value);
             return value == null ? default : JsonSerializer.Deserialize<T>(value);
         }
     }

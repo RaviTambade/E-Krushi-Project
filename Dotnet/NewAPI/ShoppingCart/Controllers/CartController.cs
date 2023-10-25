@@ -34,27 +34,20 @@ public class CartsController : ControllerBase
     {
         if (quantity > MaxAllowedQuantity)
         {
-            Console.WriteLine("hii1");
             return false;
         }
         
         var cart = await HttpContext.Session.GetObjectFromJson<Cart>(SessionKeys.Cart);
         if (cart is null)
         {
-            Console.WriteLine("hii2");
-
             return false;
         }
 
         var item = cart.Items.FirstOrDefault(i => i.ProductDetailsId == productDetailsId);
         if (item is null)
         {
-            Console.WriteLine("hii3");
-
             return false;
         }
-            Console.WriteLine("hii4");
-
 
         item.Quantity = quantity;
         await HttpContext.Session.SetObjectAsJson(SessionKeys.Cart, cart);
