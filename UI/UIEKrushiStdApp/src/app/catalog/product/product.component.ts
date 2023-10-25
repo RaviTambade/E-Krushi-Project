@@ -11,21 +11,19 @@ import { CatalogService } from 'src/app/Services/catalog.service';
 export class ProductComponent implements OnInit {
   @Input() product!: Product;
   selectedSize: string | undefined;
-  constructor(private catlogsvc: CatalogService) {}
+  currentPrice: string | undefined;
 
-  updatePrice(productId: number) {
+  updatePrice() {
     if (this.selectedSize == undefined) {
       return;
     }
-    console.log(this.selectedSize);
-    this.catlogsvc
-      .getProductPriceBySize(productId, this.selectedSize)
-      .subscribe((unitprice) => {
-        this.product.unitPrice = unitprice;
-      });
+    this.currentPrice = this.product.productDetails.find(
+      (pd) => pd.size == this.selectedSize
+    )?.unitPrice;
   }
 
   ngOnInit(): void {
-    this.selectedSize = this.product.size[0];
+    this.selectedSize = this.product.productDetails[0].size;
+    this.currentPrice = this.product.productDetails[0].unitPrice;
   }
 }

@@ -23,8 +23,10 @@ public class ProductRepository : IProductRepository
         try
         {
             string query =
-                @"SELECT products.id,products.title, products.image,productdetails.unitprice ,
-                (SELECT GROUP_CONCAT(size) FROM productdetails  WHERE productdetails.productid = products.id) AS size_list,
+                @"SELECT products.id,products.title, products.image,
+                GROUP_CONCAT(DISTINCT productdetails.id) as productdetailsid, 
+                GROUP_CONCAT(DISTINCT productdetails.unitprice) as unitprice ,
+                GROUP_CONCAT( DISTINCT productdetails.size) AS sizes, 
                 AVG(productreview.rating) AS rating FROM products
                 INNER JOIN productdetails ON products.id = productdetails.productid
                 INNER JOIN productreview ON products.id = productreview.productid
@@ -35,14 +37,24 @@ public class ProductRepository : IProductRepository
             MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             { 
+                List<string> productDetailsIds =reader.GetString("productdetailsid").Split(",").ToList();
+                List<string> UnitPrices =reader.GetString("unitprice").Split(",").ToList();
+                List<string> sizes =reader.GetString("sizes").Split(",").ToList();
+
+                var productdetails= productDetailsIds.Select((id, index) => new ProductDetail
+                {
+                    ProductDetailId = id,
+                    Size = sizes.ElementAt(index),
+                    UnitPrice = UnitPrices.ElementAt(index)
+                });
+
                 Product product = new Product()
                 {
                     Id = reader.GetInt32("id"),
                     Title = reader.GetString("title"),
-                    UnitPrice = reader.GetDouble("unitprice"),
                     Image = reader.GetString("image"),
                     Rating = reader.GetDouble("rating"),
-                    size = reader.GetString("size_list").Split(",").ToList()
+                    ProductDetails=productdetails
                 };
                 products.Add(product);
             }
@@ -67,8 +79,10 @@ public class ProductRepository : IProductRepository
         try
         {
             string query =
-                @"SELECT products.id,products.title, products.image,productdetails.unitprice ,
-                (SELECT GROUP_CONCAT(size) FROM productdetails  WHERE productdetails.productid = products.id) AS size_list,
+               @"SELECT products.id,products.title, products.image,
+                GROUP_CONCAT(DISTINCT productdetails.id) as productdetailsid, 
+                GROUP_CONCAT(DISTINCT productdetails.unitprice) as unitprice ,
+                GROUP_CONCAT( DISTINCT productdetails.size) AS sizes, 
                 AVG(productreview.rating) AS rating FROM products
                 INNER JOIN productdetails ON products.id = productdetails.productid
                 INNER JOIN productreview ON products.id = productreview.productid
@@ -84,16 +98,26 @@ public class ProductRepository : IProductRepository
             MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
+               List<string> productDetailsIds =reader.GetString("productdetailsid").Split(",").ToList();
+                List<string> UnitPrices =reader.GetString("unitprice").Split(",").ToList();
+                List<string> sizes =reader.GetString("sizes").Split(",").ToList();
+
+                var productdetails= productDetailsIds.Select((id, index) => new ProductDetail
+                {
+                    ProductDetailId = id,
+                    Size = sizes.ElementAt(index),
+                    UnitPrice = UnitPrices.ElementAt(index)
+                });
+
                 Product product = new Product()
                 {
                     Id = reader.GetInt32("id"),
                     Title = reader.GetString("title"),
-                    UnitPrice = reader.GetDouble("unitprice"),
                     Image = reader.GetString("image"),
                     Rating = reader.GetDouble("rating"),
-                    size = reader.GetString("size_list").Split(",").ToList()
+                    ProductDetails=productdetails
                 };
-                products.Add(product);
+                 products.Add(product);
             }
             await reader.CloseAsync();
         }
@@ -149,8 +173,10 @@ public class ProductRepository : IProductRepository
         try
         {
             string query =
-                @"SELECT products.id,products.title, products.image,productdetails.unitprice ,
-                (SELECT GROUP_CONCAT(size) FROM productdetails  WHERE productdetails.productid = products.id) AS size_list,
+              @"SELECT products.id,products.title, products.image,
+                GROUP_CONCAT(DISTINCT productdetails.id) as productdetailsid, 
+                GROUP_CONCAT(DISTINCT productdetails.unitprice) as unitprice ,
+                GROUP_CONCAT( DISTINCT productdetails.size) AS sizes, 
                 AVG(productreview.rating) AS rating FROM products
                 INNER JOIN productdetails ON products.id = productdetails.productid
                 INNER JOIN productreview ON products.id = productreview.productid
@@ -164,14 +190,24 @@ public class ProductRepository : IProductRepository
             MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
+                List<string> productDetailsIds =reader.GetString("productdetailsid").Split(",").ToList();
+                List<string> UnitPrices =reader.GetString("unitprice").Split(",").ToList();
+                List<string> sizes =reader.GetString("sizes").Split(",").ToList();
+
+                var productdetails= productDetailsIds.Select((id, index) => new ProductDetail
+                {
+                    ProductDetailId = id,
+                    Size = sizes.ElementAt(index),
+                    UnitPrice = UnitPrices.ElementAt(index)
+                });
+
                 Product product = new Product()
                 {
                     Id = reader.GetInt32("id"),
                     Title = reader.GetString("title"),
-                    UnitPrice = reader.GetDouble("unitprice"),
                     Image = reader.GetString("image"),
                     Rating = reader.GetDouble("rating"),
-                    size = reader.GetString("size_list").Split(",").ToList()
+                    ProductDetails=productdetails
                 };
                 products.Add(product);
             }
@@ -196,8 +232,10 @@ public class ProductRepository : IProductRepository
         try
         {
             string query =
-                @"SELECT products.id,products.title, products.image,productdetails.unitprice ,
-                (SELECT GROUP_CONCAT(size) FROM productdetails  WHERE productdetails.productid = products.id) AS size_list,
+                @"SELECT products.id,products.title, products.image,
+                GROUP_CONCAT(DISTINCT productdetails.id) as productdetailsid, 
+                GROUP_CONCAT(DISTINCT productdetails.unitprice) as unitprice ,
+                GROUP_CONCAT( DISTINCT productdetails.size) AS sizes, 
                 AVG(productreview.rating) AS rating FROM products
                 INNER JOIN productdetails ON products.id = productdetails.productid
                 INNER JOIN productreview ON products.id = productreview.productid
@@ -211,14 +249,24 @@ public class ProductRepository : IProductRepository
             MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
+                List<string> productDetailsIds =reader.GetString("productdetailsid").Split(",").ToList();
+                List<string> UnitPrices =reader.GetString("unitprice").Split(",").ToList();
+                List<string> sizes =reader.GetString("sizes").Split(",").ToList();
+
+                var productdetails= productDetailsIds.Select((id, index) => new ProductDetail
+                {
+                    ProductDetailId = id,
+                    Size = sizes.ElementAt(index),
+                    UnitPrice = UnitPrices.ElementAt(index)
+                });
+
                 Product product = new Product()
                 {
                     Id = reader.GetInt32("id"),
                     Title = reader.GetString("title"),
-                    UnitPrice = reader.GetDouble("unitprice"),
                     Image = reader.GetString("image"),
                     Rating = reader.GetDouble("rating"),
-                    size = reader.GetString("size_list").Split(",").ToList()
+                    ProductDetails=productdetails
                 };
                 products.Add(product);
             }
@@ -235,16 +283,18 @@ public class ProductRepository : IProductRepository
         return products;
     }
 
-    public async Task<ProductDetail?> GetProductdetails(int productId)
+    public async Task<ProductDescription?> GetProductdetails(int productId)
     {
-        ProductDetail? product = null;
+        ProductDescription? product = null;
         MySqlConnection connection = new MySqlConnection();
         connection.ConnectionString = _connectionString;
         try
         {
             string query =
-                @"SELECT products.id,products.title,products.description ,products.image,productdetails.unitprice ,
-                (SELECT GROUP_CONCAT(size) FROM productdetails  WHERE productdetails.productid = products.id) AS size_list,
+                @"SELECT products.id,products.title,products.description, products.image,
+                GROUP_CONCAT(DISTINCT productdetails.id) as productdetailsid, 
+                GROUP_CONCAT(DISTINCT productdetails.unitprice) as unitprice ,
+                GROUP_CONCAT( DISTINCT productdetails.size) AS sizes, 
                 AVG(productreview.rating) AS rating FROM products
                 INNER JOIN productdetails ON products.id = productdetails.productid
                 INNER JOIN productreview ON products.id = productreview.productid
@@ -258,15 +308,26 @@ public class ProductRepository : IProductRepository
             MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync();
             if (await reader.ReadAsync())
             {
-                product = new ProductDetail()
+                List<string> productDetailsIds =reader.GetString("productdetailsid").Split(",").ToList();
+                List<string> UnitPrices =reader.GetString("unitprice").Split(",").ToList();
+                List<string> sizes =reader.GetString("sizes").Split(",").ToList();
+
+                var productdetails= productDetailsIds.Select((id, index) => new ProductDetail
+                {
+                    ProductDetailId = id,
+                    Size = sizes.ElementAt(index),
+                    UnitPrice = UnitPrices.ElementAt(index)
+                });
+
+               
+                product = new ProductDescription()
                 {
                     Id = reader.GetInt32("id"),
                     Title = reader.GetString("title"),
-                    UnitPrice = reader.GetDouble("unitprice"),
                     Image = reader.GetString("image"),
                     Description = reader.GetString("description"),
                     Rating = reader.GetDouble("rating"),
-                    size = reader.GetString("size_list").Split(",").ToList()
+                    ProductDetails=productdetails
                 };
             }
             await reader.CloseAsync();

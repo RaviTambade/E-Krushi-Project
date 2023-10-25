@@ -28,7 +28,7 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet("details/{productId:int}")]
-    public async Task<ProductDetail?> GetProductdetails(int productId)
+    public async Task<ProductDescription?> GetProductdetails(int productId)
     {
         return await _service.GetProductdetails(productId);
     }

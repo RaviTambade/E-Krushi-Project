@@ -11,9 +11,9 @@
       <h5 class="product-title"      style="cursor: pointer;"
       [routerLink]="['/catalog/productdetail',product.id]">{{product.title | titlecase}}</h5>
       <div class="d-flex justify-content-between">
-      <div><b>{{product.unitPrice |currency:"INR"}}</b></div>  
-      <div > <select  class="select-style"  [(ngModel)]="selectedSize" (ngModelChange)="updatePrice(product.id)">
-        <option *ngFor="let size of product.size " [ngValue]="size"> <b> {{size}} </b></option>
+      <div><b>{{currentPrice |currency:"INR"}}</b></div>  
+      <div > <select  class="select-style"  [(ngModel)]="selectedSize" (ngModelChange)="updatePrice()">
+        <option *ngFor="let productDetail of product.productDetails " [ngValue]="productDetail.size"> <b> {{productDetail.size}} </b></option>
       </select></div>  
       </div>   
     </div>

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Category } from '../Models/category';
 import { Product } from '../Models/product';
 import { ProductDetail } from '../Models/productDetail';
+import { ProductDescription } from '../Models/ProductDescription';
 
 @Injectable({
   providedIn: 'root',
@@ -19,9 +20,9 @@ export class CatalogService {
     let url = 'http://localhost:5288/api/products';
     return this.httpClient.get<Product[]>(url);
   }
-  getProductDetails(productId:number): Observable<ProductDetail> {
+  getProductDetails(productId:number): Observable<ProductDescription> {
     let url = 'http://localhost:5288/api/products/details/'+productId;
-    return this.httpClient.get<ProductDetail>(url);
+    return this.httpClient.get<ProductDescription>(url);
   }
   getProductsByCategory(categoryId:string): Observable<Product[]> {
     let url = 'http://localhost:5288/api/products/category/'+categoryId;

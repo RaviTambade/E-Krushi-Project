@@ -4,6 +4,7 @@ import { CartItem } from '../Models/cart-item';
 import { Observable } from 'rxjs';
 import { AddItem } from '../Models/addItem';
 import { LocalStorageKeys } from '../Models/Enums/local-storage-keys';
+import { Cart } from '../Models/cart';
 
 @Injectable({
   providedIn: 'root',
@@ -11,39 +12,40 @@ import { LocalStorageKeys } from '../Models/Enums/local-storage-keys';
 export class CartService {
   constructor(private httpClient: HttpClient) {}
 
-  getCartItems(): Observable<CartItem[]> {
-    let userId = localStorage.getItem(LocalStorageKeys.userId);
-    let url = 'http://localhost:5282/api/carts/customer/' + userId;
-    return this.httpClient.get<CartItem[]>(url);
+  getCartItems(): Observable<Cart> {
+    let url = 'http://localhost:5282/api/carts';
+    return this.httpClient.get<Cart>(url,{withCredentials:true});
   }
 
-  updateQuantity(cartItemId: number, quantity: number): Observable<boolean> {
+  updateQuantity(productDetailsId: number, quantity: number): Observable<boolean> {
     let url =
-      'http://localhost:5282/api/carts/item/' +
-      cartItemId +
+      'http://localhost:5282/api/carts/items/' +
+      productDetailsId +
       '/quantity/' +
       quantity;
-    return this.httpClient.put<boolean>(url, {});
+    return this.httpClient.put<boolean>(url,{},{withCredentials:true});
   }
 
-  RemoveItem(cartItemId: number): Observable<boolean> {
-    let url = 'http://localhost:5282/api/carts/remove/' + cartItemId;
-    return this.httpClient.delete<boolean>(url);
+  RemoveItem(productDetailsId: number): Observable<boolean> {
+    let url = 'http://localhost:5282/api/carts/items/remove/' +  productDetailsId;
+    return this.httpClient.delete<boolean>(url,{withCredentials:true});
   }
   
-  RemoveAllCartItems(customerId: number): Observable<boolean> {
-    let url = 'http://localhost:5282/api/carts/removeall/' + customerId;
-    return this.httpClient.delete<boolean>(url);
+  RemoveAllCartItems(): Observable<boolean> {
+    let url = 'http://localhost:5282/api/carts/items/removeall';
+    return this.httpClient.delete<boolean>(url,{withCredentials:true});
   }
 
-  addItem(item: AddItem): Observable<boolean> {
-    let url = 'http://localhost:5282/api/carts/';
-    return this.httpClient.post<boolean>(url, item);
+  addItem(item: CartItem): Observable<boolean> {
+    let url = 'http://localhost:5282/api/carts';
+    console.log("req send")
+    console.log(item);
+    return this.httpClient.post<boolean>(url, item,{withCredentials:true});
   }
 
-  isProductInCart(item: AddItem): Observable<boolean> {
-    let url = 'http://localhost:5282/api/carts/product/present';
-    return this.httpClient.post<boolean>(url, item);
+  isProductInCart(productDetailsId:number): Observable<boolean> {
+    let url = 'http://localhost:5282/api/carts/items/product/ispresent/'+productDetailsId;
+    return this.httpClient.get<boolean>(url,{withCredentials:true});
   }
 
 }

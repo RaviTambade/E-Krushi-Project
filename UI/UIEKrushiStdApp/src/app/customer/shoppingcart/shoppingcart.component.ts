@@ -31,7 +31,9 @@ export class ShoppingcartComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartsvc.getCartItems().subscribe((res) => {
-      this.items = res;
+      this.items = res.items;
+      console.log("🚀 ~ this.cartsvc.getCartItems ~ cartItems:", res);
+      if(this.items.length>0)
       this.calculateSummary();
     });
   }
@@ -55,10 +57,10 @@ export class ShoppingcartComponent implements OnInit {
     });
   }
 
-  deleteItem(cartItemId: number) {
-    this.cartsvc.RemoveItem(cartItemId).subscribe((res) => {
+  deleteItem(productDetailsId: number) {
+    this.cartsvc.RemoveItem(productDetailsId).subscribe((res) => {
       if (res) {
-        this.items = this.items.filter((item) => item.cartItemId != cartItemId);
+        this.items = this.items.filter((item) => item.productDetailsId != productDetailsId);
         this.calculateSummary();
       }
     });
@@ -113,15 +115,17 @@ export class ShoppingcartComponent implements OnInit {
       );
       return;
     }
-    this.cartsvc.updateQuantity(item.cartItemId, quantity).subscribe((res) => {
+    this.cartsvc.updateQuantity(item.productDetailsId, quantity).subscribe((res) => {
+      console.log(res)
       if (res) {
         this.showNotification(
           `You  Changed  ${item.title}  Quantity  To  ${quantity}`
         );
+        item.quantity = quantity;
+        console.log(this.items);
+        this.calculateSummary();
       }
-      item.quantity = quantity;
-      console.log(this.items);
-      this.calculateSummary();
+   
     });
   }
 

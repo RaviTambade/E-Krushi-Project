@@ -189,8 +189,7 @@ export class PaymentComponent {
 
   emptyCart() {
     if (sessionStorage.getItem(SessionStorageKeys.isFromCart) == 'true') {
-      const customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
-      this.cartsvc.RemoveAllCartItems(customerId).subscribe((res) => {});
+      this.cartsvc.RemoveAllCartItems().subscribe((res) => {});
     }
   }
 }

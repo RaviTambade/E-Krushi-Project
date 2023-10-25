@@ -33,7 +33,7 @@ public class ProductService : IProductService
         return await _repository.GetSearchedProducts(productName);
     }
 
-    public async Task<ProductDetail?> GetProductdetails(int productId)
+    public async Task<ProductDescription?> GetProductdetails(int productId)
     {
         return await _repository.GetProductdetails(productId);
     }

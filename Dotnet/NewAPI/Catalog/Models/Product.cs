@@ -6,6 +6,5 @@ public class Product
     public string? Title { get; set; }
     public string? Image { get; set; }
     public double Rating { get; set; }
-    public double UnitPrice { get; set; }
-    public List<string>? size { get; set; }
+    public required IEnumerable<ProductDetail> ProductDetails { get; set; } 
 }

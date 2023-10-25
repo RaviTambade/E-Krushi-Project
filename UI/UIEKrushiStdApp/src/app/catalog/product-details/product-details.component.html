@@ -10,7 +10,7 @@
         <div style="display: flex; justify-content: space-around;">
           <a  class="btn btn-warning shadow-0" (click)="onClickBuyNow(product)"> Buy now </a>
           <div *ngIf="!isProductAlreadyInCart ">
-            <a class="btn btn-primary shadow-0" (click)="onAddToCart(product)"> <i
+            <a class="btn btn-primary shadow-0" (click)="onAddToCart()"> <i
                 class="me-1 fa fa-shopping-cart"></i>ADD TO CART</a>
           </div>
           <div *ngIf="isProductAlreadyInCart ">
@@ -41,8 +41,8 @@
             <span class="text-success ms-2">In stock</span>
           </div>
 
-          <div class="mb-3">
-            <span class="h5">{{product.unitPrice | currency:"INR"}}</span>
+          <div class="mb-3" >
+            <span class="h5">{{ currentPrice |currency:"INR" }}</span>
           </div>
           <div class="container mt-4">
             <h6 class="mb-4"> <i class="fas fa-gift" style="color:red"></i> &nbsp;Available offers </h6>
@@ -61,9 +61,9 @@
         <div class="row mb-4">
           <label class="mb-2"><b>Packing Size (gm)</b></label>
           <div class="custom-btn-group d-flex" role="group" aria-label="Size Selection">
-            <button *ngFor="let size of product.size" class="btn" [ngClass]="{'selected': size === selectedSize}"
-              style="white-space: nowrap; margin-right: 10px;" (click)="updatePrice(product.id ,size)">
-              {{ size }}
+            <button *ngFor="let productDetail  of  product.productDetails" class="btn" [ngClass]="{'selected': productDetail.size === selectedSize}"
+              style="white-space: nowrap; margin-right: 10px;" (click)="updatePrice(productDetail.size)">
+              {{ productDetail.size }}
             </button>
           </div>
 

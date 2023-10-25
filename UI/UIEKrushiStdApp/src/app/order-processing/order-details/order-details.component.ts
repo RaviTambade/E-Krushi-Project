@@ -64,7 +64,7 @@ export class OrderDetailsComponent implements OnDestroy {
   }
 
   deleteItem(cartItemId: number) {
-    this.items = this.items.filter((item) => item.cartItemId != cartItemId);
+    this.items = this.items.filter((item) => item.productDetailsId != cartItemId);
     this.calculateSummary();
   }
 

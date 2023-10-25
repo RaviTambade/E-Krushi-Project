@@ -47,8 +47,8 @@ public class CartRepository : ICartRepository
 
                 Item item = new Item()
                 {
-                    CartItemId = cartItemId,
-                    ProductId = productId,
+                    // CartItemId = cartItemId,
+                    // ProductId = productId,
                     Title = productTitle,
                     Image = image,
                     Quantity = quantity,

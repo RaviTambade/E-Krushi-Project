@@ -15,6 +15,11 @@ public class CartService : ICartService
 
     public async Task<List<Item>> GetCartItems(int customerId)
     {
+        // var items=await _repository.GetCartItems(customerId);
+        // items.GroupBy(i=>i.ProductId).Select( g=> new {
+        //     co=g.Key,
+        //     maxsal=g.MaxBy(p=>p.Quantity)
+        // });
         return await _repository.GetCartItems(customerId);
     }
 
