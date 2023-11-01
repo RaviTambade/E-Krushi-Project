@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
 import { OrderStatusCount } from 'src/app/Models/order-status-count';
 import { ShipperService } from 'src/app/Services/shipper.service';
 
@@ -19,9 +20,15 @@ export class ShipperorderscountComponent implements OnInit{
     cancelled: 0
   };
 
-constructor(private service:ShipperService){}
+constructor(private shippersvc:ShipperService){}
   ngOnInit(): void {
-    this.service.getOrderCountByStatusAndShipper(this.shipper).subscribe((response)=>{
+
+    const shipperId = Number(localStorage.getItem(LocalStorageKeys.shipperId));
+    if (Number.isNaN(shipperId) || shipperId == 0) {
+      return;
+    }
+
+    this.shippersvc.getOrderCountByStatusAndShipper(shipperId).subscribe((response)=>{
       console.log(response);
       this.orderCount=response;
     })

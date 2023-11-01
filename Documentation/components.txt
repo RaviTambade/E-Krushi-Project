@@ -1,65 +1,102 @@
+1)authentication  module
+  login- login user
 
-components:
+2)catalog  module
 
-Customer Module:
-1.signIn:                   registration                         -public R
-2.login:                    already registered                   -public R
-3.Store:                    categorywise product list            -public
-4.product Details:          product details by id                -public
-5.update:                   Update product quantity              -public
+ 1) categories  -show ctegories in card
+ 2) product     - show a single product card
+ 3) product-carousel  - show images that will change after some time
+ 4) product-categories-details - show products of that category
+				it has product component as child 
+	
+ 5)product-details - shows product details such as description ,image
+	nested components 
+	i) product-similar-items - shows products of a same category whose detail page is open	
+	ii)product-default-icons - shows icons about authenticated products,cod,free delivery.
+	
+ 6)product-home -homepage of a customer
+	nested components - i)categories  ii)product-carousel iii) product    
+ 7)searchbar -search a product
+ 8)search-product-result - show result of searched string
 
-OrderModule:
-1.Order:                    show particular customer order       -public
-2.OrderDetails:             show orderdetails                    -public
-3.OrderHistory:             show the orderhistory                -public
-4.ShowAllOrders             Order List                           -private R
-5.Order                     Details of Particular Order          -private R          
 
-1.Home:                     list of products                     -public
-2.Profile                   details of Customer                  -public R
-3.Privacy:                  customer care                        -public R
-4.Routing                   Routing                              -public 
- 
-cart Module:
-1.AddToCart:                Add product in shopping cart         -public
-2.MyCart:                   show product list                    -public
+3)OrderProcessing  module
 
-Employee Module:
-1.Customers:                Customer list                        -private R
-2.customer:                 details by id                        -private R
-3.insert:                   Add new product                      -private R
-4.Delete:                   Delete Existing Product              -private R
-5.Update:                   Update Existing Product              -private R
-6.DeleteCustomer            Delete Existing Customer             -private R
+1)address- shows all addresses of user
+2)add-address - form for adding address of user
+3)order-details - show all products that are in process of order
+4)order-summery - show details about total amount,shpping charges of order
+5)payment - show payment options
 
-Consulting Module:
-1.question:                 question list                          -public
-2.Details:                  question details by id                 -public
-3.AddQuestion:              Add question in my question list       -public
-4.MyQuestion:               Show my question list                  -public
-5.NewQuestion:              Add new question                       -public
-6.QuestionCategory:         categorywise product list              -public
-7.QuestionAnswer:           Show all answer of particular questionid-public
-8.SubjectMatterExperts:     SME List                               -private R
+6)order-processing-main-  show order processing 
+			all above componets are used in this component
 
-Payment Module:         
-1.orderpayment:             select payment mode                     -public
-2.Debit Card:               trasfer payment through debit card      -public
-3.Credit Card               trasfer payment through credit card     -public R
-4.cash payment              
-5.UPI Payment
+4) shipper module
 
-Admin Module:
-1.Employees:                Employee list                           -private R
-2.Employee:                 details                                 -private R
-3.NewEmployee:              Add new Employee                        -private R
-4.Update:                   Update Existing Employee                -private R
-5.Delete:                   Delete Existing Employee                -private R
-7.Insert                    Add new SME                             -private R
-8.Update                    Update Existing SME                     -private R
-9.Delete                    Delete Existing SME                     -private R
+1)shipper-orders - show orders details  about shipper orders
+		nested
+		1) order-product-details  -show products in order
+2)shipper-dashboard
+        nested
+           1)shipperorderscount - show shipper orders count by order status in card
+	   2)linechart - show shipper order count by month in line chart			
+
+ 5)shop-owner  module
+	1)shop-orders - show details  about shop orders
+		nested
+		1) order-product-details  -show products in order
+
+	2)shop-dashboard-
+	  nested  
+		1)dognut-chart- show category wise product sold quantity for differnt time interval
+		2)line-chart - show shop order count by month in line chart
+		3)ordercount - show order count for today,yesterday,week and month in cards
+		4)top-selling-product - show top 5 products for today,yesterday,week and month .
+
+			child 1)top-selling-product - show product detail with quantity and percentage
 
 
 
 
+nav-menu - navbar links
+confirmation-box - show popup box about confirmation.
+delete-confirmation -show popup box about deleteing confirmation
 
+
+
+6)consulting module
+
+1)categorywise question component => it is used for get categorywise questions.
+2)question category component => it is used for get all categories of questions.
+3)questionlist component => it is used for get all questions.
+4)releted questions component => it is used for get all questions.
+
+
+7)customer module 
+
+1)customer dashboard
+2)customer orders  => it show customer orders.
+   i) order details  =>it shows the details of customer orders.
+   ii)order product details => it shows the product deatils of orders.
+   iii)order summery  => it shows order summery of customer.
+3)customer payment  =>it shows payments of customer
+    i)payment summery => it shows payment summery of customer.
+4)customer questions => it shows question asked by customer.
+5)shopping cart   => this component is used for shopping cart.
+     i)cart summerry => it shows the cart summery of customer.
+
+
+8)subject matter experts module .
+
+   1)sme questions => this component is used for get solved questions by particular subject matter expert .
+   2)UnsolvedQuestions => this component is used for get unsolved questions .
+   3)subject matter expert dashboard => this component is used for dashboard.
+
+
+
+9)users module 
+
+  1)add user  => this copmponent is used for add new user .
+  2)edit user => this component is used for edit user profile.
+  3)update password => this component is used for update password of the user.
+  4)user profile  => this component is used for showing profile details of user.

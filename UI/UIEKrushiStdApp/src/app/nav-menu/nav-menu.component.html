@@ -49,7 +49,7 @@
                   <a class="nav-link text-dark" [routerLink]="['/user/profile']">Profile</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link text-dark" [routerLink]="['/shop/dashboard']">Dashboard</a>
+                  <a class="nav-link text-dark" [routerLink]="['/supplier/dashboard']">Dashboard</a>
                 </li>
                 <!-- <li class="nav-item">
                   <a class="nav-link text-dark" [routerLink]="['/customer/orders']">Orders</a>
@@ -86,7 +86,7 @@
           </li>
 
 
-          <li class="nav-item" *ngIf="isLoggedIn() && isUserHaveRequiredRole(Role.Customer)">
+          <li class="nav-item" *ngIf="!isLoggedIn() || isUserHaveRequiredRole(Role.Customer)">
             <a class="nav-link text-dark"> <i class="fa-solid fa-cart-shopping"
                 [routerLink]="['customer/shoppingcart']"></i></a>
           </li>
