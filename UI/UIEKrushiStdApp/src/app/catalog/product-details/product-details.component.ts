@@ -40,17 +40,11 @@ export class ProductDetailsComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.product.id = Number(params.get('id'));
-      console.log(
-        '🚀 ~ this.router.paramMap.subscribe ~ productId:',
-        this.product.id
-      );
+    
       if (this.product.id != null) {
         this.catlogsvc.getProductDetails(this.product.id).subscribe((res) => {
           this.product = res;
-          console.log(
-            '🚀 ~ this.catlogsvc.getProductDetails ~ product:',
-            this.product
-          );
+         
           this.selectedSize = this.product.productDetails[0].size;
           this.currentPrice = Number(this.product.productDetails[0].unitPrice);
           this.productDetailId = Number(
@@ -71,7 +65,7 @@ export class ProductDetailsComponent {
       this.product.productDetails.find((pd) => pd.size == this.selectedSize)
         ?.unitPrice
     );
-    console.log('🚀 ~ updatePrice ~ currentPrice:', this.currentPrice);
+   
 
     this.productDetailId = Number(
       this.product.productDetails.find((pd) => pd.size == this.selectedSize)
@@ -83,7 +77,7 @@ export class ProductDetailsComponent {
 
   isProductInCart(productDetailsId: number) {
     this.cartsvc.isProductInCart(productDetailsId).subscribe((res) => {
-      console.log(res);
+     
       if (res) {
         this.isProductAlreadyInCart = true;
       } else {

@@ -105,7 +105,7 @@ export class PaymentComponent {
 
   processOrder(order: OrderAddModel) {
     this.ordersvc.processOrder(order).subscribe((res) => {
-      console.log(res);
+     
       const orderAmount = res;
 
       if (this.selectedMode === 'cash on delivery') {
@@ -128,7 +128,7 @@ export class PaymentComponent {
       if (res) {
         this.emptyCart();
         alert('Order Placed');
-        console.log('payment done successfully and order placed');
+       
         this.router.navigate(['/']);
       }
     });
@@ -168,7 +168,7 @@ export class PaymentComponent {
         if (paymentResult) {
           this.emptyCart();
           alert('Order Placed');
-          console.log('Payment done successfully, and order placed');
+         
           this.router.navigate(['/']);
         }
       } else {

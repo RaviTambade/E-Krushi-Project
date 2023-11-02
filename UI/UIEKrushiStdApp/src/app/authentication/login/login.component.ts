@@ -35,7 +35,7 @@ export class LoginComponent {
 
   onSignIn() {
     this.isLoginButtonDisabled = true;
-    console.log('Validating user');
+
     this.authService.validate(this.credential).subscribe({
       next: (response) => {
         if (response == null || !response) {
@@ -44,14 +44,14 @@ export class LoginComponent {
             this.isCredentialInvalid = false;
           }, 3000);
         }
-        console.log(response);
+
         if (response != null) {
           localStorage.setItem(LocalStorageKeys.jwt, response.token);
           this.userService
             .getUserByContact(this.credential.contactNumber)
             .subscribe((response) => {
               this.userId = response.id;
-              console.log(this.userId);
+
               localStorage.setItem(
                 LocalStorageKeys.userId,
                 this.userId.toString()
@@ -60,9 +60,12 @@ export class LoginComponent {
                 .getUserRole(this.userId)
                 .subscribe((response) => {
                   this.roles = response;
-                  console.log("🚀 ~ .subscribe ~ roles:", this.roles);
-                  localStorage.setItem(LocalStorageKeys.roles,JSON.stringify(this.roles));
-                  console.log(this.roles);
+
+                  localStorage.setItem(
+                    LocalStorageKeys.roles,
+                    JSON.stringify(this.roles)
+                  );
+
                   if (this.roles?.length == 1) {
                     const role = this.roles[0];
                     this.navigateByRole(role);
@@ -94,10 +97,10 @@ export class LoginComponent {
         break;
       case Role.Supplier:
         if (this.userId != undefined)
-        this.suppliersvc.getSupplierId(this.userId).subscribe((res)=>{
-          localStorage.setItem(LocalStorageKeys.supplierId, res.toString());
-          this.router.navigate(['supplier/dashboard']);
-      })
+          this.suppliersvc.getSupplierId(this.userId).subscribe((res) => {
+            localStorage.setItem(LocalStorageKeys.supplierId, res.toString());
+            this.router.navigate(['supplier/dashboard']);
+          });
         break;
       case Role.Shipper:
         if (this.userId != undefined)
@@ -107,13 +110,9 @@ export class LoginComponent {
           });
         break;
       case Role.SubjectMatterExpert:
-        
         this.router.navigate(['sme/dashboard']);
         break;
     }
     this.userService.reloadnavbar.next();
-  }
-  showLoginPage() {
-    return this.roles.length < 1;
   }
 }

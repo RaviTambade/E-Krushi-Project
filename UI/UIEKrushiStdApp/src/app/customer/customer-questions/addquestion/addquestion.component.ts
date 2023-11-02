@@ -15,7 +15,7 @@ export class AddquestionComponent  implements OnInit {
   customerId:number|undefined;
 constructor(private svc : ConsultingService){
   this.customerId=Number(localStorage.getItem(LocalStorageKeys.userId))
-  console.log(this.customerId)
+ 
 }
 categories:Questioncategory[]=[]
 selectedcategory:string='';
@@ -37,12 +37,12 @@ this.categories=response;
 
   insertQuestion(form:any){
      
-    console.log(this.question.categoryId);
-    console.log(this.customerId);
-    console.log(form)
+   
+   
+   
     this.svc.insertQuestion(form).subscribe((res)=>{
       this.question=res;
-      console.log(form)
+     
     })
   }
 

@@ -13,7 +13,7 @@ export class ProductComponent implements OnInit {
   selectedSize: string | undefined;
   currentPrice: string | undefined;
 
-  updatePrice() {
+  onUpdatePrice() {
     if (this.selectedSize == undefined) {
       return;
     }

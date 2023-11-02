@@ -63,12 +63,12 @@ export class AddAddressComponent implements OnInit {
         ?.value,
       pinCode: this.addressForm.get('pincode')?.value,
     };
-    console.log(address);
+   
     this.usersvc.addAddress(address).subscribe((res) => {
       if (res) {
         this.hideComponent.emit();
         this.usersvc.newaddressSubject.next();
-        console.log('address added Sucessfully');
+       
       }
     });
   }

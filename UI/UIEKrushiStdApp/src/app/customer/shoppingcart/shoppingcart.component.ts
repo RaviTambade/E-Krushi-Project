@@ -32,7 +32,7 @@ export class ShoppingcartComponent implements OnInit {
   ngOnInit(): void {
     this.cartsvc.getCartItems().subscribe((res) => {
       this.items = res.items;
-      console.log("🚀 ~ this.cartsvc.getCartItems ~ cartItems:", res);
+     
       if(this.items.length>0)
       this.calculateSummary();
     });
@@ -47,12 +47,12 @@ export class ShoppingcartComponent implements OnInit {
     this.total = this.subTotal - this.discount;
   }
 
-  openDeleteConfirmationDialog(cartItemId: number) {
+  openDeleteConfirmationDialog(productDetailsId: number) {
     const dialogRef = this.dialog.open(DeleteConfirmationComponent, {});
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
-        this.deleteItem(cartItemId);
+        this.deleteItem(productDetailsId);
       }
     });
   }
@@ -116,13 +116,13 @@ export class ShoppingcartComponent implements OnInit {
       return;
     }
     this.cartsvc.updateQuantity(item.productDetailsId, quantity).subscribe((res) => {
-      console.log(res)
+     
       if (res) {
         this.showNotification(
           `You  Changed  ${item.title}  Quantity  To  ${quantity}`
         );
         item.quantity = quantity;
-        console.log(this.items);
+       
         this.calculateSummary();
       }
    

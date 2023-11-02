@@ -26,7 +26,7 @@ export class OrderscountComponent implements OnInit{
     }
 
     this.bisvc.getOrderCountByStore(this.currentDate,storeId).subscribe((res)=>{
-      console.log(res);
+     
         this.orderCount=res;      
     })
   }

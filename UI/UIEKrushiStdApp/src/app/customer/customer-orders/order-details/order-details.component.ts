@@ -20,7 +20,7 @@ export class OrderDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.orderId = Number(params.get('orderid'));
-      console.log(this.orderId);
+     
       this.ordersvc.getAddressIdOfOrder(this.orderId).subscribe((addressId) => {
         this.usersvc.getAddressById(addressId).subscribe((address) => {
           this.address = address;

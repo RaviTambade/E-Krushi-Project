@@ -14,7 +14,7 @@ export class OrderSummeryComponent implements OnInit {
   ngOnInit(): void {
     this.ordersvc.getOrderAmount(this.orderId).subscribe((res) => {
 
-      console.log(res);
+     
       this.subtotal = res;
     });
   }

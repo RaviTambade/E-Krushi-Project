@@ -32,10 +32,10 @@ export class UpdatePasswordComponent {
     }
   
     if (this.credential.newPassword === this.confirmPassword) {
-      console.log(form)
+     
 
       this.authsvc.updatePassword(this.credential).subscribe((response) => {
-        console.log(response);
+       
         if (response) {
           alert("Password changed")
           this.onPasswordChange.emit();

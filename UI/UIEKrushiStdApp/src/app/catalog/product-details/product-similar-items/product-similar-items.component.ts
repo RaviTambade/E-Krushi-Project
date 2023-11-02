@@ -14,7 +14,7 @@ export class ProductSimilarItemsComponent implements OnChanges {
   constructor(private catlogsvc: CatalogService,private el: ElementRef, private renderer: Renderer2) {}
 
   ngOnInit() {
-    console.log(this.productId);
+   
 
     if (this.productId == undefined) {
       return;

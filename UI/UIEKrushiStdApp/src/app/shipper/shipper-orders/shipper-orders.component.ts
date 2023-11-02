@@ -2,13 +2,10 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderStatus } from 'src/app/Models/Enums/Order-Status';
 import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
-import { Order } from 'src/app/Models/Order';
-import { AddressInfo } from 'src/app/Models/addressinfo';
 import { OrderStatusCount } from 'src/app/Models/order-status-count';
 import { ShipperOrder } from 'src/app/Models/shipper-order';
 import { OrderService } from 'src/app/Services/order-service.service';
 import { ShipperService } from 'src/app/Services/shipper.service';
-import { StoreService } from 'src/app/Services/store.service';
 import { UserService } from 'src/app/Services/user.service';
 import { ConfirmationBoxComponent } from 'src/app/confirmation-box/confirmation-box.component';
 
@@ -70,7 +67,7 @@ export class ShipperOrdersComponent {
         }, []);
         let uniqueaddressIdsString = [...new Set(addressIds)].join(',');
 
-        console.log(uniqueaddressIdsString);
+       
 
         this.usersvc
           .getaddressInfoByIdString(uniqueaddressIdsString)
@@ -78,14 +75,14 @@ export class ShipperOrdersComponent {
             let addresses = res;
             this.orders.forEach((order) => {
               const match1 = addresses.find(
-                (item) => item.id === order.fromAddressId
+                (address) => address.id === order.fromAddressId
               );
               if (match1) {
                 order.fromAddress = `${match1.name}, ${match1.landMark}, ${match1.area},${match1.city}, ${match1.state},${match1.pinCode} ,${match1.contactNumber}, ${match1.alternateContactNumber}`;
-                console.log(match1);
+               
               }
               const match2 = addresses.find(
-                (item) => item.id === order.toAddressId
+                (address) => address.id === order.toAddressId
               );
               if (match2) {
                 order.toAddress =`${match2.name}, ${match2.landMark}, ${match2.area},${match2.city}, ${match2.state},${match2.pinCode} ,${match2.contactNumber}, ${match2.alternateContactNumber}`;
@@ -165,7 +162,7 @@ export class ShipperOrdersComponent {
     this.ordersvc.updateOrderStatus(orderId, OrderStatus.picked).subscribe({
       next: (res) => {
         if (res) {
-          console.log('order picked');
+         
           this.removeOrderFromCurrentOrders(orderId);
           if (this.orderCount != undefined) {
             this.orderCount.readyToDispatch -= 1;
@@ -186,7 +183,7 @@ export class ShipperOrdersComponent {
     this.ordersvc.updateOrderStatus(orderId, OrderStatus.cancelled).subscribe({
       next: (res) => {
         if (res) {
-          console.log('order cancelled');
+         
           this.removeOrderFromCurrentOrders(orderId);
           if (this.orderCount != undefined) {
             this.orderCount.cancelled += 1;
@@ -208,7 +205,7 @@ export class ShipperOrdersComponent {
     this.ordersvc.updateOrderStatus(orderId, OrderStatus.inprogress).subscribe({
       next: (res) => {
         if (res) {
-          console.log('order is in process');
+         
           this.removeOrderFromCurrentOrders(orderId);
           if (this.orderCount != undefined) {
             this.orderCount.picked -= 1;
@@ -230,7 +227,7 @@ export class ShipperOrdersComponent {
     this.ordersvc.updateOrderStatus(orderId, OrderStatus.delivered).subscribe({
       next: (res) => {
         if (res) {
-          console.log('order is in process');
+         
           this.removeOrderFromCurrentOrders(orderId);
           if (this.orderCount != undefined) {
             this.orderCount.inProgress -= 1;

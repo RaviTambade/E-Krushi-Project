@@ -17,13 +17,13 @@ export class QuestionanswerComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((res)=>{
       this.id= Number(res.get('id'));
-      console.log(this.id)
+     
     
     this.svc.getAnswers(this.id).subscribe((res)=>{
-      console.log(this.id);
+     
       this.questionsAnswers=res;
       this.question=this.questionsAnswers[0].question;
-      console.log(res);
+     
     });
     });   
   }

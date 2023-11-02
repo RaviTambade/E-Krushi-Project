@@ -1,9 +1,9 @@
 <div class="  w3-row" *ngFor="let category of categories">
-    <div class="column2">
-      <div class="card" [routerLink]="['/catalog/categoryproduct/',category.id]">
-        <img src="{{category.image}}" class="categoryimg">
-        <h6>{{category.title |titlecase}}</h6>
-      </div>
-      <br>
+  <div class="column2">
+    <div class="card" [routerLink]="['/catalog/categoryproduct/',category.id]">
+      <img src="{{category.image}}" class="categoryimg">
+      <h6>{{category.title |titlecase}}</h6>
     </div>
+    <br>
   </div>
+</div>

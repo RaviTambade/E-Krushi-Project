@@ -29,7 +29,7 @@ constructor(private shippersvc:ShipperService){}
     }
 
     this.shippersvc.getOrderCountByStatusAndShipper(shipperId).subscribe((response)=>{
-      console.log(response);
+     
       this.orderCount=response;
     })
   }

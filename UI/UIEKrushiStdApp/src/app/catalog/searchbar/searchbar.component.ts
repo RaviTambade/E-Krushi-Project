@@ -12,7 +12,7 @@ export class SearchbarComponent {
   suggestions: string[] = [];
   constructor(private router: Router, private catalogsvc: CatalogService) {}
   onSearch() {
-    console.log(this.searchString);
+   
     this.suggestions=[];
     this.router.navigate(['catalog/products', this.searchString]);
   }
@@ -21,7 +21,7 @@ export class SearchbarComponent {
     this.catalogsvc
       .getProductNameSuggestions(this.searchString)
       .subscribe((res) => {
-        console.log(res);
+       
         this.suggestions = res;
       });
   }

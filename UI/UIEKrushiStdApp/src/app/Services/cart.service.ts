@@ -38,8 +38,8 @@ export class CartService {
 
   addItem(item: CartItem): Observable<boolean> {
     let url = 'http://localhost:5282/api/carts';
-    console.log("req send")
-    console.log(item);
+   
+   
     return this.httpClient.post<boolean>(url, item,{withCredentials:true});
   }
 

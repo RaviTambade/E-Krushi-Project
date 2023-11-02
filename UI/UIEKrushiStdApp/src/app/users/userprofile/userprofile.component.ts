@@ -28,7 +28,6 @@ export class UserprofileComponent {
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
   constructor(
     private usersvc: UserService,
-    private authsvc: AuthenticationService,
     private http: HttpClient
   ) {
     this.user = {
@@ -56,7 +55,7 @@ export class UserprofileComponent {
     this.usersvc.getUser(userId).subscribe((response) => {
       this.user = response;
       this.imageurl = this.url + this.user.imageUrl;
-      console.log(response);
+     
     });
   }
 
@@ -101,7 +100,7 @@ export class UserprofileComponent {
               this.usersvc
                 .updateUser(this.user.id, this.user)
                 .subscribe((response) => {
-                  console.log(response);
+                 
                 });
             }
           },

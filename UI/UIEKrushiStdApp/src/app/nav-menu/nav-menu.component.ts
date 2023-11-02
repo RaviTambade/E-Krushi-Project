@@ -74,7 +74,7 @@ export class NavMenuComponent implements OnInit, OnDestroy {
     let contactNumber = this.authsvc.getContactNumberFromToken();
     if (contactNumber != null) {
       this.usersvc.getUserByContact(contactNumber).subscribe((response) => {
-        console.log(response);
+       
         this.name = response.name;
       });
     }

@@ -16,7 +16,7 @@ export class SmequestionsComponent implements OnInit{
   ngOnInit(): void {
     this.service.getSubjectMatterExpertsSolvedQuestions(this.smeid).subscribe((response)=>{
       this.questions=response;
-      console.log(response);
+     
     })
   }
 

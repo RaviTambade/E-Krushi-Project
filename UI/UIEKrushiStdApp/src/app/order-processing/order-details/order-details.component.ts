@@ -122,7 +122,7 @@ export class OrderDetailsComponent implements OnDestroy {
       `You  Changed  ${item.title}  Quantity  To  ${quantity}`
     );
     item.quantity = quantity;
-    console.log(this.items);
+   
     this.calculateSummary();
   }
 

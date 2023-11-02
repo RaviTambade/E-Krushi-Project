@@ -13,7 +13,7 @@ export class UnsolvedquestionsComponent implements OnInit{
   ngOnInit(): void {
      this.service.getUnSolvedQuestions(this.smeid).subscribe((response)=>{
       this.questions=response;
-      console.log(response);
+     
      })
   }
 

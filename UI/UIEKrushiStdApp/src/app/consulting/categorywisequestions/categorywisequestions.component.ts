@@ -20,12 +20,12 @@ export class CategorywisequestionsComponent implements OnInit {
     })
     this.svc.getCategorywiseQuestions(this.categoryId).subscribe((res)=>{
       this.questions=res;
-      console.log(res);
+     
     })
   }
 
   navigateQuestionAnswers(id:number) {
-    console.log(id);
+   
     this.router.navigate(['/customer/question/',id],{relativeTo:this.route});
   
     

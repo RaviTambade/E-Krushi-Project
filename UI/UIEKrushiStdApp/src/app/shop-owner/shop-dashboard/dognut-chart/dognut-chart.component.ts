@@ -49,7 +49,7 @@ export class DognutChartComponent implements OnInit {
         this.storeid
       )
       .subscribe((response) => {
-        console.log(response);
+       
         this.doughnutChartData.labels = response.map((r) => r.title);
         this.doughnutChartData.datasets[0].data = response.map(
           (r) => r.quantity

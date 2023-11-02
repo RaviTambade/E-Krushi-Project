@@ -23,7 +23,7 @@ export class CustomerOrdersComponent implements OnInit {
         next: (res) => {
           this.orders = res;
           this.filterOrders(this.activeFilter);
-          console.log(res);
+         
         },
         error: (error) => {
           console.error(error);

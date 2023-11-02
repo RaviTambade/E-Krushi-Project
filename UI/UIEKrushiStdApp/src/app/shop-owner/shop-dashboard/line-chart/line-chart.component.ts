@@ -104,7 +104,7 @@ export class LineChartComponent implements OnInit {
     this.service
       .getMonthsWithOrders(this.year, this.storeId)
       .subscribe((response) => {
-        console.log(response);
+       
         this.lineChartData.labels = response.map((item) => item.month.slice(0,3));
         this.lineChartData.datasets[0].data = response.map(
           (item) => item.orderCount 

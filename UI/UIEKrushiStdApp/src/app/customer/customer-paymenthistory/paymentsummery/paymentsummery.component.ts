@@ -18,8 +18,8 @@ export class PaymentsummeryComponent implements OnChanges {
         .subscribe((res) => {
           this.paymentDetails = res;
           this.PaymentId = res.paymentId;
-          // console.log(this.orderId);
-          console.log(res);
+          //
+         
         });
   }
 }

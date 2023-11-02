@@ -25,7 +25,7 @@ export class OrderProductDetailsComponent {
         .subscribe({
           next: (res) => {
             this.orderDetails = res;
-            console.log(res);
+           
           },
           error: (error) => {
             console.error(error);

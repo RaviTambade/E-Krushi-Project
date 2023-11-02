@@ -1,21 +1,21 @@
-<div class="w3-row" >
+<div class="w3-row">
   <div class="column">
     <div class="card">
-      <div style="position: relative; display: inline-block;cursor: pointer;"
-      [routerLink]="['/catalog/productdetail',product.id]">
-        <img src="{{product.image}}" alt="" style="width: 100%;height: 100%;">
-        <div style="position: absolute; bottom: 0; left: 0; background-color: rgba(0, 0, 0, 0.7); color: white; padding: 2px">
-          {{product.rating}} <i class="fas fa-star" style="color: gold;"></i>
+      <div class="img-container" [routerLink]="['/catalog/productdetail',product.id]">
+        <img src="{{product.image}}" 
+         class="image-size">
+        <div class="ratings">
+          {{product.rating}} <i class="fas fa-star c-gold"></i>
         </div>
       </div>
-      <h5 class="product-title"      style="cursor: pointer;"
-      [routerLink]="['/catalog/productdetail',product.id]">{{product.title | titlecase}}</h5>
+      <h5 class="product-title " [routerLink]="['/catalog/productdetail',product.id]">{{product.title | titlecase}}</h5>
       <div class="d-flex justify-content-between">
-      <div><b>{{currentPrice |currency:"INR"}}</b></div>  
-      <div > <select  class="select-style"  [(ngModel)]="selectedSize" (ngModelChange)="updatePrice()">
-        <option *ngFor="let productDetail of product.productDetails " [ngValue]="productDetail.size"> <b> {{productDetail.size}} </b></option>
-      </select></div>  
-      </div>   
+        <div><b>{{currentPrice |currency:"INR"}}</b></div>
+        <div> <select class="select-style" [(ngModel)]="selectedSize" (ngModelChange)="onUpdatePrice()">
+            <option *ngFor="let productDetail of product.productDetails " [ngValue]="productDetail.size"> <b>
+                {{productDetail.size}} </b></option>
+          </select></div>
+      </div>
     </div>
     <br>
   </div>

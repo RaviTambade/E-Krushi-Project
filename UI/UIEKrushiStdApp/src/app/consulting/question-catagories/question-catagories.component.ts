@@ -19,7 +19,7 @@ constructor(private svc:ConsultingService,private router: Router){}
   ngOnInit(): void {
    this.svc.getAllCategories().subscribe((response)=>{
     this.categories=response; 
-    console.log(response);
+   
    })
   }
 

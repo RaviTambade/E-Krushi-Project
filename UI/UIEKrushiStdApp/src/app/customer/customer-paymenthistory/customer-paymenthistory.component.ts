@@ -17,7 +17,7 @@ export class CustomerPaymenthistoryComponent implements OnInit {
 
     this.svc.getPayments(customerId).subscribe((res) => {
       this.payments = res;
-      console.log(res);
+     
     });
   }
   viewStatus: boolean = false;

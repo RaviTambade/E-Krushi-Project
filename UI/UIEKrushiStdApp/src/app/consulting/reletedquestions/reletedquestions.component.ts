@@ -16,8 +16,8 @@ export class ReletedquestionsComponent implements OnInit{
   ngOnInit(): void {
     this.svc.getReletedQuestions(this.questionId).subscribe((response)=>{
      this.reletedQuestions= response;
-      console.log(this.questionId)
-      console.log(response);
+     
+     
     })
   }
 
@@ -34,7 +34,7 @@ export class ReletedquestionsComponent implements OnInit{
 
 
   navigateQuestionAnswers(id:number) {
-    console.log(id);
+   
     this.router.navigate(['/customer/question/',id],{relativeTo:this.route});
   
     

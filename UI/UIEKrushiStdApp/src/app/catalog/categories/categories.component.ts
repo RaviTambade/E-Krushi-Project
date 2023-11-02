@@ -9,7 +9,7 @@ import { CatalogService } from 'src/app/Services/catalog.service';
 })
 export class CategoriesComponent implements OnInit {
   categories: Category[] = [];
-  
+
   constructor(private catlogsvc: CatalogService) {}
 
   ngOnInit(): void {
@@ -17,5 +17,4 @@ export class CategoriesComponent implements OnInit {
       this.categories = res;
     });
   }
-
 }

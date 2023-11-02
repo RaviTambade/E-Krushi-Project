@@ -106,7 +106,7 @@ export class ShopOrdersComponent implements OnInit {
       .updateOrderStatus(orderId, OrderStatus.approved)
       .subscribe((res) => {
         if (res) {
-          console.log('order approved');
+         
           this.removeOrderFromCurrentOrders(orderId);
           if (this.orderCount != undefined) {
             this.orderCount.approved += 1;
@@ -121,7 +121,7 @@ export class ShopOrdersComponent implements OnInit {
       .updateOrderStatus(orderId, OrderStatus.cancelled)
       .subscribe({ next:(res) => {
         if (res) {
-          console.log('order cancelled');
+         
           this.removeOrderFromCurrentOrders(orderId);
           if (this.orderCount != undefined) {
             this.orderCount.cancelled += 1;
@@ -147,7 +147,7 @@ export class ShopOrdersComponent implements OnInit {
       .subscribe({
         next: (res) => {
           if (res) {
-            console.log('order ready for dispatch');
+           
             this.removeOrderFromCurrentOrders(orderId);
             if (this.orderCount != undefined) {
               this.orderCount.approved -= 1;

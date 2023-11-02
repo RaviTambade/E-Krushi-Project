@@ -90,7 +90,7 @@ export class LinechartComponent implements OnInit{
     this.service
       .getDeliveredOrders(this.year, this.shipperId)
       .subscribe((response) => {
-        console.log(response);
+       
         this.lineChartData.labels = response.map((item) => item.month );
         this.lineChartData.datasets[0].data = response.map(
           (item) => item.ordersCount 

@@ -36,7 +36,7 @@ export class TopSellingProductsComponent implements OnInit {
       .getTopFiveSellingProducts(this.currentDate, this.selectedMode, this.storeId)
       .subscribe((res) => {
         this.products = res;
-        console.log('🚀 ~ .subscribe ~ res:', res);
+       
       });
   }
 }

@@ -62,7 +62,7 @@ export class EdituserComponent {
         gender: this.user.gender,
         email: this.user.email
       });
-      console.log(response);
+     
     });
   }
 
@@ -84,7 +84,7 @@ export class EdituserComponent {
       this.user.gender=this.userForm.get('gender')?.value;
       this.user.email=this.userForm.get('email')?.value;
     this.svc.updateUser(this.userId, this.user).subscribe((response) => {
-      console.log(response);
+     
     this.onUdateFinished.emit({isUpdated:true});
   });
   }

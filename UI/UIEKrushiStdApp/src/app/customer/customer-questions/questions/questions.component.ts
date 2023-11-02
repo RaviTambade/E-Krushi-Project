@@ -23,16 +23,16 @@ export class QuestionsComponent implements OnInit{
   ngOnInit(): void {
     this.svc.getQuestions().subscribe((res)=>{
 this.questions=res;
-      console.log(res);
+     
 let customerIds=this.questions.map(u=>u.customerId);
 console.log(customerIds);
  let customerIdString=customerIds.join(","); 
  this.usersvc.getUserNamesWithId(customerIdString).subscribe((res)=>{
-  console.log(res);
+ 
   this.data=res;
   this.questions.forEach((question)=>{
     let matchingName=this.data.find((element)=>element.id==question.id)
-    console.log(matchingName);
+   
     if(matchingName!=undefined){
       question.name=matchingName.name
     }
@@ -46,7 +46,7 @@ console.log(customerIds);
 
 
   navigateQuestionAnswers(id:number) {
-    console.log(id);
+   
     this.router.navigate(['/customer/question/',id],{relativeTo:this.route});
   
     

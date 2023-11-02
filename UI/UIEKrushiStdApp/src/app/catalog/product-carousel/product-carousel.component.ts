@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-product-carousel',
   templateUrl: './product-carousel.component.html',
-  styleUrls: ['./product-carousel.component.css']
+  styleUrls: ['./product-carousel.component.css'],
 })
 export class ProductCarouselComponent implements OnInit {
   cards = [
@@ -28,11 +28,7 @@ export class ProductCarouselComponent implements OnInit {
   startCarousel(): void {
     setInterval(() => {
       this.nextSlide();
-    }, 3000); 
-  }
-
-  prevSlide(): void {
-    this.currentIndex = (this.currentIndex - 1 + this.cards.length) % this.cards.length;
+    }, 3000);
   }
 
   nextSlide(): void {
@@ -42,7 +38,4 @@ export class ProductCarouselComponent implements OnInit {
   goToSlide(index: number): void {
     this.currentIndex = index;
   }
-
-
-
 }
