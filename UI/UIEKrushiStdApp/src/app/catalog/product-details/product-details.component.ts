@@ -1,11 +1,8 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
-import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
+import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SessionStorageKeys } from 'src/app/Models/Enums/session-storage-keys';
 import { ProductDescription } from 'src/app/Models/ProductDescription';
-import { AddItem } from 'src/app/Models/addItem';
 import { CartItem } from 'src/app/Models/cart-item';
-import { ProductDetail } from 'src/app/Models/productDetail';
 import { CartService } from 'src/app/Services/cart.service';
 import { CatalogService } from 'src/app/Services/catalog.service';
 
@@ -15,9 +12,7 @@ import { CatalogService } from 'src/app/Services/catalog.service';
   styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent {
-  Number(arg0: string | undefined) {
-    throw new Error('Method not implemented.');
-  }
+ 
   product: ProductDescription = {
     description: '',
     id: 0,
@@ -40,11 +35,11 @@ export class ProductDetailsComponent {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.product.id = Number(params.get('id'));
-    
+
       if (this.product.id != null) {
         this.catlogsvc.getProductDetails(this.product.id).subscribe((res) => {
           this.product = res;
-         
+
           this.selectedSize = this.product.productDetails[0].size;
           this.currentPrice = Number(this.product.productDetails[0].unitPrice);
           this.productDetailId = Number(
@@ -56,7 +51,7 @@ export class ProductDetailsComponent {
     });
   }
 
-  updatePrice(size: string) {
+  onUpdatePrice(size: string) {
     this.selectedSize = size;
     if (this.selectedSize == undefined) {
       return;
@@ -65,7 +60,6 @@ export class ProductDetailsComponent {
       this.product.productDetails.find((pd) => pd.size == this.selectedSize)
         ?.unitPrice
     );
-   
 
     this.productDetailId = Number(
       this.product.productDetails.find((pd) => pd.size == this.selectedSize)
@@ -77,7 +71,6 @@ export class ProductDetailsComponent {
 
   isProductInCart(productDetailsId: number) {
     this.cartsvc.isProductInCart(productDetailsId).subscribe((res) => {
-     
       if (res) {
         this.isProductAlreadyInCart = true;
       } else {
@@ -103,10 +96,6 @@ export class ProductDetailsComponent {
         }
       });
     }
-  }
-
-  goToCart() {
-    this.router.navigate(['/customer/shoppingcart']);
   }
 
   onClickBuyNow(product: ProductDescription) {

@@ -4,7 +4,6 @@
     <div class="card">
       <img src="{{card.imageUrl}}" height="350" width="100%">
     </div>
-
   </div>
   <div class="carousel-indicators">
     <span class="indicator" *ngFor="let card of cards; let i = index" [class.active]="i === currentIndex"

@@ -1,16 +1,14 @@
 <div class="container-md my-4">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title text-center">Confirm Order {{ data.status | titlecase}}</h4>
-        <p class="card-text lead">{{ data.message }}</p>
-        <div class="text-center mt-3 ">
-          <button (click)="onYesClick()" class="btn btn-success m-4">
-            <i class="fas fa-check"></i>Yes</button>
-          <button (click)="onNoClick()" class="btn btn-danger">
-            <i class="fas fa-times"></i>No</button>
-        </div>
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title text-center">Confirm Order {{ data.status | titlecase}}</h4>
+      <p class="card-text lead">{{ data.message }}</p>
+      <div class="text-center mt-3 ">
+        <button (click)="onYesClick()" class="btn btn-success m-4">
+          <i class="fas fa-check"></i>Yes</button>
+        <button (click)="onNoClick()" class="btn btn-danger">
+          <i class="fas fa-times"></i>No</button>
       </div>
     </div>
   </div>
-  
-  
+</div>

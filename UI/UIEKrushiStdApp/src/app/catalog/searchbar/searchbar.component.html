@@ -1,5 +1,6 @@
 <div class="d-flex">
-    <input class="form-control me-1" type="text" placeholder="Search" (input)="showSuggestions()"  [(ngModel)]="searchString">
+    <input class="form-control me-1" type="text" placeholder="Search" (input)="getSuggestions()"
+        [(ngModel)]="searchString">
     <button class="btn " style="background-color: gray;" type="submit" (click)="onSearch()">
         <i class="fa fa-search" style="color: gold;"></i>
     </button>

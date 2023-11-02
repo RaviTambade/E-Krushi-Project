@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CatalogService } from 'src/app/Services/catalog.service';
 
@@ -12,22 +12,20 @@ export class SearchbarComponent {
   suggestions: string[] = [];
   constructor(private router: Router, private catalogsvc: CatalogService) {}
   onSearch() {
-   
-    this.suggestions=[];
+    this.suggestions = [];
     this.router.navigate(['catalog/products', this.searchString]);
   }
 
-  showSuggestions() {
+  getSuggestions() {
     this.catalogsvc
       .getProductNameSuggestions(this.searchString)
       .subscribe((res) => {
-       
         this.suggestions = res;
       });
   }
 
-  onSelectSuggestion(suggestion:string){
-    this.searchString=suggestion;
+  onSelectSuggestion(suggestion: string) {
+    this.searchString = suggestion;
     this.onSearch();
   }
 }
