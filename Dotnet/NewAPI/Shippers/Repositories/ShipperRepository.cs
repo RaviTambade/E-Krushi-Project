@@ -186,11 +186,11 @@ public class ShipperRepository : IShipperRepository
         try
         {
             await connection.OpenAsync();
-           
+
             return await connection.QueryFirstAsync<OrderStatusCount>(
                 "GetShipperOrderCountByStatus",
                 new { shipper_id = shipperId },
-                commandType:CommandType.StoredProcedure
+                commandType: CommandType.StoredProcedure
 
             );
         }
