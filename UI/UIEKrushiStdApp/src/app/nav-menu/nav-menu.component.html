@@ -9,7 +9,7 @@
         aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div *ngIf="isUserHaveRequiredRole(Role.Customer)">
+      <div class="mx-4" *ngIf="!isLoggedIn() || isUserHaveRequiredRole(Role.Customer)">
         <app-searchbar></app-searchbar>
       </div>
       <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
@@ -29,11 +29,11 @@
                 width="25" height="25">Queries</a>
           </li>
           <li class="nav-item" style="text-align: center; font-size: 12px; position: relative;" *ngIf="isLoggedIn()">
-            <div class="nav-link text-dark" (mouseenter)="showLinks = true" (mouseleave)="showLinks = false">
+            <div class="-link text-dark" (mouseenter)="showLinks = true" (mouseleave)="showLinks = false">
               Welcome, <p>{{name}}</p>
               
               <ul *ngIf="isUserHaveRequiredRole(Role.Customer) && showLinks" class="card">
-                <li class="nav-item">
+nav                <li class="nav-item">
                   <a class="nav-link text-dark" [routerLink]="['/user/profile']">Profile</a>
                 </li>
                 <li class="nav-item">

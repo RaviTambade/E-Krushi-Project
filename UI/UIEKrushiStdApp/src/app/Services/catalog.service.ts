@@ -20,29 +20,31 @@ export class CatalogService {
     let url = 'http://localhost:5288/api/products';
     return this.httpClient.get<Product[]>(url);
   }
-  getProductDetails(productId:number): Observable<ProductDescription> {
-    let url = 'http://localhost:5288/api/products/details/'+productId;
+  getProductDetails(productId: number): Observable<ProductDescription> {
+    let url = 'http://localhost:5288/api/products/details/' + productId;
     return this.httpClient.get<ProductDescription>(url);
   }
-  getProductsByCategory(categoryId:string): Observable<Product[]> {
-    let url = 'http://localhost:5288/api/products/category/'+categoryId;
+  getProductsByCategory(categoryId: string): Observable<Product[]> {
+    let url = 'http://localhost:5288/api/products/category/' + categoryId;
     return this.httpClient.get<Product[]>(url);
   }
-  getSimilarProducts(productId:number): Observable<Product[]> {
-    let url = 'http://localhost:5288/api/products/similar/'+productId;
+  getSimilarProducts(productId: number): Observable<Product[]> {
+    let url = 'http://localhost:5288/api/products/similar/' + productId;
     return this.httpClient.get<Product[]>(url);
   }
-  getSearchedProducts(searchString:string): Observable<Product[]> {
-    let url = 'http://localhost:5288/api/products/search/'+searchString;
+  getSearchedProducts(searchString: string): Observable<Product[]> {
+    let url = 'http://localhost:5288/api/products/search/' + searchString;
     return this.httpClient.get<Product[]>(url);
   }
   getProductPriceBySize(productId: number, size: string): Observable<number> {
     let url =
-      'http://localhost:5288/api/Products/price/' + productId + '/' + size;
+      'http://localhost:5288/api/products/price/' + productId + '/' + size;
     return this.httpClient.get<number>(url);
   }
 
- 
-
-
+  getProductNameSuggestions(searchString: string): Observable<string[]> {
+    let url =
+      'http://localhost:5288/api/products/suggestions/names/' + searchString;
+    return this.httpClient.get<string[]>(url);
+  }
 }

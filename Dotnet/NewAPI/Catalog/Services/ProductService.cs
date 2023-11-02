@@ -42,4 +42,9 @@ public class ProductService : IProductService
     {
         return await _repository.GetSimilarProducts(productId);
     }
+
+    public async Task<List<string>> GetProductNameSuggestions(string searchString)
+    {
+        return await _repository.GetProductNameSuggestions(searchString);
+    }
 }

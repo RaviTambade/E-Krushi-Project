@@ -50,4 +50,10 @@ public class ProductsController : ControllerBase
     {
         return await _service.GetSimilarProducts(productId);
     }
+
+    [HttpGet("suggestions/names/{searchString}")]  
+    public async Task<List<string>> GetProductNameSuggestions(string searchString)
+    {
+        return await _service.GetProductNameSuggestions(searchString);
+    }
 }

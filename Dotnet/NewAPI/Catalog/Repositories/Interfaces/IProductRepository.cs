@@ -11,4 +11,5 @@ public interface IProductRepository
     Task<List<Product>> GetSimilarProducts(int productId);
 
     Task<ProductDescription?> GetProductdetails(int productId);
+    Task<List<string>> GetProductNameSuggestions(string searchString);
 }

@@ -7,12 +7,14 @@ namespace Transflower.EKrushi.Catalog.Repositories;
 public class ProductRepository : IProductRepository
 {
     private readonly IConfiguration _configuration;
-    private  readonly string _connectionString;
+    private readonly string _connectionString;
 
     public ProductRepository(IConfiguration configuration)
     {
         _configuration = configuration;
-        _connectionString = this._configuration.GetConnectionString("DefaultConnection") ?? throw new ArgumentNullException("connection Sting Not Found");
+        _connectionString =
+            this._configuration.GetConnectionString("DefaultConnection")
+            ?? throw new ArgumentNullException("connection Sting Not Found");
     }
 
     public async Task<List<Product>> GetProducts()
@@ -36,17 +38,23 @@ public class ProductRepository : IProductRepository
             await connection.OpenAsync();
             MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync();
             while (await reader.ReadAsync())
-            { 
-                List<string> productDetailsIds =reader.GetString("productdetailsid").Split(",").ToList();
-                List<string> UnitPrices =reader.GetString("unitprice").Split(",").ToList();
-                List<string> sizes =reader.GetString("sizes").Split(",").ToList();
+            {
+                List<string> productDetailsIds = reader
+                    .GetString("productdetailsid")
+                    .Split(",")
+                    .ToList();
+                List<string> UnitPrices = reader.GetString("unitprice").Split(",").ToList();
+                List<string> sizes = reader.GetString("sizes").Split(",").ToList();
 
-                var productdetails= productDetailsIds.Select((id, index) => new ProductDetail
-                {
-                    ProductDetailId = id,
-                    Size = sizes.ElementAt(index),
-                    UnitPrice = UnitPrices.ElementAt(index)
-                });
+                var productdetails = productDetailsIds.Select(
+                    (id, index) =>
+                        new ProductDetail
+                        {
+                            ProductDetailId = id,
+                            Size = sizes.ElementAt(index),
+                            UnitPrice = UnitPrices.ElementAt(index)
+                        }
+                );
 
                 Product product = new Product()
                 {
@@ -54,7 +62,7 @@ public class ProductRepository : IProductRepository
                     Title = reader.GetString("title"),
                     Image = reader.GetString("image"),
                     Rating = reader.GetDouble("rating"),
-                    ProductDetails=productdetails
+                    ProductDetails = productdetails
                 };
                 products.Add(product);
             }
@@ -79,14 +87,14 @@ public class ProductRepository : IProductRepository
         try
         {
             string query =
-               @"SELECT products.id,products.title, products.image,
+                @"SELECT products.id,products.title, products.image,
                 GROUP_CONCAT(DISTINCT productdetails.id) as productdetailsid, 
                 GROUP_CONCAT(DISTINCT productdetails.unitprice) as unitprice ,
                 GROUP_CONCAT( DISTINCT productdetails.size) AS sizes, 
                 AVG(productreview.rating) AS rating FROM products
                 INNER JOIN productdetails ON products.id = productdetails.productid
                 INNER JOIN productreview ON products.id = productreview.productid
-                WHERE products.title LIKE  CONCAT('%', @productName, '%')
+                WHERE products.title LIKE  CONCAT(@productName, '%')
                 GROUP BY products.id";
 
             Console.WriteLine(query);
@@ -98,16 +106,22 @@ public class ProductRepository : IProductRepository
             MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
-               List<string> productDetailsIds =reader.GetString("productdetailsid").Split(",").ToList();
-                List<string> UnitPrices =reader.GetString("unitprice").Split(",").ToList();
-                List<string> sizes =reader.GetString("sizes").Split(",").ToList();
+                List<string> productDetailsIds = reader
+                    .GetString("productdetailsid")
+                    .Split(",")
+                    .ToList();
+                List<string> UnitPrices = reader.GetString("unitprice").Split(",").ToList();
+                List<string> sizes = reader.GetString("sizes").Split(",").ToList();
 
-                var productdetails= productDetailsIds.Select((id, index) => new ProductDetail
-                {
-                    ProductDetailId = id,
-                    Size = sizes.ElementAt(index),
-                    UnitPrice = UnitPrices.ElementAt(index)
-                });
+                var productdetails = productDetailsIds.Select(
+                    (id, index) =>
+                        new ProductDetail
+                        {
+                            ProductDetailId = id,
+                            Size = sizes.ElementAt(index),
+                            UnitPrice = UnitPrices.ElementAt(index)
+                        }
+                );
 
                 Product product = new Product()
                 {
@@ -115,9 +129,9 @@ public class ProductRepository : IProductRepository
                     Title = reader.GetString("title"),
                     Image = reader.GetString("image"),
                     Rating = reader.GetDouble("rating"),
-                    ProductDetails=productdetails
+                    ProductDetails = productdetails
                 };
-                 products.Add(product);
+                products.Add(product);
             }
             await reader.CloseAsync();
         }
@@ -173,7 +187,7 @@ public class ProductRepository : IProductRepository
         try
         {
             string query =
-              @"SELECT products.id,products.title, products.image,
+                @"SELECT products.id,products.title, products.image,
                 GROUP_CONCAT(DISTINCT productdetails.id) as productdetailsid, 
                 GROUP_CONCAT(DISTINCT productdetails.unitprice) as unitprice ,
                 GROUP_CONCAT( DISTINCT productdetails.size) AS sizes, 
@@ -190,16 +204,22 @@ public class ProductRepository : IProductRepository
             MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
-                List<string> productDetailsIds =reader.GetString("productdetailsid").Split(",").ToList();
-                List<string> UnitPrices =reader.GetString("unitprice").Split(",").ToList();
-                List<string> sizes =reader.GetString("sizes").Split(",").ToList();
+                List<string> productDetailsIds = reader
+                    .GetString("productdetailsid")
+                    .Split(",")
+                    .ToList();
+                List<string> UnitPrices = reader.GetString("unitprice").Split(",").ToList();
+                List<string> sizes = reader.GetString("sizes").Split(",").ToList();
 
-                var productdetails= productDetailsIds.Select((id, index) => new ProductDetail
-                {
-                    ProductDetailId = id,
-                    Size = sizes.ElementAt(index),
-                    UnitPrice = UnitPrices.ElementAt(index)
-                });
+                var productdetails = productDetailsIds.Select(
+                    (id, index) =>
+                        new ProductDetail
+                        {
+                            ProductDetailId = id,
+                            Size = sizes.ElementAt(index),
+                            UnitPrice = UnitPrices.ElementAt(index)
+                        }
+                );
 
                 Product product = new Product()
                 {
@@ -207,7 +227,7 @@ public class ProductRepository : IProductRepository
                     Title = reader.GetString("title"),
                     Image = reader.GetString("image"),
                     Rating = reader.GetDouble("rating"),
-                    ProductDetails=productdetails
+                    ProductDetails = productdetails
                 };
                 products.Add(product);
             }
@@ -249,16 +269,22 @@ public class ProductRepository : IProductRepository
             MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
-                List<string> productDetailsIds =reader.GetString("productdetailsid").Split(",").ToList();
-                List<string> UnitPrices =reader.GetString("unitprice").Split(",").ToList();
-                List<string> sizes =reader.GetString("sizes").Split(",").ToList();
+                List<string> productDetailsIds = reader
+                    .GetString("productdetailsid")
+                    .Split(",")
+                    .ToList();
+                List<string> UnitPrices = reader.GetString("unitprice").Split(",").ToList();
+                List<string> sizes = reader.GetString("sizes").Split(",").ToList();
 
-                var productdetails= productDetailsIds.Select((id, index) => new ProductDetail
-                {
-                    ProductDetailId = id,
-                    Size = sizes.ElementAt(index),
-                    UnitPrice = UnitPrices.ElementAt(index)
-                });
+                var productdetails = productDetailsIds.Select(
+                    (id, index) =>
+                        new ProductDetail
+                        {
+                            ProductDetailId = id,
+                            Size = sizes.ElementAt(index),
+                            UnitPrice = UnitPrices.ElementAt(index)
+                        }
+                );
 
                 Product product = new Product()
                 {
@@ -266,7 +292,7 @@ public class ProductRepository : IProductRepository
                     Title = reader.GetString("title"),
                     Image = reader.GetString("image"),
                     Rating = reader.GetDouble("rating"),
-                    ProductDetails=productdetails
+                    ProductDetails = productdetails
                 };
                 products.Add(product);
             }
@@ -308,18 +334,23 @@ public class ProductRepository : IProductRepository
             MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync();
             if (await reader.ReadAsync())
             {
-                List<string> productDetailsIds =reader.GetString("productdetailsid").Split(",").ToList();
-                List<string> UnitPrices =reader.GetString("unitprice").Split(",").ToList();
-                List<string> sizes =reader.GetString("sizes").Split(",").ToList();
+                List<string> productDetailsIds = reader
+                    .GetString("productdetailsid")
+                    .Split(",")
+                    .ToList();
+                List<string> UnitPrices = reader.GetString("unitprice").Split(",").ToList();
+                List<string> sizes = reader.GetString("sizes").Split(",").ToList();
 
-                var productdetails= productDetailsIds.Select((id, index) => new ProductDetail
-                {
-                    ProductDetailId = id,
-                    Size = sizes.ElementAt(index),
-                    UnitPrice = UnitPrices.ElementAt(index)
-                });
+                var productdetails = productDetailsIds.Select(
+                    (id, index) =>
+                        new ProductDetail
+                        {
+                            ProductDetailId = id,
+                            Size = sizes.ElementAt(index),
+                            UnitPrice = UnitPrices.ElementAt(index)
+                        }
+                );
 
-               
                 product = new ProductDescription()
                 {
                     Id = reader.GetInt32("id"),
@@ -327,7 +358,7 @@ public class ProductRepository : IProductRepository
                     Image = reader.GetString("image"),
                     Description = reader.GetString("description"),
                     Rating = reader.GetDouble("rating"),
-                    ProductDetails=productdetails
+                    ProductDetails = productdetails
                 };
             }
             await reader.CloseAsync();
@@ -341,5 +372,37 @@ public class ProductRepository : IProductRepository
             await connection.CloseAsync();
         }
         return product;
+    }
+
+    public async Task<List<string>> GetProductNameSuggestions(string searchString)
+    {
+        List<string> productNames = new();
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _connectionString;
+        try
+        {
+            string query =
+                @"SELECT products.title FROM products  WHERE products.title LIKE CONCAT(@searchString, '%') LIMIT 5 ";
+
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@searchString", searchString);
+
+            await connection.OpenAsync();
+            MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
+            {
+                productNames.Add(reader.GetString("title"));
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+        return productNames;
     }
 }
