@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
 import { SessionStorageKeys } from 'src/app/Models/Enums/session-storage-keys';
 import { CartItem } from 'src/app/Models/cart-item';
 import { CartService } from 'src/app/Services/cart.service';
@@ -26,7 +28,9 @@ export class ShoppingcartComponent implements OnInit {
     private cartsvc: CartService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private jwthelper:JwtHelperService
+
   ) {}
 
   ngOnInit(): void {
@@ -128,8 +132,17 @@ export class ShoppingcartComponent implements OnInit {
    
     });
   }
+  isLoggedIn(): boolean {
+    let jwt = localStorage.getItem(LocalStorageKeys.jwt);
+    return !this.jwthelper.isTokenExpired(jwt)
+  }
 
   onClickPlaceOrder() {
+    if(!this.isLoggedIn()){
+      alert("Please Login First");
+    this.router.navigate(['/login']);
+      return;
+    }
     sessionStorage.setItem(
       SessionStorageKeys.items,
       JSON.stringify(this.items)

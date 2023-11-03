@@ -91,7 +91,7 @@ nav                <li class="nav-item">
                 [routerLink]="['customer/shoppingcart']"></i></a>
           </li>
           <li class="nav-item " *ngIf="isLoggedIn()">
-            <a class="nav-link text-dark" (click)="logOut()">LogOut</a>
+            <a class="nav-link text-dark" (click)="onLogOut()">LogOut</a>
           </li>
           <li class="nav-item " *ngIf="!isLoggedIn()">
             <a class="nav-link text-dark" [routerLink]="['/login']">Login</a>

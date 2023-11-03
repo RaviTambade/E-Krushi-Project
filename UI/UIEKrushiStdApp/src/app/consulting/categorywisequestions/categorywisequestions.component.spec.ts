@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CategorywisequestionsComponent } from './categorywisequestions.component';
+import { CategorywisequestionsComponent } from '../../catalog/search-product-result/categorywisequestions.component';
 
 describe('CategorywisequestionsComponent', () => {
   let component: CategorywisequestionsComponent;
