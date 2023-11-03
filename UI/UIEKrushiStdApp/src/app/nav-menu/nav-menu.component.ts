@@ -8,6 +8,7 @@ import { Subscription, switchMap } from 'rxjs';
 import { StoreService } from '../Services/store.service';
 import { SupplierService } from '../Services/supplier.service';
 import { CorporateService } from '../Services/corporate.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-nav-menu',
@@ -30,7 +31,8 @@ export class NavMenuComponent implements OnInit, OnDestroy {
     private storesvc: StoreService,
     private suppliersvc: SupplierService,
     private authsvc: AuthenticationService,
-    private corporatesvc: CorporateService
+    private corporatesvc: CorporateService,
+    private jwthelper:JwtHelperService
   ) {}
 
   ngOnInit(): void {
@@ -60,7 +62,7 @@ export class NavMenuComponent implements OnInit, OnDestroy {
 
   isLoggedIn(): boolean {
     let jwt = localStorage.getItem(LocalStorageKeys.jwt);
-    return jwt != null;
+    return !this.jwthelper.isTokenExpired(jwt)
   }
 
   fetchNameAndRoles() {
@@ -105,7 +107,7 @@ export class NavMenuComponent implements OnInit, OnDestroy {
     
   }
 
-  logOut() {
+  onLogOut() {
     this.storeName = '';
     this.corporateName = '';
     this.roles=[]
