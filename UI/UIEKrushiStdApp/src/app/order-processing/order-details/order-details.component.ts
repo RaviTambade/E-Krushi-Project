@@ -24,7 +24,6 @@ export class OrderDetailsComponent implements OnDestroy {
   minAllowedQuantity: number = 1;
   constructor(
     private ordersvc: OrderService,
-    private cartsvc: CartService,
     private snackBar: MatSnackBar,
     private dialog: MatDialog
   ) {}
@@ -131,6 +130,5 @@ export class OrderDetailsComponent implements OnDestroy {
       SessionStorageKeys.items,
       JSON.stringify(this.items)
     );
-
   }
 }

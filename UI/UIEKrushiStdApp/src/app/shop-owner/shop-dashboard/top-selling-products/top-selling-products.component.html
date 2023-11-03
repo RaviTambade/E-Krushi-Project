@@ -4,7 +4,7 @@
       </h5>
           <div class="d-flex justify-content-between align-items-center m-2">
         <div class="form-group mb-0">
-            <select class="form-control" style="width: 150px;" [(ngModel)]='selectedMode' (ngModelChange)="fetchData()">
+            <select class="form-control" style="width: 150px;" [(ngModel)]='selectedMode' (ngModelChange)="getProducts()">
                 <option *ngFor="let mode of modes" [ngValue]="mode">{{mode |titlecase}}</option>
             </select>
         </div>

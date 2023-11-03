@@ -24,10 +24,10 @@ export class TopSellingProductsComponent implements OnInit {
     }
     this.storeId=storeId;
 
-    this.fetchData();
+    this.getProducts();
   }
 
-  fetchData() {
+  getProducts() {
     if(this.storeId==undefined){
       return;
     }

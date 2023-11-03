@@ -4,6 +4,7 @@ import { Question } from '../Models/question';
 import { Observable } from 'rxjs';
 import { QuestionAnswer } from '../Models/questionanswer';
 import { Questioncategory } from '../Models/Questioncategory';
+import { InsertQuestion } from '../Models/InsertQuestion';
 
 @Injectable({
   providedIn: 'root'
@@ -32,9 +33,9 @@ export class ConsultingService {
     let url = 'http://localhost:5279/api/consulting/reletedquestions/'+id;
     return this.httpClient.get<Question[]>(url);
   }
-  public insertQuestion(question:Question):Observable<any>{
+  public insertQuestion(question:InsertQuestion):Observable<any>{
     let url="http://localhost:5279/api/consulting/question";
-    return this.httpClient.post<Question>(url,question);
+    return this.httpClient.post<any>(url,question);
   }
 
 

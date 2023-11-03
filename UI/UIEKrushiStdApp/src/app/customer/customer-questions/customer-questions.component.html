@@ -4,9 +4,8 @@
 </div>
 <div class="col-4">
 <div class="question-card" style="text-align: center;">
-<a (click)="OnClick()"> <i class="fas fa-plus-circle plus-icon"></i>Ask
+<a [routerLink]="['/customer/addquestion']"> <i class="fas fa-plus-circle plus-icon"></i>Ask
      your question?</a>
-     <!-- <app-addquestion></app-addquestion> -->
 </div>
 
 <app-question-catagories></app-question-catagories>

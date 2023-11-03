@@ -7,11 +7,5 @@ import { Router } from '@angular/router';
   styleUrls: ['./customer-questions.component.css']
 })
 export class CustomerQuestionsComponent {
-  constructor(private router:Router){}
-  Status:boolean=false;
-
-
-  OnClick(){
-    this.router.navigate(['customer/addquestion']);
-  }
+ 
 }

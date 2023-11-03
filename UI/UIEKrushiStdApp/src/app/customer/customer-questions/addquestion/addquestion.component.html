@@ -1,9 +1,5 @@
 
-
-
-
-
-  <form #questionForm="ngForm" (ngSubmit)="insertQuestion(questionForm.value)"  >
+  <form (ngSubmit)="insertQuestion(question)"  >
     <label for="categoryId">Category:</label>
     <select id="categoryId" [(ngModel)]="question.categoryId" name="categoryId">
       <option *ngFor="let category of categories" [value]="category.id">{{ category.category }}</option>
@@ -13,12 +9,9 @@
       <label><b>Enter Your Question :</b></label>
       <input type="text" name="description" [(ngModel)]="question.description"  />
    </div>
-   <div class="form-group">
-    <label hidden><b>CustomerId :</b></label>
-    <input placeholder="customerId" name="customerId" [(ngModel)]="customerId" hidden />
- </div>
+ 
     <div class="form-group">
         <br>
-        <button class="btn btn-default" type="submit">AddNewQuestion</button>
+        <button class="btn btn-primary" type="submit">AddNewQuestion</button>
       </div>
   </form>

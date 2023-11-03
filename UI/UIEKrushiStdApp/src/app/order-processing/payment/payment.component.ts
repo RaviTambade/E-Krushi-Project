@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, firstValueFrom, lastValueFrom, switchMap } from 'rxjs';
+import { Observable, lastValueFrom, switchMap } from 'rxjs';
 import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
 import { SessionStorageKeys } from 'src/app/Models/Enums/session-storage-keys';
 import { PaymentAddModel } from 'src/app/Models/PaymentAddModel';
@@ -45,7 +45,7 @@ export class PaymentComponent {
     this.ifscCode = '';
   }
 
-  checkAccount() {
+  onClickCheckAccount() {
     let customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
     if (Number.isNaN(customerId) || customerId==0) {
       return;
@@ -63,7 +63,7 @@ export class PaymentComponent {
     });
   }
 
-  makePayment() {
+  onMakePayment() {
     this.isPaymentButtonDisabled=true;
     const customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
     const addressId = Number(

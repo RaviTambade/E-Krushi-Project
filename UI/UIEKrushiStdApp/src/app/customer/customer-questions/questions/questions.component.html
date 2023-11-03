@@ -1,27 +1,11 @@
+<div class="card  mb-2 bc-grey" *ngFor="let question of questions">
 
-<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <div class="card-body">
 
-<div class="w3-container" >
-    <div class="w3-panel w3-card-4">
-    <p></p>
-    <button class="btn btn-block"><i class="fa fa-thumbs-up"></i></button>
-    </div>
-    
-  </div> -->
+    <a class="link-blue" [routerLink]="['/customer/question/',question.id]">
+      <p class="card-text">{{question.description}} <i class="fa fa-arrow-right"></i></p>
+    </a>
+    <label style="font-size: 13px;"> {{question.customerName}} <p style="font-size: 12px;"> {{question.date|date}}</p></label>
 
-
-
-  <div class="card  mb-2"  style="background-color: #f3eded;" *ngFor="let question of questions">
-    
-    <div class="card-body">
-      
-     <a (click)="navigateQuestionAnswers(question.id)" > <p class="card-text" style="color: blue;text-decoration: underline; cursor: pointer;"  >{{question.description}}   <i class="fa fa-arrow-right"></i></p></a>
-     <label style="font-size: 13px;"> {{question.name}} <p  style="font-size: 10px;"> {{question.date|date}}</p></label>
-    
-    </div>
   </div>
-
-
-
-
-  
+</div>

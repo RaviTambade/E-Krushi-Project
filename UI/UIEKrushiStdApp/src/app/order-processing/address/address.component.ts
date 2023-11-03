@@ -16,7 +16,6 @@ export class AddressComponent implements OnInit {
   selectedAddressId: number | null = null;
   constructor(
     private usersvc: UserService,
-    private authsvc: AuthenticationService
   ) {}
   ngOnInit(): void {
     this.usersvc.newaddressSubject.subscribe(() => {
@@ -42,7 +41,7 @@ export class AddressComponent implements OnInit {
     });
   }
 
-  setAddressId() {
+  onClickDeliverHere() {
     if (this.selectedAddressId != undefined) {
       sessionStorage.setItem(
         SessionStorageKeys.addressId,
