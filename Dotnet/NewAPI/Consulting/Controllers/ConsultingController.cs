@@ -170,10 +170,6 @@ public class ConsultingController : ControllerBase
     public async Task<bool> DeleteQuestion(int id)
     {
         bool status = await _service.DeleteQuestion(id);
-        if (status)
-        {
-            Console.WriteLine("your question is deleted succeefully");
-        }
         return status;
     }
 
