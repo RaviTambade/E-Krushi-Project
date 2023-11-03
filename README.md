@@ -1,18 +1,8 @@
-# E-Krushi-Project
+# Transflower Agro Services
 
-### Transflower Agro Services
+## E-Krushi Seva
 
-# E-Krushi Seva
-
-**Document**: System Requirement Specification Document
-
-**Title**: E-KRUSHI SEVA
-
-
-
-**Objective**:
 - This application is  to help farmers. It helps them identify and solve plant problems. Farmers can also easily buy the things they need for farming, making their work easier and more successful. It's all about making farming better and more productive for them.
-
 
 
 
@@ -28,9 +18,7 @@
 ## Functional Requirement
 
 This section provides a requirement overview of the system. Various functional modules that can be implemented by the system will be:
-
 - This system will be accessible for the customers, shop owners,  suppliers, shippers and SubjectMatterExperts.
-
 - The users will be accessible for viewing their personal data.
 
 - **Registration**: New users can sign up by creating an email ID and password. Registered customers will be able to get help from Subject Matter Experts for crop, soil, and weather-related problems.
@@ -43,7 +31,6 @@ This section provides a requirement overview of the system. Various functional m
 ### Farmer
 - **Choosing and comparing products**: Can view all available products, compare them, and make a choice for purchasing products. Farmers can browse catalogs and choose products. The products chosen can go in the shopping cart. The farmer will be able to add or remove products from the shopping cart. Shopping cart contents will show up as an order when you go through the checkout procedure.
 - **Purchasing**: Can purchase any product through a valid account. Online and cash payment is also available for farmers.
-
 - **Tracking Order**: Farmer  may need the ability to track Order. So he can track Order.
 
 
@@ -56,7 +43,6 @@ This section provides a requirement overview of the system. Various functional m
 
 - **Tracking Order**: shop-owner may need the ability to track Order.
 
-
 ### Shipper
 - The Shipper is a user role within the system responsible for handling the shipment and delivery of products to customers.
 
@@ -68,9 +54,7 @@ This section provides a requirement overview of the system. Various functional m
 **Communication**: Shippers may need to communicate with customers or other team members regarding order-related issues, inquiries, or changes to shipping details. Effective communication ensures a smooth and satisfactory customer experience.
 
 ### Supplier
-
 **Product Management**:
-
 - Suppliers should be able to add new products to their catalog, including product descriptions, pricing, and availability status.
 - They must be able to update product information and mark products as out of stock.
 - The system should support bulk product uploads for efficiency.
@@ -98,21 +82,17 @@ This section provides a requirement overview of the system. Various functional m
 - A limitless amount of active client payments must be supported by the server, and payments must never be lost.
 
 ### Security
-
 - Registered farmers will be allowed to place an order.
 - Sensitive data will always be transmitted with encryption. The system will internally maintain a secure communication channel between servers (web servers, application servers, database servers).
 
 ### Reliability
-
 - The system should be scalable, with the ability to accommodate a large number of users at once.
 - The site's response time should be as quick as feasible, and it should be able to load balance the server.
 
 ### Availability
-
 - This application is available for 24 hrs anywhere, anytime.
 
 ### Maintainability
-
 - A Commercial database software will be used to maintain System data Persistence.
 - A readymade Web Server will be installed to host online shopping portal (Web Site) to management server capabilities.
 - IT operations team will easily monitor and configure the system using Administrative tools provided by Servers.
@@ -125,20 +105,16 @@ This section provides a requirement overview of the system. Various functional m
 - The system can be deployed to a single server, multi-server, to any OS, Cloud (Azure or AWS or GCP).
 
 ### Accessibility
-
 - After authentication, only logged-in users will be able to place an order.
 - Through a personalized dashboard, the BOD team will be able to monitor daily, weekly, monthly, and annual business growth.
 
 ### Efficiency
-
 - The system will be able to manage all transactions with isolation.
 
 ### Safety
-
 - The certified delivery partner should not damage the farm products or tamper with the package.
 
 ### Scalability
-
 - Online Krushi portal will be secure from malicious attacks.
 - Online Krushi portal functionalities are protected from the outside with proper configuration.
 - Online Krushi portal will always be kept updated with the latest antivirus software.
@@ -146,7 +122,6 @@ This section provides a requirement overview of the system. Various functional m
 - Role-based security will be applied for Application data and operations accessibility.
 
 ## Benefits
-
 - The farmers save time because they are not going to the shop.
 - The farmers can order products at the proper time.
 - The farmer can order products anytime, anywhere.
