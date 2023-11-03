@@ -274,7 +274,6 @@ public class ConsultingRepository : IConsultingRepository
         {
             string query = "SELECT id,description FROM questions where id!= @id AND categoryid  IN (select categoryid from questions WHERE id=@id)";
             await connection.OpenAsync();
-            Console.Write(query);
             MySqlCommand command = new MySqlCommand(query, connection);
             command.Parameters.AddWithValue("@id", id);
             MySqlDataReader reader = command.ExecuteReader();

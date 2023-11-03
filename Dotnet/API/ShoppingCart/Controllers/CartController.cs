@@ -20,7 +20,6 @@ namespace Transflower.EKrushi.ShoppingCartService.Controllers
         public async Task<Cart> GetAll(int custId)
         {
            Cart items = await _cartService.GetAll(custId);
-            Console.WriteLine(custId);
             return items;
         }
           
@@ -30,7 +29,6 @@ namespace Transflower.EKrushi.ShoppingCartService.Controllers
         public async Task<Cart> GetCart(int id)
         {
             Cart cart = await _cartService.GetCart(id);
-            Console.WriteLine(id);
             return cart;
         }
          
@@ -57,7 +55,6 @@ namespace Transflower.EKrushi.ShoppingCartService.Controllers
         [HttpGet("getcart/{custId}")]
         public async Task<List<Item>> GetCartDetails(int custId)
         {
-            Console.WriteLine(custId);
             List<Item> items = await _cartService.GetCartDetails(custId);
             return items;
         }
@@ -85,7 +82,6 @@ namespace Transflower.EKrushi.ShoppingCartService.Controllers
         [HttpGet("get/{id}")]
         public async Task<Item> Get(int id)
         {
-            Console.WriteLine(id);
             Item items = await _cartService.Get(id);
             return items;
         }

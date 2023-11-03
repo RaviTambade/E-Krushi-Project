@@ -68,7 +68,6 @@ namespace Transflower.EKrushi.OrderManagement.Controllers
         public async Task<int> GetCountByDate(DateTime date)
         {
             
-            Console.WriteLine(date);
             int counts = await _orderService.GetCountByDate(date);
             return counts;
         }

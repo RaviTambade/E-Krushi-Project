@@ -21,8 +21,6 @@ public class OrderRepository : IOrderRepository
     public async Task<OrderAmount> CreateOrder(OrderAddModel orderAddModel)
     {
         int fetchStoreId = await GetNearestStoreId(orderAddModel.AddressId);
-        Console.WriteLine($" --> {fetchStoreId}");
-
         Order order = new Order()
         {
             Id = 0,
@@ -273,7 +271,7 @@ public class OrderRepository : IOrderRepository
     {
         try
         {  var shipperId = await GetNearestShipperId(order.StoreId);
-            Console.WriteLine("--->>>"+shipperId);
+            
             ShipperOrder shipperOrder = new ShipperOrder()
             {
                 OrderId = order.Id,

@@ -18,7 +18,6 @@ public class HomeController : Controller
             // at server side
             //  HttpContext.Session.SetString("SessionKeyName","Dell computer");
             //  string computer =  HttpContext.Session.GetString("SessionKeyName");
-            // Console.WriteLine(computer);
             string SessionKeyName="product";
             string SessionKeyAge="age";
             HttpContext.Session.SetString(SessionKeyName,"Dell computer");

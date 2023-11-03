@@ -65,9 +65,6 @@ public class CartRepository : ICartRepository
     public async Task<bool> AddItem(Item item)
     {
         bool status = false;
-        Console.WriteLine(item.CartId);
-        Console.WriteLine(item.ProductId);
-        Console.WriteLine(item.Quantity);
         MySqlConnection connection = new MySqlConnection();
         try
         {
