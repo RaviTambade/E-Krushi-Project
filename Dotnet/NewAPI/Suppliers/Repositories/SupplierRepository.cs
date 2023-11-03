@@ -35,8 +35,8 @@ public class SupplierRepository : ISupplierRepository
             {
                 corporateId = reader.GetInt32("corporateid");
             }
-         await reader.CloseAsync();
-         return corporateId > 0 ? corporateId : throw new Exception($"Corporate Id for SupplierId {supplierId} not found");
+            await reader.CloseAsync();
+            return corporateId > 0 ? corporateId : throw new Exception($"Corporate Id for SupplierId {supplierId} not found");
 
         }
         catch (Exception)
@@ -68,8 +68,8 @@ public class SupplierRepository : ISupplierRepository
             {
                 supplierId = reader.GetInt32("id");
             }
-         await reader.CloseAsync();
-         return supplierId > 0 ? supplierId : throw new Exception($"Supplier Id for UserId {userId} not found");
+            await reader.CloseAsync();
+            return supplierId > 0 ? supplierId : throw new Exception($"Supplier Id for UserId {userId} not found");
 
         }
         catch (Exception)
@@ -80,6 +80,6 @@ public class SupplierRepository : ISupplierRepository
         {
             await connection.CloseAsync();
         }
-    
+
     }
 }

@@ -1,4 +1,4 @@
--- Active: 1678359546568@@127.0.0.1@3306@ekrushi
+-- Active: 1685344824419@@127.0.0.1@3306@ekrushi
 
 CREATE PROCEDURE insertpayment(
     IN mode VARCHAR(255),
@@ -297,17 +297,6 @@ BEGIN
 END;
 
 
-
-SELECT Count(orders.shippeddate) FROM orders
-INNER JOIN shipperorders on orders.id= shipperorders.orderid WHERE orders.status='delivered' and shipperorders.shipperid=2;
-select * from orders;
-
-SELECT DATE_FORMAT(orders.shippeddate, '%M %Y') AS Month, COUNT(*) AS Count
-FROM orders
-INNER JOIN shipperorders ON orders.id = shipperorders.orderid
-WHERE orders.status = 'delivered' AND shipperorders.shipperid = 2
-GROUP BY Month
-ORDER BY orders.shippeddate;
 
 
 CREATE PROCEDURE deliverorderscountbymonth(

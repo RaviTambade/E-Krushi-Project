@@ -57,7 +57,7 @@ public class StoreRepository : IStoreRepository
             return await connection.QueryFirstAsync<OrderStatusCount>(
                 "GetStoreOrderCountByStatus",
                 new { store_id = storeId },
-                commandType:CommandType.StoredProcedure
+                commandType: CommandType.StoredProcedure
             );
         }
         catch (Exception)

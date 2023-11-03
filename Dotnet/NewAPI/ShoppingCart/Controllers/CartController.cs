@@ -15,7 +15,6 @@ public class CartsController : ControllerBase
     {
         Cart cart =
             await HttpContext.Session.GetObjectFromJson<Cart>(SessionKeys.Cart) ?? new Cart();
-            Console.WriteLine(cart.Items.Count);
         return cart;
     }
 
@@ -25,7 +24,6 @@ public class CartsController : ControllerBase
         var cart = await HttpContext.Session.GetObjectFromJson<Cart>(SessionKeys.Cart) ?? new Cart();
         cart.Items.Add(item);
         await HttpContext.Session.SetObjectAsJson(SessionKeys.Cart, cart);
-        Console.WriteLine(item.Title);
         return true;
     }
 
@@ -36,7 +34,7 @@ public class CartsController : ControllerBase
         {
             return false;
         }
-        
+
         var cart = await HttpContext.Session.GetObjectFromJson<Cart>(SessionKeys.Cart);
         if (cart is null)
         {
