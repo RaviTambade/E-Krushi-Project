@@ -97,7 +97,7 @@ export class PaymentComponent {
         addressId: addressId,
         orderDetails: this.orderedItems.map(
           (item) =>
-            new OrderDetailsAddModel(item.productId, item.quantity, item.size)
+            new OrderDetailsAddModel(item.productDetailsId, item.quantity)
         ),
       };
   

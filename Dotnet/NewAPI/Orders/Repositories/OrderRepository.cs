@@ -30,7 +30,7 @@ public class OrderRepository : IOrderRepository
             Total = 0,
             StoreId = fetchStoreId != default ? fetchStoreId : 1
         };
-        
+
         var transaction = await _context.Database.BeginTransactionAsync();
         try
         {
@@ -40,25 +40,16 @@ public class OrderRepository : IOrderRepository
             if (orderAddModel.OrderDetails != null)
                 foreach (var item in orderAddModel.OrderDetails)
                 {
-                    var productDetailsId = await _context.ProductDetails
-                        .Where(p => p.ProductId == item.ProductId && p.Size == item.Size)
-                        .Select(p => p.Id)
-                        .FirstOrDefaultAsync();
-                    if (productDetailsId == default)
-                    {
-                        continue;
-                    }
-
                     OrderDetail orderDetail = new OrderDetail()
                     {
                         OrderId = orderId,
-                        ProductDetailsId = productDetailsId,
+                        ProductDetailsId = item.ProductDetailsId,
                         Quantity = item.Quantity,
                     };
 
                     await _context.AddAsync(orderDetail);
                     ProductDetail? productDetails = await _context.ProductDetails.FindAsync(
-                        productDetailsId
+                        item.ProductDetailsId
                     );
                     if (productDetails != null)
                     {
@@ -68,7 +59,6 @@ public class OrderRepository : IOrderRepository
                     }
                 }
             await _context.SaveChangesAsync();
-            await transaction.CommitAsync();
 
             var total = await (
                 from od in _context.OrderDetails
@@ -76,12 +66,9 @@ public class OrderRepository : IOrderRepository
                 join pd in _context.ProductDetails on od.ProductDetailsId equals pd.Id
                 select pd.UnitPrice * od.Quantity
             ).SumAsync();
-            var order1 = await _context.Orders.FindAsync(orderId);
-            if (order1 != null)
-            {
-                order1.Total = total;
-                await _context.SaveChangesAsync();
-            }
+            order.Total = total;
+            await _context.SaveChangesAsync();
+            await transaction.CommitAsync();
 
             return new OrderAmount
             {
@@ -270,8 +257,9 @@ public class OrderRepository : IOrderRepository
     private async Task<bool> OnOrderReadyToDispatch(Order order)
     {
         try
-        {  var shipperId = await GetNearestShipperId(order.StoreId);
-            
+        {
+            var shipperId = await GetNearestShipperId(order.StoreId);
+
             ShipperOrder shipperOrder = new ShipperOrder()
             {
                 OrderId = order.Id,
@@ -318,7 +306,7 @@ public class OrderRepository : IOrderRepository
         try
         {
             order.Status = OrderStatus.Delivered;
-            order.ShippedDate= DateTime.Now; 
+            order.ShippedDate = DateTime.Now;
             return await SaveChanges();
         }
         catch (Exception)
@@ -388,6 +376,4 @@ public class OrderRepository : IOrderRepository
             throw;
         }
     }
-
-
 }

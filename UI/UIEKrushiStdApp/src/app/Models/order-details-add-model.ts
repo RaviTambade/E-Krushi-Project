@@ -1,7 +1,6 @@
 export class OrderDetailsAddModel {
     constructor(
-        public productId: number,
+        public productDetailsId: number,
         public quantity: number,
-        public size: string,
       ) {}
 }
