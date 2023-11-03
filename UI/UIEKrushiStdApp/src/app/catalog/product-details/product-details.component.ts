@@ -111,9 +111,11 @@ export class ProductDetailsComponent {
       unitPrice: Number(this.currentPrice),
       productDetailsId: Number(this.productDetailId),
     };
-
-    sessionStorage.setItem(SessionStorageKeys.items, JSON.stringify([item]));
-    sessionStorage.setItem(SessionStorageKeys.isFromCart, 'false');
-    this.router.navigate(['/orderprocessing']);
+    this.cartsvc.addItem(item).subscribe((res) => {
+      if (res) {
+        sessionStorage.setItem(SessionStorageKeys.isBuyNow, 'true');
+        this.router.navigate(['/orderprocessing']);
+      }
+    });
   }
 }

@@ -2,7 +2,7 @@
     <div class="col-8">
         <div class="mb-2">
             <label (click)="toggleOrderDetails()" class=" mb-1  btn btn-primary btn-block col-12">ORDER SUMMARY</label>
-            <orderprocessing-order-details *ngIf="showOrderDetails"></orderprocessing-order-details>
+            <app-shopping-cart-details [items]="items" (SummeryData)="onReceiveData($event)" *ngIf="showOrderDetails"></app-shopping-cart-details>
         </div>
         <div class="mb-2">
             <label (click)="toggleAddress()" class="  mb-1 btn btn-primary btn-block col-12">DELIVERY ADDRESS
@@ -30,8 +30,9 @@
             <button [disabled]="!address" (click)="togglePayment()" class="  mb-1  col-12 btn btn-primary btn-block">PAYMENT OPTIONS</button>
             <app-payment *ngIf="showPayment"></app-payment>
         </div>
-    </div>
+    </div>  
     <div class="col-4">
-        <app-order-summery></app-order-summery>
+        <app-cart-summary [total]="total" [totalItems]="totalItems" [discount]="discount"
+      [subTotal]="subTotal"></app-cart-summary>
     </div>
 </div>

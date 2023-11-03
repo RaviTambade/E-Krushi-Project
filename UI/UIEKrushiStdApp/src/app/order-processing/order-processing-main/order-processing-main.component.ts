@@ -1,4 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
+import { SessionStorageKeys } from 'src/app/Models/Enums/session-storage-keys';
+import { CartItem } from 'src/app/Models/cart-item';
+import { CartService } from 'src/app/Services/cart.service';
 
 @Component({
   selector: 'app-order-processing-main',
@@ -11,7 +14,29 @@ export class OrderProcessingMainComponent implements OnDestroy {
   showPayment = false;
 
   address: any;
+  items: CartItem[] = [];
+  totalItems: string = '';
+  subTotal: number = 0;
+  discount: number = 0;
+  shippingCharges = 'Free';
+  total: number = 0;
 
+  constructor(private cartsvc: CartService) {}
+
+  ngOnInit(): void {
+    this.cartsvc.getCartItems().subscribe((res) => {
+      if (sessionStorage.getItem(SessionStorageKeys.isBuyNow) == 'true') {
+        this.items = [res.items[res.items.length - 1]];
+      } else {
+        this.items = res.items;
+      }
+    });
+  }
+  onReceiveData(event: any) {
+    this.totalItems = event.totalItems;
+    this.subTotal = event.subTotal;
+    this.total = event.total;
+  }
   toggleAddress() {
     this.showAddress = !this.showAddress;
     this.showPayment = false;
@@ -46,6 +71,11 @@ export class OrderProcessingMainComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
+    if (sessionStorage.getItem(SessionStorageKeys.isBuyNow) == 'true') {
+      this.cartsvc
+        .RemoveItem(this.items[0].productDetailsId)
+        .subscribe((res) => {});
+    }
     sessionStorage.clear();
   }
 }

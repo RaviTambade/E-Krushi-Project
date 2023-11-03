@@ -1,6 +1,4 @@
-
-<div class="row">
-  <div class="col-12" >
+<div  style="max-height:450px;overflow: auto;">
     <div class="card mb-3" *ngFor="let item of items">
       <div class="card-body">
         <div class="d-flex justify-content-between">
@@ -11,7 +9,7 @@
                 [routerLink]="['/catalog/productdetail',item.productId]">
             </div>
 
-            <div class="ms-6">
+            <div class="ms-6 mx-2">
               <a [routerLink]="['/catalog/productdetail',item.productId]">
                 <h5>{{item.title |titlecase}}</h5>
               </a>
@@ -22,7 +20,7 @@
                   <i class="fas fa-minus"></i>
                 </button>
 
-                <input id="form1"  name="quantity" type="text" [value]="item.quantity" pattern="[0-9]+"
+                <input id="form1" name="quantity" type="text" [value]="item.quantity" pattern="[0-9]+"
                   class="form-control form-control-sm" style="width: 40px; height: 10px;"
                   (input)="updateQuantity(item,$event)" />
 
@@ -38,12 +36,9 @@
             &nbsp;&nbsp;&nbsp;
           </div>
 
-          <a  class="d-flex flex-row align-items-center" style="color: #f62929 ;cursor: pointer;"
+          <a class="d-flex flex-row align-items-center" style="color: #f62929 ;cursor: pointer;"
             (click)="openDeleteConfirmationDialog(item.productDetailsId)"> <i class="fas fa-trash-alt"></i></a>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-    

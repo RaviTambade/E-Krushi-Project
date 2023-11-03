@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, lastValueFrom, switchMap } from 'rxjs';
 import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
@@ -28,17 +28,23 @@ export class PaymentComponent {
   ifscCode: string = '';
   showPayButton: boolean = false;
   isPaymentButtonDisabled: boolean = false;
+  orderedItems: CartItem[] = [];
 
   constructor(
     private banksvc: BankingService,
     private paymentsvc: PaymentService,
     private ordersvc: OrderService,
-    private paymentgatewaysvc:PaymentGatewayService,
+    private paymentgatewaysvc: PaymentGatewayService,
     private cartsvc: CartService,
     private storesvc: StoreService,
     private router: Router
   ) {}
 
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['orderedItems']) {
+      this.orderedItems = changes['orderedItems'].currentValue;
+    }
+  }
   onPaymentOptionChange() {
     this.accountNumber = '';
     this.showPayButton = false;
@@ -47,7 +53,7 @@ export class PaymentComponent {
 
   onClickCheckAccount() {
     let customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
-    if (Number.isNaN(customerId) || customerId==0) {
+    if (Number.isNaN(customerId) || customerId == 0) {
       return;
     }
 
@@ -64,48 +70,45 @@ export class PaymentComponent {
   }
 
   onMakePayment() {
-    this.isPaymentButtonDisabled=true;
+    this.isPaymentButtonDisabled = true;
     const customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
     const addressId = Number(
       sessionStorage.getItem(SessionStorageKeys.addressId)
     );
 
-    if (Number.isNaN(customerId) || Number.isNaN(addressId)
-    || customerId==0 ||addressId == 0) {
+    if (
+      Number.isNaN(customerId) ||
+      Number.isNaN(addressId) ||
+      customerId == 0 ||
+      addressId == 0
+    ) {
       return;
     }
 
-    const cartItems = this.getCartItems();
+    this.cartsvc.getCartItems().subscribe((res) => {
+      if (sessionStorage.getItem(SessionStorageKeys.isBuyNow) == 'true') {
+        this.orderedItems = [res.items[res.items.length - 1]];
+      } else {
+        this.orderedItems = res.items;
+      }
 
-    if (!cartItems || cartItems.length === 0) {
-      return;
-    }
+      const order: OrderAddModel = {
+        customerId: customerId,
+        addressId: addressId,
+        orderDetails: this.orderedItems.map(
+          (item) =>
+            new OrderDetailsAddModel(item.productId, item.quantity, item.size)
+        ),
+      };
+  
+      this.processOrder(order);
+    });
 
-    const orderdetails = this.createOrderDetails(cartItems);
-    const order: OrderAddModel = {
-      customerId: customerId,
-      addressId: addressId,
-      orderDetails: orderdetails,
-    };
-
-    this.processOrder(order);
-  }
-
-  getCartItems() {
-    const items = sessionStorage.getItem(SessionStorageKeys.items);
-    return items ? JSON.parse(items) : [];
-  }
-
-  createOrderDetails(cartItems: CartItem[]) {
-    return cartItems.map(
-      (item) =>
-        new OrderDetailsAddModel(item.productId, item.quantity, item.size)
-    );
+  
   }
 
   processOrder(order: OrderAddModel) {
     this.ordersvc.processOrder(order).subscribe((res) => {
-     
       const orderAmount = res;
 
       if (this.selectedMode === 'cash on delivery') {
@@ -128,12 +131,11 @@ export class PaymentComponent {
       if (res) {
         this.emptyCart();
         alert('Order Placed');
-       
+
         this.router.navigate(['/']);
       }
     });
   }
-
 
   async processNetBankingPayment(orderAmount: OrderAmount) {
     try {
@@ -168,7 +170,7 @@ export class PaymentComponent {
         if (paymentResult) {
           this.emptyCart();
           alert('Order Placed');
-         
+
           this.router.navigate(['/']);
         }
       } else {
@@ -188,7 +190,7 @@ export class PaymentComponent {
   }
 
   emptyCart() {
-    if (sessionStorage.getItem(SessionStorageKeys.isFromCart) == 'true') {
+    if (sessionStorage.getItem(SessionStorageKeys.isBuyNow) == 'false') {
       this.cartsvc.RemoveAllCartItems().subscribe((res) => {});
     }
   }

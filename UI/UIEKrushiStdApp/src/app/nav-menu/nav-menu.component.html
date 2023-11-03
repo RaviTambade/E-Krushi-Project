@@ -29,11 +29,11 @@
                 width="25" height="25">Queries</a>
           </li>
           <li class="nav-item" style="text-align: center; font-size: 12px; position: relative;" *ngIf="isLoggedIn()">
-            <div class="-link text-dark" (mouseenter)="showLinks = true" (mouseleave)="showLinks = false">
+            <div class="nav-link text-dark" (mouseenter)="showLinks = true" (mouseleave)="showLinks = false">
               Welcome, <p>{{name}}</p>
               
               <ul *ngIf="isUserHaveRequiredRole(Role.Customer) && showLinks" class="card">
-nav                <li class="nav-item">
+               <li class="nav-item">
                   <a class="nav-link text-dark" [routerLink]="['/user/profile']">Profile</a>
                 </li>
                 <li class="nav-item">

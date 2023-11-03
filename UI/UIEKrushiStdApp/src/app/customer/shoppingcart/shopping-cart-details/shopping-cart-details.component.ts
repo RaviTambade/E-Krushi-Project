@@ -1,40 +1,37 @@
-import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { SessionStorageKeys } from 'src/app/Models/Enums/session-storage-keys';
 import { CartItem } from 'src/app/Models/cart-item';
 import { CartService } from 'src/app/Services/cart.service';
-import { OrderService } from 'src/app/Services/order-service.service';
 import { DeleteConfirmationComponent } from 'src/app/delete-confirmation/delete-confirmation.component';
 
 @Component({
-  selector: 'orderprocessing-order-details',
-  templateUrl: './order-details.component.html',
-  styleUrls: ['./order-details.component.css'],
+  selector: 'app-shopping-cart-details',
+  templateUrl: './shopping-cart-details.component.html',
+  styleUrls: ['./shopping-cart-details.component.css']
 })
-export class OrderDetailsComponent implements OnDestroy {
-  items: CartItem[] = [];
+export class ShoppingCartDetailsComponent {
+  @Input()items: CartItem[]=[];
   totalItems: string = '';
   subTotal: number = 0;
   discount: number = 0;
   shippingCharges = 'Free';
   total: number = 0;
 
+@Output() SummeryData =new EventEmitter();
   maxAllowedQuantity: number = 10;
   minAllowedQuantity: number = 1;
   constructor(
-    private ordersvc: OrderService,
+    private cartsvc: CartService,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog
+    private dialog: MatDialog,
   ) {}
 
-  ngOnInit(): void {
-    let items = sessionStorage.getItem(SessionStorageKeys.items);
-    if (items == null) {
-      return;
-    }
-    this.items = JSON.parse(items);
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['items']) {
     this.calculateSummary();
+    }
   }
 
   private calculateSummary() {
@@ -44,27 +41,26 @@ export class OrderDetailsComponent implements OnDestroy {
       .map((item) => item.quantity * item.unitPrice)
       .forEach((i) => (this.subTotal += i));
     this.total = this.subTotal - this.discount;
-
-    this.ordersvc.sendOrderData.next({
-      totalItems: this.totalItems,
-      subTotal: this.subTotal,
-      total: this.total,
-    });
+    this.SummeryData.emit({total:this.total,totalItems:this.totalItems,subTotal:this.subTotal})
   }
 
-  openDeleteConfirmationDialog(cartItemId: number) {
+  openDeleteConfirmationDialog(productDetailsId: number) {
     const dialogRef = this.dialog.open(DeleteConfirmationComponent, {});
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
-        this.deleteItem(cartItemId);
+        this.deleteItem(productDetailsId);
       }
     });
   }
 
-  deleteItem(cartItemId: number) {
-    this.items = this.items.filter((item) => item.productDetailsId != cartItemId);
-    this.calculateSummary();
+  deleteItem(productDetailsId: number) {
+    this.cartsvc.RemoveItem(productDetailsId).subscribe((res) => {
+      if (res) {
+        this.items = this.items.filter((item) => item.productDetailsId != productDetailsId);
+        this.calculateSummary();
+      }
+    });
   }
 
   showNotification(message: string) {
@@ -106,29 +102,27 @@ export class OrderDetailsComponent implements OnDestroy {
   updateDatabaseQuantity(item: CartItem, quantity: number) {
     if (quantity == item.quantity && quantity == this.maxAllowedQuantity) {
       this.showNotification(
-        `Maximum ${this.maxAllowedQuantity} Quantity Per Order is allowed`
+        `Maximum ${this.maxAllowedQuantity} Quantity Per Item is allowed`
       );
       return;
     }
     if (quantity == item.quantity && quantity == this.minAllowedQuantity) {
       this.showNotification(
-        `Minimum ${this.minAllowedQuantity} Quantity Per Order is allowed`
+        `Minimum ${this.minAllowedQuantity} Quantity Per Item is allowed`
       );
       return;
     }
-
-    this.showNotification(
-      `You  Changed  ${item.title}  Quantity  To  ${quantity}`
-    );
-    item.quantity = quantity;
+    this.cartsvc.updateQuantity(item.productDetailsId, quantity).subscribe((res) => {
+     
+      if (res) {
+        this.showNotification(
+          `You  Changed  ${item.title}  Quantity  To  ${quantity}`
+        );
+        item.quantity = quantity;
+       
+        this.calculateSummary();
+      }
    
-    this.calculateSummary();
-  }
-
-  ngOnDestroy(): void {
-    sessionStorage.setItem(
-      SessionStorageKeys.items,
-      JSON.stringify(this.items)
-    );
+    });
   }
 }

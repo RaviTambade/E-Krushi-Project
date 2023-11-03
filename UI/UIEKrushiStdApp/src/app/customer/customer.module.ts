@@ -17,6 +17,7 @@ import { QuestionsComponent } from './customer-questions/questions/questions.com
 import { AddquestionComponent } from './customer-questions/addquestion/addquestion.component';
 import { QuestionanswerComponent } from './customer-questions/questionanswer/questionanswer.component';
 import { ConsultingModule } from '../consulting/consulting.module';
+import { ShoppingCartDetailsComponent } from './shoppingcart/shopping-cart-details/shopping-cart-details.component';
 export const customerRoutes: Routes = [
   { path: 'dashboard', component: CustomerDashboardComponent },
   { path: 'orders', component: CustomerOrdersComponent },
@@ -25,9 +26,7 @@ export const customerRoutes: Routes = [
   { path: 'shoppingcart', component: ShoppingcartComponent },
   {path:'question' , component:CustomerQuestionsComponent},
   {path:'addquestion' , component:AddquestionComponent},
-
   {path:'questionHistory' , component:QuestionsComponent},
-  // {path:'questionAnswer' , component:QuestionanswerComponent},
   {path:'question/:id' , component:QuestionanswerComponent},
  
 ];
@@ -47,7 +46,8 @@ export const customerRoutes: Routes = [
     QuestionsComponent,
     AddquestionComponent,
     QuestionanswerComponent,
+    ShoppingCartDetailsComponent,
   ],
   imports: [CommonModule, RouterModule, FormsModule, MatSnackBarModule,ConsultingModule],
-exports:[ShoppingcartComponent,OrderDetailsComponent,OrderProductDetailsComponent]})
+exports:[ShoppingcartComponent,OrderDetailsComponent,OrderProductDetailsComponent,ShoppingCartDetailsComponent,CartSummaryComponent]})
 export class CustomerModule {}
