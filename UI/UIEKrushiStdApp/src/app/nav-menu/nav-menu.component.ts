@@ -36,6 +36,7 @@ export class NavMenuComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+
     this.fetchNameAndRoles();
 
     this.reloadNavSubscription = this.usersvc.reloadnavbar.subscribe(() => {
@@ -103,7 +104,7 @@ export class NavMenuComponent implements OnInit, OnDestroy {
       switchMap(corporateId => this.corporatesvc.getCorporateName(corporateId))
     ).subscribe(res => {
       this.corporateName = res[0].name;
-    });
+    }); 
     
   }
 

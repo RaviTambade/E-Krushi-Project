@@ -141,7 +141,8 @@ public class ShipperRepository : IShipperRepository
             orders.addressid as toaddressid,orders.status from orders
             INNER JOIN stores on orders.storeid = stores.id
             INNER JOIN shipperorders on orders.id=shipperorders.orderid 
-            WHERE orders.status=@Status AND shipperorders.shipperid=@ShipperId",
+            WHERE orders.status=@Status AND shipperorders.shipperid=@ShipperId
+            ORDER BY orders.orderdate DESC",
                 new { ShipperId = shipperId, Status = status }
             );
         }

@@ -31,7 +31,7 @@ public class StoreRepository : IStoreRepository
         {
             await connection.OpenAsync();
             string query =
-                "SELECT id, orderdate, shippeddate,total, status FROM orders where storeid=@StoreId and status=@OrderStatus";
+                "SELECT id, orderdate, shippeddate,total, status FROM orders WHERE storeid=@StoreId AND status=@OrderStatus ORDER BY orderdate DESC";
 
             return await connection.QueryAsync<StoreOrder>(
                 query,

@@ -106,6 +106,7 @@ public class OrderRepository : IOrderRepository
         {
             var orders = await _context.Orders
                 .Where(o => o.CustomerId == customerId)
+                .OrderByDescending(o=>o.OrderDate)
                 .Select(
                     o =>
                         new CustomerOrder()
