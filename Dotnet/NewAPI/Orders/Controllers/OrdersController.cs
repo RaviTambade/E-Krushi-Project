@@ -15,10 +15,10 @@ public class OrdersController : ControllerBase
         _service = service;
     }
 
-    [HttpGet("customer/{customerId}")]
-    public async Task<List<CustomerOrder>> GetCustomerOrderDetails(int customerId)
+    [HttpGet("customers/{customerId}/{orderStatus}")]
+    public async Task<List<CustomerOrder>> GetCustomerOrders(int customerId,string orderStatus)
     {
-        return await _service.GetCustomerOrderDetails(customerId);
+        return await _service.GetCustomerOrders(customerId,orderStatus);
     }
 
     [HttpGet("details/{orderId}")]
@@ -33,7 +33,7 @@ public class OrdersController : ControllerBase
         return await _service.GetOrderAmount(orderId);
     }
 
-    [HttpGet("address/{orderId}")]
+    [HttpGet("delivery/address/{orderId}")]
     public async Task<int> GetAddressIdOfOrder(int orderId)
     {
         return await _service.GetAddressIdOfOrder(orderId);
@@ -51,7 +51,7 @@ public class OrdersController : ControllerBase
         return await _service.RemoveOrder(orderId);
     }
 
-    [HttpPatch("status")]
+    [HttpPatch("update/status")]
     public async Task<bool> UpdateOrderStatus(OrderUpdateModel order)
     {
         return await _service.UpdateOrderStatus(order);

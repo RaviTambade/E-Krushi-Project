@@ -1,10 +1,9 @@
 
   <h2>My Orders</h2>
 
-  <div class="active-filter-line"></div>
   <div class="row">
     <div class="col-md-8">
-      <div class="d-flex col-8 justify-content-between">
+      <div class="d-flex col-12 justify-content-between">
         <a class="btn btn-outline-success" (click)="filterOrders(orderStatus.pending)"
           [ngClass]="{'btn-success active-button': activeFilter === orderStatus.pending}">
           <i class="fas fa-clock" style="color: #c51616"></i>
@@ -17,7 +16,7 @@
         </a>
         <a class="btn btn-outline-success" (click)="filterOrders(orderStatus.inprogress)"
         [ngClass]="{'btn-success active-button': activeFilter === orderStatus.inprogress}">
-        <i class="fas fa-check-circle" style="color: #28a745"></i>
+        <i class="fas fa-cog" style="color: #FFA500"></i>
         &nbsp;Inprogress
       </a>
         <a class="btn btn-outline-success" (click)="filterOrders(orderStatus.delivered)"
@@ -30,7 +29,14 @@
           <i class="fas fa-cancel" style="color: #c51616"></i>
           &nbsp;Cancelled
         </a>
-      </div>
+
+        <!-- <div >
+          <label>From </label>
+          <input type="date" [(ngModel)]="fromDate" />
+          <label>To </label>
+          <input type="date" [(ngModel)]="toDate"  />
+          <button (click)="onSubmit()" >Go</button>      </div>
+      </div> -->
 
       <table class="table">
         <thead>
@@ -41,7 +47,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let order of filteredOrders">
+          <tr *ngFor="let order of orders">
             <td>{{ order.orderDate | date }}</td>
             <td>{{ order.total | currency : "INR" }}</td>
             <td>{{ order.status }}</td>
@@ -60,7 +66,7 @@
         <i class="fa fa-spinner fa-spin fa-2x"></i>
       </div>
 
-      <div *ngIf="!isLoading && filteredOrders.length < 1" class="text-center mt-3">
+      <div *ngIf="!isLoading && orders.length < 1" class="text-center mt-3">
         <p class="text-muted font-weight-bold">No Orders</p>
       </div>
     </div>

@@ -108,7 +108,7 @@ export class PaymentComponent {
   }
 
   processOrder(order: OrderAddModel) {
-    this.ordersvc.processOrder(order).subscribe((res) => {
+    this.ordersvc.createOrder(order).subscribe((res) => {
       const orderAmount = res;
 
       if (this.selectedMode === 'cash on delivery') {

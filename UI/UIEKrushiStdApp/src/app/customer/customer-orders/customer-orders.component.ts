@@ -11,37 +11,34 @@ import { OrderService } from 'src/app/Services/order-service.service';
 })
 export class CustomerOrdersComponent implements OnInit {
   orders: Order[] = [];
-  orderStatus=OrderStatus;
-  filteredOrders: Order[] = [];
+  orderStatus = OrderStatus;
   activeFilter: string = this.orderStatus.pending;
   isLoading: boolean = true;
+  fromDate:string='';
+  toDate:string='';
   constructor(private ordersvc: OrderService) {}
 
   ngOnInit(): void {
-    const customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
-      this.ordersvc.getOrdersOfCustomer(customerId).subscribe({
-        next: (res) => {
-          this.orders = res;
-          this.filterOrders(this.activeFilter);
-         
-        },
-        error: (error) => {
-          console.error(error);
-        },
-        complete: () => {
-          this.isLoading = false;
-        },
-      });
+    this.filterOrders(this.orderStatus.pending);
+  }
+  onSubmit(){
+    console.log(this.fromDate)
+    console.log(this.toDate)
   }
 
   filterOrders(status: string) {
     this.activeFilter = status;
-    if (status == 'all') {
-      this.filteredOrders = this.orders;
-    } else {
-      this.filteredOrders = this.orders.filter(
-        (order) => order.status == status
-      );
-    }
+    const customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
+    this.ordersvc.getOrdersOfCustomer(customerId, this.activeFilter).subscribe({
+      next: (res) => {
+        this.orders = res;
+      },
+      error: (error) => {
+        console.error(error);
+      },
+      complete: () => {
+        this.isLoading = false;
+      },
+    });
   }
 }

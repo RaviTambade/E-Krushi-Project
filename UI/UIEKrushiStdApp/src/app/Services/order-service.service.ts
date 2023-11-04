@@ -16,8 +16,8 @@ export class OrderService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getOrdersOfCustomer(customerId: number): Observable<Order[]> {
-    let url = 'http://localhost:5059/api/orders/customer/' + customerId;
+  getOrdersOfCustomer(customerId: number,orderStatus:string): Observable<Order[]> {
+    let url = 'http://localhost:5059/api/orders/customers/' + customerId +'/'+orderStatus;
     return this.httpClient.get<Order[]>(url);
   }
 
@@ -31,13 +31,13 @@ export class OrderService {
     return this.httpClient.get<number>(url);
   }
 
-  processOrder(order: OrderAddModel): Observable<OrderAmount> {
+  createOrder(order: OrderAddModel): Observable<OrderAmount> {
     let url = 'http://localhost:5059/api/orders/';
     return this.httpClient.post<OrderAmount>(url, order);
   }
 
   getAddressIdOfOrder(orderId: number): Observable<number> {
-    let url = 'http://localhost:5059/api/orders/address/' + orderId;
+    let url = 'http://localhost:5059/api/orders/delivery/address/' + orderId;
     return this.httpClient.get<number>(url);
   }
 
@@ -46,7 +46,7 @@ export class OrderService {
       orderId:orderId,
       status:status
     };
-    let url = 'http://localhost:5059/api/orders/status';
+    let url = 'http://localhost:5059/api/orders/update/status';
     return this.httpClient.patch<boolean>(url,order);
   }
 }

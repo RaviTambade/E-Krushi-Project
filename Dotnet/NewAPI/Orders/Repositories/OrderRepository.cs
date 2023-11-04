@@ -14,7 +14,7 @@ public class OrderRepository : IOrderRepository
 
     public OrderRepository(OrderContext context, IHttpClientFactory httpClientFactory)
     {
-        _context = context;
+        _context = context; 
         _httpClientFactory = httpClientFactory;
     }
 
@@ -100,12 +100,12 @@ public class OrderRepository : IOrderRepository
         }
     }
 
-    public async Task<List<CustomerOrder>> GetCustomerOrderDetails(int customerId)
+    public async Task<List<CustomerOrder>> GetCustomerOrders(int customerId,string orderStatus)
     {
         try
         {
             var orders = await _context.Orders
-                .Where(o => o.CustomerId == customerId)
+                .Where(o => o.CustomerId == customerId && o.Status==orderStatus)
                 .OrderByDescending(o=>o.OrderDate)
                 .Select(
                     o =>
