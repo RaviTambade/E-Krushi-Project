@@ -3,7 +3,7 @@
 
   <div class="row">
     <div class="col-md-8">
-      <div class="d-flex col-12 justify-content-between">
+      <div class="d-flex col-8 justify-content-between">
         <a class="btn btn-outline-success" (click)="filterOrders(orderStatus.pending)"
           [ngClass]="{'btn-success active-button': activeFilter === orderStatus.pending}">
           <i class="fas fa-clock" style="color: #c51616"></i>
@@ -35,8 +35,8 @@
           <input type="date" [(ngModel)]="fromDate" />
           <label>To </label>
           <input type="date" [(ngModel)]="toDate"  />
-          <button (click)="onSubmit()" >Go</button>      </div>
-      </div> -->
+          <button (click)="onSubmit()" >Go</button>      </div>-->
+      </div> 
 
       <table class="table">
         <thead>
