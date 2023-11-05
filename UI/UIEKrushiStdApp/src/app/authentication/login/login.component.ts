@@ -31,7 +31,7 @@ export class LoginComponent {
     private storesvc: StoreService,
     private suppliersvc: SupplierService,
     private shippersvc: ShipperService
-  ) {}
+  ) { }
 
   onSignIn() {
     this.isLoginButtonDisabled = true;

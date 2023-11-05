@@ -49,9 +49,11 @@ img {
   padding: 2px
 }
 
-.c-gold{
+.c-gold {
   color: gold;
 }
-.image-size{
-  width: 100%;height: 100%
+
+.image-size {
+  width: 100%;
+  height: 100%
 }
