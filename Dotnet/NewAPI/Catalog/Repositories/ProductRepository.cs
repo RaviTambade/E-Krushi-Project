@@ -405,4 +405,69 @@ public class ProductRepository : IProductRepository
         }
         return productNames;
     }
+
+    public async Task<List<Product>> GetProductsBySupplier(int supplierId)
+    {
+        List<Product> products = new List<Product>();
+        MySqlConnection connection = new MySqlConnection();
+        connection.ConnectionString = _connectionString;
+        try
+        {
+            string query =
+                @"SELECT products.id,products.title, products.image,
+                GROUP_CONCAT(DISTINCT productdetails.id) as productdetailsid, 
+                GROUP_CONCAT(DISTINCT productdetails.unitprice) as unitprice ,
+                GROUP_CONCAT( DISTINCT productdetails.size) AS sizes, 
+                AVG(productreview.rating) AS rating FROM products
+                INNER JOIN productdetails ON products.id = productdetails.productid
+                INNER JOIN productreview ON products.id = productreview.productid
+                WHERE productdetails.supplierid= @supplierid
+                GROUP BY products.id ";
+
+            MySqlCommand command = new MySqlCommand(query, connection);
+            command.Parameters.AddWithValue("@supplierid", supplierId);
+
+            await connection.OpenAsync();
+            MySqlDataReader reader = (MySqlDataReader)await command.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
+            {
+                List<string> productDetailsIds = reader
+                    .GetString("productdetailsid")
+                    .Split(",")
+                    .ToList();
+                List<string> UnitPrices = reader.GetString("unitprice").Split(",").ToList();
+                List<string> sizes = reader.GetString("sizes").Split(",").ToList();
+
+                var productdetails = productDetailsIds.Select(
+                    (id, index) =>
+                        new ProductDetail
+                        {
+                            ProductDetailId = id,
+                            Size = sizes.ElementAt(index),
+                            UnitPrice = UnitPrices.ElementAt(index)
+                        }
+                );
+
+                Product product = new Product()
+                {
+                    Id = reader.GetInt32("id"),
+                    Title = reader.GetString("title"),
+                    Image = reader.GetString("image"),
+                    Rating = reader.GetDouble("rating"),
+                    ProductDetails = productdetails
+                };
+                products.Add(product);
+            }
+            await reader.CloseAsync();
+        }
+        catch (Exception)
+        {
+            throw;
+        }
+        finally
+        {
+            await connection.CloseAsync();
+        }
+        return products;
+    }
 }

@@ -47,4 +47,9 @@ public class ProductService : IProductService
     {
         return await _repository.GetProductNameSuggestions(searchString);
     }
+
+    public async Task<List<Product>> GetProductsBySupplier(int supplierId)
+    {
+        return await _repository.GetProductsBySupplier(supplierId);
+    }
 }

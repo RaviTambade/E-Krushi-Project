@@ -3,48 +3,48 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from '../Models/category';
 import { Product } from '../Models/product';
-import { ProductDetail } from '../Models/productDetail';
 import { ProductDescription } from '../Models/ProductDescription';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CatalogService {
   constructor(private httpClient: HttpClient) {}
+  private productsApiurl: string = environment.catalogServiceProductUrl;
+  private categoriesApiurl: string = environment.catalogServiceCategoriesUrl;
 
   getCategories(): Observable<Category[]> {
-    let url = 'http://localhost:5288/api/categories';
+    let url = this.categoriesApiurl;
     return this.httpClient.get<Category[]>(url);
   }
   getProducts(): Observable<Product[]> {
-    let url = 'http://localhost:5288/api/products';
+    let url = this.productsApiurl;
     return this.httpClient.get<Product[]>(url);
   }
   getProductDetails(productId: number): Observable<ProductDescription> {
-    let url = 'http://localhost:5288/api/products/details/' + productId;
+    let url = `${this.productsApiurl}/details/${productId}`;
     return this.httpClient.get<ProductDescription>(url);
   }
   getProductsByCategory(categoryId: string): Observable<Product[]> {
-    let url = 'http://localhost:5288/api/products/category/' + categoryId;
+    let url = `${this.productsApiurl}/category/${categoryId}`;
     return this.httpClient.get<Product[]>(url);
   }
   getSimilarProducts(productId: number): Observable<Product[]> {
-    let url = 'http://localhost:5288/api/products/similar/' + productId;
+    let url = `${this.productsApiurl}/similar/${productId}`;
     return this.httpClient.get<Product[]>(url);
   }
   getSearchedProducts(searchString: string): Observable<Product[]> {
-    let url = 'http://localhost:5288/api/products/search/' + searchString;
+    let url = `${this.productsApiurl}/search/${searchString}`;
     return this.httpClient.get<Product[]>(url);
   }
   getProductPriceBySize(productId: number, size: string): Observable<number> {
-    let url =
-      'http://localhost:5288/api/products/price/' + productId + '/' + size;
+    let url = `${this.productsApiurl}/price/${productId}/${size}`;
     return this.httpClient.get<number>(url);
   }
 
   getProductNameSuggestions(searchString: string): Observable<string[]> {
-    let url =
-      'http://localhost:5288/api/products/suggestions/names/' + searchString;
+    let url =`${this.productsApiurl}/suggestions/names/${searchString}`;
     return this.httpClient.get<string[]>(url);
   }
 }

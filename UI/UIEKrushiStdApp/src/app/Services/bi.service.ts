@@ -12,8 +12,6 @@ export class BIService {
 
   constructor(private httpClient:HttpClient) { }
 
-
-
   getOrderCountByStore(todaysDate :string,storeId: number): Observable<OrderCount> {
     let url = ' http://localhost:5161/api/bi/orderscount/' + todaysDate+"/" + storeId;
     return this.httpClient.get<OrderCount>(url);

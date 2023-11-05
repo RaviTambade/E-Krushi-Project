@@ -1,10 +1,10 @@
 <section >
   <!-- <div class="container"> -->
     <div class="row gx-5">
-      <aside class="col-lg-5">
+      <aside class="col-lg-6">
         <div class="border rounded-4 p-2 mb-3 d-flex justify-content-center">
           <a class="rounded-4" target="_blank" data-type="image" href="{{product.image}}">
-            <img height="400px" width="450px" class="rounded-4 fit" src="{{product.image}}" />
+            <img height="400px" width="680px" class="rounded-4 fit" src="{{product.image}}" />
           </a>
         </div>
         <div style="display: flex; justify-content: space-around;">
@@ -25,7 +25,7 @@
         </div>
       </aside>
 
-      <main class="col-lg-6 m-4 p-4">
+      <main class="col-lg-6  ">
         <div class="ps-lg-3">
           <h4 class="title text-dark">
             {{product.title |titlecase}}
@@ -69,7 +69,7 @@
 
         </div>
 
-        <div class="col-lg-12 mb-4">
+        <div class="col-lg-12" >
           <div class="border rounded-2 px-3 py-2 bg-white">
             <!-- Pills navs -->
             <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
@@ -95,7 +95,9 @@
 
       </main>
     </div>
-  <!-- </div> -->
 
 </section>
+<div class="py-5">
+
 <app-product-similar-items [productId]="product.id"></app-product-similar-items>
+</div>

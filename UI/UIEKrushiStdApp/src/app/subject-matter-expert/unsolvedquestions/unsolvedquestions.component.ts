@@ -10,11 +10,12 @@ export class UnsolvedquestionsComponent implements OnInit{
   smeid:number=40;
   questions:any[]=[];
   constructor(private service:ConsultingService){}
-  ngOnInit(): void {
-     this.service.getUnSolvedQuestions(this.smeid).subscribe((response)=>{
-      this.questions=response;
+  ngOnInit(): void 
+  {
+  //    this.service.getUnSolvedQuestions(this.smeid).subscribe((response)=>{
+  //     this.questions=response;
      
-     })
+  //    })
   }
 
 }
