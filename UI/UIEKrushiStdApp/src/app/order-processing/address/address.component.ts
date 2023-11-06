@@ -1,9 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
-import { SessionStorageKeys } from 'src/app/Models/Enums/session-storage-keys';
-import { AddressInfo } from 'src/app/Models/addressinfo';
-import { AuthenticationService } from 'src/app/Services/authentication.service';
-import { UserService } from 'src/app/Services/user.service';
+import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { SessionStorageKeys } from '@enums/session-storage-keys';
+import { AddressInfo } from '@models/addressinfo';
+import { UserService } from '@services/user.service';
+
 
 @Component({
   selector: 'app-address',

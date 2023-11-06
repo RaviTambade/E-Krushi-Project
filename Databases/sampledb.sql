@@ -1,4 +1,4 @@
--- Active: 1685344824419@@127.0.0.1@3306@ekrushi
+-- Active: 1696576841746@@127.0.0.1@3306@ekrushi
 
 
 INSERT INTO roles(name) VALUES ('Shop Owner');

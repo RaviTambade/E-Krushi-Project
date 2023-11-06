@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { TopProduct } from 'src/app/Models/top-product';
+import { TopProduct } from '@models/top-product';
 
 @Component({
-  selector: 'shop-top-selling-product',
+  selector: 'store-top-selling-product',
   templateUrl: './top-selling-product.component.html',
   styleUrls: ['./top-selling-product.component.css']
 })

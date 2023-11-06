@@ -6,7 +6,7 @@ import { AddAddressComponent } from './add-address/add-address.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaymentComponent } from './payment/payment.component';
 import { OrderProcessingMainComponent } from './order-processing-main/order-processing-main.component';
-import { CustomerModule } from '../customer/customer.module';
+import { CustomerModule } from '@ekrushi-customer/customer.module';
 
 export const orderProcessingRoutes: Routes = [
   {

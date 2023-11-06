@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Questioncategory } from 'src/app/Models/Questioncategory';
-import { ConsultingService } from 'src/app/Services/consulting.service';
+import { Questioncategory } from '@models/Questioncategory';
+import { ConsultingService } from '@services/consulting.service';
 
 @Component({
   selector: 'app-question-catagories',

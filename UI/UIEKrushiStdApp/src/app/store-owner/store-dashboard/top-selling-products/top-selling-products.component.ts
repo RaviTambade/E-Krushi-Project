@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
-import { TopProduct } from 'src/app/Models/top-product';
-import { BIService } from 'src/app/Services/bi.service';
+import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { TopProduct } from '@models/top-product';
+import { BIService } from '@services/bi.service';
+
 
 @Component({
-  selector: 'shop-top-selling-products',
+  selector: 'store-top-selling-products',
   templateUrl: './top-selling-products.component.html',
   styleUrls: ['./top-selling-products.component.css'],
 })

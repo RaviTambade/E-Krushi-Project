@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { UpdatePassword } from 'src/app/Models/update-password';
-import { AuthenticationService } from 'src/app/Services/authentication.service';
+import { UpdatePassword } from '@models/update-password';
+import { AuthenticationService } from '@services/authentication.service';
+
 
 @Component({
   selector: 'update-password',

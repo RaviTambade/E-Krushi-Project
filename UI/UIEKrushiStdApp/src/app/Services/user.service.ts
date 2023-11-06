@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '@environments/environment';
+import { Address } from '@models/address';
+import { AddressInfo } from '@models/addressinfo';
+import { NameId } from '@models/nameId';
+import { User } from '@models/user';
 import { Observable, Subject } from 'rxjs';
-import { NameId } from '../Models/nameId';
-import { Address } from '../Models/address';
-import { AddressInfo } from '../Models/addressinfo';
-import { User } from '../Models/user';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',

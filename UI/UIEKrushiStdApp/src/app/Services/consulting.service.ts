@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Question } from '../Models/question';
 import { Observable } from 'rxjs';
-import { QuestionAnswer } from '../Models/questionanswer';
-import { Questioncategory } from '../Models/Questioncategory';
-import { InsertQuestion } from '../Models/InsertQuestion';
-import { environment } from 'src/environments/environment';
+import { environment } from '@environments/environment';
+import { InsertQuestion } from '@models/InsertQuestion';
+import { Questioncategory } from '@models/Questioncategory';
+import { Question } from '@models/question';
+import { QuestionAnswer } from '@models/questionanswer';
 
 @Injectable({
   providedIn: 'root'

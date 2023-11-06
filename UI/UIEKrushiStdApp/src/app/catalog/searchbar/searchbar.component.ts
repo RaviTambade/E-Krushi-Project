@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { CatalogService } from 'src/app/Services/catalog.service';
+import { CatalogService } from '@services/catalog.service';
 
 @Component({
   selector: 'app-searchbar',

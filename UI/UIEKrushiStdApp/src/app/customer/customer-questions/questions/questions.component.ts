@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Question } from 'src/app/Models/question';
-import { ConsultingService } from 'src/app/Services/consulting.service';
-import { UserService } from 'src/app/Services/user.service';
+import { Question } from '@models/question';
+import { ConsultingService } from '@services/consulting.service';
+import { UserService } from '@services/user.service';
+
 
 @Component({
   selector: 'app-questions',

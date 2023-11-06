@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
-import { OrderDetails } from 'src/app/Models/orderDetails';
-import { OrderService } from 'src/app/Services/order-service.service';
+import { OrderService } from '@services/order-service.service';
+
 
 @Component({
   selector: 'app-order-summery',

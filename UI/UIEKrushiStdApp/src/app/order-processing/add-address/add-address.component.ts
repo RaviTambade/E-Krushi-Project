@@ -1,9 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Address } from 'src/app/Models/address';
-import { NameId } from 'src/app/Models/nameId';
-import { AuthenticationService } from 'src/app/Services/authentication.service';
-import { UserService } from 'src/app/Services/user.service';
+import { Address } from '@models/address';
+import { NameId } from '@models/nameId';
+import { AuthenticationService } from '@services/authentication.service';
+import { UserService } from '@services/user.service';
 
 @Component({
   selector: 'app-add-address',

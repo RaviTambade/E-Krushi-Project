@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Order } from '../Models/Order';
-import { OrderStatusCount } from '../Models/order-status-count';
-import { StoreName } from '../Models/store-name';
-import { environment } from 'src/environments/environment';
+import { environment } from '@environments/environment';
+import { Order } from '@models/Order';
+import { OrderStatusCount } from '@models/order-status-count';
+import { StoreName } from '@models/store-name';
 
 @Injectable({
   providedIn: 'root',

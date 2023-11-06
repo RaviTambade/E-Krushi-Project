@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Credential } from '../Models/credential';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { LocalStorageKeys } from '../Models/Enums/local-storage-keys';
-import { UpdatePassword } from '../Models/update-password';
+import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { UpdatePassword } from '@models/update-password';
+import { Credential } from '@models/credential';
+import { Observable } from 'rxjs';
+
 
 
 @Injectable({

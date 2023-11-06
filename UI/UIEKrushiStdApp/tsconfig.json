@@ -2,7 +2,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": "src",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -22,7 +22,24 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@services/*": ["app/Services/*"],
+      "@environments/*":["environments/*"],
+      "@enums/*":["app/Models/Enums/*"],
+      "@models/*":["app/Models/*"],
+      "@ekrushi-authentication/*":["app/authentication/*"],     
+      "@ekrushi-catalog/*":["app/catalog/*"],       
+      "@ekrushi-consulting/*":["app/consulting/*"],           
+      "@ekrushi-customer/*":["app/customer/*"],             
+      "@ekrushi-orderprocessing/*":["app/order-processing/*"],     
+      "@ekrushi-shipper/*":["app/shipper/*"],              
+      "@ekrushi-storeowner/*":["app/store-owner/*"],           
+      "@ekrushi-subjectmatterexpert/*":["app/subject-matter-expert/*"],
+      "@ekrushi-supplier/*":["app/supplier/*"],             
+      "@ekrushi-users/*":["app/users/*"],             
+      "@ekrushi-confirmationboxes/*":["app/confirmation-boxes/*"],            
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

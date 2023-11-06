@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { UserService } from 'src/app/Services/user.service';
-import { AuthenticationService } from 'src/app/Services/authentication.service';
-import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
-import { User } from 'src/app/Models/user';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { User } from '@models/user';
+import { AuthenticationService } from '@services/authentication.service';
+import { UserService } from '@services/user.service';
 
 @Component({
   selector: 'edituser',

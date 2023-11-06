@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CartItem } from '../Models/cart-item';
 import { Observable } from 'rxjs';
-import { Cart } from '../Models/cart';
-import { environment } from 'src/environments/environment';
+import { environment } from '@environments/environment';
+import { Cart } from '@models/cart';
+import { CartItem } from '@models/cart-item';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,6 @@ export class CartService {
 
   getCartItems(): Observable<Cart> {
     let url = this.apiurl;
-    console.log("🚀 ~ getCartItems ~ apiurl:", this.apiurl);
     return this.httpClient.get<Cart>(url,{withCredentials:true});
   }
 

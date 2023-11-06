@@ -1,8 +1,9 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OrderDetails } from 'src/app/Models/orderDetails';
-import { OrderedItem } from 'src/app/Models/orderdItem';
-import { OrderService } from 'src/app/Services/order-service.service';
+import { OrderDetails } from '@models/orderDetails';
+import { OrderedItem } from '@models/orderdItem';
+import { OrderService } from '@services/order-service.service';
+
 
 @Component({
   selector: 'app-order-product-details',

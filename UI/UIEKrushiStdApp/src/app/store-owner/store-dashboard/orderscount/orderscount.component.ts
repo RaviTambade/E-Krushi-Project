@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
-import { OrderCount } from 'src/app/Models/orderCount';
-import { BIService } from 'src/app/Services/bi.service';
+import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { OrderCount } from '@models/orderCount';
+import { BIService } from '@services/bi.service';
 
 @Component({
-  selector: 'shop-orderscount',
+  selector: 'store-orderscount',
   templateUrl: './orderscount.component.html',
   styleUrls: ['./orderscount.component.css'],
 })

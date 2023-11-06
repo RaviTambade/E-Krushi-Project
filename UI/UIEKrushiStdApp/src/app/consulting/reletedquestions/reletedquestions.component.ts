@@ -1,7 +1,8 @@
 import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Question } from 'src/app/Models/question';
-import { ConsultingService } from 'src/app/Services/consulting.service';
+import { Question } from '@models/question';
+import { ConsultingService } from '@services/consulting.service';
+
 
 @Component({
   selector: 'app-reletedquestions',

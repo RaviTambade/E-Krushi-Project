@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ConsultingService } from 'src/app/Services/consulting.service';
+import { ConsultingService } from '@services/consulting.service';
 
 @Component({
   selector: 'app-unsolvedquestions',

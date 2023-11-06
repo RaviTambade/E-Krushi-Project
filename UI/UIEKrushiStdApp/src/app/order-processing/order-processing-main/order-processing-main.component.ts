@@ -1,7 +1,7 @@
 import { Component, OnDestroy } from '@angular/core';
-import { SessionStorageKeys } from 'src/app/Models/Enums/session-storage-keys';
-import { CartItem } from 'src/app/Models/cart-item';
-import { CartService } from 'src/app/Services/cart.service';
+import { SessionStorageKeys } from '@enums/session-storage-keys';
+import { CartItem } from '@models/cart-item';
+import { CartService } from '@services/cart.service';
 
 @Component({
   selector: 'app-order-processing-main',

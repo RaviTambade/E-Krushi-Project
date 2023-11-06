@@ -1,21 +1,21 @@
 import { Component, Input, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
+import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { SessionStorageKeys } from '@enums/session-storage-keys';
+import { PaymentAddModel } from '@models/PaymentAddModel';
+import { PaymentTransferDetails } from '@models/PaymentTransferDetails';
+import { BankAccount } from '@models/bankAccount';
+import { CartItem } from '@models/cart-item';
+import { OrderAddModel } from '@models/order-add-model';
+import { OrderAmount } from '@models/order-amount';
+import { OrderDetailsAddModel } from '@models/order-details-add-model';
+import { BankingService } from '@services/banking.service';
+import { CartService } from '@services/cart.service';
+import { OrderService } from '@services/order-service.service';
+import { PaymentGatewayService } from '@services/payment-gateway.service';
+import { PaymentService } from '@services/payment.service';
+import { StoreService } from '@services/store.service';
 import { Observable, lastValueFrom, switchMap } from 'rxjs';
-import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
-import { SessionStorageKeys } from 'src/app/Models/Enums/session-storage-keys';
-import { PaymentAddModel } from 'src/app/Models/PaymentAddModel';
-import { PaymentTransferDetails } from 'src/app/Models/PaymentTransferDetails';
-import { BankAccount } from 'src/app/Models/bankAccount';
-import { CartItem } from 'src/app/Models/cart-item';
-import { OrderAddModel } from 'src/app/Models/order-add-model';
-import { OrderAmount } from 'src/app/Models/order-amount';
-import { OrderDetailsAddModel } from 'src/app/Models/order-details-add-model';
-import { BankingService } from 'src/app/Services/banking.service';
-import { CartService } from 'src/app/Services/cart.service';
-import { OrderService } from 'src/app/Services/order-service.service';
-import { PaymentGatewayService } from 'src/app/Services/payment-gateway.service';
-import { PaymentService } from 'src/app/Services/payment.service';
-import { StoreService } from 'src/app/Services/store.service';
 
 @Component({
   selector: 'app-payment',

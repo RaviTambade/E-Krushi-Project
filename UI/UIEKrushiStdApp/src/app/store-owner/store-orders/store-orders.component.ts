@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { OrderStatus } from 'src/app/Models/Enums/Order-Status';
-import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
-import { Order } from 'src/app/Models/Order';
-import { OrderStatusCount } from 'src/app/Models/order-status-count';
-import { OrderService } from 'src/app/Services/order-service.service';
-import { StoreService } from 'src/app/Services/store.service';
-import { ConfirmationBoxComponent } from 'src/app/confirmation-box/confirmation-box.component';
+import { OrderStatus } from '@enums/Order-Status';
+import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { Order } from '@models/Order';
+import { OrderStatusCount } from '@models/order-status-count';
+import { OrderService } from '@services/order-service.service';
+import { StoreService } from '@services/store.service';
+import { ConfirmationBoxComponent } from 'app/confirmation-boxes/confirmation-box/confirmation-box.component';
 
 @Component({
-  selector: 'app-shop-orders',
-  templateUrl: './shop-orders.component.html',
-  styleUrls: ['./shop-orders.component.css'],
+  selector: 'app-store-orders',
+  templateUrl: './store-orders.component.html',
+  styleUrls: ['./store-orders.component.css'],
 })
-export class ShopOrdersComponent implements OnInit {
+export class StoreOrdersComponent implements OnInit {
   orders: Order[] = [];
   orderStatus = OrderStatus;
   selectedOrderId: number | null = null;

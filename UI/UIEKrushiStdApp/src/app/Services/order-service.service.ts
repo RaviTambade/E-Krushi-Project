@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Order } from '../Models/Order';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { OrderDetails } from '../Models/orderDetails';
-import { OrderAddModel } from '../Models/order-add-model';
-import { OrderAmount } from '../Models/order-amount';
-import { OrdereUpdate } from '../Models/orderupdate';
-import { environment } from 'src/environments/environment';
+import { environment } from '@environments/environment';
+import { Order } from '@models/Order';
+import { OrderAddModel } from '@models/order-add-model';
+import { OrderAmount } from '@models/order-amount';
+import { OrderDetails } from '@models/orderDetails';
+import { OrdereUpdate } from '@models/orderupdate';
 
 @Injectable({
   providedIn: 'root',

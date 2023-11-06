@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { UserService } from 'src/app/Services/user.service';
 import { Router } from '@angular/router';
-import { User } from 'src/app/Models/user';
+import { User } from '@models/user';
+import { UserService } from '@services/user.service';
 
 @Component({
   selector: 'adduser',

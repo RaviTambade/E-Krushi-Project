@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SessionStorageKeys } from 'src/app/Models/Enums/session-storage-keys';
-import { ProductDescription } from 'src/app/Models/ProductDescription';
-import { CartItem } from 'src/app/Models/cart-item';
-import { CartService } from 'src/app/Services/cart.service';
-import { CatalogService } from 'src/app/Services/catalog.service';
+import { SessionStorageKeys } from '@enums/session-storage-keys';
+import { ProductDescription } from '@models/ProductDescription';
+import { CartItem } from '@models/cart-item';
+import { CartService } from '@services/cart.service';
+import { CatalogService } from '@services/catalog.service';
 
 @Component({
   selector: 'app-product-details',

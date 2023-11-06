@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
-import { AddressInfo } from 'src/app/Models/addressinfo';
-import { OrderService } from 'src/app/Services/order-service.service';
-import { UserService } from 'src/app/Services/user.service';
+import { ActivatedRoute, } from '@angular/router';
+import { AddressInfo } from '@models/addressinfo';
+import { OrderService } from '@services/order-service.service';
+import { UserService } from '@services/user.service';
 
 @Component({
   selector: 'app-order-details',

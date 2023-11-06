@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { BIService } from '@services/bi.service';
 import { Chart, ChartConfiguration, ChartType } from 'chart.js';
 import Annotation from 'chartjs-plugin-annotation';
 import { BaseChartDirective } from 'ng2-charts';
-import { BIService } from 'src/app/Services/bi.service';
 
 @Component({
   selector: 'app-linechart',

@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ShipperOrder } from '../Models/shipper-order';
-import { OrderStatusCount } from '../Models/order-status-count';
-import { environment } from 'src/environments/environment';
+import { environment } from '@environments/environment';
+import { OrderStatusCount } from '@models/order-status-count';
+import { ShipperOrder } from '@models/shipper-order';
 
 @Injectable({
   providedIn: 'root',

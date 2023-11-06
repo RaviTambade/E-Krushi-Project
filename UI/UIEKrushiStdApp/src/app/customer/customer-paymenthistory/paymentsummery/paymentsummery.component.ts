@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { PaymentService } from 'src/app/Services/payment.service';
+import { PaymentService } from '@services/payment.service';
 
 @Component({
   selector: 'app-paymentsummery',

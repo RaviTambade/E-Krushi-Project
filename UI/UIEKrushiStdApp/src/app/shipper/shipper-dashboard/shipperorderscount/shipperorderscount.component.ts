@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
-import { OrderStatusCount } from 'src/app/Models/order-status-count';
-import { ShipperService } from 'src/app/Services/shipper.service';
+import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { OrderStatusCount } from '@models/order-status-count';
+import { ShipperService } from '@services/shipper.service';
 
 @Component({
   selector: 'app-shipperorderscount',

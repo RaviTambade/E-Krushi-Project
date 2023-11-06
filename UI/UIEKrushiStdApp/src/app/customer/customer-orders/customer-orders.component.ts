@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderStatus } from 'src/app/Models/Enums/Order-Status';
-import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
-import { Order } from 'src/app/Models/Order';
-import { OrderService } from 'src/app/Services/order-service.service';
+import { OrderStatus } from '@enums/Order-Status';
+import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { Order } from '@models/Order';
+import { OrderService } from '@services/order-service.service';
 
 @Component({
   selector: 'app-customer-orders',

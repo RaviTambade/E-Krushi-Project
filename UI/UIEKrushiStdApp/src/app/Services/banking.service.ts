@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BankAccount } from '../Models/bankAccount';
-import { environment } from 'src/environments/environment';
+import { environment } from '@environments/environment';
+import { BankAccount } from '@models/bankAccount';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +12,7 @@ export class BankingService {
   constructor(private httpClient: HttpClient) {}
 
   getAccount(accountnumber: string): Observable<BankAccount> {
-    let url = `${this.apiurl}/accountnumber`;
+    let url = `${this.apiurl}/${accountnumber}`;
     return this.httpClient.get<BankAccount>(url);
   }
 

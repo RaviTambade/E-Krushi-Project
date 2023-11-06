@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { BIService } from '@services/bi.service';
 import { Chart, ChartConfiguration, ChartType } from 'chart.js';
-import { BIService } from 'src/app/Services/bi.service';
 import Annotation from 'chartjs-plugin-annotation';
 import { BaseChartDirective } from 'ng2-charts';
-import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
 
 @Component({
-  selector: 'shop-line-chart',
+  selector: 'store-line-chart',
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.css'],
 })

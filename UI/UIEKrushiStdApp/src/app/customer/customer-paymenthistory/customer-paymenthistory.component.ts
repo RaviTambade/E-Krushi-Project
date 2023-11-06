@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
-import { Payment } from 'src/app/Models/Payment';
-import { PaymentService } from 'src/app/Services/payment.service';
+import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { Payment } from '@models/Payment';
+import { PaymentService } from '@services/payment.service';
 
 @Component({
   selector: 'app-customer-paymenthistory',

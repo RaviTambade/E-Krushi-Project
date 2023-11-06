@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { AuthenticationService } from 'src/app/Services/authentication.service';
-import { UserService } from 'src/app/Services/user.service';
+import { AuthenticationService } from '@services/authentication.service';
+import { UserService } from '@services/user.service';
+
 
 @Component({
   selector: 'supplier-add-product',

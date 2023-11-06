@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from 'src/app/Models/product';
-import { CatalogService } from 'src/app/Services/catalog.service';
+import { Product } from '@models/product';
+import { CatalogService } from '@services/catalog.service';
 
 @Component({
   selector: 'app-product-categories-details',

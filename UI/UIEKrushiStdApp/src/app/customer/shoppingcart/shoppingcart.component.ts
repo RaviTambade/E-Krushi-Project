@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
-import { SessionStorageKeys } from 'src/app/Models/Enums/session-storage-keys';
-import { CartItem } from 'src/app/Models/cart-item';
-import { CartService } from 'src/app/Services/cart.service';
+import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { SessionStorageKeys } from '@enums/session-storage-keys';
+import { CartItem } from '@models/cart-item';
+import { CartService } from '@services/cart.service';
 
 @Component({
   selector: 'app-shoppingcart',

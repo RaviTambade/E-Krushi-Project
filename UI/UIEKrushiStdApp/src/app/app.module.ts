@@ -5,29 +5,27 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-
-import { LoginComponent } from './authentication/login/login.component';
+import { HomeComponent } from './default/home/home.component';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
-import { customerRoutes } from './customer/customer.module';
-import { shipperRoutes } from './shipper/shipper.module';
-import { shopRoutes } from './shop-owner/shop-owner.module';
-import { subjetcMatterExpertRoutes } from './subject-matter-expert/subject-matter-expert.module';
-import { supplierRoutes } from './supplier/supplier.module';
-import { SecondaryNavMenuComponent } from './secondary-nav-menu/secondary-nav-menu.component';
-import { AboutUsComponent } from './AboutUs/AboutUs.component';
-import { ContactUsComponent } from './ContactUs/ContactUs.component';
-import { CatalogModule, catlogRoutes } from './catalog/catalog.module';
-import { OrderService } from './Services/order-service.service';
+import { AboutUsComponent } from './default/AboutUs/AboutUs.component';
+import { ContactUsComponent } from './default/ContactUs/ContactUs.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import {  MatSnackBarModule } from '@angular/material/snack-bar';
-import { orderProcessingRoutes } from './order-processing/order-processing.module';
-import { consultingRoutes } from './consulting/consulting.module';
-import { ConfirmationBoxComponent } from './confirmation-box/confirmation-box.component';
-import { userRoutes } from './users/users.module';
+import { LoginComponent } from '@ekrushi-authentication/login/login.component';
+import { CatalogModule, catlogRoutes } from '@ekrushi-catalog/catalog.module';
+import { ConfirmationBoxComponent } from '@ekrushi-confirmationboxes/confirmation-box/confirmation-box.component';
+import { DeleteConfirmationComponent } from '@ekrushi-confirmationboxes/delete-confirmation/delete-confirmation.component';
+import { consultingRoutes } from '@ekrushi-consulting/consulting.module';
+import { customerRoutes } from '@ekrushi-customer/customer.module';
+import { shipperRoutes } from '@ekrushi-shipper/shipper.module';
+import { subjetcMatterExpertRoutes } from '@ekrushi-subjectmatterexpert/subject-matter-expert.module';
+import { supplierRoutes } from '@ekrushi-supplier/supplier.module';
+import { userRoutes } from '@ekrushi-users/users.module';
+import { OrderService } from '@services/order-service.service';
+import { storeRoutes } from '@ekrushi-storeowner/store-owner.module';
+import { orderProcessingRoutes } from '@ekrushi-orderprocessing/order-processing.module';
 
 
 @NgModule({
@@ -35,7 +33,6 @@ import { userRoutes } from './users/users.module';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    SecondaryNavMenuComponent,
     AboutUsComponent,
     ContactUsComponent,
     DeleteConfirmationComponent,
@@ -49,8 +46,7 @@ import { userRoutes } from './users/users.module';
     CatalogModule,
     MatDialogModule,
     MatSnackBarModule,
-        
-
+  
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'aboutus', component: AboutUsComponent },
@@ -60,7 +56,7 @@ import { userRoutes } from './users/users.module';
       { path: 'customer', children: customerRoutes },
       { path: 'catalog', children: catlogRoutes },
       { path: 'shipper', children: shipperRoutes },
-      { path: 'shop', children: shopRoutes },
+      { path: 'shop', children: storeRoutes },
       { path: 'sme', children: subjetcMatterExpertRoutes },
       { path: 'supplier', children: supplierRoutes },
       { path: 'orderprocessing', children: orderProcessingRoutes },

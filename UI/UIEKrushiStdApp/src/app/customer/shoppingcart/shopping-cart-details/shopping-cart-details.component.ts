@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CartItem } from 'src/app/Models/cart-item';
-import { CartService } from 'src/app/Services/cart.service';
-import { DeleteConfirmationComponent } from 'src/app/delete-confirmation/delete-confirmation.component';
+import { CartItem } from '@models/cart-item';
+import { CartService } from '@services/cart.service';
+import { DeleteConfirmationComponent } from 'app/confirmation-boxes/delete-confirmation/delete-confirmation.component';
 
 @Component({
   selector: 'app-shopping-cart-details',
@@ -11,7 +11,7 @@ import { DeleteConfirmationComponent } from 'src/app/delete-confirmation/delete-
   styleUrls: ['./shopping-cart-details.component.css']
 })
 export class ShoppingCartDetailsComponent {
-  @Input()items: CartItem[]=[];
+  @Input()items:CartItem[]=[];
   totalItems: string = '';
   subTotal: number = 0;
   discount: number = 0;

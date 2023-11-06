@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { Route, Router } from '@angular/router';
-import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
-import { Role } from 'src/app/Models/Enums/role';
-import { Credential } from 'src/app/Models/credential';
-import { AuthenticationService } from 'src/app/Services/authentication.service';
-import { ShipperService } from 'src/app/Services/shipper.service';
-import { StoreService } from 'src/app/Services/store.service';
-import { SupplierService } from 'src/app/Services/supplier.service';
-import { UserService } from 'src/app/Services/user.service';
-import { UserRoleService } from 'src/app/Services/userrole.service';
+import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { Role } from '@enums/role';
+import { AuthenticationService } from '@services/authentication.service';
+import { ShipperService } from '@services/shipper.service';
+import { StoreService } from '@services/store.service';
+import { SupplierService } from '@services/supplier.service';
+import { UserService } from '@services/user.service';
+import { Credential } from '@models/credential';
+import { UserRoleService } from '@services/userrole.service';
+
 @Component({
   selector: 'app-login-component',
   templateUrl: './login.component.html',

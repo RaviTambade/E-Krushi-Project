@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
-import { InsertQuestion } from 'src/app/Models/InsertQuestion';
-import { Questioncategory } from 'src/app/Models/Questioncategory';
-import { ConsultingService } from 'src/app/Services/consulting.service';
+import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { InsertQuestion } from '@models/InsertQuestion';
+import { Questioncategory } from '@models/Questioncategory';
+import { ConsultingService } from '@services/consulting.service';
+
 
 @Component({
   selector: 'app-addquestion',

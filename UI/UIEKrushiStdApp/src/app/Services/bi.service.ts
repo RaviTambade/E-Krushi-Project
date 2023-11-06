@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MonthOrderCount } from '@models/month-order-count';
+import { OrderCount } from '@models/orderCount';
+import { TopProduct } from '@models/top-product';
 import { Observable } from 'rxjs';
-import { OrderCount } from '../Models/orderCount';
-import { TopProduct } from '../Models/top-product';
-import { MonthOrderCount } from '../Models/month-order-count';
+
 
 @Injectable({
   providedIn: 'root'

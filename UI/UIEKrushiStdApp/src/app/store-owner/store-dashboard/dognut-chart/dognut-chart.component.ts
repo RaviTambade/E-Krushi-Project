@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BIService } from '@services/bi.service';
 import { ChartData, ChartType, ChartEvent } from 'chart.js';
-import { BIService } from 'src/app/Services/bi.service';
 enum TimeIntervalMode {
   today = 'today',
   yesterday = 'yesterday',
@@ -8,7 +8,7 @@ enum TimeIntervalMode {
   month = 'month',
 }
 @Component({
-  selector: 'shop-dognut-chart',
+  selector: 'store-dognut-chart',
   templateUrl: './dognut-chart.component.html',
   styleUrls: ['./dognut-chart.component.css'],
 })

@@ -1,10 +1,9 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { UUID } from 'angular2-uuid';
 import { HttpClient, HttpEventType } from '@angular/common/http';
-import { AuthenticationService } from 'src/app/Services/authentication.service';
-import { LocalStorageKeys } from 'src/app/Models/Enums/local-storage-keys';
-import { UserService } from 'src/app/Services/user.service';
-import { User } from 'src/app/Models/user';
+import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { User } from '@models/user';
+import { UserService } from '@services/user.service';
 
 @Component({
   selector: 'app-userprofile',

@@ -16,8 +16,8 @@ import { CustomerQuestionsComponent } from './customer-questions/customer-questi
 import { QuestionsComponent } from './customer-questions/questions/questions.component';
 import { AddquestionComponent } from './customer-questions/addquestion/addquestion.component';
 import { QuestionanswerComponent } from './customer-questions/questionanswer/questionanswer.component';
-import { ConsultingModule } from '../consulting/consulting.module';
 import { ShoppingCartDetailsComponent } from './shoppingcart/shopping-cart-details/shopping-cart-details.component';
+import { ConsultingModule } from '@ekrushi-consulting/consulting.module';
 export const customerRoutes: Routes = [
   { path: 'dashboard', component: CustomerDashboardComponent },
   { path: 'orders', component: CustomerOrdersComponent },

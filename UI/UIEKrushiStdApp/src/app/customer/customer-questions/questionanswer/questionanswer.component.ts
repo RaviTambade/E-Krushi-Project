@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Question } from 'src/app/Models/question';
-import { QuestionAnswer } from 'src/app/Models/questionanswer';
-import { ConsultingService } from 'src/app/Services/consulting.service';
+import { QuestionAnswer } from '@models/questionanswer';
+import { ConsultingService } from '@services/consulting.service';
+
 
 @Component({
   selector: 'app-questionanswer',
