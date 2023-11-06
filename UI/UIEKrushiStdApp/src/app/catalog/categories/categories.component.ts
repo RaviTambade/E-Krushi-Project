@@ -11,7 +11,7 @@ import { CatalogService } from '@services/catalog.service';
 export class CategoriesComponent implements OnInit {
   categories: Category[] = [];
 
-  constructor(private catlogsvc: CatalogService) {}
+  constructor(private catlogsvc: CatalogService) { }
 
   ngOnInit(): void {
     this.catlogsvc.getCategories().subscribe((res) => {
