@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderStatus } from '@enums/Order-Status';
 import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { TokenClaims } from '@enums/tokenclaims';
 import { Order } from '@models/Order';
+import { AuthenticationService } from '@services/authentication.service';
 import { OrderService } from '@services/order-service.service';
 
 @Component({
@@ -16,7 +18,7 @@ export class CustomerOrdersComponent implements OnInit {
   isLoading: boolean = true;
   fromDate:string='';
   toDate:string='';
-  constructor(private ordersvc: OrderService) {}
+  constructor(private ordersvc: OrderService,private authsvc:AuthenticationService) {}
 
   ngOnInit(): void {
     this.filterOrders(this.orderStatus.pending);
@@ -28,7 +30,9 @@ export class CustomerOrdersComponent implements OnInit {
 
   filterOrders(status: string) {
     this.activeFilter = status;
-    const customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
+    const customerId =  Number(
+      this.authsvc.getClaimFromToken(TokenClaims.userId)
+    );
     this.ordersvc.getOrdersOfCustomer(customerId, this.activeFilter).subscribe({
       next: (res) => {
         this.orders = res;

@@ -61,11 +61,11 @@ public class ShipperRepository : IShipperRepository
         try
         {
             int storeAddressId = await GetAddressIdOfStore(storeId);
-            var shipperaddressIdString = await GetAddressIdOfShippers();
-            var body = new { addressId = storeAddressId, addressIdString = shipperaddressIdString };
+            var shipperaddressIds = await GetAddressIdOfShippers();
+            var body = new { addressId = storeAddressId, addressIds = shipperaddressIds };
             string jsonBody = JsonSerializer.Serialize(body);
             var requestContent = new StringContent(jsonBody, Encoding.UTF8, "application/json");
-            string requestUrl = "http://localhost:5102/api/addresses/nearest";
+            string requestUrl = "http://localhost:5142/api/addresses/nearest";
 
             HttpClient httpClient = _httpClientFactory.CreateClient();
             var response = await httpClient.PostAsync(requestUrl, requestContent);
@@ -192,7 +192,6 @@ public class ShipperRepository : IShipperRepository
                 "GetShipperOrderCountByStatus",
                 new { shipper_id = shipperId },
                 commandType: CommandType.StoredProcedure
-
             );
         }
         catch (Exception)

@@ -31,7 +31,7 @@ export class QuestionsComponent implements OnInit {
             );
 
             if (matchingName != undefined) {
-              question.customerName = matchingName.name;
+              question.customerName = matchingName.fullName;
             }
           });
         });

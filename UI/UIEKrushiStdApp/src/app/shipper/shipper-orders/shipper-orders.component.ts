@@ -65,12 +65,10 @@ export class ShipperOrdersComponent {
           acc.push(o.fromAddressId, o.toAddressId);
           return acc;
         }, []);
-        let uniqueaddressIdsString = [...new Set(addressIds)].join(',');
-
-       
+        let uniqueaddressIds = [...new Set(addressIds)].join(',');
 
         this.usersvc
-          .getaddressInfoByIdString(uniqueaddressIdsString)
+          .getaddressInfoByIds(uniqueaddressIds)
           .subscribe((res) => {
             let addresses = res;
             this.orders.forEach((order) => {

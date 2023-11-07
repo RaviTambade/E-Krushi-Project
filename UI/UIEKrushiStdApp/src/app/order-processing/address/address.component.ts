@@ -1,7 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { LocalStorageKeys } from '@enums/local-storage-keys';
 import { SessionStorageKeys } from '@enums/session-storage-keys';
+import { TokenClaims } from '@enums/tokenclaims';
 import { AddressInfo } from '@models/addressinfo';
+import { AuthenticationService } from '@services/authentication.service';
 import { UserService } from '@services/user.service';
 
 
@@ -16,6 +18,8 @@ export class AddressComponent implements OnInit {
   selectedAddressId: number | null = null;
   constructor(
     private usersvc: UserService,
+    private authsvc:AuthenticationService,
+
   ) {}
   ngOnInit(): void {
     this.usersvc.newaddressSubject.subscribe(() => {
@@ -26,7 +30,7 @@ export class AddressComponent implements OnInit {
   }
 
   fetchData() {
-    let userId: number = Number(localStorage.getItem(LocalStorageKeys.userId));
+    const userId = Number(this.authsvc.getClaimFromToken(TokenClaims.userId)); 
     this.usersvc.getAddress(userId).subscribe((res) => {
       this.addresses = res;
       this.selectedAddressId = Number(

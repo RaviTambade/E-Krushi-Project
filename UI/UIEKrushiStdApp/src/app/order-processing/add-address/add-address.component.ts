@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TokenClaims } from '@enums/tokenclaims';
 import { Address } from '@models/address';
 import { NameId } from '@models/nameId';
 import { AuthenticationService } from '@services/authentication.service';
@@ -15,7 +16,7 @@ export class AddAddressComponent implements OnInit {
   @Output() hideComponent = new EventEmitter();
   user: NameId = {
     id: 0,
-    name: '',
+    fullName: ''
   };
   contactNumber: string | null = null;
 
@@ -42,7 +43,7 @@ export class AddAddressComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.contactNumber = this.authsvc.getContactNumberFromToken();
+    this.contactNumber =  this.authsvc.getClaimFromToken(TokenClaims.contactNumber);
     if (this.contactNumber === null) {
       return;
     }

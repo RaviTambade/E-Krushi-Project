@@ -1,14 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../Services/user.service';
-import { AuthenticationService } from '../Services/authentication.service';
-import { LocalStorageKeys } from '../Models/Enums/local-storage-keys';
-import { Role } from '../Models/Enums/role';
 import { Subscription, switchMap } from 'rxjs';
-import { StoreService } from '../Services/store.service';
-import { SupplierService } from '../Services/supplier.service';
-import { CorporateService } from '../Services/corporate.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { Role } from '@enums/role';
+import { AuthenticationService } from '@services/authentication.service';
+import { CorporateService } from '@services/corporate.service';
+import { StoreService } from '@services/store.service';
+import { SupplierService } from '@services/supplier.service';
+import { UserService } from '@services/user.service';
+import { TokenClaims } from '@enums/tokenclaims';
 
 @Component({
   selector: 'app-nav-menu',
@@ -32,11 +33,10 @@ export class NavMenuComponent implements OnInit, OnDestroy {
     private suppliersvc: SupplierService,
     private authsvc: AuthenticationService,
     private corporatesvc: CorporateService,
-    private jwthelper:JwtHelperService
+    private jwthelper: JwtHelperService
   ) {}
 
   ngOnInit(): void {
-
     this.fetchNameAndRoles();
 
     this.reloadNavSubscription = this.usersvc.reloadnavbar.subscribe(() => {
@@ -63,24 +63,21 @@ export class NavMenuComponent implements OnInit, OnDestroy {
 
   isLoggedIn(): boolean {
     let jwt = localStorage.getItem(LocalStorageKeys.jwt);
-    return !this.jwthelper.isTokenExpired(jwt)
+    return !this.jwthelper.isTokenExpired(jwt);
   }
 
   fetchNameAndRoles() {
-    const roles = localStorage.getItem(LocalStorageKeys.roles);
-    if (roles != null) {
-      this.roles = JSON.parse(roles);
-    }
+    this.roles = this.authsvc.getRolesFromToken();
     this.fetchStoreName();
     this.fetchCorporateName();
 
-    let contactNumber = this.authsvc.getContactNumberFromToken();
-    if (contactNumber != null) {
+    let contactNumber = this.authsvc.getClaimFromToken(
+      TokenClaims.contactNumber
+    );
+    if (contactNumber)
       this.usersvc.getUserByContact(contactNumber).subscribe((response) => {
-       
-        this.name = response.name;
+        this.name = response.fullName;
       });
-    }
   }
 
   fetchStoreName() {
@@ -100,18 +97,22 @@ export class NavMenuComponent implements OnInit, OnDestroy {
     if (Number.isNaN(supplierId) || supplierId == 0) {
       return;
     }
-    this.suppliersvc.getCorporateIdOfSupplier(supplierId).pipe(
-      switchMap(corporateId => this.corporatesvc.getCorporateName(corporateId))
-    ).subscribe(res => {
-      this.corporateName = res[0].name;
-    }); 
-    
+    this.suppliersvc
+      .getCorporateIdOfSupplier(supplierId)
+      .pipe(
+        switchMap((corporateId) =>
+          this.corporatesvc.getCorporateName(corporateId)
+        )
+      )
+      .subscribe((res) => {
+        this.corporateName = res[0].name;
+      });
   }
 
   onLogOut() {
     this.storeName = '';
     this.corporateName = '';
-    this.roles=[]
+    this.roles = [];
     localStorage.clear();
     this.router.navigate(['login']);
   }

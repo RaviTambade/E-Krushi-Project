@@ -1,9 +1,12 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { UUID } from 'angular2-uuid';
-import { HttpClient, HttpEventType } from '@angular/common/http';
-import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { HttpEventType } from '@angular/common/http';
 import { User } from '@models/user';
 import { UserService } from '@services/user.service';
+import { AuthenticationService } from '@services/authentication.service';
+import { TokenClaims } from '@enums/tokenclaims';
+import { environment } from '@environments/environment';
+import { FileIOService } from '@services/file-io.service';
 
 @Component({
   selector: 'app-userprofile',
@@ -14,7 +17,7 @@ export class UserprofileComponent {
   user: User;
   message: string | undefined;
   progress: number = 0;
-  url: string = 'http://localhost:5102/';
+  imageServerUrl: string = environment.imageServerUrl;
   selectedFile: File | undefined;
   selectedImageUrl: string | undefined;
   editingImage: boolean = false;
@@ -27,7 +30,8 @@ export class UserprofileComponent {
   @ViewChild('fileInput') fileInput!: ElementRef<HTMLInputElement>;
   constructor(
     private usersvc: UserService,
-    private http: HttpClient
+    private filesvc: FileIOService,
+    private authsvc: AuthenticationService
   ) {
     this.user = {
       id: 0,
@@ -43,18 +47,14 @@ export class UserprofileComponent {
   }
 
   ngOnInit(): void {
-    const userId = Number(localStorage.getItem(LocalStorageKeys.userId)); // this.authsvc.getUserIdFromToken();
-    if (Number.isNaN(userId) || userId == 0) {
-      return;
-    }
+    const userId = Number(this.authsvc.getClaimFromToken(TokenClaims.userId));
     this.getUser(userId);
   }
 
   getUser(userId: number) {
     this.usersvc.getUser(userId).subscribe((response) => {
       this.user = response;
-      this.imageurl = this.url + this.user.imageUrl;
-     
+      this.imageurl = this.imageServerUrl + this.user.imageUrl;
     });
   }
 
@@ -78,32 +78,23 @@ export class UserprofileComponent {
         this.user.imageUrl =
           UUID.UUID() + '.' + this.selectedFile.name.split('.').pop();
       }
+
       formData.append('file', this.selectedFile, this.user.imageUrl);
-      this.http
-        .post(
-          'http://localhost:5102/api/users/fileupload/' + this.user.imageUrl,
-          formData,
-          {
-            reportProgress: true,
-            observe: 'events',
+      
+      this.filesvc.uploadFile(this.user.imageUrl, formData).subscribe({
+        next: (event) => {
+          if (event.type === HttpEventType.UploadProgress && event.total) {
+            this.progress = Math.round((100 * event.loaded) / event.total);
           }
-        )
-        .subscribe({
-          next: (event) => {
-            if (event.type === HttpEventType.UploadProgress && event.total) {
-              this.progress = Math.round((100 * event.loaded) / event.total);
-            }
-            if (event.type === HttpEventType.Response) {
-              this.message = 'Upload success.';
-              this.imageurl = this.selectedImageUrl;
-              this.usersvc
-                .updateUser(this.user.id, this.user)
-                .subscribe((response) => {
-                 
-                });
-            }
-          },
-        });
+          if (event.type === HttpEventType.Response) {
+            this.message = 'Upload success.';
+            this.imageurl = this.selectedImageUrl;
+            this.usersvc
+              .updateUser(this.user.id, this.user)
+              .subscribe((response) => {});
+          }
+        },
+      });
 
       this.selectedFile = undefined;
       this.editingImage = false;
@@ -116,8 +107,7 @@ export class UserprofileComponent {
 
   onClickUpdateProfile() {
     this.updateProfileStatus = true;
-    this.updatePasswordStatus = false
-
+    this.updatePasswordStatus = false;
   }
 
   closeEditUserComponent(event: any) {
@@ -130,10 +120,9 @@ export class UserprofileComponent {
   onClickUpdatePassword() {
     this.updatePasswordStatus = true;
     this.updateProfileStatus = false;
-
   }
 
-  closePasswordChangeComponent(){
-    this.updatePasswordStatus = false
+  closePasswordChangeComponent() {
+    this.updatePasswordStatus = false;
   }
 }

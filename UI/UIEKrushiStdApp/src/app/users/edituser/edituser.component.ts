@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { LocalStorageKeys } from '@enums/local-storage-keys';
+import { TokenClaims } from '@enums/tokenclaims';
 import { User } from '@models/user';
 import { AuthenticationService } from '@services/authentication.service';
 import { UserService } from '@services/user.service';
@@ -23,13 +23,9 @@ export class EdituserComponent {
     contactNumber: '',
   };
   userId: number | null = null;
-  url: any = 'http://localhost:5102/' + this.user.imageUrl;
   @Output() onUdateFinished = new EventEmitter();
 
   userForm: FormGroup;
-
- 
-
 
   constructor(
     private svc: UserService,
@@ -37,20 +33,18 @@ export class EdituserComponent {
     private fb: FormBuilder
   ) {
     this.userForm = this.fb.group({
-      firstName: ['', [Validators.required,Validators.minLength(1)]],
-      lastName: ['',[ Validators.required,Validators.minLength(1)]],
+      firstName: ['', [Validators.required, Validators.minLength(1)]],
+      lastName: ['', [Validators.required, Validators.minLength(1)]],
       aadharId: ['', Validators.required],
       birthDate: ['', Validators.required],
       gender: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]],
     });
   }
   ngOnInit(): void {
-    const userId = Number(localStorage.getItem(LocalStorageKeys.userId));   // this.authsvc.getUserIdFromToken();
-    if (Number.isNaN(userId) || userId == 0) {
-      return;
-    }
-    this.userId=userId;
+    const userId = Number(this.authsvc.getClaimFromToken(TokenClaims.userId));
+
+    this.userId = userId;
     this.svc.getUser(this.userId).subscribe((response) => {
       this.user = response;
 
@@ -60,38 +54,33 @@ export class EdituserComponent {
         aadharId: this.user.aadharId,
         birthDate: this.user.birthDate,
         gender: this.user.gender,
-        email: this.user.email
+        email: this.user.email,
       });
-     
     });
   }
 
-  ngAfterViewInit(): void{
-    window.scrollTo(0,document.body.scrollHeight);
+  ngAfterViewInit(): void {
+    window.scrollTo(0, document.body.scrollHeight);
   }
-
-  
 
   updateUser() {
     if (!this.userId) {
       return;
     }
     if (this.userForm.valid) {
-      this.user.firstName=this.userForm.get('firstName')?.value;
-      this.user.lastName=this.userForm.get('lastName')?.value;
-      this.user.aadharId=this.userForm.get('aadharId')?.value;
-      this.user.birthDate=this.userForm.get('birthDate')?.value;
-      this.user.gender=this.userForm.get('gender')?.value;
-      this.user.email=this.userForm.get('email')?.value;
-    this.svc.updateUser(this.userId, this.user).subscribe((response) => {
-     
-    this.onUdateFinished.emit({isUpdated:true});
-  });
-  }
-  }
-
-  cancelupdateUser(){
-    this.onUdateFinished.emit({isUpdated:false});
+      this.user.firstName = this.userForm.get('firstName')?.value;
+      this.user.lastName = this.userForm.get('lastName')?.value;
+      this.user.aadharId = this.userForm.get('aadharId')?.value;
+      this.user.birthDate = this.userForm.get('birthDate')?.value;
+      this.user.gender = this.userForm.get('gender')?.value;
+      this.user.email = this.userForm.get('email')?.value;
+      this.svc.updateUser(this.userId, this.user).subscribe((response) => {
+        this.onUdateFinished.emit({ isUpdated: true });
+      });
+    }
   }
 
+  cancelupdateUser() {
+    this.onUdateFinished.emit({ isUpdated: false });
+  }
 }

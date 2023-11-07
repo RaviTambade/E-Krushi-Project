@@ -10,8 +10,8 @@ import { Observable } from 'rxjs';
 export class CorporateService {
   constructor(private httpClient: HttpClient) {}
 
-  getCorporateName(id: number): Observable<NameId[]> {
+  getCorporateName(id: number): Observable<any[]> {
     let url = 'http://localhost:5041/api/corporates/names/' +id;
-    return this.httpClient.get<NameId[]>(url);
+    return this.httpClient.get<any>(url);
   }
 }

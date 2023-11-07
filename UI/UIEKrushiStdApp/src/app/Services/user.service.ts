@@ -58,8 +58,8 @@ export class UserService {
     return this.httpClient.get<AddressInfo>(url);
   }
 
-  getaddressInfoByIdString(addressIdString: string): Observable<AddressInfo[]> {
-    let url = `${this.addressApiurl}/info/${addressIdString}`;
+  getaddressInfoByIds(addressIds: string): Observable<AddressInfo[]> {
+    let url = `${this.addressApiurl}/info/${addressIds}`;
     return this.httpClient.get<AddressInfo[]>(url);
   }
 }

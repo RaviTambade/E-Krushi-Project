@@ -2,6 +2,7 @@ import { Component, Input, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { LocalStorageKeys } from '@enums/local-storage-keys';
 import { SessionStorageKeys } from '@enums/session-storage-keys';
+import { TokenClaims } from '@enums/tokenclaims';
 import { PaymentAddModel } from '@models/PaymentAddModel';
 import { PaymentTransferDetails } from '@models/PaymentTransferDetails';
 import { BankAccount } from '@models/bankAccount';
@@ -9,6 +10,7 @@ import { CartItem } from '@models/cart-item';
 import { OrderAddModel } from '@models/order-add-model';
 import { OrderAmount } from '@models/order-amount';
 import { OrderDetailsAddModel } from '@models/order-details-add-model';
+import { AuthenticationService } from '@services/authentication.service';
 import { BankingService } from '@services/banking.service';
 import { CartService } from '@services/cart.service';
 import { OrderService } from '@services/order-service.service';
@@ -34,6 +36,7 @@ export class PaymentComponent {
     private banksvc: BankingService,
     private paymentsvc: PaymentService,
     private ordersvc: OrderService,
+    private authsvc:AuthenticationService,
     private paymentgatewaysvc: PaymentGatewayService,
     private cartsvc: CartService,
     private storesvc: StoreService,
@@ -52,10 +55,8 @@ export class PaymentComponent {
   }
 
   onClickCheckAccount() {
-    let customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
-    if (Number.isNaN(customerId) || customerId == 0) {
-      return;
-    }
+    const customerId = Number(this.authsvc.getClaimFromToken(TokenClaims.userId)); 
+
 
     this.banksvc.checkAccount(customerId).subscribe((res) => {
       let bankAccount = res;
@@ -71,7 +72,8 @@ export class PaymentComponent {
 
   onMakePayment() {
     this.isPaymentButtonDisabled = true;
-    const customerId = Number(localStorage.getItem(LocalStorageKeys.userId));
+
+    const customerId = Number(this.authsvc.getClaimFromToken(TokenClaims.userId)); 
     const addressId = Number(
       sessionStorage.getItem(SessionStorageKeys.addressId)
     );

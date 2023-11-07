@@ -9,6 +9,7 @@ import { SupplierService } from '@services/supplier.service';
 import { UserService } from '@services/user.service';
 import { Credential } from '@models/credential';
 import { UserRoleService } from '@services/userrole.service';
+import { TokenClaims } from '@enums/tokenclaims';
 
 @Component({
   selector: 'app-login-component',
@@ -21,60 +22,39 @@ export class LoginComponent {
   };
   isLoginButtonDisabled: boolean = false;
   isCredentialInvalid: boolean = false;
-  userId: number | undefined;
+  userId!: number;
   roles: string[] = [];
 
   constructor(
     private router: Router,
     private authService: AuthenticationService,
     private userService: UserService,
-    private userRoleService: UserRoleService,
     private storesvc: StoreService,
     private suppliersvc: SupplierService,
     private shippersvc: ShipperService
-  ) { }
+  ) {}
 
   onSignIn() {
     this.isLoginButtonDisabled = true;
-
-    this.authService.validate(this.credential).subscribe({
+    this.authService.signIn(this.credential).subscribe({
       next: (response) => {
-        if (response == null || !response) {
+        if (response.token == "" || !response) {
           this.isCredentialInvalid = true;
           setTimeout(() => {
             this.isCredentialInvalid = false;
           }, 3000);
         }
 
-        if (response != null) {
+        if (response.token != "") {
           localStorage.setItem(LocalStorageKeys.jwt, response.token);
-          this.userService
-            .getUserByContact(this.credential.contactNumber)
-            .subscribe((response) => {
-              this.userId = response.id;
-
-              localStorage.setItem(
-                LocalStorageKeys.userId,
-                this.userId.toString()
-              );
-              this.userRoleService
-                .getUserRole(this.userId)
-                .subscribe((response) => {
-                  this.roles = response;
-
-                  localStorage.setItem(
-                    LocalStorageKeys.roles,
-                    JSON.stringify(this.roles)
-                  );
-
-                  if (this.roles?.length == 1) {
-                    const role = this.roles[0];
-                    this.navigateByRole(role);
-                  }
-                });
-            });
+          this.roles = this.authService.getRolesFromToken();
+          if (this.roles?.length == 1) {
+            const role = this.roles[0];
+            this.navigateByRole(role);
+          }
         }
       },
+
       error: (error) => {
         console.error(error);
       },
@@ -85,32 +65,32 @@ export class LoginComponent {
   }
 
   navigateByRole(role: string) {
+    this.userId = Number(
+      this.authService.getClaimFromToken(TokenClaims.userId)
+    );
     switch (role) {
-      case Role.Customer:
+      case Role.customer:
         this.router.navigate(['/home']);
         break;
-      case Role.ShopOwner:
-        if (this.userId != undefined)
-          this.storesvc.getStoreId(this.userId).subscribe((res) => {
-            localStorage.setItem(LocalStorageKeys.storeId, res.toString());
-            this.router.navigate(['shop/dashboard']);
-          });
+      case Role.storeOwner:
+        this.storesvc.getStoreId(this.userId).subscribe((res) => {
+          localStorage.setItem(LocalStorageKeys.storeId, res.toString());
+          this.router.navigate(['shop/dashboard']);
+        });
         break;
-      case Role.Supplier:
-        if (this.userId != undefined)
-          this.suppliersvc.getSupplierId(this.userId).subscribe((res) => {
-            localStorage.setItem(LocalStorageKeys.supplierId, res.toString());
-            this.router.navigate(['supplier/dashboard']);
-          });
+      case Role.supplier:
+        this.suppliersvc.getSupplierId(this.userId).subscribe((res) => {
+          localStorage.setItem(LocalStorageKeys.supplierId, res.toString());
+          this.router.navigate(['supplier/dashboard']);
+        });
         break;
-      case Role.Shipper:
-        if (this.userId != undefined)
-          this.shippersvc.getShipperId(this.userId).subscribe((res) => {
-            localStorage.setItem(LocalStorageKeys.shipperId, res.toString());
-            this.router.navigate(['shipper/dashboard']);
-          });
+      case Role.shipper:
+        this.shippersvc.getShipperId(this.userId).subscribe((res) => {
+          localStorage.setItem(LocalStorageKeys.shipperId, res.toString());
+          this.router.navigate(['shipper/dashboard']);
+        });
         break;
-      case Role.SubjectMatterExpert:
+      case Role.subjectMatterExpert:
         this.router.navigate(['sme/dashboard']);
         break;
     }

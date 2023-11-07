@@ -128,11 +128,11 @@ public class StoreRepository : IStoreRepository
     {
         try
         {
-            string addressIdsAsString = await GetAddressIdOfStores();
-            var body = new { addressId = customerAddressId, addressIdString = addressIdsAsString };
+            string storeAddressIds = await GetAddressIdOfStores();
+            var body = new { addressId = customerAddressId, addressIds = storeAddressIds };
             string jsonBody = JsonSerializer.Serialize(body);
             var requestContent = new StringContent(jsonBody, Encoding.UTF8, "application/json");
-            string requestUrl = "http://localhost:5102/api/addresses/nearest";
+            string requestUrl = "http://localhost:5142/api/addresses/nearest";
 
             HttpClient httpClient = _httpClientFactory.CreateClient();
             var response = await httpClient.PostAsync(requestUrl, requestContent);

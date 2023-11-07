@@ -14,8 +14,11 @@ export const environment = {
   shippersServiceUrl:'http://localhost:5298/api/shippers',
   storesServiceUrl:'http://localhost:5226/api/stores',
   suppliersServiceUrl:'http://localhost:5072/api/suppliers',
-  usersServiceUrl:'http://localhost:5102/api/users',
-  userAddressServiceUrl:'http://localhost:5102/api/addresses',
+  authServiceUrl:'http://localhost:5142/api/auth',
+  usersServiceUrl:'http://localhost:5142/api/users',
+  userAddressServiceUrl:'http://localhost:5142/api/addresses',
+  fileIOServiceUrl:'http://localhost:5142/api/files',
+  imageServerUrl:'http://localhost:5142/',
 };
 
 /*

@@ -1,6 +1,6 @@
 <h1>Login</h1>
 <div class="col-sm-3">
-  <div class="col">
+  <div class="col" *ngIf="roles.length<=0">
     <form (ngSubmit)="onSignIn()">
       <div class="mb-3 mt-3">
         <label for="contactNumber" class="form-label">ContactNumber:</label>
@@ -12,10 +12,19 @@
         <input type="password" class="form-control" id="pwd" [(ngModel)]="credential.password"
           placeholder="Enter password" name="pswd">
       </div>
-      <div>
-        <span *ngIf="isCredentialInvalid" class="text-danger"> Invalid credentials please check again</span>
+      <div *ngIf="isCredentialInvalid">
+        <h6 class="text-danger"> Invalid credentials please check again</h6>
       </div>
       <button type="submit" class="btn btn-primary" [disabled]="isLoginButtonDisabled">Login</button>
     </form>
+  </div>
+  <div *ngIf="roles.length>0">
+    <div class="d-grid" *ngFor="let role of roles">
+      <button class="btn btn-success fw-bold">
+        <a style="color: inherit; text-decoration:none;display: block;" (click)="navigateByRole(role)"> Login As
+          {{role}} </a>
+      </button>
+      <br>
+    </div>
   </div>
 </div>

@@ -1,8 +1,8 @@
 export enum LocalStorageKeys {
   jwt = 'jwt',
-  userId = 'userId',
+  // userId = 'userId',
   storeId = 'storeId',
   shipperId='shipperId',
   supplierId='supplierId',
-  roles='roles'
+  // roles='roles'
 }
