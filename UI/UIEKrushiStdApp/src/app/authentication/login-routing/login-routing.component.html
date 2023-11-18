@@ -1,0 +1,12 @@
+<div *ngIf="roles.length ==0">
+    <app-login-component (validSignIn)="onReceiveToken($event)"></app-login-component>
+</div>
+<div *ngIf="roles.length>1">
+    <div class="d-grid" *ngFor="let role of roles">
+        <button class="btn btn-success fw-bold">
+            <a style="color: inherit; text-decoration:none;display: block;" (click)="navigateByRole(role)"> Login As
+                {{role}} </a>
+        </button>
+        <br>
+    </div>
+</div>

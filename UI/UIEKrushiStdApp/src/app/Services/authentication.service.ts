@@ -18,6 +18,7 @@ export class AuthenticationService {
   ) {}
 
   private authServiceurl: string = environment.authServiceUrl;
+  
   signIn(credential: Credential): Observable<any> {
     let url =`${this.authServiceurl}/signin`;
     return this.httpClient.post<any>(url, credential);
@@ -38,7 +39,6 @@ export class AuthenticationService {
     let token = localStorage.getItem(LocalStorageKeys.jwt);
     if (token) {
       const decodedToken = this.jwtHelper.decodeToken(token);
-      console.log(decodedToken[claim]);
       return decodedToken[claim];
     }
     return null;
@@ -48,7 +48,7 @@ export class AuthenticationService {
     const token = localStorage.getItem(LocalStorageKeys.jwt);
     if (token) {
       const decodedToken = this.jwtHelper.decodeToken(token);
-      const roles = decodedToken.roles;
+      const roles = decodedToken.role;
 
       if (Array.isArray(roles)) {
         return roles;

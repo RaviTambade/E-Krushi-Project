@@ -27,6 +27,7 @@ import { OrderService } from '@services/order-service.service';
 import { storeRoutes } from '@ekrushi-storeowner/store-owner.module';
 import { orderProcessingRoutes } from '@ekrushi-orderprocessing/order-processing.module';
 import { RegisterComponent } from '@ekrushi-authentication/register/register.component';
+import { LoginRoutingComponent } from '@ekrushi-authentication/login-routing/login-routing.component';
 
 
 @NgModule({
@@ -52,7 +53,7 @@ import { RegisterComponent } from '@ekrushi-authentication/register/register.com
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'aboutus', component: AboutUsComponent },
       { path: 'home', component: HomeComponent },
-      { path: 'login', component: LoginComponent },
+      { path: 'login', component: LoginRoutingComponent },
       { path: 'register', component: RegisterComponent },
       { path: 'user', children: userRoutes },
       { path: 'customer', children: customerRoutes },

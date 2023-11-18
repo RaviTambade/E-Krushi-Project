@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { IUser } from '@ekrushi-authentication/iuser';
 import { User } from '@models/user';
+import { UserService } from '@services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,7 @@ export class RegisterComponent {
 
   showPassword: boolean = false;
   user: IUser;
-  constructor() {
+  constructor( private usersvc:UserService) {
     this.user = {} as IUser;
   }
 
@@ -107,6 +108,8 @@ export class RegisterComponent {
     const aadharNumber = this.reactiveForm
       .get('aadharId')
       ?.value.replace(/\s/g, '');
+
+      // this.usersvc.addUser()
     console.info('aadhar', aadharNumber);
     console.info('Name:', user.firstName);
     console.info('Lastname:', user.lastName);
