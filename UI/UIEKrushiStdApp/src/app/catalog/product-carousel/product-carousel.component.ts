@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-product-carousel',
@@ -6,17 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-carousel.component.css'],
 })
 export class ProductCarouselComponent implements OnInit {
-  cards = [
-    {
-      imageUrl: '/assets/Pesticides.png',
-    },
-    {
-      imageUrl: '/assets/antracolmain1.jpg',
-    },
-    {
-      imageUrl: '/assets/tools.png',
-    },
-  ];
+  @Input() cards :any;
+
+ 
 
   currentIndex = 0;
 

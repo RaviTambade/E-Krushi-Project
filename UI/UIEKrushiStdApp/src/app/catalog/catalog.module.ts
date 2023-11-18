@@ -12,6 +12,7 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
 import { FormsModule } from '@angular/forms';
 import { ProductCategoriesDetailsComponent } from './product-categories-details/product-categories-details.component';
 import { SearchProductResultComponent } from './search-product-result/search-product-result.component';
+import { AlertComponent } from './alert/alert.component';
 
 export const catlogRoutes: Routes = [
   {
@@ -39,6 +40,7 @@ export const catlogRoutes: Routes = [
     SearchbarComponent,
     ProductCategoriesDetailsComponent,
     SearchProductResultComponent,
+    AlertComponent,
   ],
 
   imports: [CommonModule, RouterModule, FormsModule],
