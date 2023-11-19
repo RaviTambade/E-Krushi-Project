@@ -16,6 +16,7 @@ import { UserService } from '@services/user.service';
 })
 export class LoginRoutingComponent {
   roles: string[] = [];
+  istokenReceived: boolean = false;
 
   constructor(
     private router: Router,
@@ -27,12 +28,15 @@ export class LoginRoutingComponent {
   ) {}
 
   onReceiveToken(event: any) {
-    
-    localStorage.setItem(LocalStorageKeys.jwt, event.token);
-    this.roles = this.authService.getRolesFromToken();
-    if (this.roles?.length == 1) {
-      const role = this.roles[0];
-      this.navigateByRole(role);
+    if (event.token) {
+      localStorage.setItem(LocalStorageKeys.jwt, event.token);
+      this.roles = this.authService.getRolesFromToken();
+      if (this.roles?.length == 1) {
+        const role = this.roles[0];
+        this.navigateByRole(role);
+      } else if (this.roles?.length > 1) {
+        this.istokenReceived = true;
+      }
     }
   }
 
@@ -64,6 +68,7 @@ export class LoginRoutingComponent {
         this.router.navigate(['sme/dashboard']);
         break;
     }
+    this.istokenReceived=false;
     this.userService.reloadnavbar.next();
   }
 }

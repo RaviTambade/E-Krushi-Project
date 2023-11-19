@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { LocalStorageKeys } from '@enums/local-storage-keys';
 import { UpdatePassword } from '@models/update-password';
-import { Credential } from '@models/credential';
 import { Observable } from 'rxjs';
 import { TokenClaims } from '@enums/tokenclaims';
 import { environment } from '@environments/environment';
+import { ICredential } from '@ekrushi-authentication/icredential';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +19,7 @@ export class AuthenticationService {
 
   private authServiceurl: string = environment.authServiceUrl;
   
-  signIn(credential: Credential): Observable<any> {
+  signIn(credential: ICredential): Observable<any> {
     let url =`${this.authServiceurl}/signin`;
     return this.httpClient.post<any>(url, credential);
   }

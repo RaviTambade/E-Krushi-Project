@@ -1,56 +1,78 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { Route, Router } from '@angular/router';
-import { LocalStorageKeys } from '@enums/local-storage-keys';
-import { Role } from '@enums/role';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { AuthenticationService } from '@services/authentication.service';
-import { ShipperService } from '@services/shipper.service';
-import { StoreService } from '@services/store.service';
-import { SupplierService } from '@services/supplier.service';
-import { UserService } from '@services/user.service';
-import { Credential } from '@models/credential';
-import { UserRoleService } from '@services/userrole.service';
-import { TokenClaims } from '@enums/tokenclaims';
+import { ICredential } from '@ekrushi-authentication/icredential';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login-component',
   templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css'],
 })
-export class LoginComponent {
-  credential: Credential = {
-    contactNumber: '',
-    password: '',
-  };
-  isLoginButtonDisabled: boolean = false;
-  isCredentialInvalid: boolean = false;
- 
-  @Output() validSignIn =new EventEmitter<any>();
+export class LoginComponent implements OnInit {
+  credential: ICredential;
+  loginForm!: FormGroup;
+  showPassword: boolean = false;
 
-  constructor(
-    private authService: AuthenticationService,
-  ) {}
+  @Output() validSignIn = new EventEmitter<any>();
+  isCredentialInvalid: boolean = false;
+
+  constructor(private authService: AuthenticationService) {
+    this.credential = {} as ICredential;
+  }
+
+  ngOnInit(): void {
+    this.loginForm = new FormGroup({
+      contactNumber: new FormControl(this.credential.contactNumber, [
+        Validators.required,
+        Validators.pattern(/^\d{10}$/),
+        Validators.minLength(10),
+        Validators.maxLength(10),
+      ]),
+      password: new FormControl(this.credential.password, [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
+    });
+  }
+
+  get contactnumber() {
+    return this.loginForm.get('contactNumber')!;
+  }
+
+  get password() {
+    return this.loginForm.get('password')!;
+  }
 
   onSignIn() {
-    this.isLoginButtonDisabled = true; 
-    this.authService.signIn(this.credential).subscribe({
+    if (this.loginForm.invalid) {
+      for (const control of Object.keys(this.loginForm.controls)) {
+        this.loginForm.controls[control].markAsTouched();
+      }
+      return;
+    }
+
+    let credential: ICredential = {
+      contactNumber: this.contactnumber.value,
+      password: this.password.value,
+    };
+    console.log('🚀 ~ onSignIn ~ credential:', credential);
+
+    this.authService.signIn(credential).subscribe({
       next: (response) => {
-        if (response.token == "" || !response) {
+        if (response.token == '' || !response) {
           this.isCredentialInvalid = true;
           setTimeout(() => {
             this.isCredentialInvalid = false;
           }, 3000);
         }
-        if (response.token != "") {
-          this.validSignIn.emit({token:response.token});
+        if (response.token != '') {
+          this.validSignIn.emit({ token: response.token });
         }
       },
       error: (error) => {
         console.error(error);
       },
-      complete: () => {
-        this.isLoginButtonDisabled = false;
-      },
+      complete: () => {},
     });
   }
-
-
 }
