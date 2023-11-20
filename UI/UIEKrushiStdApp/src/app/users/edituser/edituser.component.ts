@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { TokenClaims } from '@enums/tokenclaims';
 import { User } from '@models/user';
 import { AuthenticationService } from '@services/authentication.service';
@@ -29,16 +29,28 @@ export class EdituserComponent {
 
   constructor(
     private svc: UserService,
-    private authsvc: AuthenticationService,
-    private fb: FormBuilder
+    private authsvc: AuthenticationService
   ) {
-    this.userForm = this.fb.group({
-      firstName: ['', [Validators.required, Validators.minLength(1)]],
-      lastName: ['', [Validators.required, Validators.minLength(1)]],
-      aadharId: ['', Validators.required],
-      birthDate: ['', Validators.required],
-      gender: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+    this.userForm = new FormGroup({
+      firstName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(250),
+      ]),
+      lastName: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(250),
+      ]),
+      aadharId: new FormControl('', [
+        Validators.required,
+        Validators.minLength(14),
+        Validators.maxLength(14),
+        Validators.pattern(/^\d{4}\s?\d{4}\s?\d{4}$/),
+      ]),
+      birthDate: new FormControl('', [Validators.required]),
+      gender: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
     });
   }
   ngOnInit(): void {
@@ -47,6 +59,7 @@ export class EdituserComponent {
     this.userId = userId;
     this.svc.getUser(this.userId).subscribe((response) => {
       this.user = response;
+      console.log('🚀 ~ this.svc.getUser ~ response:', response);
 
       this.userForm.setValue({
         firstName: this.user.firstName,
@@ -57,6 +70,34 @@ export class EdituserComponent {
         email: this.user.email,
       });
     });
+
+    this.aadharId.valueChanges.subscribe((value) => {
+      const formattedValue = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+      this.aadharId.setValue(formattedValue, { emitEvent: false });
+    });
+  }
+
+  get firstname() {
+    return this.userForm.get('firstName')!;
+  }
+
+  get lastname() {
+    return this.userForm.get('lastName')!;
+  }
+
+  get email() {
+    return this.userForm.get('email')!;
+  }
+
+  get aadharId() {
+    return this.userForm.get('aadharId')!;
+  }
+
+  get dob() {
+    return this.userForm.get('birthDate')!;
+  }
+  get gender() {
+    return this.userForm.get('gender')!;
   }
 
   ngAfterViewInit(): void {
@@ -67,13 +108,18 @@ export class EdituserComponent {
     if (!this.userId) {
       return;
     }
+    const aadharNumber = this.userForm
+      .get('aadharId')
+      ?.value.replace(/\s/g, '');
+      
     if (this.userForm.valid) {
-      this.user.firstName = this.userForm.get('firstName')?.value;
-      this.user.lastName = this.userForm.get('lastName')?.value;
-      this.user.aadharId = this.userForm.get('aadharId')?.value;
-      this.user.birthDate = this.userForm.get('birthDate')?.value;
-      this.user.gender = this.userForm.get('gender')?.value;
-      this.user.email = this.userForm.get('email')?.value;
+      this.user.firstName = this.firstname.value;
+      this.user.lastName = this.lastname.value;
+      this.user.aadharId = aadharNumber;
+      this.user.birthDate = this.dob.value;
+      this.user.gender = this.gender.value;
+      this.user.email = this.email.value;
+
       this.svc.updateUser(this.userId, this.user).subscribe((response) => {
         this.onUdateFinished.emit({ isUpdated: true });
       });

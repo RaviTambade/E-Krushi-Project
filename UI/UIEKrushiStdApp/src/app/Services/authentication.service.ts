@@ -25,7 +25,7 @@ export class AuthenticationService {
   }
 
   updatePassword(credential: UpdatePassword): Observable<boolean> {
-    let url =`${this.authServiceurl}/update/password`;
+    let url =`${this.authServiceurl}/updatepassword`;
     const jwt = localStorage.getItem("jwt");
     return this.httpClient.put<any>(url, credential,{ headers: { authorization: `Bearer ${jwt}`  } });
   }

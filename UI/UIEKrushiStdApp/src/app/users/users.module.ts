@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdduserComponent } from './adduser/adduser.component';
 import { EdituserComponent } from './edituser/edituser.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserprofileComponent } from './userprofile/userprofile.component';
@@ -16,7 +15,6 @@ export const userRoutes:Routes=[
 ]
 @NgModule({
   declarations: [
-    AdduserComponent,
     EdituserComponent,
     UserprofileComponent,
     UpdatePasswordComponent
@@ -29,7 +27,6 @@ export const userRoutes:Routes=[
     ReactiveFormsModule
   ],
   exports:[
-    AdduserComponent,
     EdituserComponent,
     UserprofileComponent,
   ]

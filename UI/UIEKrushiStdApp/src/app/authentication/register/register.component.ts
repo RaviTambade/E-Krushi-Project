@@ -92,7 +92,7 @@ export class RegisterComponent {
     return this.reactiveForm.get('birthDate')!;
   }
 
-  public validate(): void {
+  public register(): void {
     if (this.reactiveForm.invalid) {
       for (const control of Object.keys(this.reactiveForm.controls)) {
         this.reactiveForm.controls[control].markAsTouched();

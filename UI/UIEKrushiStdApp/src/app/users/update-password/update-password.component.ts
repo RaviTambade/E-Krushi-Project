@@ -80,6 +80,7 @@ export class UpdatePasswordComponent implements OnInit {
       oldPassword: this.oldPassword.value,
       newPassword: this.newPassword.value,
     };
+    
 
     this.authsvc.updatePassword(credential).subscribe((response) => {
       if (response) {
