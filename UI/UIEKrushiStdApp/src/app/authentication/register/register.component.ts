@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
 import {
-  ValidatorFn,
-  AbstractControl,
-  ValidationErrors,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
 import { IUser } from '@ekrushi-authentication/iuser';
-import { User } from '@models/user';
 import { UserService } from '@services/user.service';
 
 @Component({

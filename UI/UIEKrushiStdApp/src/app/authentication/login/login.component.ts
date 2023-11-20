@@ -55,7 +55,6 @@ export class LoginComponent implements OnInit {
       contactNumber: this.contactnumber.value,
       password: this.password.value,
     };
-    console.log('🚀 ~ onSignIn ~ credential:', credential);
 
     this.authService.signIn(credential).subscribe({
       next: (response) => {
