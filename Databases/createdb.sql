@@ -6,19 +6,7 @@ CREATE DATABASE ekrushi;
 
 USE ekrushi;
 
-CREATE TABLE
-    roles(
-        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        name varchar(250)
-    );
 
-CREATE TABLE
-    userroles(
-        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        userid INT NOT NULL UNIQUE,
-        roleid INT NOT NULL,
-        CONSTRAINT fkroleid FOREIGN KEY(roleid) REFERENCES roles(id) ON UPDATE CASCADE ON DELETE CASCADE
-    );
 
 CREATE TABLE
     categories(

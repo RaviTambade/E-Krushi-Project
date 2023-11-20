@@ -72,7 +72,7 @@ export class NavMenuComponent implements OnInit, OnDestroy {
     this.fetchCorporateName();
 
     let userId = this.authsvc.getClaimFromToken(TokenClaims.userId);
-
+    if(userId)
     this.usersvc.getUserNamesWithId(userId).subscribe((response) => {
       this.name = response[0].fullName;
     });

@@ -27,8 +27,8 @@ public class ProductRepository : IProductRepository
             string query =
                 @"SELECT products.id,products.title, products.image,
                 GROUP_CONCAT(DISTINCT productdetails.id) as productdetailsid, 
-                GROUP_CONCAT(DISTINCT productdetails.unitprice) as unitprice ,
-                GROUP_CONCAT( DISTINCT productdetails.size) AS sizes, 
+                GROUP_CONCAT(DISTINCT productdetails.unitprice ORDER BY productdetails.id) as unitprice ,
+                GROUP_CONCAT(DISTINCT productdetails.size ORDER BY productdetails.id) AS sizes, 
                 AVG(productreview.rating) AS rating FROM products
                 INNER JOIN productdetails ON products.id = productdetails.productid
                 INNER JOIN productreview ON products.id = productreview.productid
@@ -89,8 +89,8 @@ public class ProductRepository : IProductRepository
             string query =
                 @"SELECT products.id,products.title, products.image,
                 GROUP_CONCAT(DISTINCT productdetails.id) as productdetailsid, 
-                GROUP_CONCAT(DISTINCT productdetails.unitprice) as unitprice ,
-                GROUP_CONCAT( DISTINCT productdetails.size) AS sizes, 
+                GROUP_CONCAT(DISTINCT productdetails.unitprice ORDER BY productdetails.id) as unitprice ,
+                GROUP_CONCAT( DISTINCT productdetails.size ORDER BY productdetails.id) AS sizes, 
                 AVG(productreview.rating) AS rating FROM products
                 INNER JOIN productdetails ON products.id = productdetails.productid
                 INNER JOIN productreview ON products.id = productreview.productid
@@ -189,8 +189,8 @@ public class ProductRepository : IProductRepository
             string query =
                 @"SELECT products.id,products.title, products.image,
                 GROUP_CONCAT(DISTINCT productdetails.id) as productdetailsid, 
-                GROUP_CONCAT(DISTINCT productdetails.unitprice) as unitprice ,
-                GROUP_CONCAT( DISTINCT productdetails.size) AS sizes, 
+                GROUP_CONCAT(DISTINCT productdetails.unitprice ORDER BY productdetails.id) as unitprice ,
+                GROUP_CONCAT( DISTINCT productdetails.size ORDER BY productdetails.id) AS sizes, 
                 AVG(productreview.rating) AS rating FROM products
                 INNER JOIN productdetails ON products.id = productdetails.productid
                 INNER JOIN productreview ON products.id = productreview.productid
@@ -254,8 +254,8 @@ public class ProductRepository : IProductRepository
             string query =
                 @"SELECT products.id,products.title, products.image,
                 GROUP_CONCAT(DISTINCT productdetails.id) as productdetailsid, 
-                GROUP_CONCAT(DISTINCT productdetails.unitprice) as unitprice ,
-                GROUP_CONCAT( DISTINCT productdetails.size) AS sizes, 
+                GROUP_CONCAT(DISTINCT productdetails.unitprice ORDER BY productdetails.id) as unitprice ,
+                GROUP_CONCAT( DISTINCT productdetails.size ORDER BY productdetails.id) AS sizes, 
                 AVG(productreview.rating) AS rating FROM products
                 INNER JOIN productdetails ON products.id = productdetails.productid
                 INNER JOIN productreview ON products.id = productreview.productid
@@ -319,8 +319,8 @@ public class ProductRepository : IProductRepository
             string query =
                 @"SELECT products.id,products.title,products.description, products.image,
                 GROUP_CONCAT(DISTINCT productdetails.id) as productdetailsid, 
-                GROUP_CONCAT(DISTINCT productdetails.unitprice) as unitprice ,
-                GROUP_CONCAT( DISTINCT productdetails.size) AS sizes, 
+                GROUP_CONCAT(DISTINCT productdetails.unitprice ORDER BY productdetails.id) as unitprice ,
+                GROUP_CONCAT( DISTINCT productdetails.size ORDER BY productdetails.id) AS sizes, 
                 AVG(productreview.rating) AS rating FROM products
                 INNER JOIN productdetails ON products.id = productdetails.productid
                 INNER JOIN productreview ON products.id = productreview.productid
@@ -416,8 +416,8 @@ public class ProductRepository : IProductRepository
             string query =
                 @"SELECT products.id,products.title, products.image,
                 GROUP_CONCAT(DISTINCT productdetails.id) as productdetailsid, 
-                GROUP_CONCAT(DISTINCT productdetails.unitprice) as unitprice ,
-                GROUP_CONCAT( DISTINCT productdetails.size) AS sizes, 
+                GROUP_CONCAT(DISTINCT productdetails.unitprice ORDER BY productdetails.id) as unitprice ,
+                GROUP_CONCAT( DISTINCT productdetails.size ORDER BY productdetails.id) AS sizes, 
                 AVG(productreview.rating) AS rating FROM products
                 INNER JOIN productdetails ON products.id = productdetails.productid
                 INNER JOIN productreview ON products.id = productreview.productid
