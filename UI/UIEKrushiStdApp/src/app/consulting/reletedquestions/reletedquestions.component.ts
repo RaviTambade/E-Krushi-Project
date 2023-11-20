@@ -36,7 +36,7 @@ export class ReletedquestionsComponent implements OnInit{
 
   navigateQuestionAnswers(id:number) {
    
-    this.router.navigate(['/customer/question/',id],{relativeTo:this.route});
+    this.router.navigate(['/consulting/question/',id]);
   
     
   }

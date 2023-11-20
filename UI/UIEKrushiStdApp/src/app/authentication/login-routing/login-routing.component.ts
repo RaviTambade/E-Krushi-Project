@@ -28,6 +28,7 @@ export class LoginRoutingComponent {
   ) {}
 
   onReceiveToken(event: any) {
+
     if (event.token) {
       localStorage.setItem(LocalStorageKeys.jwt, event.token);
       this.roles = this.authService.getRolesFromToken();
@@ -49,7 +50,7 @@ export class LoginRoutingComponent {
       case Role.storeOwner:
         this.storesvc.getStoreId(userId).subscribe((res) => {
           localStorage.setItem(LocalStorageKeys.storeId, res.toString());
-          this.router.navigate(['shop/dashboard']);
+          this.router.navigate(['store/dashboard']);
         });
         break;
       case Role.supplier:

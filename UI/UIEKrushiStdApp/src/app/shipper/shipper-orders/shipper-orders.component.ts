@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationBoxComponent } from '@ekrushi-confirmationboxes/confirmation-box/confirmation-box.component';
 import { OrderStatus } from '@enums/Order-Status';
 import { LocalStorageKeys } from '@enums/local-storage-keys';
 import { OrderStatusCount } from '@models/order-status-count';
@@ -7,7 +8,6 @@ import { ShipperOrder } from '@models/shipper-order';
 import { OrderService } from '@services/order-service.service';
 import { ShipperService } from '@services/shipper.service';
 import { UserService } from '@services/user.service';
-import { ConfirmationBoxComponent } from 'app/confirmation-boxes/confirmation-box/confirmation-box.component';
 
 @Component({
   selector: 'app-shipper-orders',

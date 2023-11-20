@@ -31,14 +31,15 @@
       "@ekrushi-authentication/*":["app/authentication/*"],     
       "@ekrushi-catalog/*":["app/catalog/*"],       
       "@ekrushi-consulting/*":["app/consulting/*"],           
-      "@ekrushi-customer/*":["app/customer/*"],             
+      "@ekrushi-crm/*":["app/crm/*"],             
       "@ekrushi-orderprocessing/*":["app/order-processing/*"],     
       "@ekrushi-shipper/*":["app/shipper/*"],              
       "@ekrushi-storeowner/*":["app/store-owner/*"],           
       "@ekrushi-subjectmatterexpert/*":["app/subject-matter-expert/*"],
       "@ekrushi-supplier/*":["app/supplier/*"],             
       "@ekrushi-users/*":["app/users/*"],             
-      "@ekrushi-confirmationboxes/*":["app/confirmation-boxes/*"],            
+      "@ekrushi-confirmationboxes/*":["app/Shared/confirmation-boxes/*"],            
+      "@ekrushi-shared/*":["app/Shared/*"],            
     }
   },
   "angularCompilerOptions": {

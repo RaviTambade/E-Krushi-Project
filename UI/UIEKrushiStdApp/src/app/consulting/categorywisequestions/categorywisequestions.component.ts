@@ -26,7 +26,7 @@ export class CategorywisequestionsComponent implements OnInit {
 
   navigateQuestionAnswers(id:number) {
    
-    this.router.navigate(['/customer/question/',id],{relativeTo:this.route});
+    this.router.navigate(['/crm/question/',id],{relativeTo:this.route});
   
     
   }

@@ -29,7 +29,7 @@ export class CartService {
     return this.httpClient.delete<boolean>(url,{withCredentials:true});
   }
   
-  RemoveAllCartItems(): Observable<boolean> {
+  RemoveAllItems(): Observable<boolean> {
     let url = `${this.apiurl}/items/removeall`;
     return this.httpClient.delete<boolean>(url,{withCredentials:true});
   }
@@ -38,7 +38,7 @@ export class CartService {
     let url = this.apiurl;
     return this.httpClient.post<boolean>(url, item,{withCredentials:true});
   }
-
+  
   isProductInCart(productDetailsId:number): Observable<boolean> {
     let url = `${this.apiurl}/items/product/ispresent/${productDetailsId}`;
     return this.httpClient.get<boolean>(url,{withCredentials:true});

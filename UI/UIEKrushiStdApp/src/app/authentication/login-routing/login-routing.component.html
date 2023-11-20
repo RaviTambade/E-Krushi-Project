@@ -1,6 +1,6 @@
 <div class="row justify-content-center align-items-center  ">
     <div *ngIf="!istokenReceived" class="col-6">
-        <app-login-component (validSignIn)="onReceiveToken($event)"></app-login-component>
+        <membership-login (validSignIn)="onReceiveToken($event)"></membership-login>
     </div>
     <div *ngIf="istokenReceived" class="col-4 ">
         <div class="card border-0 shadow rounded-3 ">

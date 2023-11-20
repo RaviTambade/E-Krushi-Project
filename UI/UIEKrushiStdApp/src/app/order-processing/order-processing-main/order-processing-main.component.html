@@ -2,7 +2,7 @@
     <div class="col-8">
         <div class="mb-2">
             <label (click)="toggleOrderDetails()" class=" mb-1  btn btn-primary btn-block col-12">ORDER SUMMARY</label>
-            <app-shopping-cart-details [items]="items" (SummeryData)="onReceiveData($event)" *ngIf="showOrderDetails"></app-shopping-cart-details>
+            <app-cart-items [items]="items" (SummeryData)="onReceiveData($event)" *ngIf="showOrderDetails"></app-cart-items>
         </div>
         <div class="mb-2">
             <label (click)="toggleAddress()" class="  mb-1 btn btn-primary btn-block col-12">DELIVERY ADDRESS

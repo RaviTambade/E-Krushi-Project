@@ -193,7 +193,7 @@ export class PaymentComponent {
 
   emptyCart() {
     if (sessionStorage.getItem(SessionStorageKeys.isBuyNow) == 'false') {
-      this.cartsvc.RemoveAllCartItems().subscribe((res) => {});
+      this.cartsvc.RemoveAllItems().subscribe((res) => {});
     }
   }
 }

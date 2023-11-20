@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationBoxComponent } from '@ekrushi-confirmationboxes/confirmation-box/confirmation-box.component';
 import { OrderStatus } from '@enums/Order-Status';
 import { LocalStorageKeys } from '@enums/local-storage-keys';
 import { Order } from '@models/Order';
 import { OrderStatusCount } from '@models/order-status-count';
 import { OrderService } from '@services/order-service.service';
 import { StoreService } from '@services/store.service';
-import { ConfirmationBoxComponent } from 'app/confirmation-boxes/confirmation-box/confirmation-box.component';
 
 @Component({
   selector: 'app-store-orders',

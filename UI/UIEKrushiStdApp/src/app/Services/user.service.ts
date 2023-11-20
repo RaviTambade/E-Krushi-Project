@@ -19,10 +19,6 @@ export class UserService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getUserByContact(contactNumber: string): Observable<NameId> {
-    let url = `${this.userApiurl}/username/${contactNumber}`;
-    return this.httpClient.get<NameId>(url);
-  }
   getUserNamesWithId(userId: string): Observable<NameId[]> {
     let url = `${this.userApiurl}/name/${userId}`;
     return this.httpClient.get<NameId[]>(url);

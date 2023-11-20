@@ -8,7 +8,6 @@ import { ProductCarouselComponent } from './product-carousel/product-carousel.co
 import { ProductDefaultIconsComponent } from './product-details/product-default-icons/product-default-icons.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { ProductHomeComponent } from './product-home/product-home.component';
-import { SearchbarComponent } from './searchbar/searchbar.component';
 import { FormsModule } from '@angular/forms';
 import { ProductCategoriesDetailsComponent } from './product-categories-details/product-categories-details.component';
 import { SearchProductResultComponent } from './search-product-result/search-product-result.component';
@@ -37,14 +36,13 @@ export const catlogRoutes: Routes = [
     ProductDefaultIconsComponent,
     CategoriesComponent,
     ProductHomeComponent,
-    SearchbarComponent,
     ProductCategoriesDetailsComponent,
     SearchProductResultComponent,
     AlertComponent,
   ],
 
   imports: [CommonModule, RouterModule, FormsModule],
-  exports: [ ProductHomeComponent, SearchbarComponent],
+  exports: [ ProductHomeComponent],
 })
 export class CatalogModule {}
 

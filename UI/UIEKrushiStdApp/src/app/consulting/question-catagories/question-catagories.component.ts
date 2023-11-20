@@ -24,6 +24,6 @@ constructor(private svc:ConsultingService,private router: Router){}
   }
 
   onClickCategory(id:number){
-    this.router.navigate(['consulting/categorywisequestions',id]);
+    this.router.navigate(['/consulting/categorywisequestions',id]);
   }
 }

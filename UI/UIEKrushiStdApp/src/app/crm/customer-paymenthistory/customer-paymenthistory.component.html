@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="active-filter-line">
+        <div class="row">
+            <div class="col-md-7">
+                <table class="table">
+                    <thead>
+                        <tr>
+
+                            <th>PaymentDate</th>
+                            <th>PaymentStatus</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor=" let payment of payments">
+
+                            <td>{{payment.paymentDate|date}}</td>
+                            <td>{{payment.paymentStatus}}</td>
+                            <td>
+                                <button class="btn btn-primary" (click)="viewPaymentDetails(payment.orderId)">
+                                    Details
+                                </button>
+                            </td>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-1">
+            </div>
+            <div class="col-4" *ngIf="viewStatus && selectedOrderId!= null ">
+                <app-paymentsummery [orderId]="selectedOrderId"></app-paymentsummery>
+                <a class="m-2" [routerLink]="['/crm/orders/details',selectedOrderId]"> View Order Details</a>
+            </div>
+        </div>
+    </div>
+</div>

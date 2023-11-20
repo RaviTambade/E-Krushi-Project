@@ -92,7 +92,7 @@ export class ProductDetailsComponent {
       };
       this.cartsvc.addItem(item).subscribe((res) => {
         if (res) {
-          this.router.navigate(['/customer/shoppingcart']);
+          this.router.navigate(['/crm/shoppingcart']);
         }
       });
     }

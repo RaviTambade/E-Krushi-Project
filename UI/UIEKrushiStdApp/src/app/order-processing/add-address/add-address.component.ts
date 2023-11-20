@@ -16,9 +16,9 @@ export class AddAddressComponent implements OnInit {
   @Output() hideComponent = new EventEmitter();
   user: NameId = {
     id: 0,
-    fullName: ''
+    fullName: '',
   };
-  contactNumber: string | null = null;
+
 
   constructor(
     private formbuilder: FormBuilder,
@@ -43,12 +43,11 @@ export class AddAddressComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.contactNumber =  this.authsvc.getClaimFromToken(TokenClaims.contactNumber);
-    if (this.contactNumber === null) {
-      return;
-    }
-    this.usersvc.getUserByContact(this.contactNumber).subscribe((res) => {
-      this.user = res;
+    let userId = this.authsvc.getClaimFromToken(TokenClaims.userId);
+
+    this.usersvc.getUserNamesWithId(userId).subscribe((response) => {
+      this.user = response[0];
+      console.log("🚀 ~ this.usersvc.getUserNamesWithId ~ response:", response);
     });
   }
 
@@ -64,12 +63,11 @@ export class AddAddressComponent implements OnInit {
         ?.value,
       pinCode: this.addressForm.get('pincode')?.value,
     };
-   
+
     this.usersvc.addAddress(address).subscribe((res) => {
       if (res) {
         this.hideComponent.emit();
         this.usersvc.newaddressSubject.next();
-       
       }
     });
   }
