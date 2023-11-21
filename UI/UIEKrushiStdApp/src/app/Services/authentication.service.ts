@@ -6,7 +6,7 @@ import { UpdatePassword } from '@models/update-password';
 import { Observable } from 'rxjs';
 import { TokenClaims } from '@enums/tokenclaims';
 import { environment } from '@environments/environment';
-import { ICredential } from '@ekrushi-authentication/icredential';
+// import { ICredential } from '@ekrushi-authentication/icredential';
 
 @Injectable({
   providedIn: 'root',
@@ -19,10 +19,10 @@ export class AuthenticationService {
 
   private authServiceurl: string = environment.authServiceUrl;
   
-  signIn(credential: ICredential): Observable<any> {
-    let url =`${this.authServiceurl}/signin`;
-    return this.httpClient.post<any>(url, credential);
-  }
+  // signIn(credential: ICredential): Observable<any> {
+  //   let url =`${this.authServiceurl}/signin`;
+  //   return this.httpClient.post<any>(url, credential);
+  // }
 
   updatePassword(credential: UpdatePassword): Observable<boolean> {
     let url =`${this.authServiceurl}/updatepassword`;

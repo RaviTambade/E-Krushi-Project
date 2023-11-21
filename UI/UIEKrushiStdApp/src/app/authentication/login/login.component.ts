@@ -1,7 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthenticationService } from '@services/authentication.service';
-import { ICredential } from '@ekrushi-authentication/icredential';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LocalStorageKeys } from '@enums/local-storage-keys';
 import { Role } from '@enums/role';
