@@ -28,7 +28,6 @@
     "chartjs-plugin-annotation": "^1.4.0",
     "chartjs-plugin-datalabels": "^2.2.0",
     "font-awesome": "^4.7.0",
-    "membership-lib": "file:../../../Angular/SharedLib/dist/membership-lib/membership-lib-0.0.1.tgz",
     "ng2-charts": "^3.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

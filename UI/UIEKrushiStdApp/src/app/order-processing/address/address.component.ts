@@ -6,6 +6,7 @@ import { TokenClaims } from '@enums/tokenclaims';
 import { Address } from '@models/address';
 import { AuthenticationService } from '@services/authentication.service';
 import { UserService } from '@services/user.service';
+import { StateChangeEvent } from 'membership-lib/lib/stateChangeEvent';
 
 @Component({
   selector: 'app-address',
@@ -18,6 +19,7 @@ export class AddressComponent implements OnInit {
   selectedAddressId: number | null = null;
   showAddAddress: boolean = false;
   showupdateAddress: boolean = false;
+  userId!: number;
 
   selectedUpdateId: number | undefined;
 
@@ -31,8 +33,8 @@ export class AddressComponent implements OnInit {
   }
 
   fetchAddresses() {
-    const userId = Number(this.authsvc.getClaimFromToken(TokenClaims.userId));
-    this.usersvc.getAddress(userId).subscribe((res) => {
+    this.userId = Number(this.authsvc.getClaimFromToken(TokenClaims.userId));
+    this.usersvc.getAddress(this.userId).subscribe((res) => {
       this.addresses = res;
       this.selectedAddressId = Number(
         sessionStorage.getItem(SessionStorageKeys.addressId)
@@ -52,14 +54,14 @@ export class AddressComponent implements OnInit {
     this.showAddAddress = true;
   }
 
-  hideAddAddressComponent(event: any) {
+  hideAddAddressComponent(event: StateChangeEvent) {
     this.showAddAddress = false;
     if (event.isStateUpdated) {
       this.fetchAddresses();
     }
   }
 
-  hideUpdateAddressComponent(event: any) {
+  hideUpdateAddressComponent(event: StateChangeEvent) {
     this.showupdateAddress = false;
     this.selectedUpdateId = undefined;
     if (event.isStateUpdated) {
