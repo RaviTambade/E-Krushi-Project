@@ -12,7 +12,8 @@ import { UserService } from '@services/user.service';
 })
 export class UpdateAddressComponent {
   addressForm!: FormGroup;
-  @Output() hideComponent = new EventEmitter();
+  @Output() onComplete = new EventEmitter<{ isStateUpdated: boolean }>();
+
   @Input() address!: Address;
   constructor(
     private usersvc: UserService,
@@ -26,8 +27,14 @@ export class UpdateAddressComponent {
         Validators.minLength(2),
         Validators.maxLength(50),
       ]),
-      landmark: new FormControl(this.address.landMark),
-      addressType: new FormControl(this.address.addressType, [Validators.required]),
+      landmark: new FormControl(this.address.landMark, [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(50),
+      ]),
+      addressType: new FormControl(this.address.addressType, [
+        Validators.required,
+      ]),
       city: new FormControl(this.address.city, [
         Validators.required,
         Validators.minLength(2),
@@ -87,15 +94,15 @@ export class UpdateAddressComponent {
       contactNumber: this.address.contactNumber,
     };
 
-
-    this.usersvc.updateAddress(address.id,address).subscribe((res) => {
-      if (res) {
-        this.hideComponent.emit();
-        this.usersvc.newaddressSubject.next();
+    this.usersvc.updateAddress(address.id, address).subscribe((res) => {
+      if (res == true) {
+        this.onComplete.emit({ isStateUpdated: true });
+      } else {
+        this.onComplete.emit({ isStateUpdated: false });
       }
     });
   }
   onCancelClick() {
-    this.hideComponent.emit();
+    this.onComplete.emit({ isStateUpdated: false });
   }
 }

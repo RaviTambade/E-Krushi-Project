@@ -76,14 +76,14 @@ export class ShipperOrdersComponent {
                 (address) => address.id === order.fromAddressId
               );
               if (match1) {
-                order.fromAddress = `${match1.name}, ${match1.landMark}, ${match1.area},${match1.city}, ${match1.state},${match1.pinCode} ,${match1.contactNumber}, ${match1.alternateContactNumber}`;
+                order.fromAddress = `${match1.name}, ${match1.landMark}, ${match1.area},${match1.city}, ${match1.state},${match1.pinCode} ,${match1.contactNumber}`;
                
               }
               const match2 = addresses.find(
                 (address) => address.id === order.toAddressId
               );
               if (match2) {
-                order.toAddress =`${match2.name}, ${match2.landMark}, ${match2.area},${match2.city}, ${match2.state},${match2.pinCode} ,${match2.contactNumber}, ${match2.alternateContactNumber}`;
+                order.toAddress =`${match2.name}, ${match2.landMark}, ${match2.area},${match2.city}, ${match2.state},${match2.pinCode} ,${match2.contactNumber}`;
 
               }
             });

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AddressInfo } from '@models/addressinfo';
+import { Address } from '@models/address';
 import { OrderService } from '@services/order-service.service';
 import { UserService } from '@services/user.service';
 
@@ -11,7 +11,7 @@ import { UserService } from '@services/user.service';
 })
 export class OrderDetailsComponent implements OnInit {
   orderId!: number;
-  address: AddressInfo | undefined;
+  address: Address | undefined;
   constructor(
     private ordersvc: OrderService,
     private usersvc: UserService,

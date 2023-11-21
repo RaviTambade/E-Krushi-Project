@@ -19,12 +19,6 @@
             <div *ngIf="showAddress" class="m-2">
                 <div class="card  px-3 m-2">
                     <app-address class="m-2" (hideComponent)="onSelectedAddress($event)"></app-address>
-                    <div class="col-12 mb-2">
-                        <a class="m-4" style="cursor: pointer;" (click)="onClickNewAddress()">Add New Address</a>
-                    </div>
-                    <div *ngIf="showAddAddress">
-                        <app-add-address (hideComponent)="hideAddressAddComponent()"></app-add-address>
-                    </div>
                 </div>
             </div>
         </div>

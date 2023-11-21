@@ -8,17 +8,17 @@
                         <div class="form-check">
                             <input type="radio" id="male" formControlName="addressType" value="Residential"
                                 class="form-check-input">
-                            <label for="male" class="form-check-label">Residential</label>
+                            <label for="addressType" class="form-check-label">Residential</label>
                         </div>
                         <div class="form-check">
                             <input type="radio" id="female" formControlName="addressType" value="Billing"
                                 class="form-check-input">
-                            <label for="female" class="form-check-label">Billing</label>
+                            <label for="addressType" class="form-check-label">Billing</label>
                         </div>
                         <div class="form-check">
                             <input type="radio" id="other" formControlName="addressType" value="Official"
                                 class="form-check-input">
-                            <label for="other" class="form-check-label">Official</label>
+                            <label for="addressType" class="form-check-label">Official</label>
                         </div>
                     </div>
                     <div class="row">
@@ -47,8 +47,19 @@
                         <div class="col">
                             <div class="form-floating">
                                 <input type="text" class="form-control" placeholder="Landmark(optional)"
-                                    formControlName="landmark" />
-                                <label>Landmark(optional)</label>
+                                    formControlName="landmark"  [class.is-invalid]="landmark.invalid && (landmark.dirty || landmark.touched)"/>
+                                <label>Landmark<span class="text-danger"> &ast; </span></label>
+                                <div *ngIf="landmark.invalid && (landmark.dirty || landmark.touched)" class="invalid-feedback">
+                                    <div *ngIf="landmark.errors?.['required']">
+                                        This field is required.
+                                    </div>
+                                    <div *ngIf="landmark.errors?.['minlength']">
+                                        This field must have at least 2 character.
+                                    </div>
+                                    <div *ngIf="landmark.errors?.['maxlength']">
+                                        This field max limit 50 characters.
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -92,7 +103,7 @@
                                         This field must have at least 2 character.
                                     </div>
                                     <div *ngIf="city.errors?.['maxlength']">
-                                        This field must have at most 20 characters.
+                                        This field max limit  20 characters.
                                     </div>
                                 </div>
                             </div>
@@ -151,7 +162,7 @@
                                         This field must have at least 2 character.
                                     </div>
                                     <div *ngIf="state.errors?.['maxlength']">
-                                        This field must have at most 20 characters.
+                                        This fieldmax limit  30 characters.
                                     </div>
                                 </div>
 

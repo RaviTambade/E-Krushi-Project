@@ -24,8 +24,8 @@ export class CustomerOrdersComponent implements OnInit {
     this.filterOrders(this.orderStatus.pending);
   }
   onSubmit(){
-    console.log(this.fromDate)
-    console.log(this.toDate)
+    // console.log(this.fromDate)
+    // console.log(this.toDate)
   }
 
   filterOrders(status: string) {

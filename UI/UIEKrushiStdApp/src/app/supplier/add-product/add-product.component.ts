@@ -49,13 +49,13 @@ export class AddProductComponent {
   //     this.user.email=this.userForm.get('email')?.value;
   //   this.svc.updateUser(this.userId, this.user).subscribe((response) => {
   //    
-  //   this.onUdateFinished.emit({isUpdated:true});
+  //   this.onUdateFinished.emit({isStateUpdated:true});
   // });
   // }
   }
 
   cancelupdateUser(){
-    // this.onUdateFinished.emit({isUpdated:false});
+    // this.onUdateFinished.emit({isStateUpdated:false});
   }
 
 

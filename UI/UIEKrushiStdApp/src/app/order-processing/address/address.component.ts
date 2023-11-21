@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { DeleteConfirmationComponent } from '@ekrushi-confirmationboxes/delete-confirmation/delete-confirmation.component';
 import { SessionStorageKeys } from '@enums/session-storage-keys';
 import { TokenClaims } from '@enums/tokenclaims';
-import { AddressInfo } from '@models/addressinfo';
+import { Address } from '@models/address';
 import { AuthenticationService } from '@services/authentication.service';
 import { UserService } from '@services/user.service';
 
@@ -12,25 +12,25 @@ import { UserService } from '@services/user.service';
   templateUrl: './address.component.html',
   styleUrls: ['./address.component.css'],
 })
-
 export class AddressComponent implements OnInit {
-  addresses: AddressInfo[] = [];
+  addresses: Address[] = [];
   @Output() hideComponent = new EventEmitter();
   selectedAddressId: number | null = null;
+  showAddAddress: boolean = false;
+  showupdateAddress: boolean = false;
+
+  selectedUpdateId: number | undefined;
+
   constructor(
     private usersvc: UserService,
     private authsvc: AuthenticationService,
     private dialog: MatDialog
   ) {}
   ngOnInit(): void {
-    this.usersvc.newaddressSubject.subscribe(() => {
-      this.fetchData();
-    });
-
-    this.fetchData();
+    this.fetchAddresses();
   }
 
-  fetchData() {
+  fetchAddresses() {
     const userId = Number(this.authsvc.getClaimFromToken(TokenClaims.userId));
     this.usersvc.getAddress(userId).subscribe((res) => {
       this.addresses = res;
@@ -41,6 +41,30 @@ export class AddressComponent implements OnInit {
       if (Number.isNaN(this.selectedAddressId) || this.selectedAddressId == 0)
         this.selectedAddressId = this.addresses[0].id;
     });
+  }
+
+  onClickUpdateAddress(id: number) {
+    this.selectedUpdateId = id;
+    this.showupdateAddress = true;
+  }
+
+  onClickNewAddress() {
+    this.showAddAddress = true;
+  }
+
+  hideAddAddressComponent(event: any) {
+    this.showAddAddress = false;
+    if (event.isStateUpdated) {
+      this.fetchAddresses();
+    }
+  }
+
+  hideUpdateAddressComponent(event: any) {
+    this.showupdateAddress = false;
+    this.selectedUpdateId = undefined;
+    if (event.isStateUpdated) {
+      this.fetchAddresses();
+    }
   }
 
   onClickDeliverHere() {
@@ -69,7 +93,6 @@ export class AddressComponent implements OnInit {
       }
     });
   }
-
 
   deleteAddress(addressId: number) {
     this.usersvc.deleteAddress(addressId).subscribe((res) => {

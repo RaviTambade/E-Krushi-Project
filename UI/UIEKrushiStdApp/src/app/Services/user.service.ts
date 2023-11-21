@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environments/environment';
 import { Address } from '@models/address';
-import { AddressInfo } from '@models/addressinfo';
 import { NameId } from '@models/nameId';
 import { User } from '@models/user';
 import { Observable, Subject } from 'rxjs';
@@ -14,7 +13,6 @@ export class UserService {
   private userApiurl: string = environment.usersServiceUrl;
   private addressApiurl: string = environment.userAddressServiceUrl;
 
-  public newaddressSubject = new Subject<void>();
   public reloadnavbar = new Subject<void>();
 
   constructor(private httpClient: HttpClient) {}
@@ -44,9 +42,9 @@ export class UserService {
     return this.httpClient.post<boolean>(url, address);
   }
 
-  getAddress(userId: number): Observable<AddressInfo[]> {
+  getAddress(userId: number): Observable<Address[]> {
     let url = `${this.addressApiurl}/${userId}`;
-    return this.httpClient.get<AddressInfo[]>(url);
+    return this.httpClient.get<Address[]>(url);
   }
 
   deleteAddress(addressId: number): Observable<boolean> {
@@ -58,13 +56,13 @@ export class UserService {
     let url = `${this.addressApiurl}/${addressId}`;
     return this.httpClient.put<boolean>(url, address);
   }
-  getAddressById(addressId: number): Observable<AddressInfo> {
+  getAddressById(addressId: number): Observable<Address> {
     let url = `${this.addressApiurl}/details/${addressId}`;
-    return this.httpClient.get<AddressInfo>(url);
+    return this.httpClient.get<Address>(url);
   }
 
-  getaddressInfoByIds(addressIds: string): Observable<AddressInfo[]> {
+  getaddressInfoByIds(addressIds: string): Observable<Address[]> {
     let url = `${this.addressApiurl}/info/${addressIds}`;
-    return this.httpClient.get<AddressInfo[]>(url);
+    return this.httpClient.get<Address[]>(url);
   }
 }

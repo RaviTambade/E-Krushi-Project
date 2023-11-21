@@ -55,15 +55,8 @@ export class OrderProcessingMainComponent implements OnDestroy {
     this.showOrderDetails = false;
   }
 
-  showAddAddress: boolean = false;
 
-  onClickNewAddress() {
-    this.showAddAddress = true;
-  }
 
-  hideAddressAddComponent() {
-    this.showAddAddress = false;
-  }
 
   onSelectedAddress(event: any) {
     this.showAddress = false;

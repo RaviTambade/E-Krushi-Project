@@ -12,7 +12,7 @@ import { UserService } from '@services/user.service';
 })
 export class AddAddressComponent implements OnInit {
   addressForm!: FormGroup;
-  @Output() hideComponent = new EventEmitter();
+  @Output() onComplete = new EventEmitter<{ isStateUpdated: boolean }>();
 
   constructor(
     private usersvc: UserService,
@@ -26,7 +26,11 @@ export class AddAddressComponent implements OnInit {
         Validators.minLength(2),
         Validators.maxLength(50),
       ]),
-      landmark: new FormControl(''),
+      landmark: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(50),
+      ]),
       addressType: new FormControl('Residential', [Validators.required]),
       city: new FormControl('', [
         Validators.required,
@@ -36,7 +40,7 @@ export class AddAddressComponent implements OnInit {
       state: new FormControl('', [
         Validators.required,
         Validators.minLength(2),
-        Validators.maxLength(20),
+        Validators.maxLength(30),
       ]),
       pincode: new FormControl('', [
         Validators.required,
@@ -65,6 +69,7 @@ export class AddAddressComponent implements OnInit {
   get pincode() {
     return this.addressForm.get('pincode')!;
   }
+ 
 
   onSubmit() {
     if (this.addressForm.invalid) {
@@ -88,13 +93,14 @@ export class AddAddressComponent implements OnInit {
     };
 
     this.usersvc.addAddress(address).subscribe((res) => {
-      if (res) {
-        this.hideComponent.emit();
-        this.usersvc.newaddressSubject.next();
+      if (res == true) {
+        this.onComplete.emit({ isStateUpdated: true });
+      } else {
+        this.onComplete.emit({ isStateUpdated: false });
       }
     });
   }
   onCancelClick() {
-    this.hideComponent.emit();
+    this.onComplete.emit({ isStateUpdated: false });
   }
 }
