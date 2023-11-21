@@ -49,6 +49,15 @@ export class UserService {
     return this.httpClient.get<AddressInfo[]>(url);
   }
 
+  deleteAddress(addressId: number): Observable<boolean> {
+    let url = `${this.addressApiurl}/${addressId}`;
+    return this.httpClient.delete<boolean>(url);
+  }
+
+  updateAddress(addressId: number, address: Address): Observable<boolean> {
+    let url = `${this.addressApiurl}/${addressId}`;
+    return this.httpClient.put<boolean>(url, address);
+  }
   getAddressById(addressId: number): Observable<AddressInfo> {
     let url = `${this.addressApiurl}/details/${addressId}`;
     return this.httpClient.get<AddressInfo>(url);

@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DeleteConfirmationComponent } from '@ekrushi-confirmationboxes/delete-confirmation/delete-confirmation.component';
@@ -8,29 +14,28 @@ import { CartService } from '@services/cart.service';
 @Component({
   selector: 'app-cart-items',
   templateUrl: './cart-items.component.html',
-  styleUrls: ['./cart-items.component.css']
+  styleUrls: ['./cart-items.component.css'],
 })
 export class CartItemsComponent {
-  @Input()items:CartItem[]=[];
+  @Input() items: CartItem[] = [];
   totalItems: string = '';
   subTotal: number = 0;
   discount: number = 0;
   shippingCharges = 'Free';
   total: number = 0;
 
-@Output() SummeryData =new EventEmitter();
+  @Output() SummeryData = new EventEmitter();
   maxAllowedQuantity: number = 10;
   minAllowedQuantity: number = 1;
   constructor(
     private cartsvc: CartService,
     private snackBar: MatSnackBar,
-    private dialog: MatDialog,
+    private dialog: MatDialog
   ) {}
-
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['items']) {
-    this.calculateSummary();
+      this.calculateSummary();
     }
   }
 
@@ -41,11 +46,17 @@ export class CartItemsComponent {
       .map((item) => item.quantity * item.unitPrice)
       .forEach((i) => (this.subTotal += i));
     this.total = this.subTotal - this.discount;
-    this.SummeryData.emit({total:this.total,totalItems:this.totalItems,subTotal:this.subTotal})
+    this.SummeryData.emit({
+      total: this.total,
+      totalItems: this.totalItems,
+      subTotal: this.subTotal,
+    });
   }
 
   openDeleteConfirmationDialog(productDetailsId: number) {
-    const dialogRef = this.dialog.open(DeleteConfirmationComponent, {});
+    const dialogRef = this.dialog.open(DeleteConfirmationComponent, {
+      data: 'Item',
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === true) {
@@ -57,7 +68,9 @@ export class CartItemsComponent {
   deleteItem(productDetailsId: number) {
     this.cartsvc.RemoveItem(productDetailsId).subscribe((res) => {
       if (res) {
-        this.items = this.items.filter((item) => item.productDetailsId != productDetailsId);
+        this.items = this.items.filter(
+          (item) => item.productDetailsId != productDetailsId
+        );
         this.calculateSummary();
       }
     });
@@ -78,6 +91,7 @@ export class CartItemsComponent {
     }
     this.updateDatabaseQuantity(item, newQuantity);
   }
+
   onClickIncrement(item: CartItem) {
     let newQuantity = item.quantity + 1;
 
@@ -112,19 +126,17 @@ export class CartItemsComponent {
       );
       return;
     }
-    this.cartsvc.updateQuantity(item.productDetailsId, quantity).subscribe((res) => {
-     
-      if (res) {
-        this.showNotification(
-          `You  Changed  ${item.title}  Quantity  To  ${quantity}`
-        );
-        item.quantity = quantity;
-       
-        this.calculateSummary();
-      }
-   
-    });
+    this.cartsvc
+      .updateQuantity(item.productDetailsId, quantity)
+      .subscribe((res) => {
+        if (res) {
+          this.showNotification(
+            `You  Changed  ${item.title}  Quantity  To  ${quantity}`
+          );
+          item.quantity = quantity;
+
+          this.calculateSummary();
+        }
+      });
   }
-
-
 }

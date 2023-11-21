@@ -2,22 +2,25 @@
     <div class="col-8">
         <div class="mb-2">
             <label (click)="toggleOrderDetails()" class=" mb-1  btn btn-primary btn-block col-12">ORDER SUMMARY</label>
-            <app-cart-items [items]="items" (SummeryData)="onReceiveData($event)" *ngIf="showOrderDetails"></app-cart-items>
+            <app-cart-items [items]="items" (SummeryData)="onReceiveData($event)"
+                *ngIf="showOrderDetails"></app-cart-items>
         </div>
         <div class="mb-2">
-            <label (click)="toggleAddress()" class="  mb-1 btn btn-primary btn-block col-12">DELIVERY ADDRESS
-                <div class="text-muted mx-4" *ngIf="address">
-                    {{address.name |titlecase}} - {{address.contactNumber}} , {{address.alternateContactNumber}}
-                    <br> {{ address.area |titlecase}}, {{ address.landMark |titlecase }}, {{ address.city |titlecase }},
-                    {{ address.state |titlecase}}- {{
-                    address.pinCode }}
+            <label (click)="toggleAddress()" class="  mb-1 btn btn-primary btn-block col-12">DELIVERY ADDRESS </label>
+            <div class=" card border-0 shadow rounded-3   " *ngIf="address && !showAddress">
+                <div class=" card-body mx-4">
+                {{address.name |titlecase}} - {{address.contactNumber}} 
+                <br> {{ address.area |titlecase}}, {{ address.landMark |titlecase }}, {{ address.city |titlecase }},
+                {{ address.state |titlecase}}- {{
+                address.pinCode }}
                 </div>
-            </label>
+            </div>
+
             <div *ngIf="showAddress" class="m-2">
                 <div class="card  px-3 m-2">
                     <app-address class="m-2" (hideComponent)="onSelectedAddress($event)"></app-address>
-                    <div class="card col-12 mb-2">
-                        <a class="m-4" (click)="onClickNewAddress()">Add New Address</a>
+                    <div class="col-12 mb-2">
+                        <a class="m-4" style="cursor: pointer;" (click)="onClickNewAddress()">Add New Address</a>
                     </div>
                     <div *ngIf="showAddAddress">
                         <app-add-address (hideComponent)="hideAddressAddComponent()"></app-add-address>
@@ -27,12 +30,13 @@
         </div>
 
         <div class="mb-2">
-            <button [disabled]="!address" (click)="togglePayment()" class="  mb-1  col-12 btn btn-primary btn-block">PAYMENT OPTIONS</button>
+            <button [disabled]="!address" (click)="togglePayment()"
+                class="  mb-1  col-12 btn btn-primary btn-block">PAYMENT OPTIONS</button>
             <app-payment *ngIf="showPayment"></app-payment>
         </div>
-    </div>  
+    </div>
     <div class="col-4">
         <app-cart-summary [total]="total" [totalItems]="totalItems" [discount]="discount"
-      [subTotal]="subTotal"></app-cart-summary>
+            [subTotal]="subTotal"></app-cart-summary>
     </div>
 </div>

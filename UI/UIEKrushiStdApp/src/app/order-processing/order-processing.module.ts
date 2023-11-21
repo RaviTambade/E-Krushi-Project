@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaymentComponent } from './payment/payment.component';
 import { OrderProcessingMainComponent } from './order-processing-main/order-processing-main.component';
 import { SharedModule } from '@ekrushi-shared/shared.module';
+import { UpdateAddressComponent } from './update-address/update-address.component';
 
 export const orderProcessingRoutes: Routes = [
   {
@@ -25,6 +26,7 @@ export const orderProcessingRoutes: Routes = [
     AddAddressComponent,
     PaymentComponent,
     OrderProcessingMainComponent,
+    UpdateAddressComponent,
   ],
   imports: [
     CommonModule,

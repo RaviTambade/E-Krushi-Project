@@ -6,7 +6,9 @@ export class Address {
     public landMark: string,
     public city: string,
     public state: string,
-    public alternateContactNumber: string,
-    public pinCode: string
+    public pinCode: string,
+    public name: string,
+    public contactNumber: string,
+    public addressType: string
   ) {}
 }
