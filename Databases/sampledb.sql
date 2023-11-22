@@ -1,53 +1,6 @@
 -- Active: 1696576841746@@127.0.0.1@3306@ekrushi
 
 
-INSERT INTO roles(name) VALUES ('Shop Owner');
-INSERT INTO roles(name) VALUES ('Customer');
-INSERT INTO roles(name) VALUES ('Supplier');
-INSERT INTO roles(name) VALUES ('Shipper');
-INSERT INTO roles(name) VALUES ('SubjectMatterExpert');
-
-INSERT INTO userroles(userid,roleid) VALUES (1,1);
-INSERT INTO userroles(userid,roleid) VALUES (4,1);
-INSERT INTO userroles(userid,roleid) VALUES (28,1);
-INSERT INTO userroles(userid,roleid) VALUES (29,1);
-INSERT INTO userroles(userid,roleid) VALUES (30,1);
-
-INSERT INTO userroles(userid,roleid) VALUES (2,2);
-INSERT INTO userroles(userid,roleid) VALUES (3,2);
-INSERT INTO userroles(userid,roleid) VALUES (15,2);
-INSERT INTO userroles(userid,roleid) VALUES (16,2);
-INSERT INTO userroles(userid,roleid) VALUES (17,2);
-INSERT INTO userroles(userid,roleid) VALUES (18,2);
-INSERT INTO userroles(userid,roleid) VALUES (19,2);
-INSERT INTO userroles(userid,roleid) VALUES (20,2);
-INSERT INTO userroles(userid,roleid) VALUES (21,2);
-INSERT INTO userroles(userid,roleid) VALUES (22,2);
-INSERT INTO userroles(userid,roleid) VALUES (23,2);
-INSERT INTO userroles(userid,roleid) VALUES (24,2);
-INSERT INTO userroles(userid,roleid) VALUES (25,2);
-INSERT INTO userroles(userid,roleid) VALUES (26,2);
-INSERT INTO userroles(userid,roleid) VALUES (27,2);
-
-INSERT INTO userroles(userid,roleid) VALUES (12,3);
-INSERT INTO userroles(userid,roleid) VALUES (13,3);
-
-INSERT INTO userroles(userid,roleid) VALUES (31,4);
-INSERT INTO userroles(userid,roleid) VALUES (32,4);
-INSERT INTO userroles(userid,roleid) VALUES (33,4);
-INSERT INTO userroles(userid,roleid) VALUES (34,4);
-INSERT INTO userroles(userid,roleid) VALUES (35,4);
-
-
-
-INSERT INTO userroles(userid,roleid) VALUES (8,5);
-INSERT INTO userroles(userid,roleid) VALUES (9,5);
-INSERT INTO userroles(userid,roleid) VALUES (36,5);
-INSERT INTO userroles(userid,roleid) VALUES (37,5);
-INSERT INTO userroles(userid,roleid) VALUES (38,5);
-INSERT INTO userroles(userid,roleid) VALUES (39,5);
-INSERT INTO userroles(userid,roleid) VALUES (40,5);
-
 
 
 

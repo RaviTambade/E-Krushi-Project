@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 fixed-top">
     <div class="w-100 d-flex mx-4">
       <a class="navbar-brand" *ngIf="isUserHaveRequiredRole(Role.customer) || !isLoggedIn()" [routerLink]="['/home']"><b>EKrushi Seva</b></a>
-      <a class="navbar-brand " *ngIf="isUserHaveRequiredRole(Role.storeOwner) && isLoggedIn() " [routerLink]="['/shop/dashboard']"><b>EKrushi Seva</b></a>
+      <a class="navbar-brand " *ngIf="isUserHaveRequiredRole(Role.storeOwner) && isLoggedIn() " [routerLink]="['/store/dashboard']"><b>EKrushi Seva</b></a>
       <a class="navbar-brand " *ngIf="isUserHaveRequiredRole(Role.shipper) && isLoggedIn()" [routerLink]="['/shipper/dashboard']"><b>EKrushi Seva</b></a>
       <a class="navbar-brand " *ngIf="isUserHaveRequiredRole(Role.supplier) && isLoggedIn()" [routerLink]="['/supplier/dashboard']"><b>EKrushi Seva</b></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"

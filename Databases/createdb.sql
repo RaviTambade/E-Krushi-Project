@@ -19,17 +19,15 @@ CREATE TABLE
     suppliers(
         id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY,
         corporateid INT NOT NULL UNIQUE,
-        userid INT NOT NULL,
-        CONSTRAINT fk_supplieruser FOREIGN KEY(userid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE
+        userid INT NOT NULL UNIQUE
     );
 
 CREATE TABLE
     stores(
         id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY,
         name VARCHAR(100) NOT NULL,
-        userid INT NOT NULL,
-        addressid INT,
-        CONSTRAINT fk_storeuser FOREIGN KEY(userid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE
+        userid INT NOT NULL UNIQUE,
+        addressid INT
     );
 
 CREATE TABLE
@@ -62,7 +60,6 @@ CREATE TABLE
         rating DOUBLE,
         review VARCHAR(500),
         CONSTRAINT fk_productid2 FOREIGN KEY (productid) REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE,
-        CONSTRAINT fk_customeruser FOREIGN KEY(customerid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE,
         UNIQUE KEY (productid,customerid)
         );
 CREATE TABLE
@@ -74,7 +71,6 @@ CREATE TABLE
         addressid INT NOT NULL,
         storeid INT,
         CONSTRAINT fk_storeid FOREIGN KEY (storeid) REFERENCES stores(id),
-        CONSTRAINT fk_cust_id_11 FOREIGN KEY (customerid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE,
         total DOUBLE,
         status ENUM(
             'pending',
@@ -102,8 +98,7 @@ CREATE TABLE
 CREATE TABLE
     carts(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        customerid INT NOT NULL,
-        CONSTRAINT fk_1 FOREIGN KEY (customerid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE
+        customerid INT NOT NULL
     );
 
 CREATE TABLE
@@ -134,9 +129,8 @@ CREATE TABLE
 CREATE TABLE
     shippers(
         id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY,
-        userid INT NOT NULL,
-        addressid INT,
-        CONSTRAINT fk_shipperuser FOREIGN KEY(userid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE
+        userid INT NOT NULL UNIQUE,
+        addressid INT
     );
 
 CREATE TABLE shipperorders(
@@ -185,8 +179,7 @@ CREATE TABLE
     subjectmatterexperts(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         categoryid INT, CONSTRAINT fk_smeuser FOREIGN KEY (categoryid) REFERENCES questioncategories(id) ON UPDATE CASCADE ON DELETE CASCADE,
-        userid INT NOT NULL,
-        CONSTRAINT fk_category FOREIGN KEY (userid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE
+        userid INT NOT NULL
  );
 
 
@@ -206,5 +199,4 @@ CREATE TABLE
         questionid INT NOT NULL,
         CONSTRAINT fkques FOREIGN KEY(questionid) REFERENCES questions(id) ON UPDATE CASCADE ON DELETE CASCADE,
         customerid INT NOT NULL,
-        CONSTRAINT fk_cust_11 FOREIGN KEY (customerid) REFERENCES userroles(userid) ON UPDATE CASCADE ON DELETE CASCADE,
         questiondate DATETIME );
