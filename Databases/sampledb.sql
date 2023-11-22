@@ -3,7 +3,6 @@
 
 
 
-
 INSERT INTO stores(name,userid,addressid) VALUES  ("Manchar Store",1,1);
 INSERT INTO stores(name,userid,addressid) VALUES  ("Rajgurunagar Store ",4,4);
 INSERT INTO stores(name,userid,addressid) VALUES  ("Narayangaon Store ",28,20);

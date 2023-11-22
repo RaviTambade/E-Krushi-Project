@@ -6,8 +6,6 @@ CREATE DATABASE ekrushi;
 
 USE ekrushi;
 
-
-
 CREATE TABLE
     categories(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -28,6 +26,14 @@ CREATE TABLE
         name VARCHAR(100) NOT NULL,
         userid INT NOT NULL UNIQUE,
         addressid INT
+    );
+
+CREATE TABLE
+    subjectmatterexperts(
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        categoryid INT,
+        CONSTRAINT fk_smeuser FOREIGN KEY (categoryid) REFERENCES questioncategories(id) ON UPDATE CASCADE ON DELETE CASCADE,
+        userid INT NOT NULL
     );
 
 CREATE TABLE
@@ -53,20 +59,21 @@ CREATE TABLE
     );
 
 CREATE TABLE
-    productreview( 
+    productreview(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         productid INT,
-        customerid INT ,
+        customerid INT,
         rating DOUBLE,
         review VARCHAR(500),
         CONSTRAINT fk_productid2 FOREIGN KEY (productid) REFERENCES products(id) ON UPDATE CASCADE ON DELETE CASCADE,
-        UNIQUE KEY (productid,customerid)
-        );
+        UNIQUE KEY (productid, customerid)
+    );
+
 CREATE TABLE
     orders(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         orderdate DATETIME DEFAULT CURRENT_TIMESTAMP,
-        shippeddate DATETIME DEFAULT (CURRENT_DATE + INTERVAL 7 DAY) ,
+        shippeddate DATETIME DEFAULT (CURRENT_DATE + INTERVAL 7 DAY),
         customerid INT NOT NULL,
         addressid INT NOT NULL,
         storeid INT,
@@ -80,10 +87,8 @@ CREATE TABLE
             'inprogress',
             'cancelled',
             'delivered'
-        )  DEFAULT 'pending' NOT NULL
+        ) DEFAULT 'pending' NOT NULL
     );
-    
-
 
 CREATE TABLE
     orderdetails(
@@ -107,7 +112,7 @@ CREATE TABLE
         cartid INT NOT NULL,
         CONSTRAINT fk02 FOREIGN KEY (cartid) REFERENCES carts(id) ON UPDATE CASCADE ON DELETE CASCADE,
         productdetailsid INT NOT NULL,
-        CONSTRAINT fkproduct2 FOREIGN KEY (productdetailsid) REFERENCES productdetails(id) ON UPDATE CASCADE ON DELETE CASCADE,  
+        CONSTRAINT fkproduct2 FOREIGN KEY (productdetailsid) REFERENCES productdetails(id) ON UPDATE CASCADE ON DELETE CASCADE,
         quantity INT NOT NULL
     );
 
@@ -119,12 +124,11 @@ CREATE TABLE
             'cash on delivery',
             'net banking'
         ),
-        paymentstatus  ENUM('paid', 'unpaid','cancelled'),
-        transactionid INT ,
+        paymentstatus ENUM('paid', 'unpaid', 'cancelled'),
+        transactionid INT,
         orderid INT NOT NULL,
         CONSTRAINT fkorderid FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE
     );
-
 
 CREATE TABLE
     shippers(
@@ -133,22 +137,23 @@ CREATE TABLE
         addressid INT
     );
 
-CREATE TABLE shipperorders(
-    id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY,
-    orderid INT NOT NULL,
-    shipperid INT NOT NULL,
-    CONSTRAINT fkshipperorderid FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE,
-    CONSTRAINT fk_shipperid FOREIGN KEY(shipperid) REFERENCES shippers(id) ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-CREATE TABLE ordershistory(
-    id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY,
-    orderid INT NOT NULL,
-    status VARCHAR(30),
-    date  DATETIME  DEFAULT CURRENT_TIMESTAMP,
-    CONSTRAINT fkorderid3 FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE
+CREATE TABLE
+    shipperorders(
+        id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY,
+        orderid INT NOT NULL,
+        shipperid INT NOT NULL,
+        CONSTRAINT fkshipperorderid FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE,
+        CONSTRAINT fk_shipperid FOREIGN KEY(shipperid) REFERENCES shippers(id) ON UPDATE CASCADE ON DELETE CASCADE
     );
 
+CREATE TABLE
+    ordershistory(
+        id INT NOT NULL AUTO_iNCREMENT PRIMARY KEY,
+        orderid INT NOT NULL,
+        status VARCHAR(30),
+        date DATETIME DEFAULT CURRENT_TIMESTAMP,
+        CONSTRAINT fkorderid3 FOREIGN KEY (orderid) REFERENCES orders(id) ON UPDATE CASCADE ON DELETE CASCADE
+    );
 
 CREATE TABLE
     questioncategories(
@@ -164,7 +169,6 @@ CREATE TABLE
         CONSTRAINT fkcategory1 FOREIGN KEY (categoryid) REFERENCES questioncategories(id) ON DELETE CASCADE ON UPDATE CASCADE
     );
 
-
 CREATE TABLE
     answers(
         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -173,15 +177,6 @@ CREATE TABLE
         likes INT NOT NULL,
         CONSTRAINT fkcategory12 FOREIGN KEY (questionid) REFERENCES questions(id) ON DELETE CASCADE ON UPDATE CASCADE
     );
-
-
-CREATE TABLE
-    subjectmatterexperts(
-        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        categoryid INT, CONSTRAINT fk_smeuser FOREIGN KEY (categoryid) REFERENCES questioncategories(id) ON UPDATE CASCADE ON DELETE CASCADE,
-        userid INT NOT NULL
- );
-
 
 CREATE TABLE
     smeanswers(
@@ -199,4 +194,5 @@ CREATE TABLE
         questionid INT NOT NULL,
         CONSTRAINT fkques FOREIGN KEY(questionid) REFERENCES questions(id) ON UPDATE CASCADE ON DELETE CASCADE,
         customerid INT NOT NULL,
-        questiondate DATETIME );
+        questiondate DATETIME
+    );

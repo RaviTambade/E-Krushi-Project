@@ -34,7 +34,7 @@ export class AddressComponent implements OnInit {
 
   fetchAddresses() {
     this.userId = Number(this.authsvc.getClaimFromToken(TokenClaims.userId));
-    this.usersvc.getAddress(this.userId).subscribe((res) => {
+    this.usersvc.getAddressOfUser(this.userId).subscribe((res) => {
       this.addresses = res;
       this.selectedAddressId = Number(
         sessionStorage.getItem(SessionStorageKeys.addressId)

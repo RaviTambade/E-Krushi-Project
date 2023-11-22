@@ -42,8 +42,8 @@ export class UserService {
     return this.httpClient.post<boolean>(url, address);
   }
 
-  getAddress(userId: number): Observable<Address[]> {
-    let url = `${this.addressApiurl}/${userId}`;
+  getAddressOfUser(userId: number): Observable<Address[]> {
+    let url = `${this.addressApiurl}/users/${userId}`;
     return this.httpClient.get<Address[]>(url);
   }
 
@@ -57,7 +57,7 @@ export class UserService {
     return this.httpClient.put<boolean>(url, address);
   }
   getAddressById(addressId: number): Observable<Address> {
-    let url = `${this.addressApiurl}/details/${addressId}`;
+    let url = `${this.addressApiurl}/${addressId}`;
     return this.httpClient.get<Address>(url);
   }
 
