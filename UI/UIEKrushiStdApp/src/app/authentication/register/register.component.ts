@@ -4,7 +4,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { IUser } from '@ekrushi-authentication/iuser';
+import { User } from '@models/user';
 import { UserService } from '@services/user.service';
 
 @Component({
@@ -16,9 +16,9 @@ export class RegisterComponent {
   reactiveForm!: FormGroup;
 
   showPassword: boolean = false;
-  user: IUser;
+  user: User;
   constructor( private usersvc:UserService) {
-    this.user = {} as IUser;
+    this.user = {} as User;
   }
 
   ngOnInit(): void {

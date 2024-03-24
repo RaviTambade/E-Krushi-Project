@@ -6,7 +6,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaymentComponent } from './payment/payment.component';
 import { OrderProcessingMainComponent } from './order-processing-main/order-processing-main.component';
 import { SharedModule } from '@ekrushi-shared/shared.module';
-import { MembershipLibModule } from 'membership-lib';
+import { UpdateAddressComponent } from './update-address/update-address.component';
+import { AddAddressComponent } from './add-address/add-address.component';
+
 
 export const orderProcessingRoutes: Routes = [
   {
@@ -24,6 +26,8 @@ export const orderProcessingRoutes: Routes = [
     AddressComponent,
     PaymentComponent,
     OrderProcessingMainComponent,
+    AddAddressComponent,
+    UpdateAddressComponent
   ],
   imports: [
     CommonModule,
@@ -31,7 +35,7 @@ export const orderProcessingRoutes: Routes = [
     FormsModule,
     RouterModule,
     SharedModule,
-    MembershipLibModule,
+ 
   ],
 })
 export class OrderProcessingModule {}

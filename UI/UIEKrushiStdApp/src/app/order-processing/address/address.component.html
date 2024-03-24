@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div *ngIf="showupdateAddress && selectedUpdateId==address.id">
-                        <membership-update-address [address]="address" (onComplete)="hideUpdateAddressComponent($event)"></membership-update-address>
+                        <update-address [address]="address" (onComplete)="hideUpdateAddressComponent($event)"></update-address>
                     </div>
                 </div>
             </div>
@@ -38,7 +38,7 @@
         </div>
 
         <div *ngIf="showAddAddress">
-            <membership-add-address [userId]="userId" (onComplete)="hideAddAddressComponent($event)"></membership-add-address>
+            <add-address [userId]="userId" (onComplete)="hideAddAddressComponent($event)"></add-address>
         </div>
     </div>
 </div>

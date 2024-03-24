@@ -5,8 +5,8 @@ import { LocalStorageKeys } from '@enums/local-storage-keys';
 import { UpdatePassword } from '@models/update-password';
 import { Observable } from 'rxjs';
 import { TokenClaims } from '@enums/tokenclaims';
+import {Credential} from '@models/credential'
 import { environment } from '@environments/environment';
-// import { ICredential } from '@ekrushi-authentication/icredential';
 
 @Injectable({
   providedIn: 'root',
@@ -19,11 +19,18 @@ export class AuthenticationService {
 
   private authServiceurl: string = environment.authServiceUrl;
   
-  // signIn(credential: ICredential): Observable<any> {
-  //   let url =`${this.authServiceurl}/signin`;
-  //   return this.httpClient.post<any>(url, credential);
-  // }
+  signIn(credential: Credential): Observable<any> {
+    let url = `http://localhost:5142/api/auth/signin`;
+    return this.httpClient.post<any>(url, credential);
+  }
 
+  changePassword(credential: UpdatePassword): Observable<boolean> {
+    let url = `http://localhost:5142/api/auth/updatepassword`;
+    const jwt = localStorage.getItem('jwt');
+    return this.httpClient.put<any>(url, credential, {
+      headers: { authorization: `Bearer ${jwt}` },
+    });
+  }
   updatePassword(credential: UpdatePassword): Observable<boolean> {
     let url =`${this.authServiceurl}/updatepassword`;
     const jwt = localStorage.getItem("jwt");

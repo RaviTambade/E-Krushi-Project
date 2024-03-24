@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
-import { MembershipLibModule } from 'membership-lib';
 import { Routes } from '@angular/router';
 
 export const authRoutes: Routes = [
@@ -17,7 +16,6 @@ export const authRoutes: Routes = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    MembershipLibModule,
   ],
 })
 export class AuthenticationModule {}

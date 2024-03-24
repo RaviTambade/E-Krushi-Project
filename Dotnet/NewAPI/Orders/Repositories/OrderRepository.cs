@@ -207,7 +207,7 @@ public class OrderRepository : IOrderRepository
             string requestUrl = "http://localhost:5226/api/stores/nearby/" + customerAddressId;
 
             HttpClient httpClient = _httpClientFactory.CreateClient();
-            var response = await httpClient.GetAsync(requestUrl);
+            HttpResponseMessage? response = await httpClient.GetAsync(requestUrl);
             if (response.IsSuccessStatusCode)
             {
                 var apiResponse = await response.Content.ReadAsStringAsync();
