@@ -1,0 +1,23 @@
+.categoryimg {
+  width: auto;
+  max-height: 10vh;
+  height: auto;
+}
+
+.column2 {
+  float: left;
+  width: 20%;
+  padding: 0 5px;
+}
+
+.card {
+  padding: 4px;
+  cursor: pointer;
+  text-align: center;
+  background-color: white;
+}
+
+.card h6:hover {
+  transform: scale(1.1);
+  color: #538eee;
+}

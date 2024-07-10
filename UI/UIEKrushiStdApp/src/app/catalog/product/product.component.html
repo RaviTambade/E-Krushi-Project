@@ -1,0 +1,21 @@
+<div class="w3-row">
+  <div class="column">
+    <div class="card">
+      <div class="img-container" [routerLink]="['/catalog/productdetail',product.id]">
+        <img src="{{product.image}}" class="image-size">
+        <div class="ratings">
+          {{product.rating}} <i class="fas fa-star c-gold"></i>
+        </div>
+      </div>
+      <h5 class="product-title " [routerLink]="['/catalog/productdetail',product.id]">{{product.title | titlecase}}</h5>
+      <div class="d-flex justify-content-between">
+        <div><b>{{currentPrice |currency:"INR"}}</b></div>
+        <div> <select class="select-style" [(ngModel)]="selectedSize" (ngModelChange)="onUpdatePrice()">
+            <option *ngFor="let productDetail of product.productDetails " [ngValue]="productDetail.size"> <b>
+                {{productDetail.size}} </b></option>
+          </select></div>
+      </div>
+    </div>
+    <br>
+  </div>
+</div>

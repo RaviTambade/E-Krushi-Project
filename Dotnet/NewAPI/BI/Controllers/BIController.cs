@@ -1,0 +1,59 @@
+using Microsoft.AspNetCore.Mvc;
+using Transflower.EKrushi.BIService.Models;
+using Transflower.EKrushi.BIService.Services.Interfaces;
+
+namespace Transflower.EKrushi.BIService.Controllers
+{
+    [ApiController]
+    [Route("api/bi")]
+    public class BIController : ControllerBase
+    {
+        private readonly IBIService _service;
+
+        public BIController(IBIService svc)
+        {
+            _service = svc;
+        }
+
+        [HttpGet("orderscount/{todaysDate}/{storeId}")]
+        public async Task<OrderCount> OrdersCountByStore(DateTime todaysDate, int storeId)
+        {
+            return await _service.OrdersCountByStore(todaysDate, storeId);
+        }
+
+        [HttpGet("topproducts/{todaysDate}/{mode}/{storeId}")]
+        public async Task<List<TopProducts>> GetTopFiveSellingProducts(DateTime todaysDate, string mode,int storeId)
+        {
+            return await _service.GetTopFiveSellingProducts(todaysDate, mode,storeId);
+        }
+
+
+
+         [HttpGet("MonthOrders/{year}/{storeId}")]
+        public async Task<List<MonthOrders>> GetMonthOrders(int year,int storeId)
+        {
+            List<MonthOrders> orders=await _service.GetMonthOrders(year,storeId);
+            return orders; 
+        }
+
+
+
+         [HttpGet("categorywiseproducts/{todaysDate}/{mode}/{storeId}")]
+        public async Task<List<CategorywiseProduct>> GetCategorywiseProductsCount(DateTime todaysDate, string mode,int storeId)
+        {
+            return await _service.GetCategorywiseProductsCount(todaysDate, mode,storeId);
+        }
+
+
+         [HttpGet("DeliveredOrders/{year}/{shipperId}")]
+        public async Task<List<DeliveredOrders>> GetDeliveredOrdersbyMonth(int year,int shipperId)
+        {
+            List<DeliveredOrders> orders=await _service.GetDeliveredOrdersbyMonth(year,shipperId);
+            return orders; 
+        }
+
+
+        
+
+    }
+}

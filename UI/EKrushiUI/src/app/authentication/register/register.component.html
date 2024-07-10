@@ -1,0 +1,32 @@
+
+        
+
+
+
+
+            <div class="container">  
+              <form id="contact" #registerForm="ngForm" (ngSubmit)="onRegister(registerForm.value)">
+                <h3> New User account</h3>
+               
+                <div>
+                  <label >Contact Number : </label>
+                <input type="text" name="contactNumber"  placeholder="Contact Number"  [(ngModel)]="credential.contactNumber"/>
+                </div>
+                <br>
+                <div>
+                  <label for="password">Password : </label>
+                <input type="password"  name="password" placeholder="Password" [(ngModel)]="credential.password" />
+                </div>
+                <br>
+                <div>
+                  <label for="confirmpassword"> Confirm Password : </label>
+                  <input type="password" name="confirmPassword" placeholder="Password" [(ngModel)]="confirmPassword"/>
+                </div>
+                <br>
+                <div>
+                  <button type="submit">Register</button>
+                </div>
+              </form>
+            </div>
+      
+  

@@ -1,0 +1,39 @@
+
+<form #userForm="ngForm" (ngSubmit)="newUser(userForm.value)">
+   <div class="form-group">
+      <br> 
+      <label ><b>firstname :</b></label>
+      <input type="text" name="firstName" [(ngModel)]="user.firstName" />
+    </div>
+    <div class="form-group">
+        <br> 
+        <label ><b>lastname :</b></label>
+        <input type="text" name="lastName" [(ngModel)]="user.lastName" />
+      </div>
+      <div class="form-group">
+        <br> 
+        <label ><b>birthdate:</b></label>
+        <input type="date" name="birthDate" [(ngModel)]="user.birthDate" />
+      </div>
+      <div class="form-group">
+        <br> 
+        <label ><b>aadharId :</b></label>
+        <input type="text" name="aadharId" [(ngModel)]="user.aadharId" />
+      </div>
+      <div class="form-group">
+        <br> 
+        <label ><b>gender :</b></label>
+        <input type="text" name="gender" [(ngModel)]="user.gender" />
+      </div>
+      <div class="form-group">
+        <br> 
+        <label ><b>email :</b></label>
+        <input type="text" name="email" [(ngModel)]="user.email" />
+      </div>
+      <div class="form-group">
+        <br> 
+        <label ><b>contactNumber :</b></label>
+        <input type="text" name="contactNumber" [(ngModel)]="contactNumber" />
+      </div>
+      <button type="submit"> submit</button>
+      </form>

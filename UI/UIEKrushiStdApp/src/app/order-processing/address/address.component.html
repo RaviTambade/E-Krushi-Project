@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-12 mb-4">
+
+        <div *ngIf="addresses.length>0">
+            <div *ngFor="let address of addresses" class="card shadow rounded-3 my-2 p-2">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <label class="form-check m-2">
+                                <input type="radio" class="form-check-input" name="selectedAddress" [value]="address.id"
+                                    [(ngModel)]="selectedAddressId">
+                                {{ address.name | titlecase }} - {{ address.contactNumber }}
+                            </label>
+                        </div>
+
+                        <div class="col  mx-4">
+                            {{ address.area | titlecase}}, {{ address.landMark | titlecase }}, {{ address.city |
+                            titlecase }},
+                            {{ address.state | titlecase}}- {{address.pinCode }}
+                        </div>
+
+                        <div class="col-auto">
+                            <button class="btn btn-primary mx-2" (click)="onClickUpdateAddress(address.id)">
+                                Update</button>
+                            <button class="btn btn-danger mx-2"
+                                (click)="openDeleteAddressConfirmationDialog(address.id)"> <i
+                                    class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                    <div *ngIf="showupdateAddress && selectedUpdateId==address.id">
+                        <update-address [address]="address" (onComplete)="hideUpdateAddressComponent($event)"></update-address>
+                    </div>
+                </div>
+            </div>
+
+            <button class="custom-button" (click)="onClickDeliverHere()">Deliver Here</button>
+            <button class="m-4 custom-button" (click)="onClickNewAddress()">Add Address</button>
+        </div>
+
+        <div *ngIf="showAddAddress">
+            <add-address [userId]="userId" (onComplete)="hideAddAddressComponent($event)"></add-address>
+        </div>
+    </div>
+</div>

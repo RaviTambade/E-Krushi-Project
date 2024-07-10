@@ -1,0 +1,9 @@
+<app-categories></app-categories>
+
+<app-alert [message]="alertmessage"></app-alert>
+
+<app-product-carousel [cards]="bannerCards"></app-product-carousel>
+<hr>
+<div *ngFor="let product of products">
+    <app-product [product]="product"></app-product>
+</div>

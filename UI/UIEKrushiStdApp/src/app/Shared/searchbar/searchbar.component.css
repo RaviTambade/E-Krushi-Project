@@ -1,0 +1,17 @@
+.suggestions {
+  position: absolute;
+    list-style: none;
+    border: 1px solid #ccc;
+    padding: 0;
+    margin: 0;
+    background-color: #f0f0f0;
+    width: 200px; 
+  }
+  .suggestions li {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .suggestions li:hover {
+    background:linear-gradient(45deg,#4099ff,#73b4ff);;
+  }

@@ -1,0 +1,43 @@
+                 <table>
+                    <thead>
+                    <tr>
+                      <h3>Customer Name:{{CustomerName}}</h3>
+                    </tr>
+                        <tr>                         
+                            <th>product Title</th>
+                            <th>UnitPrice</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr  *ngFor="let order of carts ">
+                            <td>{{ order.title }}</td>
+                            <td>{{ order.unitPrice }}</td>
+                            <td>{{ order.quantity }}</td>
+                        </tr> 
+                    </tbody>
+                    <b>Total Amount : {{totalAmount}}</b>
+                    <br>
+                </table>
+          
+  <form #billingForm="ngForm" (ngSubmit)="addBill(billingForm.value)">
+
+    <div class="form-group">
+      <label hidden><b>cust Id:</b></label>
+      <input type="number" name="userId" [(ngModel)]="userId" type="hidden"/>
+   </div>
+    <div class="form-group">
+        <br> 
+        <label hidden ><b>TotalAmount :</b></label>
+        <input type="number" name="totalAmount" [(ngModel)]="totalAmount" type="hidden"/>
+      </div>
+    <div class="form-group">
+        <br> 
+        <label hidden><b>Billing date :</b></label>
+        <input type="datetime" name="billDate" [(ngModel)]="bill.billDate" type="hidden"/>
+    </div>
+    <br>
+    <button type="submit" class="button" (click)="checkBill()">Make Payment</button>
+  </form>
+
+  

@@ -1,0 +1,29 @@
+<h2>Orders</h2>
+<div *ngIf="customer">
+    <p><b>CustomerName:</b> {{customer.firstName}} {{customer.lastName}}</p>
+</div>
+
+
+<table>
+    <tr>
+        <th> OrderId</th><br>
+        <th>Date</th><br>
+        <th>Time</th><br>
+        <th>Status</th>
+    </tr>
+    <tr *ngFor="let order of orders">
+    <td>{{ order.orderId }} </td><br>
+    <td>{{ order.orderDate | date:'M/d/yy'}} </td><br>
+    <td>{{ order.orderDate  | date:'h:mm:ss a'}}</td><br>
+    <td>{{order.status}}</td>
+<td>
+    <button type="button" (click)="onSelectOrder(userId)" class="btn btn-link btn-sm btn-rounded">
+        OrderDetails
+        </button> 
+    </td>
+</tr>
+<p><b>TotalAmount:</b>{{total}}</p>   
+</table>
+
+                 
+                      

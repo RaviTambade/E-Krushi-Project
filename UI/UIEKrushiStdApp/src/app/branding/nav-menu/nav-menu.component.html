@@ -1,0 +1,103 @@
+<header >
+  <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 fixed-top">
+    <div class="w-100 d-flex mx-4">
+      <a class="navbar-brand" *ngIf="isUserHaveRequiredRole(Role.customer) || !isLoggedIn()" [routerLink]="['/home']"><b>EKrushi Seva</b></a>
+      <a class="navbar-brand " *ngIf="isUserHaveRequiredRole(Role.storeOwner) && isLoggedIn() " [routerLink]="['/store/dashboard']"><b>EKrushi Seva</b></a>
+      <a class="navbar-brand " *ngIf="isUserHaveRequiredRole(Role.shipper) && isLoggedIn()" [routerLink]="['/shipper/dashboard']"><b>EKrushi Seva</b></a>
+      <a class="navbar-brand " *ngIf="isUserHaveRequiredRole(Role.supplier) && isLoggedIn()" [routerLink]="['/supplier/dashboard']"><b>EKrushi Seva</b></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse"
+        aria-label="Toggle navigation" [attr.aria-expanded]="isExpanded" (click)="toggle()">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="mx-4" *ngIf="!isLoggedIn() || isUserHaveRequiredRole(Role.customer)">
+        <app-searchbar></app-searchbar>
+      </div>
+      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item">
+            <a  *ngIf="isUserHaveRequiredRole(Role.storeOwner) && isLoggedIn()" class="nav-link text-dark "[routerLink]="['/shop/dashoard']"><b>{{storeName}}</b></a>
+          </li>
+          <li class="nav-item">
+            <a  *ngIf="isUserHaveRequiredRole(Role.supplier) && isLoggedIn()" class="nav-link text-dark "[routerLink]="['/supplier/dashoard']"><b>{{corporateName}}</b></a>
+          </li>
+        </ul>
+      </div>
+      <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+        <ul class="navbar-nav flex-grow">
+          <li class="nav-item" *ngIf="isUserHaveRequiredRole(Role.customer) || !isLoggedIn()">
+            <a class="nav-link text-dark" [routerLink]="['/consulting/question']"><img src="assets/Inquiry.png" alt=""
+                width="25" height="25">Queries</a>
+          </li>
+          <li class="nav-item" style="text-align: center; font-size: 12px; position: relative;" *ngIf="isLoggedIn()">
+            <div class="nav-link text-dark" (mouseenter)="showLinks = true" (mouseleave)="showLinks = false">
+              Welcome, <p>{{name}}</p>
+              
+              <ul *ngIf="isUserHaveRequiredRole(Role.customer) && showLinks" class="card">
+               <li class="nav-item">
+                  <a class="nav-link text-dark" [routerLink]="['/profile']">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-dark" [routerLink]="['/crm/orders']">Orders</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-dark" [routerLink]="['/crm/paymentlist']">Payment History</a>
+                </li>
+              </ul>
+
+              <ul *ngIf="isUserHaveRequiredRole(Role.supplier) && showLinks" class="card">
+                <li class="nav-item">
+                  <a class="nav-link text-dark" [routerLink]="['/user/profile']">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-dark" [routerLink]="['/supplier/dashboard']">Dashboard</a>
+                </li>
+                <!-- <li class="nav-item">
+                  <a class="nav-link text-dark" [routerLink]="['/crm/orders']">Orders</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-dark" [routerLink]="['/crm/paymentlist']">Payment History</a>
+                </li> -->
+              </ul>
+
+              <ul *ngIf="isUserHaveRequiredRole(Role.storeOwner) && showLinks" class="card">
+                <li class="nav-item">
+                  <a class="nav-link text-dark" [routerLink]="['/profile']">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-dark" [routerLink]="['/store/dashboard']">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link text-dark" [routerLink]="['/store/orders']">Orders</a>
+                </li>
+              </ul>
+
+              <ul *ngIf="isUserHaveRequiredRole(Role.shipper) && showLinks" class="card" >
+                <li class="nav-item">
+                  <a class="nav-link text-dark" [routerLink]="['/profile']">Profile</a>
+                </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" [routerLink]="['/shipper/dashboard']">Dashboard</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-dark" [routerLink]="['/shipper/orders']">Orders</a>
+              </li>
+            </ul>
+            </div>
+          </li>
+
+
+          <li class="nav-item" *ngIf="!isLoggedIn() || isUserHaveRequiredRole(Role.customer)">
+            <a class="nav-link text-dark"> <i class="fa-solid fa-cart-shopping"
+                [routerLink]="['crm/shoppingcart']"></i></a>
+          </li>
+          <li class="nav-item " *ngIf="isLoggedIn()">
+            <a class="nav-link text-dark" (click)="onLogOut()">LogOut</a>
+          </li>
+          <li class="nav-item " *ngIf="!isLoggedIn()">
+            <a class="nav-link text-dark" [routerLink]="['/auth/login']">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>

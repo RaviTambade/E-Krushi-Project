@@ -1,0 +1,41 @@
+<h5 class="m-2">Ordered Products - {{orderDetails.length}} Items</h5>
+<div *ngFor="let order of orderDetails">
+  <div class="card shadow rounded-3 mb-3">
+    <div class="card-body">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+        <div class="col-md-4 col-lg-3 mb-3 mb-md-0" style="cursor: pointer;" [routerLink]="['/catalog/productdetail',order.productId]">
+          <img src="{{order.image}}" alt="" class="avatar-lg rounded" height="100" width="100">
+          <a [routerLink]="['/catalog/productdetail',order.productId]"><h5>{{order.title}}</h5></a>
+        </div>
+
+        <div class="col-md-8 col-lg-9 d-flex justify-content-between flex-wrap">
+          <div class="m-2">
+            <p class="text-muted">Size</p>
+            <div><b>{{order.size}}</b></div>
+          </div>
+
+          <div class="m-2">
+            <p class="text-muted">Price</p>
+            <div><b>{{order.unitPrice | currency:"INR"}}</b></div>
+          </div>
+
+          <div class="m-2">
+            <p class="text-muted">Quantity</p>
+            <div><b>{{order.quantity}}</b></div>
+          </div>
+
+          <div class="m-2">
+            <p class="text-muted">Total</p>
+            <div><h5>{{order.total | currency:"INR"}}</h5></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="spinner-text" *ngIf="isLoading">
+  <i class="fa fa-spinner fa-spin fa-2x"></i>
+</div>
+<div *ngIf="!isLoading && !orderDetails.length" class="text-center mt-3">
+  <p class="text-muted font-weight-bold">No Items </p>
+</div>

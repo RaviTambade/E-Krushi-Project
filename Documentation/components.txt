@@ -1,0 +1,102 @@
+1)authentication  module
+  login- login user
+
+2)catalog  module
+
+ 1) categories  -show ctegories in card
+ 2) product     - show a single product card
+ 3) product-carousel  - show images that will change after some time
+ 4) product-categories-details - show products of that category
+				it has product component as child 
+	
+ 5)product-details - shows product details such as description ,image
+	nested components 
+	i) product-similar-items - shows products of a same category whose detail page is open	
+	ii)product-default-icons - shows icons about authenticated products,cod,free delivery.
+	
+ 6)product-home -homepage of a customer
+	nested components - i)categories  ii)product-carousel iii) product    
+ 7)searchbar -search a product
+ 8)search-product-result - show result of searched string
+
+
+3)OrderProcessing  module
+
+1)address- shows all addresses of user
+2)add-address - form for adding address of user
+3)order-details - show all products that are in process of order
+4)order-summery - show details about total amount,shpping charges of order
+5)payment - show payment options
+
+6)order-processing-main-  show order processing 
+			all above componets are used in this component
+
+4) shipper module
+
+1)shipper-orders - show orders details  about shipper orders
+		nested
+		1) order-product-details  -show products in order
+2)shipper-dashboard
+        nested
+           1)shipperorderscount - show shipper orders count by order status in card
+	   2)linechart - show shipper order count by month in line chart			
+
+ 5)shop-owner  module
+	1)shop-orders - show details  about shop orders
+		nested
+		1) order-product-details  -show products in order
+
+	2)shop-dashboard-
+	  nested  
+		1)dognut-chart- show category wise product sold quantity for differnt time interval
+		2)line-chart - show shop order count by month in line chart
+		3)ordercount - show order count for today,yesterday,week and month in cards
+		4)top-selling-product - show top 5 products for today,yesterday,week and month .
+
+			child 1)top-selling-product - show product detail with quantity and percentage
+
+
+
+
+nav-menu - navbar links
+confirmation-box - show popup box about confirmation.
+delete-confirmation -show popup box about deleteing confirmation
+
+
+
+6)consulting module
+
+1)categorywise question component => it is used for get categorywise questions.
+2)question category component => it is used for get all categories of questions.
+3)questionlist component => it is used for get all questions.
+4)releted questions component => it is used for get all questions.
+
+
+7)customer module 
+
+1)customer dashboard
+2)customer orders  => it show customer orders.
+   i) order details  =>it shows the details of customer orders.
+   ii)order product details => it shows the product deatils of orders.
+   iii)order summery  => it shows order summery of customer.
+3)customer payment  =>it shows payments of customer
+    i)payment summery => it shows payment summery of customer.
+4)customer questions => it shows question asked by customer.
+5)shopping cart   => this component is used for shopping cart.
+     i)cart summerry => it shows the cart summery of customer.
+
+
+8)subject matter experts module .
+
+   1)sme questions => this component is used for get solved questions by particular subject matter expert .
+   2)UnsolvedQuestions => this component is used for get unsolved questions .
+   3)subject matter expert dashboard => this component is used for dashboard.
+
+
+
+9)users module 
+
+  1)add user  => this copmponent is used for add new user .
+  2)edit user => this component is used for edit user profile.
+  3)update password => this component is used for update password of the user.
+  4)user profile  => this component is used for showing profile details of user.

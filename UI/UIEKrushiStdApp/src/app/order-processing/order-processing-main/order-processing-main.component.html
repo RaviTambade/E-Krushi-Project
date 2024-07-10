@@ -1,0 +1,36 @@
+<div class=" row">
+    <div class="col-8">
+        <div class="mb-2">
+            <label (click)="toggleOrderDetails()" class=" mb-1  btn btn-primary btn-block col-12">ORDER SUMMARY</label>
+            <app-cart-items [items]="items" (SummeryData)="onReceiveData($event)"
+                *ngIf="showOrderDetails"></app-cart-items>
+        </div>
+        <div class="mb-2">
+            <label (click)="toggleAddress()" class="  mb-1 btn btn-primary btn-block col-12">DELIVERY ADDRESS </label>
+            <div class=" card border-0 shadow rounded-3   " *ngIf="address && !showAddress">
+                <div class=" card-body mx-4">
+                {{address.name |titlecase}} - {{address.contactNumber}} 
+                <br> {{ address.area |titlecase}}, {{ address.landMark |titlecase }}, {{ address.city |titlecase }},
+                {{ address.state |titlecase}}- {{
+                address.pinCode }}
+                </div>
+            </div>
+
+            <div *ngIf="showAddress" class="m-2">
+                <div class="card  px-3 m-2">
+                    <app-address class="m-2" (hideComponent)="onSelectedAddress($event)"></app-address>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <button [disabled]="!address" (click)="togglePayment()"
+                class="  mb-1  col-12 btn btn-primary btn-block">PAYMENT OPTIONS</button>
+            <app-payment *ngIf="showPayment"></app-payment>
+        </div>
+    </div>
+    <div class="col-4">
+        <app-cart-summary [total]="total" [totalItems]="totalItems" [discount]="discount"
+            [subTotal]="subTotal"></app-cart-summary>
+    </div>
+</div>

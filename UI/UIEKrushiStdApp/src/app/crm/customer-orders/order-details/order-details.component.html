@@ -1,0 +1,37 @@
+<div class="container">
+
+  <div class="container">
+    <div class="bg-light ">
+
+      <div class="row m-2 ">
+        <div class=" col-md-8 mb-3 ">
+          <div *ngIf="address" class="card mt-3 mb-3 ">
+            <div class="card-body">
+              <h5 class="card-title">Delivery Address</h5>
+              <hr>
+
+              <div class="mb-2">
+                <h6 class="font-weight-bold">Delivered To:</h6>
+                <label class="font-weight-bold">
+                  {{ address.name | titlecase }} - {{ address.contactNumber }},
+                </label>
+              </div>
+
+              <div class="text-muted">
+                {{ address.area | titlecase }}, {{ address.landMark | titlecase }},
+                {{ address.city | titlecase }}, {{ address.state | titlecase }} - {{ address.pinCode }}
+              </div>
+            </div>
+          </div>
+
+
+          <app-order-product-details [orderId]="orderId"></app-order-product-details>
+        </div>
+        <div class=" col-md-4 ">
+          <app-order-summery [orderId]="orderId"></app-order-summery>
+          <app-paymentsummery [orderId]="orderId"></app-paymentsummery>
+        </div>
+      </div>
+    </div>
+  </div>
+  <router-outlet></router-outlet>

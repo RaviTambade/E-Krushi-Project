@@ -1,0 +1,26 @@
+
+.button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 2px;
+    color: white;
+    background-color: hsl(154, 90%, 44%);
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+  } 
+  
+  .grid-container {
+    display: grid;
+     grid-template-columns: auto auto auto;
+    padding: 10px;
+  }
+  .grid-item {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 50px;
+    font-size: 20px;
+    text-align: center;
+  }
+  

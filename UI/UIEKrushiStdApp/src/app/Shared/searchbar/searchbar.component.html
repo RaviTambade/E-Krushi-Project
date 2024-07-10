@@ -1,0 +1,10 @@
+<div class="d-flex">
+    <input class="form-control me-1" type="text" placeholder="Search" (input)="getSuggestions()"
+        [(ngModel)]="searchString">
+    <button class="btn " style="background-color: gray;" type="submit" (click)="onSearch()">
+        <i class="fa fa-search" style="color: gold;"></i>
+    </button>
+</div>
+<ul class="suggestions" *ngIf="suggestions.length>0">
+    <li *ngFor="let suggestion of suggestions" (click)="onSelectSuggestion(suggestion)">{{ suggestion }}</li>
+</ul>

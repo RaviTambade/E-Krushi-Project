@@ -1,0 +1,31 @@
+
+
+    
+.custom-button {
+    background-color: #007bff; 
+    color: #ffffff;
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 16px; 
+  }
+  
+  .custom-button:hover {
+    background-color: #0056b3; 
+  }
+.fixed-button-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  padding: 10px 0; 
+  text-align: center;
+  z-index: 1000; 
+}
+.fixed-button-container button.custom-button {
+  margin: 0 auto; 
+  display: block;
+}
+

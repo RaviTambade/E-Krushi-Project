@@ -1,0 +1,26 @@
+
+.container {
+    display: flex;
+    align-items: center;
+    
+    height: 40vh; 
+  }
+
+
+  a {
+    text-decoration: none;
+}
+  
+
+  /* styles.css */
+
+.hover-text {
+  color: #110e0e; /* Default text color */
+  transition: color 0.3s; /* Add a smooth transition effect */
+}
+
+.hover-text:hover {
+  color: rgb(7, 147, 28); /* New color when hovering (e.g., red) */
+}
+
+ 

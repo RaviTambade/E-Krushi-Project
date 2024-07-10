@@ -1,0 +1,108 @@
+<h2>Manage Orders</h2>
+<div class=" col-6 d-flex justify-content-between m-2 p-2">
+
+    
+    <a class="btn btn-outline-success position-relative" (click)="filterOrders(orderStatus.readyToDispatch)"
+        [ngClass]="{'btn-success active-button': activeFilter === orderStatus.readyToDispatch}">
+        <i class="fas fa-truck" style="color: #2196F3  "></i>
+        &nbsp;UnPicked
+        <span *ngIf="orderCount"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
+            {{orderCount.readyToDispatch}}</span>
+    </a>
+    <a class="btn btn-outline-success position-relative" (click)="filterOrders(orderStatus.picked)"
+        [ngClass]="{'btn-success active-button': activeFilter === orderStatus.picked}">
+        <i class="fas fa-box" style="color: brown "></i>
+        &nbsp;Picked
+        <span *ngIf="orderCount"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
+            {{orderCount.picked}}</span>
+    </a>
+    <a class="btn btn-outline-success position-relative" (click)="filterOrders(orderStatus.inprogress)"
+        [ngClass]="{'btn-success active-button': activeFilter === orderStatus.inprogress}">
+        <i class="fas fa-cog" style="color: #FFA500"></i>
+        &nbsp;Inprogress
+        <span *ngIf="orderCount"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
+            {{orderCount.inProgress}}</span>
+    </a>
+    <a class="btn btn-outline-success position-relative" (click)="filterOrders(orderStatus.delivered)"
+        [ngClass]="{'btn-success active-button': activeFilter === orderStatus.delivered}">
+        <i class="fas fa-check-circle" style="color: #28a745"></i>
+        &nbsp;Delivered
+        <span *ngIf="orderCount"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
+            {{orderCount.delivered}}</span>
+    </a>
+    <a class="btn btn-outline-success position-relative" (click)="filterOrders(orderStatus.cancelled)"
+        [ngClass]="{'btn-success active-button': activeFilter === orderStatus.cancelled}">
+        <i class="fas fa-cancel" style="color: #c51616"></i>
+        &nbsp;Cancelled
+        <span *ngIf="orderCount"
+            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
+            {{orderCount.cancelled}}</span>
+    </a>
+</div>
+
+<div class="row">
+
+
+    <div class="col-7 ">
+        <div class="card" >
+            <div class="card-body" style="max-height: calc(100vh - 150px); overflow-y: auto;">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Order Date</th>
+                            <th>Expected Delivery</th>
+                            <th>OrderId</th>
+                            <th>from</th>
+                            <th>To</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let order of orders">
+                        <tr>
+                            <td>{{ order.orderDate | date }}</td>
+                            <td>{{ order.shippedDate | date }}</td>
+                            <td [ngClass]="{'active-id' : order.orderId== selectedOrderId }">{{ order.orderId }}</td>
+                            <td> {{order.fromAddress}}</td>
+                            <td> {{order.toAddress}}</td>
+                            <td >
+                                <button class="btn btn-info btn-custom-small"
+                                    (click)="onDetailsClick(order.orderId)">Details</button>
+                                <button *ngIf="order.status === orderStatus.readyToDispatch"
+                                    class="btn btn-success btn-custom-small"
+                                    (click)="openPickedConfirmationBox(order.orderId)">Pick</button>
+                                    <button *ngIf="order.status === orderStatus.picked"
+                                    class="btn btn-success btn-custom-small"
+                                    (click)="openInprogressConfirmationBox(order.orderId)">Inprogress</button>
+                                    <button *ngIf="order.status === orderStatus.inprogress"
+                                    class="btn btn-success btn-custom-small"
+                                    (click)="openDeliveredConfirmationBox(order.orderId)">Deliver</button>
+                                    <button *ngIf="order.status != orderStatus.delivered && order.status != orderStatus.cancelled "
+                                        class="btn btn-danger btn-custom-small"
+                                        (click)="openCancellationConfirmationBox(order.orderId)">Cancel</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="spinner-overlay" *ngIf="isLoading"></div>
+                <div class="spinner-text" *ngIf="isLoading">
+                    <i class="fa fa-spinner fa-spin fa-2x"></i>
+                </div>
+
+                <div *ngIf="!isLoading && !orders.length" class="text-center mt-3">
+                    <p class="text-muted font-weight-bold">No Orders</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-5" >
+        <div *ngIf="selectedOrderId" class="card">
+            <div class="card-body" style="max-height: calc(71vh ); overflow-y: auto;">
+                <app-order-product-details [orderId]="selectedOrderId"></app-order-product-details>
+            </div>
+        </div>
+    </div>

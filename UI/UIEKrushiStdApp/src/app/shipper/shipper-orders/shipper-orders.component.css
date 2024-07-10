@@ -1,0 +1,64 @@
+.active-button {
+    color: #fff;
+  }
+
+  .btn-custom-small {
+    font-size: 14px;
+    margin: 2px;
+    padding: 5px 10px;
+    width: 90px;
+   height: 30px;
+  }
+
+  table, th, td {
+    border: 1px solid black;
+    border-collapse:collapse;
+    text-align: center;  
+  }
+  
+
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th, td {
+    padding: 15px;
+  }
+  
+  
+
+  .active-id{
+      color: blue;
+      background-color: rgb(127, 210, 255);
+  }
+
+  
+
+.spinner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999; 
+  padding: 20px; 
+  border-radius: 10px; 
+}
+.spinner-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: auto;
+  height:auto;
+  background-color: transparent;
+  z-index: 9999;
+  cursor: not-allowed;
+  pointer-events: auto; 
+}
+
+
+
+
+
+

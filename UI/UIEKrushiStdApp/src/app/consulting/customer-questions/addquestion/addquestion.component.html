@@ -1,0 +1,17 @@
+
+  <form (ngSubmit)="insertQuestion(question)"  >
+    <label for="categoryId">Category:</label>
+    <select id="categoryId" [(ngModel)]="question.categoryId" name="categoryId">
+      <option *ngFor="let category of categories" [value]="category.id">{{ category.category }}</option>
+    </select>
+  
+    <div class="form-group">
+      <label><b>Enter Your Question :</b></label>
+      <input type="text" name="description" [(ngModel)]="question.description"  />
+   </div>
+ 
+    <div class="form-group">
+        <br>
+        <button class="btn btn-primary" type="submit">AddNewQuestion</button>
+      </div>
+  </form>

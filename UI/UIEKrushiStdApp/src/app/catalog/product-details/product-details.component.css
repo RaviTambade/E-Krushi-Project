@@ -1,0 +1,27 @@
+.custom-btn-group .btn {
+    color: #007bff;
+    border: 2px solid #007bff;
+    margin-right: 10px;
+  }
+
+
+  .custom-btn-group .btn:last-child {
+    margin-right: 0;
+  }
+
+  aside {
+    height: 70vh;
+  }
+
+  main {
+
+    height: 75vh;
+    overflow-y: auto;
+  }
+
+ 
+
+  .selected {
+    border: 2px solid rgb(255, 208, 121);
+    background-color: rgb(255, 208, 121);
+  }

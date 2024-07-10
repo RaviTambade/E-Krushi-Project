@@ -1,0 +1,53 @@
+List of REST API for EKrushi 
+
+1] UserRoleManagement
+
+1) GET     - http://localhost:6031/api/userroles/roles/{userId} => Returns Role of User by giving userId
+2) GET     - http://localhost:6031/api/userroles/roles/userid/{role} => Returns all user of given Role 
+3) POST    - http://localhost:6031/api/userroles/roles => Add a user role returns boolean.
+
+2] Suppliers
+
+1) GET     - http://localhost:5072/api/suppliers/corporate/{supplierId} => Returns Corporate Id of Supplier by Id.
+2) GET     - http://localhost:5072/api/suppliers/id/{userId} => Returns Supplier Id of by giving userId.
+
+3] Stores 
+
+1) GET     - http://localhost:5226/api/stores/{storeId}/{orderStatus} => Returns a list of orders based on the specified StoreId and Order status.
+2) GET     - http://localhost:5226/api/stores/orderscount/{storeId} => Returns a number of orders by its status .
+3) GET     - http://localhost:5226/api/stores/nearby/{customerAddressId} => Returns a nearby storeId  by giving customer's AddressId.
+4) GET     - http://localhost:5226/api/stores/user/{storeId} => Returns a UserId of store by giving StoreId .
+5) GET     - http://localhost:5226/api/stores/storeid/{userId} => Returns a StoreId of store by giving UserId .
+6) GET     - http://localhost:5226/api/stores/name/{storeId} => Returns a Name of store by giving StoreId .
+
+4] Shopping Cart
+
+1) GET     - http://localhost:5282/api//customer/{customerId} => Returns Cart of Customer by customerId.
+2) POST    - http://localhost:5282/api/carts => Add Item in Cart returns boolean.
+3) POST    - http://localhost:5282/api/carts/product/present =>checks wheather product is already present in a cart returns boolean.
+4) PUT     - http://localhost:5282/api/carts/cartitem/{cartItemId}/quantity/{quantity} =>Updates quantity of cartItem returns boolean.
+5) DELETE  - http://localhost:5282/api/carts/remove/{cartItemId} =>remove specific item from cart by its cartItemId returns boolean.
+6) DELETE  - http://localhost:5282/api/carts/removeall/{customerId} =>Empty the cart of customer bt giving customerId returns boolean.
+
+5] Shippers
+
+1) GET     - http://localhost:5298/api/shippers/{shipperId}/{status} => Returns a list of orders based on the specified shipperId and Order status.
+2) GET     - http://localhost:5298/api/shippers/orderscount/{shipperId} =>  Returns a number of orders by its status of shipper.
+3) GET     - http://localhost:5298/api/shippers/nearby/{storeId} =>  Returns a nearest Shipper's Id of storeby giving storeId.
+4) GET     - http://localhost:5298/api/shippers/shipperid/{userId} =>  Returns a ShipperId by giving UserId.
+
+6] Payments
+
+1) GET     - http://localhost:5015/api/payments/{customerId} => Returns a list of payments of customer by  CustomerId.
+2) GET     - http://localhost:5015/api/payments/details/{orderId} => Returns a  payments of a order by  orderId.
+3) POST    - http://localhost:5015/api/payments => Add a Payment returns boolean.
+
+7] orders
+
+1) GET     - http://localhost:5059/api/orders/customer/{customerId} => Returns a list of Orders of customer by  CustomerId.
+2) GET     - http://localhost:5059/api/orders/details/{orderId} => Returns a list of Order Details of Order by  orderId.
+3) GET     - http://localhost:5059/api/orders/amount/{orderId}  => Returns a Amount of Order by  orderId.
+4) GET     - http://localhost:5059/api/orders/address/{orderId}  => Returns a Delivery Address Id of Order by  orderId.
+5) POST    - http://localhost:5059/api/orders  => Creates an Order and return orderId,StoreId and Its Amount.
+6) DELETE  - http://localhost:5059/api/orders/{orderId} =>  Remove an Order by  orderId return boolean.
+7) Patch   - http://localhost:5059/api/orders/status =>  Update an Order status return boolean.
