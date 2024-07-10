@@ -59,8 +59,4 @@ public class CustomerController : ControllerBase
     bool result = _srv.Delete(id);
     return result;
    }
-
-
-    
-   
 }

@@ -3,6 +3,8 @@
 
 Document:  System Requirement Specification Document.
 
+Actors:
+	Farmers, Agree EStore shop owners, dealers, suppliers
 Title: E-KRUSHI SEVA
 
 Team:  Customer, Business   Analyst, Quality Assurance Team, System Analyst.  
